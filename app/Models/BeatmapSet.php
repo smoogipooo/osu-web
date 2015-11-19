@@ -218,6 +218,7 @@ class BeatmapSet extends Model
         extract($params);
         $count = config('osu.beatmaps.max', 50);
         $offset = (max(0, $page - 1)) * $count;
+        $current_user = Auth::user();
 
         $searchParams['index'] = env('ES_INDEX', 'osu');
         $searchParams['type'] = 'beatmaps';
@@ -254,7 +255,7 @@ class BeatmapSet extends Model
 
         if (!empty($rank)) {
             $klass = presence($mode != null) ? Score\Model::getClass($mode) : Score\Combined::class;
-            $scores = $klass::forUser(Auth::user())->whereIn('rank', $rank)->lists('beatmapset_id');
+            $scores = $klass::forUser($current_user)->whereIn('rank', $rank)->lists('beatmapset_id');
             $matchParams[] = ['ids' => ['type' => 'beatmaps', 'values' => $scores]];
         }
 
@@ -262,8 +263,42 @@ class BeatmapSet extends Model
             $matchParams[] = ['match' => ['playmode' => (int) $mode]];
         }
 
+        $statusParams = [];
+        if (presence($status) != null) {
+            switch ((int)$status) {
+                case 1: //approved
+                    $matchParams[] = ['match' => ['approved' => self::APPROVED]];
+                    break;
+                case 2:
+                    $matchParams[] = ['ids' => ['type' => 'beatmaps', 'values' => $current_user->favouriteMaps()->lists('beatmapset_id')]];
+                    break;
+                case 3: //modreqs
+                    $matchParams[] = ['ids' => ['type' => 'beatmaps', 'values' => ModQueue::get()->lists('beatmapset_id')]];
+                    break;
+                case 4: //pending
+                    $statusParams[] = ['match' => ['approved' => self::PENDING]];
+                    $statusParams[] = ['match' => ['approved' => self::WIP]];
+                    break;
+                case 5: //graveyard
+                    $matchParams[] = ['match' => ['approved' => self::GRAVEYARD]];
+                    break;
+                case 6: //my-maps
+                    $matchParams[] = ['match' => ['user_id' => $current_user->user_id]];
+                    break;
+                case 0: //ranked-approved
+                default:
+                    $statusParams[] = ['match' => ['approved' => self::RANKED]];
+                    $statusParams[] = ['match' => ['approved' => self::APPROVED]];
+                    break;
+            }
+        }
+
         if (!empty($matchParams)) {
             $searchParams['body']['query']['bool']['must'] = $matchParams;
+        }
+
+        if (!empty($statusParams)) {
+            $searchParams['body']['query']['bool']['must'][]['bool']['should'] = $statusParams;
         }
 
         try {
