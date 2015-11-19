@@ -23,13 +23,14 @@ el = React.createElement
 class @Beatmaps extends React.Component
   constructor: (props) ->
     super props
+    beatmaps = JSON.parse(document.getElementById('json-beatmaps').text)['data']
     @state =
-      beatmaps: JSON.parse(document.getElementById('json-beatmaps').text)['data']
+      beatmaps: beatmaps
       paging:
         page: 1
         url: '/beatmaps/search'
         loading: false
-        more: true
+        more: beatmaps.length > 0
       filters:
         mode: 0
         status: 0
