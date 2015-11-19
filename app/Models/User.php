@@ -534,6 +534,11 @@ class User extends Model implements AuthenticatableContract
         return $this->hasOne("App\Models\UserStatistics\Taiko", 'user_id', 'user_id');
     }
 
+    public function favouriteMaps()
+    {
+        return $this->hasMany('App\Models\FavouriteMap', 'user_id', 'user_id');
+    }
+
     public function statistics($mode, $returnQuery = false)
     {
         if (!in_array($mode, ['osu', 'ctb', 'mania', 'taiko'], true)) {
