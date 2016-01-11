@@ -111,12 +111,17 @@ elixir(function(mix) {
   .coffee([
     "react/beatmaps/*.coffee"
   ], "public/js/react/beatmaps.js")
+  .coffee([
+    "react/live-chat/*.coffee",
+    "react/live-chat.coffee"
+  ], "public/js/react/live-chat.js")
   .version([
     "css/app.css",
     "js/app.js",
     "js/messages.js",
     "js/react/profile-page.js",
     "js/react/beatmaps.js",
+    "js/react/live-chat.js",
     "js/vendor.js",
   ])
 });

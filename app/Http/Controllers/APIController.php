@@ -360,7 +360,9 @@ class APIController extends Controller
             $count = min(500, $count);
         }
 
-        $messages = Message::where('channel_id', $channelId)->orderBy('timestamp', 'desc');
+        $messages = Message::where('channel_id', $channelId)
+                            ->orderBy('timestamp', 'asc')
+                            ->orderBy('message_id', 'asc');
         if (!present($messageId)) {
             $messages->take($count);
         } else {
@@ -369,10 +371,10 @@ class APIController extends Controller
         if (present($include) && str_contains($include, 'user')) {
             $messages->with('user');
         }
-        return fractal_api_serialize_collection(
+        return Response::json(fractal_api_serialize_collection(
             $messages->get(),
             new MessageTransformer(),
             $include
-        );
+        ));
     }
 }

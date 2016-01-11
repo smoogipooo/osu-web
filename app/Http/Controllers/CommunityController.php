@@ -19,6 +19,9 @@
  */
 namespace App\Http\Controllers;
 
+use App\Models\Channel;
+use App\Models\Message;
+
 class CommunityController extends Controller
 {
     /*
@@ -37,7 +40,8 @@ class CommunityController extends Controller
 
     public function getChat()
     {
-        return view('community.chat');
+        $channels = Channel::get();
+        return view('community.chat', compact('channels'));
     }
 
     public function getLive()
