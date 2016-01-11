@@ -29,6 +29,8 @@ use App\Models\Beatmap;
 use App\Models\BeatmapPack;
 use App\Models\User;
 use App\Models\Score;
+use App\Models\Channel;
+use App\Models\Message;
 use App\Transformers\API\MatchTransformer;
 use App\Transformers\API\ScoreTransformer;
 use App\Transformers\API\UserScoreTransformer;
@@ -37,6 +39,8 @@ use App\Transformers\API\StatisticsTransformer;
 use App\Transformers\API\EventTransformer;
 use App\Transformers\API\BeatmapTransformer;
 use App\Transformers\API\BeatmapPackTransformer;
+use App\Transformers\API\ChannelTransformer;
+use App\Transformers\API\MessageTransformer;
 
 class APIController extends Controller
 {
@@ -330,6 +334,45 @@ class APIController extends Controller
         return fractal_api_serialize_collection(
             $beatmaps->with('set', 'difficulty', 'difficultyAttribs')->get(),
             new BeatmapTransformer()
+        );
+    }
+
+    public function getChannels() {
+        $channel = Channel::get();
+        return fractal_api_serialize_collection(
+            $channel,
+            new ChannelTransformer()
+        );
+    }
+    public function getChannelMessages() {
+        $channelId = Request::input('ch_id');
+        $messageId = Request::input('m_id');
+        $include = Request::input('include');
+        $count = Request::input('count');
+
+        if (!present($channelId)) {
+            return Response::json([]);
+        }
+
+        if (!present($count)) {
+            $count = 50;
+        } else {
+            $count = min(500, $count);
+        }
+
+        $messages = Message::where('channel_id', $channelId)->orderBy('timestamp', 'desc');
+        if (!present($messageId)) {
+            $messages->take($count);
+        } else {
+            $messages->where('message_id', '>', $messageId)->take($count);
+        }
+        if (present($include) && str_contains($include, 'user')) {
+            $messages->with('user');
+        }
+        return fractal_api_serialize_collection(
+            $messages->get(),
+            new MessageTransformer(),
+            $include
         );
     }
 }

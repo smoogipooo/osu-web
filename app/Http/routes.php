@@ -152,6 +152,8 @@ Route::get('/api/get_user_recent', ['uses' => 'APIController@getUserRecent']);
 Route::get('/api/get_replay', ['uses' => 'APIController@getReplay']);
 Route::get('/api/get_scores', ['uses' => 'APIController@getScores']);
 Route::get('/api/get_beatmaps', ['uses' => 'APIController@getBeatmaps']);
+Route::get('/api/get_channels', ['uses' => 'APIController@getChannels']);
+Route::get('/api/get_messages', ['uses' => 'APIController@getChannelMessages']);
 
 Route::resource('post', 'PostController');
 Route::resource('modding', 'ModdingPostController');
