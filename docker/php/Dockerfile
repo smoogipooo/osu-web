@@ -24,6 +24,7 @@ RUN apk update && \
     php7-tokenizer \
     php7-xml \
     php7-xmlwriter \
-    php7-zip
+    php7-zip \
+    mysql-client
 
 RUN touch /usr/bin/yarn && chmod 555 /usr/bin/yarn
