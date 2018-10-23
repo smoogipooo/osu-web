@@ -66,24 +66,26 @@ services:
     volumes:
       - ./osu-server:/data
       - ./beatmaps:/beatmaps
+      - ./docker/diffcalc/run.sh:/data/run.sh
     working_dir: /data
     environment:
       <<: *x-env
       DOCKER: 1
       MODE: 0
       THREADS: 8
-    command: [ './docker/diffcalc/run.sh' ]
+    command: [ './run.sh' ]
   ppcalc:
     build:
       context: ./docker/ppcalc
     volumes:
       - ./osu-performance:/data
+      - ./docker/ppcalc/run.sh:/data/run.sh
     working_dir: /data
     environment:
       <<: *x-env
       DOCKER: 1
       THREADS: 8
-    command: [ './docker/run.sh' ]
+    command: [ './run.sh' ]
 
 volumes:
   database:
