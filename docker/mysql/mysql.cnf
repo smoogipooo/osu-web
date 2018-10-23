@@ -1,0 +1,4 @@
+[mysqld]
+innodb_dedicated_server = 1
+innodb_flush_log_at_trx_commit = 0
+disable_log_bin

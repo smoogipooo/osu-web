@@ -13,4 +13,16 @@ test -f .env || cp .env.example .env
 php artisan config:clear
 php artisan route:clear
 
+echo "Importing data..."
+
+cat ./sql/*.sql | mysql -u osuweb --host=db --database=osu
+
+echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_permissions,user_sig,user_occ,user_interests,username_clean,country_acronym) SELECT user_id,username,user_warnings,user_type,0,'','','',username,'AU' FROM sample_users;
+ INSERT INTO osu_countries (acronym,name,rankedscore,playcount) VALUES ('AU','Australia',0,0);
+ INSERT INTO osu.osu_counts (name, count) VALUES ('docker_db_step', '1');" | mysql -u osuweb --host=db --database=osu
+
+echo "Finshed importing data."
+
+php artisan es:index-documents --yes
+
 php-fpm7 -y "$PWD/docker/php/php-fpm.conf"
