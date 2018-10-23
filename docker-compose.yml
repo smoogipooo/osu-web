@@ -61,6 +61,29 @@ services:
     user: ${UID:?err}
     working_dir: /data/osuweb
     command: sh -c "yarn && yarn run watch"
+  diffcalc:
+    image: microsoft/dotnet:sdk
+    volumes:
+      - ./osu-server:/data
+      - ./beatmaps:/beatmaps
+    working_dir: /data
+    environment:
+      <<: *x-env
+      DOCKER: 1
+      MODE: 0
+      THREADS: 8
+    command: [ './docker/diffcalc/run.sh' ]
+  ppcalc:
+    build:
+      context: ./docker/ppcalc
+    volumes:
+      - ./osu-performance:/data
+    working_dir: /data
+    environment:
+      <<: *x-env
+      DOCKER: 1
+      THREADS: 8
+    command: [ './docker/run.sh' ]
 
 volumes:
   database:
