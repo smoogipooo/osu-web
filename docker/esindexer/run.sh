@@ -14,6 +14,7 @@ echo "{
     \"host\": \"http://elasticsearch:9200\"
   },
   \"modes\": \"osu,mania,fruits,taiko\",
+  \"resume_from\": 0,
   \"buffer_size\": 5
 }" > appsettings.json
 
