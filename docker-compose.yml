@@ -86,7 +86,13 @@ services:
       DOCKER: 1
       THREADS: 8
     command: [ './run.sh' ]
-
+  esindexer:
+    image: microsoft/dotnet:sdk
+    volumes:
+      - ./osu-elastic-indexer:/data
+      - ./docker/esindexer/run.sh:/data/run.sh
+    working_dir: /data
+    command: [ './run.sh' ]
 volumes:
   database:
   elasticsearch:

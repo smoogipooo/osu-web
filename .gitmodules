@@ -4,3 +4,6 @@
 [submodule "osu-performance"]
 	path = osu-performance
 	url = https://github.com/ppy/osu-performance
+[submodule "osu-elastic-indexer"]
+	path = osu-elastic-indexer
+	url = https://github.com/ppy/osu-elastic-indexer
