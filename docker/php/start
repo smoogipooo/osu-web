@@ -9,6 +9,9 @@ test -f .env || cp .env.example .env
 ./docker/php/wait-for "${1}" -t 60
 ./build.sh
 
+echo "ES_HOST=elasticsearch:9200" >> .env
+echo "ES_SCORES_HOST=elasticsearch:9200" >> .env
+
 # undo config and route caching by the script above
 php artisan config:clear
 php artisan route:clear
