@@ -3,3 +3,4 @@ innodb_dedicated_server = 1
 innodb_flush_log_at_trx_commit = 0
 innodb_buffer_pool_size = 3G
 disable_log_bin
+performance_schema = 0
