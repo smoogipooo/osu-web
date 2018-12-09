@@ -92,6 +92,9 @@ services:
       - ./osu-elastic-indexer:/data
       - ./docker/esindexer/run.sh:/data/run.sh
     working_dir: /data
+    environment:
+      <<: *x-env
+      DOCKER: 1
     command: [ './run.sh' ]
 volumes:
   database:
