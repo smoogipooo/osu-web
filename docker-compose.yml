@@ -60,7 +60,7 @@ services:
       <<: *x-env
     user: ${UID:?err}
     working_dir: /data/osuweb
-    command: sh -c "yarn && yarn run watch"
+    command: sh -c "yarn && yarn run production"
   diffcalc:
     image: microsoft/dotnet:sdk
     volumes:
