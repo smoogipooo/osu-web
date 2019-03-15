@@ -16,4 +16,4 @@ echo "{
     \"mysql.master.database\" : \"osu\"
 }" > config.json
 
-./osu-performance all -m ${MODE_LITERAL} -t ${THREADS}
+./osu-performance all -m ${MODE} -t ${THREADS}
