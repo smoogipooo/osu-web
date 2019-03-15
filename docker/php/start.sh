@@ -25,7 +25,8 @@ echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_per
  INSERT INTO osu_genres (genre_id,name) VALUES (0, 'genre-1');
  INSERT INTO osu_languages (name) VALUES ('language-1');
  UPDATE osu_beatmapsets SET genre_id=1,language_id=1;
- INSERT INTO osu.osu_counts (name, count) VALUES ('docker_db_step', '1');" | mysql -u osuweb --host=db --database=osu
+ INSERT INTO osu_counts (name, count) VALUES ('docker_db_step', '1');
+ INSERT INTO osu_user_performance_rank (user_id, mode, r0) SELECT user_id, ${MODE}, 1 FROM phpbb_users;" | mysql -u osuweb --host=db --database=osu
 
 echo "Finshed importing data."
 
