@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -51,6 +51,10 @@ return [
         ],
     ],
 
+    'comment' => [
+        'deleted_parent' => '削除されたコメントに返信することはできません。',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => '機能リクエスト以外は投票できません。',
@@ -64,10 +68,12 @@ return [
         'post' => [
             'beatmapset_post_no_delete' => '譜面のmetadata投稿を削除するのは許可されていません。',
             'beatmapset_post_no_edit' => '譜面のmetadata投稿を編集するのは許可されていません。',
+            'only_quote' => 'あなたの返信には引用しかありません。',
         ],
 
         'topic_poll' => [
             'duplicate_options' => '選択肢の重複があります。',
+            'grace_period_expired' => ':limit時間以上後に投票を編集できません。',
             'invalid_max_options' => '選択数の上限に選択肢の数以上の数値は使用不可能です。',
             'minimum_one_selection' => '選択数は１が最低の数値です。',
             'minimum_two_options' => '選択肢は最低2つ必要です。',
@@ -92,6 +98,7 @@ return [
         'username_available_soon' => 'このユーザーネームはまもなく使用可能になります。',
         'username_invalid_characters' => '指定のユーザーネームに無効の文字が含まれています。',
         'username_in_use' => '既に使用されているユーザーネームです！',
+        'username_locked' => 'ユーザー名は既に使われています！', // TODO: language for this should be slightly different.
         'username_no_space_userscore_mix' => 'アンダーバーかスペースのどちらかに統一してください。',
         'username_no_spaces' => "ユーザーネームの端にスペースは使用できません。",
         'username_not_allowed' => 'このユーザーネームに使用は許可されていません。',
@@ -110,5 +117,9 @@ return [
             ],
             'username_is_same' => '既に使用しているユーザーネームです！',
         ],
+    ],
+
+    'user_report' => [
+        'self' => "自分自身を報告することはできません！",
     ],
 ];

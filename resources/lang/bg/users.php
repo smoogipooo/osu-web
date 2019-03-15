@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -23,6 +23,7 @@ return [
 
     'beatmapset_activities' => [
         'title' => "История на редактираните карти на :user",
+        'title_compact' => 'Modding',
 
         'discussions' => [
             'title_recent' => 'Наскоро започнати дискусии',
@@ -48,13 +49,13 @@ return [
     'blocks' => [
         'banner_text' => 'Вие блокирахте този потребител.',
         'blocked_count' => 'блокирани потребители (:count)',
-        'hide_profile' => 'скрий профил',
+        'hide_profile' => 'Скрий профила',
         'not_blocked' => 'Този потребител не е блокиран.',
-        'show_profile' => 'покажи профил',
+        'show_profile' => 'Покажи профила',
         'too_many' => 'Достигнат е лимита за блокиране.',
         'button' => [
-            'block' => 'блокирай',
-            'unblock' => 'отблокирай',
+            'block' => 'Блокирай',
+            'unblock' => 'Отблокирай',
         ],
     ],
 
@@ -148,7 +149,7 @@ return [
                     'dropzone' => 'Пуснете файла тук, за да го качите',
                     'dropzone_info' => 'Можете също да пуснете вашето изображение тук за качване',
                     'restriction_info' => "Качване налично за <a href='".route('store.products.show', 'supporter-tag')."само за ' target='_blank'>osu!supporter</a>",
-                    'size_info' => 'Размерът на корицата трябва да е 2000x700 пиксела',
+                    'size_info' => 'Размерът на корицата трябва да е 2800x620 пиксела',
                     'too_large' => 'Каченият файл е прекалено голям.',
                     'unsupported_format' => 'Неподдържан формат.',
                 ],
@@ -161,31 +162,33 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 последовател|:count последователи',
+            'followers' => ':count_delimited последовател|:count_delimited последователи',
             'unranked' => 'Няма скорошни данни',
 
             'achievements' => [
-                'title' => 'Постижения',
                 'achieved-on' => 'Постигнато на :date',
+                'locked' => 'Заключенo',
+                'title' => 'Постижения',
             ],
             'beatmaps' => [
+                'by_artist' => 'от :artist',
                 'none' => 'Няма... все още.',
                 'title' => 'Бийтмапове',
 
                 'favourite' => [
-                    'title' => 'Любими бийтмапове (:count)',
+                    'title' => 'Любими бийтмапове',
                 ],
                 'graveyard' => [
-                    'title' => 'Изоставени бийтмапове (:count)',
+                    'title' => 'Изоставени бийтмапове',
                 ],
                 'loved' => [
-                    'title' => 'Обичани бийтмапове (:count)',
+                    'title' => 'Обичани бийтмапове',
                 ],
                 'ranked_and_approved' => [
-                    'title' => 'Класирани и одобрени бийтмапове (:count)',
+                    'title' => 'Класирани и одобрени бийтмапове',
                 ],
                 'unranked' => [
-                    'title' => 'Предстоящи класиране бийтмапове (:count)',
+                    'title' => 'Предстоящи класиране бийтмапове',
                 ],
             ],
             'historical' => [
@@ -194,6 +197,7 @@ return [
 
                 'monthly_playcounts' => [
                     'title' => 'Историята на игра',
+                    'count_label' => 'Игри',
                 ],
                 'most_played' => [
                     'count' => 'пъти изиграно',
@@ -205,6 +209,7 @@ return [
                 ],
                 'replays_watched_counts' => [
                     'title' => 'История на гледани повторения',
+                    'count_label' => 'Гледани повторения',
                 ],
             ],
             'kudosu' => [
@@ -259,17 +264,18 @@ return [
             ],
             'medals' => [
                 'empty' => "Този потребител все още няма никакви! Т - Т",
+                'recent' => 'Най-новите',
                 'title' => 'Медали',
             ],
             'recent_activity' => [
                 'title' => 'Скорошна активност',
             ],
             'top_ranks' => [
+                'download_replay' => 'Изтегли повторението',
                 'empty' => 'Все още няма страхотни изпълнения. :(',
                 'not_ranked' => 'Само класираните бийтмапове дават pp точки.',
-                'pp' => '',
+                'pp_weight' => 'с тежест :percentage',
                 'title' => 'Класации',
-                'weighted_pp' => 'претеглено: :pp (:percentage)',
 
                 'best' => [
                     'title' => 'Най-добри резултати',
@@ -300,6 +306,12 @@ return [
                 ],
             ],
         ],
+
+        'header_title' => [
+            '_' => 'Играч :info',
+            'info' => 'Информация',
+        ],
+
         'info' => [
             'discord' => '',
             'interests' => 'Интереси',
@@ -308,16 +320,17 @@ return [
             'occupation' => 'Занимание/Работа',
             'skype' => '',
             'twitter' => '',
-            'website' => 'Уебсайт',
+            'website' => 'Уеб сайт',
         ],
         'not_found' => [
             'reason_1' => 'Този потребител вероятно си е променил името.',
-            'reason_2' => 'Акаунта вероятно е недостъпен по причини за сигурност или злоупотреба.',
-            'reason_3' => 'Вероятно сте допуснал правописна грешка!',
+            'reason_2' => 'Акаунтът вероятно е недостъпен по причини за сигурност или злоупотреба.',
+            'reason_3' => 'Вероятно сте допуснали правописна грешка!',
             'reason_header' => 'Има няколко вероятни причини за това:',
-            'title' => 'Не е открит такъв потребител! Т - Т',
+            'title' => 'Не бе открит такъв потребител! Т - Т',
         ],
         'page' => [
+            'button' => 'Редакция на профила',
             'description' => '<strong>за мен!</strong> е една персонализирана част от профилната ви страница.',
             'edit_big' => 'Редактирай ме!',
             'placeholder' => 'Въведи съдържанието на страницата тук',
@@ -329,12 +342,16 @@ return [
         ],
         'rank' => [
             'country' => 'Класация на държавата за :mode',
+            'country_simple' => 'Класиране в страната',
             'global' => 'Световна класация за :mode',
+            'global_simple' => 'Глобално класиране',
         ],
         'stats' => [
             'hit_accuracy' => 'Прецизност на ударите',
             'level' => 'Ниво :level',
+            'level_progress' => 'Прогрес до следващото ниво',
             'maximum_combo' => 'Максимално комбо',
+            'medals' => 'Медали',
             'play_count' => 'Брой игри',
             'play_time' => 'Общо играно време',
             'ranked_score' => 'Общ класиран резултат',

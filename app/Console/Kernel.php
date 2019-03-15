@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2017 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -34,6 +34,7 @@ class Kernel extends ConsoleKernel
         Commands\DisqusImport::class,
 
         Commands\EsIndexDocuments::class,
+        Commands\EsIndexWiki::class,
 
         // modding stuff
         Commands\ModdingQueueUpdateCommand::class,
@@ -46,6 +47,7 @@ class Kernel extends ConsoleKernel
         // parsing html with regexp
         Commands\StoreCheckOrderTrackingStatus::class,
         Commands\StoreCleanupStaleOrders::class,
+        Commands\StoreExpireProducts::class,
 
         // builds
         Commands\BuildsCreate::class,
@@ -62,8 +64,6 @@ class Kernel extends ConsoleKernel
 
         Commands\UserBestScoresCheckCommand::class,
         Commands\UserRecalculateRankCounts::class,
-
-        Commands\LocaleCheck::class,
     ];
 
     /**
@@ -77,6 +77,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('store:cleanup-stale-orders')
             ->daily();
+
+        $schedule->command('store:expire-products')
+            ->hourly();
 
         $schedule->command('store:tracking')
             ->cron('0 0,8,16 * * *');

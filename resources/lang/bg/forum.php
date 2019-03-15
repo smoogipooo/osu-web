@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -47,6 +47,20 @@ return [
         ],
     ],
 
+    'mark_as_read' => [
+        'forum' => 'Маркирай форума като прочетен',
+        'forums' => 'Маркирай форумите като прочетени',
+        'busy' => 'Маркиране като прочетено...',
+    ],
+
+    'poll' => [
+        'edit_warning' => 'Редактирането на анкетата ще анулира текущите резултати!',
+
+        'actions' => [
+            'edit' => 'Редактирай анкета',
+        ],
+    ],
+
     'post' => [
         'confirm_destroy' => 'Наистина ли искате да изтриете публикацията?',
         'confirm_restore' => 'Наистина ли искате да възстановите публикацията?',
@@ -57,6 +71,10 @@ return [
             'destroy' => 'Изтрий публикацията',
             'restore' => 'Възстанови публикацията',
             'edit' => 'Редактиране на публикацията',
+        ],
+
+        'info' => [
+            'post_count' => ':count_delimited публикация|:count_delimited публикации',
         ],
     ],
 
@@ -153,6 +171,8 @@ return [
         'create' => [
             'create_poll' => 'Създаване на анкета',
 
+            'preview' => 'Предварителен преглед',
+
             'create_poll_button' => [
                 'add' => 'Създай анкета',
                 'remove' => 'Отмени създаването на анкета',
@@ -177,8 +197,9 @@ return [
         ],
 
         'index' => [
-            'views' => 'посещения',
+            'feature_votes' => 'приоритет по звезди',
             'replies' => 'отговори',
+            'views' => 'посещения',
         ],
 
         'issue_tag_added' => [
@@ -252,6 +273,12 @@ return [
                 'current' => 'Текущ приоритет: +:count',
                 'do' => 'Разгласи тази молба',
 
+                'info' => [
+                    '_' => 'Това е :feature_request. Заявките за нови функции може да се гласуват само от :supporters.',
+                    'feature_request' => 'заявка за функция',
+                    'supporters' => 'поддръжници',
+                ],
+
                 'user' => [
                     'count' => '{0} няма гласове | {1} :count глас | [2,*] :count гласове',
                     'current' => 'Вие имате :votes оставащи гласа.',
@@ -274,7 +301,8 @@ return [
             'to_not_watching' => 'Не е отметнато',
             'to_watching' => 'Отметка',
             'to_watching_mail' => 'Отметка с известяване',
-            'mail_disable' => 'Изключи известията',
+            'tooltip_mail_disable' => 'Включени известия. Кликни да изключиш',
+            'tooltip_mail_enable' => 'Изключени известия. Кликни да включиш',
         ],
     ],
 ];

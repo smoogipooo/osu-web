@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -35,6 +35,7 @@ return [
             'groups-show' => '그룹',
             'index' => '대시보드',
             'legal-show' => '정보',
+            'messages-index' => '메시지',
             'news-index' => '소식',
             'news-show' => '소식',
             'password-reset-index' => '비밀번호 재설정',
@@ -77,10 +78,13 @@ return [
         ],
         'community' => [
             '_' => '커뮤니티',
+            'chat' => '채팅',
+            'chat-index' => '채팅',
             'dev' => '개발',
             'getForum' => '포럼',
-            'getChat' => '채팅',
             'getLive' => '라이브 스트림',
+            'comments-index' => '댓글',
+            'comments-show' => '댓글',
             'contests' => '콘테스트',
             'profile' => '프로필',
             'tournaments' => '대회',
@@ -133,6 +137,7 @@ return [
 
             'getCheckout' => '결제',
             'getInvoice' => '청구서',
+            'orders-index' => '주문 내역',
             'products-show' => '상품',
 
             'new' => '새',

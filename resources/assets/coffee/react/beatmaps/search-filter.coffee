@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2017 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -32,12 +32,17 @@ class Beatmaps.SearchFilter extends React.PureComponent
 
   render: =>
     div className: 'beatmapsets-search-filter',
-      span className: 'beatmapsets-search-filter__header', @props.title
+      if @props.title?
+        span className: 'beatmapsets-search-filter__header', @props.title
 
       div className: 'beatmapsets-search-filter__items',
         for option, i in @props.options
           cssClasses = 'beatmapsets-search-filter__item'
           cssClasses += ' beatmapsets-search-filter__item--active' if @selected(option.id)
+
+          text = option.name
+          if @props.name == 'general' && option.id == 'recommended' && @props.recommendedDifficulty?
+            text += " (#{osu.formatNumber(@props.recommendedDifficulty, 2)})"
 
           a
             key: i
@@ -45,7 +50,7 @@ class Beatmaps.SearchFilter extends React.PureComponent
             className: cssClasses
             'data-filter-value': option.id
             onClick: @select
-            option.name
+            text
 
 
   cast: (value) =>

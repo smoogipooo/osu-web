@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -35,6 +35,7 @@ return [
             'groups-show' => 'grupos',
             'index' => 'panel',
             'legal-show' => 'información',
+            'messages-index' => 'mensajes',
             'news-index' => 'noticias',
             'news-show' => 'noticias',
             'password-reset-index' => 'reestablecer contraseña',
@@ -77,10 +78,13 @@ return [
         ],
         'community' => [
             '_' => 'comunidad',
+            'chat' => 'chat',
+            'chat-index' => 'chat',
             'dev' => 'desarrollo',
             'getForum' => 'foros',
-            'getChat' => 'chat',
             'getLive' => 'en vivo',
+            'comments-index' => 'comentarios',
+            'comments-show' => 'comentario',
             'contests' => 'concursos',
             'profile' => 'perfil',
             'tournaments' => 'torneos',
@@ -133,6 +137,7 @@ return [
 
             'getCheckout' => 'caja',
             'getInvoice' => 'factura',
+            'orders-index' => 'historial de pedidos',
             'products-show' => 'producto',
 
             'new' => 'nuevo',

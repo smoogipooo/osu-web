@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -21,9 +21,10 @@
 return [
     'landing' => [
         'download' => 'Изтеглете сега',
-        'online' => '<strong>:players</strong> са вмомента онлайн в общо <strong>:games</strong> игри',
+        'online' => '<strong>:players</strong> са в момента онлайн в общо <strong>:games</strong> игри',
         'peak' => 'Връхна точка, :count потребители онлайн',
         'players' => '<strong>:count</strong> регистрирани играчи',
+        'title' => 'добре дошли',
 
         'slogan' => [
             'main' => 'най-добрата безплатна ритъм игра',

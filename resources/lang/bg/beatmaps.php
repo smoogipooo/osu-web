@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -49,7 +49,7 @@ return [
         'title' => 'Дискусии',
 
         'collapse' => [
-            'all-collapse' => 'Затвори всички',
+            'all-collapse' => 'Свий всички',
             'all-expand' => 'Разшири всички',
         ],
 
@@ -101,9 +101,9 @@ return [
 
         'sort' => [
             '_' => 'Сортирани по:',
-            'created_at' => 'време на създаване',
-            'timeline' => 'времева лента',
-            'updated_at' => 'последна актуализация',
+            'created_at' => 'Време на създаване',
+            'timeline' => 'Времева лента',
+            'updated_at' => 'Последно обновяване',
         ],
 
         'stats' => [
@@ -144,6 +144,9 @@ return [
     ],
 
     'nominations' => [
+        'delete' => 'Изтрий',
+        'delete_own_confirm' => 'Сигурни ли сте? Бийтмапът ще бъде изтрит и ще бъдете пренасочени обратно към вашия профил.',
+        'delete_other_confirm' => 'Сигурни ли сте? Бийтмапът ще бъде изтрит и ще бъдете пренасочени обратно към профила на потребителя.',
         'disqualification_prompt' => 'Причина за дисквалифициране?',
         'disqualified_at' => 'Дисквалифициран :time_ago (:reason).',
         'disqualified_no_reason' => 'няма определена причина',
@@ -168,6 +171,7 @@ return [
 
         'reset_confirm' => [
             'nomination_reset' => 'Сигурен ли сте? Публикуването на нов проблем ще нулира номинационният процес.',
+            'disqualify' => 'Сигурни ли сте? Това ще премахне бийтмапа от квалифицирания му статус и ще нулира целия процес на номинация.',
         ],
     ],
 
@@ -186,19 +190,19 @@ return [
                 'genre' => 'Жанр',
                 'language' => 'Език',
                 'extra' => 'екстра',
-                'rank' => 'Постигнат Ранк',
+                'rank' => 'Постигнат Ранг',
                 'played' => 'Изигран',
             ],
             'sorting' => [
-                'title' => 'заглавие',
-                'artist' => 'артист',
-                'difficulty' => 'трудност',
-                'updated' => 'актуализиран',
-                'ranked' => 'класиран',
-                'rating' => 'рейтинг',
-                'plays' => 'изигран',
-                'relevance' => 'уместност',
-                'nominations' => 'номинации',
+                'title' => 'Заглавие',
+                'artist' => 'Изпълнител',
+                'difficulty' => 'Трудност',
+                'updated' => 'Обновен',
+                'ranked' => 'Класиран',
+                'rating' => 'Рейтинг',
+                'plays' => 'Изигран',
+                'relevance' => 'Уместност',
+                'nominations' => 'Номинации',
             ],
             'supporter_filter_quote' => [
                 '_' => 'Филтриране по :filters изисква активен :link',
@@ -297,5 +301,9 @@ return [
         'B' => '',
         'C' => '',
         'D' => '',
+    ],
+    'panel' => [
+        'playcount' => 'Брой игри: :count',
+        'favourites' => 'Харесали: :count',
     ],
 ];

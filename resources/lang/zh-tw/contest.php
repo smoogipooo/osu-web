@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -26,8 +26,15 @@ return [
     'voting' => [
         'over' => '這場評選的投票已經結束',
         'login_required' => '請登錄後再投票.',
+
         'best_of' => [
             'none_played' => "沒有符合此次評選條件的譜面！",
+        ],
+
+        'button' => [
+            'add' => '',
+            'remove' => '',
+            'used_up' => '',
         ],
     ],
     'entry' => [
@@ -38,6 +45,7 @@ return [
         'over' => '感謝參與！提交已經關閉，投票即將開始。',
         'limit_reached' => '您提交的參賽文件大小超出限制',
         'drop_here' => '將您的參賽文件拖到此處',
+        'download' => '',
         'wrong_type' => [
             'art' => '只接受 .jpg 和 .png 格式的文件.',
             'beatmap' => '只接受 .osu 格式的文件.',
@@ -50,7 +58,8 @@ return [
     ],
     'vote' => [
         'list' => '投票',
-        'count' => ':count 票',
+        'count' => '',
+        'points' => '',
     ],
     'dates' => [
         'ended' => '結束於 :date',

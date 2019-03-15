@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -51,6 +51,10 @@ return [
         ],
     ],
 
+    'comment' => [
+        'deleted_parent' => 'Не е позволено отговарянето на изтрит коментар.',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Може само да гласувате на публикации с заявка за нови функции.',
@@ -64,10 +68,12 @@ return [
         'post' => [
             'beatmapset_post_no_delete' => 'Изтриването на метаданните на този бийтмап не е позволено.',
             'beatmapset_post_no_edit' => 'Редактирането на метаданните на този бийтмап не е позволено.',
+            'only_quote' => 'Вашият отговор съдържа само цитат.',
         ],
 
         'topic_poll' => [
             'duplicate_options' => 'Дублираната опция не е позволена.',
+            'grace_period_expired' => 'Не може да редактирате анкета след повече от :limit часа',
             'invalid_max_options' => 'Изборите на потребителя не трябва да надвишават броя на налични опции.',
             'minimum_one_selection' => 'Изисква се минимум една опция от потребителя.',
             'minimum_two_options' => 'Необходими са поне две опции.',
@@ -92,6 +98,7 @@ return [
         'username_available_soon' => 'Това потребителско име ще стане достъпно за употреба след няколко момента!',
         'username_invalid_characters' => 'Желаното име съдържа невалидни символи.',
         'username_in_use' => 'Потребителско име вече е в употреба!',
+        'username_locked' => 'Потребителското име вече е в употреба!', // TODO: language for this should be slightly different.
         'username_no_space_userscore_mix' => 'Моля използвайте или долна черта или пространства, не и двете!',
         'username_no_spaces' => "Потребителското име не може да започва или завършва с интервал!",
         'username_not_allowed' => 'Този избор на потребителско име не е разрешен.',
@@ -106,9 +113,13 @@ return [
         'change_username' => [
             'supporter_required' => [
                 '_' => 'Трябва да сте :link , за да промените името си!',
-                'link_text' => 'osu!supporter',
+                'link_text' => 'подкрепили osu!',
             ],
             'username_is_same' => 'Това е потребителското ти име, глупчо!',
         ],
+    ],
+
+    'user_report' => [
+        'self' => "Не може да докладвате себе си!",
     ],
 ];

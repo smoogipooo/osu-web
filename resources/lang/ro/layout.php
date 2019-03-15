@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -35,6 +35,7 @@ return [
             'groups-show' => 'grupuri',
             'index' => 'tablou de bord',
             'legal-show' => 'informație',
+            'messages-index' => 'mesaje',
             'news-index' => 'noutăți',
             'news-show' => 'noutăți',
             'password-reset-index' => 'resetare parolă',
@@ -77,10 +78,13 @@ return [
         ],
         'community' => [
             '_' => 'comunitate',
+            'chat' => 'chat',
+            'chat-index' => 'chat',
             'dev' => 'dezvoltare',
             'getForum' => 'forumuri',
-            'getChat' => 'chat',
             'getLive' => 'în direct',
+            'comments-index' => 'comentarii',
+            'comments-show' => 'comentariu',
             'contests' => 'concursuri',
             'profile' => 'profil',
             'tournaments' => 'turnee',
@@ -133,6 +137,7 @@ return [
 
             'getCheckout' => 'finalizare comandă',
             'getInvoice' => 'factura',
+            'orders-index' => 'istoric comenzi',
             'products-show' => 'produs',
 
             'new' => 'nou',
@@ -177,11 +182,6 @@ return [
             'forum' => 'Forumuri',
             'livestreams' => 'Transmisiuni în direct',
             'report' => 'Raportează o problemă',
-        ],
-        'support' => [
-            '_' => 'Sprijină osu!',
-            'tags' => 'Insigne de suporter',
-            'merchandise' => 'Marfă',
         ],
         'legal' => [
             '_' => 'Legalitate & Statut',

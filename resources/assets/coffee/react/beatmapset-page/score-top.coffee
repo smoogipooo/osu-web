@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2017 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -58,7 +58,7 @@ BeatmapsetPage.ScoreTop = (props) ->
               type: 'performance'
             el FlagCountry,
               country: props.countries[props.score.user.country_code]
-              classModifiers: ['scoreboard', 'small-box']
+              modifiers: ['scoreboard', 'small-box']
 
       div className: "#{bn}__wrapping-container #{bn}__wrapping-container--right",
         div className: "#{bn}__stats",
@@ -66,7 +66,7 @@ BeatmapsetPage.ScoreTop = (props) ->
             div className: "#{bn}__stat-header #{bn}__stat-header--wider",
               osu.trans 'beatmapsets.show.scoreboard.headers.score_total'
             div className: "#{bn}__stat-value #{bn}__stat-value--score",
-              props.score.score.toLocaleString()
+              osu.formatNumber(props.score.score)
 
         div className: "#{bn}__stats",
           div className: "#{bn}__stat",
@@ -79,7 +79,7 @@ BeatmapsetPage.ScoreTop = (props) ->
             div className: "#{bn}__stat-header #{bn}__stat-header--wider",
               osu.trans 'beatmapsets.show.scoreboard.headers.combo'
             div className: "#{bn}__stat-value #{bn}__stat-value--score",
-              "#{props.score.max_combo.toLocaleString()}x"
+              "#{osu.formatNumber(props.score.max_combo)}x"
 
         div className: "#{bn}__stats #{bn}__stats--wrappable",
           for stat in props.hitTypeMapping
@@ -89,13 +89,13 @@ BeatmapsetPage.ScoreTop = (props) ->
               div className: "#{bn}__stat-header",
                 stat[0]
               div className: "#{bn}__stat-value #{bn}__stat-value--score #{bn}__stat-value--smaller",
-                props.score.statistics["count_#{stat[1]}"].toLocaleString()
+                osu.formatNumber(props.score.statistics["count_#{stat[1]}"])
 
           div className: "#{bn}__stat",
             div className: "#{bn}__stat-header",
               osu.trans 'beatmapsets.show.scoreboard.headers.miss'
             div className: "#{bn}__stat-value #{bn}__stat-value--score #{bn}__stat-value--smaller",
-              props.score.statistics.count_miss.toLocaleString()
+              osu.formatNumber(props.score.statistics.count_miss)
 
           div className: "#{bn}__stat",
             div className: "#{bn}__stat-header",

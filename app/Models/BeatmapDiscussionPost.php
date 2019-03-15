@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2017 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -25,11 +25,25 @@ use App\Traits\Validatable;
 use Carbon\Carbon;
 use DB;
 
+/**
+ * @property BeatmapDiscussion $beatmapDiscussion
+ * @property int $beatmap_discussion_id
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $deleted_at
+ * @property int|null $deleted_by_id
+ * @property int $id
+ * @property int|null $last_editor_id
+ * @property string $message
+ * @property bool $system
+ * @property \Carbon\Carbon|null $updated_at
+ * @property User $user
+ * @property int|null $user_id
+ */
 class BeatmapDiscussionPost extends Model
 {
     use Validatable;
 
-    const MESSAGE_LIMIT = 750;
+    const MESSAGE_LIMIT_TIMELINE = 750;
 
     protected $touches = ['beatmapDiscussion'];
 
@@ -180,8 +194,8 @@ class BeatmapDiscussionPost extends Model
                 $this->validationErrors()->add('message', 'required');
             }
 
-            if (mb_strlen($this->message) > static::MESSAGE_LIMIT) {
-                $this->validationErrors()->add('message', 'too_long', ['limit' => static::MESSAGE_LIMIT]);
+            if (optional($this->beatmapDiscussion)->timestamp !== null && mb_strlen($this->message) > static::MESSAGE_LIMIT_TIMELINE) {
+                $this->validationErrors()->add('message', 'too_long', ['limit' => static::MESSAGE_LIMIT_TIMELINE]);
             }
         }
 

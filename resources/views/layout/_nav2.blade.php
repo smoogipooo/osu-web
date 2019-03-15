@@ -1,5 +1,5 @@
 {{--
-    Copyright 2015-2018 ppy Pty. Ltd.
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 
     This file is part of osu!web. osu!web is distributed with the hope of
     attracting more community contributions to the core ecosystem of osu!.
@@ -18,7 +18,7 @@
 @php
     $legacyNav ?? ($legacyNav = true);
 @endphp
-<div class="nav2 {{ $legacyNav ? 'nav2--legacy' : '' }} js-nav-button">
+<div class="nav2 js-nav-button">
     <div class="nav2__colgroup nav2__colgroup--menu js-nav-button--container">
         <div class="nav2__col nav2__col--logo">
             <a href="{{ route('home') }}" class="nav2__logo-link">
@@ -176,7 +176,7 @@
                         <i class="fas fa-inbox"></i>
 
                         <span class="notification-icon__count">
-                            {{ number_format(Auth::user()->notificationCount()) }}
+                            {{ i18n_number_format(Auth::user()->notificationCount()) }}
                         </span>
                     </span>
                 </a>

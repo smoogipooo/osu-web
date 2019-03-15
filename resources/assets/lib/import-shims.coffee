@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2017 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -20,13 +20,21 @@
 
 import { BackToTop } from 'back-to-top'
 import { PlayDetailList } from 'play-detail-list'
-import { ReportForm } from 'report-form'
+import { PlayDetailMenu } from 'play-detail-menu'
+import { ReportComment } from 'report-comment'
+import { ReportUser } from 'report-user'
+import { ScoreHelper } from 'score-helper'
 import { SelectOptions } from 'select-options'
 import { SpotlightSelectOptions } from 'spotlight-select-options'
 import { StoreCheckout } from 'store-checkout'
+import { UserCard } from 'user-card'
+import { UserCardStore } from 'user-card-store'
+import { UserCardTooltip } from 'user-card-tooltip'
 import Promise from 'promise-polyfill'
 import TextareaAutosize from 'react-autosize-textarea'
 import VirtualList from 'react-virtual-list'
+import GalleryContest from 'gallery-contest'
+import WindowVHPatcher from 'window-vh-patcher'
 
 # polyfill non-Edge IE
 window.Promise ?= Promise
@@ -34,10 +42,25 @@ window.Promise ?= Promise
 window._exported = {
   BackToTop
   PlayDetailList
-  ReportForm
+  PlayDetailMenu
+  ReportComment
+  ReportUser
+  ScoreHelper
   SelectOptions
   SpotlightSelectOptions
+  GalleryContest
+  WindowVHPatcher
+  UserCard
+  UserCardStore
+  UserCardTooltip
 }
+
+# refer to variables.less
+window._styles =
+  header:
+    height: 90 # @nav2-height
+    heightSticky: 50 # @nav2-height--pinned
+    heightMobile: 60 # @navbar-height
 
 window.StoreCheckout = StoreCheckout
 window.TextareaAutosize = TextareaAutosize

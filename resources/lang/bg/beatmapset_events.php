@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -43,11 +43,37 @@ return [
 
     'index' => [
         'title' => 'Бийтмап сет събития',
+
+        'form' => [
+            'period' => 'Период',
+            'types' => 'Типове',
+        ],
     ],
 
     'item' => [
         'content' => 'Съдържание',
         'discussion_deleted' => '[изтрито]',
         'type' => 'Тип',
+    ],
+
+    'type' => [
+        'approve' => 'Одобрен',
+        'discussion_delete' => 'Изтриване на дискусия',
+        'discussion_post_delete' => 'Изтриване на отговор от дискусия',
+        'discussion_post_restore' => 'Възстановяване на отговор от дискусия',
+        'discussion_restore' => 'Възстановяване на дискусия',
+        'disqualify' => 'Дисквалификация',
+        'issue_reopen' => 'Преотваряне на дискусия',
+        'issue_resolve' => 'Разрешаване на дискусия',
+        'kudosu_allow' => 'Отпуснато Kudosu',
+        'kudosu_deny' => 'Отказ на Kudosu',
+        'kudosu_gain' => 'Печалба на Kudosu',
+        'kudosu_lost' => 'Загуба на Kudosu',
+        'kudosu_recalculate' => 'Преизчисляване на Kudosu',
+        'love' => 'Обичан',
+        'nominate' => 'Номинация',
+        'nomination_reset' => 'Анулиране на номинацията',
+        'qualify' => 'Квалификация',
+        'rank' => 'Класиране',
     ],
 ];

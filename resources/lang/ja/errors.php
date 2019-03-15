@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -33,9 +33,6 @@ return [
     'beatmaps' => [
         'invalid_mode' => '指定のモードは無効です。',
         'standard_converts_only' => 'この難易度の指定のモードのスコアは見つかりませんでした。',
-    ],
-    'beatmapsets' => [
-        'too-many-favourites' => 'お気に入りの数の上限に達しています。お気に入り譜面の数を減らしましょう。',
     ],
     'logged_out' => 'ログアウトされています。ログインしてから再度お試しください。',
     'supporter_only' => 'サポーター限定の機能です。',

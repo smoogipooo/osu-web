@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2017 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -46,7 +46,7 @@ class CartController extends Controller
         $order = $this->userCart();
         $validationErrors = $order !== null ? (new OrderCheckout($order))->validate() : [];
 
-        return view('store.cart', compact('order', 'validationErrors'));
+        return view('store.cart.show', compact('order', 'validationErrors'));
     }
 
     public function store()

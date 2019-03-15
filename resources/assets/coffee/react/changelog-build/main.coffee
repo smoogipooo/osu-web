@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2018 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -45,23 +45,23 @@ class ChangelogBuild.Main extends React.PureComponent
               className: 'builds__item'
               el Build, build: @props.build, showDate: true, modifiers: ['build']
 
-            div className: 'builds__navs',
-              div className: 'builds__nav builds__nav--left',
+            div className: 'page-nav',
+              div className: 'page-nav__item page-nav__item--left',
                 if @props.build.versions.previous?
                   a
-                    className: 'builds__nav-link'
+                    className: 'page-nav__link'
                     href: Url.changelogBuild @props.build.versions.previous
                     i className: 'fas fa-chevron-left'
-                    span className: 'builds__nav-link-label',
+                    span className: 'page-nav__label',
                       @props.build.versions.previous.display_version
 
-              div className: 'builds__nav builds__nav--right',
+              div className: 'page-nav__item page-nav__item--right',
                 if @props.build.versions.next?
                   a
-                    className: 'builds__nav-link'
+                    className: 'page-nav__link'
                     href: Url.changelogBuild @props.build.versions.next
                     @props.build.versions.next.display_version
-                    span className: 'builds__nav-link-label',
+                    span className: 'page-nav__label',
                       i className: 'fas fa-chevron-right'
 
           if !(currentUser.id? && currentUser.is_supporter)
@@ -69,10 +69,12 @@ class ChangelogBuild.Main extends React.PureComponent
 
           div
             className: 'builds__group builds__group--discussions'
-            el Comments,
+            el CommentsManager,
+              component: Comments
               commentableType: 'build'
               commentableId: @props.build.id
-              modifiers: ['changelog']
+              componentProps:
+                modifiers: ['changelog']
 
 
   renderHeaderTabs: =>
@@ -94,7 +96,7 @@ class ChangelogBuild.Main extends React.PureComponent
 
   renderHeaderTitle: =>
     div className: 'osu-page-header-v3 osu-page-header-v3--changelog',
-      div className: 'osu-page-header-v3__title js-nav2--hidden-on-menu-access',
+      div className: 'osu-page-header-v3__title',
         div className: 'osu-page-header-v3__title-icon',
           div className: 'osu-page-header-v3__icon'
         h1

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -35,6 +35,7 @@ return [
             'groups-show' => 'ομάδες',
             'index' => 'επισκόπηση',
             'legal-show' => 'πληροφορίες',
+            'messages-index' => 'μηνύματα',
             'news-index' => 'ειδήσεις',
             'news-show' => 'ειδήσεις',
             'password-reset-index' => 'επαναφορά κωδικού πρόσβασης',
@@ -77,10 +78,13 @@ return [
         ],
         'community' => [
             '_' => 'κοινότητα',
+            'chat' => 'συνομιλία',
+            'chat-index' => 'συνομιλία',
             'dev' => 'προγραμματισμός',
             'getForum' => 'φόρουμ',
-            'getChat' => 'συνομιλία',
             'getLive' => 'ζωντανά',
+            'comments-index' => 'σχόλια',
+            'comments-show' => 'σχόλιο',
             'contests' => 'διαγωνισμοί',
             'profile' => 'προφίλ',
             'tournaments' => 'τουρνουά',
@@ -133,6 +137,7 @@ return [
 
             'getCheckout' => 'ολοκλήρωση αγοράς',
             'getInvoice' => 'τιμολόγιο',
+            'orders-index' => 'ιστορικό παραγγελιών',
             'products-show' => 'προϊόν',
 
             'new' => 'νέο',

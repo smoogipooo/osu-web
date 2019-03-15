@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -35,11 +35,12 @@ return [
             'groups-show' => 'grupos',
             'index' => 'painel de controlo',
             'legal-show' => 'informação',
+            'messages-index' => 'mensagens',
             'news-index' => 'notícias',
             'news-show' => 'notícias',
             'password-reset-index' => 'redefinir palavra-passe',
             'search' => 'pesquisar',
-            'supportTheGame' => 'suporta o jogo',
+            'supportTheGame' => 'apoia o jogo',
             'team' => 'equipa',
         ],
         'help' => [
@@ -52,7 +53,7 @@ return [
         ],
         'beatmaps' => [
             '_' => 'beatmaps',
-            'artists' => 'featured artists',
+            'artists' => 'artistas destacados',
             'beatmap_discussion_posts-index' => 'publicações de discussão de beatmap',
             'beatmap_discussions-index' => 'discussões de beatmap',
             'beatmapset-watches-index' => 'lista de observação de modificações',
@@ -60,7 +61,7 @@ return [
             'beatmapset_events-index' => 'eventos de conjunto de beatmaps',
             'index' => 'listagem',
             'packs' => 'pacotes',
-            'show' => 'info',
+            'show' => 'informação',
         ],
         'beatmapsets' => [
             '_' => 'beatmaps',
@@ -77,10 +78,13 @@ return [
         ],
         'community' => [
             '_' => 'comunidade',
+            'chat' => 'chat',
+            'chat-index' => 'chat',
             'dev' => 'desenvolvimento',
             'getForum' => 'fóruns',
-            'getChat' => 'chat',
             'getLive' => 'ao vivo',
+            'comments-index' => 'comentários',
+            'comments-show' => 'comentário',
             'contests' => 'concursos',
             'profile' => 'perfil',
             'tournaments' => 'torneios',
@@ -108,7 +112,7 @@ return [
         'user' => [
             '_' => 'utilizador',
             'getLogin' => 'iniciar sessão',
-            'disabled' => 'desactivado',
+            'disabled' => 'desativado',
 
             'register' => 'registar',
             'reset' => 'recuperar',
@@ -132,7 +136,8 @@ return [
             'cart-show' => 'carrinho',
 
             'getCheckout' => 'pagamento',
-            'getInvoice' => 'factura',
+            'getInvoice' => 'fatura',
+            'orders-index' => 'histórico de encomendas',
             'products-show' => 'produto',
 
             'new' => 'novo',
@@ -172,14 +177,14 @@ return [
             'wiki' => 'Wiki',
         ],
         'help' => [
-            '_' => 'Ajuda & Comunidade',
+            '_' => 'Ajuda e Comunidade',
             'faq' => 'Perguntas Frequentes',
             'forum' => 'Fóruns da Comunidade',
             'livestreams' => 'Transmissões Ao Vivo',
             'report' => 'Comunicar um Problema',
         ],
         'legal' => [
-            '_' => 'Legalidade & Situação Jurídica',
+            '_' => 'Legalidade e Situação Jurídica',
             'copyright' => 'Direitos de Autor (DMCA)',
             'privacy' => 'Privacidade',
             'server_status' => 'Estado do Servidor',
@@ -234,7 +239,7 @@ return [
 
             'error' => [
                 'email' => "Nome de utilizador ou endereço de email não existente",
-                'password' => 'Palavra-passe incorrecta',
+                'password' => 'Palavra-passe incorreta',
             ],
         ],
 

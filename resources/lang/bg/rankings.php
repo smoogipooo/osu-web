@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -20,12 +20,21 @@
 
 return [
     'header' => 'Класиране по :type',
+
     'type' => [
         'performance' => 'Изпълнение',
         'charts' => 'В светлината на прожектора',
         'score' => 'Резултат',
         'country' => 'Държава',
     ],
+
+    'spotlight' => [
+        'end_date' => 'Крайна дата',
+        'map_count' => 'Брой мапове',
+        'participants' => 'Участници',
+        'start_date' => 'Начална дата',
+    ],
+
     'stat' => [
         'accuracy' => 'Прецизност',
         'active_users' => 'Активни потребители',

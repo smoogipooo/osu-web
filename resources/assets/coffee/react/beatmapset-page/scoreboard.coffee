@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2017 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -94,11 +94,11 @@ class BeatmapsetPage.Scoreboard extends React.PureComponent
           div {},
             div className: 'beatmap-scoreboard-top',
               div className: 'beatmap-scoreboard-top__item',
-                @scoreItem score: @props.scores[0], rank: 1, itemClass: 'ScoreTop'
+                @scoreItem score: @props.scores[0], rank: 1
 
               if @props.userScore? && @props.scores[0].user.id != @props.userScore.user.id
                 div className: 'beatmap-scoreboard-top__item',
-                  @scoreItem score: @props.userScore, rank: @props.userScorePosition, itemClass: 'ScoreTop'
+                  @scoreItem score: @props.userScore, rank: @props.userScorePosition
 
             el BeatmapsetPage.ScoreboardTable,
               beatmap: @props.beatmap
@@ -129,7 +129,7 @@ class BeatmapsetPage.Scoreboard extends React.PureComponent
                 __html: osu.trans 'beatmapsets.show.scoreboard.supporter-link', link: laroute.route 'support-the-game'
 
   scoreItem: ({score, rank, itemClass, modifiers}) ->
-    el BeatmapsetPage[itemClass],
+    el BeatmapsetPage.ScoreTop,
       key: rank
       score: score
       position: rank

@@ -1,5 +1,5 @@
 {{--
-    Copyright 2015-2017 ppy Pty. Ltd.
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 
     This file is part of osu!web. osu!web is distributed with the hope of
     attracting more community contributions to the core ecosystem of osu!.
@@ -16,12 +16,11 @@
     along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 --}}
 <div class="visible-xs no-print js-header--main">
+    <div class="navbar-mobile-before"></div>
+
     <div
         class="
             navbar-mobile
-            navbar
-            navbar-default
-            navbar-static-top
             u-section--bg
         "
         role="navigation"
@@ -42,7 +41,7 @@
                             class="notification-icon notification-icon--mobile{{Auth::user()->notificationCount() > 0 ? ' notification-icon--glow' : ''}}"
                         >
                             <i class="fas fa-lg fa-fw fa-inbox notification-icon__inbox"></i>
-                            <span class="notification-icon__count">{{ Auth::user()->notificationCount() > 0 ? number_format(Auth::user()->notificationCount()) : '' }}</span>
+                            <span class="notification-icon__count">{{ Auth::user()->notificationCount() > 0 ? i18n_number_format(Auth::user()->notificationCount()) : '' }}</span>
                         </a>
 
                         <a
@@ -75,7 +74,7 @@
         </div>
     </div>
 
-    <div class="collapse navbar-collapse navbar-mobile__menu js-navbar-mobile--menu" id="xs-navbar">
+    <div class="collapse navbar-mobile__menu js-navbar-mobile--menu" id="xs-navbar">
         <ul class="nav navbar-nav navbar-mobile__menu-items">
             @include('layout.header_mobile.user')
             @include('layout.header_mobile.nav')

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015-2018 ppy Pty. Ltd.
+ *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -35,6 +35,7 @@ return [
             'groups-show' => 'กลุ่ม',
             'index' => 'หน้าหลัก',
             'legal-show' => 'ข้อมูล',
+            'messages-index' => '',
             'news-index' => 'ข่าวสาร',
             'news-show' => 'ข่าวสาร',
             'password-reset-index' => 'รีเซ็ตรหัสผ่าน',
@@ -77,10 +78,13 @@ return [
         ],
         'community' => [
             '_' => 'ชุมชน',
+            'chat' => '',
+            'chat-index' => '',
             'dev' => 'พัฒนาการ',
             'getForum' => 'forum',
-            'getChat' => 'chat',
             'getLive' => 'live',
+            'comments-index' => '',
+            'comments-show' => '',
             'contests' => 'contests',
             'profile' => 'profile',
             'tournaments' => 'tournaments',
@@ -133,6 +137,7 @@ return [
 
             'getCheckout' => 'ชำระเงิน',
             'getInvoice' => 'ใบกำกับสินค้า',
+            'orders-index' => '',
             'products-show' => 'สินค้า',
 
             'new' => 'ใหม่',

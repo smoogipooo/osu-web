@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2017 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -86,9 +86,9 @@ class BeatmapsetPage.Stats extends React.Component
 
               valueText =
                 if stat == 'stars'
-                  value.toFixed 2
+                  osu.formatNumber(value, 2)
                 else
-                  value.toLocaleString()
+                  osu.formatNumber(value)
 
               if @props.beatmap.mode == 'mania' && stat == 'cs'
                 stat += '-mania'
@@ -114,8 +114,8 @@ class BeatmapsetPage.Stats extends React.Component
                 width: "#{(ratingsNegative / ratingsAll) * 100}%"
 
           div className: 'beatmapset-stats__rating-values',
-            span null, ratingsNegative.toLocaleString()
-            span null, ratingsPositive.toLocaleString()
+            span null, osu.formatNumber(ratingsNegative)
+            span null, osu.formatNumber(ratingsPositive)
 
           div className: 'beatmapset-stats__rating-header', osu.trans 'beatmapsets.show.stats.rating-spread'
 

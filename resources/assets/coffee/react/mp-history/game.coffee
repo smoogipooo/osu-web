@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2017 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -57,11 +57,11 @@ class MPHistory.Game extends React.Component
             ['red', 'blue'].map (m) =>
               div className: "mp-history-game__team-score mp-history-game__team-score--#{m}", key: m,
                 span className: 'mp-history-game__team-score-text mp-history-game__team-score-text--name', osu.trans "multiplayer.match.teams.#{m}"
-                span className: 'mp-history-game__team-score-text mp-history-game__team-score-text--score', @props.teamScores[m].toLocaleString()
+                span className: 'mp-history-game__team-score-text mp-history-game__team-score-text--score', osu.formatNumber(@props.teamScores[m])
 
           div className: 'mp-history-game__results',
             span className: 'mp-history-game__results-text', osu.trans 'multiplayer.match.winner', team: osu.trans "multiplayer.match.teams.#{winningTeam}"
-            span className: 'mp-history-game__results-text mp-history-game__results-text--score', osu.trans 'multiplayer.match.difference', difference: difference.toLocaleString()
+            span className: 'mp-history-game__results-text mp-history-game__results-text--score', osu.trans 'multiplayer.match.difference', difference: osu.formatNumber(difference)
 
   deletedBeatmap:
     id: null

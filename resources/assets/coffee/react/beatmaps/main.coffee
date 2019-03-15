@@ -1,5 +1,5 @@
 ###
-#    Copyright 2015-2017 ppy Pty. Ltd.
+#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
 #
 #    This file is part of osu!web. osu!web is distributed with the hope of
 #    attracting more community contributions to the core ecosystem of osu!.
@@ -49,12 +49,14 @@ class Beatmaps.Main extends React.PureComponent
 
     @state = prevState.state unless _.isEmpty(prevState)
     @state ?= _.extend
-      beatmaps: @props.beatmaps
+      beatmaps: @props.beatmaps.beatmapsets
       paging:
-        page: 2 # next page to load, so it starts at 2, not 1
-        url: laroute.route('beatmapsets.search')
+        cursor: @props.beatmaps.cursor
         loading: false
-        more: @props.beatmaps.length > 0
+        more: @props.beatmaps.cursor? && @props.beatmaps.total > @props.beatmaps.beatmapsets.length
+        total: @props.beatmaps.total
+        url: laroute.route('beatmapsets.search')
+      recommendedDifficulty: @props.beatmaps.recommended_difficulty
       loading: false
       filters: null
       isExpanded: null
@@ -109,7 +111,6 @@ class Beatmaps.Main extends React.PureComponent
     listCssClasses = 'beatmapsets'
     listCssClasses += ' beatmapsets--dimmed' if @state.loading
 
-
     div
       className: 'osu-layout__section'
       el Beatmaps.SearchPanel,
@@ -120,11 +121,17 @@ class Beatmaps.Main extends React.PureComponent
         filterDefaults: BeatmapsetFilter.getDefaults(@state.filters)
         expand: @expand
         isExpanded: @state.isExpanded
+        recommendedDifficulty: @state.recommendedDifficulty
 
-      div className: 'osu-layout__row osu-layout__row--page-compact',
+      div className: 'js-sticky-header'
+
+      div
+        className: 'osu-layout__row osu-layout__row--page-compact'
         div className: listCssClasses,
           if currentUser.id?
-            el Beatmaps.SearchSort, sorting: @sorting(), filters: @state.filters
+            div
+              className: 'beatmapsets__sort'
+              el Beatmaps.SearchSort, sorting: @sorting(), filters: @state.filters
 
           div
             className: 'beatmapsets__content'
@@ -152,7 +159,9 @@ class Beatmaps.Main extends React.PureComponent
                     title: osu.trans("beatmaps.listing.search.not-found")
                   osu.trans("beatmaps.listing.search.not-found-quote")
 
-          el(Beatmaps.Paginator, @state.paging) unless @isSupporterMissing()
+          if !@isSupporterMissing()
+            div className: 'beatmapsets__paginator',
+              el(Beatmaps.Paginator, @state.paging)
 
       el window._exported.BackToTop,
         anchor: @backToTopAnchor
@@ -179,19 +188,22 @@ class Beatmaps.Main extends React.PureComponent
   fetchNewState: (newQuery = false) =>
     @fetchResults(newQuery)
     .then (data) =>
-      more = data.length > 0
+      beatmaps = if newQuery then data.beatmapsets else @state.beatmaps.concat(data.beatmapsets)
 
-      beatmaps: if newQuery then data else [].concat(@state.beatmaps, data)
+      beatmaps: beatmaps
       loading: false
       paging:
-        page: if newQuery then 2 else @state.paging.page + (if more then 1 else 0)
+        cursor: data.cursor
+        more: data.cursor? && data.total > beatmaps.length
         url: @state.paging.url
-        more: more
+      recommendedDifficulty: data.recommended_difficulty
+    .catch (error) ->
+      throw error unless error.readyState == 0
 
 
   fetchResults: (newQuery) =>
     params = BeatmapsetFilter.queryParamsFromFilters(@state.filters)
-    params.page = @state.paging.page if !newQuery
+    params.cursor = @state.paging.cursor if !newQuery
 
     @xhr = $.ajax @state.paging.url,
       method: 'get'
@@ -199,10 +211,6 @@ class Beatmaps.Main extends React.PureComponent
       data: params
 
     osu.promisify @xhr
-
-
-  hideLoader: =>
-    @setState loading: false
 
 
   isSupporterMissing: =>
@@ -236,6 +244,9 @@ class Beatmaps.Main extends React.PureComponent
     @backToTop.current.reset()
 
     @fetchNewState(true).then (newState) =>
+      cutoff = @backToTopAnchor.current.getBoundingClientRect().top
+      window.scrollTo window.pageXOffset, window.pageYOffset + cutoff if cutoff < 0
+
       @setState newState
 
 
@@ -246,18 +257,16 @@ class Beatmaps.Main extends React.PureComponent
 
 
   stateFromUrl: =>
-    params = location.search.substr(1).split('&')
+    params = new URL(location).searchParams
 
     expand = false
 
     filters = {}
 
-    for part in params
-      [key, value] = part.split('=')
-      value = decodeURIComponent(value)
-      key = BeatmapsetFilter.charToKey[key]
+    for own char, key of BeatmapsetFilter.charToKey
+      value = params.get(char)
 
-      continue if !key? || value.length == 0
+      continue if !value? || value.length == 0
 
       value = BeatmapsetFilter.castFromString[key](value) if BeatmapsetFilter.castFromString[key]
       expand = true if key in BeatmapsetFilter.expand
