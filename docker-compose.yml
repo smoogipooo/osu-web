@@ -72,7 +72,7 @@ services:
     working_dir: /data
     environment:
       <<: *x-env
-      MODE: ${MODE:0}
+      MODE: ${MODE:-0}
       THREADS: 8
     command: [ './run.sh' ]
   ppcalc:
@@ -84,7 +84,7 @@ services:
     working_dir: /data
     environment:
       <<: *x-env
-      MODE: ${MODE_LITERAL:osu}
+      MODE: ${MODE_LITERAL:-osu}
       THREADS: 8
     command: [ './run.sh' ]
   esindexer:
