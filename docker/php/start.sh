@@ -21,6 +21,7 @@ echo "Importing data..."
 cat ./sql/*.sql | mysql -u osuweb --host=db --database=osu
 
 echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_permissions,user_sig,user_occ,user_interests,username_clean,country_acronym) SELECT user_id,username,user_warnings,user_type,0,'','','',username,'AU' FROM sample_users;
+ UPDATE phpbb_users SET user_lastvisit=4294967295 WHERE 1;
  INSERT INTO osu_countries (acronym,name,rankedscore,playcount) VALUES ('AU','Australia',0,0);
  INSERT INTO osu_genres (genre_id,name) VALUES (0, 'genre-1');
  INSERT INTO osu_languages (name) VALUES ('language-1');
