@@ -8,6 +8,7 @@ x-env: &x-env
   HOME: /data/osuweb/.docker
   REDIS_HOST: redis
   YARN_CACHE_FOLDER: /data/osuweb/.docker/.yarn
+  DOCKER: 1
 
 services:
   nginx:
@@ -71,8 +72,7 @@ services:
     working_dir: /data
     environment:
       <<: *x-env
-      DOCKER: 1
-      MODE: 0
+      MODE: ${MODE:0}
       THREADS: 8
     command: [ './run.sh' ]
   ppcalc:
@@ -84,7 +84,7 @@ services:
     working_dir: /data
     environment:
       <<: *x-env
-      DOCKER: 1
+      MODE: ${MODE_LITERAL:osu}
       THREADS: 8
     command: [ './run.sh' ]
   esindexer:
@@ -95,7 +95,6 @@ services:
     working_dir: /data
     environment:
       <<: *x-env
-      DOCKER: 1
     command: [ './run.sh' ]
 volumes:
   database:
