@@ -41,7 +41,7 @@ class BeatmapsetSearchRequestParams extends BeatmapsetSearchParams
             $this->searchAfter = array_values($request['cursor']);
         }
 
-        if ($this->user !== null) {
+        /* if ($this->user !== null) */ {
             $this->queryString = es_query_escape_with_caveats($request['q'] ?? $request['query']);
             $this->status = get_int($request['s']) ?? 0;
             $this->genre = get_int($request['g']);
