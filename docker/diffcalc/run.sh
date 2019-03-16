@@ -17,4 +17,4 @@ echo "{
   \"download_path\": \"https://osu.ppy.sh/osu/{0}\"
 }" > appsettings.json
 
-dotnet osu.Server.DifficultyCalculator.dll all -m ${MODE} -c ${THREADS}
+dotnet osu.Server.DifficultyCalculator.dll all -m ${MODE} -c ${THREADS} -ac
