@@ -14,7 +14,8 @@ echo "{
   \"insert_beatmaps\": false,
   \"beatmaps_path\": \"/beatmaps\",
   \"allow_download\": true,
-  \"download_path\": \"https://osu.ppy.sh/osu/{0}\"
+  \"download_path\": \"https://osu.ppy.sh/osu/{0}\",
+  \"save_downloaded\": true
 }" > appsettings.json
 
 dotnet osu.Server.DifficultyCalculator.dll all -m ${MODE} -c ${THREADS} -ac
