@@ -29,6 +29,26 @@ echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_per
  INSERT INTO osu_counts (name, count) VALUES ('docker_db_step', '1');
  INSERT INTO osu_user_performance_rank (user_id, mode, r0) SELECT user_id, ${MODE}, 1 FROM phpbb_users;" | mysql -u osuweb --host=db --database=osu
 
+# Hax for score process queue...
+
+ echo "create table score_process_queue
+(
+    queue_id int unsigned auto_increment
+        primary key,
+    score_id bigint(11) unsigned not null,
+    mode tinyint(11) unsigned not null,
+    start_time timestamp default CURRENT_TIMESTAMP not null,
+    update_time timestamp null on update CURRENT_TIMESTAMP,
+    status tinyint(1) default 0 not null
+)
+charset=utf8;
+
+create index lookup
+    on score_process_queue (mode, status, score_id);
+
+create index status
+    on score_process_queue (status);" | mysql -u osuweb --host=db --database=osu
+
 echo "Finshed importing data."
 
 php artisan es:index-documents --yes
