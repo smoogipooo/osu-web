@@ -15,7 +15,8 @@ echo "{
   },
   \"modes\": \"osu,mania,fruits,taiko\",
   \"resume_from\": 0,
-  \"buffer_size\": 5
+  \"buffer_size\": 5,
+  \"crawl\": true
 }" > appsettings.json
 
 dotnet osu.ElasticIndexer.dll
