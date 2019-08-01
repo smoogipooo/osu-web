@@ -27,4 +27,5 @@ RUN apk update && \
     php7-xml \
     php7-xmlwriter \
     php7-zip \
-    yarn
+    yarn \
+    mysql-client
