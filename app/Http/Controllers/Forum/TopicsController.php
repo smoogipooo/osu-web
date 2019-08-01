@@ -292,7 +292,7 @@ class TopicsController extends Controller
             ->with('topic')
             ->with('user.rank')
             ->with('user.country')
-            ->with('user.supporterTags')
+            ->with('user.supporterTagPurchases')
             ->get()
             ->sortBy('post_id');
 
@@ -377,6 +377,10 @@ class TopicsController extends Controller
             return error_popup($e->getMessage());
         }
 
+        if (Auth::user()->user_notify || $forum->isHelpForum()) {
+            TopicWatch::setState($topic, Auth::user(), 'watching_mail');
+        }
+
         ForumUpdateNotifier::onNew([
             'topic' => $topic,
             'post' => $topic->posts->last(),
@@ -445,6 +449,7 @@ class TopicsController extends Controller
     private function getPollParams()
     {
         return get_params(request(), 'forum_topic_poll', [
+            'hide_results:bool',
             'length_days:int',
             'max_options:int',
             'options:string_split',

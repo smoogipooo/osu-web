@@ -30,17 +30,17 @@ return [
     ],
 
     'buttons' => [
-        'admin' => '',
+        'admin' => 'Admin',
         'back_to_previous' => 'Trở về vị trí trước',
         'back_to_top' => 'Quay lại đầu trang',
         'cancel' => 'Hủy',
         'change' => 'đổi',
         'click_to_copy' => 'click để sao chép vào bộ nhớ tạm',
         'click_to_copy_copied' => 'đã sao chép vào bộ nhớ tạm!',
-        'collapse' => '',
+        'collapse' => 'thu lại',
         'delete' => 'Xóa',
         'edit' => 'Chỉnh sửa',
-        'expand' => '',
+        'expand' => 'mở rộng',
         'hide' => 'ẩn',
         'permalink' => 'permalink',
         'permalink_copied' => 'đã sao chép link',
@@ -55,9 +55,15 @@ return [
         'search' => 'Tìm Kiếm',
         'see_more' => 'xem thêm',
         'show' => 'hiện',
+        'show_deleted' => 'Hiển thị bình luận đã xóa',
         'show_more' => 'hiển thị thêm',
-        'show_more_options' => '',
+        'show_more_options' => 'hiển thị thêm tùy chọn',
         'upload_image' => 'tải ảnh lên',
+
+        'watch' => [
+            'to_0' => '',
+            'to_1' => '',
+        ],
     ],
 
     'count' => [
@@ -70,6 +76,7 @@ return [
         'minutes' => ':count phút',
         'months' => ':count tháng',
         'second_short_unit' => 'giây',
+        'update' => '',
         'years' => ':count năm',
     ],
 

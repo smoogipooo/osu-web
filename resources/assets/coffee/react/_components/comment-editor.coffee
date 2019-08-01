@@ -16,17 +16,20 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{button, div, span} = ReactDOMFactories
-
+import { BigButton } from 'big-button'
+import * as React from 'react'
+import { button, div, span } from 'react-dom-factories'
+import { Spinner } from 'spinner'
+import { UserAvatar } from 'user-avatar'
 el = React.createElement
 
 bn = 'comment-editor'
 
-class @CommentEditor extends React.PureComponent
+export class CommentEditor extends React.PureComponent
   constructor: (props) ->
     super props
 
-    @textarea = null
+    @textarea = React.createRef()
     @throttledPost = _.throttle @post, 1000
 
     @handleKeyDown = InputHandler.textarea @handleKeyDownCallback
@@ -37,8 +40,8 @@ class @CommentEditor extends React.PureComponent
 
 
   componentDidMount: =>
-    @textarea.selectionStart = -1
-    @textarea.focus() if (@props.focus ? true)
+    @textarea.current?.selectionStart = -1
+    @textarea.current?.focus() if (@props.focus ? true)
 
 
   componentWillUnmount: =>
@@ -57,7 +60,7 @@ class @CommentEditor extends React.PureComponent
 
       el TextareaAutosize,
         className: "#{bn}__message"
-        innerRef: @setTextarea
+        ref: @textarea
         value: @state.message
         placeholder: osu.trans("comments.placeholder.#{@mode()}")
         onChange: @onChange
@@ -176,7 +179,3 @@ class @CommentEditor extends React.PureComponent
       @props.close?()
     .fail (xhr, status) =>
       osu.ajaxError(xhr, status)
-
-
-  setTextarea: (ref) =>
-    @textarea = ref

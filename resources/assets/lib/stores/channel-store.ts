@@ -16,47 +16,28 @@
  *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { ChatMessageAddAction, ChatMessageSendAction, ChatMessageUpdateAction } from 'actions/chat-actions';
+import {
+  ChatMessageAddAction,
+  ChatMessageSendAction,
+  ChatMessageUpdateAction,
+  ChatPresenceUpdateAction,
+} from 'actions/chat-actions';
 import DispatcherAction from 'actions/dispatcher-action';
 import { UserLogoutAction } from 'actions/user-login-actions';
 import { ChannelJSON } from 'chat/chat-api-responses';
-import DispatchListener from 'dispatch-listener';
-import Dispatcher from 'dispatcher';
 import * as _ from 'lodash';
-import {action, computed, observable} from 'mobx';
+import { action, computed, observable } from 'mobx';
 import Channel from 'models/chat/channel';
 import Message from 'models/chat/message';
-import RootDataStore from './root-data-store';
+import Store from 'stores/store';
 
-export default class ChannelStore implements DispatchListener {
-  root: RootDataStore;
-
+export default class ChannelStore extends Store {
   @observable channels = observable.map<number, Channel>();
   @observable loaded: boolean = false;
 
-  constructor(root: RootDataStore, dispatcher: Dispatcher) {
-    this.root = root;
-    dispatcher.register(this);
-  }
-
-  handleDispatchAction(dispatchedAction: DispatcherAction) {
-    if (dispatchedAction instanceof ChatMessageSendAction) {
-      this.getOrCreate(dispatchedAction.message.channelId).addMessages(dispatchedAction.message, true);
-    } else if (dispatchedAction instanceof ChatMessageAddAction) {
-      this.getOrCreate(dispatchedAction.message.channelId).addMessages(dispatchedAction.message);
-    } else if (dispatchedAction instanceof ChatMessageUpdateAction) {
-      const channel: Channel = this.getOrCreate(dispatchedAction.message.channelId);
-      channel.updateMessage(dispatchedAction.message);
-      channel.resortMessages();
-    } else if (dispatchedAction instanceof UserLogoutAction) {
-      this.flushStore();
-    }
-  }
-
-  @action
-  flushStore() {
-    this.channels = observable.map<number, Channel>();
-    this.loaded = false;
+  @computed
+  get channelList(): Channel[] {
+    return [...this.nonPmChannels, ...this.pmChannels];
   }
 
   @computed
@@ -107,6 +88,36 @@ export default class ChannelStore implements DispatchListener {
     });
   }
 
+  @action
+  addMessages(channelId: number, messages: Message[]) {
+    if (_.isEmpty(messages)) {
+      return;
+    }
+
+    this.getOrCreate(channelId).addMessages(messages);
+  }
+
+  findPM(userId: number): Channel | null {
+    // tslint:disable-next-line:prefer-const browsers that support ES6 but not const in for...of
+    for (let [, channel] of this.channels) {
+      if (channel.type !== 'PM') {
+        continue;
+      }
+
+      if (channel.users.some((user) => user === userId)) {
+        return channel;
+      }
+    }
+
+    return null;
+  }
+
+  @action
+  flushStore() {
+    this.channels = observable.map<number, Channel>();
+    this.loaded = false;
+  }
+
   get(channelId: number): Channel | undefined {
     return this.channels.get(channelId);
   }
@@ -123,27 +134,25 @@ export default class ChannelStore implements DispatchListener {
     return channel;
   }
 
-  findPM(userId: number): Channel | null {
-    for (const [, channel] of this.channels) {
-      if (channel.type !== 'PM') {
-        continue;
-      }
-
-      if (channel.users.some((user) => user === userId)) {
-        return channel;
-      }
+  handleDispatchAction(dispatchedAction: DispatcherAction) {
+    if (dispatchedAction instanceof ChatMessageSendAction) {
+      this.getOrCreate(dispatchedAction.message.channelId).addMessages(dispatchedAction.message, true);
+    } else if (dispatchedAction instanceof ChatMessageAddAction) {
+      this.getOrCreate(dispatchedAction.message.channelId).addMessages(dispatchedAction.message);
+    } else if (dispatchedAction instanceof ChatMessageUpdateAction) {
+      const channel: Channel = this.getOrCreate(dispatchedAction.message.channelId);
+      channel.updateMessage(dispatchedAction.message);
+      channel.resortMessages();
+    } else if (dispatchedAction instanceof ChatPresenceUpdateAction) {
+      this.updatePresence(dispatchedAction.presence);
+    } else if (dispatchedAction instanceof UserLogoutAction) {
+      this.flushStore();
     }
-
-    return null;
   }
 
   @action
-  addMessages(channelId: number, messages: Message[]) {
-    if (_.isEmpty(messages)) {
-      return;
-    }
-
-    this.getOrCreate(channelId).addMessages(messages);
+  partChannel(channelId: number) {
+    this.channels.delete(channelId);
   }
 
   @action

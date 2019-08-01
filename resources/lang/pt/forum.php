@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited publicação|:count_delimited publicações',
+            'topic_starter' => 'Criador do Tópico',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Ocultar os resultados da sondagem.',
+                'hide_results_info' => 'Eles serão mostrados só quando a sondagem concluir.',
                 'length' => 'Manter a sondagem por',
                 'length_days_suffix' => 'dias',
                 'length_info' => 'Deixa em branco para uma sondagem interminável',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'A sondagem irá terminar em :time',
                     'ended' => 'A sondagem terminou a :time',
+                    'results_hidden' => 'Os resultados serão mostrados após a sondagem terminar.',
                     'total' => 'Votos totais :count',
                 ],
             ],

@@ -19,11 +19,12 @@
  */
 
 return [
-    'deleted' => 'đã chỉnh sửa',
+    'deleted' => 'đã xóa',
+    'deleted_count' => ':count_delimited bình luận đã bị xóa',
     'edited' => 'đã chỉnh sửa :timeago bởi :user',
     'empty' => 'Chưa có bình luận nào.',
+    'load_replies' => '',
     'replies' => 'Câu trả lời',
-    'show_replies' => 'hiển thị câu trả lời',
     'title' => 'Bình luận',
 
     'commentable_name' => [
@@ -43,8 +44,8 @@ return [
     ],
 
     'guest_button' => [
-        'new' => '',
-        'reply' => '',
+        'new' => 'Đăng nhập để bình luận',
+        'reply' => 'Đăng nhập để trả lời',
     ],
 
     'index' => [

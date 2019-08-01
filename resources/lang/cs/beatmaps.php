@@ -40,12 +40,14 @@ return [
         'edited' => 'Naposledy upravil :editor v :update_time.',
         'kudosu_denied' => 'Odepřen od získávání kudosu.',
         'message_placeholder_deleted_beatmap' => 'Tato obtížnost byla smazána, takže už nemůže být probírána.',
+        'message_placeholder_locked' => '',
         'message_type_select' => 'Vybrat typ komentáře',
         'reply_notice' => 'Stiskni enter pro odpověď.',
         'reply_placeholder' => 'Napiš svou odpověď sem',
         'require-login' => 'Pro psaní odpovědí nebo přidávání příspěvků se prosím přihlaš',
         'resolved' => 'Vyřešeno',
         'restore' => 'obnovit',
+        'show_deleted' => '',
         'title' => 'Diskuze',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Zatím žádné diskuse!',
             'hidden' => 'Žádná diskuze neodpovídá zvolenému filtru.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
+
+            'prompt' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '',
             'timestamp' => 'Časová sekvence',
             'timestamp_missing' => 'ctrl-c v režimu úprav a vložte do zprávy pro přidání časové sekvence!',
             'title' => 'Nová diskuze',
+            'unpin' => '',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Seřazeno podle:',
             'created_at' => 'Čas vytvoření',
             'timeline' => 'Časová osa',
             'updated_at' => 'Poslední aktualizace',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Tato beatmapa byla označena jako Rozpracovaná jejím autorem.',
         ],
 
+        'votes' => [
+            'up' => '',
+            'down' => '',
+        ],
     ],
 
     'hype' => [
@@ -197,6 +216,7 @@ return [
                 'title' => 'Název',
                 'artist' => 'Umělec',
                 'difficulty' => 'Obtížnost',
+                'favourites' => '',
                 'updated' => 'Aktualizováno',
                 'ranked' => 'Hodnocené',
                 'rating' => 'Hodnocení',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Jakékoliv',
-        'ranked-approved' => 'Hodnocené & Schválené',
         'approved' => 'Schválené',
-        'qualified' => 'Kvalifikované',
-        'loved' => 'Oblíbené',
-        'faves' => 'Mé oblíbené',
-        'pending' => 'Čekající & Rozpracované',
+        'favourites' => '',
         'graveyard' => 'Hřbitov',
-        'my-maps' => 'Mé mapy',
+        'leaderboard' => '',
+        'loved' => 'Oblíbené',
+        'mine' => '',
+        'pending' => 'Čekající & Rozpracované',
+        'qualified' => 'Kvalifikované',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Jakékoliv',

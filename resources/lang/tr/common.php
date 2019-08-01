@@ -30,17 +30,17 @@ return [
     ],
 
     'buttons' => [
-        'admin' => '',
+        'admin' => 'Yönetici',
         'back_to_previous' => 'Bir önceki pozisyona dön',
         'back_to_top' => 'Yukarıya geri dön',
         'cancel' => 'İptal',
         'change' => 'değiştir',
         'click_to_copy' => 'panoya kopyalamak için tıklayın',
         'click_to_copy_copied' => 'panoya kopyalandı!',
-        'collapse' => '',
+        'collapse' => 'daraltın',
         'delete' => 'Sil',
         'edit' => 'Düzenle',
-        'expand' => '',
+        'expand' => 'genişletin',
         'hide' => 'gizle',
         'permalink' => 'kalıcı bağlantı',
         'permalink_copied' => 'bağlantı kopyalandı',
@@ -55,9 +55,15 @@ return [
         'search' => 'Arama',
         'see_more' => 'daha fazla',
         'show' => 'göster',
+        'show_deleted' => '',
         'show_more' => 'daha fazla göster',
-        'show_more_options' => '',
+        'show_more_options' => 'daha fazla seçenek göster',
         'upload_image' => 'görsel yükle',
+
+        'watch' => [
+            'to_0' => '',
+            'to_1' => '',
+        ],
     ],
 
     'count' => [
@@ -70,6 +76,7 @@ return [
         'minutes' => ':count dakika |:count dakika',
         'months' => ':count ay|:count ay',
         'second_short_unit' => 'sn|sn',
+        'update' => '',
         'years' => ':count yıl|:count yıl',
     ],
 

@@ -20,16 +20,17 @@
 
 return [
     'deleted' => 'șters',
+    'deleted_count' => '',
     'edited' => 'editat :timeago de :user',
     'empty' => 'Niciun comentariu încă.',
+    'load_replies' => '',
     'replies' => 'Răspunsuri',
-    'show_replies' => 'arată răspunsurile',
     'title' => 'Comentarii',
 
     'commentable_name' => [
         'beatmapset' => 'Beatmap',
         'build' => 'Jurnal modificări',
-        'news_post' => 'Noutăți',
+        'news_post' => 'Ştiri',
         '_deleted' => 'Articol șters',
     ],
 
@@ -43,8 +44,8 @@ return [
     ],
 
     'guest_button' => [
-        'new' => '',
-        'reply' => '',
+        'new' => 'Autentifică-te pentru a comenta',
+        'reply' => 'Autentifică-te pentru a răspunde',
     ],
 
     'index' => [

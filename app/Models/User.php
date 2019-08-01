@@ -22,6 +22,7 @@ namespace App\Models;
 
 use App\Exceptions\ChangeUsernameException;
 use App\Exceptions\ModelNotSavedException;
+use App\Jobs\EsIndexDocument;
 use App\Libraries\BBCodeForDB;
 use App\Libraries\ChangeUsername;
 use App\Libraries\UsernameValidation;
@@ -140,7 +141,7 @@ use Request;
  * @property string $user_msnm
  * @property int $user_new_privmsg
  * @property string $user_newpasswd
- * @property int $user_notify
+ * @property bool $user_notify
  * @property int $user_notify_pm
  * @property int $user_notify_type
  * @property string|null $user_occ
@@ -170,6 +171,7 @@ use Request;
  * @property string $user_website
  * @property string $username
  * @property \Illuminate\Database\Eloquent\Collection $usernameChangeHistory UsernameChangeHistory
+ * @property \Illuminate\Database\Eloquent\Collection $usernameChangeHistoryPublic publically visible UsernameChangeHistory containing only user_id and username_last
  * @property string $username_clean
  * @property string|null $username_previous
  * @property int|null $userpage_post_id
@@ -192,6 +194,7 @@ class User extends Model implements AuthenticatableContract
         'osu_subscriber' => 'boolean',
         'user_allow_pm' => 'boolean',
         'user_allow_viewonline' => 'boolean',
+        'user_notify' => 'boolean',
         'user_timezone' => 'float',
     ];
 
@@ -221,7 +224,7 @@ class User extends Model implements AuthenticatableContract
         'user_interests' => 30,
     ];
 
-    private $memoized = [];
+    protected $memoized = [];
 
     private $validateCurrentPassword = false;
     private $validatePasswordConfirmation = false;
@@ -269,7 +272,7 @@ class User extends Model implements AuthenticatableContract
 
     public function changeUsername(string $newUsername, string $type) : UsernameChangeHistory
     {
-        $errors = $this->validateChangeUsername($newUsername);
+        $errors = $this->validateChangeUsername($newUsername, $type);
         if ($errors->isAny()) {
             throw new ChangeUsernameException($errors);
         }
@@ -333,6 +336,7 @@ class User extends Model implements AuthenticatableContract
 
             $skipValidations = in_array($type, ['inactive', 'revert'], true);
             $this->saveOrExplode(['skipValidations' => $skipValidations]);
+            dispatch(new EsIndexDocument($this));
 
             return $history;
         });
@@ -384,23 +388,40 @@ class User extends Model implements AuthenticatableContract
 
     public function getUsernameAvailableAt() : Carbon
     {
-        if ($this->group_id !== 2 || $this->user_type === 1) {
+        $playCount = $this->playCount();
+
+        if ($this->group_id !== 2) {
             //reserved usernames
-            return Carbon::now()->addYears(10);
+            return Carbon::now()->addYears(10);  //This will always be in the future, which is wanted
         }
 
-        $playCount = array_reduce(array_keys(Beatmap::MODES), function ($result, $mode) {
-            return $result + $this->statistics($mode, true)->value('playcount');
-        }, 0);
+        if ($this->user_type === 1) {
+            $minDays = 0;
+            $expMod = 0.35;
+            $linMod = 0.75;
+        } else {
+            $minDays = static::INACTIVE_DAYS;
+            $expMod = 1;
+            $linMod = 1;
+        }
+
+        // This is a exponential decay function with the identity 1-e^{-$playCount}.
+        // The constant multiplier of 1580 causes the formula to flatten out at around 1580 days (~4.3 years).
+        // $playCount is then divided by the constant value 5900 causing it to flatten out at about 40,000 plays.
+        // A linear bonus of $playCount * 8 / 5900 is added to reward long-term players.
+        // Furthermore, when the user is restricted, the exponential decay function and the linear bonus are lowered.
+        // An interactive graph of the formula can be found at https://www.desmos.com/calculator/s7bxytxbbt
 
         return $this->user_lastvisit
-            ->addDays(static::INACTIVE_DAYS) //base inactivity period for all accounts
-            ->addDays($playCount * 0.75);    //bonus based on playcount
+                ->addDays(intval(
+                    $minDays +
+                    1580 * (1 - pow(M_E, $playCount * $expMod * -1 / 5900)) +
+                    ($playCount * $linMod * 8 / 5900)));
     }
 
-    public function validateChangeUsername(string $username)
+    public function validateChangeUsername(string $username, string $type = 'paid')
     {
-        return (new ChangeUsername($this, $username))->validate();
+        return (new ChangeUsername($this, $username, $type))->validate();
     }
 
     // verify that an api key is correct
@@ -662,9 +683,9 @@ class User extends Model implements AuthenticatableContract
     |
     */
 
-    public function isQAT()
+    public function isNAT()
     {
-        return $this->isGroup(UserGroup::GROUPS['qat']);
+        return $this->isGroup(UserGroup::GROUPS['nat']);
     }
 
     public function isAdmin()
@@ -679,12 +700,17 @@ class User extends Model implements AuthenticatableContract
 
     public function isBNG()
     {
+        return $this->isFullBN() || $this->isLimitedBN();
+    }
+
+    public function isFullBN()
+    {
         return $this->isGroup(UserGroup::GROUPS['bng']);
     }
 
-    public function isHax()
+    public function isLimitedBN()
     {
-        return $this->isGroup(UserGroup::GROUPS['hax']);
+        return $this->isGroup(UserGroup::GROUPS['bng_limited']);
     }
 
     public function isDev()
@@ -705,6 +731,11 @@ class User extends Model implements AuthenticatableContract
     public function isRegistered()
     {
         return $this->isGroup(UserGroup::GROUPS['default']);
+    }
+
+    public function isProjectLoved()
+    {
+        return $this->isGroup(UserGroup::GROUPS['loved']);
     }
 
     public function isBot()
@@ -740,7 +771,7 @@ class User extends Model implements AuthenticatableContract
             || $this->isMod()
             || $this->isGMT()
             || $this->isBNG()
-            || $this->isQAT();
+            || $this->isNAT();
     }
 
     public function isBanned()
@@ -773,6 +804,11 @@ class User extends Model implements AuthenticatableContract
         }
 
         return $this->memoized[__FUNCTION__];
+    }
+
+    public function canModerate()
+    {
+        return $this->isGMT() || $this->isNAT();
     }
 
     /**
@@ -1104,9 +1140,23 @@ class User extends Model implements AuthenticatableContract
         return $this->hasMany(UserAchievement::class, 'user_id');
     }
 
+    public function userNotifications()
+    {
+        return $this->hasMany(UserNotification::class, 'user_id');
+    }
+
     public function usernameChangeHistory()
     {
         return $this->hasMany(UsernameChangeHistory::class, 'user_id');
+    }
+
+    public function usernameChangeHistoryPublic()
+    {
+        return $this->usernameChangeHistory()
+            ->visible()
+            ->select(['user_id', 'username_last'])
+            ->withPresent('username_last')
+            ->orderBy('timestamp', 'ASC');
     }
 
     public function relations()
@@ -1134,6 +1184,11 @@ class User extends Model implements AuthenticatableContract
             'user_id',
             'channel_id'
         );
+    }
+
+    public function follows()
+    {
+        return $this->hasMany(Follow::class, 'user_id');
     }
 
     public function maxBlocks()
@@ -1375,7 +1430,7 @@ class User extends Model implements AuthenticatableContract
     // TODO: we should rename this to currentUserJson or something.
     public function defaultJson()
     {
-        return json_item($this, 'User', ['blocks', 'friends', 'is_admin']);
+        return json_item($this, 'User', ['blocks', 'friends', 'is_admin', 'unread_pm_count']);
     }
 
     public function supportLength()
@@ -1383,7 +1438,7 @@ class User extends Model implements AuthenticatableContract
         if (!array_key_exists(__FUNCTION__, $this->memoized)) {
             $supportLength = 0;
 
-            foreach ($this->supporterTags as $support) {
+            foreach ($this->supporterTagPurchases as $support) {
                 if ($support->cancel === true) {
                     $supportLength -= $support->length;
                 } else {
@@ -1430,7 +1485,7 @@ class User extends Model implements AuthenticatableContract
             return pow($stats->rank_score, 0.4) * 0.195;
         }
 
-        return 0.0;
+        return 1.0;
     }
 
     public function refreshForumCache($forum = null, $postsChangeCount = 0)
@@ -1469,6 +1524,15 @@ class User extends Model implements AuthenticatableContract
         return $query
             ->where('user_allow_viewonline', true)
             ->whereRaw('user_lastvisit > UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL '.config('osu.user.online_window').' MINUTE))');
+    }
+
+    public function scopeEagerloadForListing($query)
+    {
+        return $query->with([
+            'country',
+            'supporterTagPurchases',
+            'userProfileCustomization',
+        ]);
     }
 
     public function checkPassword($password)
@@ -1552,6 +1616,45 @@ class User extends Model implements AuthenticatableContract
     public function validateForPassportPasswordGrant($password)
     {
         return static::attemptLogin($this, $password) === null;
+    }
+
+    public function playCount()
+    {
+        if (!array_key_exists(__FUNCTION__, $this->memoized)) {
+            $unionQuery = null;
+
+            foreach (Beatmap::MODES as $key => $_value) {
+                $query = $this->statistics($key, true)->select('playcount');
+
+                if ($unionQuery === null) {
+                    $unionQuery = $query;
+                } else {
+                    $unionQuery->unionAll($query);
+                }
+            }
+
+            $this->memoized[__FUNCTION__] = $unionQuery->get()->sum('playcount');
+        }
+
+        return $this->memoized[__FUNCTION__];
+    }
+
+    /**
+     * User's previous usernames
+     *
+     * @param bool $includeCurrent true if previous usernames matching the the current one should be included.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection string
+     */
+    public function previousUsernames(bool $includeCurrent = false)
+    {
+        $history = $this->usernameChangeHistoryPublic;
+
+        if (!$includeCurrent) {
+            $history = $history->where('username_last', '<>', $this->username);
+        }
+
+        return $history->pluck('username_last');
     }
 
     public function profileCustomization()

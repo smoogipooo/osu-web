@@ -21,8 +21,15 @@
 return [
     'buttons' => [
       'add' => 'voeg vriend toe',
-      'disabled' => '',
+      'disabled' => 'vrienden',
       'remove' => 'verwijder vriend',
+    ],
+
+    'index' => [
+        'title' => [
+            '_' => '',
+            'info' => '',
+        ],
     ],
 
     'state' => [

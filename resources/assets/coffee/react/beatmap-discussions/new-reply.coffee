@@ -16,12 +16,16 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{button, div, form, input, label, span, i} = ReactDOMFactories
+import { MessageLengthCounter } from './message-length-counter'
+import { BigButton } from 'big-button'
+import * as React from 'react'
+import { button, div, form, input, label, span, i } from 'react-dom-factories'
+import { UserAvatar } from 'user-avatar'
 el = React.createElement
 
 bn = 'beatmap-discussion-post'
 
-class BeatmapDiscussions.NewReply extends React.PureComponent
+export class NewReply extends React.PureComponent
   ACTION_ICONS =
     reply_resolve: 'fas fa-check'
     reply_reopen: 'fas fa-exclamation-circle'
@@ -30,6 +34,7 @@ class BeatmapDiscussions.NewReply extends React.PureComponent
   constructor: (props) ->
     super props
 
+    @box = React.createRef()
     @throttledPost = _.throttle @post, 1000
     @handleKeyDown = InputHandler.textarea @handleKeyDownCallback
 
@@ -70,12 +75,12 @@ class BeatmapDiscussions.NewReply extends React.PureComponent
             onChange: @setMessage
             onKeyDown: @handleKeyDown
             placeholder: osu.trans 'beatmaps.discussions.reply_placeholder'
-            innerRef: (el) => @box = el
+            ref: @box
 
       div
         className: "#{bn}__footer #{bn}__footer--notice"
         osu.trans 'beatmaps.discussions.reply_notice'
-        el BeatmapDiscussions.MessageLengthCounter, message: @state.message, isTimeline: @isTimeline()
+        el MessageLengthCounter, message: @state.message, isTimeline: @isTimeline()
 
       div
         className: "#{bn}__footer"
@@ -140,7 +145,7 @@ class BeatmapDiscussions.NewReply extends React.PureComponent
       return
 
     @setState editing: true, =>
-      @box?.focus()
+      @box.current?.focus()
 
 
   handleKeyDownCallback: (type, event) =>

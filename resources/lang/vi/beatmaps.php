@@ -40,12 +40,14 @@ return [
         'edited' => 'Sửa đổi lần cuối bởi :editor :update_time.',
         'kudosu_denied' => 'Đã từ chối nhận kudosu.',
         'message_placeholder_deleted_beatmap' => 'Difficulty này đã bị xóa nên nó có thể sẽ không còn được thảo luận nữa.',
+        'message_placeholder_locked' => '',
         'message_type_select' => 'Chọn Loại Nhận Xét',
         'reply_notice' => 'Nhấn enter để trả lời.',
         'reply_placeholder' => 'Nhập câu trả lời của bạn tại đây',
         'require-login' => 'Hãy đăng nhập để đăng hoặc trả lời',
         'resolved' => 'Đã giải quyết',
         'restore' => 'hoàn lại',
+        'show_deleted' => '',
         'title' => 'Góc Thảo Luận',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Chưa có cuộc thảo luận nào hết!',
             'hidden' => 'Không có cuộc thảo luận nào tương ứng với bộ lọc đã chọn.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
+
+            'prompt' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '',
             'timestamp' => 'Mốc thời gian',
             'timestamp_missing' => 'ctrl-c trong chế độ chỉnh sửa (edit mode) và dán trong bài đăng của bạn để thêm một mốc thời gian!',
             'title' => 'Cuộc Thảo Luận Mới',
+            'unpin' => '',
         ],
 
         'show' => [
@@ -100,10 +116,9 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Sắp xếp bởi:',
-            'created_at' => '',
-            'timeline' => '',
-            'updated_at' => '',
+            'created_at' => 'Thời gian tạo',
+            'timeline' => 'Timeline',
+            'updated_at' => 'Cập nhật lần cuối',
         ],
 
         'stats' => [
@@ -124,6 +139,10 @@ return [
             'wip' => 'Ghi chú: Beatmap này được đánh dấu là đang thực hiện bởi mapper.',
         ],
 
+        'votes' => [
+            'up' => '',
+            'down' => '',
+        ],
     ],
 
     'hype' => [
@@ -194,15 +213,16 @@ return [
                 'played' => 'Đã chơi',
             ],
             'sorting' => [
-                'title' => '',
-                'artist' => '',
-                'difficulty' => '',
-                'updated' => '',
-                'ranked' => '',
-                'rating' => '',
-                'plays' => '',
-                'relevance' => '',
-                'nominations' => '',
+                'title' => 'Tiêu đề',
+                'artist' => 'Nghệ sĩ',
+                'difficulty' => 'Độ khó',
+                'favourites' => 'Số yêu thích',
+                'updated' => 'Ngày cập nhật',
+                'ranked' => 'Ngày xếp hạng',
+                'rating' => 'Đánh giá',
+                'plays' => 'Lượt chơi',
+                'relevance' => 'Độ liên quan',
+                'nominations' => 'Số đề cử',
             ],
             'supporter_filter_quote' => [
                 '_' => 'Lọc theo :filters cần một :link đang hoạt động',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Bất Kì',
-        'ranked-approved' => 'Được Xếp Hạng & Được Chấp Nhận',
         'approved' => 'Được Chấp Nhận',
-        'qualified' => 'Qualified',
-        'loved' => 'Loved',
-        'faves' => 'Yêu Thích',
-        'pending' => 'Đang chờ & WIP',
+        'favourites' => '',
         'graveyard' => 'Graveyard',
-        'my-maps' => 'Map Của Tôi',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => 'Đang chờ & WIP',
+        'qualified' => 'Qualified',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Bất Kì',
@@ -303,7 +324,7 @@ return [
         'D' => 'D',
     ],
     'panel' => [
-        'playcount' => '',
-        'favourites' => '',
+        'playcount' => 'Số lượt chơi: :count',
+        'favourites' => 'Yêu thích: :count',
     ],
 ];

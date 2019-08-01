@@ -55,6 +55,10 @@ return [
         'deleted_parent' => 'Nu este permis să răspunzi la un comentariu șters.',
     ],
 
+    'follow' => [
+        'invalid' => '',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Poți vota doar o cerere de funcții.',
@@ -68,12 +72,13 @@ return [
         'post' => [
             'beatmapset_post_no_delete' => 'Ștergerea metadatei unui beatmap nu este permisă.',
             'beatmapset_post_no_edit' => 'Editarea metadatei unui beatmap nu este permisă.',
-            'only_quote' => '',
+            'only_quote' => 'Răspunsul tău conţine doar un citat.',
         ],
 
         'topic_poll' => [
             'duplicate_options' => 'Opțiunile duplicate nu sunt permise.',
             'grace_period_expired' => 'Nu poți edita un sondaj după mai mult de :limit ore',
+            'hiding_results_forever' => '',
             'invalid_max_options' => 'Opțiunea per utilizator nu poate depăși numărul de opțiuni disponibile.',
             'minimum_one_selection' => 'Este necesar cel puțin o opțiune per utilizator.',
             'minimum_two_options' => 'Este nevoie de cel puțin două opțiuni.',
@@ -98,7 +103,7 @@ return [
         'username_available_soon' => 'Acest nume de utilizator va fi disponibil pentru utilizare în orice moment de acum!',
         'username_invalid_characters' => 'Numele de utilizator solicitat conține caractere invalide.',
         'username_in_use' => 'Numele de utilizator este deja folosit!',
-        'username_locked' => '', // TODO: language for this should be slightly different.
+        'username_locked' => 'Numele de utilizator este deja luat!', // TODO: language for this should be slightly different.
         'username_no_space_userscore_mix' => 'Te rugăm să folosești fie underscore, fie spații, nu ambele!',
         'username_no_spaces' => "Numele de utilizator nu poate începe sau termina cu spații!",
         'username_not_allowed' => 'Acest nume de utilizator nu este permis.',
@@ -111,6 +116,7 @@ return [
         'too_long' => 'Ai depășit lungimea maximă - nu poate fi decât până la :limit caractere.',
 
         'change_username' => [
+            'restricted' => '',
             'supporter_required' => [
                 '_' => 'Trebuie să :link pentru a-ți schimba numele!',
                 'link_text' => 'fii un suporter osu!',

@@ -90,6 +90,7 @@ return [
 
         'invoice' => 'Ver Fatura',
         'no_orders' => 'Sem pedidos para ver.',
+        'resume' => 'Retomar Pagamento',
 
         'item' => [
             'display_name' => [

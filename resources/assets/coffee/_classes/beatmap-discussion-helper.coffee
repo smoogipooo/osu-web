@@ -28,12 +28,18 @@ class @BeatmapDiscussionHelper
   @FILTERS = ['deleted', 'hype', 'mapperNotes', 'mine', 'pending', 'praises', 'resolved', 'total']
 
 
+  @canModeratePosts: (user) =>
+    user ?= currentUser
+
+    user.is_admin || user.can_moderate
+
+
   # text should be pre-escaped.
   @discussionLinkify: (text) =>
     currentUrl = new URL(window.location)
     currentBeatmapsetDiscussions = @urlParse(currentUrl.href)
 
-    text.replace osu.urlRegex, (url) =>
+    text.replace osu.urlRegex, (url, _, displayUrl) =>
       targetUrl = new URL(url)
 
       if targetUrl.host == currentUrl.host
@@ -47,6 +53,8 @@ class @BeatmapDiscussionHelper
           else
             # different beatmapset, format: 1234#567
             linkText = "#{targetBeatmapsetDiscussions.beatmapsetId}##{targetBeatmapsetDiscussions.discussionId}"
+
+      linkText ?= displayUrl
 
       "<a href='#{url}' rel='nofollow' #{attrs ? ''}>#{linkText ? url}</a>"
 
@@ -118,10 +126,6 @@ class @BeatmapDiscussionHelper
       problem: ['fas', '&#xf06a;']
       resolved: ['far', '&#xf058;']
       suggestion: ['far', '&#xf111;']
-
-
-  @moderationGroup: (user) =>
-    _.intersection(_.concat(user.default_group, user.groups), ['qat', 'bng'])[0]
 
 
   @previewMessage = (message) =>

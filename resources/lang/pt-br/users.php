@@ -132,6 +132,7 @@ return [
         'is_supporter' => 'osu!supporter',
         'joined_at' => 'Entrou em :date',
         'lastvisit' => 'Visto por último :date',
+        'lastvisit_online' => 'Atualmente online',
         'missingtext' => 'Talvez você tenha feito um erro de digitação! (ou o usuário está banido)',
         'origin_country' => 'Morando em :country',
         'page_description' => 'osu! - Tudo que você sempre quis saber sobre :username!',
@@ -238,7 +239,7 @@ return [
                         ],
 
                         'restore' => [
-                            'give' => 'Recebeu :amount por postagem restaurada em :post',
+                            'give' => 'Recebeu :amount pela publicação restaurada em :post',
                         ],
 
                         'vote' => [
@@ -308,7 +309,7 @@ return [
         ],
 
         'header_title' => [
-            '_' => 'Jogador :info',
+            '_' => 'Player :info',
             'info' => 'Info',
         ],
 
@@ -361,7 +362,9 @@ return [
             'total_score' => 'Pontuação Total',
         ],
     ],
+
     'status' => [
+        'all' => 'Todos',
         'online' => 'Online',
         'offline' => 'Offline',
     ],

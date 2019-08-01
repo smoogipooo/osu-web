@@ -55,6 +55,10 @@ return [
         'deleted_parent' => 'Không cho phép trả lời bình luận đã xóa.',
     ],
 
+    'follow' => [
+        'invalid' => '',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Chỉ có thể bầu chọn một feature request.',
@@ -68,12 +72,13 @@ return [
         'post' => [
             'beatmapset_post_no_delete' => 'Không cho phép xóa beatmap metadata.',
             'beatmapset_post_no_edit' => 'Không cho phép chỉnh sửa beatmap metadata.',
-            'only_quote' => '',
+            'only_quote' => 'Câu trả lời của bạn chỉ có một trích dẫn.',
         ],
 
         'topic_poll' => [
             'duplicate_options' => 'Không cho phép thêm lựa chọn trùng lặp.',
             'grace_period_expired' => 'Không thể chỉnh sửa cuộc thăm dò sau :limit giờ',
+            'hiding_results_forever' => 'Không thể ẩn kết quả của một cuộc thăm dò không bao giờ kết thúc.',
             'invalid_max_options' => 'Số lựa chọn cho một người không được vượt quá số lựa chọn sẵn có.',
             'minimum_one_selection' => 'Yêu cầu tối thiểu một lựa chọn cho mỗi người dùng.',
             'minimum_two_options' => 'Cần ít nhất hai lựa chọn.',
@@ -98,7 +103,7 @@ return [
         'username_available_soon' => 'Tên người dùng này sẽ có sẵn để sử dụng bất cứ lúc nào!',
         'username_invalid_characters' => 'Tên người dùng đã yêu cầu chứa các ký tự không hợp lệ.',
         'username_in_use' => 'Tên người dùng đã được sử dụng!',
-        'username_locked' => '', // TODO: language for this should be slightly different.
+        'username_locked' => 'Tên người dùng đã được sử dụng!', // TODO: language for this should be slightly different.
         'username_no_space_userscore_mix' => 'Vui lòng sử dụng dấu gạch dưới hoặc dấu cách, không phải cả hai!',
         'username_no_spaces' => "Tên người dùng không thể bắt đầu hoặc kết thúc bằng dấu cách!",
         'username_not_allowed' => 'Không cho phép sử dụng tên người dùng đã chọn.',
@@ -111,6 +116,7 @@ return [
         'too_long' => 'Đã vượt quá độ dài tối đa - tối đa :limit kí tự.',
 
         'change_username' => [
+            'restricted' => 'Bạn không thể đổi tên người dùng khi đang bị hạn chế.',
             'supporter_required' => [
                 '_' => 'Bạn phải :link để đổi tên người dùng!',
                 'link_text' => 'hỗ trợ osu!',

@@ -40,12 +40,14 @@ return [
         'edited' => 'Ostatnio edytowane przez :editor :update_time',
         'kudosu_denied' => 'Odmówiono uzyskania kudosu.',
         'message_placeholder_deleted_beatmap' => 'Ten poziom trudności został usunięty, więc nie można umieszczać w nim postów.',
+        'message_placeholder_locked' => 'Tworzenie dyskusji dla tej beatmapy zostało wyłączone.',
         'message_type_select' => 'Wybierz typ komentarza',
         'reply_notice' => 'Naciśnij Enter, aby odpowiedzieć.',
         'reply_placeholder' => 'Napisz tutaj swoją odpowiedź',
         'require-login' => 'Zaloguj się, aby odpowiedzieć bądź opublikować uwagę',
         'resolved' => 'Rozwiązane',
         'restore' => 'przywróć',
+        'show_deleted' => 'Pokaż usunięte',
         'title' => 'Dyskusje',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Brak dyskusji!',
             'hidden' => 'Żadna dyskusja nie pasuje do wybranego filtru.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Zablokuj dyskusję',
+                'unlock' => 'Odblokuj dyskusję',
+            ],
+
+            'prompt' => [
+                'lock' => 'Powód zablokowania',
+                'unlock' => 'Czy na pewno chcesz odblokować tę dyskusję?',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Przypnij',
             'timestamp' => 'Znacznik czasu',
             'timestamp_missing' => 'Naciśnij Ctrl+C w edytorze i wklej swoją wiadomość, aby dodać znacznik czasu!',
             'title' => 'Nowa dyskusja',
+            'unpin' => 'Odepnij',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Sortowane według:',
             'created_at' => 'Data utworzenia',
             'timeline' => 'Oś czasu',
             'updated_at' => 'Ostatnie aktualizacje',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Ważne: Ta beatmapa została oznaczona przez twórcę jako aktualnie rozwijana.',
         ],
 
+        'votes' => [
+            'up' => 'Oceń tę dyskusję poztywnie',
+            'down' => 'Oceń tę dyskusję negatywnie',
+        ],
     ],
 
     'hype' => [
@@ -197,6 +216,7 @@ return [
                 'title' => 'Tytuł',
                 'artist' => 'Wykonawca',
                 'difficulty' => 'Poziom trudności',
+                'favourites' => 'Polubienia',
                 'updated' => 'Ostatnie aktualizacje',
                 'ranked' => 'Data',
                 'rating' => 'Ocena',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Jakikolwiek',
-        'ranked-approved' => 'Rankingowe i zatwierdzone',
         'approved' => 'Zatwierdzone',
-        'qualified' => 'Zakwalifikowane',
-        'loved' => 'Ulubione społeczności',
-        'faves' => 'Ulubione',
-        'pending' => 'Oczekujące i rozwijane',
+        'favourites' => '',
         'graveyard' => 'Porzucone',
-        'my-maps' => 'Moje beatmapy',
+        'leaderboard' => '',
+        'loved' => 'Ulubione społeczności',
+        'mine' => '',
+        'pending' => 'Oczekujące i rozwijane',
+        'qualified' => 'Zakwalifikowane',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Jakikolwiek',
@@ -304,6 +325,6 @@ return [
     ],
     'panel' => [
         'playcount' => 'Liczba zagrań: :count',
-        'favourites' => 'Polubiło: :count',
+        'favourites' => 'Liczba polubień: :count',
     ],
 ];

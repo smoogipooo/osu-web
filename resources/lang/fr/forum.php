@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited discussion|:count_delimited discussions',
+            'topic_starter' => 'Créateur du sujet',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Masquer les résultats du sondage.',
+                'hide_results_info' => 'Ils ne seront affichés qu\'après la clôture du sondage.',
                 'length' => 'Durée du sondage',
                 'length_days_suffix' => 'jours',
                 'length_info' => 'Laissez vide pour un sondage sans fin',
@@ -197,7 +200,7 @@ return [
         ],
 
         'index' => [
-            'feature_votes' => '',
+            'feature_votes' => 'priorité d\'étoiles',
             'replies' => 'réponses',
             'views' => 'vues',
         ],
@@ -274,7 +277,7 @@ return [
                 'do' => 'Promouvoir cette requête',
 
                 'info' => [
-                    '_' => '',
+                    '_' => 'Il s\'agit d\'une :feature_request. Les demandes de fonctionnalité peuvent être votées par des :supporters.',
                     'feature_request' => 'demande de fonctionnalité',
                     'supporters' => 'supporters',
                 ],
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Le sondage termine à :time',
                     'ended' => 'Sondage terminé :time',
+                    'results_hidden' => 'Les résultats seront affichés après la fin du sondage.',
                     'total' => 'Total de votes: :count',
                 ],
             ],

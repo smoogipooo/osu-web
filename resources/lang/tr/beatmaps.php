@@ -40,12 +40,14 @@ return [
         'edited' => 'En son :editor tarafından :update_time tarihinde düzenlendi.',
         'kudosu_denied' => 'Kudosu almaktan mahrum bırakıldı.',
         'message_placeholder_deleted_beatmap' => 'Bu zorluk seviyesi silindi o yüzden hakkında daha fazla tartışılamaz.',
+        'message_placeholder_locked' => '',
         'message_type_select' => 'Yorum Türünü Seçin',
         'reply_notice' => 'Cevaplamak için Enter tuşuna basın.',
         'reply_placeholder' => 'Yanıtınızı buraya yazın',
         'require-login' => 'Lütfen yorum yapmak ya da cevaplamak için giriş yapınız',
         'resolved' => 'Çözüldü',
         'restore' => 'restore et',
+        'show_deleted' => '',
         'title' => 'Tartışmalar',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Henüz tartışma yok!',
             'hidden' => 'Filtre ile eşleşen tartışma yok.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
+
+            'prompt' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '',
             'timestamp' => 'Zaman damgası',
             'timestamp_missing' => 'bir zaman damgası eklemek için editörde ctrl-c\'ye basıp mesajınıza yapıştırın!',
             'title' => 'Yeni Tartışma',
+            'unpin' => '',
         ],
 
         'show' => [
@@ -100,10 +116,9 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Şuna göre sıralandı:',
-            'created_at' => '',
-            'timeline' => '',
-            'updated_at' => '',
+            'created_at' => 'Oluşturulma zamanı',
+            'timeline' => 'Zaman Çizgisi',
+            'updated_at' => 'Son güncelleme',
         ],
 
         'stats' => [
@@ -124,6 +139,10 @@ return [
             'wip' => 'Dikkat: Bu beatmap yaratıcısı tarafından yapım aşamasında olarak işaretlendi.',
         ],
 
+        'votes' => [
+            'up' => '',
+            'down' => '',
+        ],
     ],
 
     'hype' => [
@@ -194,15 +213,16 @@ return [
                 'played' => 'Oynanmışlık',
             ],
             'sorting' => [
-                'title' => '',
-                'artist' => '',
-                'difficulty' => '',
-                'updated' => '',
-                'ranked' => '',
-                'rating' => '',
-                'plays' => '',
-                'relevance' => '',
-                'nominations' => '',
+                'title' => 'Başlık',
+                'artist' => 'Sanatçı',
+                'difficulty' => 'Zorluk',
+                'favourites' => '',
+                'updated' => 'Güncellendi',
+                'ranked' => 'Sırada yer aldı',
+                'rating' => 'Derecelendirme',
+                'plays' => 'Oynamalar',
+                'relevance' => 'Alaka düzeyi',
+                'nominations' => 'Adaylıklar',
             ],
             'supporter_filter_quote' => [
                 '_' => ':filters ile filtrelemek için aktif bir :link gerekli',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Hepsi',
-        'ranked-approved' => 'Dereceli & Onaylı',
         'approved' => 'Onaylı',
-        'qualified' => 'Nitelikli',
-        'loved' => 'Sevilen',
-        'faves' => 'Favoriler',
-        'pending' => 'Beklemede & Yapım Aşamasında',
+        'favourites' => '',
         'graveyard' => 'Mezarlık',
-        'my-maps' => 'Haritalarım',
+        'leaderboard' => '',
+        'loved' => 'Sevilen',
+        'mine' => '',
+        'pending' => 'Beklemede & Yapım Aşamasında',
+        'qualified' => 'Nitelikli',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Hepsi',
@@ -303,7 +324,7 @@ return [
         'D' => '',
     ],
     'panel' => [
-        'playcount' => '',
-        'favourites' => '',
+        'playcount' => 'Oynanma sayısı',
+        'favourites' => 'Favoriler',
     ],
 ];

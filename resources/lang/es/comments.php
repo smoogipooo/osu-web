@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'borrado',
+    'deleted_count' => '',
     'edited' => 'editado hace :timeago por :user',
     'empty' => 'Todavía no hay comentarios.',
+    'load_replies' => '',
     'replies' => 'Respuestas',
-    'show_replies' => 'mostrar respuestas',
     'title' => 'Comentarios',
 
     'commentable_name' => [

@@ -21,16 +21,17 @@
 return [
     'error' => [
         'chat' => [
+            'empty' => '',
             'limit_exceeded' => 'Çok hızlı mesaj gönderiyorsunuz, tekrar göndermeden önce lütfen biraz bekleyin.',
             'too_long' => 'Göndermeye çalıştığınız mesaj çok uzun.',
         ],
     ],
 
     'scopes' => [
-        'identify' => '',
+        'identify' => 'Kendinizi tanımlayın ve herkese açık profilinizi okuyun.',
 
         'friends' => [
-            'read' => '',
+            'read' => 'Kimi takip ettiğinizi görün.',
         ],
     ],
 ];

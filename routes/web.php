@@ -78,6 +78,8 @@ Route::group(['prefix' => 'beatmapsets', 'as' => 'beatmapsets.'], function () {
 });
 Route::get('beatmapsets/search/{filters?}', 'BeatmapsetsController@search')->name('beatmapsets.search');
 Route::get('beatmapsets/{beatmapset}/discussion/{beatmap?}/{mode?}/{filter?}', 'BeatmapsetsController@discussion')->name('beatmapsets.discussion');
+Route::post('beatmapsets/{beatmapset}/discussion-lock', 'BeatmapsetsController@discussionLock')->name('beatmapsets.discussion-lock');
+Route::post('beatmapsets/{beatmapset}/discussion-unlock', 'BeatmapsetsController@discussionUnlock')->name('beatmapsets.discussion-unlock');
 Route::get('beatmapsets/{beatmapset}/download', 'BeatmapsetsController@download')->name('beatmapsets.download');
 Route::put('beatmapsets/{beatmapset}/love', 'BeatmapsetsController@love')->name('beatmapsets.love');
 Route::put('beatmapsets/{beatmapset}/nominate', 'BeatmapsetsController@nominate')->name('beatmapsets.nominate');
@@ -168,17 +170,20 @@ Route::group(['prefix' => 'home'], function () {
         Route::post('avatar', 'AccountController@avatar')->name('avatar');
         Route::post('cover', 'AccountController@cover')->name('cover');
         Route::put('email', 'AccountController@updateEmail')->name('email');
+        Route::put('options', 'AccountController@updateOptions')->name('options');
         Route::put('page', 'AccountController@updatePage')->name('page');
         Route::put('password', 'AccountController@updatePassword')->name('password');
         Route::post('reissue-code', 'AccountController@reissueCode')->name('reissue-code');
         Route::resource('sessions', 'Account\SessionsController', ['only' => ['destroy']]);
+        Route::get('verify', 'AccountController@verifyLink');
         Route::post('verify', 'AccountController@verify')->name('verify');
         Route::put('/', 'AccountController@update')->name('update');
     });
 
     Route::get('search', 'HomeController@search')->name('search');
     Route::post('bbcode-preview', 'HomeController@bbcodePreview')->name('bbcode-preview');
-    route::get('changelog/{stream}/{build}', 'ChangelogController@build')->name('changelog.build');
+    Route::get('changelog/{stream}/{build}', 'ChangelogController@build')->name('changelog.build');
+    Route::get('changelog/{stream}', 'ChangelogController@stream')->name('changelog.stream');
     Route::post('changelog/github', 'ChangelogController@github');
     Route::resource('changelog', 'ChangelogController', ['only' => ['index', 'show']]);
     Route::get('download', 'HomeController@getDownload')->name('download');
@@ -196,11 +201,21 @@ Route::group(['prefix' => 'home'], function () {
     Route::resource('blocks', 'BlocksController', ['only' => ['store', 'destroy']]);
     Route::resource('friends', 'FriendsController', ['only' => ['index', 'store', 'destroy']]);
     Route::resource('news', 'NewsController', ['only' => ['index', 'show', 'store', 'update']]);
+    Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+    Route::get('notifications/endpoint', 'NotificationsController@endpoint')->name('notifications.endpoint');
+    Route::post('notifications/mark-read', 'NotificationsController@markRead')->name('notifications.mark-read');
 
     Route::get('messages/users/{user}', 'HomeController@messageUser')->name('messages.users.show');
+
+    Route::resource('follows', 'FollowsController', ['only' => ['store']]);
+    Route::delete('follows', 'FollowsController@destroy')->name('follows.destroy');
 });
 
 Route::get('legal/{page}', 'LegalController@show')->name('legal');
+
+Route::group(['as' => 'oauth.', 'prefix' => 'oauth', 'namespace' => 'OAuth'], function () {
+    Route::resource('authorized-clients', 'AuthorizedClientsController', ['only' => ['destroy']]);
+});
 
 Route::get('rankings/{mode?}/{type?}', 'RankingController@index')->name('rankings');
 
@@ -294,7 +309,7 @@ Route::group(['as' => 'payments.', 'prefix' => 'payments', 'namespace' => 'Payme
 });
 
 // API
-Route::group(['as' => 'api.', 'prefix' => 'api', 'middleware' => ['auth:api', 'require-scopes']], function () {
+Route::group(['as' => 'api.', 'prefix' => 'api', 'middleware' => ['auth-custom-api', 'require-scopes']], function () {
     Route::group(['prefix' => 'v2'], function () {
         Route::group(['as' => 'chat.', 'prefix' => 'chat', 'namespace' => 'Chat'], function () {
             Route::post('new', 'ChatController@newConversation')->name('new');
@@ -308,6 +323,9 @@ Route::group(['as' => 'api.', 'prefix' => 'api', 'middleware' => ['auth:api', 'r
             });
             Route::apiResource('channels', 'ChannelsController', ['only' => ['index']]);
         });
+
+        Route::get('changelog/{stream}/{build}', 'ChangelogController@build')->name('changelog.build');
+        Route::resource('changelog', 'ChangelogController', ['only' => ['index', 'show']]);
 
         Route::group(['as' => 'rooms.', 'prefix' => 'rooms'], function () {
             Route::get('{mode?}', 'Multiplayer\RoomsController@index')->name('index')->where('mode', 'owned|participated|ended');
@@ -355,6 +373,13 @@ Route::group(['as' => 'api.', 'prefix' => 'api', 'middleware' => ['auth:api', 'r
         Route::get('me', 'UsersController@me');
         //  GET /api/v2/me/download-quota-check
         Route::get('me/download-quota-check', 'HomeController@downloadQuotaCheck');
+
+        // Notifications
+        //  GET /api/v2/notifications
+        Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
+        //  POST /api/v2/notifications/mark-read
+        Route::post('notifications/mark-read', 'NotificationsController@markRead')->name('notifications.mark-read');
+
         //  GET /api/v2/rankings/:mode/:type
         Route::get('rankings/{mode}/{type}', 'RankingController@index');
 
@@ -384,9 +409,13 @@ Route::group(['as' => 'api.', 'prefix' => 'api', 'middleware' => ['auth:api', 'r
 
 // Callbacks for legacy systems to interact with
 Route::group(['prefix' => '_lio', 'middleware' => 'lio'], function () {
+    Route::post('generate-notification', 'LegacyInterOpController@generateNotification');
     Route::post('/refresh-beatmapset-cache/{beatmapset}', 'LegacyInterOpController@refreshBeatmapsetCache');
     Route::post('/regenerate-beatmapset-covers/{beatmapset}', 'LegacyInterOpController@regenerateBeatmapsetCovers');
+    Route::post('user-achievement/{user}/{achievement}/{beatmap?}', 'LegacyInterOpController@userAchievement')->name('lio.user-achievement');
     Route::post('/user-best-scores-check/{user}', 'LegacyInterOpController@userBestScoresCheck');
+    Route::delete('/user-sessions/{user}', 'LegacyInterOpController@userSessionsDestroy');
+    Route::post('user-index/{user}', 'LegacyInterOpController@userIndex');
     Route::get('/news', 'LegacyInterOpController@news');
 });
 

@@ -40,12 +40,14 @@ return [
         'edited' => 'Sist endret av :editor :update_time.',
         'kudosu_denied' => 'Avvist fra å få kudosu.',
         'message_placeholder_deleted_beatmap' => 'Denne vanskelighetsgraden har blitt slettet så den kan ikke bli diskutert lenger.',
+        'message_placeholder_locked' => 'Diskusjon for dette beatmappet har blitt deaktivert.',
         'message_type_select' => 'Velg kommentartype',
         'reply_notice' => 'Trykk enter for å svare.',
         'reply_placeholder' => 'Skriv din respons her',
-        'require-login' => 'Vennligst logg på for å skrive et innlegg eller svare',
+        'require-login' => 'Vennligst logg inn for å skrive et innlegg eller svare',
         'resolved' => 'Løst',
         'restore' => 'gjenopprett',
+        'show_deleted' => 'Vis slettede',
         'title' => 'Diskusjoner',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Ingen diskusjoner ennå!',
             'hidden' => 'Ingen diskusjon stemmer overens med valgte filter.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Lås diskusjon',
+                'unlock' => 'Lås opp diskusjon',
+            ],
+
+            'prompt' => [
+                'lock' => 'Grunn for låsing',
+                'unlock' => 'Er du sikker på å låse opp?',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Fest',
             'timestamp' => 'Tidsstempel',
             'timestamp_missing' => 'trykk Ctrl+C i redigeringsmodus og lim inn for å legge til et tidsstempel!',
             'title' => 'Ny Diskusjon',
+            'unpin' => 'Løsne',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Sortert etter:',
             'created_at' => 'Opprettingstidspunkt',
             'timeline' => 'Tidslinje',
             'updated_at' => 'Siste oppdatering',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Merk: Dette beatmappet er markert som "under konstruksjon" av skaperen.',
         ],
 
+        'votes' => [
+            'up' => 'Oppstem denne diskusjonen',
+            'down' => 'Nedstem denne diskusjonen',
+        ],
     ],
 
     'hype' => [
@@ -162,7 +181,7 @@ return [
         'required_text' => 'Nominasjoner :current/:required',
         'reset_message_deleted' => 'slettet',
         'title' => 'Nominasjon Status',
-        'unresolved_issues' => 'Det er fortsatt uløste problemer som må tas opp først.',
+        'unresolved_issues' => 'Det er fortsatt uløste problemer som må løses først.',
 
         'reset_at' => [
             'nomination_reset' => 'Nominasjonsprosessen ble tilbakestilt :time_ago av :user med et nytt problem :discussion (:message).',
@@ -178,7 +197,7 @@ return [
     'listing' => [
         'search' => [
             'prompt' => 'skriv inn nøkkelord...',
-            'login_required' => 'Logg på for å søke.',
+            'login_required' => 'Logg inn for å søke.',
             'options' => 'Flere søkemuligheter',
             'supporter_filter' => 'Filtrering ved bruk av :filters krever en aktiv osu!supporter tag',
             'not-found' => 'ingen treff',
@@ -197,6 +216,7 @@ return [
                 'title' => 'Tittel',
                 'artist' => 'Artist',
                 'difficulty' => 'Vanskelighetsgrad',
+                'favourites' => 'Favoritter',
                 'updated' => 'Oppdatert',
                 'ranked' => 'Rangert',
                 'rating' => 'Vurdering',
@@ -205,7 +225,7 @@ return [
                 'nominations' => 'Nominasjoner',
             ],
             'supporter_filter_quote' => [
-                '_' => 'Filtrering av :filters krever en aktiv :link',
+                '_' => 'Filtrering ved bruk av :filters krever en aktiv :link',
                 'link_text' => 'osu!supporter tag',
             ],
         ],
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Alle',
-        'ranked-approved' => 'Rangert & Godkjent',
         'approved' => 'Godkjent',
-        'qualified' => 'Kvalifisert',
-        'loved' => 'Elsket',
-        'faves' => 'Favoritter',
-        'pending' => 'Ventende & WIP',
+        'favourites' => '',
         'graveyard' => 'Gravplassert',
-        'my-maps' => 'Mine Maps',
+        'leaderboard' => '',
+        'loved' => 'Elsket',
+        'mine' => '',
+        'pending' => 'Ventende & WIP',
+        'qualified' => 'Kvalifisert',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Alle',

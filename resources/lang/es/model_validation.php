@@ -55,6 +55,10 @@ return [
         'deleted_parent' => 'Responder a un comentario eliminado no esta permitido.',
     ],
 
+    'follow' => [
+        'invalid' => '',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Solo se puede votar en solicitudes de características.',
@@ -74,6 +78,7 @@ return [
         'topic_poll' => [
             'duplicate_options' => 'Opciones duplicadas no permitidas.',
             'grace_period_expired' => 'No se puede editar una encuesta después de :limit horas',
+            'hiding_results_forever' => '',
             'invalid_max_options' => 'La opciones por usuario no pueden exceder el número de opciones disponibles.',
             'minimum_one_selection' => 'Se requiere un mínimo de una opción por usuario.',
             'minimum_two_options' => 'Se necesitan al menos dos opciones.',
@@ -111,6 +116,7 @@ return [
         'too_long' => 'Se excedió el límite máximo - puedes usar hasta :limit caracteres.',
 
         'change_username' => [
+            'restricted' => '',
             'supporter_required' => [
                 '_' => '¡Debes tener :link para cambiar tu nombre!',
                 'link_text' => 'apoyar a osu!',

@@ -40,12 +40,14 @@ return [
         'edited' => 'Editado pela última vez por :editor :update_time.',
         'kudosu_denied' => 'Recusado de obter kudosu.',
         'message_placeholder_deleted_beatmap' => 'Esta dificuldade foi eliminada por isso poderá não ser mais discutida.',
+        'message_placeholder_locked' => 'A discussão para este beatmap foi desativada.',
         'message_type_select' => 'Selecionar Tipo de Comentário',
         'reply_notice' => 'Prime ENTER para responder.',
         'reply_placeholder' => 'Escreve a tua resposta aqui',
         'require-login' => 'Por favor inicia sessão para publicar ou responder',
         'resolved' => 'Resolvida',
         'restore' => 'restaurar',
+        'show_deleted' => 'Exibir eliminados',
         'title' => 'Discussões',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Ainda sem discussões!',
             'hidden' => 'Nenhuma discussão corresponde ao filtro selecionado.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Bloquear discussão',
+                'unlock' => 'Desbloquear discussão',
+            ],
+
+            'prompt' => [
+                'lock' => 'Razão para o bloqueio',
+                'unlock' => 'Tens a certeza que queres desbloquear?',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Afixar',
             'timestamp' => 'Marca de tempo',
             'timestamp_missing' => 'faz ctrl-c no modo de edição e cola na tua mensagem para adicionares uma marca de tempo!',
             'title' => 'Nova Discussão',
+            'unpin' => 'Desafixar',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Ordenadas por:',
             'created_at' => 'Data de criação',
             'timeline' => 'Cronologia',
             'updated_at' => 'Última atualização',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Nota: Este beatmap está marcado como um trabalho em progresso pelo criador.',
         ],
 
+        'votes' => [
+            'up' => 'Dar positivo a esta discussão',
+            'down' => 'Dar negativo a esta discussão',
+        ],
     ],
 
     'hype' => [
@@ -197,6 +216,7 @@ return [
                 'title' => 'Título',
                 'artist' => 'Artista',
                 'difficulty' => 'Dificuldade',
+                'favourites' => 'Favoritos',
                 'updated' => 'Atualizado',
                 'ranked' => 'Classificado',
                 'rating' => 'Avaliação',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Qualquer',
-        'ranked-approved' => 'Classificados e Aprovados',
         'approved' => 'Aprovados',
-        'qualified' => 'Qualificados',
-        'loved' => 'Adorados',
-        'faves' => 'Favoritos',
-        'pending' => 'Pendente & WIP',
+        'favourites' => '',
         'graveyard' => 'Cemitério',
-        'my-maps' => 'Meus Mapas',
+        'leaderboard' => '',
+        'loved' => 'Adorados',
+        'mine' => '',
+        'pending' => 'Pendente & WIP',
+        'qualified' => 'Qualificados',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Qualquer',

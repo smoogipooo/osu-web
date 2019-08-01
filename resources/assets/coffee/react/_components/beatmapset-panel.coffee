@@ -16,10 +16,13 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{div,a,i,span} = ReactDOMFactories
+import { BeatmapIcon } from 'beatmap-icon'
+import { Img2x } from 'img2x'
+import * as React from 'react'
+import { div,a,i,span } from 'react-dom-factories'
 el = React.createElement
 
-class @BeatmapsetPanel extends React.PureComponent
+export class BeatmapsetPanel extends React.PureComponent
   constructor: (props) ->
     super props
 
@@ -102,9 +105,12 @@ class @BeatmapsetPanel extends React.PureComponent
             src: beatmapset.covers.card
           div className: 'beatmapset-panel__image-overlay'
           div className: 'beatmapset-panel__status-container',
-            if beatmapset.video or beatmapset.storyboard
-              div className: 'beatmapset-panel__video-icon',
+            if beatmapset.video
+              div className: 'beatmapset-panel__extra-icon',
                 i className: 'fas fa-film fa-fw'
+            if beatmapset.storyboard
+              div className: 'beatmapset-panel__extra-icon',
+                i className: 'fas fa-image fa-fw'
             div className: 'beatmapset-status', beatmapset.status
 
           div className: 'beatmapset-panel__title-artist-box',
@@ -162,12 +168,18 @@ class @BeatmapsetPanel extends React.PureComponent
 
             div className: 'beatmapset-panel__icons-box',
               if currentUser?.id
-                a
-                  href: laroute.route 'beatmapsets.download', beatmapset: beatmapset.id
-                  title: osu.trans('beatmapsets.show.details.download._')
-                  className: 'beatmapset-panel__icon js-beatmapset-download-link'
-                  'data-turbolinks': 'false'
-                  i className: 'fas fa-download'
+                if beatmapset.availability.download_disabled
+                  div
+                    title: osu.trans('beatmapsets.availability.disabled')
+                    className: 'beatmapset-panel__icon beatmapset-panel__icon--disabled'
+                    i className: 'fas fa-lg fa-download'
+                else
+                  a
+                    href: laroute.route 'beatmapsets.download', beatmapset: beatmapset.id
+                    title: osu.trans('beatmapsets.show.details.download._')
+                    className: 'beatmapset-panel__icon js-beatmapset-download-link'
+                    'data-turbolinks': 'false'
+                    i className: 'fas fa-lg fa-download'
 
           div className: 'beatmapset-panel__difficulties', difficulties
       a

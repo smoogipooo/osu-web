@@ -20,10 +20,11 @@
 
 return [
     'deleted' => '已删除',
+    'deleted_count' => ':count_delimited 已删除评论|:count_delimited 已删除评论',
     'edited' => ':user 编辑于 :timeago',
     'empty' => '暂无评论。',
+    'load_replies' => '',
     'replies' => '回复',
-    'show_replies' => '显示回复',
     'title' => '评论',
 
     'commentable_name' => [

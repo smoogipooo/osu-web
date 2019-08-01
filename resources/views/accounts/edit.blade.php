@@ -131,6 +131,10 @@
     </div>
 
     <div class="osu-page osu-page--small u-has-anchor">
+        @include('accounts._edit_notifications')
+    </div>
+
+    <div class="osu-page osu-page--small u-has-anchor">
         @include('accounts._edit_password')
     </div>
 
@@ -141,4 +145,16 @@
     <div class="osu-page osu-page--small u-has-anchor">
         @include('accounts._edit_sessions')
     </div>
+
+    <div class="osu-page osu-page--small u-has-anchor">
+        @include('accounts._edit_oauth')
+    </div>
+@endsection
+
+@section("script")
+  <script id="json-authorized-clients" type="application/json">
+    {!! json_encode($authorizedClients) !!}
+  </script>
+
+  @include('layout._extra_js', ['src' => 'js/react/account-edit.js'])
 @endsection

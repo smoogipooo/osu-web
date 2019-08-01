@@ -21,8 +21,15 @@
 return [
     'buttons' => [
       'add' => 'adaugă prieten',
-      'disabled' => '',
+      'disabled' => 'prieteni',
       'remove' => 'elimină prieten',
+    ],
+
+    'index' => [
+        'title' => [
+            '_' => '',
+            'info' => '',
+        ],
     ],
 
     'state' => [

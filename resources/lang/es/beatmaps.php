@@ -40,12 +40,14 @@ return [
         'edited' => 'Última edición por :editor :update_time',
         'kudosu_denied' => 'Negado de obtener kudosu.',
         'message_placeholder_deleted_beatmap' => 'Esta dificultad se ha eliminado, por lo que ya puede ser discutida.',
+        'message_placeholder_locked' => '',
         'message_type_select' => 'Seleccionar tipo de comentario',
         'reply_notice' => 'Presione enter para responder.',
         'reply_placeholder' => 'Escribe tu respuesta aquí',
         'require-login' => 'Inicia sesión para publicar o responder',
         'resolved' => 'Resuelto',
         'restore' => 'restaurar',
+        'show_deleted' => '',
         'title' => 'Discusiones',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => '¡Sin discusiones aún!',
             'hidden' => 'Ninguna discusión coincide con el filtro seleccionado.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
+
+            'prompt' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '',
             'timestamp' => 'Marca de tiempo',
             'timestamp_missing' => '¡Usa Ctrl+C en el modo de edición y pega tu mensaje para agregar una marca de tiempo!',
             'title' => 'Nueva Discusión',
+            'unpin' => '',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Ordenado por:',
             'created_at' => 'Tiempo de creación',
             'timeline' => 'Línea de tiempo',
             'updated_at' => 'Última actualización',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Nota: Este Beatmap fue marcado como trabajo en proceso por el creador.',
         ],
 
+        'votes' => [
+            'up' => '',
+            'down' => '',
+        ],
     ],
 
     'hype' => [
@@ -197,6 +216,7 @@ return [
                 'title' => 'Título',
                 'artist' => 'Artista',
                 'difficulty' => 'Dificultad',
+                'favourites' => 'Favoritos',
                 'updated' => 'Actualizado',
                 'ranked' => 'Ranked',
                 'rating' => 'Calificación',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Cualquiera',
-        'ranked-approved' => 'Rankeados y Aprobados',
         'approved' => 'Aprobados',
-        'qualified' => 'Calificados',
-        'loved' => 'Amados',
-        'faves' => 'Favoritos',
-        'pending' => 'Pendiente y trabajo en progreso',
+        'favourites' => '',
         'graveyard' => 'Abandonados',
-        'my-maps' => 'Mis mapas',
+        'leaderboard' => '',
+        'loved' => 'Amados',
+        'mine' => '',
+        'pending' => 'Pendiente y trabajo en progreso',
+        'qualified' => 'Calificados',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Cualquiera',

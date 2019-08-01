@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited post|:count_delimited posty|:count_delimited postów',
+            'topic_starter' => 'Autor wątku',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Ukryj wyniki tej ankiety.',
+                'hide_results_info' => 'Wyniki ankiety zostaną upublicznione po jej zakończeniu.',
                 'length' => 'Przeprowadź ankietę przez',
                 'length_days_suffix' => 'dni',
                 'length_info' => 'Zostaw puste dla niekończącej się ankiety.',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Ankieta zakończy się :time',
                     'ended' => 'Ankieta zakończyła się :time',
+                    'results_hidden' => 'Wyniki ankiety zostaną upublicznione po jej zakończeniu.',
                     'total' => 'Liczba wszystkich głosów: :count',
                 ],
             ],

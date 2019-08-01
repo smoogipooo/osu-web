@@ -21,8 +21,15 @@
 return [
     'buttons' => [
       'add' => 'thêm bạn',
-      'disabled' => '',
+      'disabled' => 'bạn bè',
       'remove' => 'xóa bạn',
+    ],
+
+    'index' => [
+        'title' => [
+            '_' => '',
+            'info' => '',
+        ],
     ],
 
     'state' => [

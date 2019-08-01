@@ -40,12 +40,14 @@ return [
         'edited' => '最後由 :editor 編輯於 :update_time 。',
         'kudosu_denied' => 'kudosu 被收回',
         'message_placeholder_deleted_beatmap' => '該難度已被刪除，無法繼續討論',
+        'message_placeholder_locked' => '此圖譜的討論已被禁用。',
         'message_type_select' => '選擇回覆類型',
         'reply_notice' => '按下 Enter 以回覆',
         'reply_placeholder' => '在此處輸入您的回覆',
         'require-login' => '回覆前請先登入。',
         'resolved' => '已解決',
         'restore' => '已修復',
+        'show_deleted' => '顯示刪除的項目',
         'title' => '討論區',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => '還沒有討論！',
             'hidden' => '沒有符合過濾條件的討論。',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => '鎖定討論',
+                'unlock' => '解鎖討論',
+            ],
+
+            'prompt' => [
+                'lock' => '鎖定的原因',
+                'unlock' => '確認解鎖？',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '釘選',
             'timestamp' => '時間戳',
             'timestamp_missing' => '在編輯模式下按 Ctrl+C 並至您輸入的對話框中按 Ctrl+V 以加入時間戳！',
             'title' => '新的討論',
+            'unpin' => '取消釘選',
         ],
 
         'show' => [
@@ -100,10 +116,9 @@ return [
         ],
 
         'sort' => [
-            '_' => '排序：',
-            'created_at' => '',
-            'timeline' => '',
-            'updated_at' => '',
+            'created_at' => '建立時間',
+            'timeline' => '時間軸',
+            'updated_at' => '最後更新',
         ],
 
         'stats' => [
@@ -124,6 +139,10 @@ return [
             'wip' => '注意：這張圖譜被作者標記為 WIP（半成品）',
         ],
 
+        'votes' => [
+            'up' => '正評此討論',
+            'down' => '負評此討論',
+        ],
     ],
 
     'hype' => [
@@ -194,15 +213,16 @@ return [
                 'played' => '玩過',
             ],
             'sorting' => [
-                'title' => '',
-                'artist' => '',
-                'difficulty' => '',
-                'updated' => '',
-                'ranked' => '',
-                'rating' => '',
-                'plays' => '',
-                'relevance' => '',
-                'nominations' => '',
+                'title' => '曲名',
+                'artist' => '演出者',
+                'difficulty' => '難度',
+                'favourites' => '我的最愛',
+                'updated' => '已更新',
+                'ranked' => '進榜',
+                'rating' => '評分',
+                'plays' => '遊玩次數',
+                'relevance' => '相關度',
+                'nominations' => '提名狀態',
             ],
             'supporter_filter_quote' => [
                 '_' => '按 :filters 篩選需先成為 :link',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => '所有',
-        'ranked-approved' => '進榜/批准',
         'approved' => '批准',
-        'qualified' => '提名',
-        'loved' => 'Loved',
-        'faves' => '我的最愛',
-        'pending' => 'Pending & WIP',
+        'favourites' => '',
         'graveyard' => '拋棄',
-        'my-maps' => '我的圖譜',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => 'Pending & WIP',
+        'qualified' => '提名',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => '所有',
@@ -303,7 +324,7 @@ return [
         'D' => 'D',
     ],
     'panel' => [
-        'playcount' => '',
-        'favourites' => '',
+        'playcount' => '遊玩次數：:count',
+        'favourites' => '收藏次數：:count',
     ],
 ];

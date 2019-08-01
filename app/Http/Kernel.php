@@ -40,9 +40,9 @@ class Kernel extends HttpKernel
         Middleware\VerifyCsrfToken::class,
         Middleware\SetLocale::class,
         Middleware\AutologinFromLegacyCookie::class,
+        Middleware\UpdateUserLastvisit::class,
         Middleware\VerifyPrivilegedUser::class,
         Middleware\CheckUserBanStatus::class,
-        Middleware\UpdateUserLastvisit::class,
         Middleware\TurbolinksSupport::class,
         \ChaseConey\LaravelDatadogHelper\Middleware\LaravelDatadogMiddleware::class,
     ];
@@ -62,11 +62,12 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth-custom-api' => Middleware\AuthApi::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'check-user-restricted' => Middleware\CheckUserRestricted::class,
         'guest' => Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'require-scopes' => Middleware\RequireScopes::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verify-user' => Middleware\VerifyUser::class,
     ];
 }

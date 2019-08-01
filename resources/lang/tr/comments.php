@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'silindi',
+    'deleted_count' => ':count_delimited silinmiş yorum|:count_delimited silinmiş yorum',
     'edited' => ':timeago tarihinde :user tarafından düzenlendi',
     'empty' => 'Henüz yorum yok.',
+    'load_replies' => '',
     'replies' => 'Yanıtlar',
-    'show_replies' => 'yanıtları göster',
     'title' => 'Yorumlar',
 
     'commentable_name' => [
@@ -43,8 +44,8 @@ return [
     ],
 
     'guest_button' => [
-        'new' => '',
-        'reply' => '',
+        'new' => 'Yorum yazmak için oturum açılsın mı',
+        'reply' => 'Cevaplamak için giriş yap',
     ],
 
     'index' => [

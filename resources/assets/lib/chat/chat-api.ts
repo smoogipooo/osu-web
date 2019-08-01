@@ -55,9 +55,10 @@ export default class ChatAPI {
     });
   }
 
-  newConversation(userId: number, message: string): Promise<ApiResponses.NewConversationJSON> {
+  newConversation(userId: number, message: string, action?: boolean): Promise<ApiResponses.NewConversationJSON> {
     return new Promise((resolve, reject) => {
       $.post(laroute.route('chat.new'), {
+        is_action: action,
         message,
         target_id: userId,
       }).done((response) => {
@@ -68,9 +69,25 @@ export default class ChatAPI {
     });
   }
 
-  sendMessage(channelId: number, message: string): Promise<ApiResponses.SendMessageJSON> {
+  partChannel(channelId: number, userId: number) {
+    return new Promise((resolve, reject) => {
+      $.ajax(laroute.route('chat.channels.part', {
+        channel: channelId,
+        user: userId,
+      }), {
+        method: 'DELETE',
+      }).done((response) => {
+        resolve(response);
+      }).fail((error) => {
+        reject(error);
+      });
+    });
+  }
+
+  sendMessage(channelId: number, message: string, action?: boolean): Promise<ApiResponses.SendMessageJSON> {
     return new Promise((resolve, reject) => {
       $.post(laroute.route('chat.channels.messages.store', {channel: channelId}), {
+        is_action: action,
         message,
         target_id: channelId,
         target_type: 'channel',

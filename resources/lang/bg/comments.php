@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'изтрито',
+    'deleted_count' => ':count_delimited изтрит коментар|:count_delimited изтрити коментари',
     'edited' => 'редактирано :timeago от :user',
     'empty' => 'Все още няма коментари.',
+    'load_replies' => '',
     'replies' => 'Отговори',
-    'show_replies' => 'покажи отговорите',
     'title' => 'Коментари',
 
     'commentable_name' => [

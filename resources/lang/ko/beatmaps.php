@@ -40,12 +40,14 @@ return [
         'edited' => ':update_time에 :editor님에 의해 마지막으로 수정됨',
         'kudosu_denied' => 'kudosu 획득이 불가능합니다.',
         'message_placeholder_deleted_beatmap' => '제거된 난이도이므로 더 이상의 토론이 불가능합니다.',
+        'message_placeholder_locked' => '이 비트맵에 대한 토론이 비활성화되었습니다.',
         'message_type_select' => '게시할 답글의 형식을 선택하세요',
         'reply_notice' => '답변을 보내려면 엔터를 누르세요.',
         'reply_placeholder' => '보내실 답변의 내용을 입력하세요.',
         'require-login' => '답글을 올리려면 로그인해 주세요',
         'resolved' => '해결됨',
         'restore' => '복구됨',
+        'show_deleted' => '삭제된 내용 표시',
         'title' => '토론',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => '아직 토론이 아무것도 없습니다!',
             'hidden' => '검색 결과에 해당하는 토론이 없습니다.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => '토론 잠금',
+                'unlock' => '토론 잠금 해제',
+            ],
+
+            'prompt' => [
+                'lock' => '잠긴 이유',
+                'unlock' => '잠금 해제하시겠습니까?',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '고정',
             'timestamp' => '타임스탬프',
             'timestamp_missing' => '비트맵 편집 모드에서 Ctrl-C를 눌러 복사하고 이 곳에 붙여넣어 타임스탬프를 추가할 수 있습니다!',
             'title' => '새 토론',
+            'unpin' => '고정 해제',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => '정렬 기준:',
             'created_at' => '만든 날짜',
             'timeline' => '타임라인',
             'updated_at' => '마지막 업데이트',
@@ -124,6 +139,10 @@ return [
             'wip' => '안내: 이 비트맵은 제작자가 \'미완성\'으로 표시한 맵입니다.',
         ],
 
+        'votes' => [
+            'up' => '이 토론을 추천하기',
+            'down' => '이 토론을 비추천하기',
+        ],
     ],
 
     'hype' => [
@@ -197,6 +216,7 @@ return [
                 'title' => '제목',
                 'artist' => '아티스트',
                 'difficulty' => '난이도',
+                'favourites' => '즐겨찾기',
                 'updated' => '최근 순',
                 'ranked' => 'Ranked',
                 'rating' => '평가',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => '모두',
-        'ranked-approved' => 'Ranked & Approved',
         'approved' => 'Approved',
-        'qualified' => 'Qualified',
-        'loved' => 'Loved',
-        'faves' => '즐겨찾기',
-        'pending' => '보류 중 & 작업 중',
+        'favourites' => '',
         'graveyard' => 'Graveyard',
-        'my-maps' => '내 비트맵',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => '보류 중 & 작업 중',
+        'qualified' => 'Qualified',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => '모두',

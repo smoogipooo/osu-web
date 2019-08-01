@@ -74,7 +74,8 @@ return [
         ],
 
         'info' => [
-            'post_count' => '',
+            'post_count' => ': sınırlandırılmış mesaj sayısı |: sınırlandırılmış mesaj sayıları',
+            'topic_starter' => '',
         ],
     ],
 
@@ -171,7 +172,7 @@ return [
         'create' => [
             'create_poll' => 'Anket oluşturma',
 
-            'preview' => '',
+            'preview' => 'Yazı önizleme',
 
             'create_poll_button' => [
                 'add' => 'Anket oluştur',
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Anket sonuçlarını gizle.',
+                'hide_results_info' => 'Sadece anket sonuçlandıktan sonra gösterilecekler.',
                 'length' => 'Şu süreyle anketi sürdür',
                 'length_days_suffix' => 'gün',
                 'length_info' => 'Hiç bitmeyen bir anket için boş bırakın',
@@ -197,7 +200,7 @@ return [
         ],
 
         'index' => [
-            'feature_votes' => '',
+            'feature_votes' => 'yıldız öncelik',
             'replies' => 'yanıt',
             'views' => 'görülme',
         ],
@@ -274,9 +277,9 @@ return [
                 'do' => 'Bu isteği destekle',
 
                 'info' => [
-                    '_' => '',
-                    'feature_request' => '',
-                    'supporters' => '',
+                    '_' => 'Bu bir: özellik isteğidir. Özellik istekleri aşağıdakiler tarafından oylanabilir: destek Personeli.',
+                    'feature_request' => 'özellik isteği',
+                    'supporters' => 'destek Personeli',
                 ],
 
                 'user' => [
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Anket :time tarihinde bitecek',
                     'ended' => 'Anket :time tarihinde bitti',
+                    'results_hidden' => 'Sonuçlar anket bittikten sonra gösterilecek.',
                     'total' => 'Toplam oy: :count',
                 ],
             ],

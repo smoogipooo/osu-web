@@ -30,17 +30,17 @@ return [
     ],
 
     'buttons' => [
-        'admin' => '',
+        'admin' => 'Admin',
         'back_to_previous' => 'Revino la poziția anterioară',
         'back_to_top' => 'Înapoi sus',
         'cancel' => 'Anulează',
         'change' => 'modifică',
         'click_to_copy' => 'faceți clic pentru a copia în clipboard',
         'click_to_copy_copied' => 'copiat în clipboard!',
-        'collapse' => '',
+        'collapse' => 'restrânge',
         'delete' => 'Șterge',
         'edit' => 'Editează',
-        'expand' => '',
+        'expand' => 'extinde',
         'hide' => 'ascunde',
         'permalink' => 'link permanent',
         'permalink_copied' => 'link copiat',
@@ -55,9 +55,15 @@ return [
         'search' => 'Caută',
         'see_more' => 'vezi mai mult',
         'show' => 'arată',
+        'show_deleted' => '',
         'show_more' => 'arată mai mult',
-        'show_more_options' => '',
+        'show_more_options' => 'arată mai multe opţiuni',
         'upload_image' => 'încarcă imaginea',
+
+        'watch' => [
+            'to_0' => '',
+            'to_1' => '',
+        ],
     ],
 
     'count' => [
@@ -70,6 +76,7 @@ return [
         'minutes' => ':count minut|:count minute',
         'months' => ':count lună|:count luni',
         'second_short_unit' => 'secundă|secunde',
+        'update' => '',
         'years' => ':count an|:count ani',
     ],
 

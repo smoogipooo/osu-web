@@ -26,8 +26,10 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Du har nådd din nominasjons-grense for dagen, vennligst prøv igjen i morgen.',
+            'full_bn_required' => 'Du må være en full nominator for å kunne utføre denne kvalifiserende nominasjonen.',
+            'full_bn_required_hybrid' => 'Du må være en full nominator for å nominere beatmapsets med mer enn en spillmodus.',
             'incorrect_state' => 'Feil under utføringen av denne handlingen, prøv å oppdatere siden.',
-            'owner' => "Du kan ikke nominere ditt eget beatmap.",
+            'owner' => "Du kan ikke nominere din egen beatmap.",
         ],
         'resolve' => [
             'not_owner' => 'Bare personen som startet tråden og beatmapeieren kan markere en diskusjon som løst.',
@@ -49,10 +51,13 @@ return [
             'system_generated' => 'Innlegg som er automatisk generert kan ikke bli endret.',
             'not_owner' => 'Bare senderen kan redigere innlegget.',
         ],
+        'store' => [
+            'beatmapset_locked' => 'Dette beatmappet har blitt låst for diskusjon.',
+        ],
     ],
 
     'chat' => [
-        'blocked' => 'Kan ikke sende melding til en bruker som blokkerer deg eller som du har blokkert.',
+        'blocked' => 'Kan ikke sende en melding til en bruker som blokkerer deg eller som du har blokkert.',
         'friends_only' => 'Brukeren blokkerer meldinger fra personer som ikke er på deres venneliste.',
         'moderated' => 'Denne kanalen er for tiden moderert.',
         'no_access' => 'Du har ingen adgang til denne kanalen.',
@@ -98,13 +103,13 @@ return [
 
         'topic' => [
             'reply' => [
-                'double_post' => 'Vær så snill å rediger ditt siste innlegg, i steden for å legge til et nytt innlegg.',
+                'double_post' => 'Vær så snill å rediger det siste innlegget ditt, i steden for å legge til et nytt innlegg.',
                 'locked' => 'Kan ikke svare på en låst tråd.',
                 'no_forum_access' => 'Adgang til forespurt forum kreves.',
                 'no_permission' => 'Ingen tillatelse til å svare.',
 
                 'user' => [
-                    'require_login' => 'Vennligst logg på for å svare.',
+                    'require_login' => 'Vennligst logg inn for å svare.',
                     'restricted' => "Kan ikke svare mens kontoen din er begrenset.",
                     'silenced' => "Kan ikke svare mens kontoen din er stum.",
                 ],
@@ -118,7 +123,8 @@ return [
 
             'vote' => [
                 'no_forum_access' => 'Adgang til forespurt forum kreves.',
-                'over' => 'Avstemningen er over, og derfor kan det ikke stemmes lenger.',
+                'over' => 'Avstemningen er over, og derfor kan det ikke stemmes på lenger.',
+                'play_more' => 'Du må spille mer før du stemmer på forum.',
                 'voted' => 'Å endre stemme er ikke tillatt.',
 
                 'user' => [
@@ -129,7 +135,7 @@ return [
             ],
 
             'watch' => [
-                'no_forum_access' => 'Tilgang til forespurte forum er nødvendig.',
+                'no_forum_access' => 'Adgang til forespurt forum er nødvendig.',
             ],
         ],
 
@@ -138,6 +144,9 @@ return [
                 'uneditable' => 'Ugyldig cover spesifisert.',
                 'not_owner' => 'Bare eieren kan redigere coveret.',
             ],
+            'store' => [
+                'forum_not_allowed' => 'Dette forumet aksepterer ikke emneomslag.',
+            ],
         ],
 
         'view' => [
@@ -145,7 +154,7 @@ return [
         ],
     ],
 
-    'require_login' => 'Vennligst logg på for å fortsette.',
+    'require_login' => 'Vennligst logg inn for å fortsette.',
 
     'unauthorized' => 'Ingen tilgang.',
 
@@ -157,8 +166,8 @@ return [
         'page' => [
             'edit' => [
                 'locked' => 'Brukersiden er låst.',
-                'not_owner' => 'Kan bare redigere egne brukersiden.',
-                'require_supporter_tag' => 'osu!supporter merke kreves.',
+                'not_owner' => 'Kan kun redigere egen brukerside.',
+                'require_supporter_tag' => 'osu!supporter tag kreves.',
             ],
         ],
     ],

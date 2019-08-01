@@ -28,6 +28,7 @@ use App\Libraries\Transactions\AfterCommit;
 use App\Models\Beatmapset;
 use App\Models\Elasticsearch;
 use App\Models\Log;
+use App\Models\Notification;
 use App\Models\User;
 use App\Traits\Validatable;
 use Carbon\Carbon;
@@ -48,6 +49,7 @@ use Illuminate\Database\QueryException;
  * @property int $osu_starpriority
  * @property \Illuminate\Database\Eloquent\Collection $pollOptions PollOption
  * @property \Illuminate\Database\Eloquent\Collection $pollVotes PollVote
+ * @property bool $poll_hide_results
  * @property int $poll_last_vote
  * @property int $poll_length
  * @property mixed $poll_length_days
@@ -125,6 +127,7 @@ class Topic extends Model implements AfterCommit
     private $_issueTags;
 
     protected $casts = [
+        'poll_hide_results' => 'boolean',
         'poll_vote_change' => 'boolean',
         'topic_approved' => 'boolean',
     ];
@@ -323,6 +326,11 @@ class Topic extends Model implements AfterCommit
     public function logs()
     {
         return $this->hasMany(Log::class, 'topic_id');
+    }
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class, 'notifiable');
     }
 
     public function featureVotes()
@@ -758,19 +766,6 @@ class Topic extends Model implements AfterCommit
                 $this->topic_last_poster_colour = $lastPost->user->user_colour;
             }
         }
-    }
-
-    public function setCover($path, $user)
-    {
-        if ($this->cover === null) {
-            TopicCover::upload($path, $user, $this);
-        } else {
-            $this->cover->storeFile($path);
-            $this->cover->user()->associate($user);
-            $this->cover->save();
-        }
-
-        return $this->fresh();
     }
 
     public function lock($lock = true)

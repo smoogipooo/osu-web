@@ -39,14 +39,14 @@ class UserGroup extends Model
         'default' => 2,
         'gmt' => 4,
         'admin' => 5,
-        'qat' => 7,
+        'nat' => 7,
         'dev' => 11,
         'alumni' => 16,
-        'hax' => 17,
         'mod' => 18,
         'bng' => 28,
         'bot' => 29,
         'loved' => 31,
+        'bng_limited' => 32,
     ];
 
     public function group()

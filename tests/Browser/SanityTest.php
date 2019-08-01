@@ -96,7 +96,7 @@ class SanityTest extends DuskTestCase
                 'group_id' => self::$scaffolding['_group']->getKey(),
             ]);
             // satisfy minimum playcount for forum posting
-            self::$scaffolding['user']->monthlyPlaycounts()->save(factory(\App\Models\UserMonthlyPlaycount::class)->make());
+            self::$scaffolding['user']->statisticsOsu()->save(factory(\App\Models\UserStatistics\Osu::class)->make(['playcount' => config('osu.forum.minimum_plays')]));
 
             self::$scaffolding['topic'] = factory(\App\Models\Forum\Topic::class)->create([
                 'topic_poster' => self::$scaffolding['user']->getKey(),
@@ -333,10 +333,7 @@ class SanityTest extends DuskTestCase
 
     public function checkAdminPermission(Browser $browser, \Illuminate\Routing\Route $route)
     {
-        $adminRestricted = [
-            'comments.index',
-            'comments.show',
-        ];
+        $adminRestricted = [];
 
         if (starts_with($route->uri, 'admin') || in_array($route->getName(), $adminRestricted, true)) {
             // TODO: retry and check page as admin? (will affect subsequent tests though, so figure out how to deal with that..)

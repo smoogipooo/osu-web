@@ -29,7 +29,7 @@ return [
         ],
 
         'email' => [
-            'current' => '現在のメール アドレス',
+            'current' => '現在のメールアドレス',
             'new' => '新しいメールアドレス',
             'new_confirmation' => '新しいメールアドレス（再入力）',
             'title' => 'メールアドレス',
@@ -58,18 +58,23 @@ return [
 
         'signature' => [
             'title' => '署名',
-            'update' => '適用',
+            'update' => '更新',
         ],
     ],
 
+    'oauth' => [
+        'title' => '',
+        'authorized_clients' => '',
+    ],
+
     'update_email' => [
-        'email_subject' => 'osu! メールアドレス変更の確認',
-        'update' => '適用',
+        'email_subject' => 'メールアドレス変更の確認',
+        'update' => '更新',
     ],
 
     'update_password' => [
-        'email_subject' => 'osu!パスワード変更の確認',
-        'update' => '適用',
+        'email_subject' => 'パスワード変更の確認',
+        'update' => '更新',
     ],
 
     'playstyles' => [
@@ -82,16 +87,21 @@ return [
 
     'privacy' => [
         'title' => 'プライバシー',
-        'friends_only' => '友達リストにいない人からのプライベートメッセージをブロックする',
+        'friends_only' => 'フレンドリストにいない人からのプライベートメッセージをブロックする',
         'hide_online' => 'オンライン状態を隠す',
+    ],
+
+    'notifications' => [
+        'title' => '通知',
+        'topic_auto_subscribe' => '作成した新しいフォーラムトピックに関する通知を自動的に有効にします',
     ],
 
     'security' => [
         'current_session' => '現在',
-        'end_session' => 'セッションを終了',
-        'end_session_confirmation' => 'すぐにこのセッションを終了してよろしいですか？',
-        'last_active' => '最終ログイン:',
+        'end_session' => 'セッション終了',
+        'end_session_confirmation' => 'このデバイスでのセッションが終了します。本当によろしいですか？',
+        'last_active' => '最終ログイン：',
         'title' => 'セキュリティ',
-        'web_sessions' => 'webでのセッション',
+        'web_sessions' => 'webセッション',
     ],
 ];

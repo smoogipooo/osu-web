@@ -33,15 +33,7 @@ const options = {
 
 const client = Shopify.buildClient(options);
 
-interface LineItem {
-  quantity: number;
-  variantId: string;
-}
-
 export class Store {
-  static init(sharedContext: Window) {
-    sharedContext.Store = sharedContext.Store || new Store();
-  }
 
   private constructor() {
     $(document).on('click', '.js-store-checkout', this.beginCheckout.bind(this));
@@ -52,6 +44,10 @@ export class Store {
     });
 
     $('.js-store-checkout').prop('disabled', false);
+  }
+
+  static init(sharedContext: Window) {
+    sharedContext.Store = sharedContext.Store || new Store();
   }
 
   async beginCheckout(event: Event) {

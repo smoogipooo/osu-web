@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'deleted',
+    'deleted_count' => ':count_delimited deleted comment|:count_delimited deleted comments',
     'edited' => 'edited :timeago by :user',
     'empty' => 'No comments yet.',
+    'load_replies' => 'load replies',
     'replies' => 'Replies',
-    'show_replies' => 'show replies',
     'title' => 'Comments',
 
     'commentable_name' => [
@@ -62,8 +63,8 @@ return [
 
     'show' => [
         'title' => [
-            '_' => 'Comments :info',
-            'info' => 'Detail',
+            '_' => 'Comments',
+            'info' => 'Comments',
         ],
     ],
 ];

@@ -40,12 +40,14 @@ return [
         'edited' => 'Sidst redigeret af :editor :update_time.',
         'kudosu_denied' => 'Nægtet fra at kunne modtage kudosu.',
         'message_placeholder_deleted_beatmap' => 'Denne sværhedsgrad er blevet slettet så den kan ikke længere blive diskuteret.',
+        'message_placeholder_locked' => 'Diskussion for dette beatmap er blevet deaktiveret.',
         'message_type_select' => 'Vælg kommentar-type',
         'reply_notice' => 'Tryk enter for at svare.',
         'reply_placeholder' => 'Skriv dit svar her',
         'require-login' => 'Log ind for at slå op eller svare',
         'resolved' => 'Løst',
         'restore' => 'gendan',
+        'show_deleted' => '',
         'title' => 'Diskussioner',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Ingen diskussioner endnu!',
             'hidden' => 'Ingen diskussioner matchede det valgte filter.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Lås diskussion',
+                'unlock' => 'Lås op for diskussion',
+            ],
+
+            'prompt' => [
+                'lock' => 'Årsag for låsning',
+                'unlock' => 'Er du sikker på at du vil låse op?',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Fastgør',
             'timestamp' => 'Tidsstempel',
             'timestamp_missing' => 'Tryk ctrl-c i edit mode og indsæt i din besked for at tilføje tidsstempel!',
             'title' => 'Ny diskussion',
+            'unpin' => 'Frigør',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Sorteret efter:',
             'created_at' => 'Oprettelsestidspunkt',
             'timeline' => 'Tidslinje',
             'updated_at' => '',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Notat: Dette beatmap er blevet markeret som "Under konstruktion" af skaberen.',
         ],
 
+        'votes' => [
+            'up' => '',
+            'down' => '',
+        ],
     ],
 
     'hype' => [
@@ -197,9 +216,10 @@ return [
                 'title' => 'Titel',
                 'artist' => 'Kunstner',
                 'difficulty' => 'Sværhedsgrad',
+                'favourites' => 'Favoritter',
                 'updated' => 'Opdateret',
                 'ranked' => 'Rangeret',
-                'rating' => '',
+                'rating' => 'Vurdering',
                 'plays' => 'Afspilninger',
                 'relevance' => '',
                 'nominations' => 'Nomineringer',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Vilkårlig',
-        'ranked-approved' => 'Ranked & Godkendt',
         'approved' => 'Godkendt',
-        'qualified' => 'Kvalificeret',
-        'loved' => 'Loved',
-        'faves' => 'Favoritter',
-        'pending' => 'Afventende & WIP',
+        'favourites' => '',
         'graveyard' => 'Kirkegård',
-        'my-maps' => 'Mine Maps',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => 'Afventende & WIP',
+        'qualified' => 'Kvalificeret',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Vilkårlig',

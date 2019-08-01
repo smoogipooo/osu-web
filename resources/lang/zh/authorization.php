@@ -26,6 +26,8 @@ return [
         ],
         'nominate' => [
             'exhausted' => '你今天的提名次数已达上限，请明天再试。',
+            'full_bn_required' => '您必须是一个完整的提名者，才能执行这一资格提名。',
+            'full_bn_required_hybrid' => '您必须是一个全称提名者，以提名包含多于一个游戏模式的谱图。',
             'incorrect_state' => '操作出错了，请尝试刷新页面。',
             'owner' => "不能提名自己的谱面。",
         ],
@@ -48,6 +50,9 @@ return [
         'edit' => [
             'system_generated' => '无法编辑自动回复。',
             'not_owner' => '只有作者可以编辑。',
+        ],
+        'store' => [
+            'beatmapset_locked' => '该谱面因需要探讨而被锁定。',
         ],
     ],
 
@@ -119,6 +124,7 @@ return [
             'vote' => [
                 'no_forum_access' => '没有权限，无法进入该板块。',
                 'over' => '投票已结束！',
+                'play_more' => '要在论坛中投票，你需要玩更长时间的游戏。',
                 'voted' => '不允许修改投票。',
 
                 'user' => [
@@ -137,6 +143,9 @@ return [
             'edit' => [
                 'uneditable' => '指定的题图不可用。',
                 'not_owner' => '只有楼主可以编辑题图。',
+            ],
+            'store' => [
+                'forum_not_allowed' => '本论坛不接受主题涵盖范围。',
             ],
         ],
 

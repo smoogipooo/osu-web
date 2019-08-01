@@ -26,6 +26,8 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'You have reached your nomination limit for the day, please try again tomorrow.',
+            'full_bn_required' => 'You must be a full nominator to perform this qualifying nomination.',
+            'full_bn_required_hybrid' => 'You must be a full nominator to nominate beatmap sets with more than one game mode.',
             'incorrect_state' => 'Error performing that action, try refreshing the page.',
             'owner' => "Can't nominate own beatmap.",
         ],
@@ -34,7 +36,7 @@ return [
         ],
 
         'store' => [
-            'mapper_note_wrong_user' => 'Only beatmap owner or nominator/QAT group member can post mapper notes.',
+            'mapper_note_wrong_user' => 'Only beatmap owner or nominator/NAT group member can post mapper notes.',
         ],
 
         'vote' => [
@@ -48,6 +50,9 @@ return [
         'edit' => [
             'system_generated' => 'Automatically generated post can not be edited.',
             'not_owner' => 'Only the poster can edit post.',
+        ],
+        'store' => [
+            'beatmapset_locked' => 'This beatmap is locked for discussion.',
         ],
     ],
 
@@ -119,6 +124,7 @@ return [
             'vote' => [
                 'no_forum_access' => 'Access to requested forum is required.',
                 'over' => 'Polling is over and can not be voted on anymore.',
+                'play_more' => 'You need to play more before voting on forum.',
                 'voted' => 'Changing vote is not allowed.',
 
                 'user' => [
@@ -137,6 +143,9 @@ return [
             'edit' => [
                 'uneditable' => 'Invalid cover specified.',
                 'not_owner' => 'Only owner can edit cover.',
+            ],
+            'store' => [
+                'forum_not_allowed' => 'This forum does not accept topic covers.',
             ],
         ],
 

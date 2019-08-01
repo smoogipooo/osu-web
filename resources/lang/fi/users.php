@@ -132,6 +132,7 @@ return [
         'is_supporter' => 'Tukija',
         'joined_at' => 'Liittyi :date',
         'lastvisit' => 'Nähty viimeksi :date',
+        'lastvisit_online' => 'Tällä hetkellä paikalla',
         'missingtext' => 'Taisit tehdä kirjoitusvirheen! (tai käyttäjällä on porttikielto)',
         'origin_country' => 'Maasta :country',
         'page_description' => 'osu! - Kaikki mitä olet koskaan halunnut tietää :username:sta!',
@@ -221,7 +222,7 @@ return [
                 'total_info' => 'Perustuu käyttäjän tekemään vaikutukseen beatmappien moderoinnissa. Katso <a href="'.osu_url('user.kudosu').'">tämä sivu</a> saadaksesi lisätietoja.',
 
                 'entry' => [
-                    'amount' => ':amount kudosun| :amount kudosua',
+                    'amount' => ':amount kudosun',
                     'empty' => "Tämä käyttäjä ei ole saanut yhtään kudosua!",
 
                     'beatmap_discussion' => [
@@ -286,7 +287,7 @@ return [
             ],
             'account_standing' => [
                 'title' => 'Tilin tila',
-                'bad_standing' => "käyttäjä <strong>:username</strong> käyttäjä ei ole hyvällä mallilla :(",
+                'bad_standing' => "<strong>:username</strong> ei ole käyttäytynyt hyvin :(",
                 'remaining_silence' => '<strong>:username</strong> pystyy puhumaan seuraavan kerran :duration.',
 
                 'recent_infringements' => [
@@ -350,10 +351,10 @@ return [
             'hit_accuracy' => 'Tarkkuus',
             'level' => 'Taso :level',
             'level_progress' => 'Eteneminen seuraavalle tasolle',
-            'maximum_combo' => 'Korkein Combo',
+            'maximum_combo' => 'Suurin combo',
             'medals' => 'Mitalit',
             'play_count' => 'Pelikertoja',
-            'play_time' => 'Pelaamisaika yhteensä',
+            'play_time' => 'Pelattu aika',
             'ranked_score' => 'Tilastopisteet',
             'replays_watched_by_others' => 'Muiden Katsomat Uusinnat',
             'score_ranks' => 'Luokitukset',
@@ -361,7 +362,9 @@ return [
             'total_score' => 'Kokonaispisteet',
         ],
     ],
+
     'status' => [
+        'all' => 'Kaikki',
         'online' => 'Paikalla',
         'offline' => 'Poissa',
     ],

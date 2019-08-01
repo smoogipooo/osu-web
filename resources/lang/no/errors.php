@@ -20,7 +20,7 @@
 
 return [
     'codes' => [
-        'http-401' => 'Vennligst logg på for å fortsette.',
+        'http-401' => 'Vennligst logg inn for å fortsette.',
         'http-403' => 'Ingen tillatelse.',
         'http-404' => 'Fantes ikke.',
         'http-429' => 'For mange forsøk. Prøv igjen senere.',
@@ -34,7 +34,10 @@ return [
         'invalid_mode' => 'Ugyldig spillmodus angitt.',
         'standard_converts_only' => 'Ingen spillforsøk på dette beatmappet er tilgjengelig for den forespurte spillmodusen på denne vanskelighetsgraden.',
     ],
-    'logged_out' => 'Du har blitt avlogget. Vennligst logg på og prøv på nytt.',
+    'checkout' => [
+        'generic' => 'En feil oppstod under klargjøring av kjøpet ditt.',
+    ],
+    'logged_out' => 'Du har blitt logget ut. Vennligst logg inn og prøv på nytt.',
     'supporter_only' => 'Du må være en osu!supporter for å bruke denne funksjonen.',
     'no_restricted_access' => 'Du kan ikke utføre denne handlingen mens kontoen din er i begrenset tilstand.',
     'unknown' => 'En ukjent feil har oppstått.',

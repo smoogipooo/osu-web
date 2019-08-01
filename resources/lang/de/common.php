@@ -55,9 +55,15 @@ return [
         'search' => 'Suchen',
         'see_more' => 'mehr anzeigen',
         'show' => 'anzeigen',
+        'show_deleted' => 'Gelöschte anzeigen',
         'show_more' => 'mehr anzeigen',
         'show_more_options' => 'mehr Optionen anzeigen',
         'upload_image' => 'bild hochladen',
+
+        'watch' => [
+            'to_0' => 'Nicht mehr beobachten',
+            'to_1' => 'Beobachten',
+        ],
     ],
 
     'count' => [
@@ -70,6 +76,7 @@ return [
         'minutes' => ':count Minute|:count Minuten',
         'months' => ':count monat|:count monate',
         'second_short_unit' => 'sek.|sek.',
+        'update' => ':count_delimited Update|:count_delimited Updates',
         'years' => ':count jahr|:count jahre',
     ],
 

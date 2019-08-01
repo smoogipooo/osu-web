@@ -32,7 +32,6 @@ use League\Fractal;
 class BeatmapsetTransformer extends Fractal\TransformerAbstract
 {
     protected $availableIncludes = [
-        'availability',
         'beatmaps',
         'converts',
         'current_user_attributes',
@@ -81,7 +80,12 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
             'status' => $beatmapset->status(),
             'has_scores' => $beatmapset->hasScores(),
             'discussion_enabled' => $beatmapset->discussion_enabled,
+            'discussion_locked' => $beatmapset->discussion_locked,
             'can_be_hyped' => $beatmapset->canBeHyped(),
+            'availability' => [
+                'download_disabled' => $beatmapset->download_disabled,
+                'more_information' => $beatmapset->download_disabled_url,
+            ],
             'hype' => [
                 'current' => $beatmapset->hype,
                 'required' => $beatmapset->requiredHype(),
@@ -92,20 +96,6 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
             ],
             'legacy_thread_url' => $beatmapset->thread_id !== 0 ? osu_url('legacy-forum-thread-prefix').$beatmapset->thread_id : null,
         ];
-    }
-
-    public function includeAvailability(Beatmapset $beatmapset)
-    {
-        if (!$beatmapset->download_disabled && !present($beatmapset->download_disabled_url)) {
-            return;
-        }
-
-        return $this->item($beatmapset, function ($beatmapset) {
-            return [
-                'download_disabled' => $beatmapset->download_disabled,
-                'more_information' => $beatmapset->download_disabled_url,
-            ];
-        });
     }
 
     public function includeCurrentUserAttributes(Beatmapset $beatmapset)

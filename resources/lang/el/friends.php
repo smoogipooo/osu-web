@@ -21,8 +21,15 @@
 return [
     'buttons' => [
       'add' => 'προσθήκη φίλου',
-      'disabled' => '',
+      'disabled' => 'φίλοι',
       'remove' => 'διαγραφή φίλου',
+    ],
+
+    'index' => [
+        'title' => [
+            '_' => '',
+            'info' => '',
+        ],
     ],
 
     'state' => [

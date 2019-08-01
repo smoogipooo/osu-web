@@ -39,14 +39,6 @@ class ChangelogController extends Controller
     {
         $this->getUpdateStreams();
 
-        $chartConfig = Cache::remember(
-            'chart_config_global',
-            config('osu.changelog.build_history_interval'),
-            function () {
-                return $this->chartConfig(null);
-            }
-        );
-
         $search = [
             'stream' => presence(request('stream')),
             'from' => presence(request('from')),
@@ -65,7 +57,7 @@ class ChangelogController extends Controller
             ])->orderBy('build_id', 'DESC')
             ->get();
 
-        if (!request()->expectsJson() && count($builds) === 1 && request('no_redirect') !== '1') {
+        if (!is_json_request() && count($builds) === 1 && request('no_redirect') !== '1') {
             return ujs_redirect(build_url($builds[0]));
         }
 
@@ -75,13 +67,22 @@ class ChangelogController extends Controller
         ]);
 
         $indexJson = [
+            'streams' => $this->updateStreams,
             'builds' => $buildsJson,
             'search' => $search,
         ];
 
-        if (request()->expectsJson()) {
+        if (is_json_request()) {
             return $indexJson;
         } else {
+            $chartConfig = Cache::remember(
+                'chart_config_global',
+                config('osu.changelog.build_history_interval'),
+                function () {
+                    return $this->chartConfig(null);
+                }
+            );
+
             return view('changelog.index', compact('chartConfig', 'indexJson'));
         }
     }
@@ -90,7 +91,7 @@ class ChangelogController extends Controller
     {
         $token = config('osu.changelog.github_token');
 
-        list($algo, $signature) = explode('=', request()->header('X-Hub-Signature'));
+        [$algo, $signature] = explode('=', request()->header('X-Hub-Signature'));
         $hash = hash_hmac($algo, request()->getContent(), $token);
 
         if (!hash_equals((string) $hash, (string) $signature)) {
@@ -107,7 +108,11 @@ class ChangelogController extends Controller
 
     public function show($version)
     {
-        $build = Build::default()->where('version', '=', $version)->first();
+        if (request('key') === 'id') {
+            $build = Build::default()->findOrFail($version);
+        } else {
+            $build = Build::default()->where('version', '=', $version)->first();
+        }
 
         if ($build === null) {
             $normalizedVersion = preg_replace('#[^0-9.]#', '', $version);
@@ -136,7 +141,19 @@ class ChangelogController extends Controller
                 return $this->chartConfig($build->updateStream);
             });
 
-        return view('changelog.build', compact('build', 'buildJson', 'chartConfig', 'commentBundle'));
+        if (is_json_request()) {
+            return $buildJson;
+        } else {
+            return view('changelog.build', compact('build', 'buildJson', 'chartConfig', 'commentBundle'));
+        }
+    }
+
+    public function stream($streamName)
+    {
+        $stream = UpdateStream::where('name', '=', $streamName)->firstOrFail();
+        $build = $stream->builds()->default()->orderBy('build_id', 'desc')->firstOrFail();
+
+        return ujs_redirect(build_url($build));
     }
 
     private function getUpdateStreams()

@@ -37,7 +37,7 @@ class NewsController extends Controller
             'search' => $search['params'],
         ];
 
-        if (request()->expectsJson()) {
+        if (is_json_request()) {
             return $postsJson;
         } else {
             return view('news.index', compact('postsJson'));
@@ -46,6 +46,12 @@ class NewsController extends Controller
 
     public function show($slug)
     {
+        if (request('key') === 'id') {
+            $post = NewsPost::findOrFail($slug);
+
+            return ujs_redirect(route('news.show', $post->slug));
+        }
+
         $post = NewsPost::lookupAndSync($slug);
 
         if ($post === null) {

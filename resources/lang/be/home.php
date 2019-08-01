@@ -24,7 +24,7 @@ return [
         'online' => '<strong>:players</strong> бягучая колькасць гульцоў у<strong>:games</strong> гульнях',
         'peak' => 'Пік, :count актыўных карыстальнікаў',
         'players' => 'Зарэгістравана гульцоў <strong>:count</strong>',
-        'title' => '',
+        'title' => 'вітаем',
 
         'slogan' => [
             'main' => 'лепшая бясплатная рытм-гульня',
@@ -36,7 +36,7 @@ return [
         'advanced_link' => 'Пашыраны пошук',
         'button' => 'Пошук',
         'empty_result' => 'Нічога не знойдзена!',
-        'missing_query' => 'Для пошуку неабходна як мінімум :n сімвалаў',
+        'keyword_required' => 'Пошукавае слова абавязковае',
         'placeholder' => 'пішыце тут',
         'title' => 'Пошук',
 
@@ -135,7 +135,7 @@ return [
         ],
         'buttons' => [
             'download' => 'Спампаваць osu!',
-            'support' => 'Патрымаць osu!',
+            'support' => 'Падтрымаць osu!',
             'store' => 'Крама osu!',
         ],
     ],

@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'удалено',
+    'deleted_count' => ':count_delimited комментарий удален|:count_delimited комментариев удалено',
     'edited' => ':user отредактировал :timeago',
     'empty' => 'Нет комментариев.',
+    'load_replies' => '',
     'replies' => 'Ответы',
-    'show_replies' => 'показать ответы',
     'title' => 'Комментарии',
 
     'commentable_name' => [

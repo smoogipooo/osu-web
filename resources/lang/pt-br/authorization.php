@@ -26,6 +26,8 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Você atingiu o limite de nomeações diárias, tente novamente amanhã.',
+            'full_bn_required' => 'Você precisa ser um nominator completo para realizar essa nomeação de qualificação.',
+            'full_bn_required_hybrid' => 'Você precisa ser um nominator completo para nomear grupos de beatmaps com mais de um modo de jogo.',
             'incorrect_state' => 'Erro ao realizar esta ação, tente atualizar a página.',
             'owner' => "Não é possível nominar o próprio beatmap.",
         ],
@@ -49,11 +51,14 @@ return [
             'system_generated' => 'Publicações geradas automaticamente não podem ser editadas.',
             'not_owner' => 'Somente o autor pode editar a publicação.',
         ],
+        'store' => [
+            'beatmapset_locked' => 'Este beatmap está bloqueado para discussão.',
+        ],
     ],
 
     'chat' => [
         'blocked' => 'Não se pode enviar uma mensagem para um usuário que foi bloqueado, ou te bloqueou.',
-        'friends_only' => 'O usuário esta bloqueou mensagens de pessoas fora de sua lista de amigos.',
+        'friends_only' => 'O usuário está bloqueando mensagens de pessoas fora de sua lista de amigos.',
         'moderated' => 'O canal atual está sendo moderado.',
         'no_access' => 'Você não tem acesso a esse canal.',
         'restricted' => 'Você não pode enviar mensagens enquanto silenciado, restrito ou banido.',
@@ -119,6 +124,7 @@ return [
             'vote' => [
                 'no_forum_access' => 'O acesso ao fórum solicitado é necessário.',
                 'over' => 'A votação está encerrada e não é mais possível votar.',
+                'play_more' => 'Você precisa jogar mais antes de votar no fórum.',
                 'voted' => 'Não é permitido alterar o voto.',
 
                 'user' => [
@@ -137,6 +143,9 @@ return [
             'edit' => [
                 'uneditable' => 'Capa especificada inválida.',
                 'not_owner' => 'Somente o dono pode editar a capa.',
+            ],
+            'store' => [
+                'forum_not_allowed' => 'Este fórum não aceita capas de tópicos.',
             ],
         ],
 

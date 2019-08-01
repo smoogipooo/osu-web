@@ -25,14 +25,16 @@
   align-self: center;
   text-align: center;
   font-size: @font-size--normal;
-  color: @link-color;
+  color: white;
   padding: 5px 20px;
   border-radius: 10000px;
-  color: inherit;
 
-  .link-hover({
-    color: inherit;
-  });
+  background-color: @osu-colour-b2;
+
+  &:hover {
+    color: white;
+    background-color: @osu-colour-b1;
+  };
 
   &--beatmapsets {
     margin-bottom: 10px;
@@ -50,61 +52,16 @@
     margin: 5px auto 10px;
   }
 
+  &--notification-group {
+    font-size: @font-size--small;
+  }
+
   &--profile-page {
     margin: 10px auto 0;
   }
 
-  &--t-community-user-graygreen-darker {
-    background-color: @community-user-graygreen-darker;
-
-    .link-hover({
-      background-color: @community-user-graygreen-dark;
-    });
-  }
-
-  &--t-dark-purple-dark {
-    background-color: @dark-purple-dark;
-
-    .link-hover({
-      background-color: @dark-graypurple;
-    });
-  }
-
-  &--t-dark-purple-darker {
-    background-color: @dark-purple-darker;
-
-    .link-hover({
-      background-color: #000;
-    });
-  }
-
-  &--t-ddd {
-    background-color: #ddd;
-
-    .link-hover({
-      background-color: #ccc;
-    });
-  }
-
   &[disabled], &.js-disabled {
-    color: #ccc;
-
-    &.@{_top}--t-community-user-graygreen-darker {
-      background-color: @community-user-graygreen-darker;
-    }
-
-    &.@{_top}--t-ddd {
-      background-color: #ddd;
-      color: #666;
-    }
-
-    &.@{_top}--t-dark-purple-dark {
-      background-color: @dark-purple-dark;
-    }
-
-    &.@{_top}--t-dark-purple-darker {
-      background-color: @dark-purple-darker;
-    }
+    background-color: @osu-colour-b2;
   }
 
   &__spinner {
@@ -120,6 +77,7 @@
 
   &__label {
     opacity: 1;
+    margin: 0 -5px;
 
     .@{_top}[disabled] &, .@{_top}.js-disabled & {
       opacity: 0;
@@ -127,15 +85,20 @@
   }
 
   &__label-icon {
-    color: @yellow;
+    color: @osu-colour-f1;
+    margin: 0 5px;
 
-    .@{_top}--t-ddd & {
-      color: @yellow-dark;
+    .@{_top}:hover & {
+      color: @osu-colour-l1;
+    }
+
+    .@{_top}--notification-group & {
+      color: #fff;
     }
   }
 
   &__label-text {
-    margin: 0 10px;
+    margin: 0 5px;
     text-transform: uppercase;
   }
 }

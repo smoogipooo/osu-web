@@ -55,6 +55,10 @@ return [
         'deleted_parent' => '',
     ],
 
+    'follow' => [
+        'invalid' => '',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Kan endast rösta på funktion begäran.',
@@ -74,6 +78,7 @@ return [
         'topic_poll' => [
             'duplicate_options' => 'Duplicerade val är ej tillåtet.',
             'grace_period_expired' => '',
+            'hiding_results_forever' => '',
             'invalid_max_options' => 'Val per användare får inte överskrida antalet tillgängliga val.',
             'minimum_one_selection' => 'Minst ett val per användare krävs.',
             'minimum_two_options' => 'Behöver åtminstone två val.',
@@ -111,6 +116,7 @@ return [
         'too_long' => 'Överskred maxlängd - kan endast vara upp till :limit karaktärer.',
 
         'change_username' => [
+            'restricted' => '',
             'supporter_required' => [
                 '_' => 'Du måste ha :link för att byta ditt användarnamn!',
                 'link_text' => 'stödjer osu!',

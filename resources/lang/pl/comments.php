@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'usunięte',
+    'deleted_count' => ':count_delimited usunięty komentarz|:count_delimited usunięte komentarze|:count_delimited usuniętych komentarzy',
     'edited' => 'ostatnio edytowane :timeago przez :user',
     'empty' => 'Brak komentarzy.',
+    'load_replies' => '',
     'replies' => 'Odpowiedzi',
-    'show_replies' => 'pokaż odpowiedzi',
     'title' => 'Komentarze',
 
     'commentable_name' => [

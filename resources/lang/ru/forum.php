@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited пост|:count_delimited поста|:count_delimited постов',
+            'topic_starter' => 'Автор темы',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Скрыть результаты опроса.',
+                'hide_results_info' => 'Они будут показаны только после окончания опроса.',
                 'length' => 'Ограничить опрос по времени на',
                 'length_days_suffix' => 'дней',
                 'length_info' => 'Оставьте пустым для снятия ограничения',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Опрос будет закрыт :time',
                     'ended' => 'Опрос закончен :time',
+                    'results_hidden' => 'Результаты будут показаны после окончания опроса.',
                     'total' => 'Всего голосов: :count',
                 ],
             ],

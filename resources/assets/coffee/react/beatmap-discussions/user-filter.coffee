@@ -16,14 +16,16 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{a} = ReactDOMFactories
+import * as React from 'react'
+import { a } from 'react-dom-factories'
+import { SelectOptions } from 'select-options'
 el = React.createElement
 
 allUsers =
   id: null,
   text: osu.trans('beatmap_discussions.user_filter.everyone')
 
-class BeatmapDiscussions.UserFilter extends React.PureComponent
+export class UserFilter extends React.PureComponent
   render: =>
     options = [allUsers]
     for own _id, user of @props.users
@@ -34,7 +36,7 @@ class BeatmapDiscussions.UserFilter extends React.PureComponent
                else
                  id: null, text: osu.trans('beatmap_discussions.user_filter.label')
 
-    el _exported.SelectOptions,
+    el SelectOptions,
       bn: 'beatmap-discussions-user-filter'
       renderItem: @renderItem
       onItemSelected: @onItemSelected
@@ -43,13 +45,16 @@ class BeatmapDiscussions.UserFilter extends React.PureComponent
 
 
   mapUserProperties: (user) ->
-    id: user.id
-    colour: user.profile_colour
+    default_group: user.default_group
     groups: user.groups
+    id: user.id
     text: user.username
 
 
   renderItem: ({ cssClasses, children, item, onClick }) =>
+    userBadge = if @isOwner(item) then 'mapper' else osu.userGroupBadge(item)
+    cssClasses += " beatmap-discussions-user-filter__item--#{userBadge}" if userBadge?
+
     a
       className: cssClasses
       href: BeatmapDiscussionHelper.url user: item?.id, true
@@ -60,15 +65,6 @@ class BeatmapDiscussions.UserFilter extends React.PureComponent
 
   isOwner: (user) =>
     user? && user.id == @props.ownerId
-
-
-  userGroup: (user) =>
-    return unless user?
-
-    if @isOwner(user)
-      'owner'
-    else
-      BeatmapDiscussionHelper.moderationGroup(user)
 
 
   onItemSelected: (item) ->

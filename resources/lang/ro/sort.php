@@ -19,14 +19,16 @@
  */
 
 return [
-    '_' => '',
+    '_' => 'Sortează după',
 
-    'new' => '',
-    'old' => '',
-    'top' => '',
+    'last_visit' => '',
+    'new' => 'Recent',
+    'old' => 'Vechi',
+    'top' => 'Top',
+    'username' => '',
 
     'forum_topics' => [
-        'new' => '',
-        'feature_votes' => '',
+        'new' => 'Ultimul răspuns',
+        'feature_votes' => 'Prioritatea stelelor',
     ],
 ];

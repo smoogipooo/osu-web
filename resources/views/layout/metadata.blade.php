@@ -21,7 +21,7 @@
 <link rel="manifest" href="{{ config('osu.static') }}/site.webmanifest">
 <link rel="mask-icon" href="{{ config('osu.static') }}/safari-pinned-tab.svg" color="#e2609a">
 <meta name="msapplication-TileColor" content="#603cba">
-<meta name="theme-color" content="#cc5288">
+<meta name="theme-color" content="hsl({{ $currentHue }}, 10%, 40%)"> {{-- @osu-colour-b1 --}}
 
 <meta charset="utf-8">
 <meta name="description" content="{{ $pageDescription or trans('layout.defaults.page_description') }}">
@@ -47,10 +47,16 @@
             --font-default-override: var(--font-default-vi);
         }
     </style>
-@elseif (App::getLocale() === 'zh' || App::getLocale() === 'zh-tw')
+@elseif (App::getLocale() === 'zh')
     <style>
         :root {
             --font-default-override: var(--font-default-zh);
+        }
+    </style>
+@elseif (App::getLocale() === 'zh-tw')
+    <style>
+        :root {
+            --font-default-override: var(--font-default-zh-tw);
         }
     </style>
 @endif
@@ -64,13 +70,15 @@
 
 <script src="{{ mix("js/vendor.js") }}" data-turbolinks-track="reload"></script>
 @if(config('services.sentry.public_dsn') !== '')
-    <script src="//cdn.ravenjs.com/3.17.0/raven.min.js" crossorigin="anonymous"></script>
+    <script src="https://browser.sentry-cdn.com/5.1.0/bundle.min.js" crossorigin="anonymous"></script>
     <script>
-        var ravenOptions = {
-            release: '{{ config('osu.git-sha') }}',
+        Sentry.init({
+            debug: {!! json_encode(config('app.debug')) !!},
+            dsn: {!! json_encode(config('services.sentry.public_dsn')) !!},
             ignoreErrors: [
                 // Random plugins/extensions
-                'top.GLOBALS'
+                'top.GLOBALS',
+                /class is a reserved identifier$/
             ],
             ignoreUrls: [
                 // Chrome/Firefox extensions
@@ -79,13 +87,19 @@
                 /^resource:\/\//i,
                 // Errors caused by spyware/adware junk
                 /^\/loaders\//i
-            ]
-        }
-        Raven.config('{{ config('services.sentry.public_dsn') }}', ravenOptions).install();
-        Raven.setUserContext({lang: currentLocale});
+            ],
+            release: {!! json_encode(config('osu.git-sha')) !!},
+            whitelistUrls: [/^{!! preg_quote(config('app.url'), '/') !!}\/.*\.js(?:\?.*)?$/],
+        });
     </script>
 @endif
 <script src="{{ mix("js/app-deps.js") }}" data-turbolinks-track="reload"></script>
+<script src="{{ mix('/js/locales/'.app()->getLocale().'.js') }}" data-turbolinks-track="reload"></script>
+@if (config('app.fallback_locale') !== app()->getLocale())
+    <script src="{{ mix('/js/locales/'.config('app.fallback_locale').'.js') }}" data-turbolinks-track="reload"></script>
+@endif
+
+<script src="{{ mix("js/commons.js") }}" data-turbolinks-track="reload"></script>
 <script src="{{ mix("js/app.js") }}" data-turbolinks-track="reload"></script>
 <script src="/vendor/js/timeago-locales/jquery.timeago.{{ locale_for_timeago(Lang::getLocale()) }}.js" data-turbolinks-track="reload"></script>
 <script src="//s.ppy.sh/js/site-switcher.js?{{config('osu.site-switcher-js-hash')}}" async></script>

@@ -16,7 +16,7 @@
     along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 --}}
 @extends('master', [
-    'bodyAdditionalClasses' => 'osu-layout__no-scroll osu-layout--body-community',
+    'bodyAdditionalClasses' => 'osu-layout__no-scroll',
     'currentSection' => 'community',
     'legacyNav' => false,
     'title' => trans('chat.title'),
@@ -28,7 +28,7 @@
         <div class="header-v3__overlay"></div>
         <div class="osu-page osu-page--header-v3">
             <div class="osu-page-header-v3 osu-page-header-v3--chat">
-                <div class="osu-page-header-v3__title js-nav2--hidden-on-menu-access">
+                <div class="osu-page-header-v3__title">
                     <div class="osu-page-header-v3__title-icon">
                         <div class="osu-page-header-v3__icon"></div>
                     </div>

@@ -20,9 +20,16 @@
 
 return [
     'buttons' => [
-      'add' => 'legg til venn',
+      'add' => 'legg til som venn',
       'disabled' => 'venner',
-      'remove' => 'fjern venn',
+      'remove' => 'fjern som venn',
+    ],
+
+    'index' => [
+        'title' => [
+            '_' => 'Hjem :info',
+            'info' => 'Venner',
+        ],
     ],
 
     'state' => [
@@ -33,5 +40,5 @@ return [
     'title' => 'Venner',
     'title_compact' => 'venner',
 
-    'too_many' => 'Vennegrensen er nådd',
+    'too_many' => 'Maksimal antall venner nådd',
 ];

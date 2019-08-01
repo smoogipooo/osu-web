@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\DisqusImport::class,
 
+        Commands\EsCreateSearchBlacklist::class,
         Commands\EsIndexDocuments::class,
         Commands\EsIndexWiki::class,
 
@@ -62,6 +63,11 @@ class Kernel extends ConsoleKernel
         // fix username change fail :D
         Commands\FixUsernameChangeTopicCache::class,
 
+        // fix userchannel deletion fail
+        Commands\FixMissingUserChannels::class,
+
+        Commands\MigrateFreshAllCommand::class,
+
         Commands\UserBestScoresCheckCommand::class,
         Commands\UserRecalculateRankCounts::class,
     ];
@@ -89,6 +95,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('rankings:recalculate-country')
             ->cron('25 0,3,6,9,12,15,18,21 * * *');
+
+        $schedule->command('modding:rank')
+            ->cron('*/20 * * * *');
     }
 
     protected function commands()

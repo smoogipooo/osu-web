@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited post|:count_delimited posts',
+            'topic_starter' => 'Topic Starter',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Hide the results of the poll.',
+                'hide_results_info' => 'They will be shown only after the poll concludes.',
                 'length' => 'Run poll for',
                 'length_days_suffix' => 'days',
                 'length_info' => 'Leave blank for a never ending poll',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Polling will end at :time',
                     'ended' => 'Polling ended :time',
+                    'results_hidden' => 'Results will be shown after polling ends.',
                     'total' => 'Total votes: :count',
                 ],
             ],

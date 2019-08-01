@@ -20,7 +20,7 @@
 
 return [
     'edit' => [
-        'title' => '<strong>Kontoinnstillinger</strong>',
+        'title' => '<strong>Konto</strong> Innstillinger',
         'title_compact' => 'innstillinger',
         'username' => 'brukernavn',
 
@@ -62,18 +62,23 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'title' => '',
+        'authorized_clients' => '',
+    ],
+
     'update_email' => [
         'email_subject' => 'osu! e-post endringsbekreftelse',
         'update' => 'oppdater',
     ],
 
     'update_password' => [
-        'email_subject' => 'Bekreft endring av passord på osu!',
+        'email_subject' => 'bekreft endring av osu! passord',
         'update' => 'oppdater',
     ],
 
     'playstyles' => [
-        'title' => 'Spillestiler',
+        'title' => 'Spillemåter',
         'mouse' => 'mus',
         'keyboard' => 'tastatur',
         'tablet' => 'tegnebrett',
@@ -86,10 +91,15 @@ return [
         'hide_online' => 'skjul påloggingsstatus',
     ],
 
+    'notifications' => [
+        'title' => 'Varsler',
+        'topic_auto_subscribe' => 'aktiver automatiske varslinger på nye forum emner som du lager',
+    ],
+
     'security' => [
         'current_session' => 'nåværende',
         'end_session' => 'Avslutt økt',
-        'end_session_confirmation' => 'Dette vil ummidelbart avslutte økten på denne enheten. Er du sikker?',
+        'end_session_confirmation' => 'Dette vil umiddelbart avslutte økten på denne enheten. Er du sikker?',
         'last_active' => 'Sist aktiv:',
         'title' => 'Sikkerhet',
         'web_sessions' => 'websideøkter',

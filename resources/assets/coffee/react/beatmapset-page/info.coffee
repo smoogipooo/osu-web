@@ -16,10 +16,12 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{a, button, div, h3, span, i, textarea} = ReactDOMFactories
+import { BBCodeEditor } from 'bbcode-editor'
+import * as React from 'react'
+import { a, button, div, h3, span, i, textarea } from 'react-dom-factories'
 el = React.createElement
 
-class BeatmapsetPage.Info extends React.Component
+export class Info extends React.Component
   constructor: (props) ->
     super props
 
@@ -147,7 +149,7 @@ class BeatmapsetPage.Info extends React.Component
           className: 'beatmapset-info__header'
           osu.trans 'beatmapsets.show.info.description'
 
-        div className: 'beatmapset-info__description-container',
+        div className: 'beatmapset-info__description-container u-fancy-scrollbar',
           div
             className: 'beatmapset-info__description'
             dangerouslySetInnerHTML:

@@ -74,7 +74,8 @@ return [
         ],
 
         'info' => [
-            'post_count' => '',
+            'post_count' => ':count_delimited δημοσίευση|:count_delimited δημοσιεύσεις',
+            'topic_starter' => '',
         ],
     ],
 
@@ -171,7 +172,7 @@ return [
         'create' => [
             'create_poll' => 'Δημιουργία ψηφοφορίας',
 
-            'preview' => '',
+            'preview' => 'Προεπισκόπηση Δημοσίευσης',
 
             'create_poll_button' => [
                 'add' => 'Δημιούργησε ψηφοφορία',
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Απόκρυψη των αποτελεσμάτων της ψηφοφορίας.',
+                'hide_results_info' => 'Θα φανερωθούν μόνο μετά τη λήξη της ψηφοφορίας.',
                 'length' => 'Διεξαγωγή ψηφοφορίας για',
                 'length_days_suffix' => 'μέρες',
                 'length_info' => 'Αφήστε κενό για μία ατελείωτη ψηφοφορία',
@@ -197,7 +200,7 @@ return [
         ],
 
         'index' => [
-            'feature_votes' => '',
+            'feature_votes' => 'βάσει αστεριών',
             'replies' => 'απαντήσεις',
             'views' => 'προβολές',
         ],
@@ -274,9 +277,9 @@ return [
                 'do' => 'Προαγωγή αυτού του αιτήματος',
 
                 'info' => [
-                    '_' => '',
-                    'feature_request' => '',
-                    'supporters' => '',
+                    '_' => 'Αυτό είναι ένα :feature_request. Τα αιτήματα για λειτουργίες μπορούν να ψηφισθούν από τους :supporters.',
+                    'feature_request' => 'αίτημα για λειτουργία',
+                    'supporters' => 'supporters',
                 ],
 
                 'user' => [
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Η ψηφοφορία θα λήξει στις :time',
                     'ended' => 'H ψηφοφορία έληξε στις :time',
+                    'results_hidden' => 'Τα αποτελέσματα θα φανερωθούν μόνο μετά τη λήξη της ψηφοφορίας.',
                     'total' => 'Σύνολο ψήφων: :count',
                 ],
             ],

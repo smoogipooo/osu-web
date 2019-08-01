@@ -16,12 +16,15 @@
  *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 const mix = require('laravel-mix');
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const SentryPlugin = require('webpack-sentry-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 // .js doesn't support globbing by itself, so we need to glob
 // and spread the values in.
@@ -33,10 +36,7 @@ if (mix.inProduction()) {
 }
 
 const reactComponentSet = function (name) {
-    return [[
-      ...glob.sync(`resources/assets/coffee/react/${name}/*.coffee`),
-      `resources/assets/coffee/react/${name}.coffee`,
-    ], `js/react/${name}.js`];
+    return [[`resources/assets/coffee/react/${name}.coffee`], `js/react/${name}.js`];
 }
 
 const paymentSandbox = !(process.env.PAYMENT_SANDBOX == 0
@@ -101,10 +101,25 @@ let webpackConfig = {
       'process.env.SHOPIFY_STOREFRONT_TOKEN': JSON.stringify(process.env.SHOPIFY_STOREFRONT_TOKEN),
     })
   ],
+  optimization: {
+    runtimeChunk: {
+      name: "/js/commons",
+    },
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          name: "/js/commons",
+          chunks: "initial",
+          minChunks: 2,
+        }
+      }
+    }
+  },
   resolve: {
     modules: [
       path.resolve(__dirname, 'resources/assets/coffee'),
       path.resolve(__dirname, 'resources/assets/lib'),
+      path.resolve(__dirname, 'resources/assets/coffee/react/_components'),
       path.resolve(__dirname, 'node_modules'),
     ],
     extensions: ['*', '.js', '.coffee', '.ts'],
@@ -124,22 +139,34 @@ let webpackConfig = {
         include: [
           path.resolve(__dirname, "resources/assets/coffee"),
         ],
+        exclude: [
+          path.resolve(__dirname, "resources/assets/coffee/react"),
+        ],
         use: ['imports-loader?this=>window', 'coffee-loader']
       },
       {
         // loader for import-based coffeescript
         test: /\.coffee$/,
         include: [
+          path.resolve(__dirname, "resources/assets/coffee/react"),
           path.resolve(__dirname, "resources/assets/lib"),
-        ],
-        exclude: [
-          path.resolve(__dirname, "resources/assets/coffee"),
         ],
         use: ['coffee-loader']
       }
     ]
   }
 };
+
+if (mix.inProduction()) {
+  webpackConfig.optimization.minimizer = [
+    new TerserPlugin({
+      sourceMap: true,
+      terserOptions: {
+        safari10: true
+      }
+    }),
+  ];
+}
 
 if (!mix.inProduction() || process.env.SENTRY_RELEASE == 1) {
   webpackConfig['devtool'] = '#source-map';
@@ -178,7 +205,6 @@ mix
 ], 'js/app.js')
 .js(...reactComponentSet('artist-page'))
 .js(...reactComponentSet('beatmap-discussions'))
-.js(...reactComponentSet('beatmaps'))
 .js(...reactComponentSet('beatmapset-page'))
 .js(...reactComponentSet('changelog-build'))
 .js(...reactComponentSet('changelog-index'))
@@ -190,7 +216,11 @@ mix
 .js(...reactComponentSet('admin/contest'))
 .js(...reactComponentSet('contest-entry'))
 .js(...reactComponentSet('contest-voting'))
+.ts('resources/assets/lib/account-edit.ts', 'js/react/account-edit.js')
+.js('resources/assets/lib/beatmaps.ts', 'js/react/beatmaps.js')
 .ts('resources/assets/lib/chat.ts', 'js/react/chat.js')
+.ts('resources/assets/lib/friends-index.ts', 'js/react/friends-index.js')
+.ts('resources/assets/lib/groups-show.ts', 'js/react/groups-show.js')
 .ts('resources/assets/lib/news-index.ts', 'js/react/news-index.js')
 .ts('resources/assets/lib/news-show.ts', 'js/react/news-show.js')
 .ts('resources/assets/lib/store-bootstrap.ts', 'js/store-bootstrap.js')
@@ -201,12 +231,19 @@ mix
 .less('resources/assets/less/app.less', 'public/css')
 .scripts([
   'resources/assets/js/ga.js',
-  'resources/assets/js/messages.js',
+  'resources/assets/build/lang.js',
+  'resources/assets/js/bootstrap-lang.js',
   'resources/assets/js/laroute.js'
 ], 'public/js/app-deps.js') // FIXME: less dumb name; this needs to be separated -
                             // compiling coffee and then concating together doesn't
                             // work so well when versioning is used with webpack.
 .scripts(vendor, 'public/js/vendor.js');
+
+// include locales in manifest
+const locales = glob.sync('resources/assets/build/locales/*.js');
+for (const locale of locales) {
+  mix.scripts([locale], `public/js/locales/${path.basename(locale)}`);
+}
 
 if (mix.inProduction()) {
   mix.version();

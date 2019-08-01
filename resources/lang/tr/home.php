@@ -24,7 +24,7 @@ return [
         'online' => '<strong>:players</strong> oyuncu şu anda <strong>:games</strong> oyunda çevrimiçi',
         'peak' => 'Zirve, :count çevrimiçi oyuncu',
         'players' => '<strong>:count</strong> kayıtlı oyuncu',
-        'title' => '',
+        'title' => 'hoşgeldiniz',
 
         'slogan' => [
             'main' => 'en en iyi free-to-win ritim oyunu',
@@ -36,7 +36,7 @@ return [
         'advanced_link' => 'Gelişmiş arama',
         'button' => 'Ara',
         'empty_result' => 'Hiçbir şey bulunamadı!',
-        'missing_query' => 'En az :n karakterli arama anahtar kelimesi gereklidir',
+        'keyword_required' => '',
         'placeholder' => 'aramak için yaz',
         'title' => 'Ara',
 

@@ -45,14 +45,15 @@ class CommentBundle
     {
         $this->commentable = $commentable;
 
-        $this->params = new CommentBundleParams($options['params'] ?? []);
+        $this->user = $options['user'] ?? auth()->user();
+
+        $this->params = new CommentBundleParams($options['params'] ?? [], $this->user);
 
         $this->comments = $options['comments'] ?? null;
         $this->additionalComments = $options['additionalComments'] ?? [];
         $this->depth = $options['depth'] ?? 2;
         $this->includeCommentableMeta = $options['includeCommentableMeta'] ?? false;
         $this->includeParent = $options['includeParent'] ?? false;
-        $this->user = $options['user'] ?? auth()->user();
     }
 
     public function toArray()
@@ -87,7 +88,9 @@ class CommentBundle
             'has_more' => $hasMore,
             'has_more_id' => $this->params->parentId,
             'user_votes' => $this->getUserVotes($comments),
+            'user_follow' => $this->getUserFollow(),
             'users' => json_collection($this->getUsers($comments), 'UserCompact'),
+            'sort' => $this->params->sort,
         ];
 
         if ($this->params->parentId === 0 || $this->params->parentId === null) {
@@ -172,6 +175,18 @@ class CommentBundle
         }
 
         return $query->limit($queryLimit)->get();
+    }
+
+    private function getUserFollow()
+    {
+        return $this->commentable !== null &&
+            $this->user !== null &&
+            $this
+                ->user
+                ->follows()
+                ->whereNotifiable($this->commentable)
+                ->where(['subtype' => 'comment'])
+                ->exists();
     }
 
     private function getUserVotes($comments)

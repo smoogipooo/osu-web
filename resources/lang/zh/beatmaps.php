@@ -40,12 +40,14 @@ return [
         'edited' => '最后由 :editor 编辑于 :update_time 。',
         'kudosu_denied' => 'kudosu 被收回',
         'message_placeholder_deleted_beatmap' => '该难度已被删除，无法继续讨论',
+        'message_placeholder_locked' => '该谱面下的讨论已关闭。',
         'message_type_select' => '选择回复类型',
         'reply_notice' => '按下回车以提交',
         'reply_placeholder' => '在此处输入您的回复',
         'require-login' => '登录以继续',
         'resolved' => '已解决',
         'restore' => '已修复',
+        'show_deleted' => '显示已删除的消息',
         'title' => '讨论',
 
         'collapse' => [
@@ -58,6 +60,18 @@ return [
             'hidden' => '没有符合过滤条件的讨论。',
         ],
 
+        'lock' => [
+            'button' => [
+                'lock' => '锁定该讨论',
+                'unlock' => '解锁该讨论',
+            ],
+
+            'prompt' => [
+                'lock' => '锁定讨论的原因',
+                'unlock' => '确认解锁该讨论吗？',
+            ],
+        ],
+
         'message_hint' => [
             'in_general' => '这个信息将提交到整个谱面集讨论中。如果需要单独针对某处，请在开头使用时间戳 (例如: 00:12:345)。',
             'in_timeline' => '需要 Mod 多处，请在每一个时间戳后写下意见并发表。',
@@ -66,7 +80,7 @@ return [
         'message_placeholder' => [
             'general' => '在此处输入以发布到常规 (:version)',
             'generalAll' => '在此处输入以发布到常规 (所有难度)',
-            'timeline' => '在此处输入以发布到时间线 (:version)',
+            'timeline' => '在此处输入以发布到时间轴 (:version)',
         ],
 
         'message_type' => [
@@ -82,7 +96,7 @@ return [
         'mode' => [
             'events' => '历史',
             'general' => '常规 :scope',
-            'timeline' => '时间线',
+            'timeline' => '时间轴',
             'scopes' => [
                 'general' => '当前难度',
                 'generalAll' => '所有难度',
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '置顶',
             'timestamp' => '时间戳',
             'timestamp_missing' => '在编辑模式下按 Ctrl+C 然后在您的输入框中粘贴以添加时间戳！',
             'title' => '新的讨论',
+            'unpin' => '取消置顶',
         ],
 
         'show' => [
@@ -100,9 +116,8 @@ return [
         ],
 
         'sort' => [
-            '_' => '排序：',
             'created_at' => '创建时间',
-            'timeline' => '时间线',
+            'timeline' => '时间轴',
             'updated_at' => '最后更新时间',
         ],
 
@@ -110,7 +125,7 @@ return [
             'deleted' => '已删除',
             'mapper_notes' => '备注',
             'mine' => '我的',
-            'pending' => 'Pending',
+            'pending' => '待处理',
             'praises' => '赞',
             'resolved' => '已解决',
             'total' => '所有',
@@ -124,6 +139,10 @@ return [
             'wip' => '注意：这张谱面被作者标记为 WIP（work-in-progress）',
         ],
 
+        'votes' => [
+            'up' => '支持该讨论',
+            'down' => '反对该讨论',
+        ],
     ],
 
     'hype' => [
@@ -197,8 +216,9 @@ return [
                 'title' => '标题',
                 'artist' => '艺术家',
                 'difficulty' => '难度',
+                'favourites' => '收藏量',
                 'updated' => '已更新',
-                'ranked' => 'Ranked',
+                'ranked' => 'Ranked 时间',
                 'rating' => '评分',
                 'plays' => '游玩次数',
                 'relevance' => '相关性',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => '所有',
-        'ranked-approved' => 'Ranked & Approved',
         'approved' => 'Approved',
-        'qualified' => 'Qualified',
-        'loved' => 'Loved',
-        'faves' => '收藏夹',
-        'pending' => 'Pending & WIP',
+        'favourites' => '',
         'graveyard' => '坟图',
-        'my-maps' => '我的',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => 'Pending & WIP',
+        'qualified' => 'Qualified',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => '所有',

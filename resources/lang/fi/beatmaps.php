@@ -27,7 +27,7 @@ return [
 
     'discussion-votes' => [
         'update' => [
-            'error' => 'Äänen päivittäminen epäonnistui',
+            'error' => 'Äänen päivitys ei onnistunut',
         ],
     ],
 
@@ -40,12 +40,14 @@ return [
         'edited' => 'Viimeksi muokannut :editor :update_time.',
         'kudosu_denied' => 'Evätty saamasta kudosua.',
         'message_placeholder_deleted_beatmap' => 'Tämä vaikeustaso on poistettu, joten siitä ei voi enää keskustella.',
+        'message_placeholder_locked' => 'Keskustelu tällä beatmapille on poistettu käytöstä.',
         'message_type_select' => 'Valitse kommentin tyyppi',
         'reply_notice' => 'Vastaa painamalla enter-näppäintä.',
         'reply_placeholder' => 'Kirjoita vastauksesi tähän',
         'require-login' => 'Kirjaudu sisään lähettääksesi viestejä tai vastauksia',
         'resolved' => 'Ratkaistu',
         'restore' => 'palauta',
+        'show_deleted' => 'Näytä poistetut',
         'title' => 'Keskustelut',
 
         'collapse' => [
@@ -55,7 +57,19 @@ return [
 
         'empty' => [
             'empty' => 'Keskustelut puuttuu!',
-            'hidden' => 'Mikään keskustelu ei vastaa valittua suodatinta.',
+            'hidden' => 'Yksikään keskusteluista ei täsmää hakuehtoihisi.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Lukitse keskustelu',
+                'unlock' => 'Avaa keskustelu',
+            ],
+
+            'prompt' => [
+                'lock' => 'Syy lukitsemiseen',
+                'unlock' => '',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Kiinnitä',
             'timestamp' => 'Aikaleima',
             'timestamp_missing' => 'Paina ctrl-c editointitilassa ja liitä viestiisi lisätäksesi aikaleiman!',
             'title' => 'Uusi keskustelu',
+            'unpin' => '',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Lajiteltu:',
             'created_at' => 'Luomisaika',
             'timeline' => 'Aikajana',
             'updated_at' => 'Viimeisin päivitys',
@@ -118,12 +133,16 @@ return [
 
         'status-messages' => [
             'approved' => 'Tämä beatmappi hyväksyttiiin :date!',
-            'graveyard' => "Tätä beatmappia ei ole päivitetty sitten :date ja sen tekijä on todennäköisesti hyljännyt sen...",
+            'graveyard' => "Tätä beatmappia ei ole päivitetty sitten :date ja sen tekijä on todennäköisesti hylännyt sen...",
             'loved' => 'Tämä beatmap lisättiin Rakastettuihin :date!',
             'ranked' => 'Tämä beatmap hyväksyttiin :date!',
             'wip' => 'Huomaa: Tämän beatmapin tekijä on merkannut sen keskeneräiseksi.',
         ],
 
+        'votes' => [
+            'up' => '',
+            'down' => '',
+        ],
     ],
 
     'hype' => [
@@ -147,7 +166,7 @@ return [
         'delete' => 'Poista',
         'delete_own_confirm' => 'Oletko varma? Tämä beatmap poistetaan ja sinut uudelleenohjataan takaisin profiiliisi.',
         'delete_other_confirm' => 'Oletko varma? Tämä beatmap poistetaan ja sinut uudelleenohjataan käyttäjän profiiliin.',
-        'disqualification_prompt' => 'Syy hylkäykseen?',
+        'disqualification_prompt' => 'Hylkäyksen syy?',
         'disqualified_at' => 'Hylättiin :time_ago sitten (:reason).',
         'disqualified_no_reason' => 'ei määriteltyä syytä',
         'disqualify' => 'Hylkää',
@@ -171,7 +190,7 @@ return [
 
         'reset_confirm' => [
             'nomination_reset' => 'Oletko varma? Uuden ongelman lähettäminen kumoaa suositusprosessin.',
-            'disqualify' => 'Oletko varma? Tämä poistaa kappaleen hyväksynnästä ja resetoi äänestysprosessin.',
+            'disqualify' => 'Oletko varma? Tämä poistaa beatmapin esihyväksytyistä ja kumoaa suositusprosessin.',
         ],
     ],
 
@@ -179,10 +198,10 @@ return [
         'search' => [
             'prompt' => 'anna hakusana...',
             'login_required' => 'Kirjaudu sisään hakeaksesi.',
-            'options' => 'Lisää Hakuasetuksia',
+            'options' => 'Enemmän Hakuasetuksia',
             'supporter_filter' => 'Tunnisteella :filters rajaaminen vaatii aktiivisen osu!supporter-tagin',
             'not-found' => 'ei tuloksia',
-            'not-found-quote' => '... Eip, mitään ei löytynyt.',
+            'not-found-quote' => '... mitään ei löytynyt.',
             'filters' => [
                 'general' => 'Yleinen',
                 'mode' => 'Pelitila',
@@ -197,6 +216,7 @@ return [
                 'title' => 'Nimi',
                 'artist' => 'Esittäjä',
                 'difficulty' => 'Vaikeustaso',
+                'favourites' => 'Suosikit',
                 'updated' => 'Päivitetty',
                 'ranked' => 'Hyväksytty',
                 'rating' => 'Luokitus',
@@ -223,18 +243,19 @@ return [
     ],
     'status' => [
         'any' => 'Kaikki',
-        'ranked-approved' => 'Hyväksytyt & Vahvistetut',
         'approved' => 'Vahvistettu',
-        'qualified' => 'Esihyväksytty',
-        'loved' => 'Rakastettu',
-        'faves' => 'Suosikit',
-        'pending' => 'Vireillä & WIP',
+        'favourites' => '',
         'graveyard' => 'Hautausmaa',
-        'my-maps' => 'Omat kartat',
+        'leaderboard' => '',
+        'loved' => 'Rakastettu',
+        'mine' => '',
+        'pending' => 'Vireillä & WIP',
+        'qualified' => 'Esihyväksytty',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Kaikki',
-        'unspecified' => 'Määrittelemättömät',
+        'unspecified' => 'Määrittelemätön',
         'video-game' => 'Videopeli',
         'anime' => 'Anime',
         'rock' => 'Rock',

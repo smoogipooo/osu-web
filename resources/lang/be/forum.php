@@ -33,7 +33,7 @@ return [
 
         'destroy' => [
             '_' => 'Выдаліць фонавую выяву',
-            'confirm' => 'Вы ўпэўнены, што хочаце выдаліць гэтую фонавую выяву?',
+            'confirm' => 'Вы ўпэўнены, што хочаце выдаліць гэту фонавую выяву?',
         ],
     ],
 
@@ -74,7 +74,8 @@ return [
         ],
 
         'info' => [
-            'post_count' => '',
+            'post_count' => ':count_delimited допіс|:count_delimited допісы|:count_delimited допісаў',
+            'topic_starter' => 'Аўтар',
         ],
     ],
 
@@ -171,7 +172,7 @@ return [
         'create' => [
             'create_poll' => 'Стварэння апытання',
 
-            'preview' => '',
+            'preview' => 'Перадпрагляд допіса',
 
             'create_poll_button' => [
                 'add' => 'Стварыць апытанне',
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Схаваць вынікі апытання.',
+                'hide_results_info' => 'Яны будуць паказаныя толькі пасля сканчэння запыта.',
                 'length' => 'Абмежаваць апытанне па часу на',
                 'length_days_suffix' => 'дзён',
                 'length_info' => 'Пакінуць пустым, каб не абмяжоўваць апытанне часам',
@@ -197,7 +200,7 @@ return [
         ],
 
         'index' => [
-            'feature_votes' => '',
+            'feature_votes' => 'зорны прыярытэт',
             'replies' => 'адказаў',
             'views' => 'праглядаў',
         ],
@@ -274,9 +277,9 @@ return [
                 'do' => 'Прасунуць гэты запыт',
 
                 'info' => [
-                    '_' => '',
-                    'feature_request' => '',
-                    'supporters' => '',
+                    '_' => 'Гэта :feature_request. Галасаванне за функцыі можа быць скарыстана :supporters.',
+                    'feature_request' => 'запыт функцыі',
+                    'supporters' => 'прыхільнікі',
                 ],
 
                 'user' => [
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Апытанне скончыцца :time',
                     'ended' => 'Апытанне скончана :time',
+                    'results_hidden' => 'Вынікі будуц ьвядомы пасля сканчэння апытання.',
                     'total' => 'Усяго галасоў: :count',
                 ],
             ],

@@ -455,7 +455,7 @@ class Order extends Model
     {
         // locking bottleneck
         $this->getConnection()->transaction(function () {
-            list($items, $products) = $this->lockForReserve();
+            [$items, $products] = $this->lockForReserve();
 
             $items->each->releaseProduct();
         });
@@ -465,7 +465,7 @@ class Order extends Model
     {
         // locking bottleneck
         $this->getConnection()->transaction(function () {
-            list($items, $products) = $this->lockForReserve();
+            [$items, $products] = $this->lockForReserve();
             $items->each->reserveProduct();
         });
     }
@@ -498,7 +498,7 @@ class Order extends Model
         return function ($query) {
             $query = clone $query;
 
-            $order = new Order();
+            $order = new self();
             $orderItem = new OrderItem();
             $product = new Product();
 
@@ -558,9 +558,13 @@ class Order extends Model
         // FIXME: custom class stuff should probably not go in Order...
         switch ($product->custom_class) {
             case 'supporter-tag':
-                $targetId = $params['extraData']['target_id'];
-                $user = User::default()->where('user_id', $targetId)->firstOrFail();
-                $params['extraData']['username'] = $user->username;
+                $targetId = (int) $params['extraData']['target_id'];
+                if ($targetId === $this->user_id) {
+                    $params['extraData']['username'] = $this->user->username;
+                } else {
+                    $user = User::default()->where('user_id', $targetId)->firstOrFail();
+                    $params['extraData']['username'] = $user->username;
+                }
 
                 $params['extraData']['duration'] = SupporterTag::getDuration($params['cost']);
                 break;

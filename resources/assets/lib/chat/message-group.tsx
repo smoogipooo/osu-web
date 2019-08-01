@@ -20,12 +20,13 @@ import * as _ from 'lodash';
 import Message from 'models/chat/message';
 import * as moment from 'moment';
 import * as React from 'react';
+import { Spinner } from 'spinner';
 
-interface PropsInterface {
+interface Props {
   messages: Message[];
 }
 
-export default class MessageGroup extends React.Component<PropsInterface, any> {
+export default class MessageGroup extends React.Component<Props, any> {
   render(): React.ReactNode {
     const messages = this.props.messages;
     const sender = messages[0].sender;
@@ -51,7 +52,7 @@ export default class MessageGroup extends React.Component<PropsInterface, any> {
         </div>
         <div className='chat-message-group__bubble'>
           {messages.map((message: Message, key: number) => {
-            if (!message.content) {
+            if (!message.parsedContent) {
               return;
             }
 
@@ -75,7 +76,7 @@ export default class MessageGroup extends React.Component<PropsInterface, any> {
             return (
               <div className={classes} key={message.uuid}>
                 <div className={`chat-message-group__message-content${innerClasses ? innerClasses : ''}`}>
-                  {message.content}
+                  <span dangerouslySetInnerHTML={{__html: message.parsedContent}} />
                   {!message.persisted && !message.errored &&
                     <div className='chat-message-group__message-status'>
                       <Spinner />

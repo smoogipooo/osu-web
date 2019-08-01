@@ -25,9 +25,11 @@ use App\Jobs\CheckBeatmapsetCovers;
 use App\Jobs\EsIndexDocument;
 use App\Jobs\RemoveBeatmapsetBestScores;
 use App\Libraries\BBCodeFromDB;
+use App\Libraries\Commentable;
 use App\Libraries\ImageProcessorService;
 use App\Libraries\StorageWithUrl;
 use App\Libraries\Transactions\AfterCommit;
+use App\Traits\CommentableDefaults;
 use Cache;
 use Carbon\Carbon;
 use DB;
@@ -55,6 +57,7 @@ use Illuminate\Database\QueryException;
  * @property \Carbon\Carbon|null $deleted_at
  * @property string|null $difficulty_names
  * @property bool $discussion_enabled
+ * @property bool $discussion_locked
  * @property string $displaytitle
  * @property bool $download_disabled
  * @property string|null $download_disabled_url
@@ -95,9 +98,9 @@ use Illuminate\Database\QueryException;
  * @property bool $video
  * @property \Illuminate\Database\Eloquent\Collection $watches BeatmapsetWatch
  */
-class Beatmapset extends Model implements AfterCommit
+class Beatmapset extends Model implements AfterCommit, Commentable
 {
-    use Elasticsearch\BeatmapsetTrait, SoftDeletes;
+    use CommentableDefaults, Elasticsearch\BeatmapsetTrait, SoftDeletes;
 
     protected $_storage = null;
     protected $table = 'osu_beatmapsets';
@@ -110,6 +113,7 @@ class Beatmapset extends Model implements AfterCommit
         'storyboard' => 'boolean',
         'video' => 'boolean',
         'discussion_enabled' => 'boolean',
+        'discussion_locked' => 'boolean',
     ];
 
     protected $dates = [
@@ -181,13 +185,6 @@ class Beatmapset extends Model implements AfterCommit
         if ($time !== null) {
             return Carbon::parse($time);
         }
-    }
-
-    public function scopeRankable($query)
-    {
-        return $query->qualified()
-            ->where('approved_date', '>', DB::raw('date_sub(now(), interval 30 day)'))
-            ->get();
     }
 
     /**
@@ -283,6 +280,19 @@ class Beatmapset extends Model implements AfterCommit
     public function scopeActive($query)
     {
         return $query->where('active', '=', true);
+    }
+
+    public function scopeWithModesForRanking($query, $modeInts)
+    {
+        if (!is_array($modeInts)) {
+            $modeInts = [$modeInts];
+        }
+
+        $query->whereHas('beatmaps', function ($query) use ($modeInts) {
+            $query->whereIn('playmode', $modeInts);
+        })->whereDoesntHave('beatmaps', function ($query) use ($modeInts) {
+            $query->where('playmode', '<', min($modeInts));
+        });
     }
 
     // one-time checks
@@ -535,6 +545,7 @@ class Beatmapset extends Model implements AfterCommit
     public function setApproved($state, $user)
     {
         $currentTime = Carbon::now();
+        $oldScoreable = $this->isScoreable();
 
         if ($this->isQualified() && $state === 'pending') {
             $this->previous_queue_duration = ($this->queued_at ?? $this->approved_date)->diffinSeconds();
@@ -549,7 +560,9 @@ class Beatmapset extends Model implements AfterCommit
 
         if ($this->approved > 0) {
             $this->approved_date = $currentTime;
-            $this->approvedby_id = $user->user_id;
+            if ($user !== null) {
+                $this->approvedby_id = $user->user_id;
+            }
         } else {
             $this->approved_date = null;
             $this->approvedby_id = null;
@@ -560,6 +573,59 @@ class Beatmapset extends Model implements AfterCommit
         $this
             ->beatmaps()
             ->update(['approved' => $this->approved]);
+
+        if ($this->isScoreable() !== $oldScoreable || $this->isRanked()) {
+            dispatch(new RemoveBeatmapsetBestScores($this));
+        }
+
+        if ($this->isScoreable() !== $oldScoreable) {
+            $this->userRatings()->delete();
+        }
+    }
+
+    public function discussionLock($user, $reason)
+    {
+        if ($this->discussion_locked) {
+            return;
+        }
+
+        DB::transaction(function () use ($user, $reason) {
+            BeatmapsetEvent::log(BeatmapsetEvent::DISCUSSION_LOCK, $user, $this, [
+                'reason' => $reason,
+            ])->saveOrExplode();
+            $this->update(['discussion_locked' => true]);
+            broadcast_notification(Notification::BEATMAPSET_DISCUSSION_LOCK, $this, $user);
+        });
+    }
+
+    public function discussionUnlock($user)
+    {
+        if (!$this->discussion_locked) {
+            return;
+        }
+
+        DB::transaction(function () use ($user) {
+            BeatmapsetEvent::log(BeatmapsetEvent::DISCUSSION_UNLOCK, $user, $this)->saveOrExplode();
+            $this->update(['discussion_locked' => false]);
+            broadcast_notification(Notification::BEATMAPSET_DISCUSSION_UNLOCK, $this, $user);
+        });
+    }
+
+    public function disqualify($user, $post)
+    {
+        if (!$this->isQualified()) {
+            return false;
+        }
+
+        DB::transaction(function () use ($user, $post) {
+            BeatmapsetEvent::log(BeatmapsetEvent::DISQUALIFY, $user, $post)->saveOrExplode();
+
+            $this->setApproved('pending', $user);
+
+            broadcast_notification(Notification::BEATMAPSET_DISQUALIFY, $this, $user);
+        });
+
+        return true;
     }
 
     public function qualify($user)
@@ -572,7 +638,6 @@ class Beatmapset extends Model implements AfterCommit
             $this->events()->create(['type' => BeatmapsetEvent::QUALIFY]);
 
             $this->setApproved('qualified', $user);
-            $this->userRatings()->delete();
 
             // global event
             Event::generate('beatmapsetApprove', ['beatmapset' => $this]);
@@ -581,8 +646,7 @@ class Beatmapset extends Model implements AfterCommit
             $job = (new CheckBeatmapsetCovers($this))->onQueue('beatmap_high');
             dispatch($job);
 
-            // remove current scores
-            dispatch(new RemoveBeatmapsetBestScores($this));
+            broadcast_notification(Notification::BEATMAPSET_QUALIFY, $this, $user);
         });
 
         return true;
@@ -612,6 +676,8 @@ class Beatmapset extends Model implements AfterCommit
                 $this->events()->create(['type' => BeatmapsetEvent::NOMINATE, 'user_id' => $user->user_id]);
                 if ($this->currentNominationCount() >= $this->requiredNominationCount()) {
                     $this->qualify($user);
+                } else {
+                    broadcast_notification(Notification::BEATMAPSET_NOMINATE, $this, $user);
                 }
             }
             $this->refreshCache();
@@ -634,17 +700,43 @@ class Beatmapset extends Model implements AfterCommit
         $this->getConnection()->transaction(function () use ($user) {
             $this->events()->create(['type' => BeatmapsetEvent::LOVE, 'user_id' => $user->user_id]);
             $this->setApproved('loved', $user);
-            $this->userRatings()->delete();
 
             Event::generate('beatmapsetApprove', ['beatmapset' => $this]);
 
             dispatch((new CheckBeatmapsetCovers($this))->onQueue('beatmap_high'));
-            dispatch(new RemoveBeatmapsetBestScores($this));
+
+            broadcast_notification(Notification::BEATMAPSET_LOVE, $this, $user);
         });
 
         return [
             'result' => true,
         ];
+    }
+
+    public function rank()
+    {
+        if (!$this->isQualified()) {
+            return false;
+        }
+
+        DB::transaction(function () {
+            $this->events()->create(['type' => BeatmapsetEvent::RANK]);
+
+            $this->update(['play_count' => 0]);
+            $this->beatmaps()->update(['playcount' => 0, 'passcount' => 0]);
+            $this->setApproved('ranked', null);
+
+            // global event
+            Event::generate('beatmapsetApprove', ['beatmapset' => $this]);
+
+            // enqueue a cover check job to ensure cover images are all present
+            $job = (new CheckBeatmapsetCovers($this))->onQueue('beatmap_high');
+            dispatch($job);
+
+            broadcast_notification(Notification::BEATMAPSET_RANK, $this);
+        });
+
+        return true;
     }
 
     public function favourite($user)
@@ -718,14 +810,14 @@ class Beatmapset extends Model implements AfterCommit
         return $this->belongsTo(Language::class, 'language_id');
     }
 
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
-
     public function requiredHype()
     {
         return config('osu.beatmapset.required_hype');
+    }
+
+    public function commentableTitle()
+    {
+        return $this->title;
     }
 
     public function canBeHyped()
@@ -781,21 +873,26 @@ class Beatmapset extends Model implements AfterCommit
         return $this->currentNominationCount() > 0;
     }
 
+    public function playmodes()
+    {
+        return $this->beatmaps->pluck('playmode')->unique()->values();
+    }
+
+    public function playmodeCount()
+    {
+        return $this->playmodes()->count();
+    }
+
     public function rankingETA()
     {
         if (!$this->isQualified()) {
             return;
         }
 
-        $modes = $this->beatmaps->pluck('playmode')->unique()->toArray();
+        $modes = $this->playmodes()->toArray();
 
         $queueSize = static::qualified()
-            ->whereHas('beatmaps', function ($query) use ($modes) {
-                $query->whereIn('playmode', $modes);
-            })
-            ->whereDoesntHave('beatmaps', function ($query) use ($modes) {
-                $query->where('playmode', '<', min($modes));
-            })
+            ->withModesForRanking($modes)
             ->where('queued_at', '<', $this->queued_at)
             ->count();
         $days = ceil($queueSize / static::RANKED_PER_DAY);
@@ -833,6 +930,23 @@ class Beatmapset extends Model implements AfterCommit
         return $this->eventsSinceReset()->nominations();
     }
 
+    public function hasFullBNNomination()
+    {
+        return $this->nominationsSinceReset()
+            ->with('user')
+            ->get()
+            ->pluck('user')
+            ->contains(function ($user) {
+                return $user->isNAT() || $user->isFullBN();
+            });
+    }
+
+    public function requiresFullBNNomination()
+    {
+        return $this->currentNominationCount() === $this->requiredNominationCount() - 1
+            && !$this->hasFullBNNomination();
+    }
+
     public function status()
     {
         return array_search_null($this->approved, static::STATES);
@@ -851,6 +965,7 @@ class Beatmapset extends Model implements AfterCommit
     {
         return json_item(
             static::with([
+                'allBeatmaps.beatmapset',
                 'beatmapDiscussions.beatmapDiscussionPosts',
                 'beatmapDiscussions.beatmapDiscussionVotes',
                 'beatmapDiscussions.beatmapset',
@@ -1023,6 +1138,16 @@ class Beatmapset extends Model implements AfterCommit
     public function afterCommit()
     {
         dispatch(new EsIndexDocument($this));
+    }
+
+    public function notificationCover()
+    {
+        return $this->coverURL('card');
+    }
+
+    public function url()
+    {
+        return route('beatmapsets.show', $this);
     }
 
     public static function removeMetadataText($text)

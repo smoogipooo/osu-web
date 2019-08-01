@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited postingan',
+            'topic_starter' => 'Pembuka Topik',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Rahasiakan suara yang masuk ketika polling sedang berjalan.',
+                'hide_results_info' => 'Hasil polling baru akan dapat terlihat ketika waktu pemungutan suara telah berakhir.',
                 'length' => 'Jalankan jajak pendapat selama',
                 'length_days_suffix' => 'hari',
                 'length_info' => 'Biarkan kosong apabila Anda tidak ingin menerapkan tenggat waktu pada jajak pendapat ini',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Pemilihan akan berakhir :time',
                     'ended' => 'Pemilihan telah berakhir :time',
+                    'results_hidden' => 'Hasil polling baru akan dapat terlihat ketika waktu pemungutan suara telah berakhir.',
                     'total' => 'Jumlah suara: :count',
                 ],
             ],

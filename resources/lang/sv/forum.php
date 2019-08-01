@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => '',
+            'topic_starter' => '',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => '',
+                'hide_results_info' => '',
                 'length' => 'Kör enkät i',
                 'length_days_suffix' => 'dagar',
                 'length_info' => 'Lämna tom för inget avslut av enkät',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Enkät kommer avslutas :time',
                     'ended' => 'Enkät avslutades :time',
+                    'results_hidden' => '',
                     'total' => 'Totala röster: :count',
                 ],
             ],

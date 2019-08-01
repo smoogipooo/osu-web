@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'slettet',
+    'deleted_count' => ':count_delimited slettet kommentar|:count_delimited slettede kommentarer',
     'edited' => 'redigert for :timeago av :user',
     'empty' => 'Ingen kommentarer ennå.',
+    'load_replies' => '',
     'replies' => 'Svar',
-    'show_replies' => 'vis svar',
     'title' => 'Kommentarer',
 
     'commentable_name' => [
@@ -37,20 +38,20 @@ return [
         'textarea_hint' => [
             '_' => 'Trykk enter for å dele :action. Bruk skift+enter for å forskyve en linje nedover.',
             'edit' => 'lagre',
-            'new' => 'innlegg',
+            'new' => 'del',
             'reply' => 'svar',
         ],
     ],
 
     'guest_button' => [
-        'new' => 'Logg på for å kommentere',
+        'new' => 'Logg inn for å kommentere',
         'reply' => 'Logg inn for å svare',
     ],
 
     'index' => [
         'title' => [
             '_' => 'Kommentarer :info',
-            'info' => 'Listing',
+            'info' => 'Liste',
         ],
     ],
 

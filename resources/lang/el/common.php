@@ -30,17 +30,17 @@ return [
     ],
 
     'buttons' => [
-        'admin' => '',
+        'admin' => 'Διαχειριστής',
         'back_to_previous' => 'Επιστροφή στην προηγούμενη κατάσταση',
         'back_to_top' => 'Πίσω στην αρχή',
         'cancel' => 'Ακύρωση',
         'change' => 'κάντε αλλαγές',
         'click_to_copy' => 'κάντε κλικ για να αντιγράψετε στο πρόχειρο',
         'click_to_copy_copied' => 'αντιγράφτηκε στο πρόχειρο!',
-        'collapse' => '',
+        'collapse' => 'σύμπτυξη',
         'delete' => 'Διαγραφή',
         'edit' => 'Επεξεργασία',
-        'expand' => '',
+        'expand' => 'επέκταση',
         'hide' => 'απόκρυψη',
         'permalink' => 'permalink',
         'permalink_copied' => 'το link αντιγράφτηκε',
@@ -55,9 +55,15 @@ return [
         'search' => 'Αναζήτηση',
         'see_more' => 'δείτε περισσότερα',
         'show' => 'προβολή',
+        'show_deleted' => 'Εμφάνιση διαγραμμένου',
         'show_more' => 'εμφάνιση περισσότερων',
-        'show_more_options' => '',
+        'show_more_options' => 'περισσότερες επιλογές',
         'upload_image' => 'ανεβάστε εικόνα',
+
+        'watch' => [
+            'to_0' => '',
+            'to_1' => '',
+        ],
     ],
 
     'count' => [
@@ -70,6 +76,7 @@ return [
         'minutes' => ':count λεπτό|:count λεπτά',
         'months' => ':count μήνας|:count μήνες',
         'second_short_unit' => 'δευτ.|δευτ.',
+        'update' => '',
         'years' => ':count χρόνος|:count χρόνια',
     ],
 

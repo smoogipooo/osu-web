@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'выдалена',
+    'deleted_count' => ':count_delimited каментарый выдалены|:count_delimited каментарыяў выдалена',
     'edited' => ':user адрэагаваў :timeago',
     'empty' => 'Няма каментарыяў.',
+    'load_replies' => '',
     'replies' => 'Адказы',
-    'show_replies' => 'паказаць адказы',
     'title' => 'Каментарыі',
 
     'commentable_name' => [
@@ -43,8 +44,8 @@ return [
     ],
 
     'guest_button' => [
-        'new' => '',
-        'reply' => '',
+        'new' => 'Увайсці, каб каментаваць',
+        'reply' => 'Увайсці, каб адказаць',
     ],
 
     'index' => [

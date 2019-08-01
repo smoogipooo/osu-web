@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited příspěvek|:count_delimited příspěvky|:count_delimited příspěvků',
+            'topic_starter' => '',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => '',
+                'hide_results_info' => '',
                 'length' => 'Spustit anketu po dobu',
                 'length_days_suffix' => 'dnů',
                 'length_info' => 'Ponechte prázdné pro dobu neurčitou',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Hlasování skončí za :time',
                     'ended' => 'Hlasování skončilo :time',
+                    'results_hidden' => '',
                     'total' => 'Celkem hlasů: :count',
                 ],
             ],

@@ -132,6 +132,7 @@ return [
         'is_supporter' => 'osu!supporter',
         'joined_at' => 'Đã tham gia :date',
         'lastvisit' => 'Lần cuối hoạt động :date',
+        'lastvisit_online' => '',
         'missingtext' => 'Có thể bạn đã thực hiện một lỗi đánh máy! (hoặc người dùng này có thể đã bị ban)',
         'origin_country' => 'Từ :country',
         'page_description' => 'osu! - Tất cả những bì bạn muốn biết về :username!',
@@ -293,7 +294,7 @@ return [
                     'title' => 'Vi Phạm Gần Đây',
                     'date' => 'ngày',
                     'action' => 'hành động',
-                    'length' => 'chiều dài',
+                    'length' => 'thời lượng',
                     'length_permanent' => 'vĩnh viễn',
                     'description' => 'mô tả',
                     'actor' => 'bởi :username',
@@ -330,7 +331,7 @@ return [
             'title' => 'Không tìm thấy người dùng! ;_;',
         ],
         'page' => [
-            'button' => '',
+            'button' => 'Chỉnh sửa trang cá nhân',
             'description' => '<strong>tôi!</strong> là một khu vực cá nhân có thể tùy chỉnh trong trang cá nhân của bạn.',
             'edit_big' => 'Chỉnh sửa tôi!',
             'placeholder' => 'Nhập nội dung trang vào đây',
@@ -361,7 +362,9 @@ return [
             'total_score' => 'Tổng Điểm',
         ],
     ],
+
     'status' => [
+        'all' => '',
         'online' => 'Online',
         'offline' => 'Offline',
     ],

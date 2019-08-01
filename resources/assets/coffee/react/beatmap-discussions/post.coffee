@@ -16,15 +16,20 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{a, button, div, i, span} = ReactDOMFactories
+import { MessageLengthCounter } from './message-length-counter'
+import { BigButton } from 'big-button'
+import * as React from 'react'
+import { a, button, div, i, span } from 'react-dom-factories'
+import { UserAvatar } from 'user-avatar'
 el = React.createElement
 
 bn = 'beatmap-discussion-post'
 
-class BeatmapDiscussions.Post extends React.PureComponent
+export class Post extends React.PureComponent
   constructor: (props) ->
     super props
 
+    @textarea = React.createRef()
     @throttledUpdatePost = _.throttle @updatePost, 1000
     @handleKeyDown = InputHandler.textarea @handleKeyDownCallback
     @xhr = {}
@@ -65,12 +70,11 @@ class BeatmapDiscussions.Post extends React.PureComponent
 
     userBadge =
       if @isOwner()
-        'owner'
+        'mapper'
       else
-        @userModerationGroup()
+        @userGroupBadge()
 
     topClasses += " #{bn}--#{userBadge}" if userBadge?
-    userColor = @props.user.profile_colour if !@isOwner()
 
     div
       className: topClasses
@@ -82,24 +86,22 @@ class BeatmapDiscussions.Post extends React.PureComponent
         className: "#{bn}__content"
         div
           className: "#{bn}__user-container"
-          style:
-            color: userColor
-
-          a
-            className: "#{bn}__user-link"
-            href: laroute.route('users.show', user: @props.user.id)
 
           div className: "#{bn}__avatar",
-            el UserAvatar, user: @props.user, modifiers: ['full-rounded']
+            a
+              className: "#{bn}__user-link"
+              href: laroute.route('users.show', user: @props.user.id)
+              el UserAvatar, user: @props.user, modifiers: ['full-rounded']
           div
             className: "#{bn}__user"
             div
               className: "#{bn}__user-row"
-              span
-                className: "#{bn}__user-text u-ellipsis-overflow"
-                style:
-                  color: userColor
-                @props.user.username
+              a
+                className: "#{bn}__user-link"
+                href: laroute.route('users.show', user: @props.user.id)
+                span
+                  className: "#{bn}__user-text u-ellipsis-overflow"
+                  @props.user.username
 
               if !@props.user.is_bot
                 a
@@ -110,18 +112,11 @@ class BeatmapDiscussions.Post extends React.PureComponent
 
             div
               className: "#{bn}__user-badge"
-              style:
-                backgroundColor: userColor
-                opacity: 0 if !userBadge?
               if userBadge?
-                osu.trans("beatmap_discussions.user.#{userBadge}")
-              else
-                ':' # placeholder, not actually visible
+                div className: "user-group-badge user-group-badge--#{userBadge}"
 
           div
             className: "#{bn}__user-stripe"
-            style:
-              backgroundColor: userColor
 
         @messageViewer()
         @messageEditor()
@@ -134,10 +129,10 @@ class BeatmapDiscussions.Post extends React.PureComponent
 
 
   editStart: =>
-    @textarea.style.minHeight = "#{@messageBody.getBoundingClientRect().height + 50}px"
+    @textarea.current?.style.minHeight = "#{@messageBody.getBoundingClientRect().height + 50}px"
 
     @setState editing: true, =>
-      @textarea.focus()
+      @textarea.current?.focus()
 
   handleKeyDownCallback: (type, event) =>
     switch type
@@ -161,8 +156,8 @@ class BeatmapDiscussions.Post extends React.PureComponent
         onChange: @setMessage
         onKeyDown: @handleKeyDown
         value: @state.message
-        innerRef: (el) => @textarea = el
-      el BeatmapDiscussions.MessageLengthCounter, message: @state.message, isTimeline: @isTimeline()
+        ref: @textarea
+      el MessageLengthCounter, message: @state.message, isTimeline: @isTimeline()
 
       div className: "#{bn}__actions",
         div className: "#{bn}__actions-group"
@@ -334,11 +329,11 @@ class BeatmapDiscussions.Post extends React.PureComponent
     .always => @setState posting: false
 
 
-  userModerationGroup: =>
-    if !@cache.hasOwnProperty('userModerationGroup')
-      @cache.userModerationGroup = BeatmapDiscussionHelper.moderationGroup(@props.user)
+  userGroupBadge: =>
+    if !@cache.hasOwnProperty('userGroupBadge')
+      @cache.userGroupBadge = osu.userGroupBadge(@props.user)
 
-    @cache.userModerationGroup
+    @cache.userGroupBadge
 
 
   validPost: =>

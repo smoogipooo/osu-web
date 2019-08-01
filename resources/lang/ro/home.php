@@ -24,7 +24,7 @@ return [
         'online' => '<strong>:players</strong> momentan online în <strong>:games</strong> jocuri',
         'peak' => 'Maxim, :count utilizatori online',
         'players' => '<strong>:count</strong> jucători înregistrați',
-        'title' => '',
+        'title' => 'bine ai venit',
 
         'slogan' => [
             'main' => 'cel mai bun joc de ritm free-to-win',
@@ -36,7 +36,7 @@ return [
         'advanced_link' => 'Căutare avansată',
         'button' => 'Căutare',
         'empty_result' => 'Nimic găsit!',
-        'missing_query' => 'Cuvintele cheie trebuie să fie de minim :n caracatere',
+        'keyword_required' => '',
         'placeholder' => 'tastează pentru a căuta',
         'title' => 'Caută',
 

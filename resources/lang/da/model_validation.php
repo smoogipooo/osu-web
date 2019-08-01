@@ -55,6 +55,10 @@ return [
         'deleted_parent' => 'Besvarelse af slettede kommentar er ikke tilladt.',
     ],
 
+    'follow' => [
+        'invalid' => '',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Kan kun stemme på en funktionsanmodning.',
@@ -74,6 +78,7 @@ return [
         'topic_poll' => [
             'duplicate_options' => 'Duplikeret valgmulighed er ikke tilladt.',
             'grace_period_expired' => 'Kan ikke redigere en afstemning efter mere end :limit timer',
+            'hiding_results_forever' => '',
             'invalid_max_options' => 'Valgmuligheder pr. bruger må ikke overskride antallet af valgmuligheder i alt.',
             'minimum_one_selection' => 'Et minimum af en valgmulighed pr. bruger er nødvendig.',
             'minimum_two_options' => 'Der skal være mindst 2 valgmuligheder.',
@@ -98,7 +103,7 @@ return [
         'username_available_soon' => 'Dette Brugernavn vil være tilgængelig hvert øjeblik nu!',
         'username_invalid_characters' => 'Det anmodede brugernavn indeholder ugyldige tegn.',
         'username_in_use' => 'Navnet er allerede i brug!',
-        'username_locked' => '', // TODO: language for this should be slightly different.
+        'username_locked' => 'Brugernavn er allerede i brug!', // TODO: language for this should be slightly different.
         'username_no_space_userscore_mix' => 'Brug enten understreg eller mellemrum, ikke begge dele!',
         'username_no_spaces' => "Brugernavn kan ikke starte eller ende med mellemrum!",
         'username_not_allowed' => 'Dette brugernavn er ikke tilladt.',
@@ -111,6 +116,7 @@ return [
         'too_long' => 'Overskrider maksimale længde - kan højest være op til :limit karakterer.',
 
         'change_username' => [
+            'restricted' => '',
             'supporter_required' => [
                 '_' => 'Du skal have :link for at ændre dit navn!',
                 'link_text' => 'støttede osu!',

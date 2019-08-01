@@ -16,11 +16,14 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{div, a} = ReactDOMFactories
+import { FlagCountry } from 'flag-country'
+import { Mods } from 'mods'
+import * as React from 'react'
+import { div, a } from 'react-dom-factories'
 el = React.createElement
 bn = 'beatmap-score-top'
 
-BeatmapsetPage.ScoreTop = (props) ->
+export ScoreTop = (props) ->
   topClasses = (props.modifiers ? [])
     .map (m) -> "#{bn}--#{m}"
     .join ' '
@@ -30,7 +33,7 @@ BeatmapsetPage.ScoreTop = (props) ->
       div className: "#{bn}__wrapping-container #{bn}__wrapping-container--left",
         div className: "#{bn}__position",
           div className: "#{bn}__position-number", "##{props.position}"
-          div className: "badge-rank badge-rank--tiny badge-rank--#{props.score.rank}"
+          div className: "score-rank score-rank--tiny score-rank--#{props.score.rank}"
 
         div className: "#{bn}__avatar",
           a

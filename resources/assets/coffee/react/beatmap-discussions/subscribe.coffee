@@ -16,10 +16,12 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{a, button, div, h1, h2, p} = ReactDOMFactories
+import { BigButton } from 'big-button'
+import * as React from 'react'
+import { a, button, div, h1, h2, p } from 'react-dom-factories'
 el = React.createElement
 
-class BeatmapDiscussions.Subscribe extends React.PureComponent
+export class Subscribe extends React.PureComponent
   constructor: (props) ->
     super props
 
@@ -32,7 +34,7 @@ class BeatmapDiscussions.Subscribe extends React.PureComponent
 
   render: =>
     el BigButton,
-      text: osu.trans "beatmapset_watches.button.action.to_#{+!@isWatching()}"
+      text: osu.trans "common.buttons.watch.to_#{+!@isWatching()}"
       icon: if @isWatching() then 'fas fa-eye-slash' else 'fas fa-eye'
       modifiers: ['full']
       props:

@@ -74,7 +74,8 @@ return [
         ],
 
         'info' => [
-            'post_count' => '',
+            'post_count' => ':count_delimited postare|:count_delimited postări',
+            'topic_starter' => '',
         ],
     ],
 
@@ -171,7 +172,7 @@ return [
         'create' => [
             'create_poll' => 'Crearea unui sondaj',
 
-            'preview' => '',
+            'preview' => 'Previzualizare',
 
             'create_poll_button' => [
                 'add' => 'Creează un sondaj',
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => '',
+                'hide_results_info' => '',
                 'length' => 'Rulează sondajul pentru',
                 'length_days_suffix' => 'zile',
                 'length_info' => 'Lasă liber pentru un sondaj ce nu se termină niciodată',
@@ -197,7 +200,7 @@ return [
         ],
 
         'index' => [
-            'feature_votes' => '',
+            'feature_votes' => 'prioritatea stelelor',
             'replies' => 'răspunsuri',
             'views' => 'vizualizări',
         ],
@@ -274,9 +277,9 @@ return [
                 'do' => 'Promovează această cerere',
 
                 'info' => [
-                    '_' => '',
-                    'feature_request' => '',
-                    'supporters' => '',
+                    '_' => 'Aceasta este o :feature_request. Cererile pot fi votate de către :supporters.',
+                    'feature_request' => 'cerere de avantaje',
+                    'supporters' => 'suporteri',
                 ],
 
                 'user' => [
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Votarea se va termina în :time',
                     'ended' => 'Votarea s-a terminat :time',
+                    'results_hidden' => '',
                     'total' => 'Total voturi: :count',
                 ],
             ],

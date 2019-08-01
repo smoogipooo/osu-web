@@ -26,6 +26,8 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Hai raggiunto il limite di nominazioni per questa giornata, per favore riprova domani.',
+            'full_bn_required' => 'Devi essere un\'nominatore completo per eseguire questa nomina qualificante.',
+            'full_bn_required_hybrid' => 'Devi essere un nominatore completo per nominare set beatmap con più di una modalità di gioco.',
             'incorrect_state' => 'Errore nel eseguire l\'azione, prova a ricaricare la pagina.',
             'owner' => "Non puoi nominare la tua beatmap.",
         ],
@@ -48,6 +50,9 @@ return [
         'edit' => [
             'system_generated' => 'I post generati automaticamente non possono essere modificati.',
             'not_owner' => 'Solo l\'autore del post può modificarlo.',
+        ],
+        'store' => [
+            'beatmapset_locked' => 'Questa beatmap è bloccata per la discussione.',
         ],
     ],
 
@@ -119,6 +124,7 @@ return [
             'vote' => [
                 'no_forum_access' => 'È richiesto l\'accesso al forum.',
                 'over' => 'Il sondaggio è finito e non puoi più votare.',
+                'play_more' => 'Devi giocare di più prima di votare sul forum.',
                 'voted' => 'Non è permesso cambiare voti.',
 
                 'user' => [
@@ -137,6 +143,9 @@ return [
             'edit' => [
                 'uneditable' => 'La cover specificata non è valida.',
                 'not_owner' => 'Solo l\'autore può modificare la cover.',
+            ],
+            'store' => [
+                'forum_not_allowed' => 'Questo forum non accetta copertine di argomento.',
             ],
         ],
 

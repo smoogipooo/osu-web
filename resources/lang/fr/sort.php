@@ -21,12 +21,14 @@
 return [
     '_' => 'Trier par',
 
+    'last_visit' => 'Récemment actif',
     'new' => 'Récent',
     'old' => 'Ancien',
     'top' => 'Meilleurs',
+    'username' => 'Nom d’utilisateur',
 
     'forum_topics' => [
         'new' => 'Dernière réponse',
-        'feature_votes' => '',
+        'feature_votes' => 'Priorité Star',
     ],
 ];

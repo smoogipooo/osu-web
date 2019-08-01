@@ -90,6 +90,7 @@ return [
 
         'invoice' => 'Vezi factura',
         'no_orders' => 'Nu sunt comenzi pentru vizualizare.',
+        'resume' => 'Reia finalizarea comenzii',
 
         'item' => [
             'display_name' => [
@@ -114,7 +115,7 @@ return [
             'delivered' => 'Livrat',
             'paid' => 'Plătit',
             'processing' => 'Confirmarea plății',
-            'shipped' => '',
+            'shipped' => 'Expediat',
         ],
     ],
 

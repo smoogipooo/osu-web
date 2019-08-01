@@ -16,11 +16,23 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{div, span, a, img, ol, li, i} = ReactDOMFactories
+import { BeatmapPicker } from './beatmap-picker'
+import { Stats } from './stats'
+import { BeatmapsetMapping } from 'beatmapset-mapping'
+import { BigButton } from 'big-button'
+import { PlaymodeTabs } from 'playmode-tabs'
+import * as React from 'react'
+import { div, span, a, img, ol, li, i } from 'react-dom-factories'
+import { UserAvatar } from 'user-avatar'
 el = React.createElement
 
-class BeatmapsetPage.Header extends React.Component
+export class Header extends React.Component
   favouritesToShow: 50
+
+  hasAvailabilityInfo: =>
+    @props.beatmapset.availability.download_disabled || @props.beatmapset.availability.more_information?
+
+
   showFavourites: (event) =>
     target = event.currentTarget
 
@@ -75,7 +87,7 @@ class BeatmapsetPage.Header extends React.Component
 
         div className: 'beatmapset-header__box beatmapset-header__box--main',
           div className: 'beatmapset-header__beatmap-picker-box',
-            el BeatmapsetPage.BeatmapPicker,
+            el BeatmapPicker,
               beatmaps: @props.beatmaps[@props.currentBeatmap.mode]
               currentBeatmap: @props.currentBeatmap
 
@@ -135,7 +147,7 @@ class BeatmapsetPage.Header extends React.Component
 
           el BeatmapsetMapping, beatmapset: @props.beatmapset
 
-          if currentUser.id? && @props.beatmapset.availability
+          if currentUser.id? && @hasAvailabilityInfo()
             div
               className: 'beatmapset-header__availability-info',
               if @props.beatmapset.availability.download_disabled
@@ -143,9 +155,12 @@ class BeatmapsetPage.Header extends React.Component
               else
                 osu.trans 'beatmapsets.availability.parts-removed'
 
-              if @props.beatmapset.availability.more_information
+              if @props.beatmapset.availability.more_information?
                 div className: 'beatmapset-header__availability-link',
-                  a href: @props.beatmapset.availability.more_information, target: '_blank', osu.trans 'beatmapsets.availability.more-info'
+                  a
+                    href: @props.beatmapset.availability.more_information
+                    target: '_blank'
+                    osu.trans 'beatmapsets.availability.more-info'
 
           div
             className: 'beatmapset-header__buttons'
@@ -185,7 +200,7 @@ class BeatmapsetPage.Header extends React.Component
 
         div className: 'beatmapset-header__box beatmapset-header__box--stats',
           div className: 'beatmapset-status beatmapset-status--show', @props.beatmapset.status
-          el BeatmapsetPage.Stats,
+          el Stats,
             beatmapset: @props.beatmapset
             beatmap: @props.currentBeatmap
             timeElapsed: @props.timeElapsed

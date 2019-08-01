@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'poistettu',
+    'deleted_count' => ':count_delimited poistettu kommentti|:count_delimited poistettuja kommentteja',
     'edited' => ':user muokkasi :timeago sitten',
     'empty' => 'Ei vielä kommentteja.',
+    'load_replies' => '',
     'replies' => 'Vastaukset',
-    'show_replies' => 'näytä vastaukset',
     'title' => 'Kommentit',
 
     'commentable_name' => [

@@ -16,10 +16,13 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{div, a, span, i} = ReactDOMFactories
+import core from 'osu-core-singleton'
+import * as React from 'react'
+import { div, a, span, i } from 'react-dom-factories'
+import { ShowMoreLink } from 'show-more-link'
 el = React.createElement
 
-class Beatmaps.Paginator extends React.PureComponent
+export class Paginator extends React.PureComponent
   constructor: (props) ->
     super props
 
@@ -31,7 +34,6 @@ class Beatmaps.Paginator extends React.PureComponent
   componentDidMount: =>
     Timeout.set 0, @throttledAutoPagerOnScroll
     $(window).on 'scroll.paginator', @throttledAutoPagerOnScroll
-    $(document).on 'turbolinks:before-cache.paginator', @componentWillUnmount
 
 
   componentWillUnmount: =>
@@ -50,7 +52,7 @@ class Beatmaps.Paginator extends React.PureComponent
 
 
   autoPagerOnScroll: =>
-    return if !@props.more || @props.loading || !@autoPagerTarget.current?
+    return if @props.error? || !@props.more || @props.loading || !@autoPagerTarget.current?
 
     currentTarget = @autoPagerTarget.current.getBoundingClientRect().top
     target = document.documentElement.clientHeight + @autoPagerTriggerDistance
@@ -60,6 +62,5 @@ class Beatmaps.Paginator extends React.PureComponent
     @showMore()
 
 
-  showMore: (e) =>
-    e?.preventDefault()
-    $(document).trigger 'beatmap:load_more'
+  showMore: (e) ->
+    core.beatmapsetSearchController.loadMore()

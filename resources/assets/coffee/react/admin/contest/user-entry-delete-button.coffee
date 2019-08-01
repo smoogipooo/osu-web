@@ -16,10 +16,11 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{br, tr, td, button, a, img, dl, dt, dd, i} = ReactDOMFactories
+import * as React from 'react'
+import { br, tr, td, button, a, img, dl, dt, dd, i } from 'react-dom-factories'
 el = React.createElement
 
-class @Admin.Contest.UserEntryDeleteButton extends React.Component
+export class UserEntryDeleteButton extends React.Component
   update: (id, destroy) =>
     params =
       dataType: 'json'
@@ -56,10 +57,8 @@ class @Admin.Contest.UserEntryDeleteButton extends React.Component
       label = 'Delete'
       onClick = @delete
 
-    a
-      href: '#'
-      'data-confirm': 'Are you sure?'
+    button
       onClick: onClick
-      className: "btn btn-#{btnClass}",
+      title: label
+      className: "btn-osu-big",
       i className: "fa-fw #{icon}"
-      label

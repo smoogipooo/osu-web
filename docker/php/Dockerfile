@@ -1,8 +1,7 @@
-FROM alpine:latest
+FROM alpine:3.9
 
 RUN apk update && \
-    apk add \
-    curl \
+    apk add --no-cache \
     php7 \
     php7-ctype \
     php7-curl \
@@ -26,5 +25,3 @@ RUN apk update && \
     php7-xmlwriter \
     php7-zip \
     mysql-client
-
-RUN touch /usr/bin/yarn && chmod 555 /usr/bin/yarn

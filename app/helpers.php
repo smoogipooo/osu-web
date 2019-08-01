@@ -52,6 +52,11 @@ function beatmap_timestamp_format($ms)
     return sprintf('%02d:%02d.%03d', $m, $s, $ms);
 }
 
+function broadcast_notification(...$arguments)
+{
+    return (new App\Jobs\BroadcastNotification(...$arguments))->dispatch();
+}
+
 /**
  * Like Cache::remember but always save for one month or 10 * $minutes (whichever is longer)
  * and return old value if failed getting the value after it expires.
@@ -205,14 +210,6 @@ function get_valid_locale($requestedLocale)
     if (in_array($requestedLocale, config('app.available_locales'), true)) {
         return $requestedLocale;
     }
-
-    return array_first(
-        config('app.available_locales'),
-        function ($value) use ($requestedLocale) {
-            return starts_with($requestedLocale, $value);
-        },
-        config('app.fallback_locale')
-    );
 }
 
 function html_entity_decode_better($string)
@@ -225,11 +222,16 @@ function html_excerpt($body, $limit = 300)
 {
     $body = html_entity_decode_better(replace_tags_with_spaces($body));
 
-    if (strlen($body) >= $limit) {
-        $body = mb_substr($body, 0, $limit).'...';
+    return e(truncate($body, $limit));
+}
+
+function truncate(string $text, $limit = 100, $ellipsis = '...')
+{
+    if (mb_strlen($text) > $limit) {
+        return mb_substr($text, 0, $limit - mb_strlen($ellipsis)).$ellipsis;
     }
 
-    return e($body);
+    return $text;
 }
 
 function json_date(?DateTime $date) : ?string
@@ -511,6 +513,11 @@ function is_api_request()
     return request()->is('api/*');
 }
 
+function is_json_request()
+{
+    return is_api_request() || request()->expectsJson();
+}
+
 function is_sql_unique_exception($ex)
 {
     return starts_with(
@@ -592,7 +599,7 @@ function issue_icon($issue)
 
 function build_url($build)
 {
-    return route('changelog.build', [$build->updateStream->name, $build->version]);
+    return route('changelog.build', [optional($build->updateStream)->name ?? 'unknown', $build->version]);
 }
 
 function post_url($topicId, $postId, $jumpHash = true, $tail = false)
@@ -643,7 +650,7 @@ function proxy_image($url)
 
     $decoded = urldecode(html_entity_decode_better($url));
 
-    if (config('osu.camo.key') === '') {
+    if (config('osu.camo.key') === null) {
         return $decoded;
     }
 
@@ -1312,4 +1319,54 @@ function check_url(string $url): bool
     curl_close($ch);
 
     return !$errored;
+}
+
+function mini_asset(string $url): string
+{
+    return present(config('osu.assets.mini_url'))
+        ? str_replace(config('osu.assets.base_url'), config('osu.assets.mini_url'), $url)
+        : $url;
+}
+
+function section_to_hue_map($section): int
+{
+    static $colourToHue = [
+        'red' => 0,
+        'pink' => 333,
+        'orange' => 46,
+        'green' => 115,
+        'purple' => 255,
+        'blue' => 200,
+    ];
+
+    static $sectionMapping = [
+        'admin' => 'red',
+        'admin-forum' => 'red',
+        'admin-store' => 'red',
+        'beatmaps' => 'blue',
+        'beatmapsets' => 'blue',
+        'community' => 'pink',
+        'error' => 'pink',
+        'help' => 'orange',
+        'home' => 'purple',
+        'multiplayer' => 'pink',
+        'rankings' => 'green',
+        'store' => 'pink',
+        'user' => 'pink',
+    ];
+
+    return isset($sectionMapping[$section]) ? $colourToHue[$sectionMapping[$section]] : $colourToHue['pink'];
+}
+
+function search_error_message(?Exception $e): ?string
+{
+    if ($e === null) {
+        return null;
+    }
+
+    $basename = snake_case(get_class_basename(get_class($e)));
+    $key = "errors.search.${basename}";
+    $text = trans($key);
+
+    return $text === $key ? trans('errors.search.default') : $text;
 }

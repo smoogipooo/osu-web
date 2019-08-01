@@ -20,10 +20,11 @@
 
 return [
     'deleted' => 'gelöscht',
+    'deleted_count' => ':count_delimited gelöschten Kommentar|:count_delimited gelöschte Kommentare',
     'edited' => 'bearbeitet :timeago von :user',
     'empty' => 'Noch keine Kommentare vorhanden.',
+    'load_replies' => '',
     'replies' => 'Antworten',
-    'show_replies' => 'antworten anzeigen',
     'title' => 'Kommentare',
 
     'commentable_name' => [

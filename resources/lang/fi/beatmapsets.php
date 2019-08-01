@@ -42,7 +42,7 @@ return [
             'mapped_by' => 'luonut: :mapper',
             'qualified' => 'esihyväksytty ',
             'ranked' => 'hyväksytty ',
-            'submitted' => 'Julkaistu ',
+            'submitted' => 'julkaistu ',
             'unfavourite' => 'Poista tämä beatmapkokoelma suosikeista',
             'updated' => 'viimeisin päivitys ',
             'updated_timeago' => 'viimeksi päivitetty :timeago',
@@ -65,13 +65,13 @@ return [
         ],
 
         'hype' => [
-            'action' => 'Äänestä tätä kappaletta jos nautit sen pelaamisesta auttaaksesi sitä saamaan <strong>Ranked</strong> statuksen.',
+            'action' => 'Jos nautit tästä kartasta, hurraa sitä edistääksesi sen siirtymistä <strong>Hyväksyttyyn</strong> tilaan.',
 
             'current' => [
-                '_' => 'Tämä kappale on tällä hetkellä :status.',
+                '_' => 'Tämä kartta on :status.',
 
                 'status' => [
-                    'pending' => 'odottaa',
+                    'pending' => 'vireillä',
                     'qualified' => 'hyväksytty',
                     'wip' => 'keskeneräinen',
                 ],
@@ -126,7 +126,7 @@ return [
 
         'stats' => [
             'cs' => 'Ympyräkoko',
-            'cs-mania' => 'Koskettimien määrä',
+            'cs-mania' => 'Näppäinten määrä',
             'drain' => 'HP Drain',
             'accuracy' => 'Tarkkuus',
             'ar' => 'Lähestymisnopeus',

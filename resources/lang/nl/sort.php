@@ -19,14 +19,16 @@
  */
 
 return [
-    '_' => '',
+    '_' => 'Sorteer op',
 
-    'new' => '',
-    'old' => '',
-    'top' => '',
+    'last_visit' => '',
+    'new' => 'Recent',
+    'old' => 'Oud',
+    'top' => 'Terug naar boven',
+    'username' => '',
 
     'forum_topics' => [
-        'new' => '',
-        'feature_votes' => '',
+        'new' => 'Laatste antwoord',
+        'feature_votes' => 'Ster prioriteit',
     ],
 ];

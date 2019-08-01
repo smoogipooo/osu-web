@@ -21,8 +21,15 @@
 return [
     'buttons' => [
       'add' => 'дадаць сябра',
-      'disabled' => '',
+      'disabled' => 'сябры',
       'remove' => 'выдаліць сябра',
+    ],
+
+    'index' => [
+        'title' => [
+            '_' => 'Галоўная :info',
+            'info' => 'Сябры',
+        ],
     ],
 
     'state' => [

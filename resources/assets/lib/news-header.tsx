@@ -21,13 +21,13 @@ import HeaderTitleTrans from 'interfaces/header-title-trans';
 import NewsPostJson from 'interfaces/news-post-json';
 import * as React from 'react';
 
-interface PropsInterface {
+interface Props {
+  post?: NewsPostJson;
   section: string;
   titleTrans: HeaderTitleTrans;
-  post?: NewsPostJson;
 }
 
-export default function NewsHeader(props: PropsInterface) {
+export default function NewsHeader(props: Props) {
   const links = [
     {
       active: props.section === 'index',
@@ -44,9 +44,11 @@ export default function NewsHeader(props: PropsInterface) {
     });
   }
 
-  return <HeaderV3
-    theme='news'
-    titleTrans={props.titleTrans}
-    links={links}
-  />;
+  return (
+    <HeaderV3
+      theme='news'
+      titleTrans={props.titleTrans}
+      links={links}
+    />
+  );
 }

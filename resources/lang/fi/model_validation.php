@@ -55,6 +55,10 @@ return [
         'deleted_parent' => 'Poistettuun kommenttiin ei voida vastata.',
     ],
 
+    'follow' => [
+        'invalid' => '',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Vain ominaisuutta voi äänestää.',
@@ -74,6 +78,7 @@ return [
         'topic_poll' => [
             'duplicate_options' => 'Identtiset valinnat eivät ole sallittuja.',
             'grace_period_expired' => 'Äänestystä ei voi muokata :limit tunnin jälkeen',
+            'hiding_results_forever' => '',
             'invalid_max_options' => 'Valinnat käyttäjää kohti eivät voi ylittää kaikkien valintojen määrää.',
             'minimum_one_selection' => 'Vähintään yksi valinta käyttäjää kohti on vaadittu.',
             'minimum_two_options' => 'Tarvitsee ainakin kaksi valintaa.',
@@ -111,6 +116,7 @@ return [
         'too_long' => 'Liian pitkä - Kirjaimia voi olla enintään :limit.',
 
         'change_username' => [
+            'restricted' => '',
             'supporter_required' => [
                 '_' => 'Sinun pitää olla :link, jotta voit muuttaa nimeäsi!',
                 'link_text' => 'tukenut osua!',

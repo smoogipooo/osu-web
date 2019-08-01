@@ -30,7 +30,7 @@ return [
     ],
 
     'buttons' => [
-        'admin' => '',
+        'admin' => 'Administrator',
         'back_to_previous' => 'Powrót do poprzedniej pozycji',
         'back_to_top' => 'Powrót na górę',
         'cancel' => 'Anuluj',
@@ -55,9 +55,15 @@ return [
         'search' => 'Szukaj',
         'see_more' => 'zobacz więcej',
         'show' => 'pokaż',
+        'show_deleted' => 'Pokaż usunięte',
         'show_more' => 'pokaż więcej',
         'show_more_options' => 'pokaż więcej opcji',
         'upload_image' => 'prześlij zdjęcie',
+
+        'watch' => [
+            'to_0' => 'Przestań obserwować',
+            'to_1' => 'Obserwuj',
+        ],
     ],
 
     'count' => [
@@ -67,9 +73,10 @@ return [
         'hours' => ':count_delimited godzina|:count_delimited godziny|:count_delimited godzin',
         'item' => ':count_delimited sztuka|:count_delimited sztuki|:count_delimited sztuk',
         'minute_short_unit' => 'min|min|min',
-        'minutes' => ':count minuta|:count minuty|:count minut',
+        'minutes' => ':count_delimited minuta|:count_delimited minuty|:count_delimited minut',
         'months' => ':count_delimited miesiąc|:count_delimited miesiące|:count_delimited miesięcy',
         'second_short_unit' => 's|s|s',
+        'update' => ':count_delimited aktualizacja|:count_delimited aktualizacje|:count_delimited aktualizacji',
         'years' => ':count_delimited rok|:count_delimited lata|:count_delimited lat',
     ],
 

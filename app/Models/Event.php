@@ -21,7 +21,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Sentry;
+use Sentry\State\Scope;
 
 /**
  * @property Beatmap $beatmap
@@ -67,6 +67,25 @@ class Event extends Model
     public static function generate($type, $options)
     {
         switch ($type) {
+            case 'achievement':
+                $achievement = $options['achievement'];
+                $user = $options['user'];
+
+                // not escaped because it's not in the old system either
+                $achievementName = $achievement->name;
+                $userUrl = e(route('users.show', $user, false));
+                $userName = e($user->username);
+
+                $params = [
+                    // taken from medal
+                    'text' => "<b><a href='{$userUrl}'>{$userName}</a></b> unlocked the \"<b>{$achievementName}</b>\" medal!",
+                    'user_id' => $user->getKey(),
+                    'private' => false,
+                    'epicfactor' => 4,
+                ];
+
+                break;
+
             case 'beatmapsetApprove':
                 $beatmapset = $options['beatmapset'];
 
@@ -76,8 +95,13 @@ class Event extends Model
                 $userUrl = e(route('users.show', $beatmapset->user, false));
                 $approval = e($beatmapset->status());
 
+                $textCleanBeatmapsetUrl = config('app.url').$beatmapsetUrl;
+                $textCleanUserUrl = config('app.url').$userUrl;
+                $textClean = "[{$textCleanBeatmapsetUrl} {$beatmapsetTitle}] by [{$textCleanUserUrl} {$userName}] has just been {$approval}!";
+
                 $params = [
                     'text' => "<a href='{$beatmapsetUrl}'>{$beatmapsetTitle}</a> by <b><a href='{$userUrl}'>{$userName}</a></b> has just been {$approval}!",
+                    'text_clean' => $textClean,
                     'beatmap_id' => 0,
                     'beatmapset_id' => $beatmapset->getKey(),
                     'user_id' => $beatmapset->user->getKey(),
@@ -230,13 +254,15 @@ class Event extends Model
         }
     }
 
-    public function parseFailure()
+    public function parseFailure($reason)
     {
-        Sentry::captureMessage('Failed parsing event', ['log'], [
-            'extra' => [
-                'event' => $this->toArray(),
-            ],
-        ]);
+        app('sentry')->getClient()->captureMessage(
+            'Failed parsing event',
+            null,
+            (new Scope)
+                ->setExtra('reason', $reason)
+                ->setExtra('event', $this->toArray())
+        );
 
         return ['parse_error' => true];
     }
@@ -245,7 +271,7 @@ class Event extends Model
     {
         $achievement = Achievement::where(['name' => $matches['achievementName']])->first();
         if ($achievement === null) {
-            return $this->parseFailure();
+            return $this->parseFailure("unknown achievement ({$matches['achievementName']})");
         }
 
         return [
@@ -318,7 +344,7 @@ class Event extends Model
     {
         $mode = $this->stringMode($matches['mode']);
         if ($mode === null) {
-            return $this->parseFailure();
+            return $this->parseFailure("unknown mode ({$matches['mode']})");
         }
 
         return [
@@ -334,7 +360,7 @@ class Event extends Model
     {
         $mode = $this->stringMode($matches['mode']);
         if ($mode === null) {
-            return $this->parseFailure();
+            return $this->parseFailure("unknown mode ({$matches['mode']})");
         }
 
         return [
@@ -391,7 +417,7 @@ class Event extends Model
             }
 
             if ($this->details === null) {
-                $this->details = $this->parseFailure($matches);
+                $this->details = $this->parseFailure('no matching pattern');
             }
 
             $this->parsed = true;

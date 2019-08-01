@@ -55,6 +55,10 @@ return [
         'deleted_parent' => 'Não é permitido responder comentários excluídos.',
     ],
 
+    'follow' => [
+        'invalid' => ':attribute especificado é invalido.',
+    ],
+
     'forum' => [
         'feature_vote' => [
             'not_feature_topic' => 'Só pode votar um pedido de recurso.',
@@ -74,6 +78,7 @@ return [
         'topic_poll' => [
             'duplicate_options' => 'Opção duplicada não é permitida.',
             'grace_period_expired' => 'Não é possível editar uma enquete após :limit horas',
+            'hiding_results_forever' => 'Não é possível esconder os resultados de uma enquete que nunca acabará.',
             'invalid_max_options' => 'Opções por usuário não deve exceder o número de opções disponíveis.',
             'minimum_one_selection' => 'É necessário no mínimo uma opção por usuário.',
             'minimum_two_options' => 'É necessário no mínimo duas opções.',
@@ -111,6 +116,7 @@ return [
         'too_long' => 'ultrapassou tamanho máximo - deve ser até :limit caracteres.',
 
         'change_username' => [
+            'restricted' => 'Não é possível alterar seu nome de usuário enquanto estiver em modo restrito.',
             'supporter_required' => [
                 '_' => 'Você precisa ser um :link para mudar seu nome de usuário!',
                 'link_text' => 'osu!supporter',

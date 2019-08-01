@@ -40,12 +40,14 @@ return [
         'edited' => 'Last edited by :editor :update_time.',
         'kudosu_denied' => 'Denied from obtaining kudosu.',
         'message_placeholder_deleted_beatmap' => 'This difficulty has been deleted so it may no longer be discussed.',
+        'message_placeholder_locked' => 'Discussion for this beatmap has been disabled.',
         'message_type_select' => 'Select Comment Type',
         'reply_notice' => 'Press enter to reply.',
         'reply_placeholder' => 'Type your response here',
         'require-login' => 'Please sign in to post or reply',
         'resolved' => 'Resolved',
         'restore' => 'restore',
+        'show_deleted' => 'Show deleted',
         'title' => 'Discussions',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'No discussions yet!',
             'hidden' => 'No discussion matches selected filter.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Lock discussion',
+                'unlock' => 'Unlock discussion',
+            ],
+
+            'prompt' => [
+                'lock' => 'Reason for locking',
+                'unlock' => 'Are you sure to unlock?',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Pin',
             'timestamp' => 'Timestamp',
             'timestamp_missing' => 'ctrl-c in edit mode and paste in your message to add a timestamp!',
             'title' => 'New Discussion',
+            'unpin' => 'Unpin',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Sorted by:',
             'created_at' => 'Creation time',
             'timeline' => 'Timeline',
             'updated_at' => 'Last update',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Note: This beatmap is marked as a work-in-progress by the creator.',
         ],
 
+        'votes' => [
+            'up' => 'Upvote this discussion',
+            'down' => 'Downvote this discussion',
+        ],
     ],
 
     'hype' => [
@@ -224,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Any',
-        'ranked-approved' => 'Ranked & Approved',
         'approved' => 'Approved',
-        'qualified' => 'Qualified',
-        'loved' => 'Loved',
-        'faves' => 'Favourites',
-        'pending' => 'Pending & WIP',
+        'favourites' => 'Favourites',
         'graveyard' => 'Graveyard',
-        'my-maps' => 'My Maps',
+        'leaderboard' => 'Has Leaderboard',
+        'loved' => 'Loved',
+        'mine' => 'My Maps',
+        'pending' => 'Pending & WIP',
+        'qualified' => 'Qualified',
+        'ranked' => 'Ranked',
     ],
     'genre' => [
         'any' => 'Any',

@@ -20,32 +20,32 @@
 
 return [
     'availability' => [
-        'disabled' => 'この譜面は現在ダウンロード不可能です。',
-        'parts-removed' => '権利者の申し立てによりこの譜面は部分的に削除されています。',
+        'disabled' => 'このビートマップは現在ダウンロード不可能です。',
+        'parts-removed' => '権利者の申し立てによりこのビートマップは部分的に削除されています。',
         'more-info' => '詳細はこちらです。',
     ],
 
     'index' => [
-        'title' => '譜面リスト',
-        'guest_title' => '譜面',
+        'title' => 'ビートマップリスト',
+        'guest_title' => 'ビートマップ',
     ],
 
     'show' => [
         'discussion' => 'ディスカッション',
 
         'details' => [
-            'approved' => 'approved日時 ',
-            'favourite' => '譜面をお気に入りに追加する',
+            'approved' => 'Approved日 ',
+            'favourite' => 'ビートマップセットをお気に入りに追加する',
             'favourited_count' => '+ そのほか:count人！',
-            'logged-out' => '譜面をダウンロードするにはログインが必要です！',
-            'loved' => 'lovedに追加された日 ',
+            'logged-out' => 'ビートマップをダウンロードするにはログインが必要です！',
+            'loved' => 'loved追加日 ',
             'mapped_by' => '作者 :mapper',
-            'qualified' => '申請された日 ',
-            'ranked' => 'rankedされた日 ',
+            'qualified' => 'qualifiedされた日',
+            'ranked' => 'Ranked日 ',
             'submitted' => '投稿日 ',
-            'unfavourite' => '譜面をお気に入りから外す',
-            'updated' => '最終更新日',
-            'updated_timeago' => '最終更新時刻: :timeago',
+            'unfavourite' => 'ビートマップをお気に入りから外す',
+            'updated' => '最終更新 ',
+            'updated_timeago' => '最終更新 :timeago',
 
             'download' => [
                 '_' => 'ダウンロード',
@@ -56,7 +56,7 @@ return [
 
             'login_required' => [
                 'bottom' => 'より多くの機能にアクセスする',
-                'top' => 'サインイン',
+                'top' => 'ログイン',
             ],
         ],
 
@@ -65,14 +65,14 @@ return [
         ],
 
         'hype' => [
-            'action' => 'もしこの譜面が良かった場合、この譜面を応援することで 譜面のステータスが<strong>Ranked</strong>の状態になります。',
+            'action' => 'もしこのビートマップが良かった場合、Hypeすることでビートマップのステータスが<strong>Ranked</strong>状態になります。',
 
             'current' => [
-                '_' => 'この譜面は現在 :status です。',
+                '_' => 'このビートマップは現在:statusです。',
 
                 'status' => [
-                    'pending' => '未解決',
-                    'qualified' => '申請済',
+                    'pending' => 'Pending',
+                    'qualified' => 'Qualified',
                     'wip' => '作業中',
                 ],
             ],
@@ -87,7 +87,7 @@ return [
             'source' => 'ソース',
             'success-rate' => 'クリア率',
             'tags' => 'タグ',
-            'unranked' => 'Unranked譜面',
+            'unranked' => 'Unrankedビートマップ',
         ],
 
         'scoreboard' => [
@@ -95,32 +95,32 @@ return [
             'country' => '国別ランキング',
             'friend' => 'フレンドランキング',
             'global' => '世界ランキング',
-            'supporter-link' => '<a href=":link">ここ</a>をクリックする事でサポーターの詳細が見れます。',
-            'supporter-only' => 'フレンドランキングと国別ランキングを利用するにはサポータータグが必要です！',
+            'supporter-link' => '<a href=":link">ここ</a>をクリックする事でosu!サポーターの詳細が見れます。',
+            'supporter-only' => 'フレンドランキングと国別ランキングを利用するにはosu!サポータータグが必要です！',
             'title' => 'スコアボード',
 
             'headers' => [
-                'accuracy' => 'Accuracy',
-                'combo' => 'Max Combo',
-                'miss' => 'Miss',
+                'accuracy' => '精度',
+                'combo' => '最大コンボ',
+                'miss' => 'ミス',
                 'mods' => 'Mods',
-                'player' => 'Player',
+                'player' => 'プレイヤー',
                 'pp' => 'pp',
-                'rank' => 'Rank',
-                'score_total' => 'Total Score',
-                'score' => 'Score',
+                'rank' => '順位',
+                'score_total' => '合計スコア',
+                'score' => 'スコア',
             ],
 
             'no_scores' => [
-                'country' => 'あなたの国からのプレイヤーで記録を作った人はまだいません！',
-                'friend' => 'あなたのフレンドで記録を作った人はまだいません!',
+                'country' => 'あなたの国のプレイヤーで記録を作った人はまだいません！',
+                'friend' => 'あなたのフレンドで記録を作った人はまだいません！',
                 'global' => 'まだ記録はありません。一番乗りを目指そう！',
                 'loading' => 'スコアの読み込み中・・・',
-                'unranked' => 'Unranked譜面です。',
+                'unranked' => 'Unrankedのビートマップです。',
             ],
             'score' => [
                 'first' => 'In the Lead',
-                'own' => 'Your Best',
+                'own' => 'あなたのベスト',
             ],
         ],
 

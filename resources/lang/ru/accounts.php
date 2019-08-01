@@ -62,6 +62,11 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'title' => '',
+        'authorized_clients' => '',
+    ],
+
     'update_email' => [
         'email_subject' => 'Подтверждение смены почты аккаунта osu!',
         'update' => 'сменить',
@@ -86,11 +91,16 @@ return [
         'hide_online' => 'скрыть ваше присутствие',
     ],
 
+    'notifications' => [
+        'title' => 'Уведомления',
+        'topic_auto_subscribe' => 'автоматически включать уведомления для тем на форуме, когда вы их создаёте',
+    ],
+
     'security' => [
         'current_session' => 'это вы',
-        'end_session' => 'отозвать доступ',
+        'end_session' => 'Закончить сеанс',
         'end_session_confirmation' => 'Сеанс на этом устройстве будет немедленно завершён. Вы уверены?',
-        'last_active' => 'был активен',
+        'last_active' => 'Был активен:',
         'title' => 'Безопасность',
         'web_sessions' => 'последняя активность',
     ],

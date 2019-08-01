@@ -16,11 +16,12 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{div} = ReactDOMFactories
+import * as React from 'react'
+import { div } from 'react-dom-factories'
 el = React.createElement
 ranks = ['XH', 'X', 'SH', 'S', 'A']
 
-class ProfilePage.RankCount extends React.PureComponent
+export class RankCount extends React.PureComponent
   render: =>
     div className: 'profile-rank-count',
       ranks.map @renderRankCountEntry
@@ -31,5 +32,5 @@ class ProfilePage.RankCount extends React.PureComponent
       key: name
       className: 'profile-rank-count__item'
       div
-        className: "score-rank-v2 score-rank-v2--#{name} score-rank-v2--profile-page"
+        className: "score-rank score-rank--#{name} score-rank--profile-page"
       osu.formatNumber(@props.stats.scoreRanks[name])

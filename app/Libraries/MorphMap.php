@@ -22,7 +22,9 @@ namespace App\Libraries;
 
 use App\Models\Beatmapset;
 use App\Models\Build;
+use App\Models\Chat\Channel;
 use App\Models\Comment;
+use App\Models\Forum;
 use App\Models\NewsPost;
 use App\Models\Score;
 use App\Models\User;
@@ -32,7 +34,9 @@ class MorphMap
     const MAP = [
         Beatmapset::class => 'beatmapset',
         Build::class => 'build',
+        Channel::class => 'channel',
         Comment::class => 'comment',
+        Forum\Topic::class => 'forum_topic',
         NewsPost::class => 'news_post',
         Score\Best\Fruits::class => 'score_best_fruits',
         Score\Best\Mania::class => 'score_best_mania',

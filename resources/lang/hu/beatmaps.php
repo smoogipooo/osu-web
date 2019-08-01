@@ -40,12 +40,14 @@ return [
         'edited' => 'Utoljára frissítve :editor által, :update_time-kor.',
         'kudosu_denied' => 'Kudosu szerzéstől megtagadva.',
         'message_placeholder_deleted_beatmap' => 'Ez a nehézség törölve lett, ezért a beszélgetés nem lehetséges.',
+        'message_placeholder_locked' => 'A beatmap megbeszélése meg lett tiltva.',
         'message_type_select' => 'Komment-típus választása',
         'reply_notice' => 'Nyomj entert a válaszoláshoz.',
         'reply_placeholder' => 'Ide írd a válaszod',
         'require-login' => 'Kérlek jelentkezz be posztoláshoz illetve válaszoláshoz',
         'resolved' => 'Megoldott',
         'restore' => 'visszaállítás',
+        'show_deleted' => 'Töröltek megjelenítése',
         'title' => 'Megbeszélések',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Egyetlen megbeszélés sincs még!',
             'hidden' => 'Egyetlen megbeszélés sem egyezik a kijelölt szűrővel.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Megbeszélés zárolása',
+                'unlock' => 'Megbeszélés megnyitása',
+            ],
+
+            'prompt' => [
+                'lock' => 'Zárolás oka',
+                'unlock' => 'Biztos ki akarod nyitni?',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Rögzítés',
             'timestamp' => 'Időbélyeg',
             'timestamp_missing' => 'Időbélyeg hozzáadásához nyomj ctrl-c billentyűkombinációt szerkesztő módban, majd illeszd be az üzenetedbe!',
             'title' => 'Új beszélgetés indítása',
+            'unpin' => 'Rögzítés feloldása',
         ],
 
         'show' => [
@@ -100,7 +116,6 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Rendezve:',
             'created_at' => 'Létrehozás ideje',
             'timeline' => 'Idővonal',
             'updated_at' => 'Utolsó frissítés',
@@ -124,6 +139,10 @@ return [
             'wip' => 'Megjegyzés: Ez a beatmap még készítés alatt áll.',
         ],
 
+        'votes' => [
+            'up' => 'Megbeszélés felszavazása',
+            'down' => 'Megbeszélés leszavazása',
+        ],
     ],
 
     'hype' => [
@@ -197,6 +216,7 @@ return [
                 'title' => 'Cím',
                 'artist' => 'Előadó',
                 'difficulty' => 'Nehézség',
+                'favourites' => 'Kedvencek',
                 'updated' => 'Frissítve',
                 'ranked' => 'Rangsorolt',
                 'rating' => 'Értékelés',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Bármelyik',
-        'ranked-approved' => 'Rangsorolt & Jóváhagyott',
         'approved' => 'Jóváhagyott',
-        'qualified' => 'Kvalifikált',
-        'loved' => 'Loved',
-        'faves' => 'Kedvencek',
-        'pending' => 'Függőben lévő & WIP',
+        'favourites' => '',
         'graveyard' => 'Temető',
-        'my-maps' => 'Saját Map-jeim',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => 'Függőben lévő & WIP',
+        'qualified' => 'Kvalifikált',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Bármelyik',

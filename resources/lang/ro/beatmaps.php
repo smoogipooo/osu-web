@@ -40,12 +40,14 @@ return [
         'edited' => 'Ultima dată editat de :editor :update_time.',
         'kudosu_denied' => 'A refuzat să primească kudosu.',
         'message_placeholder_deleted_beatmap' => 'Această dificultate a fost ștearsă, deci e posibil să nu mai fie discutată.',
+        'message_placeholder_locked' => '',
         'message_type_select' => 'Selectează tipul comentariului',
         'reply_notice' => 'Apasă enter pentru a răspunde.',
         'reply_placeholder' => 'Scrie-ți răspunsul aici',
         'require-login' => 'Te rugăm să te conectezi pentru a posta sau a răspunde',
         'resolved' => 'Rezolvat',
         'restore' => 'restabilește',
+        'show_deleted' => '',
         'title' => 'Discuții',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Nicio discuție încă!',
             'hidden' => 'Nicio discuție nu se potrivește cu filtrul selectat.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
+
+            'prompt' => [
+                'lock' => '',
+                'unlock' => '',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => '',
             'timestamp' => 'Marcaj de timp',
             'timestamp_missing' => 'ctrl-c în modul de editare și lipește-ți mesajul pentru a adăuga un marcaj de timp!',
             'title' => 'Discuție nouă',
+            'unpin' => '',
         ],
 
         'show' => [
@@ -100,10 +116,9 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Sortat după:',
-            'created_at' => '',
-            'timeline' => '',
-            'updated_at' => '',
+            'created_at' => 'Data creării',
+            'timeline' => 'Cronologie',
+            'updated_at' => 'Ultima actualizare',
         ],
 
         'stats' => [
@@ -124,6 +139,10 @@ return [
             'wip' => 'Notă: Acest beatmap este marcat ca o lucrare în desfășurare de către creator.',
         ],
 
+        'votes' => [
+            'up' => '',
+            'down' => '',
+        ],
     ],
 
     'hype' => [
@@ -194,15 +213,16 @@ return [
                 'played' => 'Jucat',
             ],
             'sorting' => [
-                'title' => '',
-                'artist' => '',
-                'difficulty' => '',
-                'updated' => '',
-                'ranked' => '',
-                'rating' => '',
-                'plays' => '',
-                'relevance' => '',
-                'nominations' => '',
+                'title' => 'Titlu',
+                'artist' => 'Artist',
+                'difficulty' => 'Dificultate',
+                'favourites' => 'Favorite',
+                'updated' => 'Actualizat',
+                'ranked' => 'Clasat',
+                'rating' => 'Evaluare',
+                'plays' => 'Jocuri',
+                'relevance' => 'Relevanţă',
+                'nominations' => 'Nominalizări',
             ],
             'supporter_filter_quote' => [
                 '_' => 'Ai nevoie de un :link activ pentru a filtra prin :filters',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Oricare',
-        'ranked-approved' => 'Clasate & Aprobate',
         'approved' => 'Aprobate',
-        'qualified' => 'Calificate',
-        'loved' => 'Loved',
-        'faves' => 'Favorite',
-        'pending' => 'În așteptare & în lucru',
+        'favourites' => '',
         'graveyard' => 'Graveyard',
-        'my-maps' => 'Mapele mele',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => 'În așteptare & în lucru',
+        'qualified' => 'Calificate',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Oricare',
@@ -303,7 +324,7 @@ return [
         'D' => '',
     ],
     'panel' => [
-        'playcount' => '',
-        'favourites' => '',
+        'playcount' => 'Numărul de jocuri :count',
+        'favourites' => 'Favorite :count',
     ],
 ];

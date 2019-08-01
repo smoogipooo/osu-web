@@ -74,7 +74,8 @@ return [
         ],
 
         'info' => [
-            'post_count' => '',
+            'post_count' => ':count_delimited post|:count_delimited post',
+            'topic_starter' => '',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Nascondi i risultati del sondaggio.',
+                'hide_results_info' => 'Saranno mostrati solo dopo la conclusione del sondaggio.',
                 'length' => 'Durata del sondaggio:',
                 'length_days_suffix' => 'giorni',
                 'length_info' => 'Lascia vuoto per un sondaggio senza fine',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Il sondaggio scade tra :time',
                     'ended' => 'Il sondaggio è finito :time',
+                    'results_hidden' => 'I risultati saranno mostrati dopo il termine della votazione.',
                     'total' => 'Voti totali: :count',
                 ],
             ],

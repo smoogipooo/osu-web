@@ -20,7 +20,7 @@
 
 return [
     'defaults' => [
-        'page_description' => 'osu! - リズムはもう、その指先に！  某応援団や某太鼓のゲームをモチーフにしたゲームモードやオリジナルのゲームモードも楽しめて、譜面作成までも完全に行えるゲームです。',
+        'page_description' => 'osu! - リズムはもう、その指先に！応援団や太鼓をモチーフにしたゲームモード、オリジナルのゲームモード、そしてレベルエディタも備えています。',
     ],
 
     'menu' => [
@@ -40,38 +40,38 @@ return [
             'news-show' => 'お知らせ',
             'password-reset-index' => 'パスワードのリセット',
             'search' => '検索',
-            'supportTheGame' => '支援する',
-            'team' => 'osu!チーム',
+            'supportTheGame' => 'ゲームを支援する',
+            'team' => 'osu!team',
         ],
         'help' => [
             '_' => 'ヘルプ',
             'getFaq' => 'FAQ',
             'getRules' => 'ルール',
-            'getSupport' => '本当にサポートが必要です！',
+            'getSupport' => 'サポートが必要です！',
             'getWiki' => 'wiki',
             'wiki-show' => 'wiki',
         ],
         'beatmaps' => [
-            '_' => '譜面',
-            'artists' => '推奨アーティスト',
+            '_' => 'ビートマップ',
+            'artists' => '注目アーティスト',
             'beatmap_discussion_posts-index' => 'ディスカッション投稿',
             'beatmap_discussions-index' => 'ディスカッション',
             'beatmapset-watches-index' => 'moddingウォッチリスト',
             'beatmapset_discussion_votes-index' => 'ディスカッション評価',
             'beatmapset_events-index' => 'ビートマップセットイベント',
-            'index' => '譜面リスト',
+            'index' => '一覧',
             'packs' => 'パック',
             'show' => '詳細',
         ],
         'beatmapsets' => [
-            '_' => '譜面',
+            '_' => 'ビートマップ',
             'discussion' => 'modding',
         ],
         'rankings' => [
             '_' => 'ランキング',
             'index' => 'パフォーマンス',
             'performance' => 'パフォーマンス',
-            'charts' => 'チャート',
+            'charts' => 'スポットライト',
             'score' => 'スコア',
             'country' => '国別',
             'kudosu' => 'kudosu',
@@ -118,25 +118,27 @@ return [
             'reset' => 'リセット',
             'new' => '新しい',
 
-            'messages' => 'メッセージ',
-            'settings' => '設定',
-            'logout' => 'ログアウト',
             'help' => 'ヘルプ',
-            'modding-history-discussions' => 'ユーザーモッディングの議論',
-            'modding-history-events' => 'ユーザーモッディングイベント',
-            'modding-history-index' => 'ユーザーのビートマップセットのアクティビティ',
-            'modding-history-posts' => 'ユーザーモッディングポスト',
-            'modding-history-votesGiven' => 'ユーザーモッディングあげた投票',
-            'modding-history-votesReceived' => 'ユーザーモッディング貰った投票',
+            'logout' => 'ログアウト',
+            'messages' => 'メッセージ',
+            'modding-history-discussions' => 'ユーザーのmoddingディスカッション',
+            'modding-history-events' => 'ユーザーのmoddingイベント',
+            'modding-history-index' => 'ユーザーのmodding履歴',
+            'modding-history-posts' => 'ユーザーのmodding投稿',
+            'modding-history-votesGiven' => 'ユーザーがmoddingに与えた投票',
+            'modding-history-votesReceived' => 'ユーザーがmoddingで受け取った投票',
+            'oauth_login' => 'oauthでログインする。',
+            'oauth_request' => 'oauth認証',
+            'settings' => '設定',
         ],
         'store' => [
             '_' => 'ストア',
-            'checkout-show' => '精算',
-            'getListing' => '製品一覧',
+            'checkout-show' => '支払いをする',
+            'getListing' => '商品一覧',
             'cart-show' => 'カート',
 
-            'getCheckout' => '精算',
-            'getInvoice' => '送り状',
+            'getCheckout' => '支払いをする',
+            'getInvoice' => '請求書',
             'orders-index' => '注文履歴',
             'products-show' => '製品',
 
@@ -172,7 +174,7 @@ return [
             '_' => '全般',
             'home' => 'ホーム',
             'changelog-index' => '更新履歴',
-            'beatmaps' => '譜面のリスト',
+            'beatmaps' => 'ビートマップリスト',
             'download' => 'osu!をダウンロード',
             'wiki' => 'Wiki',
         ],
@@ -196,7 +198,7 @@ return [
     'errors' => [
         '404' => [
             'error' => 'ページが見つかりません',
-            'description' => "ご希望のページはここにはない様です。",
+            'description' => "申し訳ありませんが、要求されたページはここにはない様です。",
         ],
         '403' => [
             'error' => "何か手違いがあったみたいです。",
@@ -220,46 +222,46 @@ return [
         ],
         '503' => [
             'error' => 'メンテナンス中です！',
-            'description' => "メンテナンスは大体5秒から10分の間で完了します。もし10分以上サーバーに接続できない場合は:linkを参照してください。",
+            'description' => "メンテナンスには通常5秒から10分かかります。もし長時間ダウンしている場合は:linkを参照してください。",
             'link' => [
                 'text' => '@osustatus',
                 'href' => 'https://twitter.com/osustatus',
             ],
         ],
         // used by sentry if it returns an error
-        'reference' => "念の為に、サポートに提示できるコードが表示されます。",
+        'reference' => "念の為に、サポートに提示できるコードを表示します。",
     ],
 
     'popup_login' => [
         'login' => [
-            'email' => 'Eメールアドレス',
+            'email' => 'メールアドレス',
             'forgot' => "ログイン情報を忘れた",
             'password' => 'パスワード',
             'title' => '続行するにはログインしてください',
 
             'error' => [
-                'email' => "ユーザー名かEメールか存在しません",
+                'email' => "ユーザー名かメールアドレスが存在しません",
                 'password' => 'パスワードが一致しませんでした。',
             ],
         ],
 
         'register' => [
             'info' => "アカウントが必要です。作ってみませんか？",
-            'title' => "アカウントが必要です",
+            'title' => "アカウントを持っていませんか？",
         ],
     ],
 
     'popup_user' => [
         'links' => [
             'account-edit' => '設定',
-            'friends' => 'フレンド',
+            'friends' => 'フレンドリスト',
             'logout' => 'ログアウト',
             'profile' => 'プロフィール',
         ],
     ],
 
     'popup_search' => [
-        'initial' => '入力で検索！',
+        'initial' => '入力して検索',
         'retry' => '検索に失敗しました。クリックでリトライします。',
     ],
 ];

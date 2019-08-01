@@ -75,6 +75,7 @@ return [
 
         'info' => [
             'post_count' => ':count_delimited публикация|:count_delimited публикации',
+            'topic_starter' => '',
         ],
     ],
 
@@ -179,6 +180,8 @@ return [
             ],
 
             'poll' => [
+                'hide_results' => 'Скрий резултатите от анкетата.',
+                'hide_results_info' => '',
                 'length' => 'Остави анкетата отворена за',
                 'length_days_suffix' => 'дни',
                 'length_info' => 'Оставете празно за безкрайна анкета',
@@ -292,6 +295,7 @@ return [
                 'detail' => [
                     'end_time' => 'Гласуването затваря в :time',
                     'ended' => 'Гласуването приключи в :time',
+                    'results_hidden' => '',
                     'total' => 'Общ брой гласове: :count',
                 ],
             ],

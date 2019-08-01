@@ -40,12 +40,14 @@ return [
         'edited' => 'Τελευταία επεξεργασία από: :editor :update_time.',
         'kudosu_denied' => 'Αδύνατη η απόκτηση kudosu.',
         'message_placeholder_deleted_beatmap' => 'Η δυσκολία αυτή έχει διαγραφεί για αυτό δεν συζητιέται πλέον.',
+        'message_placeholder_locked' => 'Η συζήτηση για αυτό το beatmap έχει απενεργοποιηθεί.',
         'message_type_select' => 'Επιλέξτε Τύπο Σχολίου',
         'reply_notice' => 'Πατήστε enter για να απαντήσετε.',
         'reply_placeholder' => 'Πληκτρολογήστε την απάντησή σας εδώ',
         'require-login' => 'Παρακαλώ συνδεθείτε για να δημοσιεύσετε ή να απαντήσετε',
         'resolved' => 'Επιλύθηκε',
         'restore' => 'επαναφορά',
+        'show_deleted' => 'Εμφάνιση διαγραμμένου',
         'title' => 'Συζητήσεις',
 
         'collapse' => [
@@ -56,6 +58,18 @@ return [
         'empty' => [
             'empty' => 'Καμία συζήτηση ακόμα!',
             'hidden' => 'Καμία συζήτηση δεν ταιριάζει με το φίλτρο.',
+        ],
+
+        'lock' => [
+            'button' => [
+                'lock' => 'Κλείδωμα συζήτησης',
+                'unlock' => 'Ξεκλείδωμα συζήτησης',
+            ],
+
+            'prompt' => [
+                'lock' => 'Λόγος κλειδώματος',
+                'unlock' => 'Είστε σίγουρος ότι θέλετε να το ξεκλειδώσετε;',
+            ],
         ],
 
         'message_hint' => [
@@ -90,9 +104,11 @@ return [
         ],
 
         'new' => [
+            'pin' => 'Καρφίτσωμα',
             'timestamp' => 'Χρονική σήμανση',
             'timestamp_missing' => 'Ctrl + C στη λειτουργία τροποποίησης και επικολλήστε στο μήνυμα σας για να προσθέσετε μία χρονική σήμανση!',
             'title' => 'Νέα Συζήτηση',
+            'unpin' => 'Ξεκαρφίτσωμα',
         ],
 
         'show' => [
@@ -100,10 +116,9 @@ return [
         ],
 
         'sort' => [
-            '_' => 'Ταξινόμηση κατά:',
-            'created_at' => '',
-            'timeline' => '',
-            'updated_at' => '',
+            'created_at' => 'Ημερομηνία δημιουργίας',
+            'timeline' => 'Χρονολόγιο',
+            'updated_at' => 'Τελευταία ενημέρωση',
         ],
 
         'stats' => [
@@ -124,6 +139,10 @@ return [
             'wip' => 'Σημείωση: Αυτό το beatmap χαρακτηρίζεται ως έργο-σε-εξέλιξη από τον δημιουργό.',
         ],
 
+        'votes' => [
+            'up' => 'Κάντε upvote αυτήν τη συζήτηση',
+            'down' => 'Κάντε downvote αυτήν τη συζήτηση',
+        ],
     ],
 
     'hype' => [
@@ -194,15 +213,16 @@ return [
                 'played' => 'Που έχετε παίξει',
             ],
             'sorting' => [
-                'title' => '',
-                'artist' => '',
-                'difficulty' => '',
-                'updated' => '',
-                'ranked' => '',
-                'rating' => '',
-                'plays' => '',
-                'relevance' => '',
-                'nominations' => '',
+                'title' => 'Τίτλος',
+                'artist' => 'Καλλιτέχνης',
+                'difficulty' => 'Δυσκολία',
+                'favourites' => 'Αγαπημένα',
+                'updated' => 'Ενημερώθηκε',
+                'ranked' => 'Ranked',
+                'rating' => 'Βαθμολογία',
+                'plays' => 'Προσπάθειες',
+                'relevance' => 'Συνάφεια',
+                'nominations' => 'Nominations',
             ],
             'supporter_filter_quote' => [
                 '_' => 'Το φιλτράρισμα κατά :filters απαιτεί ένα ενεργό :link',
@@ -223,14 +243,15 @@ return [
     ],
     'status' => [
         'any' => 'Οποιοδήποτε',
-        'ranked-approved' => 'Ranked & Approved',
         'approved' => 'Approved',
-        'qualified' => 'Qualified',
-        'loved' => 'Loved',
-        'faves' => 'Αγαπημένα',
-        'pending' => 'Pending & WIP',
+        'favourites' => '',
         'graveyard' => 'Νεκροταφείο',
-        'my-maps' => 'Τα maps μου',
+        'leaderboard' => '',
+        'loved' => 'Loved',
+        'mine' => '',
+        'pending' => 'Pending & WIP',
+        'qualified' => 'Qualified',
+        'ranked' => '',
     ],
     'genre' => [
         'any' => 'Οποιοδήποτε',
@@ -303,7 +324,7 @@ return [
         'D' => '',
     ],
     'panel' => [
-        'playcount' => '',
-        'favourites' => '',
+        'playcount' => 'Φορές που παίχτηκε: :count',
+        'favourites' => 'Αγαπημένα: :count',
     ],
 ];

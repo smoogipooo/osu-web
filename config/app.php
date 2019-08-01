@@ -181,6 +181,7 @@ return [
          * Laravel Framework Service Providers...
          */
         Illuminate\Auth\AuthServiceProvider::class,
+        Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
@@ -211,14 +212,13 @@ return [
         Maknz\Slack\SlackServiceProvider::class,
         Mariuzzo\LaravelJsLocalization\LaravelJsLocalizationServiceProvider::class,
         Lord\Laroute\LarouteServiceProvider::class,
-        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -236,6 +236,9 @@ return [
 
         /* Datadog Metrics */
         ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider::class,
+
+        /* Override default migrate:fresh */
+        App\Providers\MigrationServiceProvider::class,
     ],
 
     /*
@@ -291,7 +294,6 @@ return [
         'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class,
 
         'Slack' => Maknz\Slack\Facades\Slack::class,
-        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
         'Datadog' => ChaseConey\LaravelDatadogHelper\Datadog::class,
     ],
 

@@ -17,8 +17,15 @@
  */
 
 .pagination-v0 {
+  @_top: pagination-v0;
+
   padding: 10px;
-  color: @gray;
+  color: @osu-colour-b2;
+
+  // TODO: remove after forum/store restyle
+  &--light-bg {
+    color: black;
+  }
 
   &__row {
     list-style: none;
@@ -39,12 +46,22 @@
 
     &--active {
       font-weight: bold;
+      color: white;
+
+      // TODO: remove after forum/store restyle
+      .@{_top}--light-bg & {
+        color: black;
+      }
     }
 
     &--big {
       padding: 0 10px;
       font-size: 16px;
       font-weight: bold;
+    }
+
+    &--link {
+      .link-default();
     }
 
     &--separator {

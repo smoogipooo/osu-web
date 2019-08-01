@@ -19,6 +19,7 @@
 import { ChatChannelSwitchAction } from 'actions/chat-actions';
 import Dispatcher from 'dispatcher';
 import HeaderV3 from 'header-v3';
+import { Img2x } from 'img2x';
 import { observer, Provider } from 'mobx-react';
 import * as React from 'react';
 import RootDataStore from 'stores/root-data-store';
@@ -28,7 +29,7 @@ import ConversationList from './conversation-list';
 import ConversationView from './conversation-view';
 import InputBox from './input-box';
 
-interface PropsInterface {
+interface Props {
   dataStore: RootDataStore;
   dispatcher: Dispatcher;
   initialChannel?: number;
@@ -36,8 +37,8 @@ interface PropsInterface {
 }
 
 @observer
-export default class MainView extends React.Component<PropsInterface, any> {
-  constructor(props: PropsInterface) {
+export default class MainView extends React.Component<Props, any> {
+  constructor(props: Props) {
     super(props);
 
     if (this.props.initialChannel) {
@@ -57,7 +58,7 @@ export default class MainView extends React.Component<PropsInterface, any> {
 
   render(): React.ReactNode {
     const lazerLink = 'https://github.com/ppy/osu/releases';
-    return(
+    return (
       <div>
         <HeaderV3 compact={true} theme='chat' title='Chat' />
         <Provider dataStore={this.props.dataStore} dispatcher={this.props.dispatcher}>

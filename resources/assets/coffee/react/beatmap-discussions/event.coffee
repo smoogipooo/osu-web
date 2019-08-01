@@ -16,10 +16,11 @@
 #    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
 
-{a, div, li, span, ul, time} = ReactDOMFactories
+import * as React from 'react'
+import { a, div, li, span, ul, time } from 'react-dom-factories'
 el = React.createElement
 
-class BeatmapDiscussions.Event extends React.PureComponent
+export class Event extends React.PureComponent
   constructor: (props) ->
     super props
 
@@ -56,6 +57,9 @@ class BeatmapDiscussions.Event extends React.PureComponent
       discussionLink = osu.link(url, "##{discussionId}", classNames: ['js-beatmap-discussion--jump'])
     else
       text = BeatmapDiscussionHelper.format @props.event.comment, newlines: false
+
+    if @props.event.type == 'discussion_lock'
+      text = BeatmapDiscussionHelper.format @props.event.comment.reason, newlines: false
 
     if @props.event.user_id?
       user = osu.link(laroute.route('users.show', user: @props.event.user_id), @props.users[@props.event.user_id].username)
