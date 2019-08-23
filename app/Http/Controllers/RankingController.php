@@ -58,7 +58,7 @@ class RankingController extends Controller
                 return ujs_redirect(route('rankings', ['mode' => 'osu', 'type' => 'performance']));
             }
 
-            if (!array_key_exists($mode, Beatmap::MODES)) {
+            if (!Beatmap::isModeValid($mode)) {
                 abort(404);
             }
 
@@ -70,7 +70,7 @@ class RankingController extends Controller
                 abort(404);
             }
 
-            if (request()->has('country') && !in_array($type, static::SPOTLIGHT_TYPES, true)) {
+            if (request()->has('country') && $type === 'performance') {
                 $countryStats = CountryStatistics::where('display', 1)
                     ->where('country_code', request('country'))
                     ->first();

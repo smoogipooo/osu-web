@@ -29,7 +29,6 @@ use App\Models\Beatmap;
 use App\Models\Country;
 use App\Models\IpBan;
 use App\Models\User;
-use App\Models\UsernameChangeHistory;
 use App\Models\UserNotFound;
 use Auth;
 use Elasticsearch\Common\Exceptions\ElasticsearchException;
@@ -225,9 +224,9 @@ class UsersController extends Controller
         return response($json, is_null($json['error'] ?? null) ? 200 : 504);
     }
 
-    public function me()
+    public function me($mode = null)
     {
-        return self::show(Auth::user()->user_id);
+        return static::show(auth()->user()->user_id, $mode);
     }
 
     public function show($id, $mode = null)
@@ -236,18 +235,7 @@ class UsersController extends Controller
         // If no user is found, search for a previous username
         // only if parameter is not a number (assume number is an id lookup).
 
-        $user = User::lookup($id, null, true);
-
-        if ($user === null) {
-            $change = UsernameChangeHistory::visible()
-                ->where('username_last', $id)
-                ->orderBy('change_id', 'desc')
-                ->first();
-
-            if ($change !== null) {
-                $user = User::lookup($change->user_id, 'id');
-            }
-        }
+        $user = User::lookupWithHistory($id, null, true);
 
         if ($user === null || !priv_check('UserShow', $user)->can()) {
             if (is_json_request()) {
@@ -263,7 +251,7 @@ class UsersController extends Controller
 
         $currentMode = $mode ?? $user->playmode;
 
-        if (!array_key_exists($currentMode, Beatmap::MODES)) {
+        if (!Beatmap::isModeValid($currentMode)) {
             abort(404);
         }
 
@@ -368,7 +356,7 @@ class UsersController extends Controller
         }
 
         $this->mode = Request::route('mode') ?? Request::input('mode') ?? $this->user->playmode;
-        if (!array_key_exists($this->mode, Beatmap::MODES)) {
+        if (!Beatmap::isModeValid($this->mode)) {
             abort(404);
         }
 

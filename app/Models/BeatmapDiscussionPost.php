@@ -153,6 +153,11 @@ class BeatmapDiscussionPost extends Model
         return $this->belongsTo(BeatmapDiscussion::class);
     }
 
+    public function visibleBeatmapDiscussion()
+    {
+        return $this->beatmapDiscussion()->visible();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -215,6 +220,10 @@ class BeatmapDiscussionPost extends Model
 
         try {
             return $this->getConnection()->transaction(function () use ($options) {
+                if (!$this->exists) {
+                    $this->beatmapDiscussion->update(['last_post_at' => Carbon::now()]);
+                }
+
                 if (!parent::save($options)) {
                     throw new ModelNotSavedException;
                 }
@@ -294,32 +303,25 @@ class BeatmapDiscussionPost extends Model
 
     public function softDeleteOrExplode($deletedBy)
     {
-        $timestamps = $this->timestamps;
+        DB::transaction(function () use ($deletedBy) {
+            if ($deletedBy->getKey() !== $this->user_id) {
+                BeatmapsetEvent::log(BeatmapsetEvent::DISCUSSION_POST_DELETE, $deletedBy, $this)->saveOrExplode();
+            }
 
-        try {
-            DB::transaction(function () use ($deletedBy) {
-                if ($deletedBy->getKey() !== $this->user_id) {
-                    BeatmapsetEvent::log(BeatmapsetEvent::DISCUSSION_POST_DELETE, $deletedBy, $this)->saveOrExplode();
-                }
+            // delete related system post
+            $systemPost = $this->relatedSystemPost();
 
-                // delete related system post
-                $systemPost = $this->relatedSystemPost();
+            if ($systemPost !== null) {
+                $systemPost->softDeleteOrExplode($deletedBy);
+            }
 
-                if ($systemPost !== null) {
-                    $systemPost->softDeleteOrExplode($deletedBy);
-                }
+            $this->fill([
+                'deleted_by_id' => $deletedBy->user_id,
+                'deleted_at' => Carbon::now(),
+            ])->saveOrExplode();
 
-                $this->timestamps = false;
-                $this->fill([
-                    'deleted_by_id' => $deletedBy->user_id,
-                    'deleted_at' => Carbon::now(),
-                ])->saveOrExplode();
-
-                $this->beatmapDiscussion->refreshResolved();
-            });
-        } finally {
-            $this->timestamps = $timestamps;
-        }
+            $this->beatmapDiscussion->refreshResolved();
+        });
     }
 
     public function trashed()
@@ -340,5 +342,11 @@ class BeatmapDiscussionPost extends Model
     public function scopeWithoutSystem($query)
     {
         $query->where('system', '=', false);
+    }
+
+    public function scopeVisible($query)
+    {
+        $query->withoutTrashed()
+            ->whereHas('visibleBeatmapDiscussion');
     }
 }
