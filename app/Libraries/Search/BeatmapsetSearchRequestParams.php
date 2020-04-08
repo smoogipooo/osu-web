@@ -67,9 +67,9 @@ class BeatmapsetSearchRequestParams extends BeatmapsetSearchParams
             $generals = explode('.', $request['c'] ?? null) ?? [];
             $this->includeConverts = in_array('converts', $generals, true);
             $this->showRecommended = in_array('recommended', $generals, true);
-        } else {
+        } /* else {
             $sort = null;
-        }
+        } */
 
         $this->parseSortOrder($sort);
         $this->searchAfter = $this->getSearchAfter($request['cursor'] ?? null);
