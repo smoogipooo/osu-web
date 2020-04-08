@@ -83,7 +83,7 @@ services:
     working_dir: /data/osuweb
     command: ['./docker/dependencies/start.sh', 'db:3306']
   diffcalc:
-    image: microsoft/dotnet:sdk
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
     volumes:
       - ./osu-server:/data
       - ./beatmaps:/beatmaps
@@ -109,7 +109,7 @@ services:
       THREADS: 8
     command: [ './run.sh' ]
   esindexer:
-    image: microsoft/dotnet:sdk
+    image: mcr.microsoft.com/dotnet/core/sdk:3.1
     volumes:
       - ./osu-elastic-indexer:/data
       - ./docker/esindexer/run.sh:/data/run.sh
