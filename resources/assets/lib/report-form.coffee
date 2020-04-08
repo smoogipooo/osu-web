@@ -1,21 +1,7 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
+import { isEmpty } from 'lodash'
 import { Modal } from 'modal'
 import { createElement as el, createRef, PureComponent } from 'react'
 import * as React from 'react'
@@ -25,10 +11,6 @@ import { SelectOptions } from 'select-options'
 bn = 'report-form'
 
 export class ReportForm extends PureComponent
-  @defaultProps =
-    allowOptions: true
-
-
   constructor: (props) ->
     super props
 
@@ -40,6 +22,9 @@ export class ReportForm extends PureComponent
       { id: 'Nonsense', text: osu.trans 'users.report.options.nonsense' },
       { id: 'Other', text: osu.trans 'users.report.options.other' },
     ]
+
+    if props.visibleOptions?
+      @options = _.intersectionWith @options, props.visibleOptions, (left, right) -> left.id == right
 
     @textarea = createRef()
 
@@ -74,7 +59,7 @@ export class ReportForm extends PureComponent
             i className: 'fas fa-exclamation-triangle'
 
           div
-            className: "#{bn}__row"
+            className: "#{bn}__row #{bn}__row--title"
             dangerouslySetInnerHTML:
               __html: "<span>#{title}</span>" # wrap in span to preserve the whitespace in text.
 
@@ -83,7 +68,7 @@ export class ReportForm extends PureComponent
 
   renderFormContent: =>
     div null,
-      if @props.allowOptions
+      if !isEmpty(@options)
         [
           div
             key: 'label'
@@ -135,8 +120,7 @@ export class ReportForm extends PureComponent
 
   sendReport: (e) =>
     data =
-      reason: @state.selectedReason.id
+      reason: @state.selectedReason?.id
       comments: @textarea.current.value
 
     @props.onSubmit? data
-

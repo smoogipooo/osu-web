@@ -1,20 +1,5 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 @polyfills ?= new Polyfills
 
@@ -44,12 +29,11 @@ $(document).on 'turbolinks:load', ->
 
 @accountEdit ?= new AccountEdit
 @accountEditAvatar ?= new AccountEditAvatar
-@accountEditPlaystyle ?= new AccountEditPlaystyle
 @accountEditBlocklist ?= new AccountEditBlocklist
 @beatmapsetDownloadObserver ?= new BeatmapsetDownloadObserver
 @changelogChartLoader ?= new ChangelogChartLoader
 @checkboxValidation ?= new CheckboxValidation
-@clickMenu ?= new ClickMenu
+@clickMenu ?= new _exported.ClickMenu
 @fancyGraph ?= new FancyGraph
 @formClear ?= new FormClear
 @formError ?= new FormError
@@ -58,33 +42,35 @@ $(document).on 'turbolinks:load', ->
 @forum ?= new Forum
 @forumAutoClick ?= new ForumAutoClick
 @forumCover ?= new ForumCover
+@forumPoll ?= new _exported.ForumPoll(@)
+@forumPostPreview ?= new ForumPostPreview
 @forumTopicTitle ?= new ForumTopicTitle
 @forumTopicWatchAjax ?= new ForumTopicWatchAjax
 @gallery ?= new Gallery
 @globalDrag ?= new GlobalDrag
 @landingGraph ?= new LandingGraph
 @menu ?= new Menu
-@nav2 ?= new Nav2
+@mobileToggle ?= new _exported.MobileToggle
 @navButton ?= new NavButton
 @osuAudio ?= new OsuAudio
 @osuLayzr ?= new OsuLayzr
 @postPreview ?= new PostPreview
-@replyPreview ?= new ReplyPreview
 @scale ?= new Scale
 @search ?= new Search
 @stickyFooter ?= new StickyFooter
 @timeago ?= new Timeago
 @tooltipBeatmap ?= new TooltipBeatmap
 @tooltipDefault ?= new TooltipDefault
-@turbolinksReload ?= new TurbolinksReload
+@turbolinksReload ?= new _exported.TurbolinksReload
 @userLogin ?= new UserLogin
 @userVerification ?= new UserVerification
 
 @formConfirmation ?= new FormConfirmation(@formError)
 @forumPostsSeek ?= new ForumPostsSeek(@forum)
-@forumSearchModal ?= new ForumSearchModal(@forum)
 @forumTopicPostJump ?= new ForumTopicPostJump(@forum)
-@forumTopicReply ?= new ForumTopicReply(@forum, @stickyFooter)
+@forumTopicReply ?= new ForumTopicReply({ @forum, @forumPostPreview, @stickyFooter })
+@nav2 ?= new Nav2(@clickMenu)
+@osuEnchant ?= new _exported.Enchant(@, @turbolinksReload)
 @twitchPlayer ?= new TwitchPlayer(@turbolinksReload)
 _exported.WindowVHPatcher.init(window)
 

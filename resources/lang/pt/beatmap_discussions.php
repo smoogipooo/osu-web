@@ -1,28 +1,13 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'authorizations' => [
         'update' => [
             'null_user' => 'Tens que ter sessão iniciada para editar.',
-            'system_generated' => 'Uma publicação gerada pelo sistema não pode ser editada.',
+            'system_generated' => 'Não se pode editar uma publicação gerada pelo sistema.',
             'wrong_user' => 'Tens que ser dono da publicação para editar.',
         ],
     ],
@@ -33,45 +18,73 @@ return [
 
     'index' => [
         'deleted_beatmap' => 'apagado',
-        'title' => 'Discussões do Beatmap',
+        'none_found' => 'Não foram encontradas discussões que correspondam a esse critério de pesquisa.',
+        'title' => 'Discussões do beatmap',
 
         'form' => [
             '_' => 'Pesquisar',
             'deleted' => 'Incluir discussões eliminadas',
+            'only_unresolved' => 'Mostrar apenas as discussões não resolvidas',
             'types' => 'Tipos de mensagem',
             'username' => 'Nome de utilizador',
 
+            'beatmapset_status' => [
+                '_' => 'Estado do beatmap',
+                'all' => 'Todos',
+                'disqualified' => 'Desqualificado',
+                'never_qualified' => 'Nunca qualificado',
+                'qualified' => 'Qualificado',
+                'ranked' => 'Classificado',
+            ],
+
             'user' => [
                 'label' => 'Utilizador',
-                'overview' => 'Visão geral de actividades',
+                'overview' => 'Visão geral de atividades',
             ],
         ],
     ],
 
     'item' => [
         'created_at' => 'Data da publicação',
-        'deleted_at' => 'Data de eliminação',
+        'deleted_at' => 'Data da eliminação',
         'message_type' => 'Tipo',
-        'permalink' => 'Link Permanente',
+        'permalink' => 'Link permanente',
     ],
 
     'nearby_posts' => [
         'confirm' => 'Nenhuma das publicações abordam a minha preocupação',
-        'notice' => 'Há publicações à volta de :timestamp (:existing_timestamps). Por favor, consulta-as antes de publicar.',
+        'notice' => 'Há publicações à volta de :timestamp (:existing_timestamps). Por favor consulta-as antes de publicar.',
     ],
 
     'reply' => [
         'open' => [
-            'guest' => 'Inicia sessão para Responder',
+            'guest' => 'Inicia sessão para responder',
             'user' => 'Responder',
+        ],
+    ],
+
+    'review' => [
+        'go_to_parent' => 'Ver publicação de análise',
+        'go_to_child' => 'Ver discussão',
+        'validation' => [
+            'invalid_block_type' => 'tipo de bloco inválido',
+            'invalid_document' => 'análise inválida',
+            'minimum_issues' => 'a revisão deve conter um mínimo de :count problema|a revisão deve conter um mínimo de :count problemas',
+            'missing_text' => 'o bloco tem texto em falta',
+            'too_many_blocks' => 'as revisões só podem conter :count parágrafo/problema|as revisões só podem conter até :count parágrafos/problemas',
         ],
     ],
 
     'system' => [
         'resolved' => [
-            'true' => 'Marcado como resolvida por :user',
+            'true' => 'Marcada como resolvida por :user',
             'false' => 'Reaberta por :user',
         ],
+    ],
+
+    'timestamp_display' => [
+        'general' => 'geral',
+        'general_all' => 'geral (todas)',
     ],
 
     'user_filter' => [

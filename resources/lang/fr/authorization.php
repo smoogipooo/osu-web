@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Merci de vous connecter pour continuer.',
+    'require_verification' => 'Veuillez vous vérifier pour continuer.',
+    'restricted' => "Action impossible quand votre compte est restreint.",
+    'silenced' => "Action impossible quand votre compte est réduit au silence.",
+    'unauthorized' => 'Accès refusé.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Vous ne pouvez pas retirer votre hype.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Un sujet posté automatiquement ne peut être édité.',
-            'not_owner' => 'Seul l\'auteur de ce post peut l\'éditer.',
+        'destroy' => [
+            'not_owner' => 'Vous ne pouvez uniquement supprimer vos propres messages.',
+            'resolved' => 'Vous ne pouvez pas supprimer un message d\'une discussion résolue.',
+            'system_generated' => 'Les messages automatiquement générés ne peuvent être supprimés.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Seul l\'auteur de ce post peut l\'éditer.',
+            'resolved' => 'Vous ne pouvez pas modifier un message d\'une discussion résolue.',
+            'system_generated' => 'Un sujet posté automatiquement ne peut être édité.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Cette beatmap est verrouillée pour la discussion.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Ce forum n\'est accessible qu\'aux administrateurs.',
         ],
     ],
-
-    'require_login' => 'Merci de vous connecter pour continuer.',
-
-    'unauthorized' => 'Accès refusé.',
-
-    'silenced' => "Action impossible quand votre compte est réduit au silence.",
-
-    'restricted' => "Action impossible quand votre compte est restreint.",
 
     'user' => [
         'page' => [

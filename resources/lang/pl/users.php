@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[usunięty użytkownik]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'Wyślij wiadomość',
     ],
 
+    'disabled' => [
+        'title' => 'Och! Wygląda na to, że Twoje konto zostało zdezaktywowane.',
+        'warning' => "Jeżeli złamiesz zasady, pamiętaj o tym, że zwyczajowo obowiązuje okres oczekiwania o długości 1 miesiąca, podczas którego nie będziemy przyjmować żadnych próśb o amnestię. Po tym czasie możesz skontaktować się z nami, jeśli uznasz to za konieczne. Miej na uwadze, że tworzenie nowych kont po otrzymaniu blokady na jedno z nich poskutkuje <strong>przedłużeniem tego miesięcznego okresu oczekiwania</strong>. Pamiętaj także, że <strong>każdorazowe utworzenie nowego konta jest dalszym łamaniem zasad</strong>. Stanowczo zalecamy nieobieranie tej ścieżki!",
+
+        'if_mistake' => [
+            '_' => 'Jeżeli uważasz, że to pomyłka, skontaktuj się z nami (poprzez :email lub kliknięcie znaku zapytania w prawym dolnym rogu tej strony). Miej na uwadze, że zawsze jesteśmy całkowicie pewni naszych działań, ponieważ opierają się one na wiarygodnych danych. Mamy prawo odrzucić Twój wniosek, jeżeli uważamy, że umyślnie próbujesz wprowadzić nas w błąd.',
+            'email' => 'e-mail',
+        ],
+
+        'reasons' => [
+            'compromised' => 'Bezpieczeństwo twojego konta zostało uznane za naruszone. Zdezaktywowaliśmy je do czasu potwierdzenia twojej tożsamości.',
+            'opening' => 'Istnieje kilka powodów, przez które Twoje konto mogło zostać zdezaktywowane:',
+
+            'tos' => [
+                '_' => 'Złamałeś(-aś) :community_rules lub :tos osu!.',
+                'community_rules' => 'zasady społeczności',
+                'tos' => 'warunki świadczenia usług',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Brak aktywności przez długi czas.",
+        ],
+    ],
+
     'login' => [
         '_' => 'Zaloguj się',
-        'locked_ip' => 'Twój adres IP został zablokowany. Poczekaj kilka minut.',
-        'username' => 'Nazwa użytkownika',
-        'password' => 'Hasło',
         'button' => 'Zaloguj się',
         'button_posting' => 'Logowanie...',
+        'email_login_disabled' => 'Logowanie się przy użyciu adresu e-mail jest obecnie wyłączone. Użyj swojej nazwy użytkownika.',
+        'failed' => 'Nieprawidłowe dane logowania',
+        'forgot' => 'Nie pamiętasz hasła?',
+        'info' => 'Zaloguj się, aby kontynuować.',
+        'locked_ip' => 'Twój adres IP został zablokowany. Poczekaj kilka minut.',
+        'password' => 'Hasło',
+        'register' => "Nie posiadasz konta osu!? Utwórz nowe.",
         'remember' => 'Zapamiętaj ten komputer',
         'title' => 'Zaloguj się, aby kontynuować',
-        'failed' => 'Nieprawidłowe dane logowania',
-        'register' => "Nie posiadasz konta osu!? Utwórz nowe.",
-        'forgot' => 'Nie pamiętasz hasła?',
+        'username' => 'Nazwa użytkownika',
+
         'beta' => [
             'main' => 'Beta jest obecnie dostępna tylko dla wybranych użytkowników.',
             'small' => '(donatorzy osu! otrzymają ją wkrótce)',
         ],
-
-        'here' => 'tutaj', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'Posty użytkownika :username',
     ],
 
-    'signup' => [
-        '_' => 'Zarejestruj się',
-    ],
     'anonymous' => [
         'login_link' => 'kliknij, aby się zalogować',
         'login_text' => 'zaloguj się',
@@ -149,13 +159,13 @@ return [
                     'button' => 'Dodaj tło',
                     'dropzone' => 'Upuść tutaj, aby dodać',
                     'dropzone_info' => 'Możesz także upuścić swoje tło tutaj, aby je dodać',
-                    'size_info' => 'Rozmiary tła powinny wynosić przynajmniej 2800x620',
+                    'size_info' => 'Rozmiary tła powinny wynosić przynajmniej 2400x640',
                     'too_large' => 'Plik jest zbyt duży.',
                     'unsupported_format' => 'To rozszerzenie nie jest wspierane.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Tylko :link mogą przesyłać pliki',
+                        'link' => 'donatorzy osu!',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => ':count_delimited obserwujący|:count_delimited obserwujących|:count_delimited obserwujących',
+            'none' => 'brak',
             'unranked' => 'Brak nowych wyników',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Oczekujące beatmapy',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Dyskusje',
+                'title_longer' => 'Ostatnie dyskusje',
+                'show_more' => 'zobacz więcej dyskusji',
+            ],
+            'events' => [
+                'title' => 'Wydarzenia',
+                'title_longer' => 'Ostatnie wydarzenia',
+                'show_more' => 'zobacz więcej wydarzeń',
+            ],
             'historical' => [
                 'empty' => 'Brak wyników. :(',
                 'title' => 'Historia',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Dostępne kudosu',
-                'available_info' => "Punkty kudosu mogą zostać wymienione na gwiazdki kudosu, które pomogą twojej mapie zyskać więcej uwagi. Powyżej podano liczbę kudosu, którą możesz wymienić.",
                 'recent_entries' => 'Ostatnio zdobyte kudosu',
                 'title' => 'Kudosu!',
                 'total' => 'Zdobyte kudosu',
@@ -264,17 +282,22 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Liczba zdobytych punktów kudosu jest oparta o wkład użytkownika w modowanie beatmap. Sprawdź :link, by dowiedzieć się więcej.',
+                    'link' => 'ten artykuł',
                 ],
             ],
             'me' => [
-                'title' => 'ja!',
+                'title' => 'O mnie',
             ],
             'medals' => [
                 'empty' => "Ten użytkownik nie uzyskał jeszcze żadnych medali. ;_;",
                 'recent' => 'Ostatnie',
                 'title' => 'Medale',
+            ],
+            'posts' => [
+                'title' => 'Posty',
+                'title_longer' => 'Ostatnie posty',
+                'show_more' => 'zobacz więcej postów',
             ],
             'recent_activity' => [
                 'title' => 'Ostatnie',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Pierwsze miejsca',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Oddane głosy (ostatnie 3 miesiące)',
+                'received' => 'Otrzymane głosy (ostatnie 3 miesiące)',
+                'title' => 'Głosy',
+                'title_longer' => 'Ostatnie głosy',
+                'vote_count' => ':count_delimited głos|:count_delimited głosy|:count_delimited głosów',
             ],
             'account_standing' => [
                 'title' => 'Stan konta',
@@ -316,11 +346,6 @@ return [
             ],
         ],
 
-        'header_title' => [
-            '_' => 'Użytkownik » :info',
-            'info' => 'Informacje',
-        ],
-
         'info' => [
             'discord' => 'Discord',
             'interests' => 'Zainteresowania',
@@ -340,13 +365,13 @@ return [
         ],
         'page' => [
             'button' => 'Edytuj stronę użytkownika',
-            'description' => '<strong>ja!</strong> to twoje osobiste miejsce, które możesz dowolnie dostosować.',
+            'description' => '<strong>O mnie</strong> to twoje osobiste miejsce, które możesz dowolnie dostosować.',
             'edit_big' => 'Edytuj mnie!',
             'placeholder' => 'Pisz tutaj',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Musisz być :link, by odblokować tę funkcję.',
+                'link' => 'donatorem osu!',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Wyniki',
             'total_hits' => 'Łączna liczba uderzeń',
             'total_score' => 'Łączny wynik',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Rankingowe i zatwierdzone beatmapy',
+            'loved_beatmapset_count' => 'Ulubione beatmapy społeczności',
+            'unranked_beatmapset_count' => 'Oczekujące beatmapy',
+            'graveyard_beatmapset_count' => 'Porzucone beatmapy',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => 'Widok cegieł',
+        'card' => 'Widok kart',
+        'list' => 'Widok listy',
     ],
 ];

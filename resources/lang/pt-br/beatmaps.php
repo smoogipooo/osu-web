@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Falha ao salvar a publicação',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Falha ao atualizar votos',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'permitir kudosu',
+        'beatmap_information' => 'Página do Beatmap',
         'delete' => 'excluir',
         'deleted' => 'Excluído por :editor às :delete_time.',
         'deny_kudosu' => 'negar kudosu',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Reiniciar nomeação',
             'praise' => 'Elogio',
             'problem' => 'Problema',
+            'review' => 'Revisão',
             'suggestion' => 'Sugestão',
         ],
 
         'mode' => [
             'events' => 'Histórico',
             'general' => 'Geral :scope',
+            'reviews' => 'Revisões',
             'timeline' => 'Linha do tempo',
             'scopes' => [
                 'general' => 'Esta dificuldade',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Upvote',
-            'down' => 'Downvote',
+            'none' => [
+                'down' => 'Sem votos negativos ainda',
+                'up' => 'Sem votos positivos ainda',
+            ],
+            'latest' => [
+                'down' => 'Últimos votos negativos',
+                'up' => 'Últimos votos positivos',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nomear',
         'nominate_confirm' => 'Nomear este beatmap?',
         'nominated_by' => 'nomeado por :users',
+        'not_enough_hype' => "Não há hype suficiente.",
         'qualified' => 'Esse beatmap será ranqueado em :date, caso nenhum problema seja encontrado.',
         'qualified_soon' => 'Estimado para ser ranqueado em breve, caso nenhum problema for encontrado.',
         'required_text' => 'Nomeações: :current/:required',
@@ -218,7 +207,7 @@ return [
                 'difficulty' => 'Dificuldade',
                 'favourites' => 'Favoritos',
                 'updated' => 'Atualizado',
-                'ranked' => 'Ranked',
+                'ranked' => 'Ranqueado',
                 'rating' => 'Avaliação',
                 'plays' => 'Vezes jogadas',
                 'relevance' => 'Relevância',
@@ -244,14 +233,14 @@ return [
     'status' => [
         'any' => 'Todos',
         'approved' => 'Aprovado',
-        'favourites' => '',
+        'favourites' => 'Favoritos',
         'graveyard' => 'Cemitério',
-        'leaderboard' => '',
+        'leaderboard' => 'Possui Classificações',
         'loved' => 'Loved',
-        'mine' => '',
+        'mine' => 'Meus Maps',
         'pending' => 'Pendente & Em Progresso',
         'qualified' => 'Qualificado',
-        'ranked' => '',
+        'ranked' => 'Ranqueado',
     ],
     'genre' => [
         'any' => 'Todos',
@@ -280,6 +269,7 @@ return [
         'HD' => 'Hidden',
         'HR' => 'Hard Rock',
         'HT' => 'Half Time',
+        'MR' => 'Espelhar',
         'NC' => 'Nightcore',
         'NF' => 'No Fail',
         'NM' => 'Sem mods',

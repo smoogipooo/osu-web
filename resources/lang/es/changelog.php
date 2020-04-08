@@ -1,25 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'feed_title' => 'lista',
     'generic' => 'Corrección de errores y mejoras menores.',
 
     'build' => [
@@ -45,17 +29,12 @@ return [
             '_stream_to' => 'cambios en :stream hasta :to',
             '_to' => 'cambios hasta :to',
         ],
-
-        'title' => [
-            '_' => 'Lista de cambios :info',
-            'info' => 'Listando',
-        ],
     ],
 
     'support' => [
-        'heading' => '¿Amas esta actualización?',
-        'text_1' => '¡Apoyar a un mayor desarrollo de osu! y: :link hoy!',
-        'text_1_link' => 'vuélvete un supporter',
-        'text_2' => 'No solo ayudará a acelerar el desarrollo,!también obtendrás algunas características adicionales y personalizaciones!',
+        'heading' => '¿Te gusta esta actualización?',
+        'text_1' => '¡Apoya el desarrollo de osu! y :link hoy!',
+        'text_1_link' => 'vuélvete un osu!supporter',
+        'text_2' => 'No sólo ayudarás a acelerar el desarrollo, ¡también obtendrás algunas características y personalizaciones adicionales!',
     ],
 ];

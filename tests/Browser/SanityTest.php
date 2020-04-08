@@ -1,5 +1,8 @@
 <?php
 
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
+
 namespace Tests\Browser;
 
 use App\Models\Country;
@@ -15,19 +18,6 @@ class SanityTest extends DuskTestCase
     protected $passed = 0;
     protected $failed = 0;
     protected $skipped = 0;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->createScaffolding();
-
-        $this->beforeApplicationDestroyed(function () {
-            // We do this here while we can still access laravel,
-            // tearDown/tearDownAfterClass runs after laravel is torn down
-            $this->cleanup();
-        });
-    }
 
     public function createScaffolding()
     {
@@ -155,8 +145,6 @@ class SanityTest extends DuskTestCase
 
             // score factory
             self::$scaffolding['score'] = factory(\App\Models\Score\Best\Osu::class)->states('with_replay')->create();
-            // TODO: move this into ScoreBestFactory when Laravel is upgraded to 5.6+ and we can use afterCreatingState
-            self::$scaffolding['score']->replayFile()->disk()->put(self::$scaffolding['score']->getKey(), 'this-is-totally-a-legit-replay');
         }
     }
 
@@ -360,6 +348,7 @@ class SanityTest extends DuskTestCase
     {
         $verificationExpected = [
             'account.edit',
+            'client-verifications.create',
             'store.checkout.show',
             'store.invoice.show',
             'store.orders.index',
@@ -423,5 +412,18 @@ class SanityTest extends DuskTestCase
         if ($count > 0) {
             return $matches[1][count($matches[1]) - 1];
         }
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->createScaffolding();
+
+        $this->beforeApplicationDestroyed(function () {
+            // We do this here while we can still access laravel,
+            // tearDown/tearDownAfterClass runs after laravel is torn down
+            $this->cleanup();
+        });
     }
 }

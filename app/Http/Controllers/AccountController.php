@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Http\Controllers;
 
@@ -27,15 +12,13 @@ use App\Libraries\UserVerificationState;
 use App\Mail\UserEmailUpdated;
 use App\Mail\UserPasswordUpdated;
 use App\Models\OAuth\Client;
+use App\Models\UserAccountHistory;
 use Auth;
 use Mail;
 use Request;
 
 class AccountController extends Controller
 {
-    protected $section = 'home';
-    protected $actionPrefix = 'account-';
-
     public function __construct()
     {
         $this->middleware('auth', ['except' => [
@@ -105,7 +88,9 @@ class AccountController extends Controller
 
     public function edit()
     {
-        $blocks = Auth::user()->blocks()
+        $user = auth()->user();
+
+        $blocks = $user->blocks()
             ->orderBy('username')
             ->get();
 
@@ -115,9 +100,19 @@ class AccountController extends Controller
         $currentSessionId = Request::session()
             ->getIdWithoutKeyPrefix();
 
-        $authorizedClients = json_collection(Client::forUser(auth()->user()), 'OAuth\Client', 'user');
+        $authorizedClients = json_collection(Client::forUser($user), 'OAuth\Client', 'user');
+        $ownClients = json_collection($user->oauthClients()->where('revoked', false)->get(), 'OAuth\Client', ['redirect', 'secret']);
 
-        return view('accounts.edit', compact('authorizedClients', 'blocks', 'sessions', 'currentSessionId'));
+        $notificationOptions = $user->notificationOptions->keyBy('name');
+
+        return ext_view('accounts.edit', compact(
+            'authorizedClients',
+            'blocks',
+            'currentSessionId',
+            'notificationOptions',
+            'ownClients',
+            'sessions'
+        ));
     }
 
     public function update()
@@ -161,12 +156,32 @@ class AccountController extends Controller
                 $addresses[] = $previousEmail;
             }
             foreach ($addresses as $address) {
-                Mail::to($address)->send(new UserEmailUpdated($user));
+                Mail::to($address)->locale($user->preferredLocale())->send(new UserEmailUpdated($user));
             }
+
+            UserAccountHistory::logUserUpdateEmail($user, $previousEmail);
 
             return response([], 204);
         } else {
             return $this->errorResponse($user);
+        }
+    }
+
+    public function updateNotificationOptions()
+    {
+        $request = request();
+
+        $name = $request['name'] ?? null;
+        $params = get_params($request, 'user_notification_option', ['details:any']);
+
+        $option = auth()->user()->notificationOptions()->firstOrCreate(['name' => $name]);
+
+        if ($option->update($params)) {
+            return response(null, 204);
+        } else {
+            return response(['form_error' => [
+                'user_notification_option' => $option->validationErrors()->all(),
+            ]]);
         }
     }
 
@@ -177,6 +192,10 @@ class AccountController extends Controller
         $params = get_params(request(), 'user_profile_customization', [
             'comments_sort:string',
             'extras_order:string[]',
+            'ranking_expanded:bool',
+            'user_list_filter:string',
+            'user_list_sort:string',
+            'user_list_view:string',
         ]);
 
         try {
@@ -188,21 +207,6 @@ class AccountController extends Controller
         return $user->defaultJson();
     }
 
-    public function updatePage()
-    {
-        $user = Auth::user();
-
-        priv_check('UserPageEdit', $user)->ensureCan();
-
-        try {
-            $user = $user->updatePage(Request::input('body'));
-
-            return ['html' => $user->userPage->bodyHTML(['withoutImageDimensions' => true, 'modifiers' => ['profile-page']])];
-        } catch (ModelNotSavedException $e) {
-            return error_popup($e->getMessage());
-        }
-    }
-
     public function updatePassword()
     {
         $params = get_params(request(), 'user', ['current_password', 'password', 'password_confirmation']);
@@ -210,7 +214,7 @@ class AccountController extends Controller
 
         if ($user->update($params) === true) {
             if (present($user->user_email)) {
-                Mail::to($user->user_email)->send(new UserPasswordUpdated($user));
+                Mail::to($user)->send(new UserPasswordUpdated($user));
             }
 
             return response([], 204);
@@ -229,12 +233,15 @@ class AccountController extends Controller
         $state = UserVerificationState::fromVerifyLink(request('key'));
 
         if ($state === null) {
-            return response()->view('accounts.verification_invalid')->setStatusCode(404);
+            UserVerification::logAttempt('link', 'fail', 'incorrect_key');
+
+            return ext_view('accounts.verification_invalid', null, null, 404);
         }
 
+        UserVerification::logAttempt('link', 'success');
         $state->markVerified();
 
-        return view('accounts.verification_completed');
+        return ext_view('accounts.verification_completed');
     }
 
     public function reissueCode()

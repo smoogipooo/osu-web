@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Huipussaan :count käyttäjää paikalla',
         'players' => '<strong>:count</strong> rekisteröitynyttä pelaajaa',
         'title' => 'tervetuloa',
+        'see_more_news' => '',
 
         'slogan' => [
             'main' => 'parastakin parempi ilmainen rytmipeli',
@@ -41,6 +27,7 @@ return [
         'title' => 'Hae',
 
         'beatmapset' => [
+            'login_required' => '',
             'more' => ':count lisää hakutulosta',
             'more_simple' => 'Katso lisää hakutuloksia',
             'title' => 'Beatmapit',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Kaikki foorumit',
             'link' => 'Etsi foorumilta',
+            'login_required' => '',
             'more_simple' => 'Katso lisää foorumien hakutuloksia',
             'title' => 'Foorumi',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => '',
             'more' => ':count hakutulosta lisää',
             'more_simple' => 'Näytä enemmän pelaajia hakutuloksista',
             'more_hidden' => 'Pelaajien etsintä on rajoitettu :max pelaajalle. Kokeile tarkentaa hakua.',
@@ -119,8 +108,6 @@ return [
             'error' => 'Virhe ladattaessa uutisia. Kokeile sivun päivittämistä.',
         ],
         'header' => [
-            'welcome' => 'Hei <strong>:username</strong>!',
-            'messages' => 'Sinulle on :count uusi viesti|Sinulle on :count uutta viestiä',
             'stats' => [
                 'friends' => 'Kavereita paikalla',
                 'games' => 'Pelejä',
@@ -130,8 +117,7 @@ return [
         'beatmaps' => [
             'new' => 'Uudet Hyväksytyt Beatmapit',
             'popular' => 'Suositut Beatmapit',
-            'by' => 'luonut',
-            'plays' => ':count pelikertaa',
+            'by_user' => '',
         ],
         'buttons' => [
             'download' => 'Lataa osu!',

@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Libraries\Search;
 
@@ -50,7 +35,7 @@ class BeatmapsetSearch extends RecordSearch
     {
         static $partialMatchFields = ['artist', 'artist.*', 'artist_unicode', 'creator', 'title', 'title.raw', 'title.*', 'title_unicode', 'tags^0.5'];
 
-        $query = (new BoolQuery());
+        $query = new BoolQuery;
 
         if (present($this->params->queryString)) {
             $terms = explode(' ', $this->params->queryString);
@@ -68,14 +53,24 @@ class BeatmapsetSearch extends RecordSearch
         }
 
         $this->addBlacklistFilter($query);
-        $this->addModeFilter($query);
-        $this->addRecommendedFilter($query);
+        $this->addBlockedUsersFilter($query);
         $this->addGenreFilter($query);
         $this->addLanguageFilter($query);
         $this->addExtraFilter($query);
-        $this->addRankFilter($query);
         $this->addStatusFilter($query);
-        $this->addPlayedFilter($query);
+
+        $nested = new BoolQuery;
+        $this->addModeFilter($nested);
+        $this->addPlayedFilter($query, $nested);
+        $this->addRankFilter($nested);
+        $this->addRecommendedFilter($nested);
+
+        $query->filter([
+            'nested' => [
+                'path' => 'beatmaps',
+                'query' => $nested->toArray(),
+            ],
+        ]);
 
         return $query;
     }
@@ -107,6 +102,11 @@ class BeatmapsetSearch extends RecordSearch
         $query->filter($bool);
     }
 
+    private function addBlockedUsersFilter($query)
+    {
+        $query->mustNot(['terms' => ['user_id' => $this->params->blockedUserIds()]]);
+    }
+
     private function addExtraFilter($query)
     {
         foreach ($this->params->extra as $val) {
@@ -130,22 +130,28 @@ class BeatmapsetSearch extends RecordSearch
 
     private function addModeFilter($query)
     {
-        if ($this->params->mode !== null) {
-            $modes = [$this->params->mode];
-            if ($this->params->includeConverts && $this->params->mode !== Beatmap::MODES['osu']) {
-                $modes[] = Beatmap::MODES['osu'];
-            }
+        if (!$this->params->includeConverts) {
+            $query->filter(['term' => ['beatmaps.convert' => false]]);
+        }
 
-            $query->filter(['terms' => ['difficulties.playmode' => $modes]]);
+        if ($this->params->mode !== null) {
+            $query->filter(['term' => ['beatmaps.playmode' => $this->params->mode]]);
         }
     }
 
-    private function addPlayedFilter($query)
+    private function addPlayedFilter($query, $nested)
     {
         if ($this->params->playedFilter === 'played') {
-            $query->filter(['terms' => ['difficulties.beatmap_id' => $this->getPlayedBeatmapIds()]]);
+            $nested->filter(['terms' => ['beatmaps.beatmap_id' => $this->getPlayedBeatmapIds()]]);
         } elseif ($this->params->playedFilter === 'unplayed') {
-            $query->mustNot(['terms' => ['difficulties.beatmap_id' => $this->getPlayedBeatmapIds()]]);
+            // The inverse of nested:filter/must is must_not:nested, not nested:must_not
+            // https://github.com/elastic/elasticsearch/issues/26264#issuecomment-323668358
+            $query->mustNot([
+                'nested' => [
+                    'path' => 'beatmaps',
+                    'query' => ['terms' => ['beatmaps.beatmap_id' => $this->getPlayedBeatmapIds()]],
+                ],
+            ]);
         }
     }
 
@@ -155,7 +161,7 @@ class BeatmapsetSearch extends RecordSearch
             return;
         }
 
-        $query->filter(['terms' => ['difficulties.beatmap_id' => $this->getPlayedBeatmapIds($this->params->rank)]]);
+        $query->filter(['terms' => ['beatmaps.beatmap_id' => $this->getPlayedBeatmapIds($this->params->rank)]]);
     }
 
     private function addRecommendedFilter($query)
@@ -165,7 +171,7 @@ class BeatmapsetSearch extends RecordSearch
             $difficulty = $this->params->getRecommendedDifficulty();
             $query->filter([
                 'range' => [
-                    'difficulties.difficultyrating' => [
+                    'beatmaps.difficultyrating' => [
                         'gte' => $difficulty - 0.5,
                         'lte' => $difficulty + 0.5,
                     ],

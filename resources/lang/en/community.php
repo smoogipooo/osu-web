@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'support' => [
@@ -62,6 +47,21 @@ return [
             'osu_direct' => [
                 'title' => 'osu!direct',
                 'description' => 'Gain quick and easy access to search for and download beatmaps without having to leave the game.',
+            ],
+
+            'friend_ranking' => [
+                'title' => 'Friend Ranking',
+                'description' => "See how you stack up against your friends on a beatmap's leaderboard, both in-game and on the website.",
+            ],
+
+            'country_ranking' => [
+                'title' => 'Country Ranking',
+                'description' => 'Conquer your country before you conquer the world.',
+            ],
+
+            'mod_filtering' => [
+                'title' => 'Filter by Mods',
+                'description' => 'Associate only with people who play HDHR? No problem!',
             ],
 
             'auto_downloads' => [
@@ -129,11 +129,11 @@ return [
             ],
             'more_beatmaps' => [
                 'title' => 'Upload More Beatmaps',
-                'description' => 'How many non-ranked beatmaps you can have at once is calculated from a base value plus an additional bonus for each ranked beatmap you currently have (up to a limit).<br/><br/>Normally this is 4 plus 1 per ranked beatmap (up to 2). With supporter, this increases to 8 plus 1 per ranked beatmap (up to 12).',
+                'description' => 'How many non-ranked beatmaps you can have at once is calculated from a base value plus an additional bonus for each ranked beatmap you currently have (up to a limit).<br/><br/>Normally this is :base plus :bonus per ranked beatmap (up to :bonus_max). With supporter, this increases to :supporter_base plus :supporter_bonus per ranked beatmap (up to :supporter_bonus_max).',
             ],
             'friend_filtering' => [
                 'title' => 'Friend Leaderboards',
-                'description' => 'Compete with your friends and see how you rank up against them!*<br/><br/><small>* not yet available on new site, comingsoon(tm)</small>',
+                'description' => 'Compete with your friends and see how you rank up against them!',
             ],
 
         ],

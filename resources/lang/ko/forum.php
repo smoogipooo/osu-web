@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => '고정된 주제',
@@ -25,6 +10,8 @@ return [
     'title' => 'osu! 포럼',
 
     'covers' => [
+        'edit' => '커버 수정',
+
         'create' => [
             '_' => '표지 이미지 설정',
             'button' => '이미지 업로드',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] ":title"주제에 대한 새로운 답변이 달렸습니다',
-    ],
-
     'forums' => [
+        'latest_post' => '최근 게시글',
+
+        'index' => [
+            'title' => '포럼 목차',
+        ],
+
         'topics' => [
             'empty' => '주제글이 아무것도 없습니다!',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => '포럼을 읽음으로 표시',
         'forums' => '포럼을 읽음으로 표시',
         'busy' => '읽음으로 표시하는 중...',
-    ],
-
-    'poll' => [
-        'edit_warning' => '투표를 수정하면 현재 결과가 제거됩니다!',
-
-        'actions' => [
-            'edit' => '투표 수정',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => '삭제',
             'restore' => '복원',
             'edit' => '수정',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => '새로운 회신',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => ':user 님이 시작함',
 
         'create' => [
+            'close' => '닫기',
             'preview' => '미리보기',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => '구독한 주제글',
             'title_compact' => '구독',
-            'title_main' => '포럼 <strong>구독</strong>',
 
             'box' => [
                 'total' => '구독한 주제글',
@@ -153,7 +139,7 @@ return [
 
         'topic_buttons' => [
             'remove' => [
-                'confirmation' => '이 주제를 구독 해제하시겠습니까?',
+                'confirmation' => '이 주제를 구독 해제하시겠어요?',
                 'title' => '구독 해제',
             ],
         ],
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => '주제글이 잠겨있어 답글을 달 수 없습니다.',
             'to_0' => '주제글 잠금 풀기',
+            'to_0_confirm' => '주제를 잠금 해제할까요?',
             'to_0_done' => '해당 주제의 잠금이 해제되었습니다,',
             'to_1' => '주제글 잠그기',
+            'to_1_confirm' => '주제를 잠글까요?',
             'to_1_done' => '해당 주제가 잠겼습니다.',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => '주제글 고정 해제',
+            'to_0_confirm' => '주제를 고정 해제할까요?',
             'to_0_done' => '해당 주제의 고정이 해제되었습니다.',
             'to_1' => '주제글 고정',
+            'to_1_confirm' => '주제를 고정할까요?',
             'to_1_done' => '해당 주제가 고정되었습니다.',
             'to_2' => '주제글을 고정하고 알림글로 나타내기',
+            'to_2_confirm' => '주제를 고정하고 공지 사항로 표시할까요?',
             'to_2_done' => '해당 주제가 고정되고 알림글로 표시됩니다.',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => '삭제된 글 표시',
+            'hide' => '삭제된 글 숨기기',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => '투표 수정',
+                'edit_warning' => '투표를 수정하면 현재 결과가 제거됩니다!',
                 'vote' => '투표',
+
+                'button' => [
+                    'change_vote' => '추천 변경',
+                    'edit' => '투표 수정',
+                    'view_results' => '결과로 건너뛰기',
+                    'vote' => '투표',
+                ],
 
                 'detail' => [
                     'end_time' => '투표가 :time에 종료됩니다.',

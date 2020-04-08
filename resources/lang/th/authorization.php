@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อไป',
+    'require_verification' => '',
+    'restricted' => "ไม่สามารถทำสิ่งนั้นได้ในขณะที่ถูกจำกัด",
+    'silenced' => "ไม่สามารถทำสิ่งนั้นได้ในขณะที่ถูกเงียบ",
+    'unauthorized' => 'ปฏิเสธการเข้าใช้.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'ไม่สามารถยกเลิกการ hype',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'โพสต์ที่ถูกสร้างขึ้นเองไม่สามารถถูกแก้ไขได้',
-            'not_owner' => 'เฉพาะคนโพสต์เท่านั้นที่สามารถแก้ไขโพสต์',
+        'destroy' => [
+            'not_owner' => 'คุณลบได้แค่โพสต์ของตัวเองเท่านั้น',
+            'resolved' => 'คุณไม่สามารถลบโพสต์ที่มีการแก้ไขได้',
+            'system_generated' => 'โพสต์ที่ระบบสร้างเองจะลบไม่ได้',
         ],
+
+        'edit' => [
+            'not_owner' => 'เฉพาะคนโพสต์เท่านั้นที่สามารถแก้ไขโพสต์',
+            'resolved' => 'คุณไม่สามารถแก้ไขโพสต์ที่มีการแก้ไขได้',
+            'system_generated' => 'โพสต์ที่ถูกสร้างขึ้นเองไม่สามารถถูกแก้ไขได้',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'beatmap นี้ปิดการสนทนาไว้',
         ],
@@ -58,9 +57,9 @@ return [
 
     'chat' => [
         'blocked' => 'ไม่สามารถส่งข้อความถึงผู้ใช้ที่บล็อกคุณหรือคุณบล็อกเขาได้',
-        'friends_only' => 'ผู้ใช้นี้บล็อกข้อความจากคนที่ไม่ใช่เพื่อนของเขา',
+        'friends_only' => 'ผู้ใช้นี้ปฏิเสธข้อความจากคนที่ไม่ใช่เพื่อนของตน',
         'moderated' => 'แชแนลนี้อยู่ระหว่างการขัดกรอง',
-        'no_access' => 'คุณไม่มีสิทธิเข้าถึงช่องนี้',
+        'no_access' => 'คุณไม่มีสิทธิ์เข้าถึงช่องนี้',
         'restricted' => 'คุณไม่สามารถส่งข้อความได้ในสถานะเงียบ ถูกจำกัดการใช้งานหรือถูกแบน',
     ],
 
@@ -104,8 +103,8 @@ return [
         'topic' => [
             'reply' => [
                 'double_post' => 'กรุณาแก้ไขโพสของคุณล่าสุดแทนที่จะลงรายการบัญชีอีกครั้ง',
-                'locked' => 'ไม่สามารถตอบกลับในกระทู้ที่ถูกล้อค',
-                'no_forum_access' => 'ต้องการการอนุญาติในการเข้าถึงฟอรั่มนี้',
+                'locked' => 'ไม่สามารถตอบกลับในกระทู้ที่ถูกล็อก',
+                'no_forum_access' => 'ต้องการการอนุญาตในการเข้าถึงฟอรัมนี้',
                 'no_permission' => 'ไม่ได้รับอนุญาตให้ตอบกลับ',
 
                 'user' => [
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'มีแค่ผู้ดูแลระบบเท่านั้นที่สามารถดูฟอรั่มนี้',
         ],
     ],
-
-    'require_login' => 'กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อไป',
-
-    'unauthorized' => 'ปฏิเสธการเข้าใช้.',
-
-    'silenced' => "ไม่สามารถทำสิ่งนั้นได้ในขณะที่ถูกเงียบ",
-
-    'restricted' => "ไม่สามารถทำสิ่งนั้นได้ในขณะที่ถูกจำกัด",
 
     'user' => [
         'page' => [

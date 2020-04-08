@@ -1,20 +1,5 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 @osu =
   isIos: /iPad|iPhone|iPod/.test(navigator.platform)
@@ -60,6 +45,10 @@
       element.click()
 
 
+  groupColour: (group) ->
+    '--group-colour': group?.colour ? 'initial'
+
+
   setHash: (newHash) ->
     newUrl = location.href.replace /#.*/, ''
     newUrl += newHash
@@ -70,6 +59,9 @@
 
 
   ajaxError: (xhr) ->
+    return if userLogin.showOnError({}, xhr)
+    return if userVerification.showOnError({}, xhr)
+
     osu.popup osu.xhrErrorMessage(xhr), 'danger'
 
 
@@ -245,16 +237,7 @@
 
 
   urlPresence: (url) ->
-    "url(#{url})" if osu.presence(url)?
-
-
-  # TODO: add support for multiple badges and/or move server side?
-  # note: the display priority is as defined, from left to right. an exception for "bot" is made because users are only displayed as bots when it is their primary group
-  userGroupBadge: (user) ->
-    if user.is_bot
-      'bot'
-    else
-      _.intersection(['ppy', 'dev', 'gmt', 'nat', 'bng', 'bng_limited', 'support', 'alumni'], _.concat(user.default_group, user.groups))[0]
+    if osu.present(url) then "url(#{url})" else null
 
 
   navigate: (url, keepScroll, {action = 'advance'} = {}) ->

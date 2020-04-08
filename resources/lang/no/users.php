@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[slettet bruker]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'send melding',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => '',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => '',
+                'tos' => '',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Logg inn',
-        'locked_ip' => 'IP-adressen din er blokkert. Vennligst vent et par minutter.',
-        'username' => 'Brukernavn',
-        'password' => 'Passord',
         'button' => 'Logg inn',
         'button_posting' => 'Logger inn...',
+        'email_login_disabled' => '',
+        'failed' => 'Feil innlogging',
+        'forgot' => 'Glemt passordet ditt?',
+        'info' => '',
+        'locked_ip' => 'IP-adressen din er blokkert. Vennligst vent et par minutter.',
+        'password' => 'Passord',
+        'register' => "Har du ikke en osu!-konto? Lag en ny en",
         'remember' => 'Husk denne datamaskinen',
         'title' => 'Vennligst logg inn for å fortsette',
-        'failed' => 'Feil innlogging',
-        'register' => "Har du ikke en osu!-konto? Lag en ny en",
-        'forgot' => 'Glemt passordet ditt?',
+        'username' => 'Brukernavn',
+
         'beta' => [
             'main' => 'Tilgang til beta er for øyeblikket begrenset til privilegerte brukere.',
             'small' => '(osu!supportere vil komme inn snart)',
         ],
-
-        'here' => 'her', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'Innleggene til :username',
     ],
 
-    'signup' => [
-        '_' => 'Registrer deg',
-    ],
     'anonymous' => [
         'login_link' => 'klikk for å logge inn',
         'login_text' => 'logg inn',
@@ -99,12 +109,12 @@ return [
     ],
     'logout_confirm' => 'Er du sikker på at du vil logge ut? :(',
     'report' => [
-        'button_text' => 'Anmeld',
+        'button_text' => 'Rapporter',
         'comments' => 'Ytterlige Kommentarer',
         'placeholder' => 'Vennligst angi hva som helst av informasjon som du tror kan være nyttig.',
         'reason' => 'Årsak',
         'thanks' => 'Takk for din anmeldelse!',
-        'title' => 'Anmeld :username?',
+        'title' => 'Rapporter :username?',
 
         'actions' => [
             'send' => 'Send Anmeldelse',
@@ -154,7 +164,7 @@ return [
                     'unsupported_format' => 'Formatet støttes ikke.',
 
                     'restriction_info' => [
-                        '_' => '',
+                        '_' => 'Oppdatering er bare tilgjengelig for :link',
                         'link' => '',
                     ],
                 ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 følger|:count følgere',
+            'none' => 'ingen',
             'unranked' => 'Ingen nylige spill',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Ventende Beatmaps',
                 ],
             ],
+            'discussions' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
+            'events' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'historical' => [
                 'empty' => 'Ingen prestasjoner :(',
                 'title' => 'Historikk',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu Tilgjengelig',
-                'available_info' => "Kudosu kan byttes for kudosustjerner, som kan hjelpe beatmappet ditt å få mer oppmerksomhet. Dette er antall kudosu som du ikke har byttet enda.",
                 'recent_entries' => 'Nylig Kudosu Historie',
                 'title' => 'Kudosu!',
                 'total' => 'Total Kudosu Opptjent',
@@ -265,7 +283,7 @@ return [
 
                 'total_info' => [
                     '_' => '',
-                    'link' => '',
+                    'link' => 'denne siden',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Denne brukeren har ikke fått noen ennå. ;_;",
                 'recent' => 'Nyeste',
                 'title' => 'Medaljer',
+            ],
+            'posts' => [
+                'title' => 'Innlegg',
+                'title_longer' => '',
+                'show_more' => '',
             ],
             'recent_activity' => [
                 'title' => 'Nylige',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Førsteplasser',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => 'Stemmer',
+                'title_longer' => 'Nylige stemmer',
+                'vote_count' => ':count_delimited stemme|:count_delimited stemmer',
             ],
             'account_standing' => [
                 'title' => 'Kontostatus',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Spiller :info',
-            'info' => 'Informasjon',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => 'Skriv sideinnhold her',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Du må være en :link for å låse opp denne funksjonen.',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Poengsum Rangering',
             'total_hits' => 'Totale Treff',
             'total_score' => 'Samlet Poengsum',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Rangerte & Godkjente Beatmaps',
+            'loved_beatmapset_count' => 'Elskede Beatmaps',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
+        'brick' => '',
         'card' => '',
-        'list' => '',
+        'list' => 'Listevisning',
     ],
 ];

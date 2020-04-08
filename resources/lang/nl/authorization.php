@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Log in om verder te gaan.',
+    'require_verification' => 'Gelieve te verifiëren om verder te gaan.',
+    'restricted' => "Je kan dit niet doen terwijl je restricted bent.",
+    'silenced' => "Je kunt dit niet doen terwijl je silenced bent.",
+    'unauthorized' => 'Toegang geweigerd.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Hyping kan niet ongedaan gemaakt worden.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Automatisch gegenereerde posts kunnen niet worden bewerkt.',
-            'not_owner' => 'Alleen de eigenaar kan deze post bewerken.',
+        'destroy' => [
+            'not_owner' => 'U kunt alleen uw eigen berichten verwijderen.',
+            'resolved' => 'U kunt een bericht van een opgeloste discussie niet verwijderen.',
+            'system_generated' => 'Automatisch gegenereerd bericht kan niet worden verwijderd.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Alleen de eigenaar kan deze post bewerken.',
+            'resolved' => 'U kunt geen bericht van een opgeloste discussie bewerken.',
+            'system_generated' => 'Automatisch gegenereerde posts kunnen niet worden bewerkt.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Deze beatmap is vergrendeld voor discussie.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Alleen admins kunnen dit forum zien.',
         ],
     ],
-
-    'require_login' => 'Log in om verder te gaan.',
-
-    'unauthorized' => 'Toegang geweigerd.',
-
-    'silenced' => "Je kunt dit niet doen terwijl je silenced bent.",
-
-    'restricted' => "Je kan dit niet doen terwijl je restricted bent.",
 
     'user' => [
         'page' => [

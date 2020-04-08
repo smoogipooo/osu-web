@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => 'Tüm bildirimler okundu!',
-    'mark_all_read' => 'Hepsini temizle',
+    'mark_read' => 'Temizle: :type',
+    'none' => 'Bildirim yok',
+    'see_all' => 'tüm bildirimleri gör',
+
+    'filters' => [
+        '_' => 'hepsi',
+        'user' => 'profil',
+        'beatmapset' => 'beatmaplar',
+        'forum_topic' => 'forum',
+        'news_post' => 'haberler',
+        'build' => '',
+        'channel' => 'sohbet',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -31,9 +28,19 @@ return [
                 'beatmapset_discussion_lock' => 'Beatmap ":title" tartışmak için kilitlendi.',
                 'beatmapset_discussion_lock_compact' => 'Tartışma kilitlenmiş',
                 'beatmapset_discussion_post_new' => ':username ":title" beatmapinin tartışmasında yeni mesaj attı.',
+                'beatmapset_discussion_post_new_empty' => ':title için :username tarafından gönderi',
                 'beatmapset_discussion_post_new_compact' => ':username tarafından yeni gönderi',
+                'beatmapset_discussion_post_new_compact_empty' => ':username tarafından yeni gönderi',
                 'beatmapset_discussion_unlock' => '":title" beatmapinin kilidi tartışmak için açıldı.',
                 'beatmapset_discussion_unlock_compact' => 'Tartışmanın kilidi açılmış',
+            ],
+
+            'beatmapset_problem' => [
+                '_' => 'Nitelikli Beatmap sorunu',
+                'beatmapset_discussion_qualified_problem' => ':username tarafından bildirildi ":title": ":content"',
+                'beatmapset_discussion_qualified_problem_empty' => ':username tarafından bildirildi ":title"',
+                'beatmapset_discussion_qualified_problem_compact' => ':username tarafından rapor edildi: ":content"',
+                'beatmapset_discussion_qualified_problem_compact_empty' => ':username tarafından rapor edildi',
             ],
 
             'beatmapset_state' => [
@@ -120,6 +127,7 @@ return [
             'user_achievement_unlock' => [
                 '_' => 'Yeni madalya',
                 'user_achievement_unlock' => '":title" \'ın kilidi açıldı!',
+                'user_achievement_unlock_compact' => '":title" Açıldı!',
             ],
         ],
     ],

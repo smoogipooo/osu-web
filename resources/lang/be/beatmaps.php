@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Не атрымалася захаваць допіс',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Не атрымалася абнавіць голас',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'дазволіць кудосу',
+        'beatmap_information' => '',
         'delete' => 'выдаліць',
         'deleted' => 'Выдалена :editor а :delete_time.',
         'deny_kudosu' => 'забараніць кудосу',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Скід намінацыі',
             'praise' => 'Пахвала',
             'problem' => 'Праблема',
+            'review' => '',
             'suggestion' => 'Прапанова',
         ],
 
         'mode' => [
             'events' => 'Гісторыя',
             'general' => 'Агульнае :scope',
+            'reviews' => '',
             'timeline' => 'Шкала часу',
             'scopes' => [
                 'general' => 'Гэтая цяжкасць',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Прагаласаваць за гэта абмеркаванне',
-            'down' => 'Прагаласаваць супраць гэтага абмеркавання',
+            'none' => [
+                'down' => '',
+                'up' => '',
+            ],
+            'latest' => [
+                'down' => '',
+                'up' => '',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Намінаваць',
         'nominate_confirm' => 'Намінаваць гэту бітмапу?',
         'nominated_by' => 'намінавана :users',
+        'not_enough_hype' => "",
         'qualified' => 'Калі больш няма праблем, то бітмапа атрымае статус ракнутой прыблізна :date.',
         'qualified_soon' => 'Калі больш няма праблем, то бітмапа атрымае статус ракнутой вельмі хутка.',
         'required_text' => 'Намінацыі: :current/:required',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => '',
         'NC' => '',
         'NF' => '',
         'NM' => '',

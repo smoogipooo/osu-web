@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'admin' => [
@@ -25,6 +10,7 @@ return [
 
     'cart' => [
         'checkout' => 'Pagamento',
+        'info' => ':count_delimited articolo nel carrello ($:subtotal)|:count_delimited articoli nel carrello ($:subtotal)',
         'more_goodies' => 'Voglio dare un\'occhiata ad altri elementi prima di completare l\'ordine',
         'shipping_fees' => 'costi di spedizione',
         'title' => 'Carrello della spesa',
@@ -38,8 +24,8 @@ return [
         'empty' => [
             'text' => 'Il tuo carrello è vuoto.',
             'return_link' => [
-                '_' => 'Ritorna al :link per trovare alcuni elementi!',
-                'link_text' => 'listino',
+                '_' => 'Ritorna alla :link per trovare alcuni elementi!',
+                'link_text' => 'lista',
             ],
         ],
     ],
@@ -51,6 +37,7 @@ return [
         'delayed_shipping' => 'Attualmente siamo sommersi dagli ordini! Sei libero di effettuare ordini, ma per favore aspettati un **ritardo addizionale di 1-2 settimane** mentre completiamo gli ordini già esistenti.',
         'old_cart' => 'Il tuo carrello sembra essere obsoleto ed è stato ricaricato; per favore riprova.',
         'pay' => 'Acquista con Paypal',
+        'title_compact' => 'pagamento',
 
         'has_pending' => [
             '_' => 'Hai pagamenti incompleti, click :link per vederli.',
@@ -67,6 +54,8 @@ return [
 
     'invoice' => [
         'echeck_delay' => 'Visto che il tuo pagamento era un eCheck, dovrai attendere altri 10 giorni per far passare il pagamento attraverso PayPal!',
+        'title_compact' => 'ricevuta',
+
         'status' => [
             'processing' => [
                 'title' => 'Il tuo pagamento non è ancora stato confermato!',
@@ -76,12 +65,6 @@ return [
                     'link_text' => 'clicca qui per riprendere con il pagamento',
                 ],
             ],
-        ],
-    ],
-
-    'mail' => [
-        'payment_completed' => [
-            'subject' => 'Abbiamo ricevuto il tuo ordine su osu!store!',
         ],
     ],
 
@@ -151,5 +134,9 @@ return [
             '_' => 'Devi essere :link per cambiare il tuo nome!',
             'link_text' => 'accesso effettuato',
         ],
+    ],
+
+    'xsolla' => [
+        'distributor' => '',
     ],
 ];

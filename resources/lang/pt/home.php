@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Pico, :count utilizadores online',
         'players' => '<strong>:count</strong> jogadores registados',
         'title' => 'bem-vindo',
+        'see_more_news' => 'ver mais notícias',
 
         'slogan' => [
             'main' => 'o melhor jogo de ritmo grátis',
@@ -41,6 +27,7 @@ return [
         'title' => 'Procurar',
 
         'beatmapset' => [
+            'login_required' => 'Inicia a sessão para procurar por beatmaps',
             'more' => 'Há mais :count resultados de pesquisa de beatmap',
             'more_simple' => 'Ver mais resultados de pesquisa de beatmap',
             'title' => 'Beatmaps',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Todos os fóruns',
             'link' => 'Pesquisar o fórum',
+            'login_required' => 'Inicia a sessão para pesquisar no fórum',
             'more_simple' => 'Ver mais resultados de pesquisa de fórum',
             'title' => 'Fórum',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => 'Inicia a sessão para procurar utilizadores',
             'more' => 'Há mais :count resultados de pesquisa de jogador',
             'more_simple' => 'Ver mais resultados de pesquisa de jogador',
             'more_hidden' => 'A pesquisa de jogador está limitada a :max jogadores. Tenta redefinir a questão de pesquisa.',
@@ -99,7 +88,7 @@ return [
             ],
             'download' => [
                 'title' => 'descarrega o jogo',
-                'description' => 'clica no botão acima para transferir o instalador, e depois abre-o!',
+                'description' => 'clica no botão acima para transferir o instalador e depois abre-o!',
             ],
             'beatmaps' => [
                 'title' => 'obtém beatmaps',
@@ -116,22 +105,19 @@ return [
         'title' => 'painel de controlo',
         'news' => [
             'title' => 'Notícias',
-            'error' => 'Erro ao carregar notícias, tenta recarregar a página?...',
+            'error' => 'Erro ao carregar notícias, melhor tentares recarregar a página?...',
         ],
         'header' => [
-            'welcome' => 'Olá, <strong>:username</strong>!',
-            'messages' => 'Tu tens :count nova mensagem|Tu tens :count novas mensagens',
             'stats' => [
-                'friends' => 'Amigos Online',
+                'friends' => 'Amigos online',
                 'games' => 'Jogos',
-                'online' => 'Utilizadores Online',
+                'online' => 'Utilizadores online',
             ],
         ],
         'beatmaps' => [
-            'new' => 'Novos Beatmaps Classificados',
-            'popular' => 'Beatmaps Populares',
-            'by' => 'por',
-            'plays' => ':count partidas',
+            'new' => 'Novos beatmaps classificados',
+            'popular' => 'Beatmaps populares',
+            'by_user' => 'por :user',
         ],
         'buttons' => [
             'download' => 'Transfere o osu!',
@@ -142,12 +128,12 @@ return [
 
     'support-osu' => [
         'title' => 'Uau!',
-        'subtitle' => 'Pareces estar a ter um momento agradável! :D',
+        'subtitle' => 'Pareces estar a passar um momento agradável! :D',
         'body' => [
-            'part-1' => 'Sabias que o osu! corre sem nenhuma publicidade, e que depende de jogadores para apoiar o seu desenvolvimento e custos de manutenção?',
+            'part-1' => 'Sabias que o osu! corre sem nenhuma publicidade e que depende de jogadores para apoiar o seu desenvolvimento e custos de manutenção?',
             'part-2' => 'Também sabias que ao apoiar o osu! recebes um monte de funcionalidades úteis, tal como <strong>downloads dentro do jogo</strong> que aciona automaticamente em jogos de espectador e multijogador?',
         ],
         'find-out-more' => 'Clica aqui para descobrir mais!',
-        'download-starting' => "Ah, e não te preocupes - o teu download já foi iniciado para ti ;)",
+        'download-starting' => "Ah e não te preocupes - o teu download já foi iniciado para ti ;)",
     ],
 ];

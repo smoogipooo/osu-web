@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Gepinde Onderwerpen',
@@ -25,6 +10,8 @@ return [
     'title' => 'osu! forums',
 
     'covers' => [
+        'edit' => 'Wijzig omslag',
+
         'create' => [
             '_' => 'Stel omslagafbeelding in',
             'button' => 'Afbeelding uploaden',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Nieuwe reactie voor topic ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Laatste bericht',
+
+        'index' => [
+            'title' => 'Forum Overzicht',
+        ],
+
         'topics' => [
             'empty' => 'Geen topics!',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => 'Markeer forum als gelezen',
         'forums' => 'Markeer forums als gelezen',
         'busy' => 'Markeren als gelezen...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'Een poll bewerken zal de huidige resultaten verwijderen!',
-
-        'actions' => [
-            'edit' => 'Bewerk poll',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => 'Verwijder bericht',
             'restore' => 'Herstel bericht',
             'edit' => 'Bewerk bericht',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => 'Nieuw antwoord',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'gestart door :user',
 
         'create' => [
+            'close' => 'Sluiten',
             'preview' => 'Voorbeeld',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Forum Abonnementen',
             'title_compact' => 'forum abonnementen',
-            'title_main' => 'Forum <strong>Abonnementen</strong>',
 
             'box' => [
                 'total' => 'Geabonneerde topics',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Dit onderwerp is gesloten en kan niet meer op beantwoord worden',
             'to_0' => 'Ontgrendel topic',
+            'to_0_confirm' => 'Topic ontgrendelen?',
             'to_0_done' => 'Topic is ontgrendeld',
             'to_1' => 'Vergrendel topic',
+            'to_1_confirm' => 'Topic vergrendelen?',
             'to_1_done' => 'Topic is vergrendeld',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Onpin topic',
+            'to_0_confirm' => 'Topic losmaken?',
             'to_0_done' => 'Topic niet meer gepint',
             'to_1' => 'Pin topic',
+            'to_1_confirm' => 'Topic vastmaken?',
             'to_1_done' => 'Topic is gepint',
             'to_2' => 'Pin topic en markeer als melding',
+            'to_2_confirm' => 'Topic vastmaken en markeer als aankondiging?',
             'to_2_done' => 'Topic is gepint en gemarkeerd als melding',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Toon verwijderde berichten',
+            'hide' => 'Verberg verwijderde berichten',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Poll bewerken',
+                'edit_warning' => 'Een poll bewerken zal de huidige resultaten verwijderen!',
                 'vote' => 'Stem',
+
+                'button' => [
+                    'change_vote' => 'Verander je stem',
+                    'edit' => 'Bewerk poll',
+                    'view_results' => 'Ga naar resultaten',
+                    'vote' => 'Stem',
+                ],
 
                 'detail' => [
                     'end_time' => 'Stemmen eindigt op :time',

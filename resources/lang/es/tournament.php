@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'index' => [
@@ -24,7 +9,6 @@ return [
         'registration_period' => 'Inscripción: :start al :end',
 
         'header' => [
-            'subtitle' => 'Una lista de torneos activos, y oficialmente reconocidos',
             'title' => 'Torneos de la comunidad',
         ],
 
@@ -40,7 +24,7 @@ return [
 
     'show' => [
         'banner' => 'Apoya A Tu Equipo',
-        'entered' => 'Estás inscrito para este torneo.<br> <br>Ten en cuenta que esto no significa que hayas sido asignado a un equipo.<br><br>Más instrucciones te serán enviadas por correo electrónico cercanos a la fecha del torneo, así que por favor ¡Asegúrate que tu dirección de correo electronico vinculado con tu cuenta de osu! sea valido!',
+        'entered' => 'Estás inscrito en este torneo.<br><br>Por favor, ten en cuenta que esto <b>no</b> significa que has sido asignado a un equipo.<br><br>Más instrucciones te serán enviadas por correo electrónico cerca de la fecha del torneo, así que ¡por favor asegúrese de que la dirección de correo electrónico de su cuenta osu! es válida!',
         'info_page' => 'Página de Información',
         'login_to_register' => '¡Por favor :login para ver los detalles de inscripción!',
         'not_yet_entered' => 'No estás inscrito en este torneo.',
@@ -50,6 +34,11 @@ return [
         'button' => [
             'cancel' => 'Cancelar inscripción',
             'register' => '¡Inscribirme!',
+        ],
+
+        'period' => [
+            'end' => 'Final',
+            'start' => 'Inicio',
         ],
 
         'state' => [

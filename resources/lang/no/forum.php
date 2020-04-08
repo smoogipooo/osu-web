@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Festede emner',
@@ -25,6 +10,8 @@ return [
     'title' => 'osu! forumet',
 
     'covers' => [
+        'edit' => '',
+
         'create' => [
             '_' => 'Velg bannerbilde',
             'button' => 'Last opp bilde',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Nytt svar for emnet ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Siste Innlegg',
+
+        'index' => [
+            'title' => '',
+        ],
+
         'topics' => [
             'empty' => 'Ingen emner!',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => 'Marker forum som lest',
         'forums' => 'Marker forumer som lest',
         'busy' => 'Marker som lest...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'Redigering av avstemming vil fjerne gjeldene resultater!',
-
-        'actions' => [
-            'edit' => 'Rediger avstemming',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => 'Slett innlegg',
             'restore' => 'Gjenopprett innlegg',
             'edit' => 'Rediger innlegget',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => '',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'startet av :user',
 
         'create' => [
+            'close' => 'Lukk',
             'preview' => 'Forhåndsvisning',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Forum Abonnementer',
             'title_compact' => 'forum abonnementer',
-            'title_main' => 'Forum <strong>Abonnementer</strong>',
 
             'box' => [
                 'total' => 'Abonnerte emner',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Dette emne er låst og kan ikke besvares',
             'to_0' => 'Lås opp emne',
+            'to_0_confirm' => '',
             'to_0_done' => 'Emnet har blitt låst opp',
             'to_1' => 'Lås emne',
+            'to_1_confirm' => '',
             'to_1_done' => 'Emne har blitt låst',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Løsne emnet',
+            'to_0_confirm' => '',
             'to_0_done' => 'Emne har blitt løsnet',
             'to_1' => 'Fest emne',
+            'to_1_confirm' => '',
             'to_1_done' => 'Emne har blitt festet',
             'to_2' => 'Fest emne og marker som kunngjøring',
+            'to_2_confirm' => '',
             'to_2_done' => 'Emne har blitt festet og markert som en kunngjøring',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Vis slettede innlegg',
+            'hide' => 'Skjul slettede innlegg',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => '',
+                'edit_warning' => 'Redigering av en avstemming vil fjerne de gjeldene resultatene!',
                 'vote' => 'Stem',
+
+                'button' => [
+                    'change_vote' => 'Endre stemme',
+                    'edit' => '',
+                    'view_results' => '',
+                    'vote' => 'Stem',
+                ],
 
                 'detail' => [
                     'end_time' => 'Avstemming vil ende om :time',

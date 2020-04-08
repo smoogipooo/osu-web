@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => '保存失败',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => '更新投票失败',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => '给予 kudosu',
+        'beatmap_information' => '谱面信息页',
         'delete' => '删除',
         'deleted' => '被 :editor 于 :delete_time 删除。',
         'deny_kudosu' => '收回 kudosu',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => '取消提名',
             'praise' => '赞',
             'problem' => '问题',
+            'review' => '审核',
             'suggestion' => '建议',
         ],
 
         'mode' => [
             'events' => '历史',
             'general' => '常规 :scope',
+            'reviews' => '审阅记录',
             'timeline' => '时间轴',
             'scopes' => [
                 'general' => '当前难度',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => '支持该讨论',
-            'down' => '反对该讨论',
+            'none' => [
+                'down' => '还没有差评',
+                'up' => '还没有好评',
+            ],
+            'latest' => [
+                'down' => '最新差评',
+                'up' => '最新好评',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => '提名',
         'nominate_confirm' => '提名这张谱面？',
         'nominated_by' => '由 :users 提名',
+        'not_enough_hype' => "没有足够的推荐。",
         'qualified' => '如果没有问题，预计将于 :date 被 Ranked 。',
         'qualified_soon' => '如果没有问题，预计不久将被 Ranked 。',
         'required_text' => '提名数: :current/:required',
@@ -251,7 +240,7 @@ return [
         'mine' => '我的谱面',
         'pending' => 'Pending & WIP',
         'qualified' => 'Qualified',
-        'ranked' => '进榜',
+        'ranked' => 'Ranked',
     ],
     'genre' => [
         'any' => '所有',
@@ -280,6 +269,7 @@ return [
         'HD' => 'Hidden',
         'HR' => 'Hard Rock',
         'HT' => 'Half Time',
+        'MR' => 'Mirror',
         'NC' => 'Nightcore',
         'NF' => 'No Fail',
         'NM' => 'No mods',

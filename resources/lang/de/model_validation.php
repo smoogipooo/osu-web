@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute kann nicht negativ sein.',
     'required' => ':attribute ist erforderlich.',
     'too_long' => ':attribute hat die maximale Länge überschritten - höchstens :limit Zeichen.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Der erste Beitrag kann nicht gelöscht werden.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Die Nachricht',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => 'Die Diskussion ist gesperrt.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Nachrichtentyp',
+            'timestamp' => 'Zeitstempel',
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => 'Zum Hypen muss man eingeloggt sein.',
             'hyped' => 'Du hast diese Beatmap bereits gehypt.',
             'limit_exceeded' => 'Du hast all dein Hype verbraucht.',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Das Antworten auf den gelöschten Kommentar ist nicht erlaubt.',
+        'top_only' => 'Kommentarantworten anzuheften ist nicht erlaubt.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Die Nachricht',
         ],
     ],
 
@@ -88,13 +76,13 @@ return [
             'only_quote' => 'In deiner Antwort ist nur ein Zitat enthalten.',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => 'Beitragsinhalt',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Titelthema',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Maximale Anzahl an Antworten überschritten',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Umfragenthema',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'Maximale Anzahl erlaubter OAuth-Anwendungen überschritten.',
+            'url' => 'Bitte geben Sie eine gültige URL ein.',
+
+            'attributes' => [
+                'name' => 'Anwendungsname',
+                'redirect' => 'Anwendungs-Callback-URL',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Das Passwort darf den Nutzernamen nicht enthalten.',
         'email_already_used' => 'E-Mail-Adresse wird bereits verwendet.',
         'invalid_country' => 'Das Land ist nicht in der Datenbank.',
         'invalid_discord' => 'Discordname ungültig.',
         'invalid_email' => "Scheint keine gültige E-Mail-Adresse zu sein.",
+        'invalid_twitter' => 'Twitter-Benutzername ungültig.',
         'too_short' => 'Das neue Passwort ist zu kurz.',
         'unknown_duplicate' => 'Nutzername oder E-Mail-Adresse wird bereits verwendet.',
         'username_available_in' => 'Dieser Nutzername wird in :duration verfügbar sein.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Maximale Länge überschritten - höchstens :limit Zeichen.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Benutzername',
+            'user_email' => 'E-Mail-Adresse',
+            'password' => 'Passwort',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => ':reason ist für diesen Meldungstyp nicht gültig.',
         'self' => "Du kannst dich nicht selbst melden!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Menge',
+                'cost' => 'Kosten',
             ],
         ],
     ],

@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[삭제된 사용자]',
@@ -64,33 +49,58 @@ return [
         'send_message' => '메시지 보내기',
     ],
 
+    'disabled' => [
+        'title' => '이런! 계정이 비활성화 된 것 같네요.',
+        'warning' => "규칙을 어긴 경우, 일반적으로 한 달의 기간동안 어느 사면 요청도 받지 않습니다. 이 기간이 끝나면, 필요하다고 판단 할 경우 언제든지 저희에게 연락하실 수 있습니다. 하나의 계정이 비활성화 된 이후 새로운 계정을 만들면 <strong>이 한 달 기간이 연장될 수 있음</strong>을 명심해주세요. 또한, <strong>계정을 새로 만들 때마다 더욱 규칙을 위반</strong>한다는 것을 잊지 마세요. 이 길은 절대로 걷지 말아주시기 바랍니다!",
+
+        'if_mistake' => [
+            '_' => '만약 실수라고 생각된다면, 저희에게 연락할 수 있습니다 (:email 이나 이 페이지의 오른쪽 하단 버튼 "?"을 클릭).',
+            'email' => '이메일',
+        ],
+
+        'reasons' => [
+            'compromised' => '계정 도용이 의심됩니다. 신원이 확인될 때까지 계정이 비활성화될 수 있습니다.',
+            'opening' => '계정 비활성화를 초래하는 여러 가지 이유는 다음과 같습니다:',
+
+            'tos' => [
+                '_' => '당신은 저희의 :community_rules 또는 :tos 를 위반했습니다.',
+                'community_rules' => '커뮤니티 규칙',
+                'tos' => '서비스 약관',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "당신의 계정은 오랫동안 사용되지 않았네요.",
+        ],
+    ],
+
     'login' => [
         '_' => '로그인',
-        'locked_ip' => 'IP 주소가 잠겨있습니다. 잠시 기다려주세요.',
-        'username' => 'Username',
-        'password' => 'Password',
         'button' => '로그인',
         'button_posting' => '로그인 중...',
+        'email_login_disabled' => '이메일로 로그인하는 것은 현재 이용 불가능합니다. 대신 사용자 이름을 사용해 주세요.',
+        'failed' => '계정 정보가 올바르지 않습니다',
+        'forgot' => '비밀번호를 잊어버리셨나요?',
+        'info' => '계속 하시려면 로그인 해주세요',
+        'locked_ip' => 'IP 주소가 잠겨있습니다. 잠시 기다려주세요.',
+        'password' => 'Password',
+        'register' => "osu!계정이 없으신가요? 새로 하나 만들어보세요",
         'remember' => '이 컴퓨터에서 계정 정보 기억하기',
         'title' => '계속하려면 로그인해 주세요',
-        'failed' => '계정 정보가 올바르지 않습니다',
-        'register' => "osu!계정이 없으신가요? 새로 하나 만들어보세요",
-        'forgot' => '비밀번호를 잊어버리셨나요?',
+        'username' => 'Username',
+
         'beta' => [
             'main' => '베타 권한은 현재 일부 특수 사용자만 가지고 있습니다.',
             'small' => '(osu! 서포터들도 곧 받게 될 거에요)',
         ],
-
-        'here' => '이곳', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username님의 글',
     ],
 
-    'signup' => [
-        '_' => '회원가입',
-    ],
     'anonymous' => [
         'login_link' => '클릭하여 로그인',
         'login_text' => '로그인',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => '지원되지 않는 확장자입니다.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => '업로드는 :link만 가능합니다',
+                        'link' => 'osu! 서포터',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => ':count 팔로워|:count 팔로워',
+            'none' => '없음',
             'unranked' => '최근 플레이가 없습니다',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Pending 비트맵',
                 ],
             ],
+            'discussions' => [
+                'title' => '토론',
+                'title_longer' => '최근 토론',
+                'show_more' => '토론 더 보기',
+            ],
+            'events' => [
+                'title' => '이벤트',
+                'title_longer' => '최근 이벤트',
+                'show_more' => '이벤트 더 보기',
+            ],
             'historical' => [
                 'empty' => '기록된 플레이가 없습니다. :(',
                 'title' => '통계',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => '사용 가능한 Kudosu',
-                'available_info' => "Kudosu는 제작자가 만든 비트맵의 노출 순위를 올리는 kudosu 별(★) 로 교환될 수 있습니다. 위에 적힌 수는 아직 교환되지 않은 kudosu 수를 나타냅니다.",
                 'recent_entries' => '최근 Kudosu 기록',
                 'title' => 'Kudosu!',
                 'total' => '총 획득한 Kudosu 수',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => '유저가 비트맵 제작 과정에 얼마나 기여했는지에 기반합니다. 더 많은 정보를 얻고싶으시다면 :link를 참고해주세요.',
+                    'link' => '이 페이지',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "아직 아무런 메달도 받지 못했네요. ;_;",
                 'recent' => '최근 획득',
                 'title' => '메달',
+            ],
+            'posts' => [
+                'title' => '게시글',
+                'title_longer' => '최근 게시글',
+                'show_more' => '글 더 보기',
             ],
             'recent_activity' => [
                 'title' => '최근 활동',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => '1위 달성 맵',
                 ],
+            ],
+            'votes' => [
+                'given' => '투표 참여 수 (지난 3개월 간)',
+                'received' => '받은 투표수 (지난 3개월 간)',
+                'title' => '투표',
+                'title_longer' => '최근 투표',
+                'vote_count' => ':count_delimited 투표',
             ],
             'account_standing' => [
                 'title' => '계정 상태',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => '플레이어 :info',
-            'info' => '정보',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => '페이지에 들어갈 내용을 입력하세요.',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => '이 기능을 사용하기 위해서는 :link가 되어야합니다.',
+                'link' => 'osu! 서포터',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => '점수 순위',
             'total_hits' => '총 타격 횟수',
             'total_score' => '총 점수',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Ranked 및 Approved 상태의 비트맵',
+            'loved_beatmapset_count' => 'Loved 비트맵',
+            'unranked_beatmapset_count' => '대기 중인 비트맵',
+            'graveyard_beatmapset_count' => '묻힌 비트맵',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '벽돌 형식 보기',
+        'card' => '카드 형식 보기',
+        'list' => '목록으로 보기',
     ],
 ];

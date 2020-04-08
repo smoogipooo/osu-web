@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Viestin tallentaminen epäonnistui',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Äänen päivitys ei onnistunut',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'salli kudosu',
+        'beatmap_information' => 'Beatmap-sivu',
         'delete' => 'poista',
         'deleted' => 'Poistanut :editor :delete_time.',
         'deny_kudosu' => 'hylkää kudosu',
@@ -68,7 +48,7 @@ return [
 
             'prompt' => [
                 'lock' => 'Syy lukitsemiseen',
-                'unlock' => '',
+                'unlock' => 'Avataanko varmasti?',
             ],
         ],
 
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Nollaa Suositus',
             'praise' => 'Kehu',
             'problem' => 'Ongelma',
+            'review' => '',
             'suggestion' => 'Ehdotus',
         ],
 
         'mode' => [
             'events' => 'Historia',
             'general' => 'Yleinen :scope',
+            'reviews' => '',
             'timeline' => 'Aikajana',
             'scopes' => [
                 'general' => 'Tämä vaikeustaso',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => '',
-            'down' => '',
+            'none' => [
+                'down' => '',
+                'up' => '',
+            ],
+            'latest' => [
+                'down' => '',
+                'up' => '',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Suosittele',
         'nominate_confirm' => 'Suosittele tätä beatmappia?',
         'nominated_by' => 'suositellut :users',
+        'not_enough_hype' => "",
         'qualified' => 'Arvioidaan hyväksyttävän :date, mikäli ongelmia ei löydy.',
         'qualified_soon' => 'Arvioidaan hyväksyttävän pian, mikäli ongelmia ei löydy.',
         'required_text' => 'Suositukset: :current/:required',
@@ -248,7 +237,7 @@ return [
         'graveyard' => 'Hautausmaa',
         'leaderboard' => '',
         'loved' => 'Rakastettu',
-        'mine' => '',
+        'mine' => 'Mappini',
         'pending' => 'Vireillä & WIP',
         'qualified' => 'Esihyväksytty',
         'ranked' => '',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => '',
         'NC' => '',
         'NF' => '',
         'NM' => '',

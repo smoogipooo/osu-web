@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'beatmapsets' => [
@@ -25,6 +10,7 @@ return [
             'regenerating' => '重新生成中...',
             'remove' => '移除',
             'removing' => '正在删除...',
+            'title' => '谱面集封面',
         ],
         'show' => [
             'covers' => '管理谱面封面',
@@ -70,9 +56,8 @@ return [
 
     'pages' => [
         'root' => [
-            'title' => '管理员控制台',
-
             'sections' => [
+                'beatmapsets' => '谱面集',
                 'forum' => '论坛',
                 'general' => '常规',
                 'store' => '商店',

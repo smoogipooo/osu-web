@@ -1,39 +1,18 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'cancel' => 'İptal et',
 
     'authorise' => [
-        'authorise' => 'İzin ver',
         'request' => 'hesabınıza erişmek için izin istiyor.',
         'scopes_title' => 'Bu uygulama şunları yapabilecek:',
         'title' => 'İzin İsteği',
-
-        'wrong_user' => [
-            '_' => ':user olarak giriş yaptınız. :logout_link.',
-            'logout_link' => 'Farklı bir kullanıcı olarak giriş yapmak için buraya tıklayın',
-        ],
     ],
 
-    'authorized-clients' => [
+    'authorized_clients' => [
         'confirm_revoke' => 'Bu istemcinin izinlerini iptal etmek istediğinize emin misiniz?',
         'scopes_title' => 'Bu uygulama şunları yapabilir:',
         'owned_by' => ':user kişisine ait',
@@ -45,9 +24,30 @@ return [
         ],
     ],
 
-    'login' => [
-        'download' => 'Oyunu indirmek ve bir hesap yaratmak için buraya tıklayın',
-        'label' => 'İlk olarak, hadi hesabına giriş yapalım!',
-        'title' => 'Hesaba giriş yap',
+    'client' => [
+        'id' => 'İstemci ID',
+        'name' => 'Uygulama Adı',
+        'redirect' => 'Uygulama Geri Çağırma URL\'si',
+        'secret' => 'İstemci Anahtarı',
+    ],
+
+    'new_client' => [
+        'header' => 'Yeni bir OAuth uygulaması kaydet',
+        'register' => 'Uygulama Kaydet',
+        'terms_of_use' => [
+            '_' => 'API\'yı kullanarak kullanım koşullarını kabul ediyorsunuz: :link.',
+            'link' => 'Kullanım Koşulları',
+        ],
+    ],
+
+    'own_clients' => [
+        'confirm_delete' => 'Bu istemciyi silmek istediğinize emin misiniz?',
+        'new' => 'Yeni OAuth uygulaması',
+        'none' => 'İstemci yok',
+
+        'revoked' => [
+            'false' => 'Sil',
+            'true' => 'Silindi',
+        ],
     ],
 ];

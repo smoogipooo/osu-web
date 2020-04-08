@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Връхна точка, :count потребители онлайн',
         'players' => '<strong>:count</strong> регистрирани играчи',
         'title' => 'добре дошли',
+        'see_more_news' => '',
 
         'slogan' => [
             'main' => 'най-добрата безплатна ритъм игра',
@@ -41,6 +27,7 @@ return [
         'title' => 'Търсене',
 
         'beatmapset' => [
+            'login_required' => '',
             'more' => 'още :count бийтмап резултата от търсенето',
             'more_simple' => 'Виж повече бийтмап резултати от търсенето',
             'title' => 'Бийтмапове',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Всички форуми',
             'link' => 'Търсене в форума',
+            'login_required' => '',
             'more_simple' => 'Виж повече форум резултати от търсенето',
             'title' => 'Форум',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => '',
             'more' => 'още :count резултата на играчи от търсенето',
             'more_simple' => 'Виж повече резултати на играчи от търсенето',
             'more_hidden' => 'Търсенето на играчи е ограничено до :max играчи. Опитайте да доусъвършенствате заявката за търсене.',
@@ -120,8 +109,6 @@ return [
             'error' => 'Грешка при зареждането на новините, пробвайте с презареждане на страницата?...',
         ],
         'header' => [
-            'welcome' => 'Привет, <strong>:username</strong>!',
-            'messages' => 'Вие имате :count ново съобщение | Вие имате :count нови съобщения',
             'stats' => [
                 'friends' => 'Приятели онлайн',
                 'games' => 'Общо игри',
@@ -131,8 +118,7 @@ return [
         'beatmaps' => [
             'new' => 'Нови класирани бийтмапове',
             'popular' => 'Популярни бийтмапове',
-            'by' => 'от',
-            'plays' => ':count пъти изигран',
+            'by_user' => '',
         ],
         'buttons' => [
             'download' => 'Изтеглете osu!',

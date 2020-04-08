@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[poistettu käyttäjä]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'lähetä viesti',
     ],
 
+    'disabled' => [
+        'title' => 'Jaahas. Käyttäjätilisi taitaa olla lukittu.',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => 'sähköposti',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => 'Tässä pari mahdollista syytä tilisi lukitsemiseen',
+
+            'tos' => [
+                '_' => 'Olet rikkonut yhtä tai useampaa :community_rules tai :tos.',
+                'community_rules' => 'yhteisön sääntöä',
+                'tos' => 'käyttöehtoa',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Käyttäjätiliäsi ei ole käytetty pitkään aikaan.",
+        ],
+    ],
+
     'login' => [
         '_' => 'Kirjaudu',
-        'locked_ip' => 'IP-osoitteesi on lukittu. Ole hyvä ja odota muutama minuutti.',
-        'username' => 'Käyttäjänimi',
-        'password' => 'Salasana',
         'button' => 'Kirjaudu',
         'button_posting' => 'Kirjaudutaan...',
+        'email_login_disabled' => '',
+        'failed' => 'Väärät kirjautumistiedot',
+        'forgot' => 'Unohditko salasanasi?',
+        'info' => 'Kirjaudu sisään jatkaaksesi',
+        'locked_ip' => 'IP-osoitteesi on lukittu. Ole hyvä ja odota muutama minuutti.',
+        'password' => 'Salasana',
+        'register' => "Eikö sinulla ole osu!-tiliä? Tee yksi",
         'remember' => 'Muista tämä laite',
         'title' => 'Kirjaudu sisään jatkaaksesi',
-        'failed' => 'Väärät kirjautumistiedot',
-        'register' => "Eikö sinulla ole osu!-tiliä? Tee yksi",
-        'forgot' => 'Unohditko salasanasi?',
+        'username' => 'Käyttäjänimi',
+
         'beta' => [
             'main' => 'Beta on tällä hetkellä käytössä vain siihen oikeutetuilla käyttäjillä.',
             'small' => '(osu!tukijat tulevat kohta)',
         ],
-
-        'here' => 'täällä', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'käyttäjän :username viestit',
     ],
 
-    'signup' => [
-        '_' => 'Rekisteröidy',
-    ],
     'anonymous' => [
         'login_link' => 'kirjaudu sisään napsauttamalla',
         'login_text' => 'kirjaudu sisään',
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 seuraaja |:count seuraajaa',
+            'none' => '',
             'unranked' => 'Ei viimeaikaisia pelejä',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Vireillä olevat Beatmapit',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Keskustelut',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
+            'events' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'historical' => [
                 'empty' => 'Tuloksia ei löydy. :(',
                 'title' => 'Historialliset',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosua Käytettävissä',
-                'available_info' => "Kudosuja voit vaihtaa kudosutähtiin, jotka auttavat tuomaan lisää huomiota beatmapillesi. Näin monta kudosua et ole vielä vaihtanut.",
                 'recent_entries' => 'Viimeisimmät Kudosut',
                 'title' => 'Kudosu!',
                 'total' => 'Ansaittu Kudosu',
@@ -276,6 +294,11 @@ return [
                 'recent' => 'Viimeisin',
                 'title' => 'Mitalit',
             ],
+            'posts' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'recent_activity' => [
                 'title' => 'Viimeisimmät',
             ],
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Kärkisijat',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => '',
+                'title_longer' => '',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Tilin tila',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Pelaajan :info',
-            'info' => 'tiedot',
         ],
 
         'info' => [
@@ -355,9 +380,9 @@ return [
         ],
         'rank' => [
             'country' => 'Maakohtainen sijoitus pelimuodossa :mode',
-            'country_simple' => 'Maakohtaiset sijoitukset',
+            'country_simple' => 'Maakohtainen sijoitus',
             'global' => 'Maailmanlaajuinen sijoitus pelimuodossa :mode',
-            'global_simple' => 'Maailmanlaajuiset sijoitukset',
+            'global_simple' => 'Maailmanlaajuinen sijoitus',
         ],
         'stats' => [
             'hit_accuracy' => 'Tarkkuus',
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Luokitukset',
             'total_hits' => 'Osumat',
             'total_score' => 'Kokonaispisteet',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => '',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,6 +418,7 @@ return [
     ],
 
     'view_mode' => [
+        'brick' => '',
         'card' => '',
         'list' => '',
     ],

@@ -1,47 +1,32 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'match' => [
         'beatmap-deleted' => 'slettet beatmap',
         'difference' => 'med :difference',
-        'failed' => 'FAILED',
-        'header' => 'Multiplayer Matches',
-        'in-progress' => '(match i gang)',
-        'in_progress_spinner_label' => 'match i gang',
+        'failed' => 'FEJLET',
+        'header' => 'Multiplayer Kampe',
+        'in-progress' => '(kamp i gang)',
+        'in_progress_spinner_label' => 'kamp i gang',
         'loading-events' => 'Indlæser begivenheder...',
         'winner' => ':team vinder',
 
         'events' => [
-            'player-left' => ':user forlod matchen',
-            'player-joined' => ':user deltog i matchen',
-            'player-kicked' => ':user blev smidt ud af matchen',
-            'match-created' => ':user lavede matchen',
-            'match-disbanded' => 'matchen blev opløst',
+            'player-left' => ':user forlod kampen',
+            'player-joined' => ':user deltog i kampen',
+            'player-kicked' => ':user blev smidt ud af kampen',
+            'match-created' => ':user lavede kampen',
+            'match-disbanded' => 'kampen blev opløst',
             'host-changed' => ':user er blevet vært',
 
-            'player-left-no-user' => 'en spiller forlod matchen',
-            'player-joined-no-user' => 'en spiller deltog i matchen',
-            'player-kicked-no-user' => 'en spiller blev smidt ud af matchen',
-            'match-created-no-user' => 'matchen blev lavet',
-            'match-disbanded-no-user' => 'matchen blev opløst',
+            'player-left-no-user' => 'en spiller forlod kampen',
+            'player-joined-no-user' => 'en spiller deltog i kampen',
+            'player-kicked-no-user' => 'en spiller blev smidt ud af kampen',
+            'match-created-no-user' => 'kampen blev lavet',
+            'match-disbanded-no-user' => 'kampen blev opløst',
             'host-changed-no-user' => 'vært blev skiftet',
         ],
 

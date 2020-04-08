@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Pico, :count usuários online',
         'players' => '<strong>:count</strong> jogadores registrados',
         'title' => 'bem-vindo(a)',
+        'see_more_news' => 'ver mais notícias',
 
         'slogan' => [
             'main' => 'o melhor jogo de ritmo gratuito',
@@ -41,6 +27,7 @@ return [
         'title' => 'Pesquisar',
 
         'beatmapset' => [
+            'login_required' => 'Inicie a sessão para procurar por beatmaps',
             'more' => ':count mais resultados de beatmaps',
             'more_simple' => 'Veja mais resultados de busca de beatmaps',
             'title' => 'Beatmaps',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Todos os fóruns',
             'link' => 'Procurar no fórum',
+            'login_required' => 'Inicie a sessão para pesquisar no fórum',
             'more_simple' => 'Veja mais resultados de busca nos fóruns',
             'title' => 'Fórum',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => 'Inicie a sessão para procurar usuários',
             'more' => ':count mais resultados de busca por usuários',
             'more_simple' => 'Veja mais resultados de busca por usuários',
             'more_hidden' => 'O limite de busca por jogador é limitado em :max. Tente refinar mais a sua pesquisa.',
@@ -119,8 +108,6 @@ return [
             'error' => 'Erro ao carregar as notícias, tente atualizar a página?...',
         ],
         'header' => [
-            'welcome' => 'Bem-vindo(a), <strong>:username</strong>!',
-            'messages' => 'Você tem :count nova mensagem|Você tem :count novas mensagens',
             'stats' => [
                 'friends' => 'Amigos Online',
                 'games' => 'Partidas',
@@ -130,8 +117,7 @@ return [
         'beatmaps' => [
             'new' => 'Novos beatmaps ranqueados',
             'popular' => 'Beatmaps Populares',
-            'by' => 'por',
-            'plays' => ':count vezes jogadas',
+            'by_user' => 'por :user',
         ],
         'buttons' => [
             'download' => 'Baixar osu!',

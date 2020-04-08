@@ -1,48 +1,75 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'defaults' => [
         'page_description' => 'osu! - Ritmul este doar la un *clic* distanță! Cu Ouendan/EBA, Taiko și moduri de joc originale,  precum și un editor de nivel complet funcțional.',
     ],
 
+    'header' => [
+        'admin' => [
+            'beatmapset' => 'beatmapset',
+            'beatmapset_covers' => 'cover-uri beatmapset',
+            'contest' => 'concurs',
+            'contests' => 'concursuri',
+            'root' => 'consolă',
+            'store_orders' => 'magazin admin',
+        ],
+
+        'artists' => [
+            'index' => 'listare',
+        ],
+
+        'changelog' => [
+            'index' => 'listare',
+        ],
+
+        'help' => [
+            'index' => 'index',
+            'sitemap' => '',
+        ],
+
+        'store' => [
+            'cart' => '',
+            'orders' => '',
+            'products' => '',
+        ],
+
+        'tournaments' => [
+            'index' => 'listare',
+        ],
+
+        'users' => [
+            'modding' => 'modding',
+            'show' => 'info',
+        ],
+    ],
+
+    'gallery' => [
+        'close' => 'Închide (Esc)',
+        'fullscreen' => 'Comută ecran mic/mare',
+        'zoom' => 'Mărire/Micșorare',
+        'previous' => 'Precedent (săgeată stânga)',
+        'next' => 'Următor (săgeată dreapta)',
+    ],
+
     'menu' => [
-        'home' => [
-            '_' => 'acasă',
-            'account-edit' => 'setări',
-            'account-verifyLink' => '',
-            'friends-index' => 'prieteni',
-            'changelog-index' => 'jurnalul modificărilor',
-            'changelog-build' => 'versiune',
-            'getDownload' => 'descarcă',
-            'getIcons' => 'pictograme',
-            'groups-show' => 'grupuri',
-            'index' => 'tablou de bord',
-            'legal-show' => 'informație',
-            'messages-index' => 'mesaje',
-            'news-index' => 'ştiri',
-            'news-show' => 'ştiri',
-            'password-reset-index' => 'resetare parolă',
-            'search' => 'căutare',
-            'supportTheGame' => 'sprijină jocul',
-            'team' => 'echipă',
+        'beatmaps' => [
+            '_' => 'beatmaps',
+            'artists' => 'featured artists',
+            'index' => 'listare',
+            'packs' => 'pachete',
+        ],
+        'community' => [
+            '_' => 'comunitate',
+            'chat' => 'chat',
+            'contests' => 'concursuri',
+            'dev' => 'dezvoltare',
+            'forum-forums-index' => 'forumuri',
+            'getLive' => 'în direct',
+            'tournaments' => 'turnee',
         ],
         'help' => [
             '_' => 'ajutor',
@@ -50,123 +77,28 @@ return [
             'getRules' => 'reguli',
             'getSupport' => 'nu, de fapt, am nevoie de ajutor!',
             'getWiki' => 'wiki',
-            'wiki-show' => 'wiki',
         ],
-        'beatmaps' => [
-            '_' => 'beatmaps',
-            'artists' => 'featured artists',
-            'beatmap_discussion_posts-index' => 'postări de la discuția beatmap',
-            'beatmap_discussions-index' => 'discuții beatmap',
-            'beatmapset-watches-index' => 'lista de urmărire a modificărilor',
-            'beatmapset_discussion_votes-index' => 'voturi de la discuția beatmap',
-            'beatmapset_events-index' => 'evenimente beatmapset',
-            'index' => 'listare',
-            'packs' => 'pachete',
-            'show' => 'info',
-        ],
-        'beatmapsets' => [
-            '_' => 'beatmaps',
-            'discussion' => 'modding',
+        'home' => [
+            '_' => 'acasă',
+            'changelog-index' => 'jurnalul modificărilor',
+            'getDownload' => 'descarcă',
+            'news-index' => 'ştiri',
+            'search' => 'căutare',
+            'team' => 'echipă',
         ],
         'rankings' => [
             '_' => 'clasamente',
-            'index' => 'performanță',
-            'performance' => 'performanță',
             'charts' => 'în lumina reflectoarelor',
-            'score' => 'scor',
             'country' => 'țară',
+            'index' => 'performanță',
             'kudosu' => 'kudosu',
-        ],
-        'community' => [
-            '_' => 'comunitate',
-            'chat' => 'chat',
-            'chat-index' => 'chat',
-            'dev' => 'dezvoltare',
-            'getForum' => 'forumuri',
-            'getLive' => 'în direct',
-            'comments-index' => 'comentarii',
-            'comments-show' => 'comentariu',
-            'contests' => 'concursuri',
-            'profile' => 'profil',
-            'tournaments' => 'turnee',
-            'tournaments-index' => 'turnee',
-            'tournaments-show' => 'informații turneu',
-            'forum-topic-watches-index' => 'abonamente',
-            'forum-topics-create' => 'forumuri',
-            'forum-topics-show' => 'forumuri',
-            'forum-forums-index' => 'forumuri',
-            'forum-forums-show' => 'forumuri',
-        ],
-        'multiplayer' => [
-            '_' => 'multiplayer',
-            'show' => 'meci',
-        ],
-        'error' => [
-            '_' => 'eroare',
-            '404' => 'lipsește',
-            '403' => 'interzis',
-            '401' => 'neautorizat',
-            '405' => 'lipsește',
-            '500' => 'ceva s-a rupt',
-            '503' => 'pauză tehnică',
-        ],
-        'user' => [
-            '_' => 'utilizator',
-            'getLogin' => 'conectează-te',
-            'disabled' => 'dezactivat',
-
-            'register' => 'înregistrează-te',
-            'reset' => 'recuperează',
-            'new' => 'nou',
-
-            'help' => 'Ajutor',
-            'logout' => 'Deconectare',
-            'messages' => 'Mesaje',
-            'modding-history-discussions' => 'discuțiile modificate ale utilizatorului',
-            'modding-history-events' => 'evenimentele modificate ale utilizatorului',
-            'modding-history-index' => 'isoricul modificărilor utilizatorului',
-            'modding-history-posts' => 'postările modificate ale utilizatorului',
-            'modding-history-votesGiven' => 'voturile modificate date ale utilizatorului',
-            'modding-history-votesReceived' => 'voturile modificate primite ale utilizatorului',
-            'oauth_login' => 'autentifică-te pentru oauth',
-            'oauth_request' => 'autorizare oauth',
-            'settings' => 'Setări',
+            'score' => 'scor',
         ],
         'store' => [
             '_' => 'magazin',
-            'checkout-show' => 'finalizare comandă',
-            'getListing' => 'listare',
             'cart-show' => 'coș',
-
-            'getCheckout' => 'finalizare comandă',
-            'getInvoice' => 'factura',
+            'getListing' => 'listare',
             'orders-index' => 'istoric comenzi',
-            'products-show' => 'produs',
-
-            'new' => 'nou',
-            'home' => 'acasă',
-            'index' => 'acasă',
-            'thanks' => 'mulțumesc',
-        ],
-        'admin-forum' => [
-            '_' => '',
-            'forum-covers-index' => '',
-        ],
-        'admin-store' => [
-            '_' => '',
-            'orders-index' => '',
-            'orders-show' => '',
-        ],
-        'admin' => [
-            '_' => '',
-            'beatmapsets-covers' => '',
-            'logs-index' => '',
-            'root' => '',
-
-            'beatmapsets' => [
-                '_' => '',
-                'show' => '',
-            ],
         ],
     ],
 
@@ -177,7 +109,6 @@ return [
             'changelog-index' => 'Jurnalul modificărilor',
             'beatmaps' => 'Lista de beatmap',
             'download' => 'Descarcă osu!',
-            'wiki' => 'Wiki',
         ],
         'help' => [
             '_' => 'Ajutor & Comunitate',
@@ -185,6 +116,7 @@ return [
             'forum' => 'Forumuri',
             'livestreams' => 'Transmisiuni în direct',
             'report' => 'Raportează o problemă',
+            'wiki' => '',
         ],
         'legal' => [
             '_' => 'Legalitate & Statut',
@@ -213,6 +145,10 @@ return [
             'error' => 'Pagina lipsește',
             'description' => "Ne pare rău, dar pagina solicitată nu este aici!",
         ],
+        '422' => [
+            'error' => '',
+            'description' => '',
+        ],
         '500' => [
             'error' => 'Oh nu! Ceva s-a rupt! ;_;',
             'description' => "Suntem informați automat de fiecare eroare.",
@@ -235,10 +171,10 @@ return [
 
     'popup_login' => [
         'login' => [
-            'email' => 'adresa de e-mail',
             'forgot' => "Mi-am uitat detaliile de autentificare",
             'password' => 'parolă',
             'title' => 'Autentifică-te pentru a continua',
+            'username' => 'nume de utilizator',
 
             'error' => [
                 'email' => "Numele de utilizator sau adresa de e-mail nu există",
@@ -247,7 +183,8 @@ return [
         ],
 
         'register' => [
-            'info' => "Ai nevoie de un cont, domnule. De ce nu ai unul deja?",
+            'download' => 'Descarcă',
+            'info' => 'Ai nevoie de un cont, domnule. De ce nu ai unul deja?',
             'title' => "Nu ai un cont?",
         ],
     ],

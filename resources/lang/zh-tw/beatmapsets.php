@@ -1,32 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
-        'disabled' => '該譜面現在無法下載。',
+        'disabled' => '該圖譜現在無法下載。',
         'parts-removed' => '因作者或第三方版權擁有者的要求，故該圖譜已經下架。',
         'more-info' => '點擊這裡查看更多訊息。',
     ],
 
     'index' => [
-        'title' => '譜面列表',
+        'title' => '圖譜列表',
         'guest_title' => '圖譜',
     ],
 
@@ -34,17 +19,10 @@ return [
         'discussion' => '討論',
 
         'details' => [
-            'approved' => '批准於 ',
             'favourite' => '收藏這張圖譜',
-            'favourited_count' => '還有很多人...',
             'logged-out' => '下載圖譜前請先登入！',
-            'loved' => 'loved 於 ',
             'mapped_by' => '由 :mapper 製作',
-            'qualified' => '提名於 ',
-            'ranked' => '進榜於 ',
-            'submitted' => '發佈於 ',
             'unfavourite' => '取消收藏',
-            'updated' => '上次更新於 ',
             'updated_timeago' => '最後更新時間 :timeago',
 
             'download' => [
@@ -60,6 +38,15 @@ return [
             ],
         ],
 
+        'details_date' => [
+            'approved' => '',
+            'loved' => '',
+            'qualified' => '',
+            'ranked' => '',
+            'submitted' => '',
+            'updated' => '',
+        ],
+
         'favourites' => [
             'limit_reached' => '您收藏的圖譜已達上限，請取消一張再試。',
         ],
@@ -73,8 +60,20 @@ return [
                 'status' => [
                     'pending' => '待處理',
                     'qualified' => '已提名',
-                    'wip' => '此功能仍在開發中',
+                    'wip' => '製作中',
                 ],
+            ],
+
+            'disqualify' => [
+                '_' => '如果你認為此圖譜有問題，可將之取消提名：:link',
+                'button_title' => '取消提名已被Qualified的圖譜',
+            ],
+
+            'report' => [
+                '_' => '如果您發現此圖譜有問題，請在 :link 通知團隊。',
+                'button' => '回報問題',
+                'button_title' => '在 qualified 的圖譜上回報問題。',
+                'link' => '這裡',
             ],
         ],
 
@@ -139,6 +138,16 @@ return [
             'rating-spread' => '評分情況',
             'nominations' => '提名',
             'playcount' => '遊玩次数',
+        ],
+
+        'status' => [
+            'ranked' => '已進榜',
+            'approved' => '已核準',
+            'loved' => 'Loved',
+            'qualified' => '已提名',
+            'wip' => '製作中',
+            'pending' => '待處理',
+            'graveyard' => '拋棄',
         ],
     ],
 ];

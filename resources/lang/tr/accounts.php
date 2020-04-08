@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => '<strong>Hesap</strong> Ayarları',
         'title_compact' => 'ayarlar',
         'username' => 'kullanıcı adı',
 
         'avatar' => [
             'title' => 'Avatar',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'Lütfen avatarınızın :link\'e göre uygun olduğundan emin olunuz.<br/>Bu, onun <strong>her yaştan kişiye uygun olmasını</strong> yani çıplaklık, küfür veya müsthecen içeriğe yer vermemelidir.',
+            'rules_link' => 'topluluk kuralları',
         ],
 
         'email' => [
@@ -67,11 +51,19 @@ return [
     'notifications' => [
         'title' => 'Bildirimler',
         'topic_auto_subscribe' => 'bu beatmap için oluşturduğunuz yeni forum konularında bildirimleri otomatik olarak etkinleştirin',
+        'beatmapset_discussion_qualified_problem' => 'Doğrulanmış beatmapler\'in belirtilen modlardaki yeni sorunlarının bildirimlerini al',
+
+        'mail' => [
+            '_' => 'Bunun için bildirim al',
+            'beatmapset:modding' => 'beatmap modding',
+            'forum_topic_reply' => 'Konuya cevap ver',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => 'istek yetkilendirildi',
-        'title' => 'Otomatik bağlantı',
+        'own_clients' => 'sahip olunan istemciler',
+        'title' => 'OAuth',
     ],
 
     'playstyles' => [
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'osu! e-posta değişikliği onayı',
         'update' => 'güncelle',
     ],
 
     'update_password' => [
-        'email_subject' => 'osu! şifre değişikliği onayı',
         'update' => 'güncelle',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Bu pencereyi kapatabilirsiniz',
+        'title' => 'Doğrulama tamamlandı',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Geçersiz veya süresi dolmuş doğrulama bağlantısı',
     ],
 ];

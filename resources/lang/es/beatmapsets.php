@@ -1,51 +1,29 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
-        'disabled' => 'Este Beatmap no está actualmente disponible para descargar.',
-        'parts-removed' => 'Algunas partes de este beatmap se han eliminado a petición del creador o de un titular de derechos de autor.',
-        'more-info' => 'Marca aquí para más información.',
+        'disabled' => 'Este mapa no está actualmente disponible para su descarga.',
+        'parts-removed' => 'Partes de este mapa han sido eliminadas a petición de su creador o un titular de derechos de autor.',
+        'more-info' => 'Compruebe aquí para más información.',
     ],
 
     'index' => [
-        'title' => 'Listado de Beatmaps',
-        'guest_title' => 'Beatmaps',
+        'title' => 'Listado de Mapas',
+        'guest_title' => 'Mapas',
     ],
 
     'show' => [
         'discussion' => 'Discusión',
 
         'details' => [
-            'approved' => 'aprobado el ',
-            'favourite' => 'Marcar como favorito este beatmapset',
-            'favourited_count' => '+ ¡1 más!|+ ¡:count más!',
-            'logged-out' => '¡Necesitas iniciar sesión antes de descargar cualquier beatmap!',
-            'loved' => 'amado el ',
+            'favourite' => 'Marcar como favorito',
+            'logged-out' => '¡Necesitas iniciar sesión antes de descargar cualquier mapa!',
             'mapped_by' => 'mapeado por :mapper',
-            'qualified' => 'calificado el ',
-            'ranked' => 'clasificado en ',
-            'submitted' => 'enviado en ',
-            'unfavourite' => 'Desmarcar como favorito este beatmapset',
-            'updated' => 'última actualización en ',
-            'updated_timeago' => 'actualizado por última vez el :timeago',
+            'unfavourite' => 'Desmarcar como favorito',
+            'updated_timeago' => 'actualizado por última vez :timeago',
 
             'download' => [
                 '_' => 'Descargar',
@@ -60,21 +38,42 @@ return [
             ],
         ],
 
+        'details_date' => [
+            'approved' => 'aprobado :timeago',
+            'loved' => 'amado :timeago',
+            'qualified' => 'calificado :timeago',
+            'ranked' => 'clasificado :timeago',
+            'submitted' => 'enviado :timeago',
+            'updated' => 'actualizado por última vez :timeago',
+        ],
+
         'favourites' => [
-            'limit_reached' => 'Tienes demasiados beatmaps en favoritos! Por favor, desmarca algunos antes de volver a intentarlo.',
+            'limit_reached' => '¡Tienes demasiados mapas favoritos! Por favor, desmarca algunos antes de volver a intentarlo.',
         ],
 
         'hype' => [
-            'action' => 'Apoya este mapa si te gusto para ayudarlo a legar a <strong>Ranked</strong>.',
+            'action' => 'Hypea este mapa si te gustó jugarlo para ayudar a que progrese al estado de <strong>Clasificado</strong>.',
 
             'current' => [
-                '_' => 'El mapa esta :status.',
+                '_' => 'Este mapa está actualmente :status.',
 
                 'status' => [
                     'pending' => 'pendiente',
-                    'qualified' => 'cualificado',
-                    'wip' => 'trabajo en progreso',
+                    'qualified' => 'calificado',
+                    'wip' => 'en proceso de elaboración',
                 ],
+            ],
+
+            'disqualify' => [
+                '_' => 'Si encuentras un problema con este mapa, por favor descalifícalo :link.',
+                'button_title' => 'Descalifica un mapa calificado.',
+            ],
+
+            'report' => [
+                '_' => 'Si encuentras un problema con este mapa, por favor repórtalo :link para alertar al equipo.',
+                'button' => 'Reportar un problema',
+                'button_title' => 'Informe de un problema en un mapa calificado.',
+                'link' => 'aquí',
             ],
         ],
 
@@ -87,16 +86,16 @@ return [
             'source' => 'Fuente',
             'success-rate' => 'Tasa de éxito',
             'tags' => 'Etiquetas',
-            'unranked' => 'Beatmap no rankeado',
+            'unranked' => 'Mapa no clasificado',
         ],
 
         'scoreboard' => [
             'achieved' => 'logrado :when',
-            'country' => 'Ranking Nacional',
-            'friend' => 'Ranking de Amigos',
-            'global' => 'Ranking Global',
+            'country' => 'Clasificación Nacional',
+            'friend' => 'Clasificación entre Amigos',
+            'global' => 'Clasificación Global',
             'supporter-link' => '¡Clic <a href=":link">aquí</a> para ver todas las increíbles características que obtienes!',
-            'supporter-only' => '¡Necesitas ser supporter para acceder a los rankings entre amigos y de país!',
+            'supporter-only' => '¡Necesitas ser un osu!supporter para acceder a las clasificaciones nacionales y entre amigos!',
             'title' => 'Tabla de puntuaciones',
 
             'headers' => [
@@ -106,7 +105,7 @@ return [
                 'mods' => 'Mods',
                 'player' => 'Jugador',
                 'pp' => 'pp',
-                'rank' => 'Rank',
+                'rank' => 'Puesto',
                 'score_total' => 'Puntuación total',
                 'score' => 'Puntuación',
             ],
@@ -116,10 +115,10 @@ return [
                 'friend' => '¡Ninguno de tus amigos ha marcado una puntuación en este mapa aún!',
                 'global' => 'Sin puntuaciones aún. ¿Tal vez deberías intentar establecer alguna?',
                 'loading' => 'Cargando puntuaciones...',
-                'unranked' => 'Beatmap no rankeado.',
+                'unranked' => 'Mapa no clasificado.',
             ],
             'score' => [
-                'first' => 'A la cabeza',
+                'first' => 'Liderando',
                 'own' => 'Tu mejor puntuación',
             ],
         ],
@@ -131,7 +130,7 @@ return [
             'accuracy' => 'Precisión',
             'ar' => 'Velocidad de aproximación',
             'stars' => 'Estrellas de Dificultad',
-            'total_length' => 'Duración',
+            'total_length' => 'Duración (Duración del drenaje: :hit_length)',
             'bpm' => 'BPM',
             'count_circles' => 'Número de Círculos',
             'count_sliders' => 'Número de Deslizadores',
@@ -139,6 +138,16 @@ return [
             'rating-spread' => 'Desglose de valoraciones',
             'nominations' => 'Nominaciones',
             'playcount' => 'Veces jugado',
+        ],
+
+        'status' => [
+            'ranked' => 'Clasificado',
+            'approved' => 'Aprobado',
+            'loved' => 'Amado',
+            'qualified' => 'Calificado',
+            'wip' => 'WIP',
+            'pending' => 'Pendiente',
+            'graveyard' => 'Abandonado',
         ],
     ],
 ];

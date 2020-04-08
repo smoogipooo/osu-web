@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Angepinnte Threads',
@@ -25,6 +10,8 @@ return [
     'title' => 'osu! Foren',
 
     'covers' => [
+        'edit' => 'Cover bearbeiten',
+
         'create' => [
             '_' => 'Banner festlegen',
             'button' => 'Bild hochladen',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Neue Antwort auf Thread ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Neuester Beitrag',
+
+        'index' => [
+            'title' => 'Forum-Startseite',
+        ],
+
         'topics' => [
             'empty' => 'Keine Threads!',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => 'Forum als gelesen markieren',
         'forums' => 'Foren als gelesen markieren',
         'busy' => 'Als gelesen markieren...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'Beim bearbeiten einer Umfrage, werden die aktuellen Ergebnisse gelöscht!',
-
-        'actions' => [
-            'edit' => 'Umfrage bearbeiten',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => 'Post löschen',
             'restore' => 'Post wiederherstellen',
             'edit' => 'Post bearbeiten',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => 'Neue Antwort',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'gestartet von :user',
 
         'create' => [
+            'close' => 'Schließen',
             'preview' => 'Vorschau',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Forenabonnements',
             'title_compact' => 'forenabos',
-            'title_main' => 'Foren<strong>abonnenements</strong>',
 
             'box' => [
                 'total' => 'Abonnierte Threads',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Dieser Thread ist gesperrt und erlaubt keine weiteren Antworten',
             'to_0' => 'Thread entsperren',
+            'to_0_confirm' => '',
             'to_0_done' => 'Thread wurde entsperrt',
             'to_1' => 'Thread sperren',
+            'to_1_confirm' => '',
             'to_1_done' => 'Thread wurde gesperrt',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Thread von den angepinnten Threads entfernen',
+            'to_0_confirm' => '',
             'to_0_done' => 'Thread wurde von den angepinnten Threads entfernt',
             'to_1' => 'Thread anpinnen',
+            'to_1_confirm' => '',
             'to_1_done' => 'Thread wurde angepinnt',
             'to_2' => 'Thread anpinnen und als Ankündigung markieren',
+            'to_2_confirm' => '',
             'to_2_done' => 'Thread wurde angepinnt und als Ankündigung markiert',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Gelöschte Beiträge anzeigen',
+            'hide' => 'Gelöschte Beiträge ausblenden',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Umfrage bearbeiten',
+                'edit_warning' => 'Bearbeiten der Umfrage wird die derzeitigen Ergebnisse entfernen!',
                 'vote' => 'Abstimmung',
+
+                'button' => [
+                    'change_vote' => 'Stimme ändern',
+                    'edit' => 'Umfrage bearbeiten',
+                    'view_results' => 'Zu Ergebnissen springen',
+                    'vote' => 'Abstimmen',
+                ],
 
                 'detail' => [
                     'end_time' => 'Abstimmung endet am :time',

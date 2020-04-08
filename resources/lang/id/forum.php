@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Topik yang Disematkan',
@@ -25,6 +10,8 @@ return [
     'title' => 'forum osu!',
 
     'covers' => [
+        'edit' => 'Sunting sampul',
+
         'create' => [
             '_' => 'Pasang gambar sampul',
             'button' => 'Unggah gambar',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Balasan terbaru dari topik ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Kiriman Terbaru',
+
+        'index' => [
+            'title' => 'Indeks Forum',
+        ],
+
         'topics' => [
             'empty' => 'Topik tidak ditemukan!',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => 'Tandai forum ini sebagai telah terbaca',
         'forums' => 'Tandai forum-forum ini sebagai telah terbaca',
         'busy' => 'Menandai sebagai telah terbaca...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'Mengubah isi dari suatu jajak pendapat akan menghilangkan semua hasil yang sudah tercatat saat ini!',
-
-        'actions' => [
-            'edit' => 'Sunting jajak pendapat',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => 'Hapus Kiriman',
             'restore' => 'Kembalikan post',
             'edit' => 'Sunting post',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => 'Balasan baru',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'topik dimulai oleh :user',
 
         'create' => [
+            'close' => 'Tutup',
             'preview' => 'Pratinjau',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Langganan Forum',
             'title_compact' => 'langganan forum',
-            'title_main' => '<strong>Langganan</strong> Forum',
 
             'box' => [
                 'total' => 'Topik yang dilanggan',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Topik ini telah dikunci dan tidak dapat dibalas',
             'to_0' => 'Buka topik',
+            'to_0_confirm' => 'Buka kunci topik?',
             'to_0_done' => 'Topik telah dibuka',
             'to_1' => 'Kunci topik',
+            'to_1_confirm' => 'Kunci topik?',
             'to_1_done' => 'Topik telah dikunci',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Lepas sematan topik',
+            'to_0_confirm' => 'Lepas sematan topik?',
             'to_0_done' => 'Sematan topik telah dilepaskan',
             'to_1' => 'Sematkan topik',
+            'to_1_confirm' => 'Sematkan topik?',
             'to_1_done' => 'Topik telah disematkan',
             'to_2' => 'Sematkan topik dan tandai sebagai pengumuman',
+            'to_2_confirm' => 'Sematkan topik dan tandai sebagai pengumuman?',
             'to_2_done' => 'Topik telah disematkan dan ditandai sebagai pengumuman',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Tampilkan postingan yang telah dihapus',
+            'hide' => 'Sembunyikan postingan yang telah dihapus',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Sunting jajak pendapat',
+                'edit_warning' => 'Menyunting isi jajak pendapat akan menghilangkan semua hasil yang sudah tercatat sampai saat ini!',
                 'vote' => 'Pilih',
+
+                'button' => [
+                    'change_vote' => 'Ganti suara',
+                    'edit' => 'Sunting jajak pendapat',
+                    'view_results' => 'Lewati ke hasil jajak pendapat',
+                    'vote' => 'Pilih',
+                ],
 
                 'detail' => [
                     'end_time' => 'Pemilihan akan berakhir :time',

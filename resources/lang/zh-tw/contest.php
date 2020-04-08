@@ -1,34 +1,24 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'header' => [
         'small' => '享受遊戲以外的競賽體驗。',
         'large' => '社群賽事',
     ],
+
+    'index' => [
+        'nav_title' => '清單',
+    ],
+
     'voting' => [
         'over' => '這場評選的投票已經結束',
-        'login_required' => '請登錄後再投票.',
+        'login_required' => '請登入後再投票。',
 
         'best_of' => [
-            'none_played' => "沒有符合此次評選條件的譜面！",
+            'none_played' => "沒有符合此次評選條件的圖譜！",
         ],
 
         'button' => [
@@ -39,7 +29,7 @@ return [
     ],
     'entry' => [
         '_' => '參加',
-        'login_required' => '請登錄後再參加評選。',
+        'login_required' => '請登入後再參加評選。',
         'silenced_or_restricted' => '帳戶受限時無法參加評選。',
         'preparation' => '我們正在準備這場評選，請耐心等待！',
         'over' => '感謝參與！提交已經關閉，投票即將開始。',

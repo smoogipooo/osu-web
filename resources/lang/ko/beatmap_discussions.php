@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'authorizations' => [
@@ -33,13 +18,24 @@ return [
 
     'index' => [
         'deleted_beatmap' => '삭제됨',
+        'none_found' => '해당 검색 기준과 일치하는 토론을 찾을 수 없습니다.',
         'title' => '비트맵 토론',
 
         'form' => [
             '_' => '검색',
             'deleted' => '삭제된 토론 포함',
+            'only_unresolved' => '미해결 토론만 보기',
             'types' => '메시지 종류',
             'username' => '사용자 이름',
+
+            'beatmapset_status' => [
+                '_' => '비트맵 상태',
+                'all' => '전체',
+                'disqualified' => 'Disqualified',
+                'never_qualified' => 'Qualified 된 적 없음',
+                'qualified' => 'Qualified',
+                'ranked' => 'Ranked',
+            ],
 
             'user' => [
                 'label' => '사용자',
@@ -67,11 +63,28 @@ return [
         ],
     ],
 
+    'review' => [
+        'go_to_parent' => '평가 글 보기',
+        'go_to_child' => '토론 글 보기',
+        'validation' => [
+            'invalid_block_type' => '잘못된 블럭 종류',
+            'invalid_document' => '잘못된 리뷰',
+            'minimum_issues' => '리뷰는 최소한 :count개의 이슈를 포함해야 합니다',
+            'missing_text' => '블럭이 텍스트를 포함하고 있지 않음',
+            'too_many_blocks' => '리뷰는 최대 :count개의 문단 및 이슈를 포함할 수 있습니다.',
+        ],
+    ],
+
     'system' => [
         'resolved' => [
             'true' => ':user님이 토론을 끝마쳤습니다',
             'false' => ':user님이 토론을 재개했습니다',
         ],
+    ],
+
+    'timestamp_display' => [
+        'general' => '일반',
+        'general_all' => '일반 (전체)',
     ],
 
     'user_filter' => [

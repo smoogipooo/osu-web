@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => 'Είστε σίγουροι;',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ', και ',
     ],
 
+    'badges' => [
+        'new' => '',
+    ],
+
     'buttons' => [
         'admin' => 'Διαχειριστής',
+        'authorise' => '',
+        'authorising' => '',
         'back_to_previous' => 'Επιστροφή στην προηγούμενη κατάσταση',
         'back_to_top' => 'Πίσω στην αρχή',
         'cancel' => 'Ακύρωση',
         'change' => 'κάντε αλλαγές',
         'click_to_copy' => 'κάντε κλικ για να αντιγράψετε στο πρόχειρο',
         'click_to_copy_copied' => 'αντιγράφτηκε στο πρόχειρο!',
+        'close' => '',
         'collapse' => 'σύμπτυξη',
         'delete' => 'Διαγραφή',
         'edit' => 'Επεξεργασία',
         'expand' => 'επέκταση',
         'hide' => 'απόκρυψη',
         'permalink' => 'permalink',
-        'permalink_copied' => 'το link αντιγράφτηκε',
+        'pin' => '',
         'post' => 'Δημοσίευση',
         'reply' => 'Απάντηση',
         'reply_reopen' => 'Απάντηση και εκ νέου άνοιγμα',
@@ -56,8 +48,11 @@ return [
         'see_more' => 'δείτε περισσότερα',
         'show' => 'προβολή',
         'show_deleted' => 'Εμφάνιση διαγραμμένου',
+        'show_less' => '',
         'show_more' => 'εμφάνιση περισσότερων',
         'show_more_options' => 'περισσότερες επιλογές',
+        'unpin' => '',
+        'update' => '',
         'upload_image' => 'ανεβάστε εικόνα',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => 'λεπτό|λεπτά',
         'minutes' => ':count λεπτό|:count λεπτά',
         'months' => ':count μήνας|:count μήνες',
+        'notifications' => '',
+        'plus_others' => '',
+        'post' => '',
         'second_short_unit' => 'δευτ.|δευτ.',
+        'star_priority' => '',
         'update' => '',
+        'view' => '',
         'years' => ':count χρόνος|:count χρόνια',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => 'αφήστε εδώ για να ανεβάσετε',
     ],
 
+    'input' => [
+        'search' => '',
+    ],
+
     'pagination' => [
         'previous' => 'προηγ.',
         'next' => 'επόμ.',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => 'Ειδοποίηση',
+    ],
+
+    'wrong_user' => [
+        '_' => '',
+        'logout_link' => '',
     ],
 ];

@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'authorizations' => [
@@ -33,13 +18,24 @@ return [
 
     'index' => [
         'deleted_beatmap' => 'eliminato',
-        'title' => 'Discussioni di beatmap',
+        'none_found' => 'Nessuna discussione corrispondente ai criteri di ricerca trovata.',
+        'title' => 'Discussioni Beatmap',
 
         'form' => [
             '_' => 'Cerca',
             'deleted' => 'Includi discussioni eliminate',
-            'types' => 'Tipo di messaggio',
+            'only_unresolved' => 'Mostra solo le discussioni in sospeso',
+            'types' => 'Tipi di messaggio',
             'username' => 'Nome Utente',
+
+            'beatmapset_status' => [
+                '_' => 'Stato Beatmap',
+                'all' => 'Tutti',
+                'disqualified' => 'Squalificata',
+                'never_qualified' => 'Mai Qualificata',
+                'qualified' => 'Qualificata',
+                'ranked' => 'Rankata',
+            ],
 
             'user' => [
                 'label' => 'Utente',
@@ -57,7 +53,7 @@ return [
 
     'nearby_posts' => [
         'confirm' => 'Nessuno dei post riguarda il mio problema',
-        'notice' => 'Ci sono già post a :timestamp (:existing_timestamps). Si prega di controllare prima di postare.',
+        'notice' => 'Ci sono già dei post verso :timestamp (:existing_timestamps). Controlla prima di postare.',
     ],
 
     'reply' => [
@@ -67,11 +63,28 @@ return [
         ],
     ],
 
+    'review' => [
+        'go_to_parent' => 'Visualizza il post della recensione',
+        'go_to_child' => 'Visualizza discussione',
+        'validation' => [
+            'invalid_block_type' => 'tipo di blocco non valido',
+            'invalid_document' => 'recensione non valida',
+            'minimum_issues' => 'la recensione deve contenere almeno :count problema|la recensione deve contenere almeno :count problemi',
+            'missing_text' => 'il blocco non ha testo',
+            'too_many_blocks' => 'le recensioni possono contenere solo :count paragrafo/problema|le recensioni possono contenere fino a :count paragrafi/problemi',
+        ],
+    ],
+
     'system' => [
         'resolved' => [
             'true' => 'Segnato come risolto da :user',
             'false' => 'Riaperto da :user',
         ],
+    ],
+
+    'timestamp_display' => [
+        'general' => 'generale',
+        'general_all' => 'generale (tutti)',
     ],
 
     'user_filter' => [

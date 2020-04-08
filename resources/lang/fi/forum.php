@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Kiinnitetyt Aiheet',
@@ -25,6 +10,8 @@ return [
     'title' => 'osu!-foorumit',
 
     'covers' => [
+        'edit' => '',
+
         'create' => [
             '_' => 'Aseta kansikuva',
             'button' => 'Lataa kuva',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Uusi vastaus aiheessa ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => '',
+
+        'index' => [
+            'title' => '',
+        ],
+
         'topics' => [
             'empty' => 'Ei aiheita!',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => 'Merkitse luetuksi',
         'forums' => 'Merkitse luetuksi',
         'busy' => 'Merkitään luetuksi...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'Äänestyksen muokkaaminen poistaa tämänhetkiset tulokset!',
-
-        'actions' => [
-            'edit' => 'Muokkaa äänestystä',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => 'Poista viesti',
             'restore' => 'Palauta viesti',
             'edit' => 'Muokkaa viestiä',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => '',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'aloittanut :user',
 
         'create' => [
+            'close' => 'Sulje',
             'preview' => 'Esikatselu',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Foorumilla Seuratut',
             'title_compact' => 'foorumilla seuratut',
-            'title_main' => 'foorumilla <strong>Seuratut</strong>',
 
             'box' => [
                 'total' => 'Seurattuja aiheita',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Tämä aihe on lukittu, eikä siihen voida vastata',
             'to_0' => 'Avaa aihe',
+            'to_0_confirm' => '',
             'to_0_done' => 'Aihe on avattu',
             'to_1' => 'Lukitse aihe',
+            'to_1_confirm' => '',
             'to_1_done' => 'Aihe lukittu',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Irrota aihe',
+            'to_0_confirm' => '',
             'to_0_done' => 'Aihe irrotettu',
             'to_1' => 'Kiinnitä aihe',
+            'to_1_confirm' => '',
             'to_1_done' => 'Aihe kiinnitetty',
             'to_2' => 'Kiinnitä aihe ja merkkaa ilmoitukseksi',
+            'to_2_confirm' => '',
             'to_2_done' => 'Aihe on kiinnitetty ja merkattu ilmoitukseksi',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => '',
+            'hide' => '',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => '',
+                'edit_warning' => '',
                 'vote' => 'Äänestä',
+
+                'button' => [
+                    'change_vote' => '',
+                    'edit' => '',
+                    'view_results' => '',
+                    'vote' => '',
+                ],
 
                 'detail' => [
                     'end_time' => 'Kysely loppuu :time',

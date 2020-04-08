@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Kirjaudu sisään jatkaaksesi.',
+    'require_verification' => '',
+    'restricted' => "Et voi tehdä tätä rajoitettuna.",
+    'silenced' => "Et voi tehdä tätä mykistettynä.",
+    'unauthorized' => 'Pääsy evätty.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Hurrausta ei voi peruuttaa.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Automaattisesti luotua viestiä ei voi muokata.',
-            'not_owner' => 'Vain lähettäjä voi muokata viestiä.',
+        'destroy' => [
+            'not_owner' => '',
+            'resolved' => '',
+            'system_generated' => '',
         ],
+
+        'edit' => [
+            'not_owner' => 'Vain lähettäjä voi muokata viestiä.',
+            'resolved' => '',
+            'system_generated' => 'Automaattisesti luotua viestiä ei voi muokata.',
+        ],
+
         'store' => [
             'beatmapset_locked' => '',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Vain ylläpitäjä voi nähdä tämän foorumin.',
         ],
     ],
-
-    'require_login' => 'Kirjaudu sisään jatkaaksesi.',
-
-    'unauthorized' => 'Pääsy evätty.',
-
-    'silenced' => "Et voi tehdä tätä mykistettynä.",
-
-    'restricted' => "Et voi tehdä tätä rajoitettuna.",
 
     'user' => [
         'page' => [

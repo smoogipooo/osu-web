@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Por favor, inicia sesión para continuar.',
+    'require_verification' => 'Por favor verifica para proceder.',
+    'restricted' => "No puedes hacer eso mientras estés restringido.",
+    'silenced' => "No puedes hacer eso mientras estés silenciado.",
+    'unauthorized' => 'Acceso denegado.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'No puedes deshacer el hyping.',
@@ -26,17 +17,17 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Has alcanzado tu límite de nominaciones diarias, por favor inténtalo de nuevo mañana.',
-            'full_bn_required' => '',
-            'full_bn_required_hybrid' => '',
+            'full_bn_required' => 'Debe ser un nominador completo para realizar esta nominación calificada.',
+            'full_bn_required_hybrid' => 'Debe ser un nominador completo para nominar sets de mapas con más de un modo de juego.',
             'incorrect_state' => 'Error al realizar esa acción, intenta actualizando la página.',
-            'owner' => "No puedes nominar tu propio beatmap.",
+            'owner' => "No puedes nominar tu propio mapa.",
         ],
         'resolve' => [
-            'not_owner' => 'Solo el creador del tema y dueño del beatmap puede resolver una discusión.',
+            'not_owner' => 'Solo el creador del tema y el dueño del mapa pueden resolver una discusión.',
         ],
 
         'store' => [
-            'mapper_note_wrong_user' => 'Sólo el dueño del beatmap o un miembro de un grupo de nominaciones/QAT puede publicar notas de mapeador.',
+            'mapper_note_wrong_user' => 'Sólo el dueño del mapa o el nominador/miembro del grupo NAT puede publicar notas de mapeo.',
         ],
 
         'vote' => [
@@ -47,12 +38,20 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Una publicación generada automáticamente no se puede editar.',
-            'not_owner' => 'Solo el creador puede editar la publicación.',
+        'destroy' => [
+            'not_owner' => 'Solo puedes eliminar tus publicaciones.',
+            'resolved' => 'No puedes eliminar una publicación de una discusión resuelta.',
+            'system_generated' => 'La publicación generada automáticamente no puede ser eliminada.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Solo el creador puede editar la publicación.',
+            'resolved' => 'No puedes editar una publicación de una discusión resuelta.',
+            'system_generated' => 'Una publicación generada automáticamente no se puede editar.',
+        ],
+
         'store' => [
-            'beatmapset_locked' => 'Este beatmap está bloqueado para discusión.',
+            'beatmapset_locked' => 'Este mapa está bloqueado para discusión.',
         ],
     ],
 
@@ -66,7 +65,7 @@ return [
 
     'comment' => [
         'update' => [
-            'deleted' => "No puedes editar una publicación borrada.",
+            'deleted' => "No puedes editar una publicación eliminada.",
         ],
     ],
 
@@ -82,7 +81,7 @@ return [
         'post' => [
             'delete' => [
                 'only_last_post' => 'Solo se puede eliminar la última publicación.',
-                'locked' => 'No se puede eliminar una publicación en un hilo cerrado.',
+                'locked' => 'No se puede eliminar la publicación de un tema cerrado.',
                 'no_forum_access' => 'Se requiere acceso al foro solicitado.',
                 'not_owner' => 'Solo el creador de la publicación puede eliminarla.',
             ],
@@ -110,14 +109,14 @@ return [
 
                 'user' => [
                     'require_login' => 'Por favor, inicia sesión para responder.',
-                    'restricted' => "No puedo responder mientras estás restringido.",
-                    'silenced' => "No puedes responder mientras estás silenciado.",
+                    'restricted' => "No puedes responder mientras estés restringido.",
+                    'silenced' => "No puedes responder mientras estés silenciado.",
                 ],
             ],
 
             'store' => [
                 'no_forum_access' => 'Se requiere acceso al foro solicitado.',
-                'no_permission' => 'No tienes permisos para crear un nuevo hilo.',
+                'no_permission' => 'No tienes permisos para crear un nuevo tema.',
                 'forum_closed' => 'Este foro está cerrado y no puedes publicar en él.',
             ],
 
@@ -145,7 +144,7 @@ return [
                 'not_owner' => 'Solo el dueño puede editar la portada.',
             ],
             'store' => [
-                'forum_not_allowed' => '',
+                'forum_not_allowed' => 'Este foro no acepta portadas de temas.',
             ],
         ],
 
@@ -154,20 +153,12 @@ return [
         ],
     ],
 
-    'require_login' => 'Por favor, inicia sesión para continuar.',
-
-    'unauthorized' => 'Acceso denegado.',
-
-    'silenced' => "No puedes hacer eso mientras estés silenciado.",
-
-    'restricted' => "No puedes hacer eso mientras estés restringido.",
-
     'user' => [
         'page' => [
             'edit' => [
                 'locked' => 'La página de usuario está bloqueada.',
                 'not_owner' => 'Solo puedes editar tu página de usuario.',
-                'require_supporter_tag' => 'Se requiere el osu!supporter tag.',
+                'require_supporter_tag' => 'Se requiere el tag de osu!supporter.',
             ],
         ],
     ],

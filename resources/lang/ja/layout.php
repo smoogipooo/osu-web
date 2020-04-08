@@ -1,48 +1,75 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'defaults' => [
         'page_description' => 'osu! - リズムはもう、その指先に！応援団や太鼓をモチーフにしたゲームモード、オリジナルのゲームモード、そしてレベルエディタも備えています。',
     ],
 
+    'header' => [
+        'admin' => [
+            'beatmapset' => 'ビートマップセット',
+            'beatmapset_covers' => 'ビートマップセットカバー',
+            'contest' => 'コンテスト',
+            'contests' => 'コンテスト',
+            'root' => 'コンソール',
+            'store_orders' => 'ストア管理者',
+        ],
+
+        'artists' => [
+            'index' => '一覧',
+        ],
+
+        'changelog' => [
+            'index' => '一覧',
+        ],
+
+        'help' => [
+            'index' => '目次',
+            'sitemap' => 'サイトマップ',
+        ],
+
+        'store' => [
+            'cart' => 'カート',
+            'orders' => '注文履歴',
+            'products' => '製品',
+        ],
+
+        'tournaments' => [
+            'index' => '一覧',
+        ],
+
+        'users' => [
+            'modding' => 'modding',
+            'show' => '詳細',
+        ],
+    ],
+
+    'gallery' => [
+        'close' => '閉じる（Esc）',
+        'fullscreen' => '全画面表示に切り替え',
+        'zoom' => 'ズームイン/ズームアウト',
+        'previous' => '前（左矢印）',
+        'next' => '次へ（右矢印）',
+    ],
+
     'menu' => [
-        'home' => [
-            '_' => 'ホーム',
-            'account-edit' => '設定',
-            'account-verifyLink' => '',
-            'friends-index' => 'フレンド',
-            'changelog-index' => '更新履歴',
-            'changelog-build' => 'ビルド',
-            'getDownload' => 'ダウンロード',
-            'getIcons' => 'アイコン',
-            'groups-show' => 'グループ',
-            'index' => 'ダッシュボード',
-            'legal-show' => 'インフォメーション',
-            'messages-index' => 'メッセージ',
-            'news-index' => 'お知らせ',
-            'news-show' => 'お知らせ',
-            'password-reset-index' => 'パスワードのリセット',
-            'search' => '検索',
-            'supportTheGame' => 'ゲームを支援する',
-            'team' => 'osu!team',
+        'beatmaps' => [
+            '_' => 'ビートマップ',
+            'artists' => '注目アーティスト',
+            'index' => '一覧',
+            'packs' => 'パック',
+        ],
+        'community' => [
+            '_' => 'コミュニティ',
+            'chat' => 'チャット',
+            'contests' => 'コンテスト',
+            'dev' => '開発',
+            'forum-forums-index' => 'フォーラム',
+            'getLive' => '配信',
+            'tournaments' => 'トーナメント',
         ],
         'help' => [
             '_' => 'ヘルプ',
@@ -50,123 +77,28 @@ return [
             'getRules' => 'ルール',
             'getSupport' => 'サポートが必要です！',
             'getWiki' => 'wiki',
-            'wiki-show' => 'wiki',
         ],
-        'beatmaps' => [
-            '_' => 'ビートマップ',
-            'artists' => '注目アーティスト',
-            'beatmap_discussion_posts-index' => 'ディスカッション投稿',
-            'beatmap_discussions-index' => 'ディスカッション',
-            'beatmapset-watches-index' => 'moddingウォッチリスト',
-            'beatmapset_discussion_votes-index' => 'ディスカッション評価',
-            'beatmapset_events-index' => 'ビートマップセットイベント',
-            'index' => '一覧',
-            'packs' => 'パック',
-            'show' => '詳細',
-        ],
-        'beatmapsets' => [
-            '_' => 'ビートマップ',
-            'discussion' => 'modding',
+        'home' => [
+            '_' => 'ホーム',
+            'changelog-index' => '更新履歴',
+            'getDownload' => 'ダウンロード',
+            'news-index' => 'お知らせ',
+            'search' => '検索',
+            'team' => 'osu!team',
         ],
         'rankings' => [
             '_' => 'ランキング',
-            'index' => 'パフォーマンス',
-            'performance' => 'パフォーマンス',
             'charts' => 'スポットライト',
-            'score' => 'スコア',
             'country' => '国別',
+            'index' => 'パフォーマンス',
             'kudosu' => 'kudosu',
-        ],
-        'community' => [
-            '_' => 'コミュニティ',
-            'chat' => 'チャット',
-            'chat-index' => 'チャット',
-            'dev' => '開発',
-            'getForum' => 'フォーラム',
-            'getLive' => '配信',
-            'comments-index' => 'コメント',
-            'comments-show' => 'コメント',
-            'contests' => 'コンテスト',
-            'profile' => 'プロフィール',
-            'tournaments' => 'トーナメント',
-            'tournaments-index' => 'トーナメント',
-            'tournaments-show' => 'トーナメント情報',
-            'forum-topic-watches-index' => 'サブスクリプション',
-            'forum-topics-create' => 'フォーラム',
-            'forum-topics-show' => 'フォーラム',
-            'forum-forums-index' => 'フォーラム',
-            'forum-forums-show' => 'フォーラム',
-        ],
-        'multiplayer' => [
-            '_' => 'マルチプレイヤー',
-            'show' => 'マッチ',
-        ],
-        'error' => [
-            '_' => 'エラー',
-            '404' => '見つかりません',
-            '403' => '禁止されています',
-            '401' => '権限がありません',
-            '405' => '見つかりません',
-            '500' => '予期せぬエラーです',
-            '503' => 'メンテナンス',
-        ],
-        'user' => [
-            '_' => 'ユーザー',
-            'getLogin' => 'ログイン',
-            'disabled' => '無効',
-
-            'register' => '登録',
-            'reset' => 'リセット',
-            'new' => '新しい',
-
-            'help' => 'ヘルプ',
-            'logout' => 'ログアウト',
-            'messages' => 'メッセージ',
-            'modding-history-discussions' => 'ユーザーのmoddingディスカッション',
-            'modding-history-events' => 'ユーザーのmoddingイベント',
-            'modding-history-index' => 'ユーザーのmodding履歴',
-            'modding-history-posts' => 'ユーザーのmodding投稿',
-            'modding-history-votesGiven' => 'ユーザーがmoddingに与えた投票',
-            'modding-history-votesReceived' => 'ユーザーがmoddingで受け取った投票',
-            'oauth_login' => 'oauthでログインする。',
-            'oauth_request' => 'oauth認証',
-            'settings' => '設定',
+            'score' => 'スコア',
         ],
         'store' => [
             '_' => 'ストア',
-            'checkout-show' => '支払いをする',
-            'getListing' => '商品一覧',
             'cart-show' => 'カート',
-
-            'getCheckout' => '支払いをする',
-            'getInvoice' => '請求書',
+            'getListing' => '商品一覧',
             'orders-index' => '注文履歴',
-            'products-show' => '製品',
-
-            'new' => 'new',
-            'home' => 'ホーム',
-            'index' => 'ホーム',
-            'thanks' => 'お礼',
-        ],
-        'admin-forum' => [
-            '_' => 'admin::forum',
-            'forum-covers-index' => 'フォーラムカバー',
-        ],
-        'admin-store' => [
-            '_' => 'admin::store',
-            'orders-index' => '注文',
-            'orders-show' => '注文',
-        ],
-        'admin' => [
-            '_' => 'admin',
-            'beatmapsets-covers' => 'ビートマップセットカバー',
-            'logs-index' => 'ログ',
-            'root' => 'インデックス',
-
-            'beatmapsets' => [
-                '_' => 'ビートマップセット',
-                'show' => '詳細',
-            ],
         ],
     ],
 
@@ -177,7 +109,6 @@ return [
             'changelog-index' => '更新履歴',
             'beatmaps' => 'ビートマップリスト',
             'download' => 'osu!をダウンロード',
-            'wiki' => 'Wiki',
         ],
         'help' => [
             '_' => 'ヘルプ＆コミュニティ',
@@ -185,6 +116,7 @@ return [
             'forum' => 'コミュニティフォーラム',
             'livestreams' => 'ライブ配信',
             'report' => '問題を報告する',
+            'wiki' => 'Wiki',
         ],
         'legal' => [
             '_' => 'Legal & Status',
@@ -199,7 +131,7 @@ return [
     'errors' => [
         '404' => [
             'error' => 'ページが見つかりません',
-            'description' => "申し訳ありませんが、要求されたページはここにはない様です。",
+            'description' => "申し訳ありませんが、要求されたページはここにはないようです。",
         ],
         '403' => [
             'error' => "何か手違いがあったみたいです。",
@@ -211,7 +143,11 @@ return [
         ],
         '405' => [
             'error' => 'ページが見つかりません',
-            'description' => "ご希望のページはここにはない様です。",
+            'description' => "申し訳ありませんが、要求されたページはここにはないようです。",
+        ],
+        '422' => [
+            'error' => '無効な要求パラメーターです。',
+            'description' => '',
         ],
         '500' => [
             'error' => '予期せぬエラーが発生しました ;_;',
@@ -235,10 +171,10 @@ return [
 
     'popup_login' => [
         'login' => [
-            'email' => 'メールアドレス',
             'forgot' => "ログイン情報を忘れた",
             'password' => 'パスワード',
             'title' => '続行するにはログインしてください',
+            'username' => 'ユーザー名',
 
             'error' => [
                 'email' => "ユーザー名かメールアドレスが存在しません",
@@ -247,22 +183,23 @@ return [
         ],
 
         'register' => [
-            'info' => "アカウントが必要です。作ってみませんか？",
-            'title' => "アカウントを持っていませんか？",
+            'download' => 'ダウンロード',
+            'info' => 'アカウントが必要です。作ってみませんか？',
+            'title' => "アカウントが必要です",
         ],
     ],
 
     'popup_user' => [
         'links' => [
             'account-edit' => '設定',
-            'friends' => 'フレンドリスト',
+            'friends' => 'フレンド',
             'logout' => 'ログアウト',
             'profile' => 'プロフィール',
         ],
     ],
 
     'popup_search' => [
-        'initial' => '入力して検索',
+        'initial' => '入力して検索！',
         'retry' => '検索に失敗しました。クリックでリトライします。',
     ],
 ];

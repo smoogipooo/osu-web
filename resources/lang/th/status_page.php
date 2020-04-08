@@ -1,27 +1,12 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'header' => [
         'title' => 'สถานะ',
-        'description' => 'เกิดอะไรขึ้น?',
+        'description' => 'แก ๆ เกิดอะไรขึ้นอะ',
     ],
 
     'incidents' => [
@@ -31,8 +16,8 @@ return [
 
     'online' => [
         'title' => [
-            'users' => 'ผู้ใช้ที่ออนไลน์ใน 24 ชั่วโมงที่แล้ว',
-            'score' => 'การส่งคะแนนใน 24 ชั่วโมงที่แล้ว',
+            'users' => 'ผู้ใช้ที่ออนไลน์ในรอบ 24 ชั่วโมง',
+            'score' => 'การส่งคะแนนในรอบ 24 ชั่วโมง',
         ],
         'current' => 'ผู้ใช้ที่ออนไลน์ในขณะนี้',
         'score' => 'จำนวนการส่งคะแนนต่อวินาที',

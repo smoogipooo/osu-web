@@ -1,20 +1,5 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 import { ExtraHeader } from './extra-header'
 import * as React from 'react'
@@ -43,12 +28,6 @@ export class Kudosu extends React.Component
                   osu.trans 'users.show.extra.kudosu.total_info.link'
               pattern: osu.trans('users.show.extra.kudosu.total_info._')
 
-        el ValueDisplay,
-          modifiers: ['kudosu']
-          label: osu.trans('users.show.extra.kudosu.available')
-          value: osu.formatNumber(@props.user.kudosu.available)
-          description: osu.trans('users.show.extra.kudosu.available_info')
-
       if @props.recentlyReceivedKudosu?.length
         ul className: 'profile-extra-entries profile-extra-entries--kudosu',
           for kudosu in @props.recentlyReceivedKudosu
@@ -62,9 +41,13 @@ export class Kudosu extends React.Component
               else
                 _.escape osu.trans('users.deleted')
 
-            post = osu.link kudosu.post?.url,
-              kudosu.post?.title
-              classNames: ['profile-extra-entries__link profile-extra-entries__link--kudosu']
+            post =
+              if kudosu.post?.url?
+                osu.link kudosu.post?.url,
+                  kudosu.post?.title
+                  classNames: ['profile-extra-entries__link profile-extra-entries__link--kudosu']
+              else
+                kudosu.post?.title
 
             li key: "kudosu-#{kudosu.id}", className: 'profile-extra-entries__item',
               div className: 'profile-extra-entries__detail',

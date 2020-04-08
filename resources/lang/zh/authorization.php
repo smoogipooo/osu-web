@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => '登录以继续。',
+    'require_verification' => '请验证以继续。',
+    'restricted' => "账户处于限制模式，无法进行该操作。",
+    'silenced' => "账户被禁言，无法进行该操作。",
+    'unauthorized' => '没有权限。',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => '无法撤销推荐。',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => '无法编辑自动回复。',
-            'not_owner' => '只有作者可以编辑。',
+        'destroy' => [
+            'not_owner' => '你只能删除你自己的帖子。',
+            'resolved' => '你不能删除已解决的讨论帖。',
+            'system_generated' => '自动生成的帖子无法删除。',
         ],
+
+        'edit' => [
+            'not_owner' => '只有作者可以编辑。',
+            'resolved' => '你不能编辑已解决讨论里的帖子。',
+            'system_generated' => '无法编辑自动回复。',
+        ],
+
         'store' => [
             'beatmapset_locked' => '该谱面因需要探讨而被锁定。',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => '该板块仅限管理员查看。',
         ],
     ],
-
-    'require_login' => '登录以继续。',
-
-    'unauthorized' => '没有权限。',
-
-    'silenced' => "账户被禁言，无法进行该操作。",
-
-    'restricted' => "账户处于限制模式，无法进行该操作。",
 
     'user' => [
         'page' => [

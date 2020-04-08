@@ -1,21 +1,19 @@
 <?php
 
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
+
+namespace Tests\Controllers;
+
 use App\Models\Forum;
 use App\Models\User;
 use App\Models\UserGroup;
 use App\Models\UserStatistics\Osu as StatisticsOsu;
+use DB;
+use Tests\TestCase;
 
 class ForumTopicsControllerTest extends TestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-
-        // initial user for forum posts and stuff
-        // FIXME: this is actually a hidden dependency
-        factory(User::class)->create();
-    }
-
     public function testReply()
     {
         $forum = factory(Forum\Forum::class, 'child')->create();
@@ -39,7 +37,7 @@ class ForumTopicsControllerTest extends TestCase
 
         // fail because no plays =)
         $this
-            ->actingAs($user)
+            ->actingAsVerified($user)
             ->post(route('forum.topics.reply', $topic->topic_id), [
                 'body' => 'This is test reply',
             ])
@@ -54,7 +52,7 @@ class ForumTopicsControllerTest extends TestCase
         app()->make('OsuAuthorize')->cacheReset();
 
         $this
-            ->actingAs($user)
+            ->actingAsVerified($user)
             ->post(route('forum.topics.reply', $topic->topic_id), [
                 'body' => 'This is test reply',
             ])
@@ -80,6 +78,24 @@ class ForumTopicsControllerTest extends TestCase
             ->assertStatus(200);
     }
 
+    public function testShowNewUser()
+    {
+        $forum = factory(Forum\Forum::class, 'child')->create();
+        $topic = factory(Forum\Topic::class)->create([
+            'forum_id' => $forum->forum_id,
+        ]);
+        $post = factory(Forum\Post::class)->create([
+            'forum_id' => $forum->forum_id,
+            'topic_id' => $topic->topic_id,
+        ]);
+        $user = factory(User::class)->create();
+
+        $this
+            ->be($user)
+            ->get(route('forum.topics.show', $topic->topic_id))
+            ->assertSuccessful();
+    }
+
     public function testStore()
     {
         $forum = factory(Forum\Forum::class, 'child')->create();
@@ -100,7 +116,7 @@ class ForumTopicsControllerTest extends TestCase
 
         // fail because no plays =)
         $this
-            ->actingAs($user)
+            ->actingAsVerified($user)
             ->post(route('forum.topics.store', ['forum_id' => $forum->forum_id]), [
                 'title' => 'Test post',
                 'body' => 'This is test post',
@@ -116,7 +132,7 @@ class ForumTopicsControllerTest extends TestCase
         app()->make('OsuAuthorize')->cacheReset();
 
         $this
-            ->actingAs($user)
+            ->actingAsVerified($user)
             ->post(route('forum.topics.store', ['forum_id' => $forum->forum_id]), [
                 'title' => 'Test post',
                 'body' => 'This is test post',
@@ -145,7 +161,7 @@ class ForumTopicsControllerTest extends TestCase
         $newTitle = 'A different title';
 
         $this
-            ->actingAs($user)
+            ->actingAsVerified($user)
             ->put(route('forum.topics.update', $topic), [
                 'forum_topic' => [
                     'topic_title' => $newTitle,
@@ -169,7 +185,7 @@ class ForumTopicsControllerTest extends TestCase
         ]);
 
         $this
-            ->actingAs($user)
+            ->actingAsVerified($user)
             ->put(route('forum.topics.update', $topic), [
                 'forum_topic' => [
                     'topic_title' => null,
@@ -180,13 +196,22 @@ class ForumTopicsControllerTest extends TestCase
         $this->assertSame($initialTitle, $topic->fresh()->topic_title);
     }
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // initial user for forum posts and stuff
+        // FIXME: this is actually a hidden dependency
+        factory(User::class)->create();
+    }
+
     private function defaultUserGroup($user)
     {
         $table = (new UserGroup)->getTable();
 
         $conditions = [
             'user_id' => $user->user_id,
-            'group_id' => UserGroup::GROUPS['default'],
+            'group_id' => app('groups')->byIdentifier('default')->getKey(),
         ];
 
         $existingUserGroup = UserGroup::where($conditions)->first();

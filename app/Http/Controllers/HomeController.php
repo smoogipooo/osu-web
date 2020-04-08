@@ -1,48 +1,30 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Http\Controllers;
 
 use App;
 use App\Libraries\CurrentStats;
 use App\Libraries\Search\AllSearch;
+use App\Libraries\Search\QuickSearch;
 use App\Models\BeatmapDownload;
 use App\Models\Beatmapset;
 use App\Models\Forum\Post;
 use App\Models\NewsPost;
-use App\Models\User;
 use App\Models\UserDonation;
 use Auth;
 use Request;
-use View;
 
 class HomeController extends Controller
 {
-    protected $section = 'home';
-
     public function __construct()
     {
         $this->middleware('auth', [
             'only' => [
                 'downloadQuotaCheck',
-                'search',
+                'quickSearch',
             ],
         ]);
 
@@ -65,7 +47,7 @@ class HomeController extends Controller
 
     public function getDownload()
     {
-        return view('home.download');
+        return ext_view('home.download');
     }
 
     public function index()
@@ -77,52 +59,60 @@ class HomeController extends Controller
             return ujs_redirect(route('store.products.index'));
         }
 
-        if (Auth::check()) {
-            $news = NewsPost::default()->limit(NewsPost::DASHBOARD_LIMIT + 1)->get();
-            $newBeatmapsets = Beatmapset::latestRankedOrApproved();
-            $popularBeatmapsetsPlaycount = Beatmapset::mostPlayedToday();
-            $popularBeatmapsetIds = array_keys($popularBeatmapsetsPlaycount);
-            $popularBeatmapsets = Beatmapset::whereIn('beatmapset_id', $popularBeatmapsetIds)
-                ->orderByField('beatmapset_id', $popularBeatmapsetIds)
-                ->get();
+        $newsLimit = Auth::check() ? NewsPost::DASHBOARD_LIMIT + 1 : NewsPost::LANDING_LIMIT;
+        $news = NewsPost::default()->limit($newsLimit)->get();
 
-            return view('home.user', compact(
+        if (Auth::check()) {
+            $newBeatmapsets = Beatmapset::latestRankedOrApproved();
+            $popularBeatmapsets = Beatmapset::popular()->get();
+
+            return ext_view('home.user', compact(
                 'newBeatmapsets',
                 'news',
-                'popularBeatmapsets',
-                'popularBeatmapsetsPlaycount'
+                'popularBeatmapsets'
             ));
         } else {
-            return view('home.landing', ['stats' => new CurrentStats()]);
+            $news = json_collection($news, 'NewsPost');
+
+            return ext_view('home.landing', ['stats' => new CurrentStats(), 'news' => $news]);
         }
     }
 
     public function messageUser($user)
     {
-        // TODO: REMOVE ONCE COMPLETELY LIVE
-        $canWebChat = false;
-        if (Auth::check()) {
-            if (Auth::user()->isPrivileged()) {
-                $canWebChat = true;
-            }
-            if (config('osu.chat.webchat_enabled_supporter') && Auth::user()->isSupporter()) {
-                $canWebChat = true;
-            }
-            if (config('osu.chat.webchat_enabled_all')) {
-                $canWebChat = true;
-            }
-        }
-
-        if (!$canWebChat) {
-            return ujs_redirect("https://osu.ppy.sh/forum/ucp.php?i=pm&mode=compose&u={$user}");
-        } else {
-            return ujs_redirect(route('chat.index', ['sendto' => $user]));
-        }
+        return ujs_redirect(route('chat.index', ['sendto' => $user]));
     }
 
     public function osuSupportPopup()
     {
-        return view('objects._popup_support_osu');
+        return ext_view('objects._popup_support_osu');
+    }
+
+    public function quickSearch()
+    {
+        $quickSearch = new QuickSearch(request(), ['user' => auth()->user()]);
+        $searches = $quickSearch->searches();
+
+        $result = [];
+
+        if ($quickSearch->hasQuery()) {
+            foreach ($searches as $mode => $search) {
+                if ($search === null) {
+                    continue;
+                }
+                $result[$mode]['total'] = $search->count();
+            }
+
+            $result['user']['users'] = json_collection($searches['user']->data(), 'UserCompact', [
+                'country',
+                'cover',
+                'group_badge',
+                'support_level',
+            ]);
+            $result['beatmapset']['beatmapsets'] = json_collection($searches['beatmapset']->data(), 'Beatmapset', ['beatmaps']);
+        }
+
+        return $result;
     }
 
     public function search()
@@ -134,7 +124,7 @@ class HomeController extends Controller
         $allSearch = new AllSearch(request(), ['user' => Auth::user()]);
         $isSearchPage = true;
 
-        return view('home.search', compact('allSearch', 'isSearchPage'));
+        return ext_view('home.search', compact('allSearch', 'isSearchPage'));
     }
 
     public function setLocale()
@@ -148,7 +138,7 @@ class HomeController extends Controller
             ]);
         }
 
-        return js_view('layout.ujs-reload')
+        return ext_view('layout.ujs-reload', [], 'js')
             ->withCookie(cookie()->forever('locale', $newLocale));
     }
 
@@ -243,6 +233,20 @@ class HomeController extends Controller
                     'icons' => ['fas fa-search'],
                 ],
                 [
+                    'type' => 'image_group',
+                    'items' => [
+                        'friend_ranking' => [
+                            'icons' => ['fas fa-list-alt'],
+                        ],
+                        'country_ranking' => [
+                            'icons' => ['fas fa-globe-asia'],
+                        ],
+                        'mod_filtering' => [
+                            'icons' => ['fas fa-tasks'],
+                        ],
+                    ],
+                ],
+                [
                     'type' => 'image',
                     'variant' => 'flipped',
                     'name' => 'beatmap_filters',
@@ -256,6 +260,14 @@ class HomeController extends Controller
                         ],
                         'more_beatmaps' => [
                             'icons' => ['fas fa-file-upload'],
+                            'translation_options' => [
+                                'base' => config('osu.beatmapset.upload_allowed'),
+                                'bonus' => config('osu.beatmapset.upload_bonus_per_ranked'),
+                                'bonus_max' => config('osu.beatmapset.upload_bonus_per_ranked_max'),
+                                'supporter_base' => config('osu.beatmapset.upload_allowed_supporter'),
+                                'supporter_bonus' => config('osu.beatmapset.upload_bonus_per_ranked_supporter'),
+                                'supporter_bonus_max' => config('osu.beatmapset.upload_bonus_per_ranked_max_supporter'),
+                            ],
                         ],
                         'early_access' => [
                             'icons' => ['fas fa-flask'],
@@ -309,8 +321,14 @@ class HomeController extends Controller
             ],
         ];
 
-        return view('home.support-the-game')
-            ->with('supporterStatus', $supporterStatus ?? [])
-            ->with('data', $pageLayout);
+        return ext_view('home.support-the-game', [
+            'supporterStatus' => $supporterStatus ?? [],
+            'data' => $pageLayout,
+        ]);
+    }
+
+    public function testflight()
+    {
+        return ext_view('home.testflight');
     }
 }

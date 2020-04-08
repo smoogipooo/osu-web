@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Nie udało się zapisać posta',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Aktualizacja oceny nie powiodła się',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'zezwól na kudosu',
+        'beatmap_information' => 'Informacje o beatmapie',
         'delete' => 'usuń',
         'deleted' => 'Usunięte przez :editor :delete_time',
         'deny_kudosu' => 'odrzuć kudosu',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Zresetuj nominację',
             'praise' => 'Pochwała',
             'problem' => 'Problem',
+            'review' => 'Recenzja',
             'suggestion' => 'Sugestia',
         ],
 
         'mode' => [
             'events' => 'Historia',
             'general' => 'Główne :scope',
+            'reviews' => 'Recenzje',
             'timeline' => 'Oś czasu',
             'scopes' => [
                 'general' => 'Ten poziom trudności',
@@ -133,15 +115,21 @@ return [
 
         'status-messages' => [
             'approved' => 'Ta beatmapa została zatwierdzona :date!',
-            'graveyard' => "Ta beatmapa nie była aktualizowana od :date i najprawdopodobniej została porzucona przez swojego twórcę...",
+            'graveyard' => "Ta beatmapa nie była aktualizowana od :date i trafiła do kategorii porzuconych...",
             'loved' => 'Ta beatmapa otrzymała status ulubionej społeczności :date!',
             'ranked' => 'Ta beatmapa otrzymała status rankingowy :date!',
             'wip' => 'Ważne: Ta beatmapa została oznaczona przez twórcę jako aktualnie rozwijana.',
         ],
 
         'votes' => [
-            'up' => 'Oceń tę dyskusję poztywnie',
-            'down' => 'Oceń tę dyskusję negatywnie',
+            'none' => [
+                'down' => 'Brak negatywnych ocen',
+                'up' => 'Brak pozytywnych ocen',
+            ],
+            'latest' => [
+                'down' => 'Ostatnie negatywne oceny',
+                'up' => 'Ostatnie pozytywne oceny',
+            ],
         ],
     ],
 
@@ -176,8 +164,9 @@ return [
         'nominate' => 'Nominuj',
         'nominate_confirm' => 'Nominować tę beatmapę?',
         'nominated_by' => 'nominowana przez :users',
-        'qualified' => 'Otrzyma status rankingowy :date, jeżeli nie zostaną wykryte żadne błędy.',
-        'qualified_soon' => 'Wkrótce otrzyma status rankingowy, jeżeli nie zostaną wykryte żadne błędy.',
+        'not_enough_hype' => "Beatmapa nie jest wystarczająco nagłośniona.",
+        'qualified' => 'Otrzyma status rankingowy :date, jeżeli nie zostaną wykryte żadne problemy.',
+        'qualified_soon' => 'Wkrótce otrzyma status rankingowy, jeżeli nie zostaną wykryte żadne problemy.',
         'required_text' => 'Nominacje: :current/:required',
         'reset_message_deleted' => 'usunięta',
         'title' => 'Status nominacji',
@@ -280,6 +269,7 @@ return [
         'HD' => 'Hidden',
         'HR' => 'Hard Rock',
         'HT' => 'Half Time',
+        'MR' => 'Mirror',
         'NC' => 'Nightcore',
         'NF' => 'No Fail',
         'NM' => 'Brak modyfikatorów',

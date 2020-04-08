@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
@@ -34,17 +19,10 @@ return [
         'discussion' => '讨论',
 
         'details' => [
-            'approved' => 'approved 于 ',
             'favourite' => '收藏这张谱面',
-            'favourited_count' => '还有 :count_delimited 人喜欢它',
             'logged-out' => '下载谱面前请先登录！',
-            'loved' => 'loved 于 ',
             'mapped_by' => '作者: :mapper',
-            'qualified' => 'qualified 于 ',
-            'ranked' => 'ranked 于 ',
-            'submitted' => '提交于 ',
             'unfavourite' => '取消收藏',
-            'updated' => '上次更新于 ',
             'updated_timeago' => '上次更新于 :timeago',
 
             'download' => [
@@ -58,6 +36,15 @@ return [
                 'bottom' => '以使用更多的功能',
                 'top' => '登录',
             ],
+        ],
+
+        'details_date' => [
+            'approved' => 'approved 于 :timeago',
+            'loved' => 'loved 于 :timeago',
+            'qualified' => 'qualified 于 :timeago',
+            'ranked' => 'ranked 于 :timeago',
+            'submitted' => '提交于 :timeago',
+            'updated' => '上次更新于 :timeago',
         ],
 
         'favourites' => [
@@ -75,6 +62,18 @@ return [
                     'qualified' => 'qualified',
                     'wip' => '制作中',
                 ],
+            ],
+
+            'disqualify' => [
+                '_' => '如果你认为此谱面有问题，可以取消提名：:link',
+                'button_title' => '取消提名已被Qualified的图',
+            ],
+
+            'report' => [
+                '_' => '如果您发现此谱面有问题，请在 :link 通知审核团。',
+                'button' => '报告问题',
+                'button_title' => '在合格的节拍图上报告问题。',
+                'link' => '这里',
             ],
         ],
 
@@ -139,6 +138,16 @@ return [
             'rating-spread' => '评分情况',
             'nominations' => '提名状态',
             'playcount' => '游玩次数',
+        ],
+
+        'status' => [
+            'ranked' => 'Ranked',
+            'approved' => 'Approved',
+            'loved' => 'Loved',
+            'qualified' => 'Qualified',
+            'wip' => 'WIP',
+            'pending' => 'Pending',
+            'graveyard' => 'Graveyard',
         ],
     ],
 ];

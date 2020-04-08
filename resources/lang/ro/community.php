@@ -1,68 +1,67 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'support' => [
-        'header' => [
-            // size in font-size
-            'big_description' => 'Iubești osu!?<br/>
-                                Susține dezvoltarea osu! :D',
-            'small_description' => '',
-            'support_button' => 'Vreau să sprijin osu!',
+        'convinced' => [
+            'title' => 'Sunt convins! :D',
+            'support' => 'sprijină osu!',
+            'gift' => 'sau oferă altor jucători',
+            'instructions' => 'Faceți clic pe butonul în formă de inimă pentru a merge la magazinul osu!',
         ],
+        'why-support' => [
+            'title' => 'De ce ar trebui să suport osu!? Unde se duc bani?',
 
-        'dev_quote' => 'osu! este un joc complet gratuit, dar pentru a-l rula, cu siguranță, nu este așa gratis. 
-        Între costurile de punere în funcțiune a serverelor și a lățimii de bandă internațională de înaltă calitate, timpul petrecut pentru menținerea sistemului și a comunității,
-        oferind premii pentru competiții, răspunzând la întrebările de asistență și, în general, păstrând lumea fericită, osu! consumă o cantitate destul de mare de bani!
-        Oh, și nu uita de faptul că noi o facem fără nicio publicitate sau parteneriat cu alte chestii prostești și altele!
-            <br/><br/>osu! este la sfârșitul zilei în mare parte condus de mine, probabil mă știi cel mai bine sub numele de "peppy".
-            A trebuit să renunț la slujba mea pentru a ține pasul cu osu!,
-            și uneori mă străduiesc să mențin standardele pentru care mă lupt.
-            Mi-ar plăcea să ofer mulțumirile mele personale celor care au sprijinit osu! până acum,
-            și la fel de mult celor ce continuă să sprijine acest joc uimitor și comunitatea în viitor :).',
-
-        'supporter_status' => [
-            'contribution' => 'Mulțumim pentru sprijinul vostru de până acum! Ai contribuit cu un total de :dollars pentru :tags achiziționări de tag-uri!',
-            'gifted' => ':giftedTags din achiziționările tale de tag-uri au fost dăruite (pentru un total de :giftedDollars dăruiți), cât de generos!',
-            'not_yet' => "Încă nu ai eticheta de suporter :(",
-            'title' => 'Statusul curent de suporter',
-            'valid_until' => 'Tag-ul tău curent de suporter este valid până la :date!',
-            'was_valid_until' => 'Tag-ul tău de suporter a fost valid pâna la data de :date.',
-        ],
-
-        'why_support' => [
-            'title' => 'De ce ar trebui să sprijin osu!?',
-            'blocks' => [
-                'dev' => 'Dezvoltat și menținut în mare parte de un singur tip în Australia',
-                'time' => 'Ia atât de mult timp să-l mențin încât nu mai poate fi posibil să-l numesc un "hobby".',
-                'ads' => 'Niciun anunț oriunde.<br/><br/>
-                        Spre deosebire de 99.95% din web, noi nu profităm prin a-ți arunca lucruri în față.',
-                'goodies' => 'Primești niște avantaje suplimentare!',
+            'team' => [
+                'title' => 'Ajută echipa',
+                'description' => 'O echipă mică dezvoltează și rulează osu!. Suportul tău îi ajută pe ei să, știi tu... trăiască.',
+            ],
+            'infra' => [
+                'title' => 'Infrastructura de Server',
+                'description' => 'Contribuțiile merg către servere pentru a menține website-ul, Serviciile multiplayer, Clasamente Online, etc.',
+            ],
+            'featured-artists' => [
+                'title' => 'Artiști renumiți',
+                'description' => 'Cu suportul tău, putem să ajungem la și mai mulți artiști geniali și să licităm și mai multă muzică grozavă pentru folosirea în osu!',
+                'link_text' => 'Vezi roster-ul curent &raquo;',
+            ],
+            'ads' => [
+                'title' => 'Menține osu! sine-stătător',
+                'description' => 'Contribuțiile tale țin jocul independent și complet gratuit de reclame și sponsori de afară.',
+            ],
+            'tournaments' => [
+                'title' => 'Turnee Oficiale',
+                'description' => 'Ajută fondatul și menținerea (și premiile pentru) osu oficial! Turnee mondiale.',
+                'link_text' => 'Explorează turnee &raquo;',
+            ],
+            'bounty-program' => [
+                'title' => 'Deschide Programul Sursă Bounty',
+                'description' => 'Sprijină contribuitorii comunității care și-au dat timpul și efortul să ajute creerea osu! mai bună.',
+                'link_text' => 'Află mai mult &raquo;',
             ],
         ],
-
         'perks' => [
             'title' => 'Oh? Ce primesc?!',
             'osu_direct' => [
                 'title' => 'osu!direct',
                 'description' => 'acces rapid și ușor pentru a căuta beatmaps fără a părăsi jocul.',
+            ],
+
+            'friend_ranking' => [
+                'title' => 'Clasament Prieteni',
+                'description' => "Să vedem cum concurezi peste prietenii tăi pe un clasament într-un beatmap, ambele în joc și pe website.",
+            ],
+
+            'country_ranking' => [
+                'title' => 'Clasament Țară',
+                'description' => 'Cucerește țara ta înainte de a cuceri lumea.',
+            ],
+
+            'mod_filtering' => [
+                'title' => 'Filtrează după Moderatori',
+                'description' => 'Asociază doar cu oamenii care joacă HDHR? Nicio problemă!',
             ],
 
             'auto_downloads' => [
@@ -82,7 +81,7 @@ return [
 
             'customisation' => [
                 'title' => 'Personalizare',
-                'description' => 'Personalizează-ți profilul adăugând o pagină de utilizator complet personalizabilă.',
+                'description' => "Personalizează-ți profilul adăugând o pagină de utilizator complet personalizabilă.",
             ],
 
             'beatmap_filters' => [
@@ -120,22 +119,30 @@ return [
                 'description' => 'Abilitatea de a vedea clasarea după țară / prieteni / moduri specifice în joc.',
             ],
 
-            'feel_special' => [
-                'title' => 'Simte-te special',
-                'description' => 'Sentimentul special şi călduros de a participa la buna funcționare a osu!',
+            'more_favourites' => [
+                'title' => 'Mai multe favorite',
+                'description' => 'Numărul maxim de beatmap-uri care poți favoriza este mărit din :normally &rarr; :supporter',
+            ],
+            'more_friends' => [
+                'title' => 'Mai Mulți Prieteni',
+                'description' => 'Numărul maxim de prieteni pe care în poți avea este mărit din :normally &rarr; :supporter',
+            ],
+            'more_beatmaps' => [
+                'title' => 'Distribuie mai multe Beatmap-uri',
+                'description' => 'Câte beatmap-uri neclasate poți avea în același timp este calculat dintr-o bază valută plus încă un bonus pentru fiecare beatmap clasat acum ai (până la limită).<br/><br/>Normal acesta este 4 plus 1 per beatmap clasat (până la 2). Cu ajutător, aceste se mărește la 8 plus 1 per beatmap clasat (până la 12).',
+            ],
+            'friend_filtering' => [
+                'title' => 'Clasamente Prieteni',
+                'description' => 'Completează cu prietenii tăi și vezi cât clasezi înpotriva lor!*<br/><br/><small>* nu este încă disponibil pe site-ul nou, disponibilcurând(tm)</small>',
             ],
 
-            'more_to_come' => [
-                'title' => 'Și mult mai multe în viitor',
-                'description' => '',
-            ],
         ],
-
-        'convinced' => [
-            'title' => 'Sunt convins! :D',
-            'support' => 'sprijină osu!',
-            'gift' => 'sau oferă altor jucători',
-            'instructions' => 'Faceți clic pe butonul în formă de inimă pentru a merge la magazinul osu!',
+        'supporter_status' => [
+            'contribution' => 'Mulțumim pentru sprijinul vostru de până acum! Ai contribuit cu un total de :dollars pentru :tags achiziționări de tag-uri!',
+            'gifted' => ":giftedTags din achiziționările tale de tag-uri au fost dăruite (pentru un total de :giftedDollars dăruiți), cât de generos!",
+            'not_yet' => "Încă nu ai eticheta de suporter :(",
+            'valid_until' => 'Tag-ul tău curent de suporter este valid până la :date!',
+            'was_valid_until' => 'Tag-ul tău de suporter a fost valid pâna la data de :date.',
         ],
     ],
 ];

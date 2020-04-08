@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute не может быть отрицательным.',
     'required' => ':attribute является необходимым.',
     'too_long' => ':attribute превышает максимальное количество символов - можно использовать только до :limit characters символов.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Невозможно удалить первую публикацию.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Сообщение',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => 'Обсуждение закрыто.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Тип сообщения',
+            'timestamp' => 'Временная отметка',
         ],
 
         'hype' => [
+            'discussion_locked' => "Данная карта в текущий момент закрыта для обсуждения и не может быть хайпанута",
             'guest' => 'Вам нужно войти, чтобы хайпить.',
             'hyped' => 'Вы уже хайпили на этой карте.',
             'limit_exceeded' => 'Вы уже использовали весь свой хайп.',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Нельзя ответить на удалённый комментарий.',
+        'top_only' => 'Не допускается закреплять ответы на комментарии.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Сообщение',
         ],
     ],
 
@@ -88,13 +76,13 @@ return [
             'only_quote' => 'Ваш ответ содержит только цитату.',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => 'Тело сообщения',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Заголовок темы',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Превышено максимальное количество вариантов.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Заголовок опроса',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'Превышено максимально количество приложений OAuth.',
+            'url' => 'Пожалуйста, введите действительный URL.',
+
+            'attributes' => [
+                'name' => 'Имя приложения',
+                'redirect' => 'Callback URL приложения',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Пароль не должен содержать никнейм.',
         'email_already_used' => 'Почта уже использована.',
         'invalid_country' => 'Вашей страны нет в базе данных.',
-        'invalid_discord' => 'Это не похоже на DiscordTag.',
+        'invalid_discord' => 'Неверное имя пользователя Discord.',
         'invalid_email' => "Это не похоже на адрес электронной почты.",
+        'invalid_twitter' => 'Неверное имя пользователя Twitter.',
         'too_short' => 'Новый пароль слишком короткий.',
         'unknown_duplicate' => 'Имя пользователя или почта уже занята.',
         'username_available_in' => 'Это имя будет доступно только спустя :duration.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Превышено максимальное количество символов - можно использовать только до :limit characters символов.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Имя пользователя',
+            'user_email' => 'E-mail адрес',
+            'password' => 'Пароль',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => ':reason не подходит для данного типа отчета.',
         'self' => "Вы не можете пожаловаться на себя!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Кол-во',
+                'cost' => 'Цена',
             ],
         ],
     ],

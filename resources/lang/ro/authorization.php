@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Te rugăm să te autentifici pentru a continua.',
+    'require_verification' => 'Vă rugăm să verificați pentru a continua.',
+    'restricted' => "Nu poți face asta cât timp ești restricționat.",
+    'silenced' => "Nu poți face asta cât timp ești amuțit.",
+    'unauthorized' => 'Acces respins.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Nu poți anula hype-ul.',
@@ -26,8 +17,8 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Ai atins limita de nominalizări pentru această zi, te rugăm să încerci din nou mâine.',
-            'full_bn_required' => '',
-            'full_bn_required_hybrid' => '',
+            'full_bn_required' => 'Trebuie să fi un nominator să participi în această nominare calificată.',
+            'full_bn_required_hybrid' => 'Trebuie să fi un nominator complet pentru a nominaliza beatmap-uri care au mai mult de un singur mod de joc.',
             'incorrect_state' => 'S-a produs o eroare la efectuarea acestei acțiuni, încearcă să reîmprospătezi pagina.',
             'owner' => "Nu îți poți nominaliza propriul beatmap.",
         ],
@@ -47,12 +38,20 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Postările generate automat nu pot fi editate.',
-            'not_owner' => 'Doar proprietarul poate edita această postare.',
+        'destroy' => [
+            'not_owner' => 'Poți să ștergi doar postările tale.',
+            'resolved' => 'Nu poți șterge o postare din o discuție rezolvată.',
+            'system_generated' => 'Postările generate automat nu pot fi șterse.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Doar proprietarul poate edita această postare.',
+            'resolved' => 'Nu poți edita o postare din o discuție rezolvată.',
+            'system_generated' => 'Postările generate automat nu pot fi editate.',
+        ],
+
         'store' => [
-            'beatmapset_locked' => '',
+            'beatmapset_locked' => 'Acest beatmap este blocat pentru discuții.',
         ],
     ],
 
@@ -124,7 +123,7 @@ return [
             'vote' => [
                 'no_forum_access' => 'Accesul la forumul solicitat este necesar.',
                 'over' => 'Sondajul s-a încheiat și nu se mai poate vota.',
-                'play_more' => '',
+                'play_more' => 'Trebuie să joci mai mult înainte de a vota pe forum.',
                 'voted' => 'Schimbarea votului nu este permisă.',
 
                 'user' => [
@@ -145,7 +144,7 @@ return [
                 'not_owner' => 'Numai proprietarul poate edita coperta.',
             ],
             'store' => [
-                'forum_not_allowed' => '',
+                'forum_not_allowed' => 'Acest forum nu acceptă acoperiri topice.',
             ],
         ],
 
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Numai administratorul poate vizualiza acest forum.',
         ],
     ],
-
-    'require_login' => 'Te rugăm să te autentifici pentru a continua.',
-
-    'unauthorized' => 'Acces respins.',
-
-    'silenced' => "Nu poți face asta cât timp ești amuțit.",
-
-    'restricted' => "Nu poți face asta cât timp ești restricționat.",
 
     'user' => [
         'page' => [

@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => 'Pengaturan <strong>Akun</strong>',
         'title_compact' => 'pengaturan',
         'username' => 'nama pengguna',
 
         'avatar' => [
             'title' => 'Avatar',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'Pastikan avatar Anda mematuhi :link.<br/> Hal ini berarti konten harus <strong>cocok untuk segala usia</strong>. mis. tidak menampilkan ketelanjangan, kata-kata kotor atau sugestif.',
+            'rules_link' => 'peraturan komunitas',
         ],
 
         'email' => [
@@ -66,11 +50,19 @@ return [
 
     'notifications' => [
         'title' => 'Notifikasi',
-        'topic_auto_subscribe' => 'hidupkan notifikasi secara otomatis di topik forum baru yang anda buat',
+        'topic_auto_subscribe' => 'hidupkan notifikasi secara otomatis di topik forum baru yang Anda buat',
+        'beatmapset_discussion_qualified_problem' => 'terima pemberitahuan untuk masalah baru pada qualified beatmap dari mode berikut',
+
+        'mail' => [
+            '_' => 'terima pemberitahuan email tentang',
+            'beatmapset:modding' => 'modding beatmap',
+            'forum_topic_reply' => 'balasan pada topik',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => 'klien yang memiliki akses',
+        'own_clients' => 'klien yang dimiliki',
         'title' => 'OAuth',
     ],
 
@@ -91,28 +83,26 @@ return [
     'security' => [
         'current_session' => 'saat ini',
         'end_session' => 'Akhiri Sesi',
-        'end_session_confirmation' => 'Aksi ini akan langsung mengakhiri sesi di perangkat Anda. Apa anda yakin?',
+        'end_session_confirmation' => 'Aksi ini akan langsung mengakhiri sesi anda di perangkat tersebut. Apakah anda yakin?',
         'last_active' => 'Terakhir aktif:',
         'title' => 'Keamanan',
         'web_sessions' => 'web session',
     ],
 
     'update_email' => [
-        'email_subject' => 'konfirmasi perubahan email osu!',
         'update' => 'perbarui',
     ],
 
     'update_password' => [
-        'email_subject' => 'konfirmasi perubahan kata sandi osu!',
         'update' => 'perbarui',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Kamu dapat menutup laman ini sekarang',
+        'title' => 'Verifikasi selesai',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Tautan verifikasi tidak valid atau kedaluwarsa',
     ],
 ];

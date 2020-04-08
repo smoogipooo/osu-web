@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'admin' => [
@@ -25,9 +10,10 @@ return [
 
     'cart' => [
         'checkout' => 'Afrekenen',
+        'info' => ':count_delimited item in winkelwagen ($:subtotal)##:count_delimited items in winkelwagen ($:subtotal)',
         'more_goodies' => 'Ik wil meer goodies bekijken voordat ik de bestelling voltooi',
         'shipping_fees' => 'verzendkosten',
-        'title' => 'Winkewagen',
+        'title' => 'Winkelwagen',
         'total' => 'totaal',
 
         'errors_no_checkout' => [
@@ -51,6 +37,7 @@ return [
         'delayed_shipping' => 'We zijn momenteel overweldigd met bestellingen! Je kunt nog steeds bestellingen plaatsen maar verwacht dan **een vertraging van 1-2 weken** terwijl wij de bestaande bestellingen verwerken.',
         'old_cart' => 'Je winkelwagen lijkt verouderd te zijn en wordt herladen, probeer het opnieuw.',
         'pay' => 'Afrekenen met Paypal',
+        'title_compact' => 'afrekenen',
 
         'has_pending' => [
             '_' => 'U heeft onvolledig afgerekend, klik op :link om ze te bekijken.',
@@ -67,6 +54,8 @@ return [
 
     'invoice' => [
         'echeck_delay' => 'Aangezien uw betaling een eCheck was, Wacht maximaal 10 dagen extra om de betaling veilig via PayPal te laten gaan!',
+        'title_compact' => 'factuur',
+
         'status' => [
             'processing' => [
                 'title' => 'Uw betaling is nog niet bevestigd!',
@@ -76,12 +65,6 @@ return [
                     'link_text' => 'klik hier om uw afrekenen te hervatten',
                 ],
             ],
-        ],
-    ],
-
-    'mail' => [
-        'payment_completed' => [
-            'subject' => 'We hebben uw osu!store bestelling ontvangen!',
         ],
     ],
 
@@ -151,5 +134,9 @@ return [
             '_' => 'Je moet :link zijn om je naam te veranderen!',
             'link_text' => 'ingelogd',
         ],
+    ],
+
+    'xsolla' => [
+        'distributor' => '',
     ],
 ];

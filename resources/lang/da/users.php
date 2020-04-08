@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[slettet bruger]',
@@ -60,37 +45,62 @@ return [
     ],
 
     'card' => [
-        'loading' => 'Loader...',
-        'send_message' => 'send besked',
+        'loading' => 'Indlæser...',
+        'send_message' => 'Send besked',
+    ],
+
+    'disabled' => [
+        'title' => 'Uh-oh! Det ser ud som om din account er blevet midlertidigt lukket.',
+        'warning' => "I tilfælde af at du har brudt en regel, bør du vide at der er en cool-down periode på en måned hvori vi ikke vil overveje nogen former for forespørgsler om lempelser eller ophævninger. Efter denne periode kan du kontakte os igen hvis du føler det er nødvendigt. Bemærk, hvis du laver flere konti efter at have fået en lukket vil det resultere i en <strong>forlængelse af din ene måneds cool-down</strong>. Bemærk også at for <strong>hver account du laver, bryder du reglerne yderligere</strong>. Vi anbefaler stærkt at du ikke gør dette!",
+
+        'if_mistake' => [
+            '_' => 'Hvis du føler at dette var en fejltagelse er du velkommen til at kontakte os (via :email eller ved at klike på "?" i hjørnet nederst til højre). Bemærk venligst at vi altid har fuld tillid til vores handlinger da de er baseret på solidt data. Vi reserverer retten til at se bort fra din anmodning skulle vi føle at du handler i dårlig ånd eller er uærlig.',
+            'email' => 'email',
+        ],
+
+        'reasons' => [
+            'compromised' => 'Din account synes at være blevet infiltreret. Den kan muligvis være blevet midlertidigt lukket mens ejerens identitet bekræftes.',
+            'opening' => 'Der er en række grunde til at din accoung can blive midlertidigt lukket:',
+
+            'tos' => [
+                '_' => 'Du har brudt en eller flere af vores :community_rules eller :tos.',
+                'community_rules' => 'fællesskabs-regler',
+                'tos' => 'tjenestevilkår',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Din account har ikke været i brug i lang tid.",
+        ],
     ],
 
     'login' => [
         '_' => 'Log ind',
-        'locked_ip' => 'din IP-adresse er låst. Vent venligst et par minutter.',
-        'username' => 'Brugernavn',
-        'password' => 'Adgangskode',
         'button' => 'Log Ind',
         'button_posting' => 'Logger ind...',
+        'email_login_disabled' => 'Login via email er i øjeblikket deaktiveret. Brug venligst dit brugernavn i stedet.',
+        'failed' => 'Ugyldigt login',
+        'forgot' => 'Glemt din adgangskode?',
+        'info' => 'Log ind for at fortsætte',
+        'locked_ip' => 'din IP-adresse er låst. Vent venligst et par minutter.',
+        'password' => 'Adgangskode',
+        'register' => "Har du ikke en osu! konto? Opret en ny én!",
         'remember' => 'Husk denne computer',
         'title' => 'Log venligst ind for at fortsætte',
-        'failed' => 'Ugyldigt login',
-        'register' => "Har du ikke en osu! konto? Opret en ny én!",
-        'forgot' => 'Glemt din adgangskode?',
+        'username' => 'Brugernavn',
+
         'beta' => [
-            'main' => 'Adgang til betaversionen er i øjeblikket restrikteret til priveligerede brugere.',
+            'main' => 'Adgang til betaversionen er i øjeblikket begrænset til priveligerede brugere.',
             'small' => '(osu!supportere ville kunne komme ind snart)',
         ],
-
-        'here' => 'her', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username\'s opslag',
     ],
 
-    'signup' => [
-        '_' => 'Registrer',
-    ],
     'anonymous' => [
         'login_link' => 'klik for at logge ind',
         'login_text' => 'log ind',
@@ -108,7 +118,7 @@ return [
 
         'actions' => [
             'send' => 'Send anmeldelse',
-            'cancel' => 'Annuller',
+            'cancel' => 'Annullér',
         ],
 
         'options' => [
@@ -130,19 +140,19 @@ return [
         'first_members' => 'Var her fra starten',
         'is_developer' => 'osu!developer',
         'is_supporter' => 'osu!supporter',
-        'joined_at' => 'Deltog på :date',
+        'joined_at' => 'Blev medlem :date',
         'lastvisit' => 'Sidst set :date',
-        'lastvisit_online' => '',
+        'lastvisit_online' => 'Online nu',
         'missingtext' => 'Du har formentlig lavet en stavefejl! (eller også er brugeren blevet bannet)',
         'origin_country' => 'Fra :country',
-        'page_description' => 'osu! - Alt hvad du har brug for at vide om :username!',
+        'page_description' => 'osu! - Alt hvad du nogensinde kunne have brug for at vide om :username!',
         'previous_usernames' => 'tidligere kendt som',
         'plays_with' => 'Spiller med :devices',
-        'title' => ":username ´s profil",
+        'title' => ":username´s profil",
 
         'edit' => [
             'cover' => [
-                'button' => 'Skift coverbillede',
+                'button' => 'Skift Coverbillede',
                 'defaults_info' => 'Flere muligheder for coverbillede kommer snart',
                 'upload' => [
                     'broken_file' => 'Kunne ikke uploade billedet. Prøv igen.',
@@ -154,21 +164,21 @@ return [
                     'unsupported_format' => 'Ikke-understøttet format.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Upload er kun tilgængelig for :link',
+                        'link' => 'osu!supporters',
                     ],
                 ],
             ],
 
             'default_playmode' => [
                 'is_default_tooltip' => 'standardspiltilstand',
-                'set' => 'sæt :mode som standard spiltilstand',
+                'set' => 'sæt :mode som din default mode',
             ],
         ],
 
         'extra' => [
-            'followers' => '1 følger|:count følgere',
-            'unranked' => 'Ingen seneste spil',
+            'none' => 'ingen',
+            'unranked' => 'Ingen beatmaps spillet for nyligt',
 
             'achievements' => [
                 'achieved-on' => 'Opnået den :date',
@@ -184,7 +194,7 @@ return [
                     'title' => 'Favorit Beatmaps',
                 ],
                 'graveyard' => [
-                    'title' => 'Beatmaps på kirkegården',
+                    'title' => 'Beatmaps på Kirkegården',
                 ],
                 'loved' => [
                     'title' => 'Elskede beatmaps',
@@ -196,12 +206,22 @@ return [
                     'title' => 'Afventende Beatmaps',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Diskussioner',
+                'title_longer' => 'Seneste Diskussioner',
+                'show_more' => 'se flere diskussioner',
+            ],
+            'events' => [
+                'title' => 'Begivenheder',
+                'title_longer' => 'Seneste Begivenheder',
+                'show_more' => 'se flere begivenheder',
+            ],
             'historical' => [
                 'empty' => 'Ingen præstationsrekorder endnu. :(',
-                'title' => 'Historisk',
+                'title' => 'Historik',
 
                 'monthly_playcounts' => [
-                    'title' => 'Spille Historik',
+                    'title' => 'Spille-historik',
                     'count_label' => 'Plays',
                 ],
                 'most_played' => [
@@ -210,7 +230,7 @@ return [
                 ],
                 'recent_plays' => [
                     'accuracy' => 'præcision: :percentage',
-                    'title' => 'Seneste spil (24 timer)',
+                    'title' => 'Senest spillet (24 timer)',
                 ],
                 'replays_watched_counts' => [
                     'title' => 'Replays Set Historik',
@@ -218,11 +238,9 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu Tilgængelig',
-                'available_info' => "Kudosu kan blive omdannet til kudosu-stjerner, som giver dine beatmaps mere opmærksomhed. Dette er antallet af kudosu, som du ikke har brugt endnu.",
                 'recent_entries' => 'Seneste Kudosu Historie',
                 'title' => 'Kudosu!',
-                'total' => 'Samlet Kudosu Optjent',
+                'total' => 'Total Kudosu Optjent',
 
                 'entry' => [
                     'amount' => ':amount kudosu',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Baseret på hvor stort et bidrag brugeren har givet til moderation af beatmaps. Se :link for mere information.',
+                    'link' => 'denne side',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Denne bruger har ikke fået nogle endnu. ;_;",
                 'recent' => 'Seneste',
                 'title' => 'Medaljer',
+            ],
+            'posts' => [
+                'title' => 'Opslag',
+                'title_longer' => 'Seneste Opslag',
+                'show_more' => 'se flere opslag',
             ],
             'recent_activity' => [
                 'title' => 'Seneste',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Førstepladser',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Stemmer Givet (sidste 3 måneder)',
+                'received' => 'Stemmer Modtaget (sidste 3 måneder)',
+                'title' => 'Stemmer',
+                'title_longer' => 'Seneste Stemmer',
+                'vote_count' => ':count_delimited stemme|:count_delimited stemmer',
             ],
             'account_standing' => [
                 'title' => 'Account Status',
@@ -316,11 +346,6 @@ return [
             ],
         ],
 
-        'header_title' => [
-            '_' => 'Spiller :info',
-            'info' => 'Info',
-        ],
-
         'info' => [
             'discord' => '',
             'interests' => 'Interesser',
@@ -340,43 +365,48 @@ return [
         ],
         'page' => [
             'button' => 'Rediger profil',
-            'description' => '<strong>me!</strong> er et brugerdefinerbart felt på din profilside.',
+            'description' => '<strong>me!</strong> er et brugerdefinerbart felt på din profil.',
             'edit_big' => 'Ændr mig!',
             'placeholder' => 'Skriv indhold her',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Du skal være en :link for at bruge denne funktion.',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
-            '_' => 'Bidraget :link',
-            'count' => ':count forum indlæg|:count fourm indlæg',
+            '_' => 'Skrevet :link',
+            'count' => ':count_delimited forum opslag|:count_delimited forum opslag',
         ],
         'rank' => [
-            'country' => 'Landerangering for :mode',
-            'country_simple' => 'Landerangering',
-            'global' => 'Global rangering for :mode',
-            'global_simple' => 'Global Rangering',
+            'country' => 'Lande Rang for :mode',
+            'country_simple' => 'Lande Rang',
+            'global' => 'Global rang for :mode',
+            'global_simple' => 'Global Rang',
         ],
         'stats' => [
-            'hit_accuracy' => 'Hit Præcision',
+            'hit_accuracy' => 'Præcision',
             'level' => 'Level :level',
             'level_progress' => 'Progression til næste level',
             'maximum_combo' => 'Højeste Combo',
             'medals' => 'Medaljer',
-            'play_count' => 'Antal Spilforsøg',
-            'play_time' => 'Spille tid i alt',
+            'play_count' => 'Antal Forsøg',
+            'play_time' => 'Total Spilletid',
             'ranked_score' => 'Ranked Score',
             'replays_watched_by_others' => 'Replays Set af Andre',
             'score_ranks' => 'Score Ranks',
-            'total_hits' => 'Hits i Alt',
-            'total_score' => 'Samlet Score',
+            'total_hits' => 'Totale Hits',
+            'total_score' => 'Total Score',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Ranked & Godkendte Beatmaps',
+            'loved_beatmapset_count' => 'Elskede Beatmaps',
+            'unranked_beatmapset_count' => 'Afventende Beatmaps',
+            'graveyard_beatmapset_count' => 'Beatmaps på Kirkegården',
         ],
     ],
 
     'status' => [
-        'all' => '',
+        'all' => 'Alle',
         'online' => 'Online',
         'offline' => 'Offline',
     ],
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '',
+        'card' => 'Kortvisning',
+        'list' => 'Listevisning',
     ],
 ];

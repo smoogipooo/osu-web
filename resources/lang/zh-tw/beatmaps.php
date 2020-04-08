@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => '儲存失敗',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => '投票更新失敗',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => '給予 kudosu',
+        'beatmap_information' => '圖譜頁面',
         'delete' => '刪除',
         'deleted' => '被 :editor 於 :delete_time 刪除。',
         'deny_kudosu' => '收回 kudosu',
@@ -80,7 +60,7 @@ return [
         'message_placeholder' => [
             'general' => '在此處輸入以發佈至整體 (:version)',
             'generalAll' => '在此處輸入以發佈至整體 (所有難度)',
-            'timeline' => '在此處輸入以發佈至時間線 (:version)',
+            'timeline' => '在此處輸入以發佈至時間軸 (:version)',
         ],
 
         'message_type' => [
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => '重置提名',
             'praise' => '讚',
             'problem' => '問題',
+            'review' => '評論',
             'suggestion' => '建議',
         ],
 
         'mode' => [
             'events' => '歷史',
             'general' => '整體:scope',
+            'reviews' => '評論',
             'timeline' => '時間線',
             'scopes' => [
                 'general' => '目前難度',
@@ -135,13 +117,19 @@ return [
             'approved' => '這張圖譜於 :date 被批准!',
             'graveyard' => "這張圖譜自 :date 就未更新了，或許它已經被作者拋棄了 ;w;",
             'loved' => '這張圖譜於 :date 被 Loved !',
-            'ranked' => '這張圖譜於 :date 被進榜了!',
-            'wip' => '注意：這張圖譜被作者標記為 WIP（半成品）',
+            'ranked' => '這張圖譜於 :date 進榜了!',
+            'wip' => '注意：這張圖譜被作者標記為製作中（半成品）',
         ],
 
         'votes' => [
-            'up' => '正評此討論',
-            'down' => '負評此討論',
+            'none' => [
+                'down' => '沒有任何反對票',
+                'up' => '還沒有任何贊成票',
+            ],
+            'latest' => [
+                'down' => '最新的反對票',
+                'up' => '最新的贊成票',
+            ],
         ],
     ],
 
@@ -149,8 +137,8 @@ return [
         'button' => '推薦圖譜！',
         'button_done' => '已經推薦！',
         'confirm' => "你確定嗎？這將會使用你剩下的 :n 次推薦次數並且無法撤銷。",
-        'explanation' => '推薦這張圖譜讓它更容易被提名然後 ranked ！',
-        'explanation_guest' => '登入並推薦這張圖譜讓它更容易被提名然後 ranked ！',
+        'explanation' => '推薦這張圖譜讓它更容易被提名和進榜 ！',
+        'explanation_guest' => '登入並推薦這張圖譜讓它更容易被提名和進榜 ！',
         'new_time' => "你將在 :new_time 後獲得新的推薦次數。",
         'remaining' => '你還可以推薦 :remaining 次。',
         'required_text' => '推薦進度： :current/:required',
@@ -164,18 +152,19 @@ return [
 
     'nominations' => [
         'delete' => '刪除',
-        'delete_own_confirm' => '你確定嗎？這個譜面將被刪除，刪除後你將重新導向到你的個人資料頁面。',
-        'delete_other_confirm' => '你確定嗎？這個譜面將被刪除，刪除後你將重新導向到他的個人資料頁面。',
+        'delete_own_confirm' => '你確定嗎？這個圖譜將被刪除，刪除後你將重新導向到你的個人資料頁面。',
+        'delete_other_confirm' => '你確定嗎？這個圖譜將被刪除，刪除後你將重新導向到他的個人資料頁面。',
         'disqualification_prompt' => 'Disqualified 的理由？',
         'disqualified_at' => '於 :time_ago 被 Disqualified（:reason）。',
         'disqualified_no_reason' => '沒有任何原因',
         'disqualify' => 'Disqualify',
         'incorrect_state' => '操作發生錯誤，請重新載入頁面。',
         'love' => '喜歡',
-        'love_confirm' => '喜歡這張譜面嗎？',
+        'love_confirm' => '喜歡這張圖譜嗎？',
         'nominate' => '提名',
         'nominate_confirm' => '確定要提名這張圖譜？',
         'nominated_by' => '被 :users 提名',
+        'not_enough_hype' => "沒有足夠的推薦。",
         'qualified' => '如果沒有問題，預計將於 :date 被 Ranked 。',
         'qualified_soon' => '如果沒有問題，預計不久將被 Ranked 。',
         'required_text' => '提名數: :current/:required',
@@ -249,8 +238,8 @@ return [
         'leaderboard' => '擁有排行榜',
         'loved' => 'Loved',
         'mine' => '我的圖譜',
-        'pending' => 'Pending & WIP',
-        'qualified' => '提名',
+        'pending' => '待處理&製作中',
+        'qualified' => 'Qualified',
         'ranked' => '已進榜',
     ],
     'genre' => [
@@ -280,6 +269,7 @@ return [
         'HD' => 'Hidden',
         'HR' => 'Hard Rock',
         'HT' => 'Half Time',
+        'MR' => '',
         'NC' => 'Nightcore',
         'NF' => 'No Fail',
         'NM' => 'No mods',

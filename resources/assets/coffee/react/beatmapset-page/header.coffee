@@ -1,26 +1,10 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 import { BeatmapPicker } from './beatmap-picker'
 import { Stats } from './stats'
 import { BeatmapsetMapping } from 'beatmapset-mapping'
 import { BigButton } from 'big-button'
-import { PlaymodeTabs } from 'playmode-tabs'
 import * as React from 'react'
 import { div, span, a, img, ol, li, i } from 'react-dom-factories'
 import { UserAvatar } from 'user-avatar'
@@ -43,11 +27,11 @@ export class Header extends React.Component
 
     $(target).qtip
       style:
-        classes: 'beatmapset-favourites'
+        classes: 'user-list-popup'
         def: false
         tip: false
       content:
-        text: (event, api) => $('.beatmapset-favourites__template').html()
+        text: (event, api) => $('.user-list-popup__template').html()
       position:
         at: 'right center'
         my: 'left center'
@@ -62,7 +46,6 @@ export class Header extends React.Component
         effect: -> $(this).fadeTo(250, 0)
 
   render: ->
-    dateFormat = 'MMM D, YYYY'
     favouriteButton =
       if @props.hasFavourited
         action: 'unfavourite'
@@ -72,12 +55,6 @@ export class Header extends React.Component
         icon: 'far fa-heart'
 
     div className: 'beatmapset-header',
-      el PlaymodeTabs,
-        beatmaps: @props.beatmaps
-        currentMode: @props.currentBeatmap.mode
-        hrefFunc: @tabHrefFunc
-        showCounts: true,
-
       div
         className: 'beatmapset-header__content'
         style:
@@ -121,28 +98,28 @@ export class Header extends React.Component
 
             # this content of this div is used as a template for the on-hover/touch above
             div
-              className: 'beatmapset-favourites beatmapset-favourites__template'
+              className: 'user-list-popup user-list-popup__template'
               style:
                 display: 'none'
               @props.beatmapset.recent_favourites.map (user) ->
                 a
                   href: laroute.route('users.show', user: user.id)
-                  className: 'js-usercard beatmapset-favourites__user'
+                  className: 'js-usercard user-list-popup__user'
                   key: user.id
                   'data-user-id': user.id
                   el UserAvatar, user: user, modifiers: ['full']
               if @props.favcount > @favouritesToShow
-                div className: 'beatmapset-favourites__remainder-count',
-                  osu.transChoice 'beatmapsets.show.details.favourited_count', @props.favcount - @favouritesToShow
+                div className: 'user-list-popup__remainder-count',
+                  osu.transChoice 'common.count.plus_others', @props.favcount - @favouritesToShow
 
           a
-            className: 'beatmapset-header__details-text beatmapset-header__details-text--title u-ellipsis-overflow'
-            href: laroute.route 'beatmapsets.index', q: encodeURIComponent(@props.beatmapset.title)
+            className: 'beatmapset-header__details-text beatmapset-header__details-text--title'
+            href: laroute.route 'beatmapsets.index', q: @props.beatmapset.title
             @props.beatmapset.title
 
           a
             className: 'beatmapset-header__details-text beatmapset-header__details-text--artist'
-            href: laroute.route 'beatmapsets.index', q: encodeURIComponent(@props.beatmapset.artist)
+            href: laroute.route 'beatmapsets.index', q: @props.beatmapset.artist
             @props.beatmapset.artist
 
           el BeatmapsetMapping, beatmapset: @props.beatmapset
@@ -169,10 +146,6 @@ export class Header extends React.Component
               el BigButton,
                 props:
                   onClick: @toggleFavourite
-                  href:
-                    laroute.route 'beatmapsets.update-favourite',
-                      beatmapset: @props.beatmapset.id
-                      action: favouriteButton.action
                   title: osu.trans "beatmapsets.show.details.#{favouriteButton.action}"
                 modifiers: ['beatmapset-header-square', "beatmapset-header-square-#{favouriteButton.action}"]
                 icon: favouriteButton.icon
@@ -199,7 +172,7 @@ export class Header extends React.Component
             @renderLoginButton()
 
         div className: 'beatmapset-header__box beatmapset-header__box--stats',
-          div className: 'beatmapset-status beatmapset-status--show', @props.beatmapset.status
+          div className: 'beatmapset-status beatmapset-status--show', osu.trans("beatmapsets.show.status.#{@props.currentBeatmap.status}")
           el Stats,
             beatmapset: @props.beatmapset
             beatmap: @props.currentBeatmap
@@ -232,7 +205,7 @@ export class Header extends React.Component
           osuDirect: true
           href:
             if currentUser.is_supporter
-              Url.beatmapDownloadDirect @props.beatmapset.id
+              _exported.OsuUrlHelper.beatmapDownloadDirect @props.currentBeatmap.id
             else
               laroute.route 'support-the-game'
       ]
@@ -263,13 +236,7 @@ export class Header extends React.Component
         'data-turbolinks': 'false'
 
 
-  tabHrefFunc: (mode) ->
-    BeatmapsetPageHash.generate mode: mode
-
-
   toggleFavourite: (e) ->
-    e.preventDefault()
-
     if !currentUser.id?
       userLogin.show e.target
     else

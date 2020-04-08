@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => ':count usuarios en línea',
         'players' => '<strong>:count</strong> usuarios registrados',
         'title' => 'bienvenido',
+        'see_more_news' => 'ver más novedades',
 
         'slogan' => [
             'main' => 'el mejor juego de ritmo gratis',
@@ -38,17 +24,19 @@ return [
         'empty_result' => '¡No se ha encontrado nada!',
         'keyword_required' => 'Se requiere una palabra clave de búsqueda',
         'placeholder' => 'escribe para buscar',
-        'title' => 'Buscar',
+        'title' => 'buscar',
 
         'beatmapset' => [
-            'more' => 'Hay :count beatmaps más en los resultados',
-            'more_simple' => 'Ver más resultados de beatmaps',
-            'title' => 'Beatmaps',
+            'login_required' => 'Inicie sesión para buscar mapas',
+            'more' => 'Hay :count mapas más en los resultados',
+            'more_simple' => 'Ver más resultados de mapas',
+            'title' => 'Mapas',
         ],
 
         'forum_post' => [
             'all' => 'Todos los foros',
             'link' => 'Busca en el foro',
+            'login_required' => 'Inicie sesión para buscar en el foro',
             'more_simple' => 'Ver más resultados de los foros',
             'title' => 'Foro',
 
@@ -62,13 +50,14 @@ return [
 
         'mode' => [
             'all' => 'todos',
-            'beatmapset' => 'beatmap',
+            'beatmapset' => 'mapa',
             'forum_post' => 'foro',
             'user' => 'jugador',
             'wiki_page' => 'wiki',
         ],
 
         'user' => [
+            'login_required' => 'Inicie sesión para buscar usuarios',
             'more' => ':count jugadores más coinciden con la búsqueda',
             'more_simple' => 'Ver más resultados de jugadores',
             'more_hidden' => 'La búsqueda de jugadores está limitada a :max jugadores. Intenta refinando tus términos de búsqueda.',
@@ -102,9 +91,9 @@ return [
                 'description' => 'haz clic en el botón de arriba para descargar el instalador, luego ¡ejecútalo!',
             ],
             'beatmaps' => [
-                'title' => 'obtener beatmaps',
+                'title' => 'obtener mapas',
                 'description' => [
-                    '_' => ':browse a la gran biblioteca de beatmaps creados por otros usuarios y ¡empieza a jugar!',
+                    '_' => ':browse a la gran biblioteca de mapas creados por otros usuarios y ¡empieza a jugar!',
                     'browse' => 'echa un vistazo',
                 ],
             ],
@@ -115,12 +104,10 @@ return [
     'user' => [
         'title' => 'panel',
         'news' => [
-            'title' => 'Noticias',
-            'error' => 'Error al cargar las novedades, ¿intenta recargando la página?...',
+            'title' => 'Novedades',
+            'error' => 'Error al cargar las novedades, ¿intente actualizar la página?...',
         ],
         'header' => [
-            'welcome' => '¡Hola, <strong>:username</strong>!',
-            'messages' => 'Tienes :count nuevo mensaje|Tienes :count nuevos mensajes',
             'stats' => [
                 'friends' => 'Amigos en línea',
                 'games' => 'Partidas',
@@ -128,10 +115,9 @@ return [
             ],
         ],
         'beatmaps' => [
-            'new' => 'Nuevos Beatmaps Rankeados',
-            'popular' => 'Beatmaps Populares',
-            'by' => 'por',
-            'plays' => ':count veces jugado',
+            'new' => 'Nuevos Mapas Clasificados',
+            'popular' => 'Mapas Populares',
+            'by_user' => 'por :user',
         ],
         'buttons' => [
             'download' => 'Descargar osu!',
@@ -145,7 +131,7 @@ return [
         'subtitle' => '¡Pareces estar pasando un buen rato! :D',
         'body' => [
             'part-1' => '¿Sabías que osu! se mantiene sin publicidad y confía en sus jugadores para apoyar su desarrollo y costos de mantenimiento?',
-            'part-2' => '¿También sabías que con apoyar osu! obtienes varias funciones útiles, como <strong>descargar Beatmaps dentro del juego</strong> que automáticamente se activará en partidas multijugador y de espectador?',
+            'part-2' => '¿También sabías que apoyando a osu! obtienes un montón de características útiles, como <strong>la descarga en el juego</strong> que se activa automáticamente en partidas de espectador y multijugador?',
         ],
         'find-out-more' => '¡Haz clic aquí para obtener más información!',
         'download-starting' => "Ah, y no te preocupes - tu descarga ya se ha iniciado para ti ;)",

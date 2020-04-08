@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => 'Invalid :attribute specified.',
     'not_negative' => ':attribute cannot be negative.',
     'required' => ':attribute is required.',
     'too_long' => ':attribute exceeded maximum length - can only be up to :limit characters.',
@@ -47,6 +33,7 @@ return [
         ],
 
         'hype' => [
+            'discussion_locked' => "This beatmap is currently locked for discussion and can't be hyped",
             'guest' => 'Must be signed in to hype.',
             'hyped' => 'You have already hyped this beatmap.',
             'limit_exceeded' => 'You have used all your hype.',
@@ -62,6 +49,7 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Replying to deleted comment is not allowed.',
+        'top_only' => 'Pinning comment reply is not allowed.',
 
         'attributes' => [
             'message' => 'The message',
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'Exceeded maximum number of allowed OAuth applications.',
+            'url' => 'Please enter a valid URL.',
+
+            'attributes' => [
+                'name' => 'Application Name',
+                'redirect' => 'Application Callback URL',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Password may not contain username.',
         'email_already_used' => 'Email address already used.',
         'invalid_country' => 'Country not in database.',
         'invalid_discord' => 'Discord username invalid.',
         'invalid_email' => "Doesn't seem to be a valid email address.",
+        'invalid_twitter' => 'Twitter username invalid.',
         'too_short' => 'New password is too short.',
         'unknown_duplicate' => 'Username or email address already used.',
         'username_available_in' => 'This username will be available for use in :duration.',
@@ -159,6 +160,7 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => ':reason is not valid for this report type.',
         'self' => "You can't report yourself!",
     ],
 

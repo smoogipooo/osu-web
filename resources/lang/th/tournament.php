@@ -1,30 +1,14 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'index' => [
-        'none_running' => 'ไม่มีทัวร์นาเมนต์ในขณะนี้ โปรดตรวจสอบในภายหลัง',
+        'none_running' => 'ไม่มีทัวร์นาเมนต์ในขณะนี้ มาทีหลังนะ',
         'registration_period' => 'Registration: :start to :end',
 
         'header' => [
-            'subtitle' => 'รายชื่อทัวร์นาเมนต์ที่ได้รับการยอมรับอย่างเป็นทางการ',
             'title' => 'คอมมูนิตี้ ทัวร์นาเมนต์',
         ],
 
@@ -40,7 +24,7 @@ return [
 
     'show' => [
         'banner' => 'สนับสนุนทีมของคุณ',
-        'entered' => 'คุณลงทะเบียนการแข่งขันนี้แล้ว.<br><br>โปรดทราบ นี่ไม่ได้หมายความว่าคุณได้รับการแต่งตั้งในทีม<br><br>คำแนะนำเพิ่มเติมจะถูกส่งไปที่อีเมล์ของคุณเมื่อการแข่งขันใกล้จะเริ่ม กรุณาตรวจสอบให้แน่ใจว่าที่อยู่อีเมล์ osu! account ของคุณนั้นถูกต้อง',
+        'entered' => 'คุณลงทะเบียนการแข่งขันนี้แล้ว.<br><br>โปรดทราบว่าข้อความนี้<b>ไม่ได้</b>แปลว่าคุณจะได้อยู่ในทีม<br><br>และจะมีอีเมล์ที่มีคำแนะนำเพิ่มเติมส่งไปใกล้วันแข่ง และกรุณาตรวจสอบว่าอีเมล์ของบัญชี osu! นั้นถูกต้อง',
         'info_page' => 'หน้าข้อมูล',
         'login_to_register' => 'กรุณา :login เพื่อดูข้อมูลการลงทะเบียน',
         'not_yet_entered' => 'คุณไม่สามารถลงทะเบียนการแข่งขันนี้ได้',
@@ -50,6 +34,11 @@ return [
         'button' => [
             'cancel' => 'ยกเลิกการลงทะเบียน',
             'register' => 'ลงทะเบียน',
+        ],
+
+        'period' => [
+            'end' => '',
+            'start' => '',
         ],
 
         'state' => [

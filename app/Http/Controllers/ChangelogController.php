@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Http\Controllers;
 
@@ -24,15 +9,11 @@ use App\Libraries\CommentBundle;
 use App\Libraries\GithubImporter;
 use App\Models\Build;
 use App\Models\BuildPropagationHistory;
-use App\Models\Changelog;
 use App\Models\UpdateStream;
 use Cache;
 
 class ChangelogController extends Controller
 {
-    protected $section = 'home';
-    protected $actionPrefix = 'changelog-';
-
     private $updateStreams = null;
 
     public function index()
@@ -83,7 +64,7 @@ class ChangelogController extends Controller
                 }
             );
 
-            return view('changelog.index', compact('chartConfig', 'indexJson'));
+            return ext_view('changelog.index', compact('chartConfig', 'indexJson'));
         }
     }
 
@@ -91,7 +72,18 @@ class ChangelogController extends Controller
     {
         $token = config('osu.changelog.github_token');
 
-        [$algo, $signature] = explode('=', request()->header('X-Hub-Signature'));
+        $signatureHeader = explode('=', request()->header('X-Hub-Signature'));
+
+        if (count($signatureHeader) !== 2) {
+            abort(422, 'invalid signature header');
+        }
+
+        [$algo, $signature] = $signatureHeader;
+
+        if (!in_array($algo, hash_hmac_algos(), true)) {
+            abort(422, 'unknown signature algorithm');
+        }
+
         $hash = hash_hmac($algo, request()->getContent(), $token);
 
         if (!hash_equals((string) $hash, (string) $signature)) {
@@ -156,7 +148,7 @@ class ChangelogController extends Controller
         if (is_json_request()) {
             return $buildJson;
         } else {
-            return view('changelog.build', compact('build', 'buildJson', 'chartConfig', 'commentBundle'));
+            return ext_view('changelog.build', compact('build', 'buildJson', 'chartConfig', 'commentBundle'));
         }
     }
 

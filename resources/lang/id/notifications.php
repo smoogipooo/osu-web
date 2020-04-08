@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => 'Semua notifikasi telah dibaca!',
-    'mark_all_read' => 'Hapus semua',
+    'mark_read' => 'Hilangkan semua notifikasi terkait :type',
+    'none' => 'Tidak ada notifikasi',
+    'see_all' => 'lihat semua notifikasi',
+
+    'filters' => [
+        '_' => 'semua',
+        'user' => 'profil',
+        'beatmapset' => 'beatmap',
+        'forum_topic' => 'forum',
+        'news_post' => 'berita',
+        'build' => 'build',
+        'channel' => 'chat',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -31,9 +28,19 @@ return [
                 'beatmapset_discussion_lock' => 'Diskusi untuk beatmap ":title" telah ditutup.',
                 'beatmapset_discussion_lock_compact' => 'Diskusi beatmap telah dikunci',
                 'beatmapset_discussion_post_new' => ':username menulis pesan baru pada laman diskusi beatmap ":title".',
+                'beatmapset_discussion_post_new_empty' => 'Postingan baru di ":title" oleh :username',
                 'beatmapset_discussion_post_new_compact' => 'Postingan baru dari :username',
+                'beatmapset_discussion_post_new_compact_empty' => 'Postingan baru oleh :username',
                 'beatmapset_discussion_unlock' => 'Diskusi untuk beatmap ":title" telah dibuka kembali.',
                 'beatmapset_discussion_unlock_compact' => 'Diskusi beatmap telah dibuka',
+            ],
+
+            'beatmapset_problem' => [
+                '_' => 'Masalah pada Beatmap Qualified',
+                'beatmapset_discussion_qualified_problem' => 'Dilaporkan oleh :username pada ":title": ":content"',
+                'beatmapset_discussion_qualified_problem_empty' => 'Dilaporkan oleh :username pada ":title"',
+                'beatmapset_discussion_qualified_problem_compact' => 'Dilaporkan oleh :username: ":content"',
+                'beatmapset_discussion_qualified_problem_compact_empty' => 'Dilaporkan oleh :username',
             ],
 
             'beatmapset_state' => [
@@ -120,6 +127,7 @@ return [
             'user_achievement_unlock' => [
                 '_' => 'Medali baru',
                 'user_achievement_unlock' => '":title" Terbuka!',
+                'user_achievement_unlock_compact' => 'Anda berhasil mendapatkan medali ":title"!',
             ],
         ],
     ],

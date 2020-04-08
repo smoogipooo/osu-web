@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => 'Все уведомления прочтены!',
-    'mark_all_read' => 'Очистить все',
+    'mark_read' => 'Очистить :type',
+    'none' => 'Уведомлений нет',
+    'see_all' => 'см. все уведомления',
+
+    'filters' => [
+        '_' => 'все',
+        'user' => 'профиль',
+        'beatmapset' => 'карты',
+        'forum_topic' => 'форум',
+        'news_post' => 'новости',
+        'build' => 'билды',
+        'channel' => 'чат',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -31,9 +28,19 @@ return [
                 'beatmapset_discussion_lock' => 'Карта ":title" заблокирована для обсуждений.',
                 'beatmapset_discussion_lock_compact' => 'Обсуждение было заблокировано',
                 'beatmapset_discussion_post_new' => ':username опубликовал новое сообщение в обсуждениях карты ":title".',
+                'beatmapset_discussion_post_new_empty' => 'Новый пост в ":title" от :username',
                 'beatmapset_discussion_post_new_compact' => 'Новый пост от :username',
+                'beatmapset_discussion_post_new_compact_empty' => 'Новый пост от :username',
                 'beatmapset_discussion_unlock' => 'Карта ":title" разблокирована для обсуждений.',
                 'beatmapset_discussion_unlock_compact' => 'Обсуждение было разблокировано',
+            ],
+
+            'beatmapset_problem' => [
+                '_' => 'Проблема с квалифицированной картой',
+                'beatmapset_discussion_qualified_problem' => 'Жалоба от :username на ":title": ":content"',
+                'beatmapset_discussion_qualified_problem_empty' => 'Жалоба от :username на ":title"',
+                'beatmapset_discussion_qualified_problem_compact' => 'Жалоба от :username: ":content"',
+                'beatmapset_discussion_qualified_problem_compact_empty' => 'Жалоба от :username',
             ],
 
             'beatmapset_state' => [
@@ -120,6 +127,7 @@ return [
             'user_achievement_unlock' => [
                 '_' => 'Новая медаль',
                 'user_achievement_unlock' => 'Разблокировано ":title"!',
+                'user_achievement_unlock_compact' => 'Разблокировано: «:title»!',
             ],
         ],
     ],

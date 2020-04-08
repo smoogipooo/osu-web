@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => 'Сигурни ли сте?',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ', и ',
     ],
 
+    'badges' => [
+        'new' => '',
+    ],
+
     'buttons' => [
         'admin' => 'Админ',
+        'authorise' => '',
+        'authorising' => '',
         'back_to_previous' => 'Връщане към предишния изглед',
         'back_to_top' => 'Обратно към началото',
         'cancel' => 'Отмяна',
         'change' => 'промяна',
         'click_to_copy' => 'щракнете, за да копирате в клипборда',
         'click_to_copy_copied' => 'копиранo в клипборда!',
+        'close' => '',
         'collapse' => 'свиване',
         'delete' => 'Изтрий',
         'edit' => 'Редактирай',
         'expand' => 'разгъване',
         'hide' => 'скрий',
         'permalink' => 'постоянен линк',
-        'permalink_copied' => 'линк копиран',
+        'pin' => '',
         'post' => 'Публикувай',
         'reply' => 'Отговори',
         'reply_reopen' => 'Отговори и възстанови',
@@ -56,8 +48,11 @@ return [
         'see_more' => 'виж още',
         'show' => 'покажи',
         'show_deleted' => 'Покажи изтритите',
+        'show_less' => '',
         'show_more' => 'покажи още',
         'show_more_options' => 'покажи още опции',
+        'unpin' => '',
+        'update' => '',
         'upload_image' => 'качи снимка',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => 'мин|мин',
         'minutes' => ':count минута|:count минути',
         'months' => ':count месец|:count месеца',
+        'notifications' => '',
+        'plus_others' => '',
+        'post' => '',
         'second_short_unit' => 'сек|сек',
+        'star_priority' => '',
         'update' => ':count_delimited актуализация|:count_delimited актуализации',
+        'view' => '',
         'years' => ':count година|:count години',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => 'поставете тук за качване',
     ],
 
+    'input' => [
+        'search' => '',
+    ],
+
     'pagination' => [
         'previous' => 'предишна',
         'next' => 'следваща',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => 'Уведомление',
+    ],
+
+    'wrong_user' => [
+        '_' => '',
+        'logout_link' => '',
     ],
 ];

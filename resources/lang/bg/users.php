@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[изтрит потребител]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'изпрати съобщението',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => '',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => '',
+                'tos' => '',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Вход',
-        'locked_ip' => 'Вашият IP адрес е блокиран. Моля изчакайте няколко минути.',
-        'username' => 'Потребителско име',
-        'password' => 'Парола',
         'button' => 'Вход',
         'button_posting' => 'Влизане...',
+        'email_login_disabled' => '',
+        'failed' => 'Неправилен опит за влизане',
+        'forgot' => 'Забравихте си паролата?',
+        'info' => '',
+        'locked_ip' => 'Вашият IP адрес е блокиран. Моля изчакайте няколко минути.',
+        'password' => 'Парола',
+        'register' => "Нямате osu! акаунт? Направете си един",
         'remember' => 'Запомни ме на този компютър',
         'title' => 'Моля влезте в профила си, за да продължите',
-        'failed' => 'Неправилен опит за влизане',
-        'register' => "Нямате osu! акаунт? Направете си един",
-        'forgot' => 'Забравихте си паролата?',
+        'username' => 'Потребителско име',
+
         'beta' => [
             'main' => 'Ранният достъп е ограничен само за привилегировани потребители.',
             'small' => '(osu!supporter ще има достъп скоро)',
         ],
-
-        'here' => 'тук', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'публикациите на :username',
     ],
 
-    'signup' => [
-        '_' => 'Регистрация',
-    ],
     'anonymous' => [
         'login_link' => 'щракнете, за да влезете',
         'login_text' => 'вход',
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => ':count_delimited последовател|:count_delimited последователи',
+            'none' => '',
             'unranked' => 'Няма скорошни данни',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Предстоящи класиране бийтмапове',
                 ],
             ],
+            'discussions' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
+            'events' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'historical' => [
                 'empty' => 'Няма записани изпълнения. :(',
                 'title' => 'Хронология',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Неизползвано Kudosu',
-                'available_info' => "Kudosu може да се обменено за kudosu звезди, които ще ти помогнат на бийтмапа ти да получи повече внимание. Това е броят на kudosu, което все още не си обменил.",
                 'recent_entries' => 'Скорошна Kudosu история',
                 'title' => 'Kudosu!',
                 'total' => 'Общо получено Kudosu',
@@ -276,6 +294,11 @@ return [
                 'recent' => 'Най-новите',
                 'title' => 'Медали',
             ],
+            'posts' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'recent_activity' => [
                 'title' => 'Скорошна активност',
             ],
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Класации на първо място',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => '',
+                'title_longer' => '',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Състояние на акаунта',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Играч :info',
-            'info' => 'Информация',
         ],
 
         'info' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Класации по брой точки',
             'total_hits' => 'Общ брой попадения',
             'total_score' => 'Общ брой точки',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => '',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,6 +418,7 @@ return [
     ],
 
     'view_mode' => [
+        'brick' => '',
         'card' => '',
         'list' => '',
     ],

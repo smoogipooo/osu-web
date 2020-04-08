@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Libraries;
 
@@ -27,21 +12,31 @@ use App\Models\User;
 class CommentBundle
 {
     public $depth;
-    public $includeCommentableMeta;
-    public $includeParent;
+    public $includeDeleted;
+    public $includePinned;
     public $params;
 
     private $commentable;
-    private $comments;
-    private $lastLoadedId;
+    private $comment;
     private $user;
+
+    public static function forComment(Comment $comment, bool $includeNested = false)
+    {
+        $options = ['comment' => $comment];
+
+        if ($includeNested) {
+            $options['params'] = ['parent_id' => $comment->getKey()];
+        }
+
+        return new static($comment->commentable, $options);
+    }
 
     public static function forEmbed($commentable)
     {
         return new static($commentable, ['params' => ['parent_id' => 0]]);
     }
 
-    public function __construct($commentable, $options = [])
+    public function __construct($commentable, array $options = [])
     {
         $this->commentable = $commentable;
 
@@ -49,47 +44,73 @@ class CommentBundle
 
         $this->params = new CommentBundleParams($options['params'] ?? [], $this->user);
 
-        $this->comments = $options['comments'] ?? null;
-        $this->additionalComments = $options['additionalComments'] ?? [];
+        $this->comment = $options['comment'] ?? null;
         $this->depth = $options['depth'] ?? 2;
-        $this->includeCommentableMeta = $options['includeCommentableMeta'] ?? false;
-        $this->includeParent = $options['includeParent'] ?? false;
+        $this->includeDeleted = isset($commentable);
+        $this->includePinned = isset($commentable);
     }
 
     public function toArray()
     {
         $hasMore = false;
+        $includedComments = collect();
+        $pinnedComments = collect();
 
-        if (isset($this->comments)) {
-            $comments = $this->comments;
+        // Either use the provided comment as a base, or look for matching comments.
+        if (isset($this->comment)) {
+            $comments = collect([$this->comment]);
+            if ($this->comment->parent !== null) {
+                $includedComments->push($this->comment->parent);
+            }
         } else {
             $comments = $this->getComments($this->commentsQuery(), false);
-
             if ($comments->count() > $this->params->limit) {
                 $hasMore = true;
                 $comments->pop();
             }
-
-            $nestedParentIds = $comments->pluck('id');
-
-            for ($i = 0; $i < $this->depth; $i++) {
-                $ids = $nestedParentIds->toArray();
-                sort($ids);
-                $nestedComments = $this->getComments(Comment::whereIn('parent_id', $nestedParentIds));
-                $nestedParentIds = $nestedComments->pluck('id');
-                $comments = $comments->concat($nestedComments);
-            }
         }
 
-        $comments = $comments->concat($this->additionalComments);
+        $commentIds = $comments->pluck('id');
+
+        // Get parents when listing comments index
+        if ($this->commentable === null) {
+            $parents = $this->getComments(Comment::whereIn('id', $comments->pluck('parent_id')));
+            $includedComments = $includedComments->concat($parents);
+        }
+
+        // Get nested comments
+        if ($this->params->parentId !== null) {
+            $nestedParentIds = $commentIds;
+
+            for ($i = 0; $i < $this->depth; $i++) {
+                $nestedComments = $this->getComments(Comment::whereIn('parent_id', $nestedParentIds));
+                $nestedParentIds = $nestedComments->pluck('id');
+                $includedComments = $includedComments->concat($nestedComments);
+            }
+
+            $parents = Comment::whereIn('id', $comments->pluck('parent_id'))->get();
+            $includedComments = $includedComments->concat($parents);
+        }
+
+        $includedComments = $includedComments->unique('id', true)->reject(function ($comment) use ($commentIds) {
+            return $commentIds->contains($comment->getKey());
+        });
+
+        if ($this->includePinned) {
+            $pinnedComments = $this->getComments($this->commentsQuery()->where('pinned', true), true, true);
+        }
+
+        $allComments = $comments->concat($includedComments)->concat($pinnedComments);
 
         $result = [
-            'comments' => json_collection($comments, 'Comment', $this->commentIncludes()),
+            'comments' => json_collection($comments, 'Comment'),
             'has_more' => $hasMore,
             'has_more_id' => $this->params->parentId,
-            'user_votes' => $this->getUserVotes($comments),
+            'included_comments' => json_collection($includedComments, 'Comment'),
+            'pinned_comments' => json_collection($pinnedComments, 'Comment'),
+            'user_votes' => $this->getUserVotes($allComments),
             'user_follow' => $this->getUserFollow(),
-            'users' => json_collection($this->getUsers($comments), 'UserCompact'),
+            'users' => json_collection($this->getUsers($comments->concat($allComments)), 'UserCompact'),
             'sort' => $this->params->sort,
         ];
 
@@ -98,23 +119,10 @@ class CommentBundle
             $result['total'] = $this->commentsQuery()->count();
         }
 
-        if ($this->includeCommentableMeta) {
-            $commentables = $comments->pluck('commentable')->concat([null]);
-            $result['commentable_meta'] = json_collection($commentables, 'CommentableMeta');
-        }
+        $commentables = $comments->pluck('commentable')->concat([null]);
+        $result['commentable_meta'] = json_collection($commentables, 'CommentableMeta');
 
         return $result;
-    }
-
-    public function commentIncludes()
-    {
-        $includes = [];
-
-        if ($this->includeParent) {
-            $includes[] = 'parent';
-        }
-
-        return $includes;
     }
 
     public function commentsQuery()
@@ -126,9 +134,21 @@ class CommentBundle
         }
     }
 
-    private function getComments($query, $isChildren = true)
+    // This is named explictly for the paginator because there's another count
+    // in ::toArray() which always includes deleted comments.
+    public function countForPaginator()
     {
-        $sort = $this->params->sortDbOptions();
+        $query = $this->commentsQuery();
+        if (!$this->includeDeleted) {
+            $query->withoutTrashed();
+        }
+
+        return min($query->count(), config('osu.pagination.max_count'));
+    }
+
+    private function getComments($query, $isChildren = true, $pinnedOnly = false)
+    {
+        $sort = $pinnedOnly ? CommentBundleParams::SORTS['new'] : $this->params->sortDbOptions();
         $sorted = false;
         $queryLimit = $this->params->limit;
 
@@ -156,16 +176,14 @@ class CommentBundle
                 $query->cursorWhere($queryCursor);
                 $sorted = true;
             } else {
-                $query->offset($this->params->limit * ($this->params->page - 1));
+                $query->offset(max_offset($this->params->page, $this->params->limit));
             }
         }
 
-        if ($this->includeCommentableMeta) {
-            $query->with('commentable');
-        }
+        $query->with('commentable');
 
-        if ($this->includeParent) {
-            $query->with('parent');
+        if (!$this->includeDeleted) {
+            $query->whereNull('deleted_at');
         }
 
         if (!$sorted) {
@@ -174,7 +192,11 @@ class CommentBundle
             }
         }
 
-        return $query->limit($queryLimit)->get();
+        if (!$pinnedOnly) {
+            $query->limit($queryLimit);
+        }
+
+        return $query->get();
     }
 
     private function getUserFollow()
@@ -206,14 +228,6 @@ class CommentBundle
     {
         $userIds = $comments->pluck('user_id')
             ->concat($comments->pluck('edited_by_id'));
-
-        if ($this->includeParent) {
-            foreach ($comments as $comment) {
-                if ($comment->parent !== null) {
-                    $userIds[] = $comment->parent->user_id;
-                }
-            }
-        }
 
         return User::whereIn('user_id', $userIds)->get();
     }

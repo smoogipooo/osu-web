@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => 'Kaikki ilmoitukset luettu!',
-    'mark_all_read' => 'Poista kaikki',
+    'mark_read' => '',
+    'none' => '',
+    'see_all' => '',
+
+    'filters' => [
+        '_' => '',
+        'user' => '',
+        'beatmapset' => '',
+        'forum_topic' => '',
+        'news_post' => '',
+        'build' => '',
+        'channel' => '',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -31,9 +28,19 @@ return [
                 'beatmapset_discussion_lock' => '',
                 'beatmapset_discussion_lock_compact' => '',
                 'beatmapset_discussion_post_new' => '',
+                'beatmapset_discussion_post_new_empty' => '',
                 'beatmapset_discussion_post_new_compact' => '',
+                'beatmapset_discussion_post_new_compact_empty' => '',
                 'beatmapset_discussion_unlock' => '',
                 'beatmapset_discussion_unlock_compact' => '',
+            ],
+
+            'beatmapset_problem' => [
+                '_' => '',
+                'beatmapset_discussion_qualified_problem' => '',
+                'beatmapset_discussion_qualified_problem_empty' => '',
+                'beatmapset_discussion_qualified_problem_compact' => '',
+                'beatmapset_discussion_qualified_problem_compact_empty' => '',
             ],
 
             'beatmapset_state' => [
@@ -61,7 +68,7 @@ return [
         ],
 
         'channel' => [
-            '_' => '',
+            '_' => 'Chat',
 
             'channel' => [
                 '_' => 'Uusi viesti',
@@ -80,7 +87,7 @@ return [
                 '_' => 'Uusi kommentti',
 
                 'comment_new' => '',
-                'comment_new_compact' => '',
+                'comment_new_compact' => ':username kommentoi ":content"',
             ],
         ],
 
@@ -91,7 +98,7 @@ return [
                 '_' => 'Uusi kommentti',
 
                 'comment_new' => '',
-                'comment_new_compact' => '',
+                'comment_new_compact' => ':username kommentoi":content"',
             ],
         ],
 
@@ -120,6 +127,7 @@ return [
             'user_achievement_unlock' => [
                 '_' => 'Uusi mitali',
                 'user_achievement_unlock' => '',
+                'user_achievement_unlock_compact' => '',
             ],
         ],
     ],

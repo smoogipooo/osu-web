@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => 'แน่ใจหรือ?',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ' และ',
     ],
 
+    'badges' => [
+        'new' => 'ใหม่!',
+    ],
+
     'buttons' => [
         'admin' => 'ผู้ดูแล',
+        'authorise' => 'อนุญาต',
+        'authorising' => '',
         'back_to_previous' => 'กลับไปยังตำแหน่งก่อนหน้านี้',
         'back_to_top' => 'กลับไปด้านบน',
         'cancel' => 'ยกเลิก',
         'change' => 'เปลี่ยน',
         'click_to_copy' => 'คลิกเพื่อคัดลอกไปยังคลิปบอร์ด',
         'click_to_copy_copied' => 'คัดลอกไปยังคลิปบอร์ดแล้ว',
+        'close' => 'ปิด',
         'collapse' => 'ยุบ',
         'delete' => 'ลบ',
         'edit' => 'แก้ไข',
         'expand' => 'ขยาย',
         'hide' => 'ซ่อน',
         'permalink' => 'ลิงก์ถาวร',
-        'permalink_copied' => 'คัดลอกลิ้งค์แล้ว',
+        'pin' => 'ปักหมุด',
         'post' => 'โพสต์',
         'reply' => 'ตอบกลับ',
         'reply_reopen' => 'ตอบกลับ และเปิดใหม่',
@@ -56,8 +48,11 @@ return [
         'see_more' => 'ดูเพิ่มเติม',
         'show' => 'แสดง',
         'show_deleted' => 'แสดงรายการที่ลบ',
+        'show_less' => 'แสดงน้อยลง',
         'show_more' => 'แสดงเพิ่มเติม',
         'show_more_options' => 'แสดงตัวเลือกเพิ่มเติม',
+        'unpin' => 'ยกเลิกการปักหมุด',
+        'update' => 'อัปเดต',
         'upload_image' => 'อัพโหลดรูปภาพ',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => 'นาที|นาที',
         'minutes' => ':count_delimited นาที|:count_delimited นาที',
         'months' => ':count เดือน|:count เดือน',
+        'notifications' => ':count_delimited แต้ม|:count_delimited แต้มทั้งหมด',
+        'plus_others' => '',
+        'post' => '',
         'second_short_unit' => 'วินาที|วินาที',
+        'star_priority' => '',
         'update' => '',
+        'view' => '',
         'years' => ':count ปี|:count ปี',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => 'วางที่นี่เพื่ออัพโหลด',
     ],
 
+    'input' => [
+        'search' => 'ค้นหา...',
+    ],
+
     'pagination' => [
         'previous' => 'ก่อนหน้า',
         'next' => 'ถัดไป',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => 'แจ้งเตือน',
+    ],
+
+    'wrong_user' => [
+        '_' => 'คุณกำลังเข้าสู่ระบบด้วยชื่อ :user :logout_link',
+        'logout_link' => 'คลิกที่นี่เพื่อเข้าสู่ระบบในฐานะบัญชีผู้ใช้อื่น',
     ],
 ];

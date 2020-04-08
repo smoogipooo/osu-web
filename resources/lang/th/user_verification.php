@@ -1,42 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'box' => [
-        'sent' => 'อีเมลได้ถูกส่งไปที่ :mail พร้อมรหัสยืนยันตัวตนแล้ว กรุณาป้อนรหัส',
+        'sent' => 'อีเมล์ได้ถูกส่งไปที่ :mail พร้อมรหัสยืนยันตัวตนแล้ว กรุณาป้อนรหัส',
         'title' => 'ยืนยันตัวตนบัญชี',
         'verifying' => 'กำลังยืนยันตัวตน...',
         'issuing' => 'กำลังส่งรหัสชุดใหม่...',
 
         'info' => [
             'check_spam' => "หากไม่พบอีเมล ให้ลองค้นหาที่โฟลเดอร์สแปมของท่านดู",
-            'recover' => "หากคุณไม่สามารถเข้าถึงอีเมลของคุณ หรือลืมอีเมลที่ผูกกับบัญชีผู้ใช้ของคุณ กรุณาทำตามนี้ :link.",
+            'recover' => "หากคุณเข้าอีเมล์ไม่ได้ หรือลืมอีเมล์ที่ผูกกับบัญชีผู้ใช้ของคุณ กรุณาทำตามนี้ :link.",
             'recover_link' => 'ขั้นตอนการกู้อีเมลได้ที่นี่',
             'reissue' => 'คุณสามารถ :reissue_link หรือ :logout_link.',
-            'reissue_link' => 'ขอรับรหัสใหม่',
+            'reissue_link' => 'ขอรหัสใหม่',
             'logout_link' => 'ออกจากระบบ',
         ],
-    ],
-
-    'email' => [
-        'subject' => 'ยืนยันตัวตนบัญชี osu!',
     ],
 
     'errors' => [

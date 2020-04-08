@@ -1,27 +1,13 @@
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
+import { route } from 'laroute';
 import * as ApiResponses from './chat-api-responses';
 
 export default class ChatAPI {
-  getMessages(channelId: number): Promise<ApiResponses.GetMessagesJSON> {
+  getMessages(channelId: number, params?: { since?: number; until?: number }): Promise<ApiResponses.GetMessagesJSON> {
     return new Promise((resolve, reject) => {
-      $.get(laroute.route('chat.channels.messages.index', {channel: channelId}))
+      $.get(route('chat.channels.messages.index', { channel: channelId, ...params }))
         .done((response) => {
           resolve(response as ApiResponses.GetMessagesJSON);
         }).fail((error) => {
@@ -32,7 +18,7 @@ export default class ChatAPI {
 
   getUpdates(since: number): Promise<ApiResponses.GetUpdatesJSON> {
     return new Promise((resolve, reject) => {
-      $.get(laroute.route('chat.updates'),
+      $.get(route('chat.updates'),
         {since},
       ).done((response) => {
         resolve(response as ApiResponses.GetUpdatesJSON);
@@ -46,7 +32,7 @@ export default class ChatAPI {
     return new Promise((resolve, reject) => {
       $.ajax({
         type: 'PUT',
-        url: laroute.route('chat.channels.mark-as-read', {channel: channelId, message: messageId}),
+        url: route('chat.channels.mark-as-read', {channel: channelId, message: messageId}),
       }).done((response) => {
         resolve(response as ApiResponses.MarkAsReadJSON);
       }).fail((error) => {
@@ -57,7 +43,7 @@ export default class ChatAPI {
 
   newConversation(userId: number, message: string, action?: boolean): Promise<ApiResponses.NewConversationJSON> {
     return new Promise((resolve, reject) => {
-      $.post(laroute.route('chat.new'), {
+      $.post(route('chat.new'), {
         is_action: action,
         message,
         target_id: userId,
@@ -71,7 +57,7 @@ export default class ChatAPI {
 
   partChannel(channelId: number, userId: number) {
     return new Promise((resolve, reject) => {
-      $.ajax(laroute.route('chat.channels.part', {
+      $.ajax(route('chat.channels.part', {
         channel: channelId,
         user: userId,
       }), {
@@ -86,7 +72,7 @@ export default class ChatAPI {
 
   sendMessage(channelId: number, message: string, action?: boolean): Promise<ApiResponses.SendMessageJSON> {
     return new Promise((resolve, reject) => {
-      $.post(laroute.route('chat.channels.messages.store', {channel: channelId}), {
+      $.post(route('chat.channels.messages.store', {channel: channelId}), {
         is_action: action,
         message,
         target_id: channelId,

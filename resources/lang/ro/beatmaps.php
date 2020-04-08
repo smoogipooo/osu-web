@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Salvarea postării a eșuat',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Actualizarea votului a eșuat',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'permite kudosu',
+        'beatmap_information' => 'Pagină Beatmap',
         'delete' => 'șterge',
         'deleted' => 'Șters de :editor :delete_time.',
         'deny_kudosu' => 'refuză kudosu',
@@ -40,14 +20,14 @@ return [
         'edited' => 'Ultima dată editat de :editor :update_time.',
         'kudosu_denied' => 'A refuzat să primească kudosu.',
         'message_placeholder_deleted_beatmap' => 'Această dificultate a fost ștearsă, deci e posibil să nu mai fie discutată.',
-        'message_placeholder_locked' => '',
+        'message_placeholder_locked' => 'Discuție pentru acest beatmap a fost dezactivată.',
         'message_type_select' => 'Selectează tipul comentariului',
         'reply_notice' => 'Apasă enter pentru a răspunde.',
         'reply_placeholder' => 'Scrie-ți răspunsul aici',
         'require-login' => 'Te rugăm să te conectezi pentru a posta sau a răspunde',
         'resolved' => 'Rezolvat',
         'restore' => 'restabilește',
-        'show_deleted' => '',
+        'show_deleted' => 'Arată șters',
         'title' => 'Discuții',
 
         'collapse' => [
@@ -62,13 +42,13 @@ return [
 
         'lock' => [
             'button' => [
-                'lock' => '',
-                'unlock' => '',
+                'lock' => 'Încheie Discuția',
+                'unlock' => 'Deblochează Discuția',
             ],
 
             'prompt' => [
-                'lock' => '',
-                'unlock' => '',
+                'lock' => 'Motiv pentru încheiere',
+                'unlock' => 'Ești sigur că vrei să deblocați?',
             ],
         ],
 
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Resetați nominalizarea',
             'praise' => 'Laudă',
             'problem' => 'Problemă',
+            'review' => 'Recenzie',
             'suggestion' => 'Sugestie',
         ],
 
         'mode' => [
             'events' => 'Istoric',
             'general' => 'General :scope',
+            'reviews' => 'Recenzii',
             'timeline' => 'Cronologie',
             'scopes' => [
                 'general' => 'Această dificultate',
@@ -104,11 +86,11 @@ return [
         ],
 
         'new' => [
-            'pin' => '',
+            'pin' => 'Fixează',
             'timestamp' => 'Marcaj de timp',
             'timestamp_missing' => 'ctrl-c în modul de editare și lipește-ți mesajul pentru a adăuga un marcaj de timp!',
             'title' => 'Discuție nouă',
-            'unpin' => '',
+            'unpin' => 'DeFixează',
         ],
 
         'show' => [
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => '',
-            'down' => '',
+            'none' => [
+                'down' => 'Niciun downvote încă',
+                'up' => 'Niciun upvote încă',
+            ],
+            'latest' => [
+                'down' => 'Cele mai noi downvoturi',
+                'up' => 'Cele mai noi upvote-uri',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nominalizează',
         'nominate_confirm' => 'Nominalizezi acest beatmap?',
         'nominated_by' => 'nominalizat de :users',
+        'not_enough_hype' => "Nu este suficient hype.",
         'qualified' => 'Estimat pentru a fi clasat pe :date, dacă nu sunt găsite probleme.',
         'qualified_soon' => 'Estimat să fie clasat în curând, dacă nu sunt găsite probleme.',
         'required_text' => 'Nominalizări: :current/:required',
@@ -244,14 +233,14 @@ return [
     'status' => [
         'any' => 'Oricare',
         'approved' => 'Aprobate',
-        'favourites' => '',
+        'favourites' => 'Favorite',
         'graveyard' => 'Graveyard',
-        'leaderboard' => '',
+        'leaderboard' => 'Are Clasament',
         'loved' => 'Loved',
-        'mine' => '',
+        'mine' => 'Hărțile mele',
         'pending' => 'În așteptare & în lucru',
         'qualified' => 'Calificate',
-        'ranked' => '',
+        'ranked' => 'Clasat',
     ],
     'genre' => [
         'any' => 'Oricare',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => '',
         'NC' => '',
         'NF' => '',
         'NM' => '',

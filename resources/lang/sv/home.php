@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -24,7 +9,8 @@ return [
         'online' => '<strong>:players</strong> spelare online i <strong>:games</strong> spel',
         'peak' => 'Som högst, :count spelare online',
         'players' => '<strong>:count</strong> registrerade spelare',
-        'title' => '',
+        'title' => 'välkommen',
+        'see_more_news' => 'se fler nyheter',
 
         'slogan' => [
             'main' => 'gratis-att-spela rytm spel',
@@ -36,11 +22,12 @@ return [
         'advanced_link' => 'Avancerad sökning',
         'button' => 'Sök',
         'empty_result' => 'Ingenting hittades!',
-        'keyword_required' => '',
+        'keyword_required' => 'Ett sökord krävs',
         'placeholder' => 'skriv för att söka',
         'title' => 'Sök',
 
         'beatmapset' => [
+            'login_required' => 'Logga in för att söka beatmaps',
             'more' => ':count fler sökresultat på beatmaps',
             'more_simple' => 'Se fler sökresultat på beatmaps',
             'title' => 'Beatmaps',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Alla forum',
             'link' => 'Sök på forumet',
+            'login_required' => 'Logga in för att söka i forumet',
             'more_simple' => 'Se fler sökresultat på forum',
             'title' => 'Forum',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => 'Logga in för att söka användare',
             'more' => ':count fler sökresultat på spelare',
             'more_simple' => 'Se fler sökresultat på spelare',
             'more_hidden' => 'Sökning på spelare är begränsad till :max spelare. Försök att förfina sökningen.',
@@ -104,12 +93,12 @@ return [
             'beatmaps' => [
                 'title' => 'skaffa beatmaps',
                 'description' => [
-                    '_' => ':browse i det stora bibloteket av beatmaps skapade av användare och börja spela!',
+                    '_' => ':browse det stora biblioteket av beatmaps skapade av användare och börja spela!',
                     'browse' => 'bläddra',
                 ],
             ],
         ],
-        'video-guide' => 'video guide',
+        'video-guide' => 'videoguide',
     ],
 
     'user' => [
@@ -119,8 +108,6 @@ return [
             'error' => 'Fel med att ladda in nyheter, försök ladda om sidan?...',
         ],
         'header' => [
-            'welcome' => 'Hej, <strong>:username</strong>!',
-            'messages' => 'Du har :count nytt meddelande|Du har :count nya meddelanden',
             'stats' => [
                 'friends' => 'Vänner Online',
                 'games' => 'Spel',
@@ -130,8 +117,7 @@ return [
         'beatmaps' => [
             'new' => 'Nya Rankade Beatmaps',
             'popular' => 'Populära Beatmaps',
-            'by' => 'av',
-            'plays' => 'Spelad :count gånger',
+            'by_user' => 'av :user',
         ],
         'buttons' => [
             'download' => 'Ladda ner osu!',

@@ -1,42 +1,20 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
-namespace Tests\Multiplayer;
+namespace Tests\Models\Multiplayer;
 
 use App\Models\Multiplayer\PlaylistItem;
 use App\Models\Multiplayer\Room;
 use App\Models\Multiplayer\RoomScore;
 use App\Models\Multiplayer\UserScoreAggregate;
 use App\Models\User;
-use TestCase;
+use Tests\TestCase;
 
 class UserScoreAggregateTest extends TestCase
 {
     private $room;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->room = factory(Room::class)->create();
-    }
 
     public function testStartingPlayIncreasesAttempts()
     {
@@ -185,6 +163,13 @@ class UserScoreAggregateTest extends TestCase
 
         $this->assertSame(0.65, $result['pp']);
         $this->assertSame(0.65, $result['accuracy']);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->room = factory(Room::class)->create();
     }
 
     private function playlistItem()

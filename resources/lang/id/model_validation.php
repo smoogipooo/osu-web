@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute tidak bisa negatif.',
     'required' => ':attribute diwajibkan.',
     'too_long' => ':attribute melebihi batas maksimum - hanya bisa hingga :limit karakter.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Tidak dapat menghapus postingan awal.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Isi pesan',
         ],
     ],
 
@@ -42,15 +28,16 @@ return [
         'locked' => 'Diskusi dikunci.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Tipe pesan',
+            'timestamp' => 'Keterangan Waktu',
         ],
 
         'hype' => [
+            'discussion_locked' => "Anda tidak dapat memberikan hype karena fitur diskusi untuk beatmap ini sedang dibekukan oleh moderator",
             'guest' => 'Silakan masuk untuk dapat memberikan hype.',
             'hyped' => 'Anda telah memberikan hype untuk beatmap ini.',
             'limit_exceeded' => 'Anda telah menggunakan semua hype Anda.',
-            'not_hypeable' => 'Beatmap ini tidak dapat dihype.',
+            'not_hypeable' => 'Beatmap ini tidak dapat di-hype.',
             'owner' => 'Tidak dapat memberikan hype pada beatmap anda sendiri.',
         ],
 
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Membalas komentar yang sudah dihapus tidak diperbolehkan.',
+        'top_only' => 'Tidak diperbolehkan menyemat balasan komentar.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Isi pesan',
         ],
     ],
 
@@ -88,13 +76,13 @@ return [
             'only_quote' => 'Balasan Anda hanya berisi kutipan.',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => 'Isi postingan',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Judul topik',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Jumlah maksimum opsi melebihi yang diizinkan.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Judul pemungutan suara',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'Jumlah aplikasi OAuth melebihi batas maksimal.',
+            'url' => 'Harap masukkan URL valid.',
+
+            'attributes' => [
+                'name' => 'Nama Aplikasi',
+                'redirect' => 'Callback URL Aplikasi',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Nama pengguna tidak diperbolehkan untuk berada di dalam kata sandi.',
         'email_already_used' => 'Alamat email sudah digunakan.',
         'invalid_country' => 'Negara tidak ada dalam basis data.',
         'invalid_discord' => 'Nama pengguna Discord tidak valid.',
         'invalid_email' => "Tampaknya bukan alamat email yang valid.",
+        'invalid_twitter' => '',
         'too_short' => 'Kata sandi baru terlalu pendek.',
         'unknown_duplicate' => 'Nama pengguna atau alamat email sudah digunakan.',
         'username_available_in' => 'Nama pengguna ini akan tersedia untuk digunakan dalam :duration.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Melebihi batas maksimum - hanya bisa hingga :limit karakter.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Nama Pengguna',
+            'user_email' => 'Alamat Email',
+            'password' => 'Kata Sandi',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => 'alasan :reason tidak sah untuk jenis laporan ini.',
         'self' => "Anda tidak dapat melaporkan diri Anda sendiri!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Jumlah',
+                'cost' => 'Biaya',
             ],
         ],
     ],

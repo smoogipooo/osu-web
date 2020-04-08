@@ -1,59 +1,67 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'support' => [
-        'header' => [
-            // size in font-size
-            'big_description' => 'osu!\'yu seviyor musunuz?<br/>
-                                osu!\'nun gelişimine destek olun :D',
-            'small_description' => '',
-            'support_button' => 'osu!\'yu desteklemek istiyorum!',
+        'convinced' => [
+            'title' => 'İkna oldum! :D',
+            'support' => 'osu!\'yu destekle!',
+            'gift' => 'veya diğer oyunculara hediye et',
+            'instructions' => 'kalbe tıklayıp osu!store\'a ilerle',
         ],
+        'why-support' => [
+            'title' => 'Neden osu!\'yu desteklemeliyim? Para nereye gidiyor?',
 
-        'dev_quote' => 'osu! oynaması tamamen bedava bir oyun, ancak onu ayakta tutmak kesinlikle değil.        Sunucuların tutulması ve uluslararası yüksek kalite bant genişliğinin sağlanması, sistemin ve topluluğun ayakta durması için harcanan zaman,         yarışmalar için ödüller sağlamak, desteğe gelen soruları yanıtlamak ve genel olarak insanları mutlu etmek derken, osu! oldukça yüklü bir miktar para tüketiyor!        Ah, aynı zamanda bütün bunları herhangi bir reklam göstermeden ya da şapşal araç çubukları gibileri olmadan yaptığımızı unutmayın!            <br/><br/>Günün sonunda, osu! çoğunlukla benim tarafımdan yürütülüyor, ki bazılarınız beni "peppy" olarak tanıyor olabilir.            osu!\'ya ayak uydurabilmek için günlük işimden istifa etmek zorunda kaldım,            ve zaman zaman ulaşmak için gayret gösterdiğim standartlarımı korumakta zorlanıyorum.            osu!\'yu şimdiye kadar desteklemiş olan herkese şahsi teşekkürlerimi sunmak istiyor,            ve bir o kadarını da bu harika oyunu ve topluluğunu destekleyenlere sunuyorum :).',
-
-        'supporter_status' => [
-            'contribution' => 'Desteğiniz için teşekkürler! Toplamda :tags farklı alımla :dollars yardımda bulundunuz!',
-            'gifted' => ':giftedTags defa hediye olarak aldınız (toplam :giftedDollars hediye verdiniz), bu ne bonkörlük!',
-            'not_yet' => "Şimdilik supporter'ınız yok :(",
-            'title' => 'Şu anki supporter durumu',
-            'valid_until' => 'Şu anki osu!supporter etiketiniz :date tarihine kadar geçerli!',
-            'was_valid_until' => 'osu!supporter etiketiniz :date tarihine kadar geçerliydi.',
-        ],
-
-        'why_support' => [
-            'title' => 'Neden osu!\'yu desteklemeliyim?',
-            'blocks' => [
-                'dev' => 'Çoğunlukla Avustralya\'da adamın biri tarafından geliştirilip idame ettiriliyor',
-                'time' => 'Sürdürmesi çok zaman aldığından artık "hobi" olmaktan çıktı.',
-                'ads' => 'Hiçbir yerde reklam yok.<br/><br/>                        İnternetin %99.95\'inin aksine, suratınıza bir şeyler dayayarak kâr sağlamıyoruz.',
-                'goodies' => 'Ekstra şeyler de alacaksınız!',
+            'team' => [
+                'title' => 'Takımı Destekle',
+                'description' => 'osu!\'yu küçük bir takım geliştirip yönetiyor. Senin desteğin onları, bilirsin... hayatta tutar.',
+            ],
+            'infra' => [
+                'title' => 'Sunucu Altyapısı',
+                'description' => 'Katkılar, websitesini, çok oyunculu servisleri, çevrimiçi sıralamaları vb. sürdürmek için doğrudan sunuculara gider.',
+            ],
+            'featured-artists' => [
+                'title' => 'Seçkin Sanatçılar',
+                'description' => 'Sizin desteğinizle, daha çok müzisyen ile iletişim kurabilir ve onların güzel şarkılarını osu! için lisanslayabiliriz!',
+                'link_text' => '',
+            ],
+            'ads' => [
+                'title' => '',
+                'description' => 'Sizin yardımlarınız oyunu bağımsız; tamamen reklamlardan, sponsorlardan barındırabilir.',
+            ],
+            'tournaments' => [
+                'title' => 'Resmi Turnuvalar',
+                'description' => 'Oyuna yapacağınız bağışlar resmi osu! Dünya Kupası\'nı sürdürmek (ve ödülleri için) bizim için çok önemlidir.',
+                'link_text' => 'Turnuvaları Keşfet &raquo;',
+            ],
+            'bounty-program' => [
+                'title' => '',
+                'description' => 'Topluluğa katkı sağlamış ve kendi efor ve zamanlarını harcamış insanlara osu!\'yu daha iyi yapmak için destek verin.',
+                'link_text' => 'Daha fazlasını öğren &raquo;',
             ],
         ],
-
         'perks' => [
             'title' => 'Öyle mi? Neler alacağım?!',
             'osu_direct' => [
                 'title' => 'osu!direct',
-                'description' => 'oyundan çıkmaya gerek kalmadan beatmaplere kolay ve hızlı ulaşım.',
+                'description' => 'Oyundan çıkmaya gerek kalmadan hızlıca beatmapleri arayıp indirebilirsin.',
+            ],
+
+            'friend_ranking' => [
+                'title' => 'Arkadaş Sıralaması',
+                'description' => "",
+            ],
+
+            'country_ranking' => [
+                'title' => 'Ülkesel Sıralama',
+                'description' => 'Dünyayı fethetmeden önce ülkeni fethet.',
+            ],
+
+            'mod_filtering' => [
+                'title' => 'Modlara Göre Filtrele',
+                'description' => 'Sadece HDHR oynayan insanlarla mı muhattap oluyorsun? Hiç sıkıntı değil!',
             ],
 
             'auto_downloads' => [
@@ -73,7 +81,7 @@ return [
 
             'customisation' => [
                 'title' => 'Özelleştirme',
-                'description' => 'Tamamen özelleştirilebilir bir kullanıcı sayfası ile profilinizi özelleştirin.',
+                'description' => "Tamamen özelleştirilebilir bir kullanıcı sayfası ile profilinizi özelleştirin.",
             ],
 
             'beatmap_filters' => [
@@ -111,22 +119,30 @@ return [
                 'description' => 'Oyun içinde beatmaplerin ülke/arkadaş/moda göre sıralamalarını görme yeteneği.',
             ],
 
-            'feel_special' => [
-                'title' => 'Özel Hisset',
-                'description' => 'osu!\'yu sıkıntısızca çalıştırmak için yaptığın katkının verdiği o sıcacık his!',
+            'more_favourites' => [
+                'title' => 'Daha Fazla Favori',
+                'description' => 'Favorine ekleyebileceğin maksimum beatmap sayısı :normally &rarr; :supporter olarak yükseltilir.',
+            ],
+            'more_friends' => [
+                'title' => 'Daha Fazla Arkadaş',
+                'description' => 'Ekleyebileceğin maksimum arkadaş sayısı :normally &rarr; :supporter olarak yükseltilir.',
+            ],
+            'more_beatmaps' => [
+                'title' => 'Daha Fazla Beatmap Yükle',
+                'description' => 'Ne kadar ranked olmayan beatmaplere sahip olabileceğin, temel bir değere ek olarak, ne kadar ranked beatmap sahip olmuşluğun varsa eklenerek belirlenir (bir sınıra kadar).<br/>Normalde bu her bir ranked map için fazladan 4 tane daha fazla ranked olmayan beatmap hakkına erişirsin (2\'ye kadar). Destekçilik ile bu 1 ranked beatmap için 8 e çıkar (12\'ye kadar).<br/>',
+            ],
+            'friend_filtering' => [
+                'title' => 'Arkadaş Sıralamaları',
+                'description' => 'Arkadaşlarınla rekabet et ve onlara karşı nasıl bir derece yaptığını gör!*<br/><br/><small>* henüz yeni sitede bulunmuyor, çok yakında(tm)</small>',
             ],
 
-            'more_to_come' => [
-                'title' => 'Dahası gelecek',
-                'description' => '',
-            ],
         ],
-
-        'convinced' => [
-            'title' => 'İkna oldum! :D',
-            'support' => 'osu!\'yu destekle!',
-            'gift' => 'veya diğer oyunculara hediye et',
-            'instructions' => 'kalbe tıklayıp osu!store\'a ilerle',
+        'supporter_status' => [
+            'contribution' => 'Desteğiniz için teşekkürler! Toplamda :tags farklı alımla :dollars yardımda bulundunuz!',
+            'gifted' => ":giftedTags defa hediye olarak aldınız (toplam :giftedDollars hediye verdiniz), bu ne bonkörlük!",
+            'not_yet' => "Şimdilik supporter'ınız yok :(",
+            'valid_until' => 'Şu anki osu!supporter etiketiniz :date tarihine kadar geçerli!',
+            'was_valid_until' => 'osu!supporter etiketiniz :date tarihine kadar geçerliydi.',
         ],
     ],
 ];

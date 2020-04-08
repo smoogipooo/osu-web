@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => '계속하려면 로그인해 주세요.',
+    'require_verification' => '계속하려면 인증해 주세요.',
+    'restricted' => "제한된 상태에서는 할 수 없습니다.",
+    'silenced' => "사일런스 상태에서는 할 수 없습니다.",
+    'unauthorized' => '접근이 거부되었습니다.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Hype한 것은 되돌릴 수 없습니다.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => '자동으로 생성된 글은 수정할 수 없습니다.',
-            'not_owner' => '본인이 쓴 글만 수정할 수 있습니다.',
+        'destroy' => [
+            'not_owner' => '자신의 게시글만 삭제할 수 있습니다.',
+            'resolved' => '해결된 토론의 게시글은 삭제할 수 없습니다.',
+            'system_generated' => '자동으로 생성된 글은 삭제할 수 없습니다.',
         ],
+
+        'edit' => [
+            'not_owner' => '본인이 쓴 글만 수정할 수 있습니다.',
+            'resolved' => '해결된 토론의 게시글은 수정할 수 없습니다.',
+            'system_generated' => '자동으로 생성된 글은 수정할 수 없습니다.',
+        ],
+
         'store' => [
             'beatmapset_locked' => '이 비트맵은 토론을 할 수 없도록 잠겨 있습니다.',
         ],
@@ -97,7 +96,7 @@ return [
 
             'store' => [
                 'play_more' => '포럼에 글을 올리기 전에 게임을 플레이해주세요, 제발요! 만약 플레이하는데 문제가 있다면, Help and Support 포럼에 글을 남겨주세요.',
-                'too_many_help_posts' => "추가 글을 더 남기려면 게임을 플레이해야 합니다. 만약 아직도 게임을 하는 데 문제가 있다면, support@ppy.sh 에 이메일을 보내주세요.", // FIXME: unhardcode email address.
+                'too_many_help_posts' => "글을 더 남기려면 게임을 플레이해야 합니다. 만약 게임 진행에 문제가 있다면, support@ppy.sh 에 이메일을 보내주세요.", // FIXME: unhardcode email address.
             ],
         ],
 
@@ -153,14 +152,6 @@ return [
             'admin_only' => '관리자만 열람이 가능한 포럼입니다.',
         ],
     ],
-
-    'require_login' => '계속하려면 로그인해 주세요.',
-
-    'unauthorized' => '접근이 거부되었습니다.',
-
-    'silenced' => "사일런스 상태에서는 할 수 없습니다.",
-
-    'restricted' => "제한된 상태에서는 할 수 없습니다.",
 
     'user' => [
         'page' => [

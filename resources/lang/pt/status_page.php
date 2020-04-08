@@ -1,55 +1,40 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'header' => [
         'title' => 'estado',
-        'description' => 'como é que é meu?',
+        'description' => 'como é que é, meu?',
     ],
 
     'incidents' => [
-        'title' => 'Incidentes Ativos',
+        'title' => 'Incidentes ativos',
         'automated' => 'automatizado',
     ],
 
     'online' => [
         'title' => [
-            'users' => 'Utilizadores Online nas últimas 24 Horas',
-            'score' => 'Submissões de Pontuação nas últimas 24 Horas',
+            'users' => 'Utilizadores online nas últimas 24 horas',
+            'score' => 'Submissões de pontuação nas últimas 24 horas',
         ],
-        'current' => 'Utilizadores Online Atuais',
-        'score' => 'Submissões de Pontuação por Segundo',
+        'current' => 'Utilizadores online atuais',
+        'score' => 'Submissões de pontuação por segundo',
     ],
 
     'recent' => [
         'incidents' => [
-            'title' => 'Incidentes Recentes',
+            'title' => 'Incidentes recentes',
             'state' => [
-                'resolved' => 'Solucionados',
-                'resolving' => 'A Solucionar',
+                'resolved' => 'Resolvidos',
+                'resolving' => 'A resolver',
                 'unknown' => 'Desconhecido',
             ],
         ],
 
         'uptime' => [
-            'title' => 'Tempo Ativo',
+            'title' => 'Tempo ativo',
             'graphs' => [
                 'server' => 'servidor',
                 'web' => 'web',

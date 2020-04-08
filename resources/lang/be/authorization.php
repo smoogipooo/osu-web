@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Каб працягнуць, увайдзіце.',
+    'require_verification' => '',
+    'restricted' => "Нельга рабіць гэта падчас абмежавання.",
+    'silenced' => "Нельга рабіць гэта падчас зацішша.",
+    'unauthorized' => 'Доступ забаронены.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Нельга адмяніць хайп.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Немагчыма рэдагаваць аўтаматычна створаны допіс.',
-            'not_owner' => 'Толькі аўтар можа рэдагаваць допіс.',
+        'destroy' => [
+            'not_owner' => '',
+            'resolved' => '',
+            'system_generated' => '',
         ],
+
+        'edit' => [
+            'not_owner' => 'Толькі аўтар можа рэдагаваць допіс.',
+            'resolved' => '',
+            'system_generated' => 'Немагчыма рэдагаваць аўтаматычна створаны допіс.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Гэта бітмапа заблакавана для абмеркавання.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Толькі кіраўнік можа праглядаць гэты форум.',
         ],
     ],
-
-    'require_login' => 'Каб працягнуць, увайдзіце.',
-
-    'unauthorized' => 'Доступ забаронены.',
-
-    'silenced' => "Нельга рабіць гэта падчас зацішша.",
-
-    'restricted' => "Нельга рабіць гэта падчас абмежавання.",
 
     'user' => [
         'page' => [

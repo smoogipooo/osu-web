@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Zaloguj się, aby kontynuować.',
+    'require_verification' => 'Przejdź proces weryfikacji, aby kontynuować.',
+    'restricted' => "Nie możesz tego zrobić podczas blokady konta.",
+    'silenced' => "Nie możesz tego zrobić podczas uciszenia.",
+    'unauthorized' => 'Odmowa dostępu.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Nie możesz cofnąć nagłośnienia.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Nie możesz edytować automatycznie wygenerowanego posta.',
-            'not_owner' => 'Tylko autor posta może go edytować.',
+        'destroy' => [
+            'not_owner' => 'Możesz usuwać tylko swoje posty.',
+            'resolved' => 'Nie możesz usunąć posta z rozwiązanej dyskusji.',
+            'system_generated' => 'Nie możesz usunąć automatycznie wygenerowanego posta.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Tylko autor posta może go edytować.',
+            'resolved' => 'Nie możesz edytować posta z rozwiązanej dyskusji.',
+            'system_generated' => 'Nie możesz edytować automatycznie wygenerowanego posta.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Tworzenie dyskusji dla tej beatmapy zostało zablokowane.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Tylko administrator ma dostęp do tego forum.',
         ],
     ],
-
-    'require_login' => 'Zaloguj się, aby kontynuować.',
-
-    'unauthorized' => 'Odmowa dostępu.',
-
-    'silenced' => "Nie możesz tego zrobić podczas uciszenia.",
-
-    'restricted' => "Nie możesz tego zrobić podczas blokady konta.",
 
     'user' => [
         'page' => [

@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Αποτυχία αποθήκευσης δημοσίευσης',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Αποτυχία ενημέρωσης ψήφων',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'επίτρεψε kudosu',
+        'beatmap_information' => '',
         'delete' => 'διαγραφή',
         'deleted' => 'Διαγράφηκε από :editor :delete_time.',
         'deny_kudosu' => 'αρνήσου kudosu',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Αλλαγή Υποψηφιότητας',
             'praise' => 'Έπαινος',
             'problem' => 'Πρόβλημα',
+            'review' => '',
             'suggestion' => 'Πρόταση',
         ],
 
         'mode' => [
             'events' => 'Ιστορικό',
             'general' => 'Γενικά :scope',
+            'reviews' => '',
             'timeline' => 'Χρονολόγιο',
             'scopes' => [
                 'general' => 'Αυτή η δυσκολία',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Κάντε upvote αυτήν τη συζήτηση',
-            'down' => 'Κάντε downvote αυτήν τη συζήτηση',
+            'none' => [
+                'down' => 'Δεν υπάρχουν ακόμα downvotes',
+                'up' => 'Δεν υπάρχουν ακόμα upvotes',
+            ],
+            'latest' => [
+                'down' => 'Πιο πρόσφατα downvotes',
+                'up' => 'Πιο πρόσφατα upvotes',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nominate',
         'nominate_confirm' => 'Κάντε nominate αυτό το beatmap;',
         'nominated_by' => 'nominated από :users',
+        'not_enough_hype' => "",
         'qualified' => 'Εκτιμάται ότι θα γίνει ranked στις :date, εάν δεν βρεθεί κάποιο πρόβλημα.',
         'qualified_soon' => 'Εκτιμάται ότι θα γίνει ranked σύντομα, εάν δεν βρεθεί κάποιο πρόβλημα.',
         'required_text' => 'Υποψηφιότητες :current/:required',
@@ -244,14 +233,14 @@ return [
     'status' => [
         'any' => 'Οποιοδήποτε',
         'approved' => 'Approved',
-        'favourites' => '',
+        'favourites' => 'Αγαπημένα',
         'graveyard' => 'Νεκροταφείο',
-        'leaderboard' => '',
+        'leaderboard' => 'Έχει Πίνακα Βαθμολογίας',
         'loved' => 'Loved',
-        'mine' => '',
+        'mine' => 'Τα Maps Μου',
         'pending' => 'Pending & WIP',
         'qualified' => 'Qualified',
-        'ranked' => '',
+        'ranked' => 'Ranked',
     ],
     'genre' => [
         'any' => 'Οποιοδήποτε',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => '',
         'NC' => '',
         'NF' => '',
         'NM' => '',

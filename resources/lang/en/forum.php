@@ -1,47 +1,36 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Pinned Topics',
     'slogan' => "it's dangerous to play alone.",
     'subforums' => 'Subforums',
-    'title' => 'osu! forums',
+    'title' => 'Forums',
 
     'covers' => [
+        'edit' => 'Edit cover',
+
         'create' => [
             '_' => 'Set cover image',
-            'button' => 'Upload image',
+            'button' => 'Upload cover',
             'info' => 'Cover size should be at :dimensions. You can also drop your image here to upload.',
         ],
 
         'destroy' => [
-            '_' => 'Remove cover image',
+            '_' => 'Remove cover',
             'confirm' => 'Are you sure you want to remove the cover image?',
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] New reply for topic ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Latest Post',
+
+        'index' => [
+            'title' => 'Forum Index',
+        ],
+
         'topics' => [
             'empty' => 'No topics!',
         ],
@@ -53,24 +42,22 @@ return [
         'busy' => 'Marking as read...',
     ],
 
-    'poll' => [
-        'edit_warning' => 'Editing a poll will remove the current results!',
-
-        'actions' => [
-            'edit' => 'Edit poll',
-        ],
-    ],
-
     'post' => [
         'confirm_destroy' => 'Really delete post?',
         'confirm_restore' => 'Really restore post?',
-        'edited' => 'Last edited by :user :when, edited :count times in total.',
+        'edited' => 'Last edited by :user :when, edited :count_delimited time in total.|Last edited by :user :when, edited :count_delimited times in total.',
         'posted_at' => 'posted :when',
 
         'actions' => [
             'destroy' => 'Delete post',
             'restore' => 'Restore post',
             'edit' => 'Edit post',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => 'New reply',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'started by :user',
 
         'create' => [
+            'close' => 'Close',
             'preview' => 'Preview',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Forum Subscriptions',
             'title_compact' => 'forum subscriptions',
-            'title_main' => 'Forum <strong>Subscriptions</strong>',
 
             'box' => [
                 'total' => 'Topics subscribed',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'This topic is locked and can not be replied to',
             'to_0' => 'Unlock topic',
+            'to_0_confirm' => 'Unlock topic?',
             'to_0_done' => 'Topic has been unlocked',
             'to_1' => 'Lock topic',
+            'to_1_confirm' => 'Lock topic?',
             'to_1_done' => 'Topic has been locked',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Unpin topic',
+            'to_0_confirm' => 'Unpin topic?',
             'to_0_done' => 'Topic has been unpinned',
             'to_1' => 'Pin topic',
+            'to_1_confirm' => 'Pin topic?',
             'to_1_done' => 'Topic has been pinned',
             'to_2' => 'Pin topic and mark as announcement',
+            'to_2_confirm' => 'Pin topic and mark as announcement?',
             'to_2_done' => 'Topic has been pinned and marked as announcement',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Show deleted posts',
+            'hide' => 'Hide deleted posts',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Poll Edit',
+                'edit_warning' => 'Editing a poll will remove the current results!',
                 'vote' => 'Vote',
+
+                'button' => [
+                    'change_vote' => 'Change vote',
+                    'edit' => 'Edit poll',
+                    'view_results' => 'Skip to results',
+                    'vote' => 'Vote',
+                ],
 
                 'detail' => [
                     'end_time' => 'Polling will end at :time',

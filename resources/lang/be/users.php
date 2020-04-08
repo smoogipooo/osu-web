@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[выдалены карыстальнік]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'адправіць паведамленне',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => '',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => '',
+                'tos' => '',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Увайсці',
-        'locked_ip' => 'ваш IP-адрас заблакаваны. Пачакайце некалькі хвілін.',
-        'username' => 'Імя карыстальніка',
-        'password' => 'Пароль',
         'button' => 'Увайсці',
         'button_posting' => 'Уваход...',
+        'email_login_disabled' => '',
+        'failed' => 'Няправільны ўваход',
+        'forgot' => 'Забылі свой пароль?',
+        'info' => '',
+        'locked_ip' => 'ваш IP-адрас заблакаваны. Пачакайце некалькі хвілін.',
+        'password' => 'Пароль',
+        'register' => "Вы яшчэ не маеце ўліковага запісу osu!? Стварыце новы",
         'remember' => 'Запомніць гэта камп\'ютар',
         'title' => 'Каб працягнуць, увайдзіце',
-        'failed' => 'Няправільны ўваход',
-        'register' => "Вы яшчэ не маеце ўліковага запісу osu!? Стварыце новы",
-        'forgot' => 'Забылі свой пароль?',
+        'username' => 'Імя карыстальніка',
+
         'beta' => [
             'main' => 'Доступ да бэта-версіі абмежаваны.',
             'small' => '(osu!supporters хутка атрымаць доступ)',
         ],
-
-        'here' => 'тут', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'допісаў :username',
     ],
 
-    'signup' => [
-        '_' => 'Рэгістрацыя',
-    ],
     'anonymous' => [
         'login_link' => 'націсніце, каб увайсці',
         'login_text' => 'увайсці',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => 'Фармат не падтрымліваецца.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Запампоўка даступна толькі для :link',
+                        'link' => 'osu!supporters',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => ':count падпісчык|:count падпісчыкі|:count падпісчыкаў',
+            'none' => '',
             'unranked' => 'Няма нядаўніх гульняў',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Чаканыя бітмапы',
                 ],
             ],
+            'discussions' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
+            'events' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'historical' => [
                 'empty' => 'Няма прадукцыйных спісаў. :(',
                 'title' => 'Храналогія',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Кудосу даступна',
-                'available_info' => "Кудосу могуць быць выкарыстаны для абмену паміж іншымі ўладальнікамі бітмап, якія могуць дапамагчы вам прыцягнуць да вашай бітмапы больш увагі. Гэта колькасць кудосу, якую вы не выкарыстоўвалі.",
                 'recent_entries' => 'Нядаўняя гісторыя кудосу',
                 'title' => 'Кудосу!',
                 'total' => 'Агулам зароблена кудосу',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Залежыць ад таго, колькі укладу карыстальнік унёс у мадэрацыю бітмапы. Глядзіце :link, каб даведацца больш.',
+                    'link' => 'гэту старонку',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Гэты карыстальнік яшчэ нічога не атрымаў. ;_;",
                 'recent' => 'Апошнія',
                 'title' => 'Медалі',
+            ],
+            'posts' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
             ],
             'recent_activity' => [
                 'title' => 'Нядаўняя актыўнасць',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Першыя месцы ў рэйтынгу',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => '',
+                'title_longer' => '',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Стан уліковага запісу',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Гулец :info',
-            'info' => 'Інфармацыя',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => 'Напішыце змесціва старонкі тут',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Каб разблакаваць гэту функцыю патрэбны: :link.',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Рэйтынг па ачках',
             'total_hits' => 'Усяго патрапленняў',
             'total_score' => 'Усяго ачкоў',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => '',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '',
+        'card' => 'Картачны выгляд',
+        'list' => 'У выглядзе спіса',
     ],
 ];

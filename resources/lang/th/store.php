@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'admin' => [
@@ -25,8 +10,9 @@ return [
 
     'cart' => [
         'checkout' => 'ชำระเงิน',
+        'info' => '',
         'more_goodies' => 'ฉันอยากจะดูของอยากอื่นก่อนที่จะดําเนินการสั่งซื้อ',
-        'shipping_fees' => 'ค่าธรรมเนียมการจัดส่งสินค้า',
+        'shipping_fees' => 'ค่าส่ง',
         'title' => 'ตะกร้าสินค้า',
         'total' => 'ทั้งหมด',
 
@@ -36,7 +22,7 @@ return [
         ],
 
         'empty' => [
-            'text' => 'ไม่มีสินค้าอยู่ในตะกร้าสินค้าของคุณ',
+            'text' => 'ตะกร้าสินค้าว่าง',
             'return_link' => [
                 '_' => 'กลับไปที่ :link เพื่อดูสินค้าอื่นๆ!',
                 'link_text' => 'รายการร้านค้า',
@@ -51,6 +37,7 @@ return [
         'delayed_shipping' => 'ขณะนี้เราได้รับการสั่งสินค้าเป็นจำนวนมาก เราขอขอบคุณที่คุณซื้อสินค้ากับเรา แต่สินค้าอาจจะถึงมือคุณ**ช้าลง 1-2 สัปดาห์** เพื่อเราจะสามารถจัดการกับรายการสั่งสินค้าที่มีอยู่ก่อนได้',
         'old_cart' => 'เหมือนว่าตะกร้าสินค้าของคุณจะเก่าและได้ทำการรีโหลดให้แล้ว กรุณาลองใหม่อีกครั้ง',
         'pay' => 'ชำระด้วย PayPal',
+        'title_compact' => '',
 
         'has_pending' => [
             '_' => 'คุณยังมีการชำระเงินที่ค้างอยู่ คลิกที่นี่ :link เพื่อตรวจสอบ',
@@ -67,6 +54,8 @@ return [
 
     'invoice' => [
         'echeck_delay' => 'เนื่องจากการชำระเงินของคุณเป็น eCheck โปรดรอเพิ่มอีก 10 วันเพื่อให้การชำระเงินผ่าน PayPal!',
+        'title_compact' => '',
+
         'status' => [
             'processing' => [
                 'title' => 'การชำระเงินของคุณยังไม่ได้รับการยืนยัน!',
@@ -76,12 +65,6 @@ return [
                     'link_text' => 'คลิกที่นี่แล้วดำเนินการชำระเงินต่อ',
                 ],
             ],
-        ],
-    ],
-
-    'mail' => [
-        'payment_completed' => [
-            'subject' => 'เราได้รับคำสั่งซื้อ osu!store ของคุณแล้ว!',
         ],
     ],
 
@@ -123,8 +106,8 @@ return [
         'name' => 'ชื่อ',
 
         'stock' => [
-            'out' => 'สินค้านี้ได้หมดไปแล้ว กลับมาดูอีกรอบในภายหลัง!',
-            'out_with_alternative' => 'น่าเสียดายสินค้านี้หมดแล้ว กรุณากดที่ลูกศรเพื่อเปลี่ยนรูปแบบสินค้า หรือกลับมาดูอีกรอบในภายหลัง!',
+            'out' => 'สินค้านี้หมดแล้ว มาตอนหลังนะ',
+            'out_with_alternative' => 'สินค้านี้หมดแล้ว ลองกดปุ่ม Dropdown เพื่อดูรูปแบบสินค้าอื่น หรือมาดูอีกทีตอนหลังก็ได้',
         ],
 
         'add_to_cart' => 'เพิ่มไปยังตะกร้า',
@@ -151,5 +134,9 @@ return [
             '_' => 'คุณจะต้อง:linkจึงจะเปลี่ยนชื่อได้!',
             'link_text' => 'เข้าสู่ระบบ',
         ],
+    ],
+
+    'xsolla' => [
+        'distributor' => '',
     ],
 ];

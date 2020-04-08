@@ -1,25 +1,14 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'index' => [
+        'description' => '비슷한 테마를 기준으로 모아놓은 비트맵 모음집입니다.',
+        'nav_title' => '목록',
+        'title' => '비트맵 팩',
+
         'blurb' => [
             'important' => '[[ 다운로드 하기 전에 읽어주세요 ]]',
             'instruction' => [
@@ -34,8 +23,6 @@ return [
                 'scary' => '최근에 나온 맵팩 순으로 내려받는 것',
             ],
         ],
-        'title' => '비트맵 팩',
-        'description' => '비슷한 테마를 기준으로 모아놓은 비트맵 모음집입니다.',
     ],
 
     'show' => [

@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => 'Jsi si jist/á?',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ', a ',
     ],
 
+    'badges' => [
+        'new' => 'NOVÝ',
+    ],
+
     'buttons' => [
         'admin' => 'Admin',
+        'authorise' => 'Autorizovat',
+        'authorising' => '',
         'back_to_previous' => 'Zpátky na předchozí pozici',
         'back_to_top' => 'Zpátky nahoru',
         'cancel' => 'Zrušit',
         'change' => 'změnit',
         'click_to_copy' => 'klikněte pro zkopírování do schránky',
         'click_to_copy_copied' => 'zkopírováno do schránky!',
+        'close' => 'Zavřít',
         'collapse' => 'zabalit',
         'delete' => 'Smazat',
         'edit' => 'Upravit',
         'expand' => 'rozbalit',
         'hide' => 'skrýt',
         'permalink' => 'trvalý odkaz',
-        'permalink_copied' => 'odkaz zkopírován',
+        'pin' => 'připnout',
         'post' => 'Přidat příspěvek',
         'reply' => 'Odpovědět',
         'reply_reopen' => 'Odpovědět a znovu otevřít',
@@ -56,8 +48,11 @@ return [
         'see_more' => 'zobrazit více',
         'show' => 'zobrazit',
         'show_deleted' => 'Zobrazit smazané',
+        'show_less' => 'ukázat méně',
         'show_more' => 'zobrazit více',
         'show_more_options' => 'zobrazit více možností',
+        'unpin' => 'odepnout',
+        'update' => 'Aktualizovat',
         'upload_image' => 'nahrát obrázek',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => 'min',
         'minutes' => ':count minuta|:count minuty|:count minut',
         'months' => ':count měsíc|:count měsíců',
+        'notifications' => '',
+        'plus_others' => '',
+        'post' => '',
         'second_short_unit' => 'sek',
+        'star_priority' => '',
         'update' => ':count_delimited aktualizace|:count_delimited aktualizace',
+        'view' => '',
         'years' => ':count rok|:count let',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => 'přetáhněte sem soubor pro nahrání',
     ],
 
+    'input' => [
+        'search' => 'hledat...',
+    ],
+
     'pagination' => [
         'previous' => 'předchozí',
         'next' => 'další',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => 'Oznámení',
+    ],
+
+    'wrong_user' => [
+        '_' => '',
+        'logout_link' => '',
     ],
 ];

@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute 不能为负数。',
     'required' => '需要 :attribute 。',
     'too_long' => ':attribute 超出最大长度——最多允许 :limit 个字符。',
@@ -29,7 +15,7 @@ return [
         'first_post' => '无法删除第一个讨论。',
 
         'attributes' => [
-            'message' => '',
+            'message' => '消息',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => '讨论被锁定。',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => '消息类型',
+            'timestamp' => '时间戳',
         ],
 
         'hype' => [
+            'discussion_locked' => "这张谱面正处于锁定状态以便进行讨论，目前不能被推荐",
             'guest' => '登录后才能推荐',
             'hyped' => '你已经推荐了这张谱面',
             'limit_exceeded' => '你已经用光了推荐次数',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => '不能回复已删除的评论。',
+        'top_only' => '暂不允许将回复置顶',
 
         'attributes' => [
-            'message' => '',
+            'message' => '消息',
         ],
     ],
 
@@ -88,13 +76,13 @@ return [
             'only_quote' => '你的回复仅包含引用',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => '帖子主体',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => '主题标题',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => '选项数量超出限制。',
 
             'attributes' => [
-                'title' => '',
+                'title' => '投票标题',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'OAuth 应用数量超出限制。',
+            'url' => '请输入一个有效的 URL。',
+
+            'attributes' => [
+                'name' => '应用名称',
+                'redirect' => '应用回调 URL',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => '密码不能包含用户名。',
         'email_already_used' => '邮箱已被使用。',
         'invalid_country' => '国家未被数据库收录。',
         'invalid_discord' => 'Discord 用户名无效。',
         'invalid_email' => "无效的邮箱地址。",
+        'invalid_twitter' => 'Twitter 用户名无效',
         'too_short' => '新密码太短。',
         'unknown_duplicate' => '用户名或邮箱已被使用。',
         'username_available_in' => '该用户名将在 :duration 后可用。',
@@ -143,9 +144,9 @@ return [
         'too_long' => '超出长度限制——最多为 :limit 个字符。',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => '用户名',
+            'user_email' => '电子邮件地址',
+            'password' => '密码',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => ':reason 不符合此报告类型。',
         'self' => "无法举报自己",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => '数量',
+                'cost' => '价格',
             ],
         ],
     ],

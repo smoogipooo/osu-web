@@ -1,48 +1,75 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'defaults' => [
         'page_description' => 'osu! - Chỉ bắt đầu bằng một cái *click* chuột!  Với Ouendan/EBA, Taiko và những chế độ chơi nguyên bản, cũng như một level editor đầy đủ chức năng.',
     ],
 
+    'header' => [
+        'admin' => [
+            'beatmapset' => 'beatmapset',
+            'beatmapset_covers' => 'bìa beatmapset',
+            'contest' => 'cuộc thi',
+            'contests' => 'các cuộc thi',
+            'root' => '',
+            'store_orders' => '',
+        ],
+
+        'artists' => [
+            'index' => 'danh sách',
+        ],
+
+        'changelog' => [
+            'index' => 'danh sách',
+        ],
+
+        'help' => [
+            'index' => 'mục lục',
+            'sitemap' => '',
+        ],
+
+        'store' => [
+            'cart' => 'giỏ hàng',
+            'orders' => 'lịch sử đơn hàng',
+            'products' => 'mặt hàng',
+        ],
+
+        'tournaments' => [
+            'index' => 'danh sách',
+        ],
+
+        'users' => [
+            'modding' => 'modding',
+            'show' => 'thông tin',
+        ],
+    ],
+
+    'gallery' => [
+        'close' => 'Đóng (Esc)',
+        'fullscreen' => '',
+        'zoom' => '',
+        'previous' => '',
+        'next' => '',
+    ],
+
     'menu' => [
-        'home' => [
-            '_' => 'trang chủ',
-            'account-edit' => 'cài đặt',
-            'account-verifyLink' => '',
-            'friends-index' => 'bạn bè',
-            'changelog-index' => 'changelog',
-            'changelog-build' => 'build',
-            'getDownload' => 'tải xuống',
-            'getIcons' => 'biểu tượng',
-            'groups-show' => 'nhóm',
-            'index' => 'tổng quan',
-            'legal-show' => 'thông tin',
-            'messages-index' => 'tin nhắn',
-            'news-index' => 'tin tức',
-            'news-show' => 'tin tức',
-            'password-reset-index' => 'đặt lại mật khẩu',
-            'search' => 'tìm kiếm',
-            'supportTheGame' => 'ủng hộ osu!',
-            'team' => 'team',
+        'beatmaps' => [
+            '_' => 'beatmaps',
+            'artists' => 'nghệ sĩ tiêu biểu',
+            'index' => 'danh sách',
+            'packs' => 'gói',
+        ],
+        'community' => [
+            '_' => 'cộng đồng',
+            'chat' => 'chat',
+            'contests' => 'cuộc thi',
+            'dev' => 'phát triển',
+            'forum-forums-index' => 'diễn đàn',
+            'getLive' => 'live stream',
+            'tournaments' => 'giải đấu',
         ],
         'help' => [
             '_' => 'trợ giúp',
@@ -50,123 +77,28 @@ return [
             'getRules' => 'quy tắc',
             'getSupport' => 'không, thật đó, tôi cần giúp đỡ!',
             'getWiki' => 'wiki',
-            'wiki-show' => 'wiki',
         ],
-        'beatmaps' => [
-            '_' => 'beatmaps',
-            'artists' => 'nghệ sĩ tiêu biểu',
-            'beatmap_discussion_posts-index' => 'bài đăng góc thảo luận beatmap',
-            'beatmap_discussions-index' => 'góc thảo luận beatmap',
-            'beatmapset-watches-index' => 'theo dõi modding',
-            'beatmapset_discussion_votes-index' => 'bình chọn góc thảo luận beatmap',
-            'beatmapset_events-index' => 'sự kiện beatmapset',
-            'index' => 'danh sách',
-            'packs' => 'gói',
-            'show' => 'thông tin',
-        ],
-        'beatmapsets' => [
-            '_' => 'beatmaps',
-            'discussion' => 'modding',
+        'home' => [
+            '_' => 'trang chủ',
+            'changelog-index' => 'changelog',
+            'getDownload' => 'tải xuống',
+            'news-index' => 'tin tức',
+            'search' => 'tìm kiếm',
+            'team' => 'team',
         ],
         'rankings' => [
             '_' => 'xếp hạng',
-            'index' => 'performance',
-            'performance' => 'performance',
             'charts' => 'tiêu điểm',
-            'score' => 'điểm',
             'country' => 'quốc gia',
+            'index' => 'performance',
             'kudosu' => 'kudosu',
-        ],
-        'community' => [
-            '_' => 'cộng đồng',
-            'chat' => 'chat',
-            'chat-index' => 'chat',
-            'dev' => 'phát triển',
-            'getForum' => 'diễn đàn',
-            'getLive' => 'live stream',
-            'comments-index' => 'bình luận',
-            'comments-show' => 'bình luận',
-            'contests' => 'cuộc thi',
-            'profile' => 'trang cá nhân',
-            'tournaments' => 'giải đấu',
-            'tournaments-index' => 'giải đấu',
-            'tournaments-show' => 'thông tin giải đấu',
-            'forum-topic-watches-index' => 'đăng kí',
-            'forum-topics-create' => 'diễn đàn',
-            'forum-topics-show' => 'diễn đàn',
-            'forum-forums-index' => 'diễn đàn',
-            'forum-forums-show' => 'diễn đàn',
-        ],
-        'multiplayer' => [
-            '_' => 'multiplayer',
-            'show' => 'trận đấu ',
-        ],
-        'error' => [
-            '_' => 'lỗi',
-            '404' => 'không tìm thấy',
-            '403' => 'cấm',
-            '401' => 'trái phép',
-            '405' => 'không tìm thấy',
-            '500' => 'có gì đó bị hỏng',
-            '503' => 'bảo trì',
-        ],
-        'user' => [
-            '_' => 'người chơi',
-            'getLogin' => 'đăng nhập',
-            'disabled' => 'đã tắt',
-
-            'register' => 'đăng kí',
-            'reset' => 'khôi phục',
-            'new' => 'mới',
-
-            'help' => 'Trợ Giúp',
-            'logout' => 'Đăng Xuất',
-            'messages' => 'Tin Nhắn',
-            'modding-history-discussions' => 'thảo luận modding của người dùng',
-            'modding-history-events' => 'sự kiện modding của người dùng',
-            'modding-history-index' => 'lịch sử modding của người dùng',
-            'modding-history-posts' => 'bài đăng modding của người dùng',
-            'modding-history-votesGiven' => 'modding votes đã cho của người dùng',
-            'modding-history-votesReceived' => 'modding votes đã nhận của người dùng',
-            'oauth_login' => 'đăng nhập cho oauth',
-            'oauth_request' => 'ủy quyền oauth',
-            'settings' => 'Cài Đặt',
+            'score' => 'điểm',
         ],
         'store' => [
             '_' => 'cửa hàng',
-            'checkout-show' => 'thanh toán',
-            'getListing' => 'danh sách',
             'cart-show' => 'giỏ hàng',
-
-            'getCheckout' => 'thanh toán',
-            'getInvoice' => 'hóa đơn',
+            'getListing' => 'danh sách',
             'orders-index' => 'lịch sử đơn hàng',
-            'products-show' => 'mặt hàng',
-
-            'new' => 'mới',
-            'home' => 'trang chủ',
-            'index' => 'trang chủ',
-            'thanks' => 'cảm ơn',
-        ],
-        'admin-forum' => [
-            '_' => 'admin::forum',
-            'forum-covers-index' => 'bìa diễn đàn',
-        ],
-        'admin-store' => [
-            '_' => 'admin::store',
-            'orders-index' => 'đơn hàng',
-            'orders-show' => 'đơn hàng',
-        ],
-        'admin' => [
-            '_' => 'admin',
-            'beatmapsets-covers' => 'bìa beatmapset',
-            'logs-index' => 'log',
-            'root' => 'mục lục',
-
-            'beatmapsets' => [
-                '_' => 'beatmapsets',
-                'show' => 'chi tiết',
-            ],
         ],
     ],
 
@@ -177,7 +109,6 @@ return [
             'changelog-index' => 'Changelog',
             'beatmaps' => 'Danh Sách Beatmap',
             'download' => 'Tải Xuống osu!',
-            'wiki' => 'Wiki',
         ],
         'help' => [
             '_' => 'Giúp Đỡ & Cộng Đồng',
@@ -185,6 +116,7 @@ return [
             'forum' => 'Diễn Đàn',
             'livestreams' => 'Live Streams',
             'report' => 'Báo Cáo Một Vấn Đề',
+            'wiki' => 'Wiki',
         ],
         'legal' => [
             '_' => 'Pháp Lý & Trạng Thái',
@@ -213,6 +145,10 @@ return [
             'error' => 'Không Tìm Thấy Trang',
             'description' => "Xin lỗi, nhưng trang bạn yêu cầu không có ở đây!",
         ],
+        '422' => [
+            'error' => '',
+            'description' => '',
+        ],
         '500' => [
             'error' => 'Ồ không! Có gì đó đã bị hỏng! ;_;',
             'description' => "Chúng tôi sẽ được tự động thông báo về mọi lỗi.",
@@ -235,10 +171,10 @@ return [
 
     'popup_login' => [
         'login' => [
-            'email' => 'địa chỉ email',
             'forgot' => "Quên mật khẩu",
             'password' => 'password',
             'title' => 'Đăng Nhập Để Tiếp Tục',
+            'username' => 'tên người dùng',
 
             'error' => [
                 'email' => "Tài khoản hoặc địa chỉ email không tồn tại",
@@ -247,7 +183,8 @@ return [
         ],
 
         'register' => [
-            'info' => "Bạn cần một tài khoản. Tại sao bạn lại không có chứ?",
+            'download' => 'Tải xuống',
+            'info' => 'Bạn cần một tài khoản. Tại sao bạn lại không có chứ?',
             'title' => "Chưa có tài khoản?",
         ],
     ],

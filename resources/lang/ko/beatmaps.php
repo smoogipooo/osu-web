@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => '답글 저장 실패',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => '투표 변경 실패',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'kudosu 허용하기',
+        'beatmap_information' => '비트맵 페이지',
         'delete' => '삭제',
         'deleted' => ':delete_time에 :editor님에 의해 삭제되었습니다',
         'deny_kudosu' => 'kudosu 박탈하기',
@@ -68,7 +48,7 @@ return [
 
             'prompt' => [
                 'lock' => '잠긴 이유',
-                'unlock' => '잠금 해제하시겠습니까?',
+                'unlock' => '잠금 해제하시겠어요?',
             ],
         ],
 
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => '지명 초기화',
             'praise' => '칭찬',
             'problem' => '문제',
+            'review' => '검토',
             'suggestion' => '제안',
         ],
 
         'mode' => [
             'events' => '기록',
             'general' => '일반 :scope',
+            'reviews' => '평가',
             'timeline' => '타임라인',
             'scopes' => [
                 'general' => '해당 난이도',
@@ -125,7 +107,7 @@ return [
             'deleted' => '삭제됨',
             'mapper_notes' => '노트',
             'mine' => '내 글',
-            'pending' => '토론중',
+            'pending' => 'Pending',
             'praises' => '칭찬',
             'resolved' => '해결됨',
             'total' => '모두',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => '이 토론을 추천하기',
-            'down' => '이 토론을 비추천하기',
+            'none' => [
+                'down' => '아직 비추천이 없습니다',
+                'up' => '아직 추천이 없습니다',
+            ],
+            'latest' => [
+                'down' => '최근 비추천',
+                'up' => '최근 추천',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => '지명',
         'nominate_confirm' => '이 비트맵을 지명하시겠습니까?',
         'nominated_by' => ':users님이 지명함',
+        'not_enough_hype' => "Hype 수가 부족합니다.",
         'qualified' => '문제가 발견되지 않으면 :date에 랭크됩니다.',
         'qualified_soon' => '문제가 발견되지 않으면 곧 랭크됩니다.',
         'required_text' => '지명 수: :current/:required',
@@ -244,14 +233,14 @@ return [
     'status' => [
         'any' => '모두',
         'approved' => 'Approved',
-        'favourites' => '',
+        'favourites' => '즐겨찾기',
         'graveyard' => 'Graveyard',
-        'leaderboard' => '',
+        'leaderboard' => '리더보드 있음',
         'loved' => 'Loved',
-        'mine' => '',
+        'mine' => '내 비트맵',
         'pending' => '보류 중 & 작업 중',
         'qualified' => 'Qualified',
-        'ranked' => '',
+        'ranked' => 'Ranked',
     ],
     'genre' => [
         'any' => '모두',
@@ -280,6 +269,7 @@ return [
         'HD' => 'Hidden',
         'HR' => 'Hard Rock',
         'HT' => 'Half Time',
+        'MR' => '미러',
         'NC' => 'Nightcore',
         'NF' => 'No Fail',
         'NM' => '모드 없음',

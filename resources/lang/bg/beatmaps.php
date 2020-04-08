@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Неуспешно запазване на публикацията',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Неуспешно актуализиране на гласуването',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'разреши kudosu',
+        'beatmap_information' => '',
         'delete' => 'изтрий',
         'deleted' => 'Изтрито от :editor :delete_time.',
         'deny_kudosu' => 'забрани kudosu',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Анулирай Номинацията',
             'praise' => 'Възхвали',
             'problem' => 'Проблем',
+            'review' => '',
             'suggestion' => 'Предложение',
         ],
 
         'mode' => [
             'events' => 'История',
             'general' => 'Обща :scope',
+            'reviews' => '',
             'timeline' => 'Времева лента',
             'scopes' => [
                 'general' => 'Тази трудност',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => '',
-            'down' => '',
+            'none' => [
+                'down' => '',
+                'up' => '',
+            ],
+            'latest' => [
+                'down' => '',
+                'up' => '',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Номинирай',
         'nominate_confirm' => 'Номинирай този бийтмап?',
         'nominated_by' => 'номиниран от :users',
+        'not_enough_hype' => "",
         'qualified' => 'Очаква се да бъде класиран :date, ако няма открити проблеми.',
         'qualified_soon' => 'Очаква се да бъде класиран скоро, ако няма открити проблеми.',
         'required_text' => 'Номинации: :current/:required',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => '',
         'NC' => '',
         'NF' => '',
         'NM' => '',

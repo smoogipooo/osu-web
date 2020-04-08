@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[người dùng đã bị xóa]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'gửi tin nhắn',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => '',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => '',
+                'tos' => '',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Đăng nhập',
-        'locked_ip' => 'Địa chỉ IP của bạn đã bị khóa. Vui lòng đợi một vài phút.',
-        'username' => 'Tên tài khoản',
-        'password' => 'Mật khẩu',
         'button' => 'Đăng nhập',
         'button_posting' => 'Đang đăng nhập...',
+        'email_login_disabled' => '',
+        'failed' => 'Đăng nhập không chính xác',
+        'forgot' => 'Quên mật khẩu?',
+        'info' => '',
+        'locked_ip' => 'Địa chỉ IP của bạn đã bị khóa. Vui lòng đợi một vài phút.',
+        'password' => 'Mật khẩu',
+        'register' => "Không có tài khoản osu!? Tạo một tài khoản mới",
         'remember' => 'Nhớ máy tính này',
         'title' => 'Vui lòng đăng nhập để tiếp tục',
-        'failed' => 'Đăng nhập không chính xác',
-        'register' => "Không có tài khoản osu!? Tạo một tài khoản mới",
-        'forgot' => 'Quên mật khẩu?',
+        'username' => 'Tên tài khoản',
+
         'beta' => [
             'main' => 'Quyền truy cập bản thử nghiệm hiện bị hạn chế cho người dùng đặc quyền.',
             'small' => '(người ủng hộ sẽ sớm được tham gia)',
         ],
-
-        'here' => 'tại đây', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'Bài đăng của :username',
     ],
 
-    'signup' => [
-        '_' => 'Đăng kí',
-    ],
     'anonymous' => [
         'login_link' => 'nhấp để đăng nhập',
         'login_text' => 'đăng nhập',
@@ -132,7 +142,7 @@ return [
         'is_supporter' => 'osu!supporter',
         'joined_at' => 'Đã tham gia :date',
         'lastvisit' => 'Lần cuối hoạt động :date',
-        'lastvisit_online' => '',
+        'lastvisit_online' => 'Hiện đang trực tuyến',
         'missingtext' => 'Có thể bạn đã thực hiện một lỗi đánh máy! (hoặc người dùng này có thể đã bị ban)',
         'origin_country' => 'Từ :country',
         'page_description' => 'osu! - Tất cả những bì bạn muốn biết về :username!',
@@ -154,7 +164,7 @@ return [
                     'unsupported_format' => 'Định dạng không được hỗ trợ.',
 
                     'restriction_info' => [
-                        '_' => '',
+                        '_' => 'Tải lên chỉ có sẵn cho :link',
                         'link' => '',
                     ],
                 ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => ':count người theo dõi',
+            'none' => 'không có',
             'unranked' => 'Không chơi gần đây',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Beatmap Đang Chờ',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Thảo luận',
+                'title_longer' => 'Thảo luận gần đây',
+                'show_more' => 'xem thảo luận khác',
+            ],
+            'events' => [
+                'title' => 'Sự kiện',
+                'title_longer' => 'Sự kiện gần đây',
+                'show_more' => 'xem sự kiện khác',
+            ],
             'historical' => [
                 'empty' => 'Chưa ghi nhận điểm. :(',
                 'title' => 'Lịch Sử',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu Có Sẵn',
-                'available_info' => "Kudosu có thể được chuyển thành kudosu stars, chúng có thể giúp beatmap của bạn nhận được nhiều sự chú ý hơn. Đây là số kudosu bạn chưa chuyển đổi.",
                 'recent_entries' => 'Lịch Sử Kudosu Gần Đây',
                 'title' => 'Kudosu!',
                 'total' => 'Tông Số Kudosu Nhận Được',
@@ -265,7 +283,7 @@ return [
 
                 'total_info' => [
                     '_' => '',
-                    'link' => '',
+                    'link' => 'trang này',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Người dùng này chưa có huy chương nào cả. ;_;",
                 'recent' => 'Gần Nhất',
                 'title' => 'Huy Chương',
+            ],
+            'posts' => [
+                'title' => 'Bài viết',
+                'title_longer' => 'Bài viết gần đây',
+                'show_more' => 'xem bài viết khác',
             ],
             'recent_activity' => [
                 'title' => 'Gần Đây',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Xếp Hạng Nhất',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => '',
+                'title_longer' => '',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Trạng Thái Tài Khoản',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => ':info Người Chơi',
-            'info' => 'Thông Tin',
         ],
 
         'info' => [
@@ -372,11 +397,16 @@ return [
             'score_ranks' => 'Điểm Số',
             'total_hits' => 'Tổng Lần Bấm',
             'total_score' => 'Tổng Điểm',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => '',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
     'status' => [
-        'all' => '',
+        'all' => 'Tất cả',
         'online' => 'Online',
         'offline' => 'Offline',
     ],
@@ -388,6 +418,7 @@ return [
     ],
 
     'view_mode' => [
+        'brick' => '',
         'card' => '',
         'list' => '',
     ],

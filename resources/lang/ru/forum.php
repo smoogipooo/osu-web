@@ -1,30 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Закреплённые темы',
     'slogan' => "опасно играть одному.",
     'subforums' => 'Подфорумы',
-    'title' => 'osu! форум',
+    'title' => 'Форумы',
 
     'covers' => [
+        'edit' => 'Редактировать обложку',
+
         'create' => [
             '_' => 'Установить обложку',
             'button' => 'Загрузить изображение',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Новый ответ в теме ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Последнее сообщение',
+
+        'index' => [
+            'title' => 'Заглавная страница Форума',
+        ],
+
         'topics' => [
             'empty' => 'Нет тем!',
         ],
@@ -53,24 +42,22 @@ return [
         'busy' => 'Отмечается как прочитанное...',
     ],
 
-    'poll' => [
-        'edit_warning' => 'Изменение опроса сбросит текущие ответы!',
-
-        'actions' => [
-            'edit' => 'Изменить опрос',
-        ],
-    ],
-
     'post' => [
         'confirm_destroy' => 'Удалить ответ?',
         'confirm_restore' => 'Восстановить ответ?',
-        'edited' => 'Последний раз отредактирован :user в :when, отредактирован :count раз.',
+        'edited' => 'Последний раз отредактирован :user :when, отредактирован :count раз.',
         'posted_at' => 'написано :when',
 
         'actions' => [
             'destroy' => 'Удалить ответ',
             'restore' => 'Восстановить ответ',
             'edit' => 'Редактировать ответ',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => 'Новый ответ',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'начато :user',
 
         'create' => [
+            'close' => 'Закрыть',
             'preview' => 'Предпросмотр',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Темы, на которые вы подписаны',
             'title_compact' => 'подписки на темы',
-            'title_main' => '<strong>Подписки</strong> на темы',
 
             'box' => [
                 'total' => 'Подписок на тем',
@@ -188,7 +174,7 @@ return [
                 'max_options' => 'Количество ответов',
                 'max_options_info' => 'Укажите количество вариантов, за которые сможет проголосовать каждый пользователь.',
                 'options' => 'Варианты ответа',
-                'options_info' => 'Каждый вариант в новой строке. Ты можешь ввести до 10 вариантов.',
+                'options_info' => 'Разместите каждый вариант на новой строке. Вы можете ввести до 10 вариантов.',
                 'title' => 'Вопрос',
                 'vote_change' => 'Разрешить повторный ответ.',
                 'vote_change_info' => 'Если включено, пользователи могут изменить свой ответ.',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Эта тема закрыта и ответить в нём невозможно',
             'to_0' => 'Открыть тему',
+            'to_0_confirm' => 'Открыть тему?',
             'to_0_done' => 'Тема открыта',
             'to_1' => 'Закрыть тему',
+            'to_1_confirm' => 'Закрыть тему?',
             'to_1_done' => 'Тема закрыта',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Открепить тему',
+            'to_0_confirm' => 'Открепить тему?',
             'to_0_done' => 'Тема откреплена',
             'to_1' => 'Закрепить тему',
+            'to_1_confirm' => 'Закрепить тему?',
             'to_1_done' => 'Тема закреплена',
             'to_2' => 'Закрепить тему и отметить как анонс',
+            'to_2_confirm' => 'Закрепить тему и отметить как объявление?',
             'to_2_done' => 'Тема закреплена и отмечена как анонс',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Показать удалённые сообщения',
+            'hide' => 'Скрыть удалённые сообщения',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Редактирование опроса',
+                'edit_warning' => 'Изменение опроса удалит текущие результаты!',
                 'vote' => 'Голосовать',
+
+                'button' => [
+                    'change_vote' => 'Изменить голос',
+                    'edit' => 'Изменить опрос',
+                    'view_results' => 'Посмотреть результаты',
+                    'vote' => 'Голосовать',
+                ],
 
                 'detail' => [
                     'end_time' => 'Опрос будет закрыт :time',

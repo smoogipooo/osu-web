@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Http\Controllers;
 
@@ -30,6 +15,8 @@ use App\Models\BeatmapMirror;
 use App\Models\Beatmapset;
 use App\Models\BeatmapsetWatch;
 use App\Models\Country;
+use App\Models\Genre;
+use App\Models\Language;
 use App\Transformers\BeatmapsetTransformer;
 use App\Transformers\CountryTransformer;
 use Auth;
@@ -38,8 +25,6 @@ use Request;
 
 class BeatmapsetsController extends Controller
 {
-    protected $section = 'beatmapsets';
-
     public function destroy($id)
     {
         $beatmapset = Beatmapset::findOrFail($id);
@@ -55,42 +40,14 @@ class BeatmapsetsController extends Controller
 
         $filters = BeatmapsetSearchRequestParams::getAvailableFilters();
 
-        return view('beatmaps.index', compact('filters', 'beatmaps'));
+        return ext_view('beatmapsets.index', compact('filters', 'beatmaps'));
     }
 
     public function show($id)
     {
-        $beatmapset = Beatmapset
-            ::with([
-                'beatmaps.difficulty',
-                'beatmaps.failtimes',
-                'genre',
-                'language',
-                'user',
-            ])
-            ->findOrFail($id);
+        $beatmapset = Beatmapset::findOrFail($id);
 
-        $editable = priv_check('BeatmapsetDescriptionEdit', $beatmapset)->can();
-        $descriptionInclude = $editable ? 'description:editable' : 'description';
-
-        $set = json_item(
-            $beatmapset,
-            new BeatmapsetTransformer(),
-            [
-                'beatmaps',
-                'beatmaps.failtimes',
-                'beatmaps.max_combo',
-                'converts',
-                'converts.failtimes',
-                'current_user_attributes',
-                $descriptionInclude,
-                'genre',
-                'language',
-                'ratings',
-                'recent_favourites',
-                'user',
-            ]
-        );
+        $set = $this->showJson($beatmapset);
 
         if (is_api_request()) {
             return $set;
@@ -99,7 +56,23 @@ class BeatmapsetsController extends Controller
             $countries = json_collection(Country::all(), new CountryTransformer);
             $hasDiscussion = $beatmapset->discussion_enabled;
 
-            return view('beatmapsets.show', compact('set', 'countries', 'hasDiscussion', 'beatmapset', 'commentBundle'));
+            if (priv_check('BeatmapsetMetadataEdit', $beatmapset)->can()) {
+                $genres = Genre::listing();
+                $languages = Language::listing();
+            } else {
+                $genres = [];
+                $languages = [];
+            }
+
+            return ext_view('beatmapsets.show', compact(
+                'beatmapset',
+                'commentBundle',
+                'countries',
+                'genres',
+                'hasDiscussion',
+                'languages',
+                'set'
+            ));
         }
     }
 
@@ -134,6 +107,7 @@ class BeatmapsetsController extends Controller
 
         $initialData = [
             'beatmapset' => $beatmapset->defaultDiscussionJson(),
+            'reviews_enabled' => config('osu.beatmapset.discussion_review_enabled'),
         ];
 
         BeatmapsetWatch::markRead($beatmapset, Auth::user());
@@ -141,7 +115,7 @@ class BeatmapsetsController extends Controller
         if ($returnJson) {
             return $initialData;
         } else {
-            return view('beatmapsets.discussion', compact('beatmapset', 'initialData'));
+            return ext_view('beatmapsets.discussion', compact('beatmapset', 'initialData'));
         }
     }
 
@@ -240,58 +214,36 @@ class BeatmapsetsController extends Controller
     public function update($id)
     {
         $beatmapset = Beatmapset::findOrFail($id);
+        $params = request()->all();
 
-        priv_check('BeatmapsetDescriptionEdit', $beatmapset)->ensureCan();
+        if (isset($params['description']) && is_string($params['description'])) {
+            priv_check('BeatmapsetDescriptionEdit', $beatmapset)->ensureCan();
 
-        $description = Request::input('description');
+            $description = $params['description'];
 
-        if ($beatmapset->updateDescription($description, Auth::user())) {
+            if (!$beatmapset->updateDescription($description, Auth::user())) {
+                abort(422, 'failed updating description');
+            }
+
             $beatmapset->refresh();
-
-            return json_item(
-                $beatmapset,
-                new BeatmapsetTransformer(),
-                [
-                    'description:editable',
-                ]
-            );
         }
 
-        return response([], 500); // ?????
-    }
+        $metadataParams = get_params($params, 'beatmapset', [
+            'language_id:int',
+            'genre_id:int',
+        ]);
 
-    public function updateFavourite($id)
-    {
-        if (!Auth::check()) {
-            abort(403);
+        if (count($metadataParams) > 0) {
+            priv_check('BeatmapsetMetadataEdit', $beatmapset)->ensureCan();
+            $beatmapset->fill($metadataParams)->saveOrExplode();
         }
 
-        $beatmapset = Beatmapset::findOrFail($id);
-        $user = Auth::user();
-
-        switch (Request::input('action')) {
-            case 'favourite':
-                if ($user->favouriteBeatmapsets()->count() >= $user->beatmapsetFavouriteAllowance()) {
-                    return error_popup(trans('beatmapsets.show.favourites.limit_reached'));
-                }
-                $beatmapset->favourite($user);
-                break;
-
-            case 'unfavourite':
-                $beatmapset->unfavourite($user);
-                break;
-        }
-
-        // reload models to get the correct favourite status
-        return [
-          'favcount' => $beatmapset->fresh()->favourite_count,
-          'favourited' => $user->fresh()->hasFavourited($beatmapset),
-        ];
+        return $this->showJson($beatmapset);
     }
 
     private function getSearchResponse()
     {
-        $params = new BeatmapsetSearchRequestParams(request(), Auth::user());
+        $params = new BeatmapsetSearchRequestParams(request()->all(), Auth::user());
         $search = (new BeatmapsetSearchCached($params));
 
         $records = datadog_timing(function () use ($search) {
@@ -309,5 +261,31 @@ class BeatmapsetsController extends Controller
             'error' => search_error_message($search->getError()),
             'total' => $search->count(),
         ];
+    }
+
+    private function showJson($beatmapset)
+    {
+        $beatmapset->load([
+            'beatmaps.difficulty',
+            'beatmaps.failtimes',
+            'genre',
+            'language',
+            'user',
+        ]);
+
+        return json_item($beatmapset, 'Beatmapset', [
+            'beatmaps',
+            'beatmaps.failtimes',
+            'beatmaps.max_combo',
+            'converts',
+            'converts.failtimes',
+            'current_user_attributes',
+            'description',
+            'genre',
+            'language',
+            'ratings',
+            'recent_favourites',
+            'user',
+        ]);
     }
 }

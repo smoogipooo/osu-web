@@ -1,22 +1,9 @@
 {{--
-    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-
-    This file is part of osu!web. osu!web is distributed with the hope of
-    attracting more community contributions to the core ecosystem of osu!.
-
-    osu!web is free software: you can redistribute it and/or modify
-    it under the terms of the Affero GNU General Public License version 3
-    as published by the Free Software Foundation.
-
-    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-    See the GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+    See the LICENCE file in the repository root for full licence text.
 --}}
 @extends('master', [
-    'title' => trans('home.landing.title'),
+    'titleOverride' => trans('home.landing.title'),
     'blank' => 'true',
     'bodyAdditionalClasses' => 'osu-layout--body-landing'
 ])
@@ -89,13 +76,6 @@
                     data-click-menu-target="nav2-login-box"
                 >
                     {{ trans("users.login._") }}
-                </a>
-
-                <a
-                    href="{{ osu_url('user.signup') }}"
-                    class="landing-nav__link js-nav-toggle"
-                >
-                    {{ trans("users.signup._") }}
                 </a>
             </div>
         </div>
@@ -180,13 +160,7 @@
         </div>
     </div>
 
-    <div class="osu-page osu-page--landing-buttons">
-        <div class="landing-middle-buttons">
-            <a
-                href="https://blog.ppy.sh/"
-                class="landing-middle-buttons__button landing-middle-buttons__button--blog"
-            ></a>
-        </div>
+    <div class="osu-page js-react--landing-news">
     </div>
 
     <footer class="osu-layout__section osu-layout__section--landing-footer">
@@ -214,9 +188,6 @@
             <a href="{{ osu_url("social.twitter") }}" class="landing-footer-social__icon landing-footer-social__icon--twitter">
                 <span class="fab fa-twitter"></span>
             </a>
-            <a href="{{ osu_url("social.facebook") }}" class="landing-footer-social__icon landing-footer-social__icon--facebook">
-                <span class="fab fa-facebook"></span>
-            </a>
         </div>
 
         @include('layout.footer', ['modifiers' => ['landing'], 'withLinks' => false])
@@ -227,4 +198,8 @@
 
 @section ("script")
     @parent
+
+    <script id="json-posts" type="application/json">
+        {!! json_encode($news) !!}
+    </script>
 @endsection

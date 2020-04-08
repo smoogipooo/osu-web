@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute kan ikke være negativ.',
     'required' => ':attribute kreves.',
     'too_long' => ':attribute overskrider maksimumslengden - kan bare være opp til :limit tegn.',
@@ -47,6 +33,7 @@ return [
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => 'Må være logget inn for å hype.',
             'hyped' => 'Du har allerede hypet dette beatmappet.',
             'limit_exceeded' => 'Du har brukt opp all hypen din.',
@@ -62,6 +49,7 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Å svare til slettede kommentarer er ikke tillatt.',
+        'top_only' => '',
 
         'attributes' => [
             'message' => '',
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Overskredet maksimal antall tillatte alternativer.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Avstemmingstittel',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'Du har nådd grensen for maksimalt antall oAuth-applikasjoner.',
+            'url' => 'Vennligst skriv en gyldig URL.',
+
+            'attributes' => [
+                'name' => 'Applikasjonsnavn',
+                'redirect' => 'Applikasjonens omdirigeringslenke',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Passord kan ikke inneholde brukernavnet ditt.',
         'email_already_used' => 'E-postadressen er allerede i bruk.',
         'invalid_country' => 'Land er ikke i databasen.',
         'invalid_discord' => 'Discord brukernavnet er ugyldig.',
         'invalid_email' => "Dette ser ikke ut til å være en gyldig e-postadresse.",
+        'invalid_twitter' => '',
         'too_short' => 'Nytt passord er for kort.',
         'unknown_duplicate' => 'Brukernavn eller e-postadresse er allerede i bruk.',
         'username_available_in' => 'Dette brukernavnet vil bli tilgjengelig for bruk om :duration.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Overskrider maksimumslengden - kan bare være opp til :limit tegn.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Brukernavn',
+            'user_email' => 'E-postadresse',
+            'password' => 'Passord',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => '',
         'self' => "Du kan ikke rapportere deg selv!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Antall',
+                'cost' => 'Pris',
             ],
         ],
     ],

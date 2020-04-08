@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,9 +10,10 @@ return [
         'peak' => 'Пик, :count активных игроков',
         'players' => 'зарегистрировано <strong>:count</strong> игроков',
         'title' => 'добро пожаловать',
+        'see_more_news' => 'посмотреть больше новостей',
 
         'slogan' => [
-            'main' => 'лучшая бесплатная ритм-игра',
+            'main' => 'наилучшайшая бесплатная ритм-игра',
             'sub' => 'ритм всего лишь в клике от вас',
         ],
     ],
@@ -37,18 +23,20 @@ return [
         'button' => 'Найти',
         'empty_result' => 'Ничего не найдено!',
         'keyword_required' => 'Требуется ключевое слово для поиска',
-        'placeholder' => 'начинайте вводить',
+        'placeholder' => 'введите текст для поиска',
         'title' => 'Поиск',
 
         'beatmapset' => [
+            'login_required' => 'Войдите в аккаунт для поиска по картам',
             'more' => 'больше :count результатов поиска среди карт',
-            'more_simple' => 'Посмотреть другие результаты поиска в картах',
+            'more_simple' => 'Посмотреть другие результаты поиска среди карт',
             'title' => 'Карты',
         ],
 
         'forum_post' => [
             'all' => 'Все форумы',
             'link' => 'Искать на форуме',
+            'login_required' => 'Войдите в аккаунт для поиска по форуму',
             'more_simple' => 'Посмотреть другие результаты поиска на форуме',
             'title' => 'Форумы',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => 'Войдите в аккаунт для поиска по пользователям',
             'more' => 'больше :count результатов поиска среди игроков',
             'more_simple' => 'Посмотреть другие результаты поиска среди игроков',
             'more_hidden' => 'Результаты поиска игроков сокращены до :max игроков. Попробуйте уточнить запрос.',
@@ -113,14 +102,12 @@ return [
     ],
 
     'user' => [
-        'title' => 'главная',
+        'title' => 'инфопанель',
         'news' => [
             'title' => 'Новости',
             'error' => 'Не удалось загрузить последние новости, попробуйте перезагрузить страницу...',
         ],
         'header' => [
-            'welcome' => 'Привет, <strong>:username</strong>!',
-            'messages' => 'У вас :count новое сообщение|У вас :count новых сообщения|У вас :count новых сообщений',
             'stats' => [
                 'friends' => 'Друзей в сети',
                 'games' => 'Всего игр',
@@ -128,10 +115,9 @@ return [
             ],
         ],
         'beatmaps' => [
-            'new' => 'Последние ранкнутые карты',
+            'new' => 'Новые рейтинговые карты',
             'popular' => 'Популярные карты',
-            'by' => 'от',
-            'plays' => 'сыгран :count раз',
+            'by_user' => 'от:user',
         ],
         'buttons' => [
             'download' => 'Скачать osu!',
@@ -144,7 +130,7 @@ return [
         'title' => 'Вау!',
         'subtitle' => 'Кажется, вы хорошо проводите своё время! :D',
         'body' => [
-            'part-1' => 'Знаете ли вы что в osu!, нет рекламы, и она полагается на игроков, для поддержки своей разработки и оплату финансовых расходов?',
+            'part-1' => 'Знаете ли вы, что в osu! нет рекламы, и что она полагается на игроков для поддержки своей разработки и оплату финансовых расходов?',
             'part-2' => 'Знали ли вы что поддерживая osu! вы получаете большое количество приятных плюшек, к примеру <strong>внутриигровую загрузку карт</strong>, которая срабатывает автоматически при наблюдении или в мультиплеере.',
         ],
         'find-out-more' => 'Нажмите сюда для подробностей!',

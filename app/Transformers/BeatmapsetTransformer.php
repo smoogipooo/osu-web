@@ -1,26 +1,12 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Transformers;
 
 use App\Models\Beatmap;
+use App\Models\BeatmapDiscussion;
 use App\Models\Beatmapset;
 use App\Models\BeatmapsetEvent;
 use App\Models\BeatmapsetWatch;
@@ -29,7 +15,7 @@ use App\Models\User;
 use Auth;
 use League\Fractal;
 
-class BeatmapsetTransformer extends Fractal\TransformerAbstract
+class BeatmapsetTransformer extends TransformerAbstract
 {
     protected $availableIncludes = [
         'beatmaps',
@@ -47,16 +33,10 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
         'user',
     ];
 
-    public function transform(Beatmapset $beatmapset = null)
+    protected $requiredPermission = 'BeatmapsetShow';
+
+    public function transform(Beatmapset $beatmapset)
     {
-        if ($beatmapset === null) {
-            return [];
-        }
-
-        if (!priv_check('BeatmapsetShow', $beatmapset)->can()) {
-            return [];
-        }
-
         return [
             'id' => $beatmapset->beatmapset_id,
             'title' => $beatmapset->title,
@@ -78,7 +58,7 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
             'storyboard' => $beatmapset->storyboard,
             'ranked' => $beatmapset->approved,
             'status' => $beatmapset->status(),
-            'has_scores' => $beatmapset->hasScores(),
+            'is_scoreable' => $beatmapset->isScoreable(),
             'discussion_enabled' => $beatmapset->discussion_enabled,
             'discussion_locked' => $beatmapset->discussion_locked,
             'can_be_hyped' => $beatmapset->canBeHyped(),
@@ -94,7 +74,7 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
                 'current' => $beatmapset->nominations,
                 'required' => $beatmapset->requiredNominationCount(),
             ],
-            'legacy_thread_url' => $beatmapset->thread_id !== 0 ? osu_url('legacy-forum-thread-prefix').$beatmapset->thread_id : null,
+            'legacy_thread_url' => $beatmapset->thread_id !== 0 ? route('forum.topics.show', $beatmapset->thread_id) : null,
         ];
     }
 
@@ -110,6 +90,7 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
 
         $ret = [
             'can_delete' => !$beatmapset->isScoreable() && priv_check('BeatmapsetDelete', $beatmapset)->can(),
+            'can_edit_metadata' => priv_check('BeatmapsetMetadataEdit', $beatmapset)->can(),
             'can_hype' => $hypeValidation['result'],
             'can_hype_reason' => $hypeValidation['message'] ?? null,
             'can_love' => $beatmapset->isLoveable() && priv_check('BeatmapsetLove')->can(),
@@ -177,15 +158,9 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
         });
     }
 
-    public function includeDescription(Beatmapset $beatmapset, Fractal\ParamBag $params)
+    public function includeDescription(Beatmapset $beatmapset)
     {
-        $editable = $params->get('editable');
-
-        return $this->item($beatmapset, function ($beatmapset) use ($editable) {
-            return $editable
-                ? ['description' => $beatmapset->description(), 'bbcode' => $beatmapset->editableDescription()]
-                : ['description' => $beatmapset->description()];
-        });
+        return $this->item($beatmapset, new BeatmapsetDescriptionTransformer);
     }
 
     public function includeDiscussions(Beatmapset $beatmapset)
@@ -277,6 +252,10 @@ class BeatmapsetTransformer extends Fractal\TransformerAbstract
                 $userIds[] = $post->user_id;
                 $userIds[] = $post->last_editor_id;
                 $userIds[] = $post->deleted_by_id;
+            }
+
+            foreach ($discussion->beatmapDiscussionVotes->sortByDesc('created_at')->take(BeatmapDiscussion::VOTES_TO_SHOW) as $vote) {
+                $userIds[] = $vote->user_id;
             }
         }
 

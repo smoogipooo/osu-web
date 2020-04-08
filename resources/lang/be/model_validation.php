@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute не можа быць адмоўным.',
     'required' => ':attribute ёсць неабходны.',
     'too_long' => ':attribute максімальная колькасць сімвалаў перавышана - абмежаванне на :limit сімвалаў.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Нельга выдаліць пачатковы допіс.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Паведамленне',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => 'Абмеркаванне закрыта.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Тып паведамлення',
+            'timestamp' => 'Пазнака часу',
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => 'Каб хайпаваць, трэба ўвайсці.',
             'hyped' => 'Вы ўжо надалі хайп гэтай бітмапе.',
             'limit_exceeded' => 'Вы ўжо скарысталі ўвесь свой хайп.',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Нельга адказваць на выдалены каментарый.',
+        'top_only' => '',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Паведамленне',
         ],
     ],
 
@@ -88,13 +76,13 @@ return [
             'only_quote' => 'Ваш адказ змяшчае толькі цытату.',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => 'Змесціва допіса',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Загаловак тэмы',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Перавышана максімальна дазволеная колькасць параметраў.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Загаловак апытання',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => '',
+            'url' => '',
+
+            'attributes' => [
+                'name' => '',
+                'redirect' => '',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Пароль не павінен змяшчаць імя карыстальніка.',
         'email_already_used' => 'Эл. пошта ўжо выкарыстоўваецца.',
         'invalid_country' => 'Краіны няма ў базедадзеных.',
         'invalid_discord' => 'Няправільнае імя карыстальніка Discord.',
         'invalid_email' => "Не падобна на дзейны адрас эл. пошты.",
+        'invalid_twitter' => '',
         'too_short' => 'Новы пароль надта кароткі.',
         'unknown_duplicate' => 'Імя карыстальніка або адрас эл. пошты ўжо выкарыстоўваюцца.',
         'username_available_in' => 'Гэтае імя карыстальніка будзе даступнае для выкарыстоўвання ў :duration.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Перавышанп максімальная даўжыня - абмежаванне на :limit сімвалаў.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Імя карыстальніка',
+            'user_email' => 'E-mail адрас',
+            'password' => 'Пароль',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => '',
         'self' => "Вы не можаце паскардзіцца на самога сябе!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Колькасць',
+                'cost' => 'Цана',
             ],
         ],
     ],

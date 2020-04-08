@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Models;
 
@@ -40,7 +25,7 @@ use Exception;
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $version
  */
-class NewsPost extends Model implements Commentable
+class NewsPost extends Model implements Commentable, Wiki\WikiObject
 {
     use CommentableDefaults;
 
@@ -48,6 +33,7 @@ class NewsPost extends Model implements Commentable
     const CACHE_DURATION = 86400;
     const VERSION = 3;
     const DASHBOARD_LIMIT = 8;
+    const LANDING_LIMIT = 4;
 
     protected $casts = [
         'page' => 'array',
@@ -59,19 +45,9 @@ class NewsPost extends Model implements Commentable
 
     private $adjacent = [];
 
-    public static function lookupAndSync($slug)
+    public static function lookup($slug)
     {
-        $post = static::where(['slug' => $slug])->first();
-
-        if ($post === null) {
-            $post = new static(['slug' => $slug]);
-        }
-
-        $post->sync();
-
-        if ($post->page !== null && $post->published_at !== null && $post->published_at->isPast()) {
-            return $post;
-        }
+        return static::firstOrNew(compact('slug'));
     }
 
     public static function pageVersion()
@@ -98,6 +74,8 @@ class NewsPost extends Model implements Commentable
             $query->orderBy('published_at', 'DESC')->orderBy('id', 'DESC');
         }
 
+        $query->year(get_int($params['year'] ?? null));
+
         $query->limit($limit);
 
         return [
@@ -111,13 +89,7 @@ class NewsPost extends Model implements Commentable
 
     public static function syncAll()
     {
-        try {
-            $entries = OsuWiki::fetch('news');
-        } catch (Exception $e) {
-            log_error($e);
-
-            return;
-        }
+        $entries = OsuWiki::fetch('news');
 
         $latestSlugs = [];
 
@@ -134,7 +106,6 @@ class NewsPost extends Model implements Commentable
             if (array_key_exists($post->slug, $latestSlugs)) {
                 if ($latestSlugs[$post->slug] !== $post->hash) {
                     $post->sync(true);
-                } else {
                 }
 
                 unset($latestSlugs[$post->slug]);
@@ -171,6 +142,32 @@ class NewsPost extends Model implements Commentable
             ->where('published_at', '<=', Carbon::now());
     }
 
+    public function scopeYear($query, $year)
+    {
+        if ($year !== null) {
+            return $query
+                ->where('published_at', '>=', Carbon::create($year))
+                ->where('published_at', '<', Carbon::create($year + 1));
+        }
+    }
+
+    public function author()
+    {
+        if (!isset($this->page['header']['author']) && !isset($this->page['author'])) {
+            $authorLine = array_last(explode("\n", trim(strip_tags($this->bodyHtml()))));
+
+            if (preg_match('/^[—–][^—–]/', $authorLine) === false) {
+                $author = 'osu!news Team';
+            } else {
+                $author = mb_substr($authorLine, 1);
+            }
+
+            $this->update(['page' => array_merge($this->page, compact('author'))]);
+        }
+
+        return $this->page['author'];
+    }
+
     public function commentableTitle()
     {
         return $this->title();
@@ -179,6 +176,11 @@ class NewsPost extends Model implements Commentable
     public function filename()
     {
         return "{$this->slug}.md";
+    }
+
+    public function isVisible()
+    {
+        return $this->page !== null && $this->published_at !== null && $this->published_at->isPast();
     }
 
     public function needsSync()
@@ -200,23 +202,44 @@ class NewsPost extends Model implements Commentable
 
     public function editUrl()
     {
-        return 'https://github.com/'.OsuWiki::USER.'/'.OsuWiki::REPOSITORY.'/tree/master/news/'.$this->filename();
+        return 'https://github.com/'.OsuWiki::user().'/'.OsuWiki::repository().'/tree/master/news/'.$this->filename();
     }
 
-    public function firstImage()
+    public function firstImage($absolute = false)
     {
-        return $this->page['firstImage'];
+        $url = $this->page['firstImage'];
+
+        if ($url === null) {
+            return;
+        }
+
+        if ($absolute && !starts_with($url, ['https://', 'http://'])) {
+            if ($url[0] === '/') {
+                $url = config('app.url').$url;
+            } else {
+                $url = "{$this->url()}/{$url}";
+            }
+        }
+
+        return $url;
     }
 
     public function newer()
     {
         if (!array_key_exists('newer', $this->adjacent)) {
             $this->adjacent['newer'] = static
-                ::where('published_at', '>=', $this->published_at)
-                ->where('id', '<>', $this->getKey())
-                ->orderBy('published_at', 'ASC')
-                ->orderBy('id', 'ASC')
-                ->first() ?? null;
+                ::cursorWhere([
+                    [
+                        'column' => 'published_at',
+                        'order' => 'ASC',
+                        'value' => $this->published_at,
+                    ],
+                    [
+                        'column' => 'id',
+                        'order' => 'ASC',
+                        'value' => $this->getKey(),
+                    ],
+                ])->first() ?? null;
         }
 
         return $this->adjacent['newer'];
@@ -226,11 +249,18 @@ class NewsPost extends Model implements Commentable
     {
         if (!array_key_exists('older', $this->adjacent)) {
             $this->adjacent['older'] = static
-                ::where('published_at', '<=', $this->published_at)
-                ->where('id', '<>', $this->getKey())
-                ->orderBy('published_at', 'DESC')
-                ->orderBy('id', 'DESC')
-                ->first() ?? null;
+                ::cursorWhere([
+                    [
+                        'column' => 'published_at',
+                        'order' => 'DESC',
+                        'value' => $this->published_at,
+                    ],
+                    [
+                        'column' => 'id',
+                        'order' => 'DESC',
+                        'value' => $this->getKey(),
+                    ],
+                ])->first() ?? null;
         }
 
         return $this->adjacent['older'];
@@ -239,21 +269,30 @@ class NewsPost extends Model implements Commentable
     public function sync($force = false)
     {
         if (!$force && !$this->needsSync()) {
-            return;
+            return $this;
+        }
+
+        $path = "news/{$this->filename()}";
+        $pathMissingKey = "osu_wiki:not_found:{$path}";
+
+        if (!$force && cache()->get($pathMissingKey) !== null) {
+            return $this;
         }
 
         try {
-            $file = new OsuWiki("news/{$this->filename()}");
+            $file = new OsuWiki($path);
         } catch (GitHubNotFoundException $e) {
             if ($this->exists) {
                 $this->update(['published_at' => null]);
+            } else {
+                cache()->put($pathMissingKey, 1, 300);
             }
 
-            return;
+            return $this;
         } catch (Exception $e) {
             log_error($e);
 
-            return;
+            return $this;
         }
 
         $rawPage = $file->content();
@@ -268,6 +307,8 @@ class NewsPost extends Model implements Commentable
         $this->hash = $file->data['sha'];
 
         $this->save();
+
+        return $this;
     }
 
     public function pagePublishedAt()

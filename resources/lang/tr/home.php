@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Zirve, :count çevrimiçi oyuncu',
         'players' => '<strong>:count</strong> kayıtlı oyuncu',
         'title' => 'hoşgeldiniz',
+        'see_more_news' => 'daha fazla haber gör',
 
         'slogan' => [
             'main' => 'en en iyi free-to-win ritim oyunu',
@@ -41,6 +27,7 @@ return [
         'title' => 'Ara',
 
         'beatmapset' => [
+            'login_required' => '',
             'more' => ':count tane daha beatmap arama sonucu',
             'more_simple' => 'Daha fazla beatmap arama sonucu gör',
             'title' => 'Beatmapler',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Tüm forumlar',
             'link' => 'Forumda ara',
+            'login_required' => '',
             'more_simple' => 'Daha fazla forum arama sonucu görmek için tıklayınız',
             'title' => 'Forum',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => '',
             'more' => ':count tane daha oyuncu arama sonucu',
             'more_simple' => 'Daha fazla oyuncu arama sonucu gör',
             'more_hidden' => 'Oyuncu araması :max oyuncuyla sınırlıdır. Arama sorgusunu hassaslaştırmayı deneyin.',
@@ -119,8 +108,6 @@ return [
             'error' => 'Haberler yüklenirken hata oluştu, sayfayı yenilemeyi deneseniz?...',
         ],
         'header' => [
-            'welcome' => 'Merhaba, <strong>:username</strong>!',
-            'messages' => ':count yeni mesajınız var|:count yeni mesajınız var',
             'stats' => [
                 'friends' => 'Çevrimiçi Arkadaşlar',
                 'games' => 'Oyunlar',
@@ -130,8 +117,7 @@ return [
         'beatmaps' => [
             'new' => 'Yeni Dereceli Beatmapler',
             'popular' => 'Popüler Beatmapler',
-            'by' => 'yapan: ',
-            'plays' => ':count kere oynandı',
+            'by_user' => ':user tarafından',
         ],
         'buttons' => [
             'download' => 'osu!\'yu indir',

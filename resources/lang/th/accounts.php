@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => 'ตั้งค่า<strong>บัญชีผู้ใช้</strong>',
         'title_compact' => 'ตั้งค่า',
         'username' => 'ชื่อผู้ใช้',
 
         'avatar' => [
             'title' => 'รูปโปรไฟล์',
             'rules' => '',
-            'rules_link' => '',
+            'rules_link' => 'กฎของชุมชน',
         ],
 
         'email' => [
@@ -67,10 +51,18 @@ return [
     'notifications' => [
         'title' => 'การแจ้งเตือน',
         'topic_auto_subscribe' => 'เปิดการแจ้งเตือนอัตโนมัติในกระทู้ที่คุณสร้างขึ้น',
+        'beatmapset_discussion_qualified_problem' => '',
+
+        'mail' => [
+            '_' => '',
+            'beatmapset:modding' => '',
+            'forum_topic_reply' => '',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => 'ตัวรับที่ได้รับการยืนยัน',
+        'own_clients' => 'own clients',
         'title' => 'OAuth',
     ],
 
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'ยืนยันการเปลี่ยนอีเมล osu!',
         'update' => 'อัพเดต',
     ],
 
     'update_password' => [
-        'email_subject' => 'ยืนยันการเปลี่ยนรหัสผ่าน osu!',
         'update' => 'อัพเดต',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'ตอนนี้คุณสามารถปิดแท็บ/หน้าต่างนี้ได้',
+        'title' => 'การยืนยันตนสำเร็จ',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'ลิงก์ยืนยันตนไม่ถูกต้องหรือหมดอายุแล้ว',
     ],
 ];

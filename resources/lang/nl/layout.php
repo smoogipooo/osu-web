@@ -1,48 +1,75 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'defaults' => [
         'page_description' => 'osu! - Ritme is slechts een *klik* verwijderd!  Met Ouendan/EBA, Taiko en originele spelmodi, en zelfs een volledig functionele level editor.',
     ],
 
+    'header' => [
+        'admin' => [
+            'beatmapset' => 'beatmapset',
+            'beatmapset_covers' => 'beatmapset covers',
+            'contest' => 'competitie',
+            'contests' => 'competities',
+            'root' => 'console',
+            'store_orders' => 'winkel beheerder',
+        ],
+
+        'artists' => [
+            'index' => 'lijst',
+        ],
+
+        'changelog' => [
+            'index' => 'lijst',
+        ],
+
+        'help' => [
+            'index' => 'index',
+            'sitemap' => 'Sitemap',
+        ],
+
+        'store' => [
+            'cart' => 'winkelwagen',
+            'orders' => 'bestel geschiedenis',
+            'products' => 'producten',
+        ],
+
+        'tournaments' => [
+            'index' => 'lijst',
+        ],
+
+        'users' => [
+            'modding' => 'modderen',
+            'show' => 'info',
+        ],
+    ],
+
+    'gallery' => [
+        'close' => 'Sluiten (esc)',
+        'fullscreen' => 'Schakelen naar volledig scherm',
+        'zoom' => 'Zoom in/uit',
+        'previous' => 'Vorige (pijl links)',
+        'next' => 'Volgende (pijl rechts)',
+    ],
+
     'menu' => [
-        'home' => [
-            '_' => 'start',
-            'account-edit' => 'instellingen',
-            'account-verifyLink' => '',
-            'friends-index' => 'vrienden',
-            'changelog-index' => 'changelog',
-            'changelog-build' => 'versie',
-            'getDownload' => 'downloaden',
-            'getIcons' => 'iconen',
-            'groups-show' => 'groepen',
-            'index' => 'dashboard',
-            'legal-show' => 'informatie',
-            'messages-index' => 'berichten',
-            'news-index' => 'nieuws',
-            'news-show' => 'nieuws',
-            'password-reset-index' => 'wachtwoord resetten',
-            'search' => 'zoeken',
-            'supportTheGame' => 'ondersteun het spel',
-            'team' => 'team',
+        'beatmaps' => [
+            '_' => 'beatmaps',
+            'artists' => 'featured artists',
+            'index' => 'index',
+            'packs' => 'pakketten',
+        ],
+        'community' => [
+            '_' => 'community',
+            'chat' => 'chat',
+            'contests' => 'wedstrijden',
+            'dev' => 'ontwikkeling',
+            'forum-forums-index' => 'forum',
+            'getLive' => 'live',
+            'tournaments' => 'toernooien',
         ],
         'help' => [
             '_' => 'hulp',
@@ -50,123 +77,28 @@ return [
             'getRules' => 'regels',
             'getSupport' => 'ondersteuning',
             'getWiki' => 'wiki',
-            'wiki-show' => 'wiki',
         ],
-        'beatmaps' => [
-            '_' => 'beatmaps',
-            'artists' => 'featured artists',
-            'beatmap_discussion_posts-index' => 'beatmap discussie berichten',
-            'beatmap_discussions-index' => 'beatmap discussies',
-            'beatmapset-watches-index' => 'modding volglijst',
-            'beatmapset_discussion_votes-index' => 'beatmap discussie stemmen',
-            'beatmapset_events-index' => 'beatmapset evenementen',
-            'index' => 'index',
-            'packs' => 'pakketten',
-            'show' => 'info',
-        ],
-        'beatmapsets' => [
-            '_' => 'beatmapsets',
-            'discussion' => 'modding',
+        'home' => [
+            '_' => 'start',
+            'changelog-index' => 'changelog',
+            'getDownload' => 'downloaden',
+            'news-index' => 'nieuws',
+            'search' => 'zoeken',
+            'team' => 'team',
         ],
         'rankings' => [
             '_' => 'rankings',
-            'index' => 'prestaties',
-            'performance' => 'prestatie',
             'charts' => 'in de schijnwerpers',
-            'score' => 'score',
             'country' => 'land',
+            'index' => 'prestaties',
             'kudosu' => 'kudosu',
-        ],
-        'community' => [
-            '_' => 'community',
-            'chat' => 'chat',
-            'chat-index' => 'chat',
-            'dev' => 'ontwikkeling',
-            'getForum' => 'forum',
-            'getLive' => 'live',
-            'comments-index' => 'commentaar',
-            'comments-show' => 'comment',
-            'contests' => 'wedstrijden',
-            'profile' => 'profiel',
-            'tournaments' => 'toernooien',
-            'tournaments-index' => 'toernooien',
-            'tournaments-show' => 'toernooi info',
-            'forum-topic-watches-index' => 'abonnementen',
-            'forum-topics-create' => 'forum',
-            'forum-topics-show' => 'forum',
-            'forum-forums-index' => 'forum',
-            'forum-forums-show' => 'forum',
-        ],
-        'multiplayer' => [
-            '_' => 'multiplayer',
-            'show' => 'spel',
-        ],
-        'error' => [
-            '_' => 'fout',
-            '404' => 'ontbreekt',
-            '403' => 'verboden',
-            '401' => 'onbevoegd',
-            '405' => 'ontbreekt',
-            '500' => 'iets brak',
-            '503' => 'onderhoud',
-        ],
-        'user' => [
-            '_' => 'gebruiker',
-            'getLogin' => 'inloggen',
-            'disabled' => 'inactief',
-
-            'register' => 'registreren',
-            'reset' => 'herstellen',
-            'new' => 'nieuw',
-
-            'help' => 'Help',
-            'logout' => 'Uitloggen',
-            'messages' => 'Berichten',
-            'modding-history-discussions' => 'gebruiker mod discussie',
-            'modding-history-events' => 'gebruiker mod evenementen',
-            'modding-history-index' => 'gebruiker mod geschiedenis',
-            'modding-history-posts' => 'gebruiker mod post',
-            'modding-history-votesGiven' => 'gebruiker mod stemmen gegeven',
-            'modding-history-votesReceived' => 'gebruiker mod stemmen ontvangen',
-            'oauth_login' => 'log in voor oauth',
-            'oauth_request' => 'oauth-authenticatie',
-            'settings' => 'Instellingen',
+            'score' => 'score',
         ],
         'store' => [
             '_' => 'winkel',
-            'checkout-show' => 'afrekenen',
-            'getListing' => 'index',
             'cart-show' => 'winkelwagen',
-
-            'getCheckout' => 'afrekenen',
-            'getInvoice' => 'factuur',
+            'getListing' => 'index',
             'orders-index' => 'order geschiedenis',
-            'products-show' => 'artikel',
-
-            'new' => 'nieuw',
-            'home' => 'start',
-            'index' => 'start',
-            'thanks' => 'bedankt',
-        ],
-        'admin-forum' => [
-            '_' => 'admin::forum',
-            'forum-covers-index' => 'forum covers',
-        ],
-        'admin-store' => [
-            '_' => 'admin::store',
-            'orders-index' => 'bestellingen',
-            'orders-show' => 'bestelling',
-        ],
-        'admin' => [
-            '_' => 'admin',
-            'beatmapsets-covers' => '',
-            'logs-index' => 'log',
-            'root' => '',
-
-            'beatmapsets' => [
-                '_' => 'beatmapsets',
-                'show' => 'detail',
-            ],
         ],
     ],
 
@@ -177,7 +109,6 @@ return [
             'changelog-index' => 'Changelog',
             'beatmaps' => 'Beatmap Lijst',
             'download' => 'Download osu!',
-            'wiki' => 'Wiki',
         ],
         'help' => [
             '_' => 'Help & Community',
@@ -185,6 +116,7 @@ return [
             'forum' => 'Community Forums',
             'livestreams' => 'Livestreams',
             'report' => 'Een Probleem Melden',
+            'wiki' => 'Wiki',
         ],
         'legal' => [
             '_' => 'Juridisch & Status',
@@ -213,6 +145,10 @@ return [
             'error' => 'Pagina Mist',
             'description' => "Sorry, de pagina die je hebt opgevraagd is er niet!",
         ],
+        '422' => [
+            'error' => 'Ongeldige aanvraagparameter',
+            'description' => '',
+        ],
         '500' => [
             'error' => 'Oh nee! Iets brak! ;_;',
             'description' => "We worden automatisch op de hoogte gesteld van alle fouten.",
@@ -235,10 +171,10 @@ return [
 
     'popup_login' => [
         'login' => [
-            'email' => 'emailadres',
             'forgot' => "Ik ben mij gegevens vergeten",
             'password' => 'wachtwoord',
             'title' => 'Log In Om Verder Te Gaan',
+            'username' => 'gebruikersnaam',
 
             'error' => [
                 'email' => "Gebruikersnaam of emailadres bestaat niet",
@@ -247,7 +183,8 @@ return [
         ],
 
         'register' => [
-            'info' => "Je hebt een account nodig, meneer. Waarom heeft u er niet al eentje?",
+            'download' => 'Download',
+            'info' => 'Je hebt een account nodig, meneer. Waarom heeft u er niet al eentje?',
             'title' => "Heb je geen account?",
         ],
     ],

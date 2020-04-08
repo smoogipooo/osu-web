@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => '置頂主題',
@@ -25,6 +10,8 @@ return [
     'title' => 'osu! 論壇',
 
     'covers' => [
+        'edit' => '編輯封面',
+
         'create' => [
             '_' => '新增封面',
             'button' => '上傳圖片',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] 主題 ":title" 有新回覆',
-    ],
-
     'forums' => [
+        'latest_post' => '最新貼文',
+
+        'index' => [
+            'title' => '論壇主頁',
+        ],
+
         'topics' => [
             'empty' => '沒有主題！',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => '將論壇標為已讀',
         'forums' => '將論壇標為已讀',
         'busy' => '標記已讀…',
-    ],
-
-    'poll' => [
-        'edit_warning' => '編輯投票將會清除目前結果！',
-
-        'actions' => [
-            'edit' => '編輯投票',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => '刪除回覆',
             'restore' => '恢復回覆',
             'edit' => '編輯回覆',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => '新回覆',
+            ],
         ],
 
         'info' => [
@@ -91,7 +78,7 @@ return [
         'latest_post' => ':when :user',
         'latest_reply_by' => '最後回覆: :user',
         'new_topic' => '發表新主題',
-        'new_topic_login' => '登錄以發表新主題',
+        'new_topic_login' => '登入以發表新主題',
         'post_reply' => '發表',
         'reply_box_placeholder' => '輸入回覆',
         'reply_title_prefix' => 'Re',
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => '由 :user 發起',
 
         'create' => [
+            'close' => '關閉',
             'preview' => '預覽',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => '訂閱的主題',
             'title_compact' => '訂閱',
-            'title_main' => '<strong>訂閱</strong>主題',
 
             'box' => [
                 'total' => '訂閱的主題',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => '主題已被鎖定，不能回覆',
             'to_0' => '解鎖主题',
+            'to_0_confirm' => '',
             'to_0_done' => '主题已經解鎖',
             'to_1' => '鎖定主题',
+            'to_1_confirm' => '',
             'to_1_done' => '主题已被鎖定',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => '取消置頂',
+            'to_0_confirm' => '',
             'to_0_done' => '該主题已取消置頂',
             'to_1' => '置頂',
+            'to_1_confirm' => '',
             'to_1_done' => '該主题已置頂',
             'to_2' => '至頂並標記為公告',
+            'to_2_confirm' => '',
             'to_2_done' => '該主题已置頂並標記為公告',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => '顯示已刪除帖子',
+            'hide' => '隱藏已刪除帖子',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => '編輯投票',
+                'edit_warning' => '編輯投票將會清除目前結果！',
                 'vote' => '投票',
+
+                'button' => [
+                    'change_vote' => '更改投票',
+                    'edit' => '編輯投票',
+                    'view_results' => '直接跳到結果',
+                    'vote' => '投票',
+                ],
 
                 'detail' => [
                     'end_time' => '將於 :time 結束',

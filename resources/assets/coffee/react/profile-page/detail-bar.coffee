@@ -1,27 +1,12 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 import { Rank } from './rank'
 import { BlockButton } from 'block-button'
 import { FriendButton } from 'friend-button'
 import * as React from 'react'
 import { a, button, div, dd, dl, dt, h1, i, img, li, span, ul } from 'react-dom-factories'
-import { ReportUser } from 'report-user'
+import { ReportReportable } from 'report-reportable'
 el = React.createElement
 
 
@@ -52,14 +37,14 @@ export class DetailBar extends React.PureComponent
         button
           className: 'profile-page-toggle'
           onClick: @props.toggleExtend
-          title: osu.trans("common.buttons.#{if @props.extended then 'collapse' else 'expand'}")
-          if @props.extended
+          title: osu.trans("common.buttons.#{if @props.expanded then 'collapse' else 'expand'}")
+          if @props.expanded
             span className: 'fas fa-chevron-up'
           else
             span className: 'fas fa-chevron-down'
 
       div className: "#{bn}__column #{bn}__column--left",
-        div className: "#{bn}__menu-item",
+        div className: "#{bn}__entry",
           el FriendButton,
             userId: @props.user.id
             showFollowerCounter: true
@@ -67,7 +52,7 @@ export class DetailBar extends React.PureComponent
             modifiers: ['profile-page']
             alwaysVisible: true
         if @state.currentUser.id != @props.user.id && !isBlocked
-          div className: "#{bn}__menu-item",
+          div className: "#{bn}__entry",
             a
               className: 'user-action-button user-action-button--profile-page'
               href: laroute.route 'messages.users.show', user: @props.user.id
@@ -77,10 +62,10 @@ export class DetailBar extends React.PureComponent
         @renderExtraMenu()
 
       div className: "#{bn}__column #{bn}__column--right",
-        if @props.extended
+        if @props.expanded
           div
             title: osu.trans('users.show.stats.level_progress')
-            className: "#{bn}__entry #{bn}__entry--level-progress"
+            className: "#{bn}__entry #{bn}__entry--level-progress hidden-xs"
             div className: 'bar bar--user-profile',
               div
                 className: 'bar__fill'
@@ -89,13 +74,11 @@ export class DetailBar extends React.PureComponent
               div className: "bar__text",
                 "#{@props.stats.level.progress}%"
 
-        if !@props.extended
-          div className: "#{bn}__entry #{bn}__entry--ranking",
-            el Rank, type: 'global', stats: @props.stats
+        div className: "#{bn}__entry #{if @props.expanded then 'visible-xs' else ''}",
+          el Rank, type: 'global', stats: @props.stats
 
-        if !@props.extended
-          div className: "#{bn}__entry #{bn}__entry--ranking",
-            el Rank, type: 'country', stats: @props.stats
+        div className: "#{bn}__entry #{if @props.expanded then 'visible-xs' else ''}",
+          el Rank, type: 'country', stats: @props.stats
 
         div className: "#{bn}__entry #{bn}__entry--level",
           div
@@ -114,16 +97,18 @@ export class DetailBar extends React.PureComponent
         modifiers: ['inline']
       items.push blockButton
 
-      reportButton = el ReportUser,
+      reportButton = el ReportReportable,
+        className: 'simple-menu__item'
+        icon: true
         key: 'report'
+        reportableId: @props.user.id
+        reportableType: 'user'
         user: @props.user
-        wrapperClass: 'simple-menu__item'
-        modifiers: ['inline']
       items.push reportButton
 
     return null if items.length == 0
 
-    div className: "#{bn}__menu-item",
+    div className: "#{bn}__entry",
       button
         className: 'profile-page-toggle js-click-menu'
         title: osu.trans('common.buttons.show_more_options')

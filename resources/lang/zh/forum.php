@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => '置顶主题',
@@ -25,6 +10,8 @@ return [
     'title' => 'osu! 论坛',
 
     'covers' => [
+        'edit' => '编辑封面',
+
         'create' => [
             '_' => '设置封面',
             'button' => '上传图片',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] 主题 ":title" 有新回复',
-    ],
-
     'forums' => [
+        'latest_post' => '最新帖子',
+
+        'index' => [
+            'title' => '论坛主页',
+        ],
+
         'topics' => [
             'empty' => '没有主题！',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => '标记版块为已读',
         'forums' => '标记版块为已读',
         'busy' => '标记为已读…',
-    ],
-
-    'poll' => [
-        'edit_warning' => '编辑投票将清空当前投票结果！',
-
-        'actions' => [
-            'edit' => '编辑投票',
-        ],
     ],
 
     'post' => [
@@ -73,9 +54,15 @@ return [
             'edit' => '编辑回复',
         ],
 
+        'create' => [
+            'title' => [
+                'reply' => '新回复',
+            ],
+        ],
+
         'info' => [
             'post_count' => ':count_delimited 帖子',
-            'topic_starter' => '主题开启者',
+            'topic_starter' => '楼主',
         ],
     ],
 
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => '由 :user 发起',
 
         'create' => [
+            'close' => '关闭',
             'preview' => '预览',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => '订阅的主题',
             'title_compact' => '订阅',
-            'title_main' => '<strong>订阅</strong>主题',
 
             'box' => [
                 'total' => '订阅的主题',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => '主题已被锁定，不能回复',
             'to_0' => '解锁主题',
+            'to_0_confirm' => '解锁主题?',
             'to_0_done' => '主题已经解锁',
             'to_1' => '锁定主题',
+            'to_1_confirm' => '锁定主题?',
             'to_1_done' => '主题已被锁定',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => '取消置顶',
+            'to_0_confirm' => '取消置顶主题？',
             'to_0_done' => '该主题已取消置顶',
             'to_1' => '置顶',
+            'to_1_confirm' => '置顶主题？',
             'to_1_done' => '该主题已置顶',
             'to_2' => '置顶并标记为公告',
+            'to_2_confirm' => '置顶此主题并将其标记为公告?',
             'to_2_done' => '该主题已置顶并标记为公告',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => '显示已删除的帖子',
+            'hide' => '隐藏已删除的帖子',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => '编辑投票',
+                'edit_warning' => '编辑投票将清空当前投票结果！',
                 'vote' => '投票',
+
+                'button' => [
+                    'change_vote' => '更改投票',
+                    'edit' => '编辑投票',
+                    'view_results' => '直接跳到结果',
+                    'vote' => '投票',
+                ],
 
                 'detail' => [
                     'end_time' => '将于 :time 结束',

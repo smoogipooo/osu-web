@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
@@ -34,17 +19,10 @@ return [
         'discussion' => 'ディスカッション',
 
         'details' => [
-            'approved' => 'Approved日 ',
             'favourite' => 'ビートマップセットをお気に入りに追加する',
-            'favourited_count' => '+ そのほか:count人！',
             'logged-out' => 'ビートマップをダウンロードするにはログインが必要です！',
-            'loved' => 'loved追加日 ',
             'mapped_by' => '作者 :mapper',
-            'qualified' => 'qualifiedされた日',
-            'ranked' => 'Ranked日 ',
-            'submitted' => '投稿日 ',
             'unfavourite' => 'ビートマップをお気に入りから外す',
-            'updated' => '最終更新 ',
             'updated_timeago' => '最終更新 :timeago',
 
             'download' => [
@@ -58,6 +36,15 @@ return [
                 'bottom' => 'より多くの機能にアクセスする',
                 'top' => 'ログイン',
             ],
+        ],
+
+        'details_date' => [
+            'approved' => 'approved :timeago',
+            'loved' => 'loved :timeago',
+            'qualified' => 'qualified :timeago',
+            'ranked' => 'ranked :timeago',
+            'submitted' => '投稿 :timeago',
+            'updated' => '最終更新 :timeago',
         ],
 
         'favourites' => [
@@ -76,14 +63,26 @@ return [
                     'wip' => '作業中',
                 ],
             ],
+
+            'disqualify' => [
+                '_' => 'このビートマップで問題が見つかった場合は、Disqualifyにしてください。:link',
+                'button_title' => 'Qualifiedビートマップを無効',
+            ],
+
+            'report' => [
+                '_' => 'ビートマップに問題を見つけた場合、:link からチームに報告してください。',
+                'button' => '問題を報告する',
+                'button_title' => 'Qualifiedビートマップの問題を報告。',
+                'link' => 'ここ',
+            ],
         ],
 
         'info' => [
             'description' => '概要',
             'genre' => 'ジャンル',
             'language' => '言語',
-            'no_scores' => 'データはまだ現在計算中です・・・',
-            'points-of-failure' => 'Fail地点',
+            'no_scores' => 'データはまだ計算中です・・・',
+            'points-of-failure' => '失敗地点',
             'source' => 'ソース',
             'success-rate' => 'クリア率',
             'tags' => 'タグ',
@@ -128,7 +127,7 @@ return [
             'cs' => 'サークルサイズ',
             'cs-mania' => 'キー数',
             'drain' => 'HPの厳しさ',
-            'accuracy' => '判定の厳しさ',
+            'accuracy' => '精度',
             'ar' => 'アプローチ速度',
             'stars' => '難易度（★）',
             'total_length' => '長さ',
@@ -139,6 +138,16 @@ return [
             'rating-spread' => '評価分布',
             'nominations' => 'ノミネーション',
             'playcount' => 'プレイ数',
+        ],
+
+        'status' => [
+            'ranked' => 'Ranked',
+            'approved' => 'Approved',
+            'loved' => 'Loved',
+            'qualified' => 'Qualified',
+            'wip' => 'WIP',
+            'pending' => 'Pending',
+            'graveyard' => 'Graveyard',
         ],
     ],
 ];

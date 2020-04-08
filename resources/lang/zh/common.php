@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => '确定？',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => '和',
     ],
 
+    'badges' => [
+        'new' => '新',
+    ],
+
     'buttons' => [
         'admin' => '管理员',
+        'authorise' => '授权',
+        'authorising' => '授权中...',
         'back_to_previous' => '返回上一位置',
         'back_to_top' => '回到顶部',
         'cancel' => '取消',
         'change' => '更改',
         'click_to_copy' => '点击以复制到剪贴板',
         'click_to_copy_copied' => '已经复制到剪贴板！',
+        'close' => '关闭',
         'collapse' => '折叠',
         'delete' => '删除',
         'edit' => '编辑',
         'expand' => '展开',
         'hide' => '隐藏',
         'permalink' => '静态链接',
-        'permalink_copied' => '链接已复制',
+        'pin' => '置顶',
         'post' => '发表',
         'reply' => '回复',
         'reply_reopen' => '回复并重新打开',
@@ -56,8 +48,11 @@ return [
         'see_more' => '查看更多',
         'show' => '显示',
         'show_deleted' => '显示已删除的评论',
+        'show_less' => '收起',
         'show_more' => '显示更多',
         'show_more_options' => '显示更多选项',
+        'unpin' => '取消置顶',
+        'update' => '更新',
         'upload_image' => '上传图片',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => '分钟',
         'minutes' => ':count 分钟',
         'months' => ':count 个月',
+        'notifications' => ':count_delimited 个通知|:count_delimited 个通知',
+        'plus_others' => '还有 :count_delimited 人！ | 还有 :count_delimited 人！',
+        'post' => ':count_delimited 篇帖子',
         'second_short_unit' => '秒',
+        'star_priority' => ':count_delimited 个优先星',
         'update' => ':count_delimited 更新',
+        'view' => ':count_delimited 次浏览',
         'years' => ':count_delimited 年',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => '拖动到此处以上传',
     ],
 
+    'input' => [
+        'search' => '搜索...',
+    ],
+
     'pagination' => [
         'previous' => '上一页',
         'next' => '下一页',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => '提醒',
+    ],
+
+    'wrong_user' => [
+        '_' => '你正以 :user 登录。:logout_link。',
+        'logout_link' => '点此切换用户',
     ],
 ];

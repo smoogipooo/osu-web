@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'authorizations' => [
@@ -33,13 +18,24 @@ return [
 
     'index' => [
         'deleted_beatmap' => 'verwijderd',
+        'none_found' => 'Er zijn geen discussies gevonden die overeenkomen met de zoekcriteria.',
         'title' => 'Beatmap Discussies',
 
         'form' => [
             '_' => 'Zoeken',
             'deleted' => 'Verwijderde discussies toevoegen',
+            'only_unresolved' => 'Alleen niet-afgehandelde discussies weergeven',
             'types' => 'Berichttypen',
             'username' => 'Gebruikersnaam',
+
+            'beatmapset_status' => [
+                '_' => 'Beatmap status',
+                'all' => 'Alle',
+                'disqualified' => 'Gediskwalificeerd',
+                'never_qualified' => 'Nooit gekwalificeerd',
+                'qualified' => 'Gekwalificeerd',
+                'ranked' => 'Ranked',
+            ],
 
             'user' => [
                 'label' => 'Gebruiker',
@@ -67,11 +63,28 @@ return [
         ],
     ],
 
+    'review' => [
+        'go_to_parent' => 'Bekijk Review Post',
+        'go_to_child' => 'Bekijk discussie',
+        'validation' => [
+            'invalid_block_type' => 'ongeldige bloktype',
+            'invalid_document' => 'ongeldige beoordeling',
+            'minimum_issues' => 'beoordeling moet een minimum van :count issue|review moeten een minimum :count issues bevatten',
+            'missing_text' => 'blok mist tekst',
+            'too_many_blocks' => 'beoordelingen kunnen alleen :count alinea/issuemaybe beoordelingen bevatten max. :count alinea/issues',
+        ],
+    ],
+
     'system' => [
         'resolved' => [
             'true' => 'Gemarkeerd als opgelost door :user',
             'false' => 'Heropend door :user',
         ],
+    ],
+
+    'timestamp_display' => [
+        'general' => 'algemeen',
+        'general_all' => 'algemeen (alles)',
     ],
 
     'user_filter' => [

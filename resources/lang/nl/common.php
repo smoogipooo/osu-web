@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => 'Weet je het zeker?',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ', en ',
     ],
 
+    'badges' => [
+        'new' => 'NIEUW',
+    ],
+
     'buttons' => [
         'admin' => 'Administrator',
+        'authorise' => 'Autorisatie',
+        'authorising' => 'Autoriseren...',
         'back_to_previous' => 'Terug naar vorige positie',
         'back_to_top' => 'Terug naar boven',
         'cancel' => 'Annuleer',
         'change' => 'wijzigen',
         'click_to_copy' => 'klik om naar klembord te kopiëren',
         'click_to_copy_copied' => 'gekopiëerd naar klembord!',
+        'close' => 'Sluiten',
         'collapse' => 'samenvouwen',
         'delete' => 'Verwijder',
         'edit' => 'Bewerk',
         'expand' => 'uitbreiden',
         'hide' => 'verbergen',
         'permalink' => 'permalink',
-        'permalink_copied' => 'link gekopieerd',
+        'pin' => 'vastzetten',
         'post' => 'Post',
         'reply' => 'Beantwoord',
         'reply_reopen' => 'Beantwoord en Heropen',
@@ -56,8 +48,11 @@ return [
         'see_more' => 'toon meer',
         'show' => 'weergeven',
         'show_deleted' => 'Toon verwijderd',
+        'show_less' => 'toon minder',
         'show_more' => 'toon meer',
         'show_more_options' => 'toon meer opties',
+        'unpin' => 'losmaken',
+        'update' => 'Update',
         'upload_image' => 'upload afbeelding',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => 'minuut|minuten',
         'minutes' => ':count_delimited minuut|:count_delimited minuten',
         'months' => ':count maand|:count maanden',
+        'notifications' => ':count_delimited melding:count_delimited meldingen',
+        'plus_others' => '+ :count_delimited andere!|+ :count_delimited anderen!',
+        'post' => ':count_delimited bericht|:count_delimited berichten',
         'second_short_unit' => 'second|seconden',
+        'star_priority' => ':count_delimited ster prioriteit|:count_delimited ster prioriteiten',
         'update' => ':count_delimited update|:count_delimited updates',
+        'view' => ':count_delimited weergave|:count_delimited weergaven',
         'years' => ':count jaar|:count jaar',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => 'laat hier los om te uploaden',
     ],
 
+    'input' => [
+        'search' => 'zoeken...',
+    ],
+
     'pagination' => [
         'previous' => 'vorige',
         'next' => 'volgende',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => 'Notitie',
+    ],
+
+    'wrong_user' => [
+        '_' => 'U bent ingelogd als :user. :logout_link.',
+        'logout_link' => 'Klik hier om in te loggen als een andere gebruiker',
     ],
 ];

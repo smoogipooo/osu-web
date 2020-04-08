@@ -1,26 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'title' => 'パスワードのリセット',
-
     'button' => [
         'cancel' => 'キャンセル',
         'resend' => '認証メールを再送信',
@@ -28,12 +11,8 @@ return [
         'start' => '開始',
     ],
 
-    'email' => [
-        'subject' => 'osu!アカウントの復元',
-    ],
-
     'error' => [
-        'contact_support' => 'アカウントの復元を続行するにはサポートへ連絡をしてください。',
+        'contact_support' => 'アカウントの復元を続行するにはサポートへ連絡してください。',
         'is_privileged' => 'peppyに相談だ',
         'missing_key' => '必須項目',
         'too_many_tries' => '試行回数が多すぎます。',
@@ -55,5 +34,10 @@ return [
 
     'starting' => [
         'username' => 'メールアドレスまたはユーザー名を入力してください',
+
+        'support' => [
+            '_' => 'さらにサポートが必要ですか？ :buttonからお問い合わせください。',
+            'button' => 'サポートシステム',
+        ],
     ],
 ];

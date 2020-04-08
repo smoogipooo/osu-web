@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute nesmí být záporný.',
     'required' => ':attribute je vyžadován.',
     'too_long' => ':attribute přesáhl maximální délku - může mít maximálně :limit znaků.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Počáteční příspěvek nelze odstranit.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Zpráva',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => 'Diskuze je uzamčená.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Typ zprávy',
+            'timestamp' => 'Časové razítko',
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => 'Musíš být přihlášek k nadšení.',
             'hyped' => 'Tuto beatmapu již si nadchnul.',
             'limit_exceeded' => 'Využil jsi všechny svoje nadšení.',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Odpovídat na smazaný komentář není povoleno.',
+        'top_only' => 'Připínání odpovědi není povoleno.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Zpráva',
         ],
     ],
 
@@ -94,7 +82,7 @@ return [
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Titulek příspěvku',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Byl překročen limit povolených možností.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Název ankety',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => '',
+            'url' => 'Zadejte prosím platnou adresu URL.',
+
+            'attributes' => [
+                'name' => '',
+                'redirect' => '',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Heslo nesmí obsahovat uživatelské jméno.',
         'email_already_used' => 'E-mailová adresa už byla použita.',
         'invalid_country' => 'Stát není v databázi.',
         'invalid_discord' => 'Discord uživatelské jmeno je neplatné.',
         'invalid_email' => "Vypadá to na neplatnou e-mailovou adresu.",
+        'invalid_twitter' => '',
         'too_short' => 'Nové heslo je příliš krátké.',
         'unknown_duplicate' => 'Uživatelské jméno nebo e-mailová adresa je již použita.',
         'username_available_in' => 'Toto uživatelské jméno bude k dispozici za :duration.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Překročena maximální délka - maximální délka je :limit znaků.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Uživatelské jméno',
+            'user_email' => 'E-mailová adresa',
+            'password' => 'Heslo',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => '',
         'self' => "Nemůžete nahlásit sám sebe!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Množství',
+                'cost' => 'Cena',
             ],
         ],
     ],

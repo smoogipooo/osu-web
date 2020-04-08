@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 /*
  * Like array_search but returns null if not found instead of false.
@@ -31,7 +16,7 @@ function array_search_null($value, $array)
     }
 }
 
-function atom_id(string $namespace, $id = null) : string
+function atom_id(string $namespace, $id = null): string
 {
     return 'tag:'.request()->getHttpHost().',2019:'.$namespace.($id === null ? '' : "/{$id}");
 }
@@ -42,7 +27,7 @@ function background_image($url, $proxy = true)
         return '';
     }
 
-    $url = $proxy ? proxy_image($url) : $url;
+    $url = $proxy ? proxy_media($url) : $url;
 
     return sprintf(' style="background-image:url(\'%s\');" ', e($url));
 }
@@ -57,18 +42,66 @@ function beatmap_timestamp_format($ms)
     return sprintf('%02d:%02d.%03d', $m, $s, $ms);
 }
 
+/**
+ * Allows using both html-safe and non-safe text inside `{{ }}` directive.
+ */
+function blade_safe($html)
+{
+    return new Illuminate\Support\HtmlString($html);
+}
+
 function broadcast_notification(...$arguments)
 {
     return (new App\Jobs\BroadcastNotification(...$arguments))->dispatch();
 }
 
 /**
- * Like Cache::remember but always save for one month or 10 * $minutes (whichever is longer)
+ * Like cache_remember_with_fallback but with a mutex that only allows a single process to run the callback.
+ */
+function cache_remember_mutexed(string $key, $seconds, $default, callable $callback, ?callable $exceptionHandler = null)
+{
+    static $oneMonthInSeconds = 30 * 24 * 60 * 60;
+    $fullKey = "{$key}:with_fallback";
+    $data = cache()->get($fullKey);
+
+    if ($data === null || $data['expires_at']->isPast()) {
+        $lockKey = "{$key}:lock";
+        // this is arbitrary, but you've got other problems if it takes more than 5 minutes.
+        // the max is because cache()->add() doesn't work so well with funny values.
+        $lockTime = min(max($seconds, 60), 300);
+
+        // only the first caller that manages to setnx runs this.
+        if (cache()->add($lockKey, 1, $lockTime)) {
+            try {
+                $data = [
+                    'expires_at' => Carbon\Carbon::now()->addSeconds($seconds),
+                    'value' => $callback(),
+                ];
+
+                cache()->put($fullKey, $data, max($oneMonthInSeconds, $seconds * 10));
+            } catch (Exception $e) {
+                $handled = $exceptionHandler !== null && $exceptionHandler($e);
+
+                if (!$handled) {
+                    // Log and continue with data from the first ::get.
+                    log_error($e);
+                }
+            } finally {
+                cache()->forget($lockKey);
+            }
+        }
+    }
+
+    return $data['value'] ?? $default;
+}
+
+/**
+ * Like Cache::remember but always save for one month or 10 * $seconds (whichever is longer)
  * and return old value if failed getting the value after it expires.
  */
-function cache_remember_with_fallback($key, $minutes, $callback)
+function cache_remember_with_fallback($key, $seconds, $callback)
 {
-    static $oneMonthInMinutes = 30 * 24 * 60;
+    static $oneMonthInSeconds = 30 * 24 * 60 * 60;
 
     $fullKey = "{$key}:with_fallback";
 
@@ -77,11 +110,11 @@ function cache_remember_with_fallback($key, $minutes, $callback)
     if ($data === null || $data['expires_at']->isPast()) {
         try {
             $data = [
-                'expires_at' => Carbon\Carbon::now()->addMinutes($minutes),
+                'expires_at' => Carbon\Carbon::now()->addSeconds($seconds),
                 'value' => $callback(),
             ];
 
-            Cache::put($fullKey, $data, max($oneMonthInMinutes, $minutes * 10));
+            Cache::put($fullKey, $data, max($oneMonthInSeconds, $seconds * 10));
         } catch (Exception $e) {
             // Log and continue with data from the first ::get.
             log_error($e);
@@ -91,10 +124,83 @@ function cache_remember_with_fallback($key, $minutes, $callback)
     return $data['value'] ?? null;
 }
 
+/**
+ * Marks the content in the key as expired but leaves the fallback set amount of time.
+ * Use with cache_remember_mutexed when the previous value needs to be shown while a key is being updated.
+ *
+ * @param string $key The key of the item to expire.
+ * @param int $duration The duration the fallback should still remain available for, in seconds. Default: 1 month.
+ * @return void
+ */
+function cache_expire_with_fallback(string $key, int $duration = 2592000)
+{
+    $fullKey = "{$key}:with_fallback";
+
+    $data = Cache::get($fullKey);
+
+    if ($data === null || $data['expires_at']->isPast()) {
+        return;
+    }
+
+    $data['expires_at'] = now()->addHour(-1);
+    Cache::put($fullKey, $data, $duration);
+}
+
 // Just normal Cache::forget but with the suffix.
 function cache_forget_with_fallback($key)
 {
     return Cache::forget("{$key}:with_fallback");
+}
+
+function class_with_modifiers(string $className, ?array $modifiers = null)
+{
+    $class = $className;
+
+    foreach ($modifiers ?? [] as $modifier) {
+        $class .= " {$className}--{$modifier}";
+    }
+
+    return $class;
+}
+
+function cleanup_cookies()
+{
+    $host = request()->getHttpHost();
+    $domains = [$host, ''];
+
+    $hostParts = explode('.', $host);
+
+    while (count($hostParts) > 1) {
+        array_shift($hostParts);
+        $domains[] = implode('.', $hostParts);
+    }
+
+    // remove duplicates and current session domain
+    $sessionDomain = presence(ltrim(config('session.domain'), '.')) ?? '';
+    $domains = array_diff(array_unique($domains), [$sessionDomain]);
+
+    foreach (['locale', 'osu_session', 'XSRF-TOKEN'] as $key) {
+        foreach ($domains as $domain) {
+            cookie()->queueForget($key, null, $domain);
+        }
+    }
+}
+
+function css_group_colour($group)
+{
+    return '--group-colour: '.(optional($group)->colour ?? 'initial');
+}
+
+function css_var_2x(string $key, string $url)
+{
+    if (!present($url)) {
+        return;
+    }
+
+    $url = e($url);
+    $url2x = retinaify($url);
+
+    return blade_safe("{$key}: url('{$url}'); {$key}-2x: url('{$url2x}')");
 }
 
 function datadog_timing(callable $callable, $stat, array $tag = null)
@@ -230,6 +336,18 @@ function html_excerpt($body, $limit = 300)
     return e(truncate($body, $limit));
 }
 
+function img2x(array $attributes)
+{
+    if (!present($attributes['src'] ?? null)) {
+        return;
+    }
+
+    $src2x = retinaify($attributes['src']);
+    $attributes['srcset'] = "{$attributes['src']} 1x, {$src2x} 1.5x";
+
+    return tag('img', $attributes);
+}
+
 function truncate(string $text, $limit = 100, $ellipsis = '...')
 {
     if (mb_strlen($text) > $limit) {
@@ -239,12 +357,12 @@ function truncate(string $text, $limit = 100, $ellipsis = '...')
     return $text;
 }
 
-function json_date(?DateTime $date) : ?string
+function json_date(?DateTime $date): ?string
 {
     return $date === null ? null : $date->format('Y-m-d');
 }
 
-function json_time(?DateTime $time) : ?string
+function json_time(?DateTime $time): ?string
 {
     return $time === null ? null : $time->format(DateTime::ATOM);
 }
@@ -294,6 +412,22 @@ function log_error($exception)
     }
 }
 
+function logout()
+{
+    auth()->logout();
+
+    // FIXME: Temporarily here for cross-site login, nuke after old site is... nuked.
+    foreach (['phpbb3_2cjk5_sid', 'phpbb3_2cjk5_sid_check'] as $key) {
+        foreach (['ppy.sh', 'osu.ppy.sh', ''] as $domain) {
+            cookie()->queueForget($key, null, $domain);
+        }
+    }
+
+    cleanup_cookies();
+
+    session()->invalidate();
+}
+
 function markdown($input, $preset = 'default')
 {
     static $converter;
@@ -305,6 +439,13 @@ function markdown($input, $preset = 'default')
     }
 
     return $converter[$preset]->load($input)->html();
+}
+
+function max_offset($page, $limit)
+{
+    $offset = ($page - 1) * $limit;
+
+    return max(0, min($offset, config('osu.pagination.max_count') - $limit));
 }
 
 function mysql_escape_like($string)
@@ -406,14 +547,11 @@ function require_login($text_key, $link_text_key)
     return $text;
 }
 
-function render_to_string($view, $variables = [])
+function spinner(?array $modifiers = null)
 {
-    return view()->make($view, $variables)->render();
-}
-
-function spinner()
-{
-    return '<div class="la-ball-clip-rotate"></div>';
+    return tag('div', [
+        'class' => class_with_modifiers('la-ball-clip-rotate', $modifiers),
+    ]);
 }
 
 function strip_utf8_bom($input)
@@ -423,6 +561,17 @@ function strip_utf8_bom($input)
     }
 
     return $input;
+}
+
+function tag($element, $attributes = [], $content = null)
+{
+    $attributeString = '';
+
+    foreach ($attributes ?? [] as $key => $value) {
+        $attributeString .= ' '.$key.'="'.e($value).'"';
+    }
+
+    return '<'.$element.$attributeString.'>'.($content ?? '').'</'.$element.'>';
 }
 
 function to_sentence($array, $key = 'common.array_and')
@@ -445,6 +594,27 @@ function trans_exists($key, $locale)
     $translated = app('translator')->get($key, [], $locale, false);
 
     return present($translated) && $translated !== $key;
+}
+
+function with_db_fallback($connection, callable $callable)
+{
+    try {
+        return $callable($connection);
+    } catch (Illuminate\Database\QueryException $ex) {
+        // string after the error code can change depending on actual state of the server.
+        static $errorCodes = ['SQLSTATE[HY000] [2002]', 'SQLSTATE[HY000] [2003]'];
+        if (starts_with($ex->getMessage(), $errorCodes)) {
+            Datadog::increment(
+                config('datadog-helper.prefix_web').'.db_fallback',
+                1,
+                compact('connection')
+            );
+
+            return $callable(config('database.default'));
+        }
+
+        throw $ex;
+    }
 }
 
 function obscure_email($email)
@@ -502,15 +672,22 @@ function error_popup($message, $statusCode = 422)
     return response(['error' => $message], $statusCode);
 }
 
-function i18n_view($view)
+function ext_view($view, $data = null, $type = null, $status = null)
 {
-    $localViewPath = sprintf('%s-%s', $view, App::getLocale());
+    static $types = [
+        'atom' => 'application/atom+xml',
+        'html' => 'text/html',
+        'js' => 'application/javascript',
+        'json' => 'application/json',
+        'rss' => 'application/rss+xml',
+    ];
 
-    if (view()->exists($localViewPath)) {
-        return $localViewPath;
-    } else {
-        return sprintf('%s-%s', $view, config('app.fallback_locale'));
-    }
+    return response()->view(
+        $view,
+        $data ?? [],
+        $status ?? 200,
+        ['Content-Type' => $types[$type ?? 'html']]
+    );
 }
 
 function is_api_request()
@@ -531,17 +708,29 @@ function is_sql_unique_exception($ex)
     );
 }
 
-function js_view($view, $vars = [], $status = 200)
+function page_title()
 {
-    return response()
-        ->view($view, $vars, $status)
-        ->header('Content-Type', 'application/javascript');
+    $currentRoute = app('route-section')->getCurrent();
+    $checkLocale = config('app.fallback_locale');
+    $keys = [
+        "page_title.{$currentRoute['namespace']}.{$currentRoute['controller']}.{$currentRoute['action']}",
+        "page_title.{$currentRoute['namespace']}.{$currentRoute['controller']}._",
+        "page_title.{$currentRoute['namespace']}._",
+    ];
+
+    foreach ($keys as $key) {
+        if (trans_exists($key, $checkLocale)) {
+            return trans($key);
+        }
+    }
+
+    return 'unknown';
 }
 
 function ujs_redirect($url, $status = 200)
 {
     if (Request::ajax() && !Request::isMethod('get')) {
-        return js_view('layout.ujs-redirect', ['url' => $url], $status);
+        return ext_view('layout.ujs-redirect', compact('url'), 'js', $status);
     } else {
         if (Request::header('Turbolinks-Referrer')) {
             Request::session()->put('_turbolinks_location', $url);
@@ -549,6 +738,12 @@ function ujs_redirect($url, $status = 200)
 
         return redirect($url);
     }
+}
+
+// strips combining characters after x levels deep
+function unzalgo(?string $text, int $level = 2)
+{
+    return preg_replace("/(\pM{{$level}})\pM+/u", '\1', $text);
 }
 
 function route_redirect($path, $target)
@@ -564,29 +759,31 @@ function timeago($date)
     return "<time class='timeago' datetime='{$attribute_date}'>{$display_date}</time>";
 }
 
-function current_action()
+function link_to_user($id, $username = null, $color = null, $classNames = null)
 {
-    return explode('@', Route::currentRouteAction(), 2)[1] ?? null;
-}
-
-function link_to_user($user_id, $user_name = null, $user_color = null)
-{
-    if ($user_id instanceof App\Models\User) {
-        $user_name ?? ($user_name = $user_id->username);
-        $user_color ?? ($user_color = $user_id->user_colour);
-        $user_id = $user_id->getKey();
+    if ($id instanceof App\Models\User) {
+        $username ?? ($username = $id->username);
+        $color ?? ($color = $id->user_colour);
+        $id = $id->getKey();
     }
-    $user_name = e($user_name);
-    $style = user_color_style($user_color, 'color');
+    $username = e($username);
+    $style = user_color_style($color, 'color');
 
-    if ($user_id) {
+    if ($classNames === null) {
+        $classNames = ['user-name'];
+    }
+
+    $class = implode(' ', $classNames);
+
+    if ($id === null) {
+        return "<span class='{$class}'>{$username}</span>";
+    } else {
+        $class .= ' js-usercard';
         // FIXME: remove `rawurlencode` workaround when fixed upstream.
         // Reference: https://github.com/laravel/framework/issues/26715
-        $user_url = e(route('users.show', rawurlencode($user_id)));
+        $url = e(route('users.show', rawurlencode($id)));
 
-        return "<a class='user-name js-usercard' data-user-id='{$user_id}' href='{$user_url}' style='{$style}'>{$user_name}</a>";
-    } else {
-        return "<span class='user-name'>{$user_name}</span>";
+        return "<a class='{$class}' data-user-id='{$id}' href='{$url}' style='{$style}'>{$username}</a>";
     }
 }
 
@@ -614,12 +811,16 @@ function post_url($topicId, $postId, $jumpHash = true, $tail = false)
         $postIdParamKey = 'end';
     }
 
-    $url = route('forum.topics.show', ['topics' => $topicId, $postIdParamKey => $postId]);
+    if ($topicId === null) {
+        return;
+    }
+
+    $url = route('forum.topics.show', ['topic' => $topicId, $postIdParamKey => $postId]);
 
     return $url;
 }
 
-function wiki_url($page = 'Welcome', $locale = null)
+function wiki_url($page = 'Main_Page', $locale = null, $api = null)
 {
     // FIXME: remove `rawurlencode` workaround when fixed upstream.
     // Reference: https://github.com/laravel/framework/issues/26715
@@ -627,6 +828,10 @@ function wiki_url($page = 'Welcome', $locale = null)
 
     if (present($locale) && $locale !== App::getLocale()) {
         $params['locale'] = $locale;
+    }
+
+    if ($api ?? is_api_request()) {
+        return route('api.wiki.show', $params);
     }
 
     return route('wiki.show', $params);
@@ -637,12 +842,12 @@ function bbcode($text, $uid, $options = [])
     return (new App\Libraries\BBCodeFromDB($text, $uid, $options))->toHTML();
 }
 
-function bbcode_for_editor($text, $uid)
+function bbcode_for_editor($text, $uid = null)
 {
     return (new App\Libraries\BBCodeFromDB($text, $uid))->toEditor();
 }
 
-function proxy_image($url)
+function proxy_media($url)
 {
     // turn relative urls into absolute urls
     if (!preg_match('/^https?\:\/\//', $url)) {
@@ -715,7 +920,7 @@ function nav_links()
         'orders-index' => route('store.orders.index'),
     ];
     $links['help'] = [
-        'getWiki' => wiki_url('Welcome'),
+        'getWiki' => wiki_url('Main_Page'),
         'getFaq' => wiki_url('FAQ'),
         'getRules' => wiki_url('Rules'),
         'getSupport' => wiki_url('Help_Centre'),
@@ -732,13 +937,12 @@ function footer_landing_links()
             'changelog-index' => route('changelog.index'),
             'beatmaps' => action('BeatmapsetsController@index'),
             'download' => route('download'),
-            'wiki' => wiki_url('Welcome'),
         ],
         'help' => [
             'faq' => wiki_url('FAQ'),
             'forum' => route('forum.forums.index'),
             'livestreams' => route('livestreams.index'),
-            'report' => route('forum.topics.create', ['forum_id' => 5]),
+            'wiki' => wiki_url('Main_Page'),
         ],
         'legal' => footer_legal_links(),
     ];
@@ -880,7 +1084,7 @@ function open_image($path, $dimensions = null)
 
 function json_collection($model, $transformer, $includes = null)
 {
-    $manager = new League\Fractal\Manager();
+    $manager = new League\Fractal\Manager(new App\Libraries\Transformers\ScopeFactory());
     if ($includes !== null) {
         $manager->parseIncludes($includes);
     }
@@ -1055,6 +1259,8 @@ function deltree($dir)
 function get_param_value($input, $type)
 {
     switch ($type) {
+        case 'any':
+            return $input;
         case 'bool':
             return get_bool($input);
             break;
@@ -1063,6 +1269,9 @@ function get_param_value($input, $type)
             break;
         case 'file':
             return get_file($input);
+            break;
+        case 'float':
+            return get_float($input);
             break;
         case 'string':
             return get_string($input);
@@ -1088,7 +1297,7 @@ function get_params($input, $namespace, $keys)
 
     $params = [];
 
-    if (is_array($input)) {
+    if (is_array($input) || ($input instanceof ArrayAccess)) {
         foreach ($keys as $keyAndType) {
             $keyAndType = explode(':', $keyAndType);
 
@@ -1108,6 +1317,14 @@ function get_params($input, $namespace, $keys)
 
 function array_rand_val($array)
 {
+    if ($array instanceof Illuminate\Support\Collection) {
+        $array = $array->all();
+    }
+
+    if (count($array) === 0) {
+        return;
+    }
+
     return $array[array_rand($array)];
 }
 
@@ -1150,7 +1367,7 @@ function get_time_or_null($timestamp)
  * Returns 0 if $time is null so mysql doesn't explode because of not null
  * constraints.
  */
-function get_timestamp_or_zero(DateTime $time = null) : int
+function get_timestamp_or_zero(DateTime $time = null): int
 {
     return $time === null ? 0 : $time->getTimestamp();
 }
@@ -1336,27 +1553,25 @@ function mini_asset(string $url): string
 function section_to_hue_map($section): int
 {
     static $colourToHue = [
-        'red' => 0,
-        'pink' => 333,
-        'orange' => 46,
-        'green' => 115,
-        'purple' => 255,
         'blue' => 200,
+        'darkorange' => 20,
+        'green' => 115,
+        'orange' => 46,
+        'pink' => 333,
+        'purple' => 255,
+        'red' => 0,
     ];
 
     static $sectionMapping = [
         'admin' => 'red',
-        'admin-forum' => 'red',
-        'admin-store' => 'red',
         'beatmaps' => 'blue',
-        'beatmapsets' => 'blue',
         'community' => 'pink',
         'error' => 'pink',
         'help' => 'orange',
         'home' => 'purple',
         'multiplayer' => 'pink',
         'rankings' => 'green',
-        'store' => 'pink',
+        'store' => 'darkorange',
         'user' => 'pink',
     ];
 

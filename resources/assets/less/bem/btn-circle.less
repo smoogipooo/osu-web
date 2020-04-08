@@ -1,20 +1,5 @@
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 .btn-circle {
   @top: btn-circle;
@@ -26,30 +11,29 @@
   text-shadow: inherit;
 
   flex: none;
-  background-color: @osu-colour-l2;
-  color: #fff;
+  background-color: @osu-colour-l4;
+  color: @osu-colour-c1;
   transition: all 120ms ease-in-out;
   font-size: 14px;
 
-  &:focus,
-  &:hover,
-  &:active {
-    color: #fff;
-    background-color: @osu-colour-l1;
+  .link-hover({
+    background-color: @osu-colour-l3;
+    color: @osu-colour-c1;
     text-decoration: none;
     box-shadow: 0 5px 15px fade(#000, 40%);
-  }
+  });
 
   &--bbcode {
     .default-text-shadow();
     margin: 2px;
     font-size: 13px;
     box-shadow: none;
+    background-color: transparent;
 
     &:focus,
     &:hover,
     &:active {
-      .default-box-shadow();
+      background-color: @osu-colour-l3;
     }
   }
 
@@ -79,7 +63,7 @@
   }
 
   &--topic-nav {
-    margin: 0 5px;
+    margin: 0 3px;
   }
 
   &--activated, &.js-activated {
@@ -98,16 +82,32 @@
   &--purple {
     background-color: @purple-dark;
 
+    .link-hover({
+      background-color: @purple;
+    });
+
     &.@{top}--activated {
       background-color: @purple-light;
+
+      .link-hover({
+        background-color: @purple-lighter;
+      });
     }
   }
 
   &--yellow {
     background-color: @yellow-dark;
 
+    .link-hover({
+      background-color: @yellow;
+    });
+
     &.@{top}--activated {
       background-color: @yellow-light;
+
+      .link-hover({
+        background-color: @yellow-lighter;
+      });
     }
   }
 

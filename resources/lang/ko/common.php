@@ -1,26 +1,11 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => '확실합니까?',
-    'confirmation_unsaved' => '저장되지 않은 정보는 사라집니다. 계속하시겠습니까?',
+    'confirmation_unsaved' => '저장되지 않은 정보는 사라집니다. 계속하시겠어요?',
     'saved' => '저장됨',
 
     'array_and' => [
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ', 그리고 ',
     ],
 
+    'badges' => [
+        'new' => 'NEW',
+    ],
+
     'buttons' => [
         'admin' => '관리',
+        'authorise' => '권한 부여',
+        'authorising' => '인증하기...',
         'back_to_previous' => '이전 위치로 돌아가기',
         'back_to_top' => '맨 위로',
         'cancel' => '취소',
         'change' => '변경',
         'click_to_copy' => '클립보드에 복사',
         'click_to_copy_copied' => '클립보드에 복사되었습니다!',
+        'close' => '닫기',
         'collapse' => '축소',
         'delete' => '삭제',
         'edit' => '수정',
         'expand' => '확장',
         'hide' => '숨기기',
         'permalink' => '고유 주소',
-        'permalink_copied' => '링크 복사됨',
+        'pin' => '고정',
         'post' => '게시하기',
         'reply' => '답변하기',
         'reply_reopen' => '답변하고 토론 재개하기',
@@ -56,8 +48,11 @@ return [
         'see_more' => '더 보기',
         'show' => '표시',
         'show_deleted' => '삭제된 내용 표시',
+        'show_less' => '간단히 표시',
         'show_more' => '더 보기',
         'show_more_options' => '더 많은 옵션 보기',
+        'unpin' => '고정 해제',
+        'update' => '업데이트',
         'upload_image' => '이미지 올리기',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => '분',
         'minutes' => ':count분',
         'months' => ':count달',
+        'notifications' => '알림 :count_delimited개',
+        'plus_others' => '+ :count_delimited 기타!',
+        'post' => ':count_delimited 게시글',
         'second_short_unit' => '초',
+        'star_priority' => ':count_delimited 별 우선 순위',
         'update' => ':count_delimited 업데이트',
+        'view' => ':count_delimited 조회',
         'years' => ':count년',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => '업로드할 파일을 이곳에 끌어놓으세요',
     ],
 
+    'input' => [
+        'search' => '검색...',
+    ],
+
     'pagination' => [
         'previous' => '이전',
         'next' => '다음',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => '알림',
+    ],
+
+    'wrong_user' => [
+        '_' => ':user로 로그인되어있습니다. :logout_link.',
+        'logout_link' => '다른 사용자로 로그인하려면 이곳을 클릭하세요',
     ],
 ];

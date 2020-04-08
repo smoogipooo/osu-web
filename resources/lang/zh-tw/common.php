@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => '確定？',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => '和',
     ],
 
+    'badges' => [
+        'new' => '全新功能！',
+    ],
+
     'buttons' => [
         'admin' => '管理員',
+        'authorise' => '授權',
+        'authorising' => '',
         'back_to_previous' => '返回到上一個位置',
         'back_to_top' => '返回頂部',
         'cancel' => '取消',
         'change' => '變更',
         'click_to_copy' => '點擊以複製到剪貼簿',
         'click_to_copy_copied' => '已複製到剪貼簿！',
+        'close' => '關閉',
         'collapse' => '摺疊',
         'delete' => '刪除',
         'edit' => '編輯',
         'expand' => '展開',
         'hide' => '隱藏',
         'permalink' => '永久連結',
-        'permalink_copied' => '連結已複製',
+        'pin' => '置頂',
         'post' => '發表',
         'reply' => '回覆',
         'reply_reopen' => '回覆並重新打開',
@@ -56,8 +48,11 @@ return [
         'see_more' => '查看更多',
         'show' => '顯示',
         'show_deleted' => '顯示刪除的項目',
+        'show_less' => '收起',
         'show_more' => '顯示更多',
         'show_more_options' => '顯示更多選項',
+        'unpin' => '取消置頂',
+        'update' => '更新',
         'upload_image' => '上傳圖片',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => '分',
         'minutes' => ':count_delimited 分鐘|:count_delimited 分鐘',
         'months' => ':count 個月',
+        'notifications' => '',
+        'plus_others' => '+ :count_delimited 其他!|+ :count_delimited 其他!',
+        'post' => ':count_delimited 篇貼文',
         'second_short_unit' => '秒',
+        'star_priority' => ':count_delimited 星數優先|:count_delimited 星數優先',
         'update' => ':count_delimited 更新|:count_delimited 更新',
+        'view' => ':count_delimited 次瀏覽',
         'years' => ':count 年',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => '拉到此處以上傳',
     ],
 
+    'input' => [
+        'search' => '搜尋...',
+    ],
+
     'pagination' => [
         'previous' => '上一頁',
         'next' => '下一頁',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => '提醒',
+    ],
+
+    'wrong_user' => [
+        '_' => '您已以 :user 的身分登入。 :logout_link',
+        'logout_link' => '點擊此處以不同帳號登入。',
     ],
 ];

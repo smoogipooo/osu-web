@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Pro pokračování se prosím přihlašte.',
+    'require_verification' => '',
+    'restricted' => "Toto nelze provést, když jste omezeni.",
+    'silenced' => "Toto nelze provést, když jste umlčeni.",
+    'unauthorized' => 'Přístup odepřen.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Hype nelze vrátit zpět.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Nelze upravovat automaticky generovaný příspěvek.',
-            'not_owner' => 'Pouze autor může příspěvek upravovat.',
+        'destroy' => [
+            'not_owner' => 'Můžeš odstranit pouze svoje příspěvky.',
+            'resolved' => 'Nemůžete odstranit příspěvek v vyřešené diskusi.',
+            'system_generated' => 'Automaticky generované příspěvky nelze odstranit.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Pouze autor může příspěvek upravovat.',
+            'resolved' => '',
+            'system_generated' => 'Nelze upravovat automaticky generovaný příspěvek.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Tato beatmapa je zablokována od diskuze.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Pouze admin může zobrazit toto fórum.',
         ],
     ],
-
-    'require_login' => 'Pro pokračování se prosím přihlašte.',
-
-    'unauthorized' => 'Přístup odepřen.',
-
-    'silenced' => "Toto nelze provést, když jste umlčeni.",
-
-    'restricted' => "Toto nelze provést, když jste omezeni.",
 
     'user' => [
         'page' => [

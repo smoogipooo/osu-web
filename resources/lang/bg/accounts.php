@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => 'Настройки на <strong>профила</strong>',
         'title_compact' => 'настройки',
         'username' => 'потребителско име',
 
         'avatar' => [
             'title' => 'Аватар',
             'rules' => '',
-            'rules_link' => '',
+            'rules_link' => 'правилата на общността',
         ],
 
         'email' => [
@@ -67,11 +51,19 @@ return [
     'notifications' => [
         'title' => 'Известия',
         'topic_auto_subscribe' => '',
+        'beatmapset_discussion_qualified_problem' => '',
+
+        'mail' => [
+            '_' => '',
+            'beatmapset:modding' => '',
+            'forum_topic_reply' => '',
+        ],
     ],
 
     'oauth' => [
-        'authorized_clients' => '',
-        'title' => '',
+        'authorized_clients' => 'оторизирани клиенти',
+        'own_clients' => 'собствени клиенти',
+        'title' => 'OAuth',
     ],
 
     'playstyles' => [
@@ -98,18 +90,16 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'потвърдете смяната на osu! имейла',
         'update' => 'обнови',
     ],
 
     'update_password' => [
-        'email_subject' => 'подвърдете смяната на osu! паролата',
         'update' => 'обнови',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Можете да затворите този раздел сега',
+        'title' => 'Проверката на потребителя е завършена',
     ],
 
     'verification_invalid' => [

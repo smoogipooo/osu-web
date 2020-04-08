@@ -1,20 +1,5 @@
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 .forum-topic-nav {
   @_top: forum-topic-nav;
@@ -26,7 +11,7 @@
   @_seek-bar-height-desktop-hover: 15px;
   @_seek-tooltip-arrow-height: 10px;
   width: 100%;
-  background-image: linear-gradient(to top, @gray-dark @_main-height, transparent @_main-height);
+  background-color: @osu-colour-d4;
 
   height: @_main-height;
 
@@ -92,11 +77,11 @@
 
   &__item {
     .reset-input();
-    .default-border-radius();
     .center-content();
-    color: #fff;
-    margin: 0 5px;
+    color: @osu-colour-c1;
+    margin: 0 3px;
     border: 2px solid transparent;
+    border-radius: 10000px;
 
     font-size: 12px;
     @media @desktop {
@@ -105,31 +90,32 @@
 
     ._button-hover() {
       background-color: #111;
-      color: #fff;
+      color: @osu-colour-c1;
       text-decoration: none;
     }
 
     &--button {
+      .default-text-shadow();
       width: @_content-height;
       height: @_content-height;
       display: inline-block;
+      background-color: @osu-colour-l4;
+      font-size: @font-size--small;
 
       &:focus,
       &:hover,
       &:active {
-        ._button-hover;
+        ._button-hover();
+        background-color: @osu-colour-l3;
+      }
+
+      @media @desktop {
+        font-size: @font-size--small;
       }
     }
 
     &--counter {
-      ._button-hover;
-    }
-
-    &--main {
-      margin: 0 2.5px;
-      @media @desktop {
-        margin: 0 10px;
-      }
+      ._button-hover();
     }
 
     &--focus {
@@ -152,19 +138,10 @@
     backface-visibility: hidden;
 
     height: @_seek-bar-height;
+    background-color: @osu-colour-h1;
 
     @media @desktop {
       height: @_seek-bar-height-desktop;
-    }
-
-    &::before {
-      content: ' ';
-      position: absolute;
-      left: 0;
-      top: 100%;
-      height: @_main-height;
-      width: 100%;
-      background-color: @gray-darker;
     }
 
     // easier targeting

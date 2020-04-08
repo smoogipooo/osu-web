@@ -1,24 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
-namespace Tests;
+namespace Tests\Libraries\Transactions;
 
 use App\Exceptions\ModelNotSavedException;
 use App\Libraries\Transactions\AfterCommit;
@@ -28,42 +13,13 @@ use App\Models\Model;
 use DB;
 use Exception;
 use Illuminate\Support\Facades\Schema;
-use TestCase;
+use Tests\TestCase;
 
 class AfterCommitTest extends TestCase
 {
     protected $connectionsToTransact = [];
 
     private $exceptionMessage = 'it should not run afterCommit';
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        // not ideal to create the table between every test
-        // but Laravel's resolvers do not work in the
-        // setUpBeforeClass/tearDownAfterClass methods.
-
-        // force cleanup
-        if (Schema::hasTable('test_after_commit')) {
-            Schema::drop('test_after_commit');
-        }
-
-        // create a dummy table
-        Schema::create('test_after_commit', function ($table) {
-            $table->charset = 'utf8mb4';
-            $table->increments('id');
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
-        });
-    }
-
-    public function tearDown()
-    {
-        Schema::drop('test_after_commit');
-
-        parent::tearDown();
-    }
 
     public function testModelAfterCommitSupportDoesEnlist()
     {
@@ -248,6 +204,35 @@ class AfterCommitTest extends TestCase
         $this->assertSame(0, count($this->getPendingCommits('mysql')));
         $this->assertSame(0, $model->afterCommitCount);
         $this->assertSame(1, $model->afterRollbackCount);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // not ideal to create the table between every test
+        // but Laravel's resolvers do not work in the
+        // setUpBeforeClass/tearDownAfterClass methods.
+
+        // force cleanup
+        if (Schema::hasTable('test_after_commit')) {
+            Schema::drop('test_after_commit');
+        }
+
+        // create a dummy table
+        Schema::create('test_after_commit', function ($table) {
+            $table->charset = 'utf8mb4';
+            $table->increments('id');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+        });
+    }
+
+    protected function tearDown(): void
+    {
+        Schema::drop('test_after_commit');
+
+        parent::tearDown();
     }
 
     private function getPendingCommits(string $connection)

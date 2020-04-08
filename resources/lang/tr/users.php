@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[silinmiş kullanıcı]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'mesaj gönder',
     ],
 
+    'disabled' => [
+        'title' => 'Olamaz! Görünüşe bakılırsa hesabın kilitlenmiş.',
+        'warning' => "Bir kuralı ihlal etmeniz durumunda, genellikle herhangi bir af(veya itiraz) talebini dikkate almayacağımız bir aylık bekleme süresinin olduğunu unutmayın.  Bu süreden sonra, gerekli olması halinde bizimle iletişime geçmekte özgürsünüz. Bir hesabı devre dışı bıraktıktan sonra yeni hesap oluşturmanın <strong>bu bir aylık bekleme süresinin uzatılmasına</strong> neden olacağını lütfen unutmayın. Ayrıca <strong> oluşturduğunuz her hesap için kuralları daha fazla ihlal ettiğinizi </strong> unutmayın. Bu yolda gitmemenizi önemle tavsiye ederiz!",
+
+        'if_mistake' => [
+            '_' => 'Eğer bunun bir hata olduğunu düşünüyorsanız, bizimle iletişime geçebilirsiniz(:email ile veya sayfanın sağ alt koşesinde bulunan ? tuşu ile.). Çok sağlam verilere dayandığından, eylemlerimize her zaman tam olarak güvendiğimizi lütfen unutmayın.  Kasıtlı olarak sahtekâr olduğunuzu düşünürsek, isteğinizi göz ardı etme hakkını saklı tutarız.',
+            'email' => 'e-posta',
+        ],
+
+        'reasons' => [
+            'compromised' => 'Hesabınızın güvenliği ihlal edilmiş sayıldı.  Kimliği doğrulanırken geçici olarak devre dışı bırakılabilir.',
+            'opening' => 'Hesabını dondurmaya sebebiyet verebilecek birtakım sebepler var:',
+
+            'tos' => [
+                '_' => 'Siz, :community_rules ya da :tos kurallarından bir veya daha fazlasını ihlal ettiniz.',
+                'community_rules' => 'topluluk kuralları',
+                'tos' => 'hizmet kullanım şartları',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Hesabın uzun bir zamandır kullanılmamıştır.",
+        ],
+    ],
+
     'login' => [
         '_' => 'Giriş Yap',
-        'locked_ip' => 'IP adresiniz kilitli. Lütfen birkaç dakika bekleyin.',
-        'username' => 'Kullanıcı adı',
-        'password' => 'Şifre',
         'button' => 'Giriş Yap',
         'button_posting' => 'Giriş yapılıyor...',
+        'email_login_disabled' => 'E-posta ile giriş yapmak şu anlık mümkün değildir. Lütfen kullanıcı adınızı kullanınız.',
+        'failed' => 'Hatalı giriş',
+        'forgot' => 'Şifrenizi mi unuttunuz?',
+        'info' => 'Devam etmek için lütfen giriş yapınız',
+        'locked_ip' => 'IP adresiniz kilitli. Lütfen birkaç dakika bekleyin.',
+        'password' => 'Şifre',
+        'register' => "osu! hesabınız yok mu? Yeni bir tane oluşturun",
         'remember' => 'Bu bilgisayarı hatırla',
         'title' => 'Devam etmek için lütfen giriş yapın',
-        'failed' => 'Hatalı giriş',
-        'register' => "osu! hesabınız yok mu? Yeni bir tane oluşturun",
-        'forgot' => 'Şifrenizi mi unuttunuz?',
+        'username' => 'Kullanıcı adı',
+
         'beta' => [
             'main' => 'Beta erişimi ayrıcalıklı üyelere kısıtlandırılmıştır.',
             'small' => '(osu!supporterlar yakında erişebilecekler)',
         ],
-
-        'here' => 'buraya', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username\'in gönderileri',
     ],
 
-    'signup' => [
-        '_' => 'Kayıt Ol',
-    ],
     'anonymous' => [
         'login_link' => 'giriş yapmak için tıklayın',
         'login_text' => 'giriş yap',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => 'Desteklenmeyen biçim.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Yükleme sadece :link için mevcut',
+                        'link' => 'osu!supporterlar',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 takipçi|:count takipçi',
+            'none' => 'hiçbiri',
             'unranked' => 'Son zamanlarda oynamamış',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Onay Beklenen Beatmapler',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Tartışmalar',
+                'title_longer' => 'Son Tartışmalar',
+                'show_more' => 'daha fazla tartışma gör',
+            ],
+            'events' => [
+                'title' => 'Etkinlikler',
+                'title_longer' => 'Son Etkinlikler',
+                'show_more' => 'daha fazla etkinlik gör',
+            ],
             'historical' => [
                 'empty' => 'Performans kaydı yok. :(',
                 'title' => 'Geçmiş',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Mevcut Kudosu',
-                'available_info' => "Kudosu'larınızı yaptığınız beatmapler'in daha çok dikkat çekmesi için kullanabilirsiniz. Bu sayı, henüz kullanmadığınız kudosu'ların sayısını gösterir.",
                 'recent_entries' => 'Son Kudosu Geçmişi',
                 'title' => 'Kudosu!',
                 'total' => 'Kazanılan Toplam Kudosu',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Beatmap yönetiminine kullanıcının ne kadar çok katkı yapmış olmuşluğuna dayanarak. Daha fazla bilgi için :link\'e bakınız.',
+                    'link' => 'bu sayfa',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Bu kullanıcı daha hiç almamış. ;_;",
                 'recent' => 'En Son',
                 'title' => 'Madalyalar',
+            ],
+            'posts' => [
+                'title' => 'Gönderiler',
+                'title_longer' => 'Son Gönderiler',
+                'show_more' => 'daha fazla gönderi gör',
             ],
             'recent_activity' => [
                 'title' => 'Son',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Birincilikler',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Verilen Oylar (son 3 ayda)',
+                'received' => 'Alınan Oylar (son 3 ayda)',
+                'title' => 'Oylar',
+                'title_longer' => 'Son Oylar',
+                'vote_count' => ':count_delimited oy|:count_delimited oy',
             ],
             'account_standing' => [
                 'title' => 'Hesap Durumu',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Oyuncu bilgisi',
-            'info' => 'Bilgi',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => 'Sayfanın içeriğini buraya yaz',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Bu özelliğin kilidini açmak için bir :link olman lazım.',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Skor Dereceleri',
             'total_hits' => 'Toplam Vuruş',
             'total_score' => 'Toplam Skor',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Dereceli ve Onaylanmış Beatmapler',
+            'loved_beatmapset_count' => 'Sevilen Beatmapler',
+            'unranked_beatmapset_count' => 'Onay Bekleyen Beatmapler',
+            'graveyard_beatmapset_count' => 'Terk Edilmiş Beatmapler',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => 'Tuğla görünümü',
+        'card' => 'Kart Görünümü',
+        'list' => 'Liste Görünümü',
     ],
 ];

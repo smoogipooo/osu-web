@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Topic Fissati',
@@ -25,6 +10,8 @@ return [
     'title' => 'forum osu!',
 
     'covers' => [
+        'edit' => 'Modifica la copertina',
+
         'create' => [
             '_' => 'Imposta immagine di copertina',
             'button' => 'Carica immagine',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Nuova risposta dal topic ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Post più recente',
+
+        'index' => [
+            'title' => 'Indice Forum',
+        ],
+
         'topics' => [
             'empty' => 'Nessun topic!',
         ],
@@ -50,21 +39,13 @@ return [
     'mark_as_read' => [
         'forum' => 'Contrassegna il forum come già letto',
         'forums' => 'Contrassegna i forum come già letti',
-        'busy' => 'Contrassegnando come già letti...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'Modificare un sondaggio rimuoverà i risultati attuali!',
-
-        'actions' => [
-            'edit' => 'Modifica sondaggio',
-        ],
+        'busy' => 'Contrassegnando come già letto...',
     ],
 
     'post' => [
         'confirm_destroy' => 'Vuoi veramente eliminare il post?',
         'confirm_restore' => 'Vuoi veramente ripristinare il post?',
-        'edited' => 'Ultima modifica di :user di :when, modificato :count volte in totale.',
+        'edited' => 'Ultima modifica di :user :when, modificato :count_delimited volta in totale.|Ultima modifica di :user :when, modificato :count_delimited volte in totale.',
         'posted_at' => 'postato :when',
 
         'actions' => [
@@ -73,16 +54,22 @@ return [
             'edit' => 'Modifica post',
         ],
 
+        'create' => [
+            'title' => [
+                'reply' => 'Nuova risposta',
+            ],
+        ],
+
         'info' => [
             'post_count' => ':count_delimited post|:count_delimited post',
-            'topic_starter' => 'Comincia-conversazioni',
+            'topic_starter' => 'Creatore del Topic',
         ],
     ],
 
     'search' => [
         'go_to_post' => 'Vai al post',
         'post_number_input' => 'inserisci numero post',
-        'total_posts' => ':posts_count post in totale',
+        'total_posts' => ':posts_count post totali',
     ],
 
     'topic' => [
@@ -90,20 +77,21 @@ return [
         'go_to_latest' => 'guarda gli ultimi post',
         'latest_post' => ':when da :user',
         'latest_reply_by' => 'ultima risposta di :user',
-        'new_topic' => 'Scrivi nuovo topic',
+        'new_topic' => 'Nuovo topic',
         'new_topic_login' => 'Effettua l\'accesso per postare un nuovo topic',
-        'post_reply' => 'Invia',
+        'post_reply' => 'Posta',
         'reply_box_placeholder' => 'Scrivi qui per rispondere',
         'reply_title_prefix' => 'Re',
-        'started_by' => 'da :user',
+        'started_by' => 'di :user',
         'started_by_verbose' => 'postato da :user',
 
         'create' => [
+            'close' => 'Chiudi',
             'preview' => 'Anteprima',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
             'preview_hide' => 'Scrivi',
-            'submit' => 'Invia',
+            'submit' => 'Posta',
 
             'necropost' => [
                 'default' => 'Questa discussione è inattiva da un bel po\' di tempo. Posta solo se hai una motivazione in particolare.',
@@ -121,7 +109,7 @@ return [
         ],
 
         'jump' => [
-            'enter' => 'clicca per inserire un numero del post specifico',
+            'enter' => 'clicca per inserire un numero specifico del post',
             'first' => 'vai al primo post',
             'last' => 'vai all\'ultimo post',
             'next' => 'salta i prossimi 10 post',
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Iscrizioni ai Topic',
-            'title_compact' => 'iscrizioni',
-            'title_main' => 'Forum <strong>Sottoiscrizioni</strong>',
+            'title_compact' => 'iscrizioni forum',
 
             'box' => [
                 'total' => 'Topic a cui sei iscritto',
@@ -153,8 +139,8 @@ return [
 
         'topic_buttons' => [
             'remove' => [
-                'confirmation' => 'Anullare l\'iscrizione dal topic?',
-                'title' => 'Disiscriviti',
+                'confirmation' => 'Annullare l\'iscrizione dal topic?',
+                'title' => 'Annulla iscrizione',
             ],
         ],
     ],
@@ -172,7 +158,7 @@ return [
         'create' => [
             'create_poll' => 'Creazione Sondaggio',
 
-            'preview' => 'Anteprima del post',
+            'preview' => 'Anteprima Post',
 
             'create_poll_button' => [
                 'add' => 'Crea un sondaggio',
@@ -182,15 +168,15 @@ return [
             'poll' => [
                 'hide_results' => 'Nascondi i risultati del sondaggio.',
                 'hide_results_info' => 'Saranno mostrati solo dopo la conclusione del sondaggio.',
-                'length' => 'Durata del sondaggio:',
+                'length' => 'Esegui sondaggio per',
                 'length_days_suffix' => 'giorni',
                 'length_info' => 'Lascia vuoto per un sondaggio senza fine',
-                'max_options' => 'Opzioni per Utente',
+                'max_options' => 'Opzioni per utente',
                 'max_options_info' => 'Questo è il numero di opzioni che ogni utente può selezionare quando vota.',
                 'options' => 'Opzioni',
                 'options_info' => 'Posiziona ogni opzione su una nuova linea. Puoi inserire fino a 10 opzioni.',
                 'title' => 'Domanda',
-                'vote_change' => 'Consenti il ri-votaggio.',
+                'vote_change' => 'Consenti di rivotare.',
                 'vote_change_info' => 'Se consentito, gli utenti possono cambiare il loro voto.',
             ],
         ],
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Questo topic è bloccato e non può essere risposto',
             'to_0' => 'Sblocca topic',
+            'to_0_confirm' => 'Sbloccare il topic?',
             'to_0_done' => 'Il topic è stato sbloccato',
             'to_1' => 'Blocca topic',
+            'to_1_confirm' => 'Bloccare il topic?',
             'to_1_done' => 'Il topic è stato bloccato',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Togli dai topic fissati',
+            'to_0_confirm' => 'Togliere dai topic fissati?',
             'to_0_done' => 'Il topic è stato tolto dai topic fissati',
             'to_1' => 'Fissa topic',
+            'to_1_confirm' => 'Fissare il topic?',
             'to_1_done' => 'Il topic è stato fissato',
             'to_2' => 'Fissa discussione e segna come annuncio',
-            'to_2_done' => 'La discussione è stata fissata e segnata come annuncio',
+            'to_2_confirm' => 'Fissare il topic e segnarlo come annuncio?',
+            'to_2_done' => 'Il topic è stato fissato e segnato come annuncio',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Mostra post eliminati',
+            'hide' => 'Nascondi post eliminati',
         ],
 
         'show' => [
@@ -278,19 +274,28 @@ return [
 
                 'info' => [
                     '_' => 'Questa è una :feature_request. Le richieste di nuove funzionalità possono essere votate dai :supporters.',
-                    'feature_request' => 'richiedi una funzionalità',
-                    'supporters' => 'sostenitori',
+                    'feature_request' => 'funzionalità proposta',
+                    'supporters' => 'supporter',
                 ],
 
                 'user' => [
-                    'count' => '{0} nessun voto|{1} :count voto|[2,*] :count voti',
+                    'count' => '{0} nessun voto|{1} :count_delimited voto|[2,*] :count_delimited voti',
                     'current' => 'Hai :votes rimanenti.',
                     'not_enough' => "Non hai altri voti rimanenti",
                 ],
             ],
 
             'poll' => [
+                'edit' => 'Modifica Sondaggio',
+                'edit_warning' => 'Modificare un sondaggio rimuoverà i risultati attuali!',
                 'vote' => 'Vota',
+
+                'button' => [
+                    'change_vote' => 'Cambia voto',
+                    'edit' => 'Modifica il sondaggio',
+                    'view_results' => 'Salta ai risultati',
+                    'vote' => 'Vota',
+                ],
 
                 'detail' => [
                     'end_time' => 'Il sondaggio scade tra :time',

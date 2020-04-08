@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => 'Wszystkie powiadomienia przeczytane!',
-    'mark_all_read' => 'Wyczyść wszystko',
+    'mark_read' => '',
+    'none' => 'Brak powiadomień',
+    'see_all' => 'zobacz wszystkie powiadomienia',
+
+    'filters' => [
+        '_' => 'wszystkie',
+        'user' => 'profil',
+        'beatmapset' => 'beatmapy',
+        'forum_topic' => 'forum',
+        'news_post' => 'aktualności',
+        'build' => 'kompilacje',
+        'channel' => 'czat',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -30,10 +27,20 @@ return [
                 '_' => 'Dyskusja beatmapy',
                 'beatmapset_discussion_lock' => 'Tworzenie dyskusji dla beatmapy „:title” zostało zablokowane.',
                 'beatmapset_discussion_lock_compact' => 'Dyskusja została zablokowana',
-                'beatmapset_discussion_post_new' => 'Nowy post dla beatmapy „:title” od użytkownika :username',
+                'beatmapset_discussion_post_new' => 'Nowy post w dyskusji „:title” od użytkownika :username: „:content”',
+                'beatmapset_discussion_post_new_empty' => 'Nowy post od użytkownika :username dla beatmapy „:title”',
                 'beatmapset_discussion_post_new_compact' => 'Nowy post od użytkownika :username',
+                'beatmapset_discussion_post_new_compact_empty' => 'Nowy post od użytkownika :username',
                 'beatmapset_discussion_unlock' => 'Tworzenie dyskusji dla beatmapy „:title” zostało odblokowane.',
                 'beatmapset_discussion_unlock_compact' => 'Dyskusja została odblokowana',
+            ],
+
+            'beatmapset_problem' => [
+                '_' => 'Problem z zakwalifikowaną beatmapą',
+                'beatmapset_discussion_qualified_problem' => 'Problem zgłoszony przez użytkownika :username dla beatmapy „:title”: „:content”',
+                'beatmapset_discussion_qualified_problem_empty' => 'Problem zgłoszony przez użytkownika :username dla beatmapy „:title”',
+                'beatmapset_discussion_qualified_problem_compact' => 'Problem zgłoszony przez użytkownika :username: „:content”',
+                'beatmapset_discussion_qualified_problem_compact_empty' => 'Problem zgłoszony przez użytkownika :username',
             ],
 
             'beatmapset_state' => [
@@ -110,7 +117,7 @@ return [
 
             'legacy_pm' => [
                 '_' => '',
-                'legacy_pm' => ':count_delimited nieprzeczytana wiadomość.|:count_delimited nieprzeczytane wiadomości.|:count_delimited nieprzeczytanych wiadomości.',
+                'legacy_pm' => ':count_delimited nieprzeczytana wiadomość|:count_delimited nieprzeczytane wiadomości|:count_delimited nieprzeczytanych wiadomości',
             ],
         ],
 
@@ -120,6 +127,7 @@ return [
             'user_achievement_unlock' => [
                 '_' => 'Nowy medal',
                 'user_achievement_unlock' => 'Odblokowano medal „:title”!',
+                'user_achievement_unlock_compact' => 'Odblokowano medal „:title”!',
             ],
         ],
     ],

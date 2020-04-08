@@ -1,23 +1,9 @@
 {{--
-    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-
-    This file is part of osu!web. osu!web is distributed with the hope of
-    attracting more community contributions to the core ecosystem of osu!.
-
-    osu!web is free software: you can redistribute it and/or modify
-    it under the terms of the Affero GNU General Public License version 3
-    as published by the Free Software Foundation.
-
-    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-    See the GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+    See the LICENCE file in the repository root for full licence text.
 --}}
 @foreach ($search->data() as $entry)
     @php
-        $source = $entry->getSource();
         $url = wiki_url($entry->path, $entry->locale);
     @endphp
     <div class="search-result-entry">
@@ -27,20 +13,20 @@
         >
             <div class="search-wiki-page">
                 <div class="search-wiki-page__content">
-                    <h1 class="search-entry__row search-entry__row--title">
+                    <h1 class="search-wiki-page__row search-wiki-page__row--title">
                         <span class="search-highlight">
                             {!! $entry->highlightedTitle() !!}
                         </span>
 
                     </h1>
 
-                    <p class="search-entry__row search-entry__row--excerpt">
+                    <p class="search-wiki-page__row search-wiki-page__row--excerpt">
                         <span class="search-highlight">
                             {!! $entry->highlights() !!}
                         </span>
                     </p>
 
-                    <p class="search-entry__row search-entry__row--footer">
+                    <p class="search-wiki-page__row search-wiki-page__row--footer">
                         {{ $url }}
                     </p>
                 </div>

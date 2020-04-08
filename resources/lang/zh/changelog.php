@@ -1,25 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'feed_title' => '详细',
     'generic' => '修复已知问题并做了小改动.',
 
     'build' => [
@@ -45,17 +29,12 @@ return [
             '_stream_to' => ':stream 当中到 :to 为止的更改',
             '_to' => '到 :to 为止的更改',
         ],
-
-        'title' => [
-            '_' => '更新日志 :info',
-            'info' => '列表',
-        ],
     ],
 
     'support' => [
         'heading' => '喜欢这次更新吗？',
         'text_1' => '支持 osu! 的后续开发， :link 吧！',
-        'text_1_link' => '成为 Supporter',
+        'text_1_link' => '成为 osu!supporter',
         'text_2' => '你不仅仅能加快开发进度，还能获得一些额外的功能，甚至个性化你的游戏界面！',
     ],
 ];

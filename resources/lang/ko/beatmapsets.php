@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
@@ -34,17 +19,10 @@ return [
         'discussion' => '토론',
 
         'details' => [
-            'approved' => 'approved된 날짜: ',
             'favourite' => '즐겨찾기',
-            'favourited_count' => '및 +1명의 사람!|및 +:count명의 사람들!',
             'logged-out' => '로그인 후 비트맵을 다운로드하세요!',
-            'loved' => 'loved된 날짜: ',
             'mapped_by' => ':mapper님의 맵',
-            'qualified' => 'qualified된 날짜: ',
-            'ranked' => 'ranked된 날짜: ',
-            'submitted' => '만든 날짜: ',
             'unfavourite' => '즐겨찾기 해제',
-            'updated' => '마지막 수정 날짜: ',
             'updated_timeago' => ':timeago에 마지막으로 수정됨',
 
             'download' => [
@@ -58,6 +36,15 @@ return [
                 'bottom' => '하여 더 많은 기능 사용',
                 'top' => '로그인',
             ],
+        ],
+
+        'details_date' => [
+            'approved' => ':timeago 전 approved 됨',
+            'loved' => ':timeago 전 loved 됨',
+            'qualified' => ':timeago 전 qualified 됨',
+            'ranked' => ':timeago 전 ranked 됨',
+            'submitted' => ':timeago 전 제출됨',
+            'updated' => ':timeago 전에 마지막으로 수정됨',
         ],
 
         'favourites' => [
@@ -75,6 +62,18 @@ return [
                     'qualified' => 'qualified',
                     'wip' => '제작 중',
                 ],
+            ],
+
+            'disqualify' => [
+                '_' => '이 비트맵에 문제가 있다면, :link해 주세요.',
+                'button_title' => 'Qualified 비트맵을 Disqualify 처리',
+            ],
+
+            'report' => [
+                '_' => '이 비트맵에서 문제를 찾으셨다면 :link에서 저희에게 신고해 주세요.',
+                'button' => '문제 보고',
+                'button_title' => 'Qualified 비트맵의 문제를 신고합니다.',
+                'link' => '여기',
             ],
         ],
 
@@ -139,6 +138,16 @@ return [
             'rating-spread' => '평점 분포도',
             'nominations' => '지명',
             'playcount' => '플레이 횟수',
+        ],
+
+        'status' => [
+            'ranked' => 'Ranked',
+            'approved' => 'Approved',
+            'loved' => 'Loved',
+            'qualified' => 'Qualified',
+            'wip' => '작업중',
+            'pending' => 'Pending',
+            'graveyard' => '무덤에 감',
         ],
     ],
 ];

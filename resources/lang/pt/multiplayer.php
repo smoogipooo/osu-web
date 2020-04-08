@@ -1,29 +1,14 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'match' => [
         'beatmap-deleted' => 'beatmap eliminado',
         'difference' => 'por :difference',
         'failed' => 'FALHADO',
-        'header' => 'Batalhas de Multijogador',
+        'header' => 'Batalhas de multijogador',
         'in-progress' => '(partida em andamento)',
         'in_progress_spinner_label' => 'partida em andamento',
         'loading-events' => 'A carregar eventos...',
@@ -55,7 +40,7 @@ return [
 
         'team-types' => [
             'head-to-head' => 'Frente-a-frente',
-            'tag-coop' => 'Tag Co-op',
+            'tag-coop' => 'Tag cooperativo',
             'team-vs' => 'Equipa VS',
             'tag-team-vs' => 'Equipa Tag VS',
         ],
@@ -67,9 +52,9 @@ return [
     ],
     'game' => [
         'scoring-type' => [
-            'score' => 'Maior Pontuação',
-            'accuracy' => 'Maior Precisão',
-            'combo' => 'Maior Combo',
+            'score' => 'Maior pontuação',
+            'accuracy' => 'Maior precisão',
+            'combo' => 'Maior combo',
             'scorev2' => 'Pontuação V2',
         ],
     ],

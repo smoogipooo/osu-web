@@ -1,30 +1,16 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => 'đã xóa',
     'deleted_count' => ':count_delimited bình luận đã bị xóa',
     'edited' => 'đã chỉnh sửa :timeago bởi :user',
+    'pinned' => '',
     'empty' => 'Chưa có bình luận nào.',
-    'load_replies' => '',
-    'replies' => 'Câu trả lời',
+    'load_replies' => 'hiển thị những trả lời',
+    'replies_count' => '',
     'title' => 'Bình luận',
 
     'commentable_name' => [
@@ -49,10 +35,7 @@ return [
     ],
 
     'index' => [
-        'title' => [
-            '_' => 'Bình luận :info',
-            'info' => 'Danh Sách',
-        ],
+        'nav_title' => '',
     ],
 
     'placeholder' => [
@@ -62,9 +45,6 @@ return [
     ],
 
     'show' => [
-        'title' => [
-            '_' => 'Bình luận :info',
-            'info' => 'Chi tiết',
-        ],
+        'nav_title' => '',
     ],
 ];

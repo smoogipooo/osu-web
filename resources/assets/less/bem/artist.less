@@ -1,105 +1,35 @@
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 .artist {
   @_top: artist;
   &__index {
-    background-color: @osu-colour-b5;
+    background-color: @osu-colour-b4;
     padding: 10px;
-    font-weight: 300;
     .default-box-shadow();
-
     display: flex;
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
+    overflow: hidden;
+  }
+
+  &__badge-wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    pointer-events: none;
   }
 
   &__box {
     margin: 10px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &--hidden {
       opacity: 0.25;
-    }
-  }
-
-  &__album {
-    background-color: @osu-colour-b4;
-    padding: 20px;
-    align-items: center;
-    .default-box-shadow();
-    overflow: hidden;
-    @media @desktop {
-      margin-bottom: 10px;
-    }
-  }
-
-  &__album-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  &__album-header-overlay {
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    filter: blur(20px);
-    -webkit-filter: blur(20px);
-    opacity: 0.5;
-    transition: 1s ease-in-out;
-    top: 0;
-    // Hide this overlay in Internet Explorer
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      display: none;
-    }
-    &--sidebar {
-      opacity: 0;
-    }
-  }
-
-  &__album-cover {
-    width: 64px;
-    height: 64px;
-    .default-box-shadow();
-
-    &--sidebar {
-      width: 128px;
-      height: 128px;
-    }
-  }
-
-  &__sidebar-album-link {
-    display: block;
-    text-align: center;
-    margin: 20px;
-    color: white;
-    &:hover, &:active {
-      color: white;
-      text-decoration: none;
-    }
-
-    &:hover {
-      .@{_top}__album-header-overlay {
-        opacity: 0.2;
-      }
     }
   }
 
@@ -117,22 +47,11 @@
     }
   }
 
-  &__album-title {
-    padding: 10px;
-    font-size: 2em;
-    color: white;
-    .default-text-shadow();
-    &--sidebar {
-      padding: 0;
-      font-size: 14px;
-      margin-top: 5px;
-    }
-  }
-
   &__name {
-    text-align: center;
+    white-space: nowrap;
     color: @osu-colour-l1;
-    font-size: 14px;
+    font-size: @font-size--title-small-3;
+    font-weight: bold;
     margin-top: 5px;
     display: block;
     &:hover {
@@ -147,34 +66,31 @@
   }
 
   &__description {
-    background-color: @osu-colour-b4;
-    color: white;
+    .default-gutter-v2();
+    background-color: @osu-colour-b5;
     font-size: 14px;
-    font-weight: 300;
-    padding: 0 20px 20px 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .default-box-shadow();
 
     @media @desktop {
-      padding: 20px;
       margin-bottom: 10px;
     }
-    .default-box-shadow();
 
     > h1, h2, h3, h4, h5, h6 {
       color: white;
     }
 
     &--index {
-      padding: 30px;
+      @media @desktop {
+        margin-bottom: 0;
+      }
     }
   }
 
   &__portrait-wrapper {
-    width: 250px;
-    height: 250px;
-    &--index {
-      width: 200px;
-      height: 200px;
-    }
+    width: 200px;
+    height: 200px;
   }
 
   &__portrait {
@@ -187,10 +103,10 @@
     background-position: center;
     display: block;
 
-    margin: -90px auto 10px auto;
+    margin: 10px auto;
 
     @media @desktop {
-      margin-top: -160px;
+      margin-top: -113px; // approximately aligned to inside of title bar
     }
 
     &--index {
@@ -200,6 +116,10 @@
       @media @desktop {
         margin: 0;
       }
+    }
+
+    &--new {
+      box-shadow: 25px -10px 50px osu-hsla(@osu-colour-orange-1, 0.2);
     }
   }
 
@@ -224,6 +144,11 @@
     }
 
     &--albums {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
       @media @mobile {
         display: none;
       }

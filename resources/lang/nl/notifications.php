@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => 'Alle meldingen gelezen!',
-    'mark_all_read' => 'Alles wissen',
+    'mark_read' => 'Wissen :type',
+    'none' => 'Geen meldingen',
+    'see_all' => 'alle meldingen bekijken',
+
+    'filters' => [
+        '_' => 'alle',
+        'user' => 'profiel',
+        'beatmapset' => 'beatmaps',
+        'forum_topic' => 'forum',
+        'news_post' => 'nieuws',
+        'build' => 'versie',
+        'channel' => 'chat',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -31,9 +28,19 @@ return [
                 'beatmapset_discussion_lock' => 'Beatmap ":title" is vergrendeld voor discussie.',
                 'beatmapset_discussion_lock_compact' => 'Discussie is vergrendeld',
                 'beatmapset_discussion_post_new' => ':username plaatste een nieuw bericht in ":title" beatmap discussie.',
+                'beatmapset_discussion_post_new_empty' => 'Nieuw bericht op ":title" door :username',
                 'beatmapset_discussion_post_new_compact' => 'Nieuw bericht door :username',
+                'beatmapset_discussion_post_new_compact_empty' => 'Nieuw bericht door :username',
                 'beatmapset_discussion_unlock' => 'Beatmap ":title" is ontgrendeld voor discussie.',
                 'beatmapset_discussion_unlock_compact' => 'Discussie is ontgrendeld',
+            ],
+
+            'beatmapset_problem' => [
+                '_' => 'Gekwalificeerde Beatmap probleem',
+                'beatmapset_discussion_qualified_problem' => 'Gerapporteerd door :username op ":title": ":content"',
+                'beatmapset_discussion_qualified_problem_empty' => 'Gerapporteerd door :username op ":title"',
+                'beatmapset_discussion_qualified_problem_compact' => 'Gerapporteerd door :username: ":content"',
+                'beatmapset_discussion_qualified_problem_compact_empty' => 'Gerapporteerd door :username',
             ],
 
             'beatmapset_state' => [
@@ -120,6 +127,7 @@ return [
             'user_achievement_unlock' => [
                 '_' => 'Nieuwe medaille',
                 'user_achievement_unlock' => '":title" ontgrendeld!',
+                'user_achievement_unlock_compact' => '":title" ontgrendeld!',
             ],
         ],
     ],

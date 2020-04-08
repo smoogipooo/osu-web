@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Csúcsfokon, :count játékos volt elérhető',
         'players' => '<strong>:count</strong> regisztrált játékos',
         'title' => 'üdv',
+        'see_more_news' => '',
 
         'slogan' => [
             'main' => 'a legeslegjobb ingyen játszható ritmusjáték',
@@ -36,11 +22,12 @@ return [
         'advanced_link' => 'Részletes keresés',
         'button' => 'Keresés',
         'empty_result' => 'Nincs találat!',
-        'keyword_required' => '',
+        'keyword_required' => 'Adj meg egy kulcsszót is',
         'placeholder' => 'keresendő szöveg',
         'title' => 'Keresés',
 
         'beatmapset' => [
+            'login_required' => '',
             'more' => ':count talált beatmap',
             'more_simple' => 'Több beatmap keresése',
             'title' => 'Beatmap-ek',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Összes forum',
             'link' => 'Forum keresése',
+            'login_required' => '',
             'more_simple' => 'Több forum keresése',
             'title' => 'Forum',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => '',
             'more' => ':count talált játékos',
             'more_simple' => 'Több játékos mutatása keresésben',
             'more_hidden' => 'Játékos kereső limitálva van :max játékosra. Próbálj pontosabb lenni.',
@@ -119,8 +108,6 @@ return [
             'error' => 'Hiba a hírek betöltése közben, talán próbáld meg újratölteni az oldalt?...',
         ],
         'header' => [
-            'welcome' => 'Üdv, <strong>:username</strong>!',
-            'messages' => ':count új üzeneted van | :count új üzeneted van',
             'stats' => [
                 'friends' => 'Elérhető barátok',
                 'games' => 'Játékok',
@@ -130,8 +117,7 @@ return [
         'beatmaps' => [
             'new' => 'Új Rangsorolt Beatmap-ek',
             'popular' => 'Népszerű beatmap-ek',
-            'by' => 'által',
-            'plays' => 'játszva :count alkalommal',
+            'by_user' => ':user által',
         ],
         'buttons' => [
             'download' => 'osu! letöltése',

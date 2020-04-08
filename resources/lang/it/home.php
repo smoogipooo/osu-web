@@ -1,33 +1,19 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
         'download' => 'Scarica ora',
-        'online' => '<strong>:players</strong> giocatori online ora in <strong>:games</strong> games',
+        'online' => '<strong>:players</strong> giocatori online in <strong>:games</strong> partite',
         'peak' => 'Picco, :count utenti online',
         'players' => '<strong>:count</strong> utenti registrati',
         'title' => 'benvenuto',
+        'see_more_news' => 'guarda più notizie',
 
         'slogan' => [
-            'main' => 'il miglior gioco di ritmo free-to-play',
+            'main' => 'il miglior gioco di ritmo free-to-win',
             'sub' => 'il ritmo è solo ad un click di distanza',
         ],
     ],
@@ -41,7 +27,8 @@ return [
         'title' => 'Cerca',
 
         'beatmapset' => [
-            'more' => ':count altri risultati di ricerca di beatmap',
+            'login_required' => 'Accedi per cercare beatmap',
+            'more' => 'altri :count risultati di ricerca delle beatmap',
             'more_simple' => 'Vedi più risultati di ricerca delle beatmap',
             'title' => 'Beatmap',
         ],
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Tutti i forum',
             'link' => 'Cerca nel forum',
+            'login_required' => 'Accedi per cercare nel forum',
             'more_simple' => 'Vedi più risultati di ricerca del forum',
             'title' => 'Forum',
 
@@ -69,9 +57,10 @@ return [
         ],
 
         'user' => [
-            'more' => ':count altri risultati di ricerca di giocatori',
-            'more_simple' => 'Vedi più risultati di ricerca del giocatore',
-            'more_hidden' => 'Ricerca del giocatore è limitata a :max giocatori. Prova a ridefinire la ricerca.',
+            'login_required' => 'Accedi per cercare utenti',
+            'more' => 'altri :count risultati di ricerca di giocatori',
+            'more_simple' => 'Vedi più risultati di ricerca di giocatori',
+            'more_hidden' => 'La ricerca di giocatori è limitata a :max giocatori. Prova a ridefinire la ricerca.',
             'title' => 'Giocatori',
         ],
 
@@ -83,7 +72,7 @@ return [
     ],
 
     'download' => [
-        'tagline' => "iniziamo!",
+        'tagline' => "iniziamo<br>subito!",
         'action' => 'Scarica osu!',
         'os' => [
             'windows' => 'per Windows',
@@ -119,19 +108,16 @@ return [
             'error' => 'Errore nel caricamento delle notizie, prova a riavviare la pagina?...',
         ],
         'header' => [
-            'welcome' => 'Ciao, <strong>:username</strong>!',
-            'messages' => 'Hai :count nuovo messaggio | Hai :count nuovi messaggi',
             'stats' => [
-                'friends' => 'Amici online',
-                'games' => 'Giochi',
-                'online' => 'Utenti online',
+                'friends' => 'Amici Online',
+                'games' => 'Partite',
+                'online' => 'Utenti Online',
             ],
         ],
         'beatmaps' => [
             'new' => 'Nuove Beatmap Classificate',
-            'popular' => 'Beatmap popolari',
-            'by' => 'da',
-            'plays' => ':count giocate',
+            'popular' => 'Beatmap Popolari',
+            'by_user' => 'di :user',
         ],
         'buttons' => [
             'download' => 'Scarica osu!',

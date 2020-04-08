@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Opslaan van post mislukt',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Stem bijwerken mislukt',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'kudosu toestaan',
+        'beatmap_information' => 'Beatmap pagina',
         'delete' => 'verwijder',
         'deleted' => 'Verwijderd door :editor :delete_time.',
         'deny_kudosu' => 'kudosu ontzeggen',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Reset Nominatie',
             'praise' => 'Prijs',
             'problem' => 'Probleem',
+            'review' => 'Recensie',
             'suggestion' => 'Suggestie',
         ],
 
         'mode' => [
             'events' => 'Geschiedenis',
             'general' => 'Algemeen :scope',
+            'reviews' => 'Recensies',
             'timeline' => 'Tijdlijn',
             'scopes' => [
                 'general' => 'Deze moeilijkheidsgraad',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Stem deze discussie bij',
-            'down' => 'Stem deze discussie af',
+            'none' => [
+                'down' => 'Nog geen downvotes',
+                'up' => 'Nog geen upvotes',
+            ],
+            'latest' => [
+                'down' => 'Laatste downvotes',
+                'up' => 'Laatste upvotes',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nomineer',
         'nominate_confirm' => 'Nomineer deze beatmap?',
         'nominated_by' => 'genomineerd door :gebruikers',
+        'not_enough_hype' => "Er is niet genoeg hype.",
         'qualified' => 'Naar schatting gerankt op :date, als er geen problemen optreden.',
         'qualified_soon' => 'Naar schatting binnenkort gerankt, als er geen problemen optreden.',
         'required_text' => 'Nimonaties: :current/:required',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => 'Mirror',
         'NC' => '',
         'NF' => '',
         'NM' => '',

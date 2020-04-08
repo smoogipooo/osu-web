@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Maxim, :count utilizatori online',
         'players' => '<strong>:count</strong> jucători înregistrați',
         'title' => 'bine ai venit',
+        'see_more_news' => 'vezi mai multe noutăți',
 
         'slogan' => [
             'main' => 'cel mai bun joc de ritm free-to-win',
@@ -36,11 +22,12 @@ return [
         'advanced_link' => 'Căutare avansată',
         'button' => 'Căutare',
         'empty_result' => 'Nimic găsit!',
-        'keyword_required' => '',
+        'keyword_required' => 'Un cuvânt cheie este necesar',
         'placeholder' => 'tastează pentru a căuta',
         'title' => 'Caută',
 
         'beatmapset' => [
+            'login_required' => '',
             'more' => ':count mai multe rezultate de căutare pentru acest beatmap',
             'more_simple' => 'Vezi mai multe rezultate de căutare pentru acest beatmap',
             'title' => 'Beatmaps',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Toate forumurile',
             'link' => 'Caută pe forum',
+            'login_required' => '',
             'more_simple' => 'Vezi mai multe rezultate de căutare pe forum',
             'title' => 'Forum',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => '',
             'more' => ':count mai multe rezultate de căutare pentru acest jucător',
             'more_simple' => 'Vezi mai multe rezultate de căutare pentru acest jucător',
             'more_hidden' => 'Căutarea jucătorului este limitată la :max jucători. Încearcă să îți redefinești căutarea.',
@@ -119,8 +108,6 @@ return [
             'error' => 'Eroare la încărcarea știrilor, încearcă să reîmrospătezi pagina?...',
         ],
         'header' => [
-            'welcome' => 'Salut, <strong>:username</strong>!',
-            'messages' => 'Tu ai :count mesaj nou|Tu ai :count mesaje noi',
             'stats' => [
                 'friends' => 'Prieteni online',
                 'games' => 'Jocuri',
@@ -130,8 +117,7 @@ return [
         'beatmaps' => [
             'new' => 'Noi beatmaps clasate',
             'popular' => 'Beatmaps populare',
-            'by' => 'de',
-            'plays' => 'jucat de :count de ori',
+            'by_user' => 'de :user',
         ],
         'buttons' => [
             'download' => 'Descarcă osu!',

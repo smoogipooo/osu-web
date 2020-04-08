@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Subiecte fixate',
@@ -25,6 +10,8 @@ return [
     'title' => 'forumuri osu!',
 
     'covers' => [
+        'edit' => 'Editare copertă',
+
         'create' => [
             '_' => 'Setează imaginea de copertă',
             'button' => 'Încarcă imaginea',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Nou răspuns pentru subiectul ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Ultima Postare',
+
+        'index' => [
+            'title' => 'Index forum',
+        ],
+
         'topics' => [
             'empty' => 'Niciun subiect!',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => 'Marchează forumul ca citit',
         'forums' => 'Marchează forumurile ca citite',
         'busy' => 'Se marchează ca citit...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'Editarea unui sondaj va elimina rezultatele curente!',
-
-        'actions' => [
-            'edit' => 'Editează sondajul',
-        ],
     ],
 
     'post' => [
@@ -73,9 +54,15 @@ return [
             'edit' => 'Editează postarea',
         ],
 
+        'create' => [
+            'title' => [
+                'reply' => 'Răspuns nou',
+            ],
+        ],
+
         'info' => [
             'post_count' => ':count_delimited postare|:count_delimited postări',
-            'topic_starter' => '',
+            'topic_starter' => 'Începător de topic',
         ],
     ],
 
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'început de :user',
 
         'create' => [
+            'close' => 'Închide',
             'preview' => 'Previzualizare',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Abonamente',
             'title_compact' => 'abonamente',
-            'title_main' => '<strong>Abonamente</strong> la forumuri',
 
             'box' => [
                 'total' => 'Subiecte la care te-ai abonat',
@@ -180,8 +166,8 @@ return [
             ],
 
             'poll' => [
-                'hide_results' => '',
-                'hide_results_info' => '',
+                'hide_results' => 'Ascunde rezultatele poll-ului.',
+                'hide_results_info' => 'Vor fi arătate doar după ce poll-ul conclude.',
                 'length' => 'Rulează sondajul pentru',
                 'length_days_suffix' => 'zile',
                 'length_info' => 'Lasă liber pentru un sondaj ce nu se termină niciodată',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Acest subiect este închis și nu se pot adăuga răspunsuri',
             'to_0' => 'Deblochează subiectul',
+            'to_0_confirm' => '',
             'to_0_done' => 'Subiectul a fost deblocat',
             'to_1' => 'Blochează subiectul',
+            'to_1_confirm' => '',
             'to_1_done' => 'Subiectul a fost blocat',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Anulează fixarea subiectului',
+            'to_0_confirm' => '',
             'to_0_done' => 'Subiectul nu mai este fixat',
             'to_1' => 'Fixează subiectul',
+            'to_1_confirm' => '',
             'to_1_done' => 'Subiectul a fost fixat',
             'to_2' => 'Fixează subiectul și marchează-l ca un anunț',
+            'to_2_confirm' => '',
             'to_2_done' => 'Subiectul a fost fixat și marcat ca un anunț',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Arată postări șterse',
+            'hide' => 'Ascunde postări șterse',
         ],
 
         'show' => [
@@ -290,12 +286,21 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Editare Poll',
+                'edit_warning' => 'Editarea unui poll va înlătura rezultatele curente!',
                 'vote' => 'Votează',
+
+                'button' => [
+                    'change_vote' => 'Schimbă votul',
+                    'edit' => 'Editează poll-ul',
+                    'view_results' => 'Sări la rezultate',
+                    'vote' => 'Votează',
+                ],
 
                 'detail' => [
                     'end_time' => 'Votarea se va termina în :time',
                     'ended' => 'Votarea s-a terminat :time',
-                    'results_hidden' => '',
+                    'results_hidden' => 'Rezultatele vor fi arătate după sfârșirea poll-ului.',
                     'total' => 'Total voturi: :count',
                 ],
             ],

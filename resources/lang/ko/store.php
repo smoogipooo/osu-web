@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'admin' => [
@@ -25,7 +10,8 @@ return [
 
     'cart' => [
         'checkout' => '결제',
-        'more_goodies' => '주문을 끝내기 전에 더 둘러볼게요',
+        'info' => '장바구니에 담긴 :count_delimited개의 항목 ($:subtotal)',
+        'more_goodies' => '주문을 끝내기 전에 더 둘러볼게요.',
         'shipping_fees' => '배송료',
         'title' => '장바구니',
         'total' => '합계',
@@ -51,14 +37,15 @@ return [
         'delayed_shipping' => '현재 주문이 밀려있습니다! 주문을 해주시는건 기쁘지만, 지금 주문을 처리하는데 **1~2 주 지연**될 수 있다는 걸 알려드립니다.',
         'old_cart' => '장바구니가 오래되어 새로 고쳐졌습니다, 다시 시도해 주세요.',
         'pay' => 'Paypal로 결제',
+        'title_compact' => '결제',
 
         'has_pending' => [
-            '_' => '미완료한 결재가 있습니다. :link를 눌러 확인하세요.',
+            '_' => '완료되지 않은 결제가 있습니다. :link를 눌러 확인하세요.',
             'link_text' => '여기',
         ],
 
         'pending_checkout' => [
-            'line_1' => '이전 결제가 시작 됐지만 끝나지 않았습니다.',
+            'line_1' => '이전에 시작했던 결제가 끝나지 않았습니다.',
             'line_2' => '결제 수단을 선택하여 결제를 계속하세요.',
         ],
     ],
@@ -66,22 +53,18 @@ return [
     'discount' => ':percent% 절약 가능',
 
     'invoice' => [
-        'echeck_delay' => 'eCheck로 결제하셧다면 10일까지 PayPal을 통해 결재할 수 있도록 허용해주세요.',
+        'echeck_delay' => 'eCheck로 결제하셨다면 10일까지 PayPal을 통해 결제할 수 있도록 허용해주세요.',
+        'title_compact' => '청구서',
+
         'status' => [
             'processing' => [
                 'title' => '당신의 결제가 아직 확인되지 않았습니다!',
                 'line_1' => '당신이 이미 결제하셨다면, 저희는 아직 당신의 결제의 확인을 받는것을 기다리고 있을 수 있습니다. 1~2분 후 이 페이지를 새로고침 해주세요!',
                 'line_2' => [
                     '_' => '결제 도중 문제가 발생하셨다면, :link',
-                    'link_text' => '여기를 눌러 결재를 계속하세요',
+                    'link_text' => '여기를 눌러 결제를 계속하세요',
                 ],
             ],
-        ],
-    ],
-
-    'mail' => [
-        'payment_completed' => [
-            'subject' => '귀하의 osu!store 주문을 받았습니다!',
         ],
     ],
 
@@ -151,5 +134,9 @@ return [
             '_' => '유저이름을 바꾸려면 :link하셔야 합니다!',
             'link_text' => '로그인',
         ],
+    ],
+
+    'xsolla' => [
+        'distributor' => '',
     ],
 ];

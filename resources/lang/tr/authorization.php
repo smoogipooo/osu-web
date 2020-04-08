@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Devam etmek için lütfen giriş yapın.',
+    'require_verification' => 'Devam etmek için lütfen hesabınızı doğrulatınız.',
+    'restricted' => "Kısıtlanmışken bunu yapamazsınız.",
+    'silenced' => "Susturulmuşken bunu yapamazsınız.",
+    'unauthorized' => 'Erişim engellendi.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Verilen gaz geri alınamaz.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Otomatik olarak oluşturulmuş gönderiler düzenlenemez.',
-            'not_owner' => 'Gönderileri yalnızca gönderen düzenleyebilir.',
+        'destroy' => [
+            'not_owner' => 'Sadece kendi paylaşımlarını silebilirsin.',
+            'resolved' => 'Çözümlenmiş bir tartışmanın paylaşımını silinemez.',
+            'system_generated' => 'Otomatikman oluşan paylaşımlar silinemez.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Gönderileri yalnızca gönderen düzenleyebilir.',
+            'resolved' => 'Çözümlenmiş bir tartışmanın paylaşımını değiştirilemez.',
+            'system_generated' => 'Otomatik olarak oluşturulmuş gönderiler düzenlenemez.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Bu beatmap tartışma için kilitlenmiş.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Yalnızca yönetici bu forumu görüntüleyebilir.',
         ],
     ],
-
-    'require_login' => 'Devam etmek için lütfen giriş yapın.',
-
-    'unauthorized' => 'Erişim engellendi.',
-
-    'silenced' => "Susturulmuşken bunu yapamazsınız.",
-
-    'restricted' => "Kısıtlanmışken bunu yapamazsınız.",
 
     'user' => [
         'page' => [

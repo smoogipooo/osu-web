@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Silakan masuk untuk melanjutkan.',
+    'require_verification' => 'Silakan verifikasi untuk melanjutkan.',
+    'restricted' => "Tidak dapat melakukan hal itu saat dibatasi.",
+    'silenced' => "Tidak dapat melakukan hal itu saat dibungkam.",
+    'unauthorized' => 'Akses ditolak.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Tidak dapat membatalkan pemberian hype.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Kiriman yang dihasilkan secara otomatis tidak dapat disunting.',
-            'not_owner' => 'Hanya pemilik topik yang diperbolehkan untuk menyunting kiriman.',
+        'destroy' => [
+            'not_owner' => 'Kamu tidak dapat menghapus postingan milikmu sendiri.',
+            'resolved' => 'Kamu tidak dapat menghapus konten dari postingan yang sudah ditutup.',
+            'system_generated' => 'Postingan yang dibuat otomatis tidak dapat dihapus.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Hanya pemilik topik yang diperbolehkan untuk menyunting kiriman.',
+            'resolved' => 'Kamu tidak dapat mengubah postingan yang sudah ditutup.',
+            'system_generated' => 'Kiriman yang dihasilkan secara otomatis tidak dapat disunting.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Beatmap ini dikunci untuk diskusi.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Hanya admin yang dapat melihat forum ini.',
         ],
     ],
-
-    'require_login' => 'Silakan masuk untuk melanjutkan.',
-
-    'unauthorized' => 'Akses ditolak.',
-
-    'silenced' => "Tidak dapat melakukan hal itu saat dibungkam.",
-
-    'restricted' => "Tidak dapat melakukan hal itu saat dibatasi.",
 
     'user' => [
         'page' => [

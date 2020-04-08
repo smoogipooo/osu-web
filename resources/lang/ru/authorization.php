@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Войдите для продолжения.',
+    'require_verification' => 'Пожалуйста, верифицируйте для продолжения.',
+    'restricted' => "Нельзя делать это пока ваши права ограничены.",
+    'silenced' => "Нельзя делать это пока заглушен.",
+    'unauthorized' => 'Доступ запрещён.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Нельзя отменить хайп.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Невозможно отредактировать автоматически созданную публикацию.',
-            'not_owner' => 'Только автор может редактировать публикацию.',
+        'destroy' => [
+            'not_owner' => 'Вы можете удалять только свои записи.',
+            'resolved' => 'Вы не можете удалить пост решённого вопроса.',
+            'system_generated' => 'Автоматически сгенерированные записи не могут быть удалены.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Только автор может редактировать публикацию.',
+            'resolved' => 'Вы не можете изменять пост решённого вопроса.',
+            'system_generated' => 'Невозможно отредактировать автоматически созданную публикацию.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Обсуждения к этой карте закрыты.',
         ],
@@ -106,10 +105,10 @@ return [
                 'double_post' => 'Пожалуйста, отредактируйте ваше последнее сообщение вместо повторной публикации.',
                 'locked' => 'Нельзя ответить в закрытой теме.',
                 'no_forum_access' => 'Необходим доступ к запрашиваемому форуму.',
-                'no_permission' => 'Нет прав для ответа.',
+                'no_permission' => 'У вас нет прав оставить ответ.',
 
                 'user' => [
-                    'require_login' => 'Войдите для ответа.',
+                    'require_login' => 'Пожалуйста, войдите в аккаунт, чтобы отставить ответ.',
                     'restricted' => "Нельзя ответить пока аккаунт ограничен.",
                     'silenced' => "Нельзя ответить пока вы заглушены.",
                 ],
@@ -128,7 +127,7 @@ return [
                 'voted' => 'Менять свой ответ запрещено.',
 
                 'user' => [
-                    'require_login' => 'Войдите для ответа.',
+                    'require_login' => 'Пожалуйста, войдите в аккаунт, чтобы проголосовать.',
                     'restricted' => "Нельзя голосовать пока аккаунт ограничен.",
                     'silenced' => "Нельзя голосовать пока заглушен.",
                 ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Только администратор может просматривать этот форум.',
         ],
     ],
-
-    'require_login' => 'Войдите для продолжения.',
-
-    'unauthorized' => 'Доступ запрещён.',
-
-    'silenced' => "Нельзя делать это пока заглушен.",
-
-    'restricted' => "Нельзя делать это пока ваши права ограничены.",
 
     'user' => [
         'page' => [

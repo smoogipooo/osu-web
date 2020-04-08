@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'authorizations' => [
@@ -33,13 +18,24 @@ return [
 
     'index' => [
         'deleted_beatmap' => 'terhapus',
+        'none_found' => 'Tidak ada diskusi yang memenuhi kriteria pencarian.',
         'title' => 'Laman Diskusi Beatmap',
 
         'form' => [
             '_' => 'Cari',
             'deleted' => 'Sertakan diskusi yang telah dihapus',
+            'only_unresolved' => 'Hanya tampilkan diskusi yang belum selesai',
             'types' => 'Tipe pesan',
             'username' => 'Nama Pengguna',
+
+            'beatmapset_status' => [
+                '_' => 'Status Beatmap',
+                'all' => 'Semua',
+                'disqualified' => 'Disqualified',
+                'never_qualified' => 'Tidak pernah Qualified',
+                'qualified' => 'Qualified',
+                'ranked' => 'Ranked',
+            ],
 
             'user' => [
                 'label' => 'Pengguna',
@@ -67,11 +63,28 @@ return [
         ],
     ],
 
+    'review' => [
+        'go_to_parent' => 'Lihat Ulasan',
+        'go_to_child' => 'Lihat Topik Diskusi',
+        'validation' => [
+            'invalid_block_type' => 'tipe blok tidak sah',
+            'invalid_document' => 'kajian tidak sah',
+            'minimum_issues' => 'kajian harus tersusun atas setidaknya :count isu|kajian harus tersusun atas setidaknya :count isu',
+            'missing_text' => 'tidak terdapat tulisan pada blok',
+            'too_many_blocks' => 'kajian hanya dapat tersusun sepanjang maksimal :count paragraf/isu|kajian hanya dapat tersusun sepanjang maksimal :count paragraf/isu',
+        ],
+    ],
+
     'system' => [
         'resolved' => [
             'true' => 'Ditandai selesai oleh :user',
             'false' => 'Dibuka ulang oleh :user',
         ],
+    ],
+
+    'timestamp_display' => [
+        'general' => 'umum',
+        'general_all' => 'umum (semua)',
     ],
 
     'user_filter' => [

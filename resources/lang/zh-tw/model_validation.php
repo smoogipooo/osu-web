@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute 不能為負數。',
     'required' => '需要 :attribute 。',
     'too_long' => ':attribute 超出最大長度——最多允許 :limit 個字符。',
@@ -29,7 +15,7 @@ return [
         'first_post' => '無法刪除第一個討論。',
 
         'attributes' => [
-            'message' => '',
+            'message' => '訊息',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => '討論被鎖定。',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => '訊息類型',
+            'timestamp' => '時間戳',
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => '登錄後才能推薦',
             'hyped' => '你已經推薦了這張譜面',
             'limit_exceeded' => '你已經用光了推薦次數',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => '無法回覆給已刪除評論。',
+        'top_only' => '',
 
         'attributes' => [
-            'message' => '',
+            'message' => '訊息',
         ],
     ],
 
@@ -84,17 +72,17 @@ return [
 
         'post' => [
             'beatmapset_post_no_delete' => '不允許刪除譜面信息帖。',
-            'beatmapset_post_no_edit' => '不允許編輯譜面信息帖。',
+            'beatmapset_post_no_edit' => '不允許編輯圖譜信息帖。',
             'only_quote' => '您的回覆僅有引用。',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => '貼文主體',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => '主題標題',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => '選項數量超出限制。',
 
             'attributes' => [
-                'title' => '',
+                'title' => '投票標題',
             ],
         ],
 
@@ -118,24 +106,37 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'OAuth 應用程式數量超出限制。',
+            'url' => '請輸入有效的 URL。',
+
+            'attributes' => [
+                'name' => '應用程式名稱',
+                'redirect' => '應用程式回傳 URL',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => '密碼不能包含用戶名。',
         'email_already_used' => '郵箱已被使用。',
         'invalid_country' => '國家未被數據庫收錄。',
-        'invalid_discord' => 'Discord 用户名无效。',
+        'invalid_discord' => 'Discord 用户名無效。',
         'invalid_email' => "無效的郵箱地址。",
+        'invalid_twitter' => '',
         'too_short' => '新密碼太短。',
         'unknown_duplicate' => '用戶名或郵箱已被使用。',
-        'username_available_in' => '该用户名将在 :duration 后可用。',
-        'username_available_soon' => '该用户名即将可用！',
-        'username_invalid_characters' => '用户名中包含非法字符。',
-        'username_in_use' => '用户名已经被使用！',
+        'username_available_in' => '該用戶名將在 :duration 後可用。',
+        'username_available_soon' => '該用戶名即將可用！',
+        'username_invalid_characters' => '用戶名中包含非法字符。',
+        'username_in_use' => '用戶名已經被使用！',
         'username_locked' => '使用者名稱已被使用！', // TODO: language for this should be slightly different.
-        'username_no_space_userscore_mix' => '请在下划线和空格间选一个，不要混用！',
-        'username_no_spaces' => "用户名不能以空格开头或结束。",
-        'username_not_allowed' => '不允许使用该用户名。',
+        'username_no_space_userscore_mix' => '請在下劃線和空格間選一個，不要混用！',
+        'username_no_spaces' => "用戶名不能以空格開頭或結束。",
+        'username_not_allowed' => '不允許使用該用戶名。',
         'username_too_short' => '用戶名太短。',
-        'username_too_long' => '用户名太长。',
+        'username_too_long' => '用戶名太長。',
         'weak' => '弱密碼。',
         'wrong_current_password' => '密碼不正確.',
         'wrong_email_confirmation' => '重複新郵箱與新郵箱不一致。',
@@ -143,30 +144,31 @@ return [
         'too_long' => '超出長度限制——最多為 :limit 個字符。',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => '使用者名稱',
+            'user_email' => '電子郵件地址',
+            'password' => '密碼',
         ],
 
         'change_username' => [
             'restricted' => '帳戶處於限制模式時無法更變使用者名稱。',
             'supporter_required' => [
-                '_' => '你必须 :link 才能更改用户名！',
+                '_' => '你必須 :link 才能更改用戶名！',
                 'link_text' => '支持 osu!',
             ],
-            'username_is_same' => '这就是你的用户名，Baka！',
+            'username_is_same' => '這就是你的用戶名，Baka！',
         ],
     ],
 
     'user_report' => [
+        'reason_not_valid' => ':reason 不符合此報告類型。',
         'self' => "您不能檢舉你自己！",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => '數量',
+                'cost' => '成本',
             ],
         ],
     ],

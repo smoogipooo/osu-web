@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => 'Všechna oznámení přečtena!',
-    'mark_all_read' => 'Vymazat vše',
+    'mark_read' => '',
+    'none' => 'Žádná oznámení',
+    'see_all' => '',
+
+    'filters' => [
+        '_' => 'vše',
+        'user' => 'profil',
+        'beatmapset' => 'beatmapy',
+        'forum_topic' => 'fórum',
+        'news_post' => 'novinky',
+        'build' => 'sestavení',
+        'channel' => 'chat',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -28,70 +25,80 @@ return [
 
             'beatmapset_discussion' => [
                 '_' => 'Diskuze o beatmapě',
-                'beatmapset_discussion_lock' => '',
-                'beatmapset_discussion_lock_compact' => '',
-                'beatmapset_discussion_post_new' => '',
-                'beatmapset_discussion_post_new_compact' => '',
-                'beatmapset_discussion_unlock' => '',
-                'beatmapset_discussion_unlock_compact' => '',
+                'beatmapset_discussion_lock' => 'Diskuze ":title" byla uzamčena',
+                'beatmapset_discussion_lock_compact' => 'Diskuze byla uzamčena',
+                'beatmapset_discussion_post_new' => 'Nový příspěvek v ":title" od :username: ":content"',
+                'beatmapset_discussion_post_new_empty' => 'Nový příspěvek v ":title" od :username',
+                'beatmapset_discussion_post_new_compact' => 'Nový příspěvek od :username ":content"',
+                'beatmapset_discussion_post_new_compact_empty' => 'Nový příspěvek od :username',
+                'beatmapset_discussion_unlock' => 'Diskuze ":title" byla odemčena',
+                'beatmapset_discussion_unlock_compact' => 'Diskuze byla odemčena',
+            ],
+
+            'beatmapset_problem' => [
+                '_' => '',
+                'beatmapset_discussion_qualified_problem' => '',
+                'beatmapset_discussion_qualified_problem_empty' => '',
+                'beatmapset_discussion_qualified_problem_compact' => '',
+                'beatmapset_discussion_qualified_problem_compact_empty' => 'Nahlásil :username',
             ],
 
             'beatmapset_state' => [
-                '_' => '',
+                '_' => 'Stav Beatmapy se změnil',
                 'beatmapset_disqualify' => '',
-                'beatmapset_disqualify_compact' => '',
+                'beatmapset_disqualify_compact' => 'Beatmapa byla diskvalifikována',
                 'beatmapset_love' => '',
                 'beatmapset_love_compact' => '',
-                'beatmapset_nominate' => '',
-                'beatmapset_nominate_compact' => '',
+                'beatmapset_nominate' => '":title" byla nominována',
+                'beatmapset_nominate_compact' => 'Beatmapa byla nominována',
                 'beatmapset_qualify' => '',
                 'beatmapset_qualify_compact' => '',
                 'beatmapset_rank' => '',
                 'beatmapset_rank_compact' => '',
                 'beatmapset_reset_nominations' => '',
-                'beatmapset_reset_nominations_compact' => '',
+                'beatmapset_reset_nominations_compact' => 'Nominace byla obnovena',
             ],
 
             'comment' => [
-                '_' => '',
+                '_' => 'Nový komentář',
 
                 'comment_new' => '',
-                'comment_new_compact' => '',
+                'comment_new_compact' => ':username okomentoval ":content"',
             ],
         ],
 
         'channel' => [
-            '_' => '',
+            '_' => 'Chat',
 
             'channel' => [
-                '_' => '',
+                '_' => 'Nová zpráva',
                 'pm' => [
-                    'channel_message' => '',
-                    'channel_message_compact' => '',
-                    'channel_message_group' => '',
+                    'channel_message' => ':username říká ":title"',
+                    'channel_message_compact' => ':title',
+                    'channel_message_group' => 'od :username',
                 ],
             ],
         ],
 
         'build' => [
-            '_' => '',
+            '_' => 'Protokol změn',
 
             'comment' => [
-                '_' => '',
+                '_' => 'Nový komentář',
 
-                'comment_new' => '',
-                'comment_new_compact' => '',
+                'comment_new' => ':username okomentoval ":content" v ":title"',
+                'comment_new_compact' => ':username okomentoval ":content"',
             ],
         ],
 
         'news_post' => [
-            '_' => '',
+            '_' => 'Novinky',
 
             'comment' => [
-                '_' => '',
+                '_' => 'Nový komentář',
 
-                'comment_new' => '',
-                'comment_new_compact' => '',
+                'comment_new' => ':username odpověděl ":content" v ":title"',
+                'comment_new_compact' => ':username okomentoval ":content"',
             ],
         ],
 
@@ -100,13 +107,13 @@ return [
 
             'forum_topic_reply' => [
                 '_' => 'Nová odpověď na fórum',
-                'forum_topic_reply' => '',
-                'forum_topic_reply_compact' => '',
+                'forum_topic_reply' => ':username odpověděl na ":title"',
+                'forum_topic_reply_compact' => ':username odpověděl',
             ],
         ],
 
         'legacy_pm' => [
-            '_' => '',
+            '_' => 'SZ původního fóra',
 
             'legacy_pm' => [
                 '_' => '',
@@ -115,11 +122,12 @@ return [
         ],
 
         'user_achievement' => [
-            '_' => '',
+            '_' => 'Medaile',
 
             'user_achievement_unlock' => [
-                '_' => '',
-                'user_achievement_unlock' => '',
+                '_' => 'Nová medaile',
+                'user_achievement_unlock' => 'Odemčeno ":title"\'!',
+                'user_achievement_unlock_compact' => 'Odemčeno ":title"\'!',
             ],
         ],
     ],

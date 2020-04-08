@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[gelöschter Benutzer]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'nachricht senden',
     ],
 
+    'disabled' => [
+        'title' => 'Uh, oh! Anscheinend wurde dein Konto deaktiviert.',
+        'warning' => "Falls Du gegen eine Regel verstoßen hast, beachte bitte, dass es in der Regel eine Frist von einem Monat gibt, in der wir keine Anträge berücksichtigen. Nach diesem Zeitraum kannst Du uns jederzeit kontaktieren, falls Du dies für erforderlich hältst. Beachte, dass das Erstellen neuer Konten nach dem Deaktivieren eines Kontos zu einer <strong>Verlängerung dieser einmonatigen Frist</strong> führt. Bitte beachte auch, dass du für <strong>jedes Konto, das du erstellst, weitere Regeln verletzt</strong>. Wir empfehlen Dir dringend, diesen Weg nicht zu gehen!",
+
+        'if_mistake' => [
+            '_' => 'Wenn Du der Meinung bist, dass dies ein Fehler ist, kannst Du uns gerne kontaktieren (per :email oder durch Klicken auf das "?" in der rechten unteren Ecke dieser Seite). Bitte beachte, dass wir bei unseren Handlungen immer volles Vertrauen haben, da sie auf sehr soliden Daten beruhen. Wir behalten uns das Recht vor, Deine Anfrage zu ignorieren, wenn wir das Gefühl haben, dass Du absichtlich unehrlich bist.',
+            'email' => 'E-Mail',
+        ],
+
+        'reasons' => [
+            'compromised' => 'Dein Konto wurde als gefährdet eingestuft. Es kann vorübergehend deaktiviert werden, während seine Identität bestätigt wird.',
+            'opening' => 'Es gibt eine Reihe von Gründen, die dazu führen können, dass Dein Konto deaktiviert wird:',
+
+            'tos' => [
+                '_' => 'Du hast eine oder mehr von unseren :community_rules oder :tos gebrochen.',
+                'community_rules' => 'Communityregeln',
+                'tos' => 'Nutzungsbedinungen',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Dein Konto wurde längere Zeit nicht benutzt.",
+        ],
+    ],
+
     'login' => [
         '_' => 'Login',
-        'locked_ip' => 'Deine IP-Adresse ist gesperrt. Bitte warte ein paar Minuten.',
-        'username' => 'Benutzername',
-        'password' => 'Passwort',
         'button' => 'Einloggen',
         'button_posting' => 'Einloggen...',
+        'email_login_disabled' => 'Das Anmelden per E-Mail ist derzeit deaktiviert. Bitte benutze stattdessen Deinen Benutzernamen.',
+        'failed' => 'Falscher Login',
+        'forgot' => 'Passwort vergessen?',
+        'info' => 'Bitte melde dich an, um fortzufahren',
+        'locked_ip' => 'Deine IP-Adresse ist gesperrt. Bitte warte ein paar Minuten.',
+        'password' => 'Passwort',
+        'register' => "Noch keinen osu!-Account? Erstell' einen",
         'remember' => 'Diesen Computer merken',
         'title' => 'Zum Fortfahren bitte einloggen',
-        'failed' => 'Falscher Login',
-        'register' => "Noch keinen osu!-Account? Erstell' einen",
-        'forgot' => 'Passwort vergessen?',
+        'username' => 'Benutzername',
+
         'beta' => [
             'main' => 'Beta-Zugang ist momentan privilegierten Benutzern vorbehalten.',
             'small' => '(osu!supporter kommen bald dazu)',
         ],
-
-        'here' => 'hier', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'Posts von :username',
     ],
 
-    'signup' => [
-        '_' => 'Registrieren',
-    ],
     'anonymous' => [
         'login_link' => 'zum Einloggen klicken',
         'login_text' => 'einloggen',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => 'Format wird nicht unterstützt.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Hochladen nur für :link verfügbar',
+                        'link' => 'osu!supporter',
                     ],
                 ],
             ],
@@ -167,12 +177,12 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 Follower|:count Follower',
+            'none' => 'nichts',
             'unranked' => 'Keine Plays in letzter Zeit',
 
             'achievements' => [
                 'achieved-on' => 'Erreicht am :date',
-                'locked' => 'Gesperrt',
+                'locked' => 'Noch nicht freigeschaltet',
                 'title' => 'Erfolge',
             ],
             'beatmaps' => [
@@ -181,7 +191,7 @@ return [
                 'title' => 'Beatmaps',
 
                 'favourite' => [
-                    'title' => 'Lieblings-Beatmaps',
+                    'title' => 'Lieblingsbeatmaps',
                 ],
                 'graveyard' => [
                     'title' => 'Begrabene Beatmaps',
@@ -195,6 +205,16 @@ return [
                 'unranked' => [
                     'title' => 'Pending Beatmaps',
                 ],
+            ],
+            'discussions' => [
+                'title' => 'Diskussionen',
+                'title_longer' => 'Neueste Diskussionen',
+                'show_more' => 'mehr Diskussionen anzeigen',
+            ],
+            'events' => [
+                'title' => 'Events',
+                'title_longer' => 'Neueste Events',
+                'show_more' => 'mehr Events anzeigen',
             ],
             'historical' => [
                 'empty' => 'Keine Performance-Einträge. :(',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Verfügbares Kudosu',
-                'available_info' => "Kudosu kann gegen Kudosu-Sterne eingetauscht werden, die deiner Beatmap mehr Aufmerksamkeit bringen. Dies ist die Menge an Kudosu, die du noch nicht eingetauscht hast.",
                 'recent_entries' => 'Kudosu-Geschichte',
                 'title' => 'Kudosu!',
                 'total' => 'Kudosu insgesamt',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Basierend auf dem Beitrag, den der Benutzer zur Beatmap-Moderation geleistet hat. Weitere Informationen unter :link.',
+                    'link' => 'diese Seite',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Dieser Nutzer hat noch keine erhalten. ;_;",
                 'recent' => 'Neuste',
                 'title' => 'Medaillen',
+            ],
+            'posts' => [
+                'title' => 'Beiträge',
+                'title_longer' => 'Neueste Beiträge',
+                'show_more' => 'weitere Beiträge anschauen',
             ],
             'recent_activity' => [
                 'title' => 'Neulich',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Erster Platz',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Abgegebene Stimmen (letzte 3 Monate)',
+                'received' => 'Erhaltene Stimmen (letzte 3 Monate)',
+                'title' => 'Stimmen',
+                'title_longer' => 'Neueste Stimmen',
+                'vote_count' => ':count_delimited Stimme|:count_delimited Stimmen',
             ],
             'account_standing' => [
                 'title' => 'Accountstatus',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Spieler :info',
-            'info' => 'Info',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => 'Seiteninhalt hier eingeben',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Sie müssen ein :link sein, um diese Funktion freizuschalten.',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
@@ -368,10 +393,15 @@ return [
             'play_count' => 'Play-Anzahl',
             'play_time' => 'Gesamtspielzeit',
             'ranked_score' => 'Punktzahl auf Ranglisten',
-            'replays_watched_by_others' => 'Wiederholungen von anderen angesehen',
+            'replays_watched_by_others' => 'Von anderen angeschaute Wiederholungen',
             'score_ranks' => 'Ränge durch Punkte',
             'total_hits' => 'Total Hits',
             'total_score' => 'Gesamtpunktzahl',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Ranked & Approved Beatmaps',
+            'loved_beatmapset_count' => 'Loved Beatmaps',
+            'unranked_beatmapset_count' => 'Pending Beatmaps',
+            'graveyard_beatmapset_count' => 'Begrabende Beatmaps',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '',
+        'card' => 'Kartenansicht',
+        'list' => 'Listenansicht',
     ],
 ];

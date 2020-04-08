@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Models;
 
@@ -30,6 +15,7 @@ use App\Libraries\ImageProcessorService;
 use App\Libraries\StorageWithUrl;
 use App\Libraries\Transactions\AfterCommit;
 use App\Traits\CommentableDefaults;
+use App\Traits\Validatable;
 use Cache;
 use Carbon\Carbon;
 use DB;
@@ -100,7 +86,7 @@ use Illuminate\Database\QueryException;
  */
 class Beatmapset extends Model implements AfterCommit, Commentable
 {
-    use CommentableDefaults, Elasticsearch\BeatmapsetTrait, SoftDeletes;
+    use CommentableDefaults, Elasticsearch\BeatmapsetTrait, SoftDeletes, Validatable;
 
     protected $_storage = null;
     protected $table = 'osu_beatmapsets';
@@ -152,11 +138,82 @@ class Beatmapset extends Model implements AfterCommit, Commentable
 
     const RANKED_PER_DAY = 8;
     const MINIMUM_DAYS_FOR_RANKING = 7;
-    const BUNDLED_IDS = [3756, 163112, 140662, 151878, 190390, 123593, 241526, 299224];
+
+    public static function coverSizes()
+    {
+        $shapes = ['cover', 'card', 'list', 'slimcover'];
+        $scales = ['', '@2x'];
+
+        $sizes = [];
+        foreach ($shapes as $shape) {
+            foreach ($scales as $scale) {
+                $sizes[] = "$shape$scale";
+            }
+        }
+
+        return $sizes;
+    }
+
+    public static function isValidCoverSize($coverSize)
+    {
+        $validSizes = array_merge(['raw', 'fullsize'], self::coverSizes());
+
+        return in_array($coverSize, $validSizes, true);
+    }
+
+    public static function popular()
+    {
+        $ids = cache_remember_mutexed('popularBeatmapsetIds', 300, [], function () {
+            return static::popularIds();
+        });
+
+        return static::whereIn('beatmapset_id', $ids)->orderByField('beatmapset_id', $ids);
+    }
+
+    public static function popularIds()
+    {
+        $recentIds = static::ranked()
+            ->where('approved_date', '>', now()->subDays(30))
+            ->select('beatmapset_id');
+
+        return FavouriteBeatmapset::select('beatmapset_id')
+            ->selectRaw('COUNT(*) as cnt')
+            ->whereIn('beatmapset_id', $recentIds)
+            ->where('dateadded', '>', now()->subDays(7))->groupBy('beatmapset_id')
+            ->orderBy('cnt', 'DESC')
+            ->limit(5)
+            ->pluck('beatmapset_id')
+            ->toArray();
+    }
+
+    public static function latestRankedOrApproved($count = 5)
+    {
+        // TODO: add filtering by game mode after mode-toggle UI/UX happens
+
+        return Cache::remember("beatmapsets_latest_{$count}", 3600, function () use ($count) {
+            // We union here so mysql can use indexes to speed this up
+            $ranked = self::ranked()->active()->orderBy('approved_date', 'desc')->limit($count);
+            $approved = self::approved()->active()->orderBy('approved_date', 'desc')->limit($count);
+
+            return $ranked->union($approved)->orderBy('approved_date', 'desc')->limit($count)->get();
+        });
+    }
+
+    public static function removeMetadataText($text)
+    {
+        // TODO: see if can be combined with description extraction thingy without
+        // exploding
+        static $pattern = '/^(.*?)-{15}/s';
+
+        return preg_replace($pattern, '', $text);
+    }
 
     public function beatmapDiscussions()
     {
-        return $this->hasMany(BeatmapDiscussion::class, 'beatmapset_id', 'beatmapset_id');
+        return $this
+            ->hasMany(BeatmapDiscussion::class)
+            // TODO: remove this when reviews are released
+            ->hideReviews();
     }
 
     public function recentFavourites($limit = 50)
@@ -175,7 +232,7 @@ class Beatmapset extends Model implements AfterCommit, Commentable
 
     public function watches()
     {
-        return $this->hasMany(BeatmapsetWatch::class, 'beatmapset_id', 'beatmapset_id');
+        return $this->hasMany(BeatmapsetWatch::class);
     }
 
     public function lastDiscussionTime()
@@ -269,6 +326,19 @@ class Beatmapset extends Model implements AfterCommit, Commentable
         return $query->where('approved', '=', self::STATES['qualified']);
     }
 
+    public function scopeDisqualified($query)
+    {
+        // uses the fact that disqualifying sets previous_queue_duration which is otherwise 0.
+        return $query
+            ->where('approved', self::STATES['pending'])
+            ->where('previous_queue_duration', '>', 0);
+    }
+
+    public function scopeNeverQualified($query)
+    {
+        return $query->unranked()->where('previous_queue_duration', 0);
+    }
+
     public function scopeRankedOrApproved($query)
     {
         return $query->whereIn(
@@ -342,61 +412,6 @@ class Beatmapset extends Model implements AfterCommit, Commentable
         return $this->approved > 0;
     }
 
-    // TODO: remove this and update the coffee side names to match isScoreable.
-    public function hasScores()
-    {
-        return $this->attributes['approved'] > 0;
-    }
-
-    public static function latestRankedOrApproved($count = 5)
-    {
-        // TODO: add filtering by game mode after mode-toggle UI/UX happens
-
-        return Cache::remember("beatmapsets_latest_{$count}", 60, function () use ($count) {
-            // We union here so mysql can use indexes to speed this up
-            $ranked = self::ranked()->active()->orderBy('approved_date', 'desc')->limit($count);
-            $approved = self::approved()->active()->orderBy('approved_date', 'desc')->limit($count);
-
-            return $ranked->union($approved)->orderBy('approved_date', 'desc')->limit($count)->get();
-        });
-    }
-
-    public static function mostPlayedToday($mode = 'osu', $count = 5)
-    {
-        // TODO: this only returns based on osu mode plays for now, add other game modes after mode-toggle UI/UX happens
-
-        return Cache::remember("beatmapsets_most_played_today_{$mode}_{$count}", 60, function () use ($mode, $count) {
-            $counts = Score\Osu::selectRaw('beatmapset_id, count(*) as playcount')
-                    ->whereNotIn('beatmapset_id', self::BUNDLED_IDS)
-                    ->groupBy('beatmapset_id')
-                    ->orderBy('playcount', 'desc')
-                    ->limit($count)
-                    ->get();
-
-            $mostPlayed = [];
-            foreach ($counts as $value) {
-                $mostPlayed[$value['beatmapset_id']] = $value['playcount'];
-            }
-
-            return $mostPlayed;
-        });
-    }
-
-    public static function coverSizes()
-    {
-        $shapes = ['cover', 'card', 'list', 'slimcover'];
-        $scales = ['', '@2x'];
-
-        $sizes = [];
-        foreach ($shapes as $shape) {
-            foreach ($scales as $scale) {
-                $sizes[] = "$shape$scale";
-            }
-        }
-
-        return $sizes;
-    }
-
     public function allCoverURLs()
     {
         $urls = [];
@@ -405,13 +420,6 @@ class Beatmapset extends Model implements AfterCommit, Commentable
         }
 
         return $urls;
-    }
-
-    public static function isValidCoverSize($coverSize)
-    {
-        $validSizes = array_merge(['raw', 'fullsize'], self::coverSizes());
-
-        return in_array($coverSize, $validSizes, true);
     }
 
     public function coverURL($coverSize = 'cover', $customTimestamp = null)
@@ -658,6 +666,10 @@ class Beatmapset extends Model implements AfterCommit, Commentable
             $message = trans('beatmaps.nominations.incorrect_state');
         }
 
+        if ($this->hype < $this->requiredHype()) {
+            $message = trans('beatmaps.nominations.not_enough_hype');
+        }
+
         // check if there are any outstanding issues still
         if ($this->beatmapDiscussions()->openIssues()->count() > 0) {
             $message = trans('beatmaps.nominations.unresolved_issues');
@@ -767,10 +779,10 @@ class Beatmapset extends Model implements AfterCommit, Commentable
         }
 
         DB::transaction(function () use ($user) {
-            $this->favourites()->where('user_id', $user->user_id)
+            $deleted = $this->favourites()->where('user_id', $user->user_id)
                 ->delete();
 
-            $this->favourite_count = db_unsigned_increment('favourite_count', -1);
+            $this->favourite_count = db_unsigned_increment('favourite_count', -$deleted);
             $this->save();
         });
     }
@@ -787,17 +799,17 @@ class Beatmapset extends Model implements AfterCommit, Commentable
 
     public function beatmaps()
     {
-        return $this->hasMany(Beatmap::class, 'beatmapset_id');
+        return $this->hasMany(Beatmap::class);
     }
 
     public function allBeatmaps()
     {
-        return $this->hasMany(Beatmap::class, 'beatmapset_id')->withTrashed();
+        return $this->hasMany(Beatmap::class)->withTrashed();
     }
 
     public function events()
     {
-        return $this->hasMany(BeatmapsetEvent::class, 'beatmapset_id');
+        return $this->hasMany(BeatmapsetEvent::class);
     }
 
     public function genre()
@@ -833,17 +845,21 @@ class Beatmapset extends Model implements AfterCommit, Commentable
             if ($this->user_id === $user->getKey()) {
                 $message = 'owner';
             } else {
-                $hyped = $this
-                    ->beatmapDiscussions()
-                    ->withoutTrashed()
-                    ->ofType('hype')
-                    ->where('user_id', '=', $user->getKey())
-                    ->exists();
+                if ($this->discussion_locked) {
+                    $message = 'discussion_locked';
+                } else {
+                    $hyped = $this
+                        ->beatmapDiscussions()
+                        ->withoutTrashed()
+                        ->ofType('hype')
+                        ->where('user_id', '=', $user->getKey())
+                        ->exists();
 
-                if ($hyped) {
-                    $message = 'hyped';
-                } elseif ($user->remainingHype() <= 0) {
-                    $message = 'limit_exceeded';
+                    if ($hyped) {
+                        $message = 'hyped';
+                    } elseif ($user->remainingHype() <= 0) {
+                        $message = 'limit_exceeded';
+                    }
                 }
             }
         }
@@ -983,14 +999,14 @@ class Beatmapset extends Model implements AfterCommit, Commentable
                 'events',
                 'nominations',
                 'related_users',
-                'related_users.groups',
+                'related_users.group_badge',
             ]
         );
     }
 
     public function defaultBeatmaps()
     {
-        return $this->hasMany(Beatmap::class, 'beatmapset_id')->default();
+        return $this->hasMany(Beatmap::class)->default();
     }
 
     public function user()
@@ -1005,7 +1021,7 @@ class Beatmapset extends Model implements AfterCommit, Commentable
 
     public function userRatings()
     {
-        return $this->hasMany(BeatmapsetUserRating::class, 'beatmapset_id');
+        return $this->hasMany(BeatmapsetUserRating::class);
     }
 
     public function ratingsCount()
@@ -1030,7 +1046,7 @@ class Beatmapset extends Model implements AfterCommit, Commentable
 
     public function favourites()
     {
-        return $this->hasMany(FavouriteBeatmapset::class, 'beatmapset_id');
+        return $this->hasMany(FavouriteBeatmapset::class);
     }
 
     public function description()
@@ -1147,18 +1163,34 @@ class Beatmapset extends Model implements AfterCommit, Commentable
         return $this->coverURL('card');
     }
 
+    public function validationErrorsTranslationPrefix()
+    {
+        return 'beatmapset';
+    }
+
+    public function isValid()
+    {
+        $this->validationErrors()->reset();
+
+        if ($this->isDirty('language_id') && ($this->language === null || $this->language_id === 0)) {
+            $this->validationErrors()->add('language_id', 'invalid');
+        }
+
+        if ($this->isDirty('genre_id') && ($this->genre === null || $this->genre_id === 0)) {
+            $this->validationErrors()->add('genre_id', 'invalid');
+        }
+
+        return $this->validationErrors()->isEmpty();
+    }
+
+    public function save(array $options = [])
+    {
+        return $this->isValid() && parent::save($options);
+    }
+
     public function url()
     {
         return route('beatmapsets.show', $this);
-    }
-
-    public static function removeMetadataText($text)
-    {
-        // TODO: see if can be combined with description extraction thingy without
-        // exploding
-        static $pattern = '/^(.*?)-{15}/s';
-
-        return preg_replace($pattern, '', $text);
     }
 
     protected static function boot()

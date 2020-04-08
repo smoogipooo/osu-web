@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[被删除的用户]',
@@ -64,33 +49,58 @@ return [
         'send_message' => '发送消息',
     ],
 
+    'disabled' => [
+        'title' => '哎呀！看起来您的帐户已被禁用。',
+        'warning' => "如果您违反了规则，我们原则上在一个月的期限以内不会考虑解禁您的帐户。在此之后，您如果需要，可以随时联系我们。请注意，在一个帐户被封后创建新帐户会<strong>使您的封禁期限被延长</strong>。您更需要注意<strong>您每创建一个新帐户都会更严重地违反规则</strong>。我们强烈建议您不要误入歧途。",
+
+        'if_mistake' => [
+            '_' => '如果你觉得我们误封了你的账号，你可以通过电子邮件（:email）或者点击本页面右下方的问号来联系我们。一般来说，我们犯错的几率是很低的。我们只以可靠的数据为参考进行这一类的操作。如果你执意违反规则，我们保留拒绝你的请求的权利。',
+            'email' => '电子邮件',
+        ],
+
+        'reasons' => [
+            'compromised' => '我们认为你的帐户已被盗用。在确认身份期间，该帐户会被暂时停用。',
+            'opening' => '您的账户可能由于这几种原因被禁用：',
+
+            'tos' => [
+                '_' => '您已经违反了一条或多条 :community_rules 或是 :tos',
+                'community_rules' => '社区规则',
+                'tos' => '服务条款',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "您已经很长时间没有使用您的账户了。",
+        ],
+    ],
+
     'login' => [
         '_' => '登录',
-        'locked_ip' => 'IP 已被锁定，请稍等几分钟',
-        'username' => '用户名',
-        'password' => '密码',
         'button' => '登录',
         'button_posting' => '登录中...',
+        'email_login_disabled' => '当前不可以使用电子邮件登陆。请使用您的用户名。',
+        'failed' => '登录失败',
+        'forgot' => '忘记密码？',
+        'info' => '请登录以继续',
+        'locked_ip' => 'IP 已被锁定，请稍等几分钟',
+        'password' => '密码',
+        'register' => "没有 osu! 账户？现在就注册一个！",
         'remember' => '记住此电脑',
         'title' => '登录以继续',
-        'failed' => '登录失败',
-        'register' => "没有 osu! 账户？现在就注册一个！",
-        'forgot' => '忘记密码？',
+        'username' => '用户名',
+
         'beta' => [
             'main' => 'Beta 仅限于特定用户访问',
             'small' => '（在不久后将对 osu!支持者 开放）',
         ],
-
-        'here' => '这里', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username 的帖子',
     ],
 
-    'signup' => [
-        '_' => '注册',
-    ],
     'anonymous' => [
         'login_link' => '点击登录',
         'login_text' => '登录',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => '不支持的格式。',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => '自定义头图只有 :link 可用',
+                        'link' => 'osu! 支持者',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '关注者：:count',
+            'none' => '无',
             'unranked' => '最近没有玩过',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Pending 的谱面',
                 ],
             ],
+            'discussions' => [
+                'title' => '讨论',
+                'title_longer' => '最近讨论',
+                'show_more' => '查看更多讨论',
+            ],
+            'events' => [
+                'title' => '事件',
+                'title_longer' => '最近事件',
+                'show_more' => '查看更多事件',
+            ],
             'historical' => [
                 'empty' => '没有游戏记录。:(',
                 'title' => '历史记录',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => '可用 kudosu',
-                'available_info' => "kudosu 可以兑换为 kudosu 星,它可以让你的谱面更引人注意。这是你还没有兑换的 kudosu 数。",
                 'recent_entries' => '最近 Kudosu 记录',
                 'title' => 'Kudosu!',
                 'total' => '总共获得 kudosu',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => '取决于你对制谱的贡献如何。查看 :link 获得更多信息。',
+                    'link' => '这个页面',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "该用户还没有获得成就。;_;",
                 'recent' => '最近取得',
                 'title' => '成就',
+            ],
+            'posts' => [
+                'title' => '回复',
+                'title_longer' => '最近回复',
+                'show_more' => '查看更多回复',
             ],
             'recent_activity' => [
                 'title' => '最近活动',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => '第一名',
                 ],
+            ],
+            'votes' => [
+                'given' => '给予投票（最近三个月）',
+                'received' => '所得投票（最近三个月）',
+                'title' => '投票',
+                'title_longer' => '最近投票',
+                'vote_count' => ':count_delimited 票',
             ],
             'account_standing' => [
                 'title' => '帐号状态',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => '玩家 :info',
-            'info' => '资料',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => '在这里编辑',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => '你需要成为 :link 才能使用此功能。',
+                'link' => 'osu!支持者',
             ],
         ],
         'post_count' => [
@@ -354,8 +379,8 @@ return [
             'count' => ':count 篇帖子',
         ],
         'rank' => [
-            'country' => ':mode 模式的国内排名',
-            'country_simple' => '国内排名',
+            'country' => ':mode 模式的国内/区内排名',
+            'country_simple' => '国内/区内排名',
             'global' => ':mode 模式的全球排名',
             'global_simple' => '全球排名',
         ],
@@ -372,6 +397,11 @@ return [
             'score_ranks' => '得分等级',
             'total_hits' => '总命中次数',
             'total_score' => '总分',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Ranked & Approved 的谱面',
+            'loved_beatmapset_count' => 'Loved 的谱面',
+            'unranked_beatmapset_count' => 'Pending 的谱面',
+            'graveyard_beatmapset_count' => '坟场里的谱面',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '方块视图',
+        'card' => '卡片检视',
+        'list' => '列表检视',
     ],
 ];

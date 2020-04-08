@@ -1,25 +1,11 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ModelNotSavedException;
 use App\Exceptions\ValidationException;
 use App\Libraries\Search\PostSearch;
 use App\Libraries\Search\PostSearchRequestParams;
@@ -28,29 +14,40 @@ use App\Models\Achievement;
 use App\Models\Beatmap;
 use App\Models\Country;
 use App\Models\IpBan;
+use App\Models\Log;
 use App\Models\User;
+use App\Models\UserAccountHistory;
 use App\Models\UserNotFound;
 use Auth;
 use Elasticsearch\Common\Exceptions\ElasticsearchException;
+use Illuminate\Cache\RateLimiter;
 use Request;
 
 class UsersController extends Controller
 {
-    protected $section = 'user';
     protected $maxResults = 100;
 
     public function __construct()
     {
+        $this->middleware('guest', ['only' => 'store']);
         $this->middleware('auth', ['only' => [
             'checkUsernameAvailability',
             'checkUsernameExists',
             'report',
+            'updatePage',
         ]]);
 
-        $this->middleware('throttle:10,60', ['only' => ['store']]);
+        $this->middleware('throttle:60,10', ['only' => ['store']]);
 
         if (is_api_request()) {
             $this->middleware('require-scopes:identify', ['only' => ['me']]);
+            $this->middleware('require-scopes:users.read', ['only' => [
+                'beatmapsets',
+                'kudosu',
+                'recentActivity',
+                'scores',
+                'show',
+            ]]);
         }
 
         $this->middleware(function ($request, $next) {
@@ -75,12 +72,12 @@ class UsersController extends Controller
 
     public function disabled()
     {
-        return view('users.disabled');
+        return ext_view('users.disabled');
     }
 
     public function checkUsernameAvailability()
     {
-        $username = Request::input('username');
+        $username = Request::input('username') ?? '';
 
         $errors = Auth::user()->validateChangeUsername($username);
 
@@ -131,7 +128,20 @@ class UsersController extends Controller
         $registration = new UserRegistration($params);
 
         try {
+            $registration->assertValid();
+
+            if (get_bool(request('check'))) {
+                return response(null, 204);
+            }
+
+            $throttleKey = "registration:{$ip}";
+
+            if (app(RateLimiter::class)->tooManyAttempts($throttleKey, 10)) {
+                abort(429);
+            }
+
             $registration->save();
+            app(RateLimiter::class)->hit($throttleKey, 600);
 
             return $registration->user()->fresh()->defaultJson();
         } catch (ValidationException $e) {
@@ -167,10 +177,10 @@ class UsersController extends Controller
             abort(404);
         }
 
-        $search = (new PostSearch(new PostSearchRequestParams(request(), $user)))
+        $search = (new PostSearch(new PostSearchRequestParams(request()->all(), $user)))
             ->size(50);
 
-        return view('users.posts', compact('search', 'user'));
+        return ext_view('users.posts', compact('search', 'user'));
     }
 
     public function kudosu($_userId)
@@ -181,25 +191,6 @@ class UsersController extends Controller
     public function recentActivity($_userId)
     {
         return $this->getExtra($this->user, 'recentActivity', [], $this->perPage, $this->offset);
-    }
-
-    public function report($id)
-    {
-        $user = User::lookup($id, 'id', true);
-        if ($user === null || !priv_check('UserShow', $user)->can()) {
-            return response()->json([], 404);
-        }
-
-        try {
-            $user->reportBy(auth()->user(), [
-                'comments' => trim(request('comments')),
-                'reason' => trim(request('reason')),
-            ]);
-        } catch (ValidationException $e) {
-            return error_popup($e->getMessage());
-        }
-
-        return response(null, 204);
     }
 
     public function scores($_userId, $type)
@@ -242,7 +233,7 @@ class UsersController extends Controller
                 abort(404);
             }
 
-            return response()->view('users.show_not_found')->setStatusCode(404);
+            return ext_view('users.show_not_found', null, null, 404);
         }
 
         if ((string) $user->user_id !== (string) $id) {
@@ -264,14 +255,15 @@ class UsersController extends Controller
             'favourite_beatmapset_count',
             'follower_count',
             'graveyard_beatmapset_count',
+            'group_badge',
             'loved_beatmapset_count',
             'monthly_playcounts',
             'page',
             'previous_usernames',
             'ranked_and_approved_beatmapset_count',
+            "rankHistory:mode({$currentMode})",
             'replays_watched_counts',
             'statistics.rank',
-            'statistics.scoreRanks',
             'support_level',
             'unranked_beatmapset_count',
             'user_achievements',
@@ -288,15 +280,7 @@ class UsersController extends Controller
             $userIncludes
         );
 
-        $rankHistoryData = $user->rankHistories()
-            ->where('mode', Beatmap::modeInt($currentMode))
-            ->first();
-
-        $rankHistory = $rankHistoryData ? json_item($rankHistoryData, 'RankHistory') : null;
-
         if (is_api_request()) {
-            $userArray['rankHistory'] = $rankHistory;
-
             return $userArray;
         } else {
             $achievements = json_collection(
@@ -337,14 +321,38 @@ class UsersController extends Controller
                 'currentMode' => $currentMode,
                 'extras' => $extras,
                 'perPage' => $perPage,
-                'rankHistory' => $rankHistory,
                 'user' => $userArray,
             ];
 
-            return view('users.show', compact(
+            return ext_view('users.show', compact(
                 'user',
                 'jsonChunks'
             ));
+        }
+    }
+
+    public function updatePage($id)
+    {
+        $user = User::findOrFail($id);
+
+        priv_check('UserPageEdit', $user)->ensureCan();
+
+        try {
+            $user = $user->updatePage(request('body'));
+
+            if (!$user->is(auth()->user())) {
+                UserAccountHistory::logUserPageModerated($user, auth()->user());
+
+                $this->log([
+                    'log_type' => Log::LOG_USER_MOD,
+                    'log_operation' => 'LOG_USER_PAGE_EDIT',
+                    'log_data' => ['id' => $user->getKey()],
+                ]);
+            }
+
+            return ['html' => $user->userPage->bodyHTML(['withoutImageDimensions' => true, 'modifiers' => ['profile-page']])];
+        } catch (ModelNotSavedException $e) {
+            return error_popup($e->getMessage());
         }
     }
 
@@ -445,12 +453,13 @@ class UsersController extends Controller
                     $transformer = 'Score';
                     $includes = ['beatmap', 'beatmapset', 'user'];
                     $query = $user->scoresFirst($options['mode'], true)
-                        ->orderBy('score_id', 'desc')
+                        ->visibleUsers()
+                        ->reorderBy('score_id', 'desc')
                         ->with('beatmap', 'beatmap.beatmapset', 'user');
                     break;
                 case 'scoresRecent':
                     $transformer = 'Score';
-                    $includes = ['beatmap', 'beatmapset', 'best', 'user'];
+                    $includes = ['beatmap', 'beatmapset', 'user'];
                     $query = $user->scores($options['mode'], true)
                         ->with('beatmap', 'beatmap.beatmapset', 'best', 'user');
                     break;

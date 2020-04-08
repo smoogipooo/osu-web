@@ -1,27 +1,13 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Http\Controllers;
 
 use App\Mail\PasswordReset;
 use App\Models\User;
+use App\Models\UserAccountHistory;
 use Carbon\Carbon;
 use Mail;
 use Request;
@@ -29,9 +15,6 @@ use Session;
 
 class PasswordResetController extends Controller
 {
-    protected $section = 'home';
-    protected $actionPrefix = 'password-reset-';
-
     public function __construct()
     {
         parent::__construct();
@@ -51,7 +34,7 @@ class PasswordResetController extends Controller
     {
         $isStarted = Session::exists('password_reset');
 
-        return view('password_reset.index', compact('isStarted'));
+        return ext_view('password_reset.index', compact('isStarted'));
     }
 
     public function create()
@@ -61,7 +44,9 @@ class PasswordResetController extends Controller
         if ($error === null) {
             return ['message' => trans('password_reset.notice.sent')];
         } else {
-            return error_popup($error);
+            return response(['form_error' => [
+                'username' => [$error],
+            ]], 422);
         }
     }
 
@@ -107,6 +92,8 @@ class PasswordResetController extends Controller
             $this->clear();
             $this->login($user);
 
+            UserAccountHistory::logUserResetPassword($user);
+
             return ['message' => trans('password_reset.notice.saved')];
         } else {
             return response(['form_error' => [
@@ -122,7 +109,7 @@ class PasswordResetController extends Controller
 
     private function issue($username)
     {
-        $user = User::findForLogin($username);
+        $user = User::findForLogin($username, true);
 
         if ($user === null) {
             return trans('password_reset.error.user_not_found');
@@ -132,7 +119,7 @@ class PasswordResetController extends Controller
             return trans('password_reset.error.contact_support');
         }
 
-        if ($user->isPrivileged()) {
+        if ($user->isPrivileged() && $user->user_password !== '') {
             return trans('password_reset.error.is_privileged');
         }
 
@@ -146,7 +133,7 @@ class PasswordResetController extends Controller
 
         Session::put('password_reset', $session);
 
-        Mail::to($user->user_email)->send(new PasswordReset([
+        Mail::to($user)->send(new PasswordReset([
             'user' => $user,
             'key' => $session['key'],
         ]));

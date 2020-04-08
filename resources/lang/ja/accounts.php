@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => '<strong>アカウント</strong>設定',
         'title_compact' => '設定',
         'username' => 'ユーザー名',
 
         'avatar' => [
             'title' => 'プロフィール画像',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'あなたのプロフィール画像が公序良俗に反したもので無いか確認してください。 :link.<br/>易しく言えば<strong>全ての年齢に適した</strong>、つまりヌードや冒涜的な表現などを想起させるものを含んでいない事を確認してください。',
+            'rules_link' => 'コミュニティールール',
         ],
 
         'email' => [
@@ -67,10 +51,18 @@ return [
     'notifications' => [
         'title' => '通知',
         'topic_auto_subscribe' => '作成した新しいフォーラムトピックに関する通知を自動的に有効にします',
+        'beatmapset_discussion_qualified_problem' => '次のモードのQualifiedビートマップで新しい問題の通知を受け取る',
+
+        'mail' => [
+            '_' => '次のメール通知を受け取る：',
+            'beatmapset:modding' => 'ビートマップmodding',
+            'forum_topic_reply' => 'トピックの返信',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => '認証済みのクライアント',
+        'own_clients' => '自分のクライアント',
         'title' => 'OAuth',
     ],
 
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'メールアドレス変更の確認',
         'update' => '更新',
     ],
 
     'update_password' => [
-        'email_subject' => 'パスワード変更の確認',
         'update' => '更新',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => '今すぐにこのウィンドウを閉じる事が出来ます。',
+        'title' => '認証が完了しました。',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => '無効もしくは期限切れの認証リンク',
     ],
 ];

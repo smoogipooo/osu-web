@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => 'Definições de <strong>Conta</strong>',
         'title_compact' => 'definições',
         'username' => 'nome de utilizador',
 
         'avatar' => [
             'title' => 'Avatar',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'Por favor assegura-te de que o teu avatar respeita :link.<br/>Isto significa que deve ser <strong>adequado para todas as idades</strong>, ou seja, sem nudez, profanidade ou conteúdo sugestivo.',
+            'rules_link' => 'as regras da comunidade',
         ],
 
         'email' => [
@@ -67,10 +51,18 @@ return [
     'notifications' => [
         'title' => 'Notificações',
         'topic_auto_subscribe' => 'ativar automaticamente as notificações em novos tópicos de fórum que tenhas criado',
+        'beatmapset_discussion_qualified_problem' => 'receber notificações para um novo problema em beatmaps qualificados dos modos seguintes',
+
+        'mail' => [
+            '_' => 'receber notificações por email para',
+            'beatmapset:modding' => 'modificações de beatmaps',
+            'forum_topic_reply' => 'resposta ao tópico',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => 'clientes autorizados',
+        'own_clients' => 'os teus clientes',
         'title' => 'OAuth',
     ],
 
@@ -90,7 +82,7 @@ return [
 
     'security' => [
         'current_session' => 'atual',
-        'end_session' => 'Terminar Sessão',
+        'end_session' => 'Terminar sessão',
         'end_session_confirmation' => 'Isto irá imediatamente terminar a tua sessão nesse dispositivo. Tens a certeza?',
         'last_active' => 'Ativo pela última vez:',
         'title' => 'Segurança',
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'Confirmação da alteração de email do osu!',
         'update' => 'atualizar',
     ],
 
     'update_password' => [
-        'email_subject' => 'Confirmação da alteração da palavra-passe do osu!',
         'update' => 'atualizar',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Poderás agora fechar este(a) separador/janela',
+        'title' => 'A verificação foi concluída',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Link de verificação inválido ou expirado',
     ],
 ];

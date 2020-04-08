@@ -1,45 +1,41 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'authorizations' => [
         'update' => [
             'null_user' => 'ต้องเข้าสู่ระบบก่อนจะแก้ไข',
-            'system_generated' => 'โพสต์ที่ถูกสร้างขึ้นเองจากระบบไม่สามารถถูกแก้ไขได้',
-            'wrong_user' => 'ต้องเป็นเจ้าของโพสนี้ถึงจะสามารถแก้ไขได้',
+            'system_generated' => 'ไม่สามารถแก้ไขโพสต์ที่ระบบสร้างขึ้นเองได้',
+            'wrong_user' => 'ต้องเป็นเจ้าของโพสต์นี้ถึงจะสามารถแก้ไขได้',
         ],
     ],
 
     'events' => [
-        'empty' => 'ยังไม่มีอะไรเกิดขึ้น...ยัง',
+        'empty' => 'อืม... ยังไม่มีอะไรเกิดขึ้น',
     ],
 
     'index' => [
         'deleted_beatmap' => 'ถูกลบไปแล้ว',
+        'none_found' => '',
         'title' => 'การสนทนาเกี่ยวกับ Beatmap',
 
         'form' => [
             '_' => 'ค้นหา',
             'deleted' => 'รวมการสนทนาที่ถูกลบ',
+            'only_unresolved' => 'มองเห็นเฉพาะการสนทนา/ปัญหาที่ยังไม่ได้แก้',
             'types' => 'ชนิดของข้อความ',
             'username' => 'ชื่อผู้ใช้',
+
+            'beatmapset_status' => [
+                '_' => 'สถานะบีตแมป',
+                'all' => 'ทั้งหมด',
+                'disqualified' => 'คัดออกแล้ว',
+                'never_qualified' => 'ไม่เคยถูกคัดออก',
+                'qualified' => 'ผ่านเกณฑ์',
+                'ranked' => 'ถูกจัดอันดับแล้ว',
+            ],
 
             'user' => [
                 'label' => 'ผู้ใช้',
@@ -67,11 +63,28 @@ return [
         ],
     ],
 
+    'review' => [
+        'go_to_parent' => 'ดูโพสต์รีวิว',
+        'go_to_child' => 'ดูการสนทนา',
+        'validation' => [
+            'invalid_block_type' => '',
+            'invalid_document' => '',
+            'minimum_issues' => '',
+            'missing_text' => '',
+            'too_many_blocks' => '',
+        ],
+    ],
+
     'system' => [
         'resolved' => [
             'true' => 'ทำเครื่องหมายเป็นแก้ไขแล้วโดย :user',
             'false' => 'ถูกเปิดใหม่โดย :user',
         ],
+    ],
+
+    'timestamp_display' => [
+        'general' => '',
+        'general_all' => '',
     ],
 
     'user_filter' => [

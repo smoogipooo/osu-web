@@ -1,7 +1,13 @@
 <?php
 
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
+
+namespace Tests\Controllers;
+
 use App\Models\Country;
 use App\Models\User;
+use Tests\TestCase;
 
 class UsersControllerTest extends TestCase
 {
@@ -11,7 +17,7 @@ class UsersControllerTest extends TestCase
      */
     public function testStore()
     {
-        config()->set('osu.user.allow_registration', true);
+        $previousCount = User::count();
 
         $this
             ->json('POST', route('users.store'), [
@@ -25,13 +31,76 @@ class UsersControllerTest extends TestCase
             ])->assertJsonFragment([
                 'username' => 'user1',
             ]);
+
+        $this->assertSame($previousCount + 1, User::count());
+    }
+
+    /**
+     * Passing check=1 only validates user and not create.
+     */
+    public function testStoreDryRunValid()
+    {
+        $previousCount = User::count();
+
+        $this
+            ->json('POST', route('users.store'), [
+                'check' => '1',
+                'user' => [
+                    'username' => 'user1',
+                    'user_email' => 'user1@example.com',
+                    'password' => 'hunter22',
+                ],
+            ], [
+                'HTTP_USER_AGENT' => config('osu.client.user_agent'),
+            ])->assertSuccessful();
+
+        $this->assertSame($previousCount, User::count());
+    }
+
+    /**
+     * Invalid parameter returns 422.
+     */
+    public function testStoreInvalid()
+    {
+        $previousCount = User::count();
+
+        $this
+            ->json('POST', route('users.store'), [
+                'check' => '1',
+                'user' => [
+                    'username' => '',
+                    'user_email' => 'user1@example.com',
+                    'password' => 'hunter22',
+                ],
+            ], [
+                'HTTP_USER_AGENT' => config('osu.client.user_agent'),
+            ])->assertStatus(422)
+            ->assertJsonFragment([
+                'form_error' => ['user' => ['username' => ['Username is required.']]],
+            ]);
+
+        $this
+            ->json('POST', route('users.store'), [
+                'user' => [
+                    'username' => '',
+                    'user_email' => 'user1@example.com',
+                    'password' => 'hunter22',
+                ],
+            ], [
+                'HTTP_USER_AGENT' => config('osu.client.user_agent'),
+            ])->assertStatus(422)
+            ->assertJsonFragment([
+                'form_error' => ['user' => ['username' => ['Username is required.']]],
+            ]);
+
+        $this->assertSame($previousCount, User::count());
     }
 
     public function testStoreWithCountry()
     {
-        config()->set('osu.user.allow_registration', true);
-
         $country = Country::inRandomOrder()->first() ?? factory(Country::class)->create();
+
+        $previousCount = User::count();
 
         $this
             ->json('POST', route('users.store'), [
@@ -50,6 +119,32 @@ class UsersControllerTest extends TestCase
                     'name' => $country->name,
                 ],
             ]);
+
+        $this->assertSame($previousCount + 1, User::count());
+    }
+
+    /**
+     * Disable registration for logged in user.
+     */
+    public function testStoreLoggedIn()
+    {
+        $user = factory(User::class)->create();
+
+        $previousCount = User::count();
+
+        $this
+            ->actingAsVerified($user)
+            ->json('POST', route('users.store'), [
+                'user' => [
+                    'username' => 'user1',
+                    'user_email' => 'user1@example.com',
+                    'password' => 'hunter22',
+                ],
+            ], [
+                'HTTP_USER_AGENT' => config('osu.client.user_agent'),
+            ])->assertStatus(302);
+
+        $this->assertSame($previousCount, User::count());
     }
 
     public function testPreviousUsernameShouldRedirect()
@@ -67,7 +162,7 @@ class UsersControllerTest extends TestCase
 
         $this
             ->get(route('users.show', ['user' => $oldUsername]))
-            ->assertRedirect(route('users.show', ['user' => $user->getKey()]));
+            ->assertRedirect(route('users.show', ['user' => $user->getKey(), 'mode' => null]));
     }
 
     public function testPreviousUsernameTakenShouldNotRedirect()
@@ -90,6 +185,6 @@ class UsersControllerTest extends TestCase
 
         $this
             ->get(route('users.show', ['user' => $oldUsername]))
-            ->assertRedirect(route('users.show', ['user' => $user2->getKey()]));
+            ->assertRedirect(route('users.show', ['user' => $user2->getKey(), 'mode' => null]));
     }
 }

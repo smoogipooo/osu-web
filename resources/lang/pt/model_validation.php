@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute não pode ser negativo.',
     'required' => ':attribute é necessário.',
     'too_long' => ':attribute limite máximo excedido - só pode ser até :limit caracteres.',
@@ -26,10 +12,10 @@ return [
 
     'beatmap_discussion_post' => [
         'discussion_locked' => 'A discussão está bloqueada.',
-        'first_post' => 'Não é possível eliminar uma publicação de começo.',
+        'first_post' => 'Não é possível eliminar uma publicação inicial.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'A mensagem',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => 'A discussão está bloqueada.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Tipos de mensagem',
+            'timestamp' => 'Marca de tempo',
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => 'Tens que estar com a sessão iniciada para hypear.',
             'hyped' => 'Já hypeaste este beatmap.',
             'limit_exceeded' => 'Usaste todo o teu hype.',
@@ -61,10 +48,11 @@ return [
     ],
 
     'comment' => [
-        'deleted_parent' => 'Responder a comentários eliminados não é permitido.',
+        'deleted_parent' => 'Não é permitido responder a comentários eliminados.',
+        'top_only' => 'Não é permitido afixar uma resposta a um comentário.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'A mensagem',
         ],
     ],
 
@@ -88,13 +76,13 @@ return [
             'only_quote' => 'A tua resposta contém apenas uma citação.',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => 'Corpo da publicação',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Título do tópico',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Número máximo de opções permitidas excedido.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Título da sondagem',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'Excedeste o n.º máximo de aplicações OAuth autorizadas.',
+            'url' => 'Por favor insere um URL válido.',
+
+            'attributes' => [
+                'name' => 'Nome da aplicação',
+                'redirect' => 'URL de recolha da aplicação',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'A palavra-passe não pode conter o nome de utilizador.',
         'email_already_used' => 'Endereço de email já usado.',
         'invalid_country' => 'País inexistente na base de dados.',
         'invalid_discord' => 'Nome de utilizador do Discord inválido.',
         'invalid_email' => "Não parece que seja um endereço de email válido.",
+        'invalid_twitter' => '',
         'too_short' => 'A nova palavra-passe é demasiado curta.',
         'unknown_duplicate' => 'Nome de utilizador e endereço de e-mail já usados.',
         'username_available_in' => 'Este nome de utilizador irá estar disponível para uso em :duration.',
@@ -136,22 +137,22 @@ return [
         'username_not_allowed' => 'Esta escolha para nome de utilizador não é permitida.',
         'username_too_short' => 'O nome de utilizador solicitado é demasiado curto.',
         'username_too_long' => 'O nome de utilizador solicitado é demasiado longo.',
-        'weak' => 'Palavra-passe colocada na lista-negra.',
+        'weak' => 'A palavra-passe está na lista-negra.',
         'wrong_current_password' => 'A palavra-passe atual está incorreta.',
         'wrong_email_confirmation' => 'A confirmação do email não corresponde.',
         'wrong_password_confirmation' => 'A confirmação da palavra-passe não corresponde.',
         'too_long' => 'Comprimento máximo excedido - só pode ser até :limit caracteres.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Nome de utilizador',
+            'user_email' => 'Endereço de email',
+            'password' => 'Palavra-passe',
         ],
 
         'change_username' => [
             'restricted' => 'Não podes mudar o teu nome de utilizador enquanto estiveres restrito.',
             'supporter_required' => [
-                '_' => 'Tu tens de ter :link para mudar o teu nome!',
+                '_' => 'Tens de ter :link para mudar o teu nome!',
                 'link_text' => 'ajudaste o osu!',
             ],
             'username_is_same' => 'Este já é o teu nome de utilizador, tontinho!',
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => ':reason não é valida para este tipo de denúncia.',
         'self' => "Não te podes denunciar a ti mesmo!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Quantidade',
+                'cost' => 'Custo',
             ],
         ],
     ],

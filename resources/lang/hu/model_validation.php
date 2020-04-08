@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute nem lehet negatív.',
     'required' => ':attribute kötelező.',
     'too_long' => ':attribute elérte a maximális hosszt - csak :limit karakter hosszú lehet.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Nem lehet a kezdő posztot törölni.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Az üzenet',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => 'A megbeszélés zárolva van.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Üzenet típus',
+            'timestamp' => 'Időbélyeg',
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => 'A hype-oláshoz bejelentkezve kell lenned.',
             'hyped' => 'Már hype-oltad ezt a beatmap-et.',
             'limit_exceeded' => 'Az összes hype-odat elhasználtad.',
@@ -62,14 +49,15 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Törölt hozzászólásokra nem lehet válaszolni.',
+        'top_only' => '',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Az üzenet',
         ],
     ],
 
     'follow' => [
-        'invalid' => '',
+        'invalid' => 'Érvénytelen :attribute lett megadva.',
     ],
 
     'forum' => [
@@ -94,7 +82,7 @@ return [
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Téma cím',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Elérted a maximum opciók számát.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Szavazás címe',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => '',
+            'url' => 'Kérjük adjon meg egy helyes URL-t.',
+
+            'attributes' => [
+                'name' => 'Alkalmazás neve',
+                'redirect' => '',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'A jelszó nem tartalmazhat felhasználónevet.',
         'email_already_used' => 'Ez az e-mail cím már használatban van.',
         'invalid_country' => 'Az ország nincs az adatbázisban.',
         'invalid_discord' => 'Érvénytelen Discord felhasználónév.',
         'invalid_email' => "Nem úgy néz ki, hogy ez érvényes e-mail cím lenne.",
+        'invalid_twitter' => '',
         'too_short' => 'Az új jelszó túl rövid.',
         'unknown_duplicate' => 'Ez a felhasználónév vagy e-mail cím már használatban van.',
         'username_available_in' => 'Ez a felhasználónév elérhető lesz :duration időn belül.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Elérted a maximum hosszúságot - maximum :limit karaktert használhatsz.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Felhasználónév',
+            'user_email' => 'E-mail cím',
+            'password' => 'Jelszó',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => '',
         'self' => "Nem jelentheted magadat!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Mennyiség',
+                'cost' => 'Ár',
             ],
         ],
     ],

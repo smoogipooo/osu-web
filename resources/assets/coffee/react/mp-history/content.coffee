@@ -1,25 +1,10 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 import { Event } from './event'
 import { Game } from './game'
 import * as React from 'react'
-import { button, div } from 'react-dom-factories'
+import { button, div, h3 } from 'react-dom-factories'
 import { Spinner } from 'spinner'
 el = React.createElement
 
@@ -64,9 +49,10 @@ export class Content extends React.PureComponent
 
 
   render: =>
-    div className: 'osu-layout__row osu-layout__row--page-mp-history',
+    div className: 'osu-page osu-page--mp-history',
+      h3 null, @props.match.name
       if @props.hasPrevious
-        div className: 'mp-history-content__show-more-box',
+        div className: 'mp-history-content',
           if @props.loadingPrevious
             el Spinner
           else
@@ -100,7 +86,7 @@ export class Content extends React.PureComponent
                 key: event.id
 
       if @props.hasNext
-        div className: 'mp-history-content__show-more-box',
+        div className: 'mp-history-content',
           if @props.isAutoloading
             div className: 'mp-history-content__spinner',
               div

@@ -1,20 +1,5 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 import { BigButton } from 'big-button'
 import * as React from 'react'
@@ -163,19 +148,20 @@ export class CommentEditor extends React.PureComponent
 
         onDone = (data) =>
           @setState message: ''
-          $.publish 'comments:added', commentBundle: data, prepend: true
+          $.publish 'comments:new', data
       when 'edit'
         url = laroute.route 'comments.update', comment: @props.id
         method = 'PUT'
 
         onDone = (data) ->
-          $.publish 'comment:updated', comment: data
+          $.publish 'comment:updated', data
 
     @xhr = $.ajax url, {method, data}
     .always =>
       @setState posting: false
     .done (data) =>
       onDone(data)
+      @props.onPosted?(@mode())
       @props.close?()
     .fail (xhr, status) =>
       osu.ajaxError(xhr, status)

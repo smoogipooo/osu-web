@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[törölt felhasználó]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'üzenet küldése',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => '',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => '',
+                'tos' => '',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Bejelentkezés',
-        'locked_ip' => 'Az IP címed zárolva van. Kérjük várj egy pár percet.',
-        'username' => 'Felhasználónév',
-        'password' => 'Jelszó',
         'button' => 'Bejelentkezés',
         'button_posting' => 'Bejelentkezés...',
+        'email_login_disabled' => '',
+        'failed' => 'Hibás adatok',
+        'forgot' => 'Elfelejtetted a jelszavad?',
+        'info' => '',
+        'locked_ip' => 'Az IP címed zárolva van. Kérjük várj egy pár percet.',
+        'password' => 'Jelszó',
+        'register' => "Nincs osu! felhasználód? Regisztrálj egyet!",
         'remember' => 'Számítógép megjegyzése',
         'title' => 'Kérlek, jelentkezz be a folytatáshoz',
-        'failed' => 'Hibás adatok',
-        'register' => "Nincs osu! felhasználód? Regisztrálj egyet!",
-        'forgot' => 'Elfelejtetted a jelszavad?',
+        'username' => 'Felhasználónév',
+
         'beta' => [
             'main' => 'Beta hozzáférés jelenleg csak kiváltságos felhasználóknak elérhető.',
             'small' => '(osu!támogatók hamarosan bejutnak)',
         ],
-
-        'here' => 'itt', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username hozzászólásai',
     ],
 
-    'signup' => [
-        '_' => 'Regisztráció',
-    ],
     'anonymous' => [
         'login_link' => 'kattints a bejelentkezéshez',
         'login_text' => 'bejelentkezés',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => 'Nem támogatott formátum.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Feltöltés csak :link -hez elérhető',
+                        'link' => 'osu!támogatók',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 követő |:count követő',
+            'none' => 'semmi',
             'unranked' => 'Nem játszott mostanában',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Pending Beatmap-ek',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Hozzászólások',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
+            'events' => [
+                'title' => 'Események',
+                'title_longer' => 'Legutóbbi Események',
+                'show_more' => 'további események',
+            ],
             'historical' => [
                 'empty' => 'Nincsenek teljesítmény rekordok. :(',
                 'title' => 'Történelem',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Elérhető Kudosu',
-                'available_info' => "A kudosu becserélhető kudosu csillagokra, amely segít a beatmapjeidnek figyelmet gyüjteni. Ez az kudosu mennyiség amit még nem cseréltél be.",
                 'recent_entries' => 'Legutóbbi Kudosu történelem',
                 'title' => 'Kudosu!',
                 'total' => 'Összesen megszerzett Kudosu',
@@ -265,7 +283,7 @@ return [
 
                 'total_info' => [
                     '_' => '',
-                    'link' => '',
+                    'link' => 'ez az oldal',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Ez a felhasználó még nem rendelkezik egyel sem. ;_;",
                 'recent' => 'Legújabb',
                 'title' => 'Medálok',
+            ],
+            'posts' => [
+                'title' => 'Bejegyzések',
+                'title_longer' => 'Legutóbbi bejegyzések',
+                'show_more' => 'láss további bejegyzéseket',
             ],
             'recent_activity' => [
                 'title' => 'Legutóbbi',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Első Helyezéses Eredmények',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Szavazatok Leadva (legutóbbi 3 hónap)',
+                'received' => 'Beérkezett Szavazatok (legutóbbi 3 hónap)',
+                'title' => 'Szavazatok',
+                'title_longer' => 'Legutóbbi Szavazatok',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Fiók Állása',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Játékos :info',
-            'info' => 'Info',
         ],
 
         'info' => [
@@ -346,7 +371,7 @@ return [
 
             'restriction_info' => [
                 '_' => '',
-                'link' => '',
+                'link' => 'osu!támogató',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Eredmény Rangok',
             'total_hits' => 'Találatok Száma',
             'total_score' => 'Összpontszám',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => '',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '',
+        'card' => 'Kártya nézet',
+        'list' => 'Lista nézet',
     ],
 ];

@@ -1,40 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
-namespace Tests\Payments;
+namespace Tests\Controllers\Payments;
 
 use App\Libraries\Payments\ShopifySignature;
 use App\Models\Store\Order;
 use App\Models\Store\Payment;
-use TestCase;
+use Tests\TestCase;
 
 class ShopifyControllerTest extends TestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-        config()->set('payments.shopify.webhook_key', 'magic');
-
-        $this->url = route('payments.shopify.callback');
-    }
-
     public function testWebhookOrdersIdIsRequired()
     {
         $this->payload = [
@@ -151,6 +128,14 @@ class ShopifyControllerTest extends TestCase
         $this->assertSame($order->status, 'shipped');
         $this->assertEquals($order->updated_at, $oldUpdatedAt);
         $this->assertSame(Order::withoutGlobalScopes()->count(), 1);
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        config()->set('payments.shopify.webhook_key', 'magic');
+
+        $this->url = route('payments.shopify.callback');
     }
 
     private function sendCallbackRequest(array $extraHeaders = [])

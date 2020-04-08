@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[ผู้ใช้ที่ถูกลบ]',
@@ -64,35 +49,61 @@ return [
         'send_message' => 'ส่งข้อความ',
     ],
 
+    'disabled' => [
+        'title' => 'โอ๊ะโอ บัญชีคุณถูกระงับเว้ยเฮ้ย',
+        'warning' => "ถ้าคุณทำผิดกฎ เราจะบอกว่ามีระยะเวลาเว้นช่วง (Cool-down) หนึ่งเดือน ซึ่งระหว่างนี้เราจะไม่รับคำขอยกโทษ และหลังจากผ่านไปแล้วหนึ่งเดือน คุณค่อยติดต่อเรากลับมา (ถ้าจำเป็น) อีกอย่างคือถ้าสร้างบัญชีเพิ่มอีก (หลังจากอันเก่าโดนระงับ) ก็<strong>จะโดนอีกหนึ่งเดือน</strong> และจะบอกว่า<strong>ยิ่งสร้างบัญชีเพิ่ม ยิ่งทำผิดกฎมากขึ้น</strong> ขอร้องล่ะนะ",
+
+        'if_mistake' => [
+            '_' => 'หากคิดว่าเป็น "เรื่องผิดพลาด" ให้ติดต่อเรา (ผ่านอีเมล์หรือกดปุ่ม "?" ที่ด้านล่างขวาของหน้านี้) เราขอบอกว่าทุกอย่างที่เราทำไปค่อนข้างมั่นใจและแน่นอนมาก เพราะทุกอย่างมาจากข้อมูลที่ชัดเจน และขอเตือนว่าเรามีสิทธิ์จะปฏิเสธคำขอของคุณหากเรารู้สึกว่าคุณทำตัวทุจริต',
+            'email' => 'อีเมล',
+        ],
+
+        'reasons' => [
+            'compromised' => 'บัญชีของคุณถือว่าถูกบุกรุก อาจถูกปิดใช้งานชั่วคราวในขณะที่มีการยืนยันตัวตน',
+            'opening' => 'การที่บัญชีของคุณถูกระงับนั้นมาจากหลายสาเหตุด้วยกัน:',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => 'กฎชุมชน',
+                'tos' => 'เงื่อนไขการใช้บริการ',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "บัญชีของคุณไม่ได้ใช้งานมานาน",
+        ],
+    ],
+
     'login' => [
         '_' => 'ลงชื่อเข้าใช้',
-        'locked_ip' => 'ที่อยู่ IP ของคุณถูกล็อก โปรดรอสักครู่',
-        'username' => 'ชื่อผู้ใช้',
-        'password' => 'รหัสผ่าน',
         'button' => 'ลงชื่อเข้าใช้',
         'button_posting' => 'กำลังลงชื่อเข้าใช้…',
+        'email_login_disabled' => '
+ขณะนี้การลงชื่อเข้าใช้ด้วยอีเมลถูกปิดใช้งาน กรุณาใช้ชื่อผู้ใช้แทน',
+        'failed' => 'เข้าสู่ระบบไม่ถูกต้อง',
+        'forgot' => 'ลืมรหัสผ่าน?',
+        'info' => 'กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ',
+        'locked_ip' => 'ที่อยู่ IP ของคุณถูกล็อก โปรดรอสักครู่',
+        'password' => 'รหัสผ่าน',
+        'register' => "ไม่มีแอคเคาท์ Osu! หรอ? สร้างเลยสิ",
         'remember' => 'จดจำคอมพิวเตอร์นี้',
         'title' => 'กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อไป',
-        'failed' => 'เข้าสู่ระบบไม่ถูกต้อง',
-        'register' => "ไม่มีแอคเคาท์ Osu! หรอ? สร้างเลยสิ",
-        'forgot' => 'ลืมรหัสผ่าน?',
+        'username' => 'ชื่อผู้ใช้',
+
         'beta' => [
             'main' => 'การเข้าถึงข้อมูลนี้มีข้อจำกัด จำกัดเฉพาะผู้ใช้ที่ได้รับการยกเว้นเท่านั้น',
             'small' => '(กำลังจะได้รับ osu!supporters เร็วๆนี้)',
         ],
-
-        'here' => 'ที่นี่', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'โพสต์ทั้งหมดของ:username',
     ],
 
-    'signup' => [
-        '_' => 'สมัครสมาชิก',
-    ],
     'anonymous' => [
-        'login_link' => 'คลิกเพื่อลงชื่อเข้าใช้',
+        'login_link' => 'คลิก! เพื่อลงชื่อเข้าใช้',
         'login_text' => 'ลงชื่อเข้าใช้',
         'username' => 'ผู้เยี่ยมชม',
         'error' => 'คุณจะต้องเข้าสู่ระบบเพื่อจะกระทำสิ่งนี้',
@@ -133,7 +144,7 @@ return [
         'joined_at' => 'เข้าร่วมเมื่อ :date',
         'lastvisit' => 'ออนไลน์ล่าสุด :date',
         'lastvisit_online' => 'ออนไลน์ในขณะนี้',
-        'missingtext' => 'คุณอาจจะผิดพลาดนะ! (หรือไม่ก็ผู้ใช้อาจจะถูกแบน)',
+        'missingtext' => 'พิมพ์ผิดหรือเปล่า? (ไม่ก็ผู้ใช้โดนแบน)',
         'origin_country' => 'มาจาก :country',
         'page_description' => 'osu! - ทุกสิ่งทุกอย่างที่คุณอยากรู้เกี่ยวกับ :username!',
         'previous_usernames' => 'เคยมีชื่อว่า',
@@ -154,8 +165,8 @@ return [
                     'unsupported_format' => 'ไม่รองรับไฟล์นามสกุลนี้',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'อัพโหลดพร้อมแล้ว สำหรับ :link เท่านั้น',
+                        'link' => 'osu!ผู้สนับสนุน',
                     ],
                 ],
             ],
@@ -167,7 +178,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => ':count ผู้ติดตาม',
+            'none' => 'ไม่มี',
             'unranked' => 'ยังไม่มีการเล่น',
 
             'achievements' => [
@@ -196,6 +207,16 @@ return [
                     'title' => 'บีทแมพที่กำลังทำ',
                 ],
             ],
+            'discussions' => [
+                'title' => 'การสนทนา',
+                'title_longer' => 'บทสนทนาที่ผ่านมา',
+                'show_more' => 'ดูการสนทนาเพิ่มเติม',
+            ],
+            'events' => [
+                'title' => 'อีเว้นท์',
+                'title_longer' => 'อีเว้นท์ล่าสุด',
+                'show_more' => 'ดูอีเว้นท์อื่นๆ เพิ่มเติม',
+            ],
             'historical' => [
                 'empty' => 'ไม่มี performance ที่บันทึกไว้. :(',
                 'title' => 'ประวัติ',
@@ -218,8 +239,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu Available',
-                'available_info' => "Kudosu สามารถแลกเปลี่ยนเป็นดาว kudosu ได้, ซึ่งจะช่วยให้ บีทแมพของคุณได้รับการสนใจมากขึ้น. นี่คือตัวเลข kudosu ของคุณที่ยังไม่ได้แลกเปลี่ยน",
                 'recent_entries' => 'ประวัติ Kudosu ล่าสุด',
                 'title' => 'Kudosu!',
                 'total' => 'Kudosu ที่ได้รับ',
@@ -264,8 +283,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'ขึ้นอยู่กับการดูแลบีทแมพของเจ้าของบีทแมพ ดูรายละเอียดเพิ่มเติมที่นี่ :link',
+                    'link' => 'หน้านี้',
                 ],
             ],
             'me' => [
@@ -275,6 +294,11 @@ return [
                 'empty' => "ผู้ใช้คนนี้ยังไม่มีอะไรเลย. ;_;",
                 'recent' => 'ล่าสุด',
                 'title' => 'เหรียญตรา',
+            ],
+            'posts' => [
+                'title' => 'โพสต์',
+                'title_longer' => 'โพสต์ล่าสุด',
+                'show_more' => 'ดูโพสต์อื่นๆ เพิ่มเติม',
             ],
             'recent_activity' => [
                 'title' => 'ล่า​สุด',
@@ -292,6 +316,13 @@ return [
                 'first' => [
                     'title' => 'First Place Ranks',
                 ],
+            ],
+            'votes' => [
+                'given' => 'จำนวน Votes ที่ได้ให้ (เมื่อสามเดือนที่แล้ว)',
+                'received' => 'ผลโหวตที่ได้รับ (เมื่อสามเดือนที่แล้ว)',
+                'title' => 'โหวต',
+                'title_longer' => 'โหวตล่าสุด',
+                'vote_count' => ':count_delimited โหวต|:count_delimited โหวตทั้งหมด',
             ],
             'account_standing' => [
                 'title' => 'ชื่อเสียงของบัญชี',
@@ -314,11 +345,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'ผู้เล่น :info',
-            'info' => 'ข้อมูล',
         ],
 
         'info' => [
@@ -345,8 +371,8 @@ return [
             'placeholder' => 'Type page content here',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'คุณจำเป็นจะต้อง :link เพื่อที่จะปลดล็อกสิ่งนี้',
+                'link' => 'osu!ผู้สนับสนุน',
             ],
         ],
         'post_count' => [
@@ -372,6 +398,11 @@ return [
             'score_ranks' => 'Score Ranks',
             'total_hits' => 'Total Hits',
             'total_score' => 'คะแนนรวมทั้งหมด',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'แรงค์บีทแมพ & บีทแมพที่ได้รับการยอมรับ',
+            'loved_beatmapset_count' => 'เลิฟแมพ',
+            'unranked_beatmapset_count' => 'บีทเเมพที่กำลังทำ',
+            'graveyard_beatmapset_count' => 'สุสานบีทแมพ',
         ],
     ],
 
@@ -388,7 +419,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '',
+        'card' => 'มุมมองแบบการ์ด',
+        'list' => 'มุมมองแบบรายการ',
     ],
 ];

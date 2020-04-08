@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'admin' => [
@@ -25,6 +10,7 @@ return [
 
     'cart' => [
         'checkout' => 'Проверка',
+        'info' => ':count_delimited товар в корзине ($:subtotal)|:count_delimited товара в корзине ($:subtotal)|:count_delimited товаров в корзине ($:subtotal)',
         'more_goodies' => 'Я хочу посмотреть другие товары перед завершением заказа',
         'shipping_fees' => 'стоимость доставки',
         'title' => 'Корзина',
@@ -48,18 +34,19 @@ return [
         'cart_problems' => 'Ой-ой, у нас проблемы с вашей картой!',
         'cart_problems_edit' => 'Нажмите здесь, чтобы изменить это.',
         'declined' => 'Ваш платеж был отменен.',
-        'delayed_shipping' => 'В настоящее время у нас много заказов. Ты можешь закать товар, но пожалуйста, помни, что его обработка может занять дополнительно 1-2 недели.',
+        'delayed_shipping' => 'В настоящее время у нас много заказов! Вы можете заказать товар, но пожалуйста, помните, что его обработка может задержаться на 1–2 недели, пока мы разбираемся с существующими заказами.',
         'old_cart' => 'Ваша корзина, кажется, устарела и была перезагружена, пожалуйста попробуйте еще раз.',
         'pay' => 'Оплатить с PayPal',
+        'title_compact' => 'проверка',
 
         'has_pending' => [
-            '_' => 'У вас есть незавершённые транзакции, нажмите :link чтобы завершить их.',
+            '_' => 'У Вас есть незавершённые транзакции, нажмите :link, чтобы завершить их.',
             'link_text' => 'сюда',
         ],
 
         'pending_checkout' => [
             'line_1' => 'Ваш предыдущий платеж был начат, но не был завершен.',
-            'line_2' => 'Выберите способ оплаты чтобы оформить заказ.',
+            'line_2' => 'Продолжите оформление заказа, выбрав способ оплаты.',
         ],
     ],
 
@@ -67,6 +54,8 @@ return [
 
     'invoice' => [
         'echeck_delay' => 'Поскольку оплата была через eCheck, ожидание подтверждения оплаты через Paypal может занят до 10 дней!',
+        'title_compact' => 'чек',
+
         'status' => [
             'processing' => [
                 'title' => 'Ваш платеж ещё не подтверждён!',
@@ -79,16 +68,10 @@ return [
         ],
     ],
 
-    'mail' => [
-        'payment_completed' => [
-            'subject' => 'Мы получили ваш заказ в osu!store!',
-        ],
-    ],
-
     'order' => [
         'paid_on' => 'Заказ размещён :date',
 
-        'invoice' => 'Просмотр счёта',
+        'invoice' => 'Посмотреть чек',
         'no_orders' => 'Вы ничего не заказывали.',
         'resume' => 'Продолжить покупку',
 
@@ -123,8 +106,8 @@ return [
         'name' => 'Название',
 
         'stock' => [
-            'out' => 'В настоящее время товар не в наличии :(. Загляни сюда попозже.',
-            'out_with_alternative' => 'Данный тип в настоящее время отсутствует на складе :(. Загляни сюда попозже.',
+            'out' => 'В настоящее время данного товара нет в наличии. Загляните сюда позже!',
+            'out_with_alternative' => 'К сожалению, данного товара нет в наличии. Используйте выпадающее меню, чтобы выбрать другой тип товара, или загляните сюда позже!',
         ],
 
         'add_to_cart' => 'Добавить в корзину',
@@ -139,8 +122,8 @@ return [
     'supporter_tag' => [
         'gift' => 'подарок для игрока',
         'require_login' => [
-            '_' => 'Вы должны быть :link для покупки osu!supporter!',
-            'link_text' => 'войти',
+            '_' => 'Вы должны :link для покупки osu!supporter!',
+            'link_text' => 'войти в аккаунт',
         ],
     ],
 
@@ -148,8 +131,12 @@ return [
         'check' => 'Введите имя, чтобы проверить его доступность!',
         'checking' => 'Проверяем доступность имени :username...',
         'require_login' => [
-            '_' => 'Вы должны :link для смены ника!',
-            'link_text' => 'войти',
+            '_' => 'Вы должны :link для смены имени пользователя!',
+            'link_text' => 'войти в аккаунт',
         ],
+    ],
+
+    'xsolla' => [
+        'distributor' => '',
     ],
 ];

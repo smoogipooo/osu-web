@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[odstraněný uživatel]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'odeslat zprávu',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => 'e-mail',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => 'pravidla komunity',
+                'tos' => 'smluvní podmínky',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Přihlásit se',
-        'locked_ip' => 'vaše IP adresa je uzamčena. Počkejte, prosím, několik minut.',
-        'username' => 'Uživatelské jméno',
-        'password' => 'Heslo',
         'button' => 'Přihlásit se',
         'button_posting' => 'Probíhá přihlášení...',
+        'email_login_disabled' => '',
+        'failed' => 'Nesprávné přihlášení',
+        'forgot' => 'Zapoměl jsi heslo?',
+        'info' => 'Prosím přihlaste se pro pokračování',
+        'locked_ip' => 'vaše IP adresa je uzamčena. Počkejte, prosím, několik minut.',
+        'password' => 'Heslo',
+        'register' => "Nemáš osu! účet? Vytvoř si ho",
         'remember' => 'Pamatovat si tento počítač',
         'title' => 'Pro pokračování se prosím přihlašte',
-        'failed' => 'Nesprávné přihlášení',
-        'register' => "Nemáš osu! účet? Vytvoř si ho",
-        'forgot' => 'Zapoměl jsi heslo?',
+        'username' => 'Uživatelské jméno',
+
         'beta' => [
             'main' => 'Beta přístup je momentálně omezen na oprávněné uživatele.',
             'small' => '(brzy pro podporovatele)',
         ],
-
-        'here' => 'zde', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username\'s příspěvky',
     ],
 
-    'signup' => [
-        '_' => 'Registrace',
-    ],
     'anonymous' => [
         'login_link' => 'klikněte pro přihlášení',
         'login_text' => 'přihlásit se',
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 sledující |:count followers',
+            'none' => 'nic',
             'unranked' => 'Žádné poslední údaje o hraní',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Čekající Beatmapy',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Diskuze',
+                'title_longer' => 'Poslední diskuze',
+                'show_more' => 'zobrazit více diskuzí',
+            ],
+            'events' => [
+                'title' => 'Události',
+                'title_longer' => 'Poslední údálosti',
+                'show_more' => 'zobrazit více eventů',
+            ],
             'historical' => [
                 'empty' => 'Žádné výkonnostní záznamy. :(',
                 'title' => 'Historické',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu k dispozici',
-                'available_info' => "Kudosu mohou být směněny za kudosu hvězdy, které pomohou Vaší mapě získat víc pozornosti. Toto je počet kudosu které jste ještě nesměnili.",
                 'recent_entries' => 'Nedávná Kudosu historie',
                 'title' => 'Kudosu!',
                 'total' => 'Celkově získané Kudosu',
@@ -265,7 +283,7 @@ return [
 
                 'total_info' => [
                     '_' => '',
-                    'link' => '',
+                    'link' => 'tuto stránku',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Tento uživatel zatím žádné neobdržel ;_;",
                 'recent' => 'Nejnovější',
                 'title' => 'Medaile',
+            ],
+            'posts' => [
+                'title' => 'Příspěvky',
+                'title_longer' => 'Poslední příspěvky',
+                'show_more' => 'zobrazit více příspěvků',
             ],
             'recent_activity' => [
                 'title' => 'Nedávné',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Umístění na prvním místě',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => 'Hlasy',
+                'title_longer' => 'Poslední hlasy',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Stav účtu',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => ':info o hráči',
-            'info' => 'Informace',
         ],
 
         'info' => [
@@ -346,7 +371,7 @@ return [
 
             'restriction_info' => [
                 '_' => '',
-                'link' => '',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Umístění podle skóre',
             'total_hits' => 'Celkově zásahů',
             'total_score' => 'Celkové skóre',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => 'Oblíbené Beatmapy',
+            'unranked_beatmapset_count' => 'Čekající Beatmapy',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,6 +418,7 @@ return [
     ],
 
     'view_mode' => [
+        'brick' => '',
         'card' => '',
         'list' => '',
     ],

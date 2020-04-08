@@ -1,20 +1,5 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 import { MessageLengthCounter } from './message-length-counter'
 import { BigButton } from 'big-button'
@@ -190,16 +175,13 @@ export class NewDiscussion extends React.PureComponent
                   existing_timestamps: timestampsString
 
             label className: "#{bn}__notice-checkbox",
-              div className: 'osu-checkbox osu-checkbox--beatmap-discussion-new',
+              div className: 'osu-switch-v2',
                 input
-                  className: 'osu-checkbox__input'
+                  className: 'osu-switch-v2__input'
                   type: 'checkbox'
                   checked: @state.timestampConfirmed
                   onChange: @toggleTimestampConfirmation
-
-                span className: 'osu-checkbox__box'
-                span className: 'osu-checkbox__tick',
-                  i className: 'fas fa-check'
+                span className: 'osu-switch-v2__content'
 
               osu.trans('beatmap_discussions.nearby_posts.confirm')
 
@@ -334,7 +316,7 @@ export class NewDiscussion extends React.PureComponent
 
 
   problemType: =>
-    canDisqualify = currentUser.is_admin || currentUser.can_moderate || currentUser.is_full_bn
+    canDisqualify = currentUser.is_admin || currentUser.is_moderator || currentUser.is_full_bn
     willDisqualify = @props.beatmapset.status == 'qualified'
 
     return 'disqualify' if canDisqualify && willDisqualify
@@ -364,18 +346,12 @@ export class NewDiscussion extends React.PureComponent
 
 
   submitButton: (type, extraProps) =>
-    icon =
-      if @state.posting == type
-        # for some reason the spinner wobbles
-        '_spinner'
-      else
-        BeatmapDiscussionHelper.messageType.icon[_.camelCase(type)]
-
     typeText = if type == 'problem' then @problemType() else type
 
     el BigButton,
       modifiers: ['beatmap-discussion-new']
-      icon: icon
+      icon: BeatmapDiscussionHelper.messageType.icon[_.camelCase(type)]
+      isBusy: @state.posting == type
       text: osu.trans("beatmaps.discussions.message_type.#{typeText}")
       key: type
       props: _.merge

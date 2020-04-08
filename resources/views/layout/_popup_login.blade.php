@@ -1,26 +1,8 @@
 {{--
-    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-
-    This file is part of osu!web. osu!web is distributed with the hope of
-    attracting more community contributions to the core ecosystem of osu!.
-
-    osu!web is free software: you can redistribute it and/or modify
-    it under the terms of the Affero GNU General Public License version 3
-    as published by the Free Software Foundation.
-
-    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-    See the GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+    See the LICENCE file in the repository root for full licence text.
 --}}
-<div class="
-    login-box
-    @foreach ($modifiers ?? [] as $modifier)
-        login-box--{{ $modifier }}
-    @endforeach
-">
+<div class="{{ class_with_modifiers('login-box', $modifiers ?? []) }}">
     <div
         class="
             login-box__content
@@ -47,7 +29,7 @@
                 <input
                     class="login-box__form-input js-login-form-input js-nav2--autofocus"
                     name="username"
-                    placeholder="{{ trans('layout.popup_login.login.email') }}"
+                    placeholder="{{ trans('layout.popup_login.login.username') }}"
                     required
                 />
                 <input
@@ -85,30 +67,28 @@
             </div>
         {!! Form::close() !!}
 
-        @if ($withRegister ?? true)
-            <div class="login-box__section login-box__section--register">
-                <h2 class="login-box__row login-box__row--title">
-                    {{ trans('layout.popup_login.register.title') }}
-                </h2>
+        <div class="login-box__section login-box__section--register">
+            <h2 class="login-box__row login-box__row--title">
+                {{ trans('layout.popup_login.register.title') }}
+            </h2>
 
-                <div class="login-box__row">
-                    {{ trans('layout.popup_login.register.info') }}
-                </div>
+            <div class="login-box__row">
+                {{ trans('layout.popup_login.register.info') }}
+            </div>
 
-                <div class="login-box__row login-box__row--actions">
-                    <div class="login-box__action">
-                        <a href="{{ osu_url('user.signup') }}" class="btn-osu-big btn-osu-big--nav-popup">
-                            <div class="btn-osu-big__content">
-                                <span class="btn-osu-big__left">
-                                    {{ trans('users.signup._') }}
-                                </span>
+            <div class="login-box__row login-box__row--actions">
+                <div class="login-box__action">
+                    <a href="{{ route('download') }}" class="btn-osu-big btn-osu-big--nav-popup">
+                        <div class="btn-osu-big__content">
+                            <span class="btn-osu-big__left">
+                                {{ trans('layout.popup_login.register.download') }}
+                            </span>
 
-                                <span class="fas fa-fw fa-child"></span>
-                            </div>
-                        </a>
-                    </div>
+                            <span class="fas fa-fw fa-download"></span>
+                        </div>
+                    </a>
                 </div>
             </div>
-        @endif
+        </div>
     </div>
 </div>

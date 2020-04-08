@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute không thể âm.',
     'required' => 'Yêu cầu :attribute.',
     'too_long' => ':attribute vượt quá độ dài cho phép - chỉ có thể lên đến :limit kí tự.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Không thể xóa bài đăng mở đầu.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Tin nhắn',
         ],
     ],
 
@@ -42,11 +28,12 @@ return [
         'locked' => 'Cuộc thảo luận đã bị khóa.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Kiểu tin nhắn',
+            'timestamp' => 'Mốc thời gian',
         ],
 
         'hype' => [
+            'discussion_locked' => "",
             'guest' => 'Cần phải đăng nhập để hype.',
             'hyped' => 'Bạn đã hype beatmap này rồi.',
             'limit_exceeded' => 'Bạn đã sử dụng hết số hype bạn có.',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Không cho phép trả lời bình luận đã xóa.',
+        'top_only' => 'Không thể trả lời các bình luận được ghim.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Tin nhắn',
         ],
     ],
 
@@ -88,13 +76,13 @@ return [
             'only_quote' => 'Câu trả lời của bạn chỉ có một trích dẫn.',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => 'Thân bài viết',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Tiêu đề chủ đề',
             ],
         ],
 
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Vượt quá số lượng lựa chọn tối đa.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Tiêu đề bài thăm dò',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => '',
+            'url' => '',
+
+            'attributes' => [
+                'name' => '',
+                'redirect' => '',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Mật khẩu không thể chứa tên tài khoản.',
         'email_already_used' => 'Địa chỉ email đã được sử dụng.',
         'invalid_country' => 'Quốc gia không có trong cơ sở dữ liệu.',
         'invalid_discord' => 'Tên người dùng Discord không hợp lệ.',
         'invalid_email' => "Dường như đây không phải là địa chỉ email hợp lệ.",
+        'invalid_twitter' => '',
         'too_short' => 'Mật khẩu mới quá ngắn.',
         'unknown_duplicate' => 'Tên người dùng hoặc email đã được sử dụng.',
         'username_available_in' => 'Tên người dùng này sẽ có sẵn để sử dụng trong :duration.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Đã vượt quá độ dài tối đa - tối đa :limit kí tự.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Tên người chơi',
+            'user_email' => 'Địa chỉ email',
+            'password' => 'Mật khẩu',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => '',
         'self' => "Bạn không thể báo cáo chính mình!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Số lượng',
+                'cost' => 'Chi phí',
             ],
         ],
     ],

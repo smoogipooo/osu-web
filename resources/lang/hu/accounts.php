@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => '<strong>Fiókbeállítások</strong>',
         'title_compact' => 'beállítások',
         'username' => 'felhasználónév',
 
         'avatar' => [
             'title' => 'Avatár',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'Kérjük, ellenőrizze, hogy az avatár illeszkedik-e ehhez :link.<br/>Ez azt jelenti, hogy <strong>minden korosztály számára alkalmasnak kell lennie</strong>. Vagyis nincs meztelenség, mások számára elfogadhatatlan vagy szuggesztív tartalom.',
+            'rules_link' => 'a közösségi szabályok',
         ],
 
         'email' => [
@@ -67,10 +51,18 @@ return [
     'notifications' => [
         'title' => 'Értesítések',
         'topic_auto_subscribe' => 'az általad létrehozott új fórum témák értesítéseinek automatikus bekapcsolása',
+        'beatmapset_discussion_qualified_problem' => '',
+
+        'mail' => [
+            '_' => '',
+            'beatmapset:modding' => '',
+            'forum_topic_reply' => '',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => 'felhatalmazott kliensek',
+        'own_clients' => 'külső alkalmazások',
         'title' => 'OAuth',
     ],
 
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'e-mail cím csere megerősítése',
         'update' => 'mentés',
     ],
 
     'update_password' => [
-        'email_subject' => 'jelszó csere megerősítése',
         'update' => 'mentés',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Mostmár bezárhatod ezt az oldalt',
+        'title' => 'Az ellenőrzés befejeződött',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Érvénytelen vagy lejárt ellenőrző link',
     ],
 ];

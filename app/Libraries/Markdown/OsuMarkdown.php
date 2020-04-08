@@ -1,32 +1,18 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Libraries\Markdown;
 
 use App\Libraries\Markdown\Indexing\RendererExtension as IndexingRendererExtension;
-use Jonnybarnes\CommonmarkLinkify\LinkifyExtension;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
+use League\CommonMark\Event\DocumentParsedEvent;
+use League\CommonMark\Ext\Autolink\AutolinkExtension;
+use League\CommonMark\Ext\Table as TableExtension;
 use Symfony\Component\Yaml\Exception\ParseException as YamlParseException;
 use Symfony\Component\Yaml\Yaml;
-use Webuni\CommonMark\TableExtension;
 
 class OsuMarkdown
 {
@@ -54,9 +40,10 @@ class OsuMarkdown
             'block_name' => 'changelog-md',
             'html_input' => 'allow',
         ],
-        'default' => [
-            'block_name' => 'osu-md-default',
+        'comment' => [
+            'block_modifiers' => ['comment'],
         ],
+        'default' => [],
         'news' => [
             'block_modifiers' => ['news'],
             'generate_toc' => true,
@@ -67,14 +54,21 @@ class OsuMarkdown
             'block_modifiers' => ['store'],
             'html_input' => 'allow',
         ],
+        'store-product' => [
+            'block_modifiers' => ['store-product'],
+        ],
+        'store-product-small' => [
+            'block_modifiers' => ['store-product', 'store-product-small'],
+        ],
         'wiki' => [
             'generate_toc' => true,
             'title_from_document' => true,
+            'block_modifiers' => ['wiki'],
         ],
     ];
 
     private $config;
-    private $document;
+    private $document = '';
     private $firstImage;
     private $header;
     private $html;
@@ -111,13 +105,13 @@ class OsuMarkdown
         );
 
         $env = Environment::createCommonMarkEnvironment();
-        $this->processor = new OsuMarkdownProcessor;
-        $env->addDocumentProcessor($this->processor);
+        $this->processor = new OsuMarkdownProcessor($env);
+        $env->addEventListener(DocumentParsedEvent::class, [$this->processor, 'onDocumentParsed']);
 
         $env->addExtension(new TableExtension\TableExtension);
         $env->addBlockRenderer(TableExtension\Table::class, new OsuTableRenderer);
 
-        $env->addExtension(new LinkifyExtension);
+        $env->addExtension(new AutolinkExtension);
 
         $this->converter = new CommonMarkConverter($this->config, $env);
     }
@@ -145,6 +139,8 @@ class OsuMarkdown
             $this->document = $rawInput;
             $this->header = [];
         }
+
+        $this->document = $this->document ?? '';
 
         return $this;
     }
@@ -178,11 +174,7 @@ class OsuMarkdown
     {
         $converted = $this->converter->convertToHtml($this->document);
 
-        $blockClass = $this->config['block_name'];
-
-        foreach ($this->config['block_modifiers'] as $blockModifier) {
-            $blockClass .= " {$this->config['block_name']}--{$blockModifier}";
-        }
+        $blockClass = class_with_modifiers($this->config['block_name'], $this->config['block_modifiers']);
 
         $this->html = "<div class='{$blockClass}'>{$converted}</div>";
 

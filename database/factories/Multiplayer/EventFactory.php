@@ -1,5 +1,8 @@
 <?php
 
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
+
 $factory->define(App\Models\Multiplayer\Event::class, function (Faker\Generator $faker) {
     return [
         'match_id' => function () {
@@ -35,5 +38,15 @@ $factory->state(App\Models\Multiplayer\Event::class, 'join', function (Faker\Gen
 $factory->state(App\Models\Multiplayer\Event::class, 'part', function (Faker\Generator $faker) {
     return [
         'text' => 'PART',
+    ];
+});
+
+$factory->state(App\Models\Multiplayer\Event::class, 'game', function (Faker\Generator $faker) {
+    return [
+        'text' => 'test game',
+        'user_id' => null,
+        'game_id' => function () {
+            return factory(App\Models\Multiplayer\Game::class)->states('in_progress')->create()->game_id;
+        },
     ];
 });

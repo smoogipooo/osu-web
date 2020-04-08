@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Hiba a poszt mentése közben',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Hiba a szavazat frissítése közben',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'kudosu engedélyezése',
+        'beatmap_information' => 'Beatmap Oldal',
         'delete' => 'törlés',
         'deleted' => 'Eltávolítva :editor által, :delete_time-kor.',
         'deny_kudosu' => 'kudosu megtagadása',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Nominálás Visszaállítása',
             'praise' => 'Dicséret',
             'problem' => 'Probléma',
+            'review' => '',
             'suggestion' => 'Javaslat',
         ],
 
         'mode' => [
             'events' => 'Előzmények',
             'general' => 'Általános :scope',
+            'reviews' => '',
             'timeline' => 'Idővonal',
             'scopes' => [
                 'general' => 'Ez a nehézség',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Megbeszélés felszavazása',
-            'down' => 'Megbeszélés leszavazása',
+            'none' => [
+                'down' => '',
+                'up' => '',
+            ],
+            'latest' => [
+                'down' => '',
+                'up' => '',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nominálás',
         'nominate_confirm' => 'Nominálod ezt a beatmapot?',
         'nominated_by' => 'nominálva :users által',
+        'not_enough_hype' => "",
         'qualified' => 'Előreláthatólag :date-kor lesz rangsorolva, ha nem találnak benne problémát.',
         'qualified_soon' => 'Hamarosan rangsorolva lesz, ha nem találnak benne problémát.',
         'required_text' => 'Nominálások: :current/:required',
@@ -222,7 +211,7 @@ return [
                 'rating' => 'Értékelés',
                 'plays' => 'Játszások',
                 'relevance' => 'Relevancia',
-                'nominations' => 'Nominálások',
+                'nominations' => 'Nominációk',
             ],
             'supporter_filter_quote' => [
                 '_' => ':filters általi szűrés aktív :link-et igényel',
@@ -244,14 +233,14 @@ return [
     'status' => [
         'any' => 'Bármelyik',
         'approved' => 'Jóváhagyott',
-        'favourites' => '',
+        'favourites' => 'Kedvencek',
         'graveyard' => 'Temető',
-        'leaderboard' => '',
+        'leaderboard' => 'Van Ranglistája',
         'loved' => 'Loved',
-        'mine' => '',
+        'mine' => 'Saját mapjaim',
         'pending' => 'Függőben lévő & WIP',
         'qualified' => 'Kvalifikált',
-        'ranked' => '',
+        'ranked' => 'Rangsorolt',
     ],
     'genre' => [
         'any' => 'Bármelyik',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => 'Mirror',
         'NC' => '',
         'NF' => '',
         'NM' => '',

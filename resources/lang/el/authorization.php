@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Παρακαλώ συνδεθείτε για να συνεχίσετε.',
+    'require_verification' => '',
+    'restricted' => "Δε μπορείτε να το κάνετε αυτό όσο είστε restricted.",
+    'silenced' => "Δε μπορείτε να το κάνετε αυτό όσο είστε silenced.",
+    'unauthorized' => 'Απαγορεύεται η πρόσβαση.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Δεν μπορείτε να αναιρέσετε το hype.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Οι δημοσιεύσεις που έχουν δημιουργηθεί αυτόματα δεν μπορούν να επεξεργαστούν.',
-            'not_owner' => 'Μόνο ο δημιουργός της δημοσίευσης μπορεί να την επεξεργαστεί.',
+        'destroy' => [
+            'not_owner' => '',
+            'resolved' => '',
+            'system_generated' => '',
         ],
+
+        'edit' => [
+            'not_owner' => 'Μόνο ο δημιουργός της δημοσίευσης μπορεί να την επεξεργαστεί.',
+            'resolved' => '',
+            'system_generated' => 'Οι δημοσιεύσεις που έχουν δημιουργηθεί αυτόματα δεν μπορούν να επεξεργαστούν.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Αυτό το beatmap είναι κλειδωμένο προς συζήτηση.',
         ],
@@ -145,7 +144,7 @@ return [
                 'not_owner' => 'Μόνο ο ιδιοκτήτης μπορεί να επεξεργαστεί το εξώφυλλο.',
             ],
             'store' => [
-                'forum_not_allowed' => '',
+                'forum_not_allowed' => 'Αυτό το φόρουμ δεν αποδέχεται εξώφυλλα θεμάτων.',
             ],
         ],
 
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Μόνο οι διαχειριστές μπορούν να δούν αυτό το φόρουμ.',
         ],
     ],
-
-    'require_login' => 'Παρακαλώ συνδεθείτε για να συνεχίσετε.',
-
-    'unauthorized' => 'Απαγορεύεται η πρόσβαση.',
-
-    'silenced' => "Δε μπορείτε να το κάνετε αυτό όσο είστε silenced.",
-
-    'restricted' => "Δε μπορείτε να το κάνετε αυτό όσο είστε restricted.",
 
     'user' => [
         'page' => [

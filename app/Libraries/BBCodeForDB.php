@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Libraries;
 
@@ -35,8 +20,8 @@ class BBCodeForDB
     public function extraEscapes($text)
     {
         return str_replace(
-            ['[', ']', '.', ':'],
-            ['&#91;', '&#93;', '&#46;', '&#58;'],
+            ['[', ']', '.', ':', "\n"],
+            ['&#91;', '&#93;', '&#46;', '&#58;', '&#10;'],
             $text
         );
     }
@@ -84,11 +69,11 @@ class BBCodeForDB
     public function parseCode($text)
     {
         return preg_replace_callback(
-            "#\[code\](?<code>.+?)\[/code\]#s",
+            "#\[code\](?<prespaces>\n*)(?<code>.+?)(?<postspaces>\n*)\[/code\]#s",
             function ($m) {
                 $escapedCode = $this->extraEscapes($m['code']);
 
-                return "[code:{$this->uid}]{$escapedCode}[/code:{$this->uid}]";
+                return "[code:{$this->uid}]{$m['prespaces']}{$escapedCode}{$m['postspaces']}[/code:{$this->uid}]";
             },
             $text
         );
@@ -168,7 +153,15 @@ class BBCodeForDB
 
     public function parseLinks($text)
     {
-        $spaces = ["(^|\s)", "((?:\.|\))?(?:$|\s|\n|\r))"];
+        $spaces = ["(^|\s(?:&lt;|[.:([])*)", "((?:&gt;|[.:)\]])*(?:$|\s|\n|\r))"];
+        $internalUrl = rtrim(preg_quote(config('app.url'), '#'), '/');
+
+        // internal url
+        $text = preg_replace(
+            "#{$spaces[0]}({$internalUrl}/([^\s]+?)){$spaces[1]}#",
+            "\\1<!-- m --><a href='\\2' rel='nofollow'>\\3</a><!-- m -->\\4",
+            $text
+        );
 
         // plain http/https/ftp
         $text = preg_replace(
@@ -308,7 +301,7 @@ class BBCodeForDB
         return preg_replace_callback(
             "#\[youtube\](.+?)\[/youtube\]#",
             function ($m) {
-                $videoId = $this->extraEscapes($m[1]);
+                $videoId = preg_replace('/\?.*/', '', $this->extraEscapes($m[1]));
 
                 return "[youtube:{$this->uid}]{$videoId}[/youtube:{$this->uid}]";
             },

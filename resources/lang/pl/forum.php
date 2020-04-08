@@ -1,33 +1,20 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Przypięte wątki',
     'slogan' => "samodzielna rozgrywka jest niebezpieczna.",
     'subforums' => 'Podfora',
-    'title' => 'forum osu!',
+    'title' => 'Forum',
 
     'covers' => [
+        'edit' => 'Edytuj tło',
+
         'create' => [
             '_' => 'Ustaw tło',
-            'button' => 'Dodaj tło',
+            'button' => 'Prześlij tło',
             'info' => 'Tło powinno mieć rozdzielczość :dimensions. Możesz także upuścić tutaj swoje tło, aby je dodać.',
         ],
 
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Nowa odpowiedź dla wątku ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Ostatni post',
+
+        'index' => [
+            'title' => 'Forum',
+        ],
+
         'topics' => [
             'empty' => 'Brak wątków!',
         ],
@@ -53,24 +42,22 @@ return [
         'busy' => 'Oznaczanie jako przeczytane...',
     ],
 
-    'poll' => [
-        'edit_warning' => 'Edycja ankiety usunie dotychczasowe wyniki!',
-
-        'actions' => [
-            'edit' => 'Edytuj ankietę',
-        ],
-    ],
-
     'post' => [
         'confirm_destroy' => 'Czy na pewno chcesz usunąć post?',
         'confirm_restore' => 'Czy na pewno chcesz przywrócić post?',
-        'edited' => 'Ostatnio edytowane przez :user :when, łącznie edytowane :count razy.',
+        'edited' => 'Ostatnio edytowane przez :user :when, łącznie edytowane :count_delimited raz.|Ostatnio edytowane przez :user :when, łącznie edytowane :count_delimited razy.|Ostatnio edytowane przez :user :when, łącznie edytowane :count_delimited razy.',
         'posted_at' => 'opublikowane :when',
 
         'actions' => [
             'destroy' => 'Usuń post',
             'restore' => 'Przywróć post',
             'edit' => 'Edytuj post',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => 'Nowa odpowiedź',
+            ],
         ],
 
         'info' => [
@@ -95,10 +82,11 @@ return [
         'post_reply' => 'Opublikuj',
         'reply_box_placeholder' => 'Napisz tutaj swoją odpowiedź',
         'reply_title_prefix' => 'Odp.',
-        'started_by' => 'przez :user',
+        'started_by' => 'Autor: :user',
         'started_by_verbose' => 'utworzony przez :user',
 
         'create' => [
+            'close' => 'Zamknij',
             'preview' => 'Podgląd',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Zasubskrybowane wątki',
             'title_compact' => 'subskrybcje',
-            'title_main' => '<strong>Subskrybcje</strong> wątków',
 
             'box' => [
                 'total' => 'Zasubskrybowane wątki',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Ten wątek został zamknięty i nie możesz w nim odpowiadać',
             'to_0' => 'Otwórz wątek',
+            'to_0_confirm' => 'Odblokować wątek?',
             'to_0_done' => 'Wątek został otworzony',
             'to_1' => 'Zamknij wątek',
+            'to_1_confirm' => 'Zablokować wątek?',
             'to_1_done' => 'Wątek został zamknięty',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'Odepnij ten wątek',
+            'to_0_confirm' => 'Odpiąć wątek?',
             'to_0_done' => 'Wątek został odpięty',
             'to_1' => 'Przypnij ten wątek',
+            'to_1_confirm' => 'Przypiąć wątek?',
             'to_1_done' => 'Wątek został przypięty',
             'to_2' => 'Przypnij ten wątek i oznacz jako ogłoszenie',
+            'to_2_confirm' => 'Przypiąć i oznaczyć wątek jako ogłoszenie?',
             'to_2_done' => 'Wątek został przypięty i oznaczony jako ogłoszenie',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Pokaż usunięte posty',
+            'hide' => 'Ukryj usunięte posty',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Edytowanie ankiety',
+                'edit_warning' => 'Wprowadzenie zmian do ankiety spowoduje usunięcie obecnych wyników!',
                 'vote' => 'Zagłosuj',
+
+                'button' => [
+                    'change_vote' => 'Zmień głos',
+                    'edit' => 'Edytuj ankietę',
+                    'view_results' => 'Przejdź do wyników',
+                    'vote' => 'Zagłosuj',
+                ],
 
                 'detail' => [
                     'end_time' => 'Ankieta zakończy się :time',

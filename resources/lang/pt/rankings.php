@@ -1,50 +1,37 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'header' => ':type Classificação',
+    'country' => [
+        'filter' => 'filtrado por país',
+    ],
 
     'type' => [
         'performance' => 'Desempenho',
-        'charts' => 'Em Destaque',
+        'charts' => 'Em destaque',
         'score' => 'Pontuação',
         'country' => 'País',
     ],
 
     'spotlight' => [
-        'end_date' => 'Data Final',
-        'map_count' => 'Contador de Mapas',
+        'end_date' => 'Data final',
+        'map_count' => 'Contador de mapas',
         'participants' => 'Participantes',
-        'start_date' => 'Data de Início',
+        'start_date' => 'Data de início',
     ],
 
     'stat' => [
         'accuracy' => 'Precisão',
-        'active_users' => 'Utilizadores Ativos',
+        'active_users' => 'Utilizadores ativos',
         'country' => 'País',
-        'play_count' => 'Contador de Partidas',
+        'play_count' => 'Contador de partidas',
         'performance' => 'Desempenho',
-        'total_score' => 'Pontuação Total',
-        'ranked_score' => 'Pontuação Classificada',
-        'average_score' => 'Pontuação Média',
-        'average_performance' => 'Desempenho Médio',
+        'total_score' => 'Pontuação total',
+        'ranked_score' => 'Pontuação classificada',
+        'average_score' => 'Pontuação média',
+        'average_performance' => 'Desempenho médio',
         'ss' => '',
         's' => '',
         'a' => '',

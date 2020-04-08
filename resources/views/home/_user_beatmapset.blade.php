@@ -1,19 +1,6 @@
 {{--
-    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-
-    This file is part of osu!web. osu!web is distributed with the hope of
-    attracting more community contributions to the core ecosystem of osu!.
-
-    osu!web is free software: you can redistribute it and/or modify
-    it under the terms of the Affero GNU General Public License version 3
-    as published by the Free Software Foundation.
-
-    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-    See the GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+    See the LICENCE file in the repository root for full licence text.
 --}}
 
 <a class='user-home-beatmapset' href="{{route('beatmapsets.show', $beatmapset->beatmapset_id)}}">
@@ -25,16 +12,18 @@
         <div class='user-home-beatmapset__title u-ellipsis-overflow'>{{$beatmapset->title}}</div>
         <div class='user-home-beatmapset__artist u-ellipsis-overflow'>{{$beatmapset->artist}}</div>
         <div class='user-home-beatmapset__creator u-ellipsis-overflow'>
-            {{ trans('home.user.beatmaps.by') }}
-            <span class="js-usercard" data-user-id="{{ $beatmapset->user_id}}">{{$beatmapset->creator}}</span>,
+            {!! trans('home.user.beatmaps.by_user', ['user' => tag(
+                'span',
+                ['data-user-id' => $beatmapset->user_id, 'class' => 'js-usercard'],
+                e($beatmapset->creator)
+            )]) !!}
 
             <span class='user-home-beatmapset__playcount'>
                 @if ($type === 'new')
                     {!! timeago($beatmapset->approved_date) !!}
                 @elseif ($type === 'popular')
-                    {{ trans('home.user.beatmaps.plays', [
-                        'count' => i18n_number_format($popularBeatmapsetsPlaycount[$beatmapset->beatmapset_id])
-                    ]) }}
+                    <span class="fa fa-heart"></span>
+                    {{ i18n_number_format($beatmapset->favourite_count) }}
             @endif
             </span>
         </div>

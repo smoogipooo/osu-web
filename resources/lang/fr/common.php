@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => 'Êtes-vous sûr?',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ' et ',
     ],
 
+    'badges' => [
+        'new' => 'NOUVEAU',
+    ],
+
     'buttons' => [
         'admin' => 'Admin',
+        'authorise' => 'Autoriser',
+        'authorising' => 'Autorisation...',
         'back_to_previous' => 'Retour à la position précédente',
         'back_to_top' => 'Retour en haut',
         'cancel' => 'Annuler',
         'change' => 'changer',
         'click_to_copy' => 'cliquez pour copier dans le presse-papiers',
         'click_to_copy_copied' => 'copié dans le presse-papiers !',
+        'close' => 'Fermer',
         'collapse' => 'réduire',
         'delete' => 'Supprimer',
         'edit' => 'Éditer',
         'expand' => 'agrandir',
         'hide' => 'masquer',
         'permalink' => 'permalien',
-        'permalink_copied' => 'lien copié',
+        'pin' => 'épingler',
         'post' => 'Poster',
         'reply' => 'Répondre',
         'reply_reopen' => 'Répondre et rouvrir',
@@ -56,8 +48,11 @@ return [
         'see_more' => 'voir plus',
         'show' => 'afficher',
         'show_deleted' => 'Afficher supprimé',
+        'show_less' => 'afficher moins',
         'show_more' => 'Plus de résultats',
         'show_more_options' => 'afficher plus d’options',
+        'unpin' => 'désépingler',
+        'update' => 'Modifier',
         'upload_image' => 'mettre en ligne une image',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => 'min|mins',
         'minutes' => ':count minute|:count minutes',
         'months' => ':count mois|:count mois',
+        'notifications' => ':count_delimited notification|:count_delimited notifications',
+        'plus_others' => '+ :count_delimited autre !|+ :count_delimited autres !',
+        'post' => ':count_delimited discussion|:count_delimited discussions',
         'second_short_unit' => 'sec|secs',
+        'star_priority' => ':count_delimited priorité étoile|:count_delimited priorité étoiles',
         'update' => ':count_delimited mise à jour|:count_delimited mises à jour',
+        'view' => ':count_delimited vue|:count_delimited vues',
         'years' => ':count an|:count ans',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => 'déplacez ici pour uploader',
     ],
 
+    'input' => [
+        'search' => 'rechercher...',
+    ],
+
     'pagination' => [
         'previous' => 'précédent',
         'next' => 'suivant',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => 'Information',
+    ],
+
+    'wrong_user' => [
+        '_' => 'Vous êtes connecté en tant que :user. :logout_link.',
+        'logout_link' => 'Cliquez ici pour vous connecter en tant qu\'utilisateur différent',
     ],
 ];

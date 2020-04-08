@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[utilizator șters]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'trimite mesaj',
     ],
 
+    'disabled' => [
+        'title' => 'Uh-oh! Se pare că contul dumneavoastră a fost dezactivat.',
+        'warning' => "În cazul în care ați încălcat o regulă, vă rugăm să notați că în general este o perioadă de răcire de o lună în care vom considera orice cerere de amnesty. După această perioadă, simtete liber să ne contactezi dacă o găsești necesar. Vă rugăm să notați că după creearea unui cont nou ați avut unul dezactivat va rezulta într-un <strong>extesie în acestă răcire de o lună</strong>. Vă rugăm să notați și că pentru <strong>orice cont creat, încalci regulile în continuare</strong>. Vă recomandăm puternic să nu faceți asta!",
+
+        'if_mistake' => [
+            '_' => 'Dacă credeți că a fost o greșeală, ești bine venit să ne contactezi (prin :email sau să dați click pe "?" din colțul-drept-jos de pe această pagină). Vă rugăm notați că suntem foarte convinși cu acțiunile noastre, care sunt bazate pe date concrete. Rezervăm dreptul să vă respingem dacă simțim că sunteți dezonest.',
+            'email' => 'email',
+        ],
+
+        'reasons' => [
+            'compromised' => 'Contul dumneavoastră a fost compromis. Ar putea fi dezactivat temporar în timp ce identitatea este confirmată.',
+            'opening' => 'Sunt un număr de motive care pot rezulta în contul dumneavoastră să fie dezactivat:',
+
+            'tos' => [
+                '_' => 'Ați încălcat una sau mai multe dintre :community_rules sau :tos.',
+                'community_rules' => 'reguli comunitate',
+                'tos' => 'termeni de utilizare',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Contul dumneavoastră nu a fost folosit într-un timp îndelungat.",
+        ],
+    ],
+
     'login' => [
         '_' => 'Autentifică-te',
-        'locked_ip' => 'adresa ta IP este blocată. Te rugăm să aștepți câteva minute.',
-        'username' => 'Nume de utilizator',
-        'password' => 'Parolă',
         'button' => 'Autentifică-te',
         'button_posting' => 'Se conectează...',
+        'email_login_disabled' => 'Înregistrarea cu email este momentan dezactivată. Vă rugăm folosiți numele de utilizator în schimb.',
+        'failed' => 'Conectare incorectă',
+        'forgot' => 'Ți-ai uitat parola?',
+        'info' => 'Pentru a continua, vă rugam să vă autentificaţi',
+        'locked_ip' => 'adresa ta IP este blocată. Te rugăm să aștepți câteva minute.',
+        'password' => 'Parolă',
+        'register' => "Nu ai un cont osu!? Fă-ți unul nou",
         'remember' => 'Ține-mă minte pe acest computer',
         'title' => 'Te rog autentifică-te pentru a continua',
-        'failed' => 'Conectare incorectă',
-        'register' => "Nu ai un cont osu!? Fă-ți unul nou",
-        'forgot' => 'Ți-ai uitat parola?',
+        'username' => 'Nume de utilizator',
+
         'beta' => [
             'main' => 'Accesul beta este momentan limitat la utilizatorii autorizați.',
             'small' => '(suporterii osu! vor primi acces curând)',
         ],
-
-        'here' => 'aici', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'Postările lui :username',
     ],
 
-    'signup' => [
-        '_' => 'Înregistrează-te',
-    ],
     'anonymous' => [
         'login_link' => 'dă clic pentru a te conecta',
         'login_text' => 'conectează-te',
@@ -132,7 +142,7 @@ return [
         'is_supporter' => 'suporter osu!',
         'joined_at' => 'Încris :date',
         'lastvisit' => 'Văzut ultima dată :date',
-        'lastvisit_online' => '',
+        'lastvisit_online' => 'Momentat online',
         'missingtext' => 'S-ar putea să fi făcut o greșeală de scriere! (sau este posibil ca utilizatorul să fi fost restricționat)',
         'origin_country' => 'Din :country',
         'page_description' => 'osu! - Tot ce ai dorit vreodată să știi despre :username!',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => 'Format nesuportat.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Încărcare disponibilă pentru :link doar',
+                        'link' => 'osu!suporteri',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 urmăritor|:count urmăritori',
+            'none' => 'niciunul',
             'unranked' => 'Nu există jocuri recente',
 
             'achievements' => [
@@ -181,7 +191,7 @@ return [
                 'title' => 'Beatmaps',
 
                 'favourite' => [
-                    'title' => 'Beatmaps favorite',
+                    'title' => 'Beatmap-uri favorite',
                 ],
                 'graveyard' => [
                     'title' => 'Beatmaps îngropate',
@@ -195,6 +205,16 @@ return [
                 'unranked' => [
                     'title' => 'Beatmaps în așteptare',
                 ],
+            ],
+            'discussions' => [
+                'title' => 'Discuții',
+                'title_longer' => 'Discuții recente',
+                'show_more' => 'vedeți mai multe discuții',
+            ],
+            'events' => [
+                'title' => 'Evenimente',
+                'title_longer' => 'Evenimente recente',
+                'show_more' => 'vedeți mai multe evenimente',
             ],
             'historical' => [
                 'empty' => 'Nicio înregistrare de performanță. :(',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu avabili',
-                'available_info' => "Kudosu pot fi tranzacționați pentru stele kudosu, ce pot ajuta ca beatmapul tău să obțină mai multă atenție. Acesta este numărul de kudosu ce nu au fost tranzacționați încă.",
                 'recent_entries' => 'Istoricul Kudosu recent',
                 'title' => 'Kudosu!',
                 'total' => 'Suma totală de Kudosu câștigați',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Bazat pe cât de multă contribuție acest utilizator a făcut la moderarea beatmap-ului. Vezi :link pentru mai multe informații.',
+                    'link' => 'această pagină',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Acest utilizator nu a primit nici unul încă. ;_;",
                 'recent' => 'Recente',
                 'title' => 'Medalii',
+            ],
+            'posts' => [
+                'title' => 'Postări',
+                'title_longer' => 'Postări recente',
+                'show_more' => 'vedeți mai multe postări',
             ],
             'recent_activity' => [
                 'title' => 'Recent',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Primele locuri',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Voturi Date (ultimele 3 luni)',
+                'received' => 'Voturi Primite (ultimele 3 luni)',
+                'title' => 'Voturi',
+                'title_longer' => 'Voturi recente',
+                'vote_count' => ':count_delimited vot|:count_delimited voturi',
             ],
             'account_standing' => [
                 'title' => 'Starea contului',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => ':info jucător',
-            'info' => 'Detalii',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => 'Introdu conținutul paginii aici',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Trebuie să fii un :link să deblochezi acest feature.',
+                'link' => 'osu!ajutător',
             ],
         ],
         'post_count' => [
@@ -372,11 +397,16 @@ return [
             'score_ranks' => 'Clasament de scoruri',
             'total_hits' => 'Număr de clicuri',
             'total_score' => 'Scor total',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Beatmap-uri Clasate & Aprobate',
+            'loved_beatmapset_count' => 'Beatmap-uri iubite',
+            'unranked_beatmapset_count' => 'Beatmap-uri în așteptare',
+            'graveyard_beatmapset_count' => 'Beatmap-uri Îngropate',
         ],
     ],
 
     'status' => [
-        'all' => '',
+        'all' => 'Tot',
         'online' => 'Online',
         'offline' => 'Offline',
     ],
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => '',
+        'card' => 'Vedere card',
+        'list' => 'Vedere listă',
     ],
 ];

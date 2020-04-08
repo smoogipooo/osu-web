@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => 'Cài đặt <strong>Tài khoản</strong>',
         'title_compact' => 'cài đặt',
         'username' => 'tên người dùng',
 
         'avatar' => [
             'title' => 'Ảnh đại diện',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'Hãy chắc rằng ảnh đại diện của bạn tuân thủ :link.<br/>Điều này có nghĩa rằng ảnh phải <strong>phù hợp với mọi lứa tuổi</strong>. Ví dụ như không có nội dung khỏa thân, thô tục hoặc gợi tưởng.',
+            'rules_link' => 'những tiêu chuẩn cộng đồng',
         ],
 
         'email' => [
@@ -41,7 +25,7 @@ return [
             'current' => 'mật khẩu hiện tại',
             'new' => 'mật khẩu mới',
             'new_confirmation' => 'xác nhận mật khẩu',
-            'title' => 'Mật Khẩu',
+            'title' => 'Mật khẩu',
         ],
 
         'profile' => [
@@ -67,11 +51,19 @@ return [
     'notifications' => [
         'title' => 'Thông báo',
         'topic_auto_subscribe' => 'tự động nhận thông báo cho các topic bạn tạo trong forum',
+        'beatmapset_discussion_qualified_problem' => '',
+
+        'mail' => [
+            '_' => '',
+            'beatmapset:modding' => '',
+            'forum_topic_reply' => '',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => '',
-        'title' => '',
+        'own_clients' => 'client đã có',
+        'title' => 'OAuth',
     ],
 
     'playstyles' => [
@@ -79,7 +71,7 @@ return [
         'mouse' => 'chuột',
         'tablet' => 'tablet',
         'title' => 'Lối Chơi',
-        'touch' => 'touchscreen',
+        'touch' => 'cảm ứng',
     ],
 
     'privacy' => [
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'Xác nhận thay đổi email osu!',
         'update' => 'cập nhật',
     ],
 
     'update_password' => [
-        'email_subject' => 'Xác nhận thay đổi mật khẩu osu!',
         'update' => 'cập nhật',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Bây giờ bạn có thể đóng cửa sổ này',
+        'title' => 'Tài khoản đã được xác minh',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Đường dẫn xác minh tài khoản không hợp lệ hoặc hết hạn',
     ],
 ];

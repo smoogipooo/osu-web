@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => 'Ustawienia <strong>konta</strong>',
-        'title_compact' => 'ustawienia',
+        'title_compact' => 'ustawienia konta',
         'username' => 'nazwa użytkownika',
 
         'avatar' => [
             'title' => 'Awatar',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'Upewnij się, że twój awatar jest zgodny z :link.<br/>Oznacza to, że musi być <strong>stosowny dla wszystkich grup wiekowych</strong> i nie może ukazywać nagości, wulgarności ani sugestywnej zawartości.',
+            'rules_link' => 'zasadami społeczności',
         ],
 
         'email' => [
@@ -67,10 +51,18 @@ return [
     'notifications' => [
         'title' => 'Powiadomienia',
         'topic_auto_subscribe' => 'automatycznie włączaj powiadomienia dla twoich wątków na forum',
+        'beatmapset_discussion_qualified_problem' => 'otrzymuj powiadomienia o nowych problemach z zakwalifikowanymi beatmapami dla następujących trybów',
+
+        'mail' => [
+            '_' => 'otrzymuj powiadomienia e-mail dla',
+            'beatmapset:modding' => 'dyskusji beatmap',
+            'forum_topic_reply' => 'odpowiedzi w wątkach',
+        ],
     ],
 
     'oauth' => [
-        'authorized_clients' => 'autoryzowane aplikacje',
+        'authorized_clients' => 'autoryzowane klienty',
+        'own_clients' => 'moje klienty',
         'title' => 'OAuth',
     ],
 
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'potwierdź zmianę adresu e-mail',
         'update' => 'zaktualizuj',
     ],
 
     'update_password' => [
-        'email_subject' => 'potwierdź zmianę hasła',
         'update' => 'zaktualizuj',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Możesz zamknąć to okno',
+        'title' => 'Weryfikacja została zakończona',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Nieprawidłowy lub przedawniony link weryfikacyjny',
     ],
 ];

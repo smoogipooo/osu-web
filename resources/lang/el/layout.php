@@ -1,48 +1,75 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'defaults' => [
         'page_description' => 'osu! - Ο ρυθμός είναι μόνο ένα *κλικ* μακριά! Με Ouendan/EBA, Taiko και αυθεντικά gameplay modes, καθώς και έναν πλήρως λειτουργικό level editor.',
     ],
 
+    'header' => [
+        'admin' => [
+            'beatmapset' => '',
+            'beatmapset_covers' => '',
+            'contest' => '',
+            'contests' => '',
+            'root' => '',
+            'store_orders' => '',
+        ],
+
+        'artists' => [
+            'index' => '',
+        ],
+
+        'changelog' => [
+            'index' => '',
+        ],
+
+        'help' => [
+            'index' => '',
+            'sitemap' => '',
+        ],
+
+        'store' => [
+            'cart' => '',
+            'orders' => '',
+            'products' => '',
+        ],
+
+        'tournaments' => [
+            'index' => '',
+        ],
+
+        'users' => [
+            'modding' => '',
+            'show' => '',
+        ],
+    ],
+
+    'gallery' => [
+        'close' => '',
+        'fullscreen' => '',
+        'zoom' => '',
+        'previous' => '',
+        'next' => '',
+    ],
+
     'menu' => [
-        'home' => [
-            '_' => 'αρχική σελίδα',
-            'account-edit' => 'ρυθμίσεις',
-            'account-verifyLink' => '',
-            'friends-index' => 'φίλοι',
-            'changelog-index' => 'αρχείο καταγραφής αλλαγών',
-            'changelog-build' => 'έκδοση',
-            'getDownload' => 'λήψη',
-            'getIcons' => 'εικονίδια',
-            'groups-show' => 'ομάδες',
-            'index' => 'επισκόπηση',
-            'legal-show' => 'πληροφορίες',
-            'messages-index' => 'μηνύματα',
-            'news-index' => 'ειδήσεις',
-            'news-show' => 'ειδήσεις',
-            'password-reset-index' => 'επαναφορά κωδικού πρόσβασης',
-            'search' => 'αναζήτηση',
-            'supportTheGame' => 'υποστηρίξτε το παιχνίδι',
-            'team' => 'ομάδα',
+        'beatmaps' => [
+            '_' => 'beatmaps',
+            'artists' => 'επιλεγμένοι καλλιτέχνες',
+            'index' => 'λίστα',
+            'packs' => 'πακέτα',
+        ],
+        'community' => [
+            '_' => 'κοινότητα',
+            'chat' => 'συνομιλία',
+            'contests' => 'διαγωνισμοί',
+            'dev' => 'προγραμματισμός',
+            'forum-forums-index' => 'φόρουμ',
+            'getLive' => 'ζωντανά',
+            'tournaments' => 'τουρνουά',
         ],
         'help' => [
             '_' => 'βοήθεια',
@@ -50,123 +77,28 @@ return [
             'getRules' => 'κανόνες',
             'getSupport' => 'όχι, πραγματικά, χρειάζομαι βοήθεια!',
             'getWiki' => 'wiki',
-            'wiki-show' => 'wiki',
         ],
-        'beatmaps' => [
-            '_' => 'beatmaps',
-            'artists' => 'επιλεγμένοι καλλιτέχνες',
-            'beatmap_discussion_posts-index' => 'αναρτήσεις της συζήτησης περί του beatmap',
-            'beatmap_discussions-index' => 'συζητήσεις περί του beatmap',
-            'beatmapset-watches-index' => 'modding λίστα παρακολούθησης',
-            'beatmapset_discussion_votes-index' => 'ψήφοι συζήτησης περί του beatmap',
-            'beatmapset_events-index' => 'beatmapset εκδηλώσεις',
-            'index' => 'λίστα',
-            'packs' => 'πακέτα',
-            'show' => 'πληροφορίες',
-        ],
-        'beatmapsets' => [
-            '_' => 'beatmaps',
-            'discussion' => 'modding',
+        'home' => [
+            '_' => 'αρχική σελίδα',
+            'changelog-index' => 'αρχείο καταγραφής αλλαγών',
+            'getDownload' => 'λήψη',
+            'news-index' => 'ειδήσεις',
+            'search' => 'αναζήτηση',
+            'team' => 'ομάδα',
         ],
         'rankings' => [
             '_' => 'κατατάξεις',
-            'index' => 'επίδοση',
-            'performance' => 'επίδοση',
             'charts' => 'spotlights',
-            'score' => 'βαθμολογία',
             'country' => 'χώρα',
+            'index' => 'επίδοση',
             'kudosu' => 'kudosu',
-        ],
-        'community' => [
-            '_' => 'κοινότητα',
-            'chat' => 'συνομιλία',
-            'chat-index' => 'συνομιλία',
-            'dev' => 'προγραμματισμός',
-            'getForum' => 'φόρουμ',
-            'getLive' => 'ζωντανά',
-            'comments-index' => 'σχόλια',
-            'comments-show' => 'σχόλιο',
-            'contests' => 'διαγωνισμοί',
-            'profile' => 'προφίλ',
-            'tournaments' => 'τουρνουά',
-            'tournaments-index' => 'τουρνουά',
-            'tournaments-show' => 'πληροφορίες τουρνουά',
-            'forum-topic-watches-index' => 'συνδρομές',
-            'forum-topics-create' => 'φόρουμ',
-            'forum-topics-show' => 'φόρουμ',
-            'forum-forums-index' => 'φόρουμ',
-            'forum-forums-show' => 'φόρουμ',
-        ],
-        'multiplayer' => [
-            '_' => 'multiplayer',
-            'show' => 'αγώνας',
-        ],
-        'error' => [
-            '_' => 'σφάλμα',
-            '404' => 'λείπει',
-            '403' => 'απαγορευμένο',
-            '401' => 'μη εξουσιοδοτημένο',
-            '405' => 'λείπει',
-            '500' => 'κάτι χάλασε',
-            '503' => 'συντήρηση',
-        ],
-        'user' => [
-            '_' => 'χρήστης',
-            'getLogin' => 'σύνδεση',
-            'disabled' => 'απενεργοποιημένο',
-
-            'register' => 'εγγραφή',
-            'reset' => 'ανάκτηση',
-            'new' => 'νέα',
-
-            'help' => 'Βοήθεια',
-            'logout' => 'Αποσύνδεση',
-            'messages' => 'Μηνύματα',
-            'modding-history-discussions' => 'modding συζητήσεις του χρήστη',
-            'modding-history-events' => 'γεγονότα για την επεξεργασία χρηστών',
-            'modding-history-index' => 'modding ιστορικό του χρήστη',
-            'modding-history-posts' => 'modding αναρτήσεις του χρήστη',
-            'modding-history-votesGiven' => 'modding ψήφους που έχει δώσει ο χρήστης',
-            'modding-history-votesReceived' => 'modding ψήφους που έχει λάβει ο χρήστης',
-            'oauth_login' => 'συνδεθείτε για το oauth',
-            'oauth_request' => 'εξουσιοδότηση oauth',
-            'settings' => 'Ρυθμίσεις',
+            'score' => 'βαθμολογία',
         ],
         'store' => [
             '_' => 'κατάστημα',
-            'checkout-show' => 'ολοκλήρωση αγοράς',
-            'getListing' => 'λίστα',
             'cart-show' => 'καλάθι',
-
-            'getCheckout' => 'ολοκλήρωση αγοράς',
-            'getInvoice' => 'τιμολόγιο',
+            'getListing' => 'λίστα',
             'orders-index' => 'ιστορικό παραγγελιών',
-            'products-show' => 'προϊόν',
-
-            'new' => 'νέο',
-            'home' => 'αρχική σελίδα',
-            'index' => 'αρχική σελίδα',
-            'thanks' => 'ευχαριστούμε',
-        ],
-        'admin-forum' => [
-            '_' => '',
-            'forum-covers-index' => '',
-        ],
-        'admin-store' => [
-            '_' => '',
-            'orders-index' => '',
-            'orders-show' => '',
-        ],
-        'admin' => [
-            '_' => '',
-            'beatmapsets-covers' => '',
-            'logs-index' => '',
-            'root' => '',
-
-            'beatmapsets' => [
-                '_' => '',
-                'show' => '',
-            ],
         ],
     ],
 
@@ -177,7 +109,6 @@ return [
             'changelog-index' => 'Αρχείο καταγραφής αλλαγών',
             'beatmaps' => 'Λίστα Beatmap',
             'download' => 'Κατεβάστε το osu!',
-            'wiki' => 'Wiki',
         ],
         'help' => [
             '_' => 'Βοήθεια & Κοινότητα',
@@ -185,6 +116,7 @@ return [
             'forum' => 'Φόρουμ Κοινότητας',
             'livestreams' => 'Ζωντανές Μεταδόσεις',
             'report' => 'Αναφέρετε Κάποιο Πρόβλημα',
+            'wiki' => '',
         ],
         'legal' => [
             '_' => 'Νομική Υπόσταση',
@@ -213,6 +145,10 @@ return [
             'error' => 'Η Σελίδα Λείπει',
             'description' => "Λυπούμαστε, αλλά η σελίδα που ζητήσατε δεν είναι εδώ!",
         ],
+        '422' => [
+            'error' => '',
+            'description' => '',
+        ],
         '500' => [
             'error' => 'Ωχ όχι! Κάτι χάλασε! ;_;',
             'description' => "Eιδοποιούμαστε αυτόματα για κάθε σφάλμα.",
@@ -235,10 +171,10 @@ return [
 
     'popup_login' => [
         'login' => [
-            'email' => 'διεύθυνση email',
             'forgot' => "Έχω ξεχάσει τα στοιχεία μου",
             'password' => 'κωδικός',
             'title' => 'Συνδεθείτε Για Να Συνεχίσετε',
+            'username' => '',
 
             'error' => [
                 'email' => "Το όνομα χρήστη ή η διεύθυνση ηλεκτρονικού ταχυδρομείου δεν υπάρχει",
@@ -247,7 +183,8 @@ return [
         ],
 
         'register' => [
-            'info' => "Χρειάζεστε λογαριασμό, κύριε. Γιατί δεν έχετε ήδη έναν;",
+            'download' => '',
+            'info' => 'Χρειάζεστε λογαριασμό, κύριε. Γιατί δεν έχετε ήδη έναν;',
             'title' => "Δεν έχετε λογαριασμό;",
         ],
     ],

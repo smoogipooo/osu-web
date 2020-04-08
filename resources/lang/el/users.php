@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[διαγραμμένος χρήστης]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'αποστολή μηνύματος',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => '',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => '',
+                'tos' => '',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Σύνδεση',
-        'locked_ip' => 'η διεύθυνση IP σας είναι κλειδωμένη. Παρακαλώ περιμένετε λίγα λεπτά.',
-        'username' => 'Όνομα χρήστη',
-        'password' => 'Κωδικός',
         'button' => 'Είσοδος',
         'button_posting' => 'Είσοδος...',
+        'email_login_disabled' => '',
+        'failed' => 'Λάθος σύνδεση',
+        'forgot' => 'Ξεχάσατε τον κωδικό σας;',
+        'info' => '',
+        'locked_ip' => 'η διεύθυνση IP σας είναι κλειδωμένη. Παρακαλώ περιμένετε λίγα λεπτά.',
+        'password' => 'Κωδικός',
+        'register' => "Δεν έχετε λογαριασμό στο osu!; Φτιάξτε ένα νέο",
         'remember' => 'Απομνημόνευση της σύνδεσης',
         'title' => 'Παρακαλώ συνδεθείτε για να συνεχίσετε',
-        'failed' => 'Λάθος σύνδεση',
-        'register' => "Δεν έχετε λογαριασμό στο osu!; Φτιάξτε ένα νέο",
-        'forgot' => 'Ξεχάσατε τον κωδικό σας;',
+        'username' => 'Όνομα χρήστη',
+
         'beta' => [
             'main' => 'Η πρόσβαση στην έκδοση Beta είναι περιορισμένη σε προνομιούχους χρήστες.',
             'small' => '(οι osu!supporters θα έχουν πρόσβαση σύντομα)',
         ],
-
-        'here' => 'εδώ', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'Δημοσιεύσεις του :username',
     ],
 
-    'signup' => [
-        '_' => 'Εγγραφή',
-    ],
     'anonymous' => [
         'login_link' => 'κάντε κλικ για να συνδεθείτε',
         'login_text' => 'σύνδεση',
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 ακόλουθος|:count ακόλουθοι',
+            'none' => '',
             'unranked' => 'Κανένα πρόσφατο σκορ',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Εκκρεμή Beatmaps',
                 ],
             ],
+            'discussions' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
+            'events' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'historical' => [
                 'empty' => 'Κανένα ρεκόρ επίδοσης. :(',
                 'title' => 'Ιστορικό',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Διαθέσιμα Kudosu',
-                'available_info' => "Τα Kudosu μπορούν να ανταλλάσσονται με αστέρια kudosu, τα οποία θα βοηθήσουν το beatmap σας να πάρει περισσότερη προσοχή. Αυτός είναι ο αριθμός των kudosu που δεν έχετε ανταλλάξει ακόμα.",
                 'recent_entries' => 'Πρόσφατο Ιστορικό Kudosu',
                 'title' => 'Kudosu!',
                 'total' => 'Σύνολο Εξασφαλισμένων Kudosu',
@@ -276,6 +294,11 @@ return [
                 'recent' => 'Πρόσφατα',
                 'title' => 'Μετάλλια',
             ],
+            'posts' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'recent_activity' => [
                 'title' => 'Πρόσφατα',
             ],
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Πρώτες Θέσεις',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => '',
+                'title_longer' => '',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Κατάσταση λογαριασμού',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Παίκτης :info',
-            'info' => 'Πληροφορίες',
         ],
 
         'info' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Κατάταξη Score',
             'total_hits' => 'Συνολικά Hits',
             'total_score' => 'Συνολική Βαθμολογία',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => '',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,6 +418,7 @@ return [
     ],
 
     'view_mode' => [
+        'brick' => '',
         'card' => '',
         'list' => '',
     ],

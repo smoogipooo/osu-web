@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[verwijderde gebruiker]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'stuur bericht',
     ],
 
+    'disabled' => [
+        'title' => 'Uh-oh! Het lijkt erop dat je account is uitgeschakeld.',
+        'warning' => "In het geval dat je een regel hebt overtreden, houd er rekening mee dat er over het algemeen een afkoelperiode van één maand is waarin we geen amnestieverzoeken in behandeling nemen. Na deze periode kunt u contact met ons opnemen als je dit nodig vind. Houd er rekening mee dat het maken van nieuwe accounts nadat uw account is uitgeschakeld, resulteert in een <strong> verlenging van deze cool-down van een maand </strong>. Houd er ook rekening mee dat voor <strong> elk account dat je maakt, je de regels verder overtreedt </strong>. We raden je ten zeerste aan om dit niet te doen!",
+
+        'if_mistake' => [
+            '_' => 'Als je denkt dat dit een vergissing is, ben je welkom om ons te contacteren (via :email of door te klikken op "? in de rechter onderhoek van deze pagina). Houd er rekening mee dat we altijd volledig vertrouwen hebben in onze acties, aangezien deze gebaseerd zijn op zeer solide gegevens. We behouden ons het recht voor om je verzoek te negeren als we het gevoel hebben dat je opzettelijk oneerlijk bent.',
+            'email' => 'e-mail',
+        ],
+
+        'reasons' => [
+            'compromised' => 'Uw account is beschadigd. Het kan tijdelijk worden uitgeschakeld terwijl de identiteit wordt bevestigd.',
+            'opening' => 'Er zijn een aantal redenen die ertoe kunnen leiden dat uw account wordt uitgeschakeld:',
+
+            'tos' => [
+                '_' => 'Je hebt een of meer van onze :community_rules of :tos overtreden.',
+                'community_rules' => 'community regels',
+                'tos' => 'algemene voorwaarden',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Je account is lange tijd niet gebruikt.",
+        ],
+    ],
+
     'login' => [
         '_' => 'Inloggen',
-        'locked_ip' => 'je IP adres is vergrendeld. Wacht enkele minuten.',
-        'username' => 'Gebruikersnaam',
-        'password' => 'Wachtwoord',
         'button' => 'Inloggen',
         'button_posting' => 'Inloggen...',
+        'email_login_disabled' => 'Inloggen met e-mail is momenteel uitgeschakeld. Gebruik in plaats daarvan de gebruikersnaam.',
+        'failed' => 'Verkeerde login',
+        'forgot' => 'Wachtwoord vergeten?',
+        'info' => 'Log in om verder te gaan',
+        'locked_ip' => 'je IP adres is vergrendeld. Wacht enkele minuten.',
+        'password' => 'Wachtwoord',
+        'register' => "Heb je geen osu! account? Maak een nieuwe",
         'remember' => 'Onthoud deze computer',
         'title' => 'Log in om verder te gaan',
-        'failed' => 'Verkeerde login',
-        'register' => "Heb je geen osu! account? Maak een nieuwe",
-        'forgot' => 'Wachtwoord vergeten?',
+        'username' => 'Gebruikersnaam',
+
         'beta' => [
             'main' => 'Beta toegang is momenteel beperkt voor bepaalde gebruikers.',
             'small' => '(osu!supporters krijgen binnenkort in)',
         ],
-
-        'here' => 'hier', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username\'s berichten',
     ],
 
-    'signup' => [
-        '_' => 'Registreer',
-    ],
     'anonymous' => [
         'login_link' => 'klik om in te loggen',
         'login_text' => 'log in',
@@ -154,8 +164,8 @@ return [
                     'unsupported_format' => 'Niet ondersteund formaat.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Upload beschikbaar alleen voor :link',
+                        'link' => 'osu!supporters',
                     ],
                 ],
             ],
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 volger|:count volgers',
+            'none' => 'geen',
             'unranked' => 'Geen recente plays',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Afwachtende Beatmaps',
                 ],
             ],
+            'discussions' => [
+                'title' => 'Discussies',
+                'title_longer' => 'Recente discussies',
+                'show_more' => 'zie meer discussies',
+            ],
+            'events' => [
+                'title' => 'Gebeurtenissen',
+                'title_longer' => 'Recente gebeurtenissen',
+                'show_more' => 'meer gebeurtenissen zien',
+            ],
             'historical' => [
                 'empty' => 'Geen prestatiegegevens. :(',
                 'title' => 'Historisch',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu Beschikbaar',
-                'available_info' => "Kudosu kunnen omgeruild worden voor kudosu sterren, deze zorgen ervoor dat je beatmap meer aandacht krijgt. Dit is het aantal kudosu dat je nog niet omgeruild hebt.",
                 'recent_entries' => 'Recente Kudosu Geschiedenis',
                 'title' => 'Kudosu!',
                 'total' => 'Totaal Aantal Kudosu Verdiend',
@@ -264,8 +282,8 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Op basis van hoeveel bijdrage de gebruiker heeft geleverd aan beatmap moderatie. Zie :link voor meer informatie.',
+                    'link' => 'deze pagina',
                 ],
             ],
             'me' => [
@@ -275,6 +293,11 @@ return [
                 'empty' => "Deze gebruiker heeft er nog geen ;_;",
                 'recent' => 'Recent',
                 'title' => 'Medailles',
+            ],
+            'posts' => [
+                'title' => 'Berichten',
+                'title_longer' => 'Recente berichten',
+                'show_more' => 'bekijk meer berichten',
             ],
             'recent_activity' => [
                 'title' => 'Recent',
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Eerste Ranks',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Gegeven stemmen (de afgelopen 3 maanden)',
+                'received' => 'Ontvangen stemmen (laatste 3 maanden)',
+                'title' => 'Stemmen',
+                'title_longer' => 'Recente stemmen',
+                'vote_count' => ':count_delimited stemmen|:count_delimited stemmen',
             ],
             'account_standing' => [
                 'title' => 'Account Reputatie',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => 'Speler :info',
-            'info' => 'Info',
         ],
 
         'info' => [
@@ -345,8 +370,8 @@ return [
             'placeholder' => 'Typ pagina inhoud hier',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'U moet een :link zijn om deze functie te ontgrendelen.',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Score Ranks',
             'total_hits' => 'Totaal Aantal Hits',
             'total_score' => 'Totaal Aantal Score',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Gerankte & Goedgekeurde Beatmaps',
+            'loved_beatmapset_count' => 'Loved Beatmaps',
+            'unranked_beatmapset_count' => 'Afwachtende Beatmaps',
+            'graveyard_beatmapset_count' => 'Graveyarded Beatmaps',
         ],
     ],
 
@@ -388,7 +418,8 @@ return [
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => 'Baksteen weergave',
+        'card' => 'Kaartweergave',
+        'list' => 'Lijst weergave',
     ],
 ];

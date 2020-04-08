@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => '<strong>Konto</strong> Inställningar',
         'title_compact' => 'inställningar',
         'username' => 'användarnamn',
 
         'avatar' => [
             'title' => 'Profilbild',
             'rules' => '',
-            'rules_link' => '',
+            'rules_link' => 'gemenskapsreglerna',
         ],
 
         'email' => [
@@ -65,13 +49,21 @@ return [
     ],
 
     'notifications' => [
-        'title' => '',
+        'title' => 'Aviseringar',
         'topic_auto_subscribe' => '',
+        'beatmapset_discussion_qualified_problem' => '',
+
+        'mail' => [
+            '_' => '',
+            'beatmapset:modding' => '',
+            'forum_topic_reply' => '',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => '',
-        'title' => '',
+        'own_clients' => 'egna klienter',
+        'title' => 'OAuth',
     ],
 
     'playstyles' => [
@@ -89,30 +81,28 @@ return [
     ],
 
     'security' => [
-        'current_session' => '',
-        'end_session' => '',
-        'end_session_confirmation' => '',
-        'last_active' => '',
-        'title' => '',
-        'web_sessions' => '',
+        'current_session' => 'nuvarande',
+        'end_session' => 'Avsluta sessionen',
+        'end_session_confirmation' => 'Detta kommer avsluta din session på den valda enheten. Är du säker?',
+        'last_active' => 'Senast aktiv:',
+        'title' => 'Säkerhet',
+        'web_sessions' => 'webbsessioner',
     ],
 
     'update_email' => [
-        'email_subject' => 'bekräfta ändrad osu! e-postadress',
         'update' => 'uppdatera',
     ],
 
     'update_password' => [
-        'email_subject' => 'bekräfta ändrat osu! lösenord',
         'update' => 'uppdatera',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Du kan stänga detta fönstret nu',
+        'title' => 'Verifieringen har blivit slutförd',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Ogiltig eller utgången verifieringslänk',
     ],
 ];

@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
@@ -34,17 +19,10 @@ return [
         'discussion' => 'Diskusjon',
 
         'details' => [
-            'approved' => 'godjent den ',
             'favourite' => 'Marker dette beatmapsettet som en favoritt',
-            'favourited_count' => '+ :count_delimited annen!|+ :count_delimited andre!',
             'logged-out' => 'Du må logge inn før du kan laste ned beatmaps!',
-            'loved' => 'elsket den ',
             'mapped_by' => 'mappet av :mapper',
-            'qualified' => 'kvalifisert den ',
-            'ranked' => 'rangert den ',
-            'submitted' => 'innsendt den ',
             'unfavourite' => 'Fjern dette beatmapsettet som en favoritt',
-            'updated' => 'sist oppdatert på ',
             'updated_timeago' => 'sist oppdatert :timeago',
 
             'download' => [
@@ -58,6 +36,15 @@ return [
                 'bottom' => 'for å få tilgang til flere funksjoner',
                 'top' => 'Logg inn',
             ],
+        ],
+
+        'details_date' => [
+            'approved' => '',
+            'loved' => '',
+            'qualified' => '',
+            'ranked' => '',
+            'submitted' => '',
+            'updated' => '',
         ],
 
         'favourites' => [
@@ -75,6 +62,18 @@ return [
                     'qualified' => 'kvalifisert',
                     'wip' => 'under konstruksjon',
                 ],
+            ],
+
+            'disqualify' => [
+                '_' => '',
+                'button_title' => '',
+            ],
+
+            'report' => [
+                '_' => '',
+                'button' => '',
+                'button_title' => '',
+                'link' => '',
             ],
         ],
 
@@ -139,6 +138,16 @@ return [
             'rating-spread' => 'Vurderingsskjema',
             'nominations' => 'Nominasjoner',
             'playcount' => 'Spillforsøk',
+        ],
+
+        'status' => [
+            'ranked' => '',
+            'approved' => '',
+            'loved' => '',
+            'qualified' => '',
+            'wip' => '',
+            'pending' => '',
+            'graveyard' => '',
         ],
     ],
 ];

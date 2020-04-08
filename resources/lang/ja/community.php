@@ -1,68 +1,67 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'support' => [
-        'header' => [
-            // size in font-size
-            'big_description' => 'osu!を楽しんでますか？<br/>
-                                osu!の開発者をサポートしましょう！',
-            'small_description' => '',
-            'support_button' => 'osu!をサポートする！',
+        'convinced' => [
+            'title' => 'いいですね！',
+            'support' => 'osu!をサポートする！',
+            'gift' => 'もしくはギフトを贈る',
+            'instructions' => 'ハートボタンをクリックでosu!storeに飛びます(英語)',
         ],
+        'why-support' => [
+            'title' => 'なぜosu!を支援する必要があるの？お金はどう使われるの？',
 
-        'dev_quote' => 'osu!は完全に無料でプレイできるゲームです、しかし維持するのは無料ではありません。
-        サーバー運用費用や高品質な国際帯域幅、システムのメンテナンスとコミュニティの維持に費やされた時間、
-        大会の賞品の提供、サポート対応、プレイヤーが満足のいく環境作りなど、osu!の維持には膨大な費用がかかっています！
-        そして、私達はいかなる広告も愚かなツールバーなどと提携せずに維持しているという事実を忘れないでください！
-            <br/><br/>osu!の大部分は私が維持しています。あなたは「peppy」として私を知っているかもしれません。
-            私はosu!を維持する為に仕事を辞めなくてはいけませんでした。
-            そして、自分に課した課題を維持する為に日々奮闘しています。
-            これまでosu!を支援してくれた方々に感謝を申し上げたいと思います。
-            そして、この素晴らしいゲームとコミュニティをこれからも支援し続けてくれる方々にも感謝を伝えたいです。',
-
-        'supporter_status' => [
-            'contribution' => 'osu!をサポートしてくれてありがとうございます！今までに:dollarsで:tags個のタグを購入しました！',
-            'gifted' => '今まで購入したサポータータグのうち:giftedTags個がギフト（ギフト合計金額：:giftedDollars）として送られました。あなたの寛大さに拍手！',
-            'not_yet' => "osu!サポータータグをまだ持っていません :(",
-            'title' => '現在のosu!サポーターのステータス',
-            'valid_until' => 'あなたのosu!サポータータグは:dateまで有効です！',
-            'was_valid_until' => 'あなたのosu!サポータータグは:dateに期限切れになりました。',
-        ],
-
-        'why_support' => [
-            'title' => 'osu!をサポートする理由とは？',
-            'blocks' => [
-                'dev' => 'オーストラリアのある一人の男によって開発され、維持されています',
-                'time' => '維持には莫大な時間がかかる為、もはや「趣味」と呼ぶことはできません。',
-                'ads' => '広告はありません。<br/><br/>
-                        99.95%のウェブとは違い、見たくもないものを見せつけて利益を得ることはしません。',
-                'goodies' => 'いろいろな特典を入手！',
+            'team' => [
+                'title' => 'チームを支援する',
+                'description' => 'osu!は小規模なチームによって開発されています。あなたのサポートがチームを助けます。',
+            ],
+            'infra' => [
+                'title' => 'サーバーインフラ',
+                'description' => '寄付はウェブサイト、マルチプレイサービス、オンラインリーダーボードを実行するサーバーの為に使われます。',
+            ],
+            'featured-artists' => [
+                'title' => '注目アーティスト',
+                'description' => 'あなたのサポートで私達は素晴らしいアーティストにアプローチして、osu!で使用するための素晴らしい音楽をライセンスすることができます。',
+                'link_text' => '現在の一覧を見る &raquo;',
+            ],
+            'ads' => [
+                'title' => 'osu!の独立性を保つ',
+                'description' => 'あなたの貢献によってゲームは独立し、広告や外部のスポンサーから自由になることができます。',
+            ],
+            'tournaments' => [
+                'title' => '公式トーナメント',
+                'description' => '公式osu!ワールドカップトーナメントに資金（および賞品）を提供してください！',
+                'link_text' => 'トーナメントを検索 &raquo;',
+            ],
+            'bounty-program' => [
+                'title' => 'オープンソースバウンティプログラム',
+                'description' => 'osu!を改善するために時間と労力を費やしてきたコミュニティの貢献者を支援します。',
+                'link_text' => '詳細を見る &raquo;',
             ],
         ],
-
         'perks' => [
             'title' => '特典って？',
             'osu_direct' => [
                 'title' => 'osu!direct',
                 'description' => 'ゲームから離れることなくビートマップを素早くダウンロード。',
+            ],
+
+            'friend_ranking' => [
+                'title' => 'フレンドランキング',
+                'description' => "ゲーム内とウェブサイトのリーダーボードで、フレンドと競い合う方法をご覧ください。",
+            ],
+
+            'country_ranking' => [
+                'title' => '国別ランキング',
+                'description' => '世界征服の前にまずは君の国で一番を目指そう。',
+            ],
+
+            'mod_filtering' => [
+                'title' => 'Modsで絞り込む',
+                'description' => 'HDHRをプレイする人と関連付けますか？問題ありません！',
             ],
 
             'auto_downloads' => [
@@ -71,18 +70,18 @@ return [
             ],
 
             'upload_more' => [
-                'title' => 'アップロード上限解放',
+                'title' => 'アップロード上限数の増加',
                 'description' => '保留中のビートマップをアップロードできる数が増えます。（ランクビートマップ一つあたり）上限は10個です。',
             ],
 
             'early_access' => [
                 'title' => '早期アクセス',
-                'description' => 'テスト段階の機能が使えるベータ版のクライアントが利用できる様になります。',
+                'description' => 'テスト段階の機能が使えるベータ版のクライアントが利用できるようになります。',
             ],
 
             'customisation' => [
                 'title' => 'カスタマイズ',
-                'description' => '自分のユーザーページに自由に編集できる領域が追加されます。',
+                'description' => "自分のユーザーページに自由に編集できる領域が追加されます。",
             ],
 
             'beatmap_filters' => [
@@ -92,7 +91,7 @@ return [
 
             'yellow_fellow' => [
                 'title' => 'イエローフェロー',
-                'description' => 'ゲーム内チャットで名前の色が明るい黄色で表示される様になります。',
+                'description' => 'ゲーム内チャットで名前の色が明るい黄色で表示されるようになります。',
             ],
 
             'speedy_downloads' => [
@@ -120,22 +119,30 @@ return [
                 'description' => 'ゲーム内でビートマップの国別・フレンド・Mod別ランキングが利用できるようになります。',
             ],
 
-            'feel_special' => [
-                'title' => '特別な気持ち',
-                'description' => 'osu!をサポートをしているというポカポカの暖かい気持ちを満喫しましょう。',
+            'more_favourites' => [
+                'title' => 'その他のお気に入り',
+                'description' => 'お気に入りに登録できるビートマップの数は:normally &rarr; :supporterに増加します',
+            ],
+            'more_friends' => [
+                'title' => 'その他のフレンド',
+                'description' => '登録できるフレンドの数は:normally &rarr; :supporterに増加します',
+            ],
+            'more_beatmaps' => [
+                'title' => '他のビートマップをアップロード',
+                'description' => '一度に保持できるRankedされていないビートマップ数は、基準値とRankedされたビートマップの追加ボーナス値から計算されます。<br/><br/>通常これは4つで、Rankedされたビートマップごとに1つ追加されます。（最大2）サポーターになると、8つになりRankedされるごとに1つ追加されます。（最大12）',
+            ],
+            'friend_filtering' => [
+                'title' => 'フレンドリーダーボード',
+                'description' => 'フレンドと競い合って、自分がどのようにランクアップしていくか見てください！*<br/><br/><small>*新しいサイトではまだ利用できません。近日公開予定(tm)</small>',
             ],
 
-            'more_to_come' => [
-                'title' => '追加予定',
-                'description' => '',
-            ],
         ],
-
-        'convinced' => [
-            'title' => 'いいですね！',
-            'support' => 'osu!をサポートする！',
-            'gift' => 'もしくはギフトを送る',
-            'instructions' => 'ハートボタンをクリックでosu!storeに飛びます(英語)',
+        'supporter_status' => [
+            'contribution' => 'osu!をサポートしてくれてありがとうございます！今までに:dollarsで:tags個のタグを購入しました！',
+            'gifted' => "今まで購入したサポータータグのうち:giftedTags個がギフト（ギフト合計金額：:giftedDollars）として送られました。あなたの寛大さに拍手！",
+            'not_yet' => "osu!サポータータグをまだ持っていません :(",
+            'valid_until' => 'あなたのosu!サポータータグは:dateまで有効です！',
+            'was_valid_until' => 'あなたのosu!サポータータグは:dateに期限切れになりました。',
         ],
     ],
 ];

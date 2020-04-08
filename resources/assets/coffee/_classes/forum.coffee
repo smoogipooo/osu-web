@@ -1,20 +1,5 @@
-###
-#    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-#
-#    This file is part of osu!web. osu!web is distributed with the hope of
-#    attracting more community contributions to the core ecosystem of osu!.
-#
-#    osu!web is free software: you can redistribute it and/or modify
-#    it under the terms of the Affero GNU General Public License version 3
-#    as published by the Free Software Foundation.
-#
-#    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-#    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#    See the GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
-###
+# Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+# See the LICENCE file in the repository root for full licence text.
 
 class @Forum
   boot: =>
@@ -44,6 +29,7 @@ class @Forum
     $(document).on 'click', '.js-post-url', @postUrlClick
     $(document).on 'submit', '.js-forum-posts-jump-to', @jumpToSubmit
     $(document).on 'keyup', @keyboardNavigation
+    $(document).on 'click', '.js-forum-topic-moderate--toggle-deleted', @toggleDeleted
 
 
   userCanModerate: ->
@@ -65,6 +51,15 @@ class @Forum
   totalPosts: =>
     return null if @_totalPostsDiv.length == 0
     parseInt @_totalPostsDiv[0].dataset.total, 10
+
+
+  # null if option not available (not moderator), false/true accordingly otherwise
+  showDeleted: =>
+    toggle = document.querySelector('.js-forum-topic-moderate--toggle-deleted')
+
+    return unless toggle?
+
+    toggle.dataset.showDeleted == '1'
 
 
   setTotalPosts: (n) =>
@@ -197,6 +192,10 @@ class @Forum
     $(post).addClass('js-forum-post--highlighted')
 
 
+  toggleDeleted: =>
+    Turbolinks.visit osu.updateQueryString @postUrlN(@currentPostPosition),
+      with_deleted: +!@showDeleted()
+
   initialScrollTo: =>
     return if location.hash != '' ||
       !window.postJumpTo? ||
@@ -214,7 +213,12 @@ class @Forum
 
 
   postUrlN: (postN) ->
-    "#{document.location.pathname}?n=#{postN}"
+    url = "#{document.location.pathname}?n=#{postN}"
+
+    if @showDeleted() == false
+      url += "&with_deleted=0"
+
+    url
 
 
   showMore: (e) =>
@@ -229,6 +233,7 @@ class @Forum
       start: null
       end: null
       skip_layout: 1
+      with_deleted: +@showDeleted()
 
     if mode == 'previous'
       $refPost = $('.js-forum-post').first()

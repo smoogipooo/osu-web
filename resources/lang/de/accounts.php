@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => '<strong>Account</strong>einstellungen',
         'title_compact' => 'einstellungen',
         'username' => 'benutzername',
 
         'avatar' => [
             'title' => 'Avatar',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => 'Bitte stelle sicher, dass sich dein Avatar an :link hält.<br/>Das heißt, es muss <strong>für alle Altersklassen geeignet</strong> sein. Z.B. keine Nacktheit, Obszönität oder anstößiger Inhalt.',
+            'rules_link' => 'die Community Regeln',
         ],
 
         'email' => [
@@ -67,10 +51,18 @@ return [
     'notifications' => [
         'title' => 'Nachrichten',
         'topic_auto_subscribe' => 'aktiviere Nachrichten automatisch bei neue Forum Themen die du erstellst',
+        'beatmapset_discussion_qualified_problem' => 'erhalte Benachrichtigungen für neue Probleme auf qualifizierten Beatmaps von folgenden Modi',
+
+        'mail' => [
+            '_' => 'E-Mail-Benachrichtigungen erhalten für',
+            'beatmapset:modding' => 'Beatmap-Modifizierung',
+            'forum_topic_reply' => 'Antwort auf ein Thema',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => 'autorisierte Geräte',
+        'own_clients' => 'eigene Geräte',
         'title' => 'OAuth',
     ],
 
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'Bestätigung der neuen E-Mail-Adresse für osu!',
         'update' => 'speichern',
     ],
 
     'update_password' => [
-        'email_subject' => 'Bestätigung des neuen Passworts für osu!',
         'update' => 'speichern',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => 'Sie können diesen Tab/Fenster jetzt schließen',
+        'title' => 'Überprüfung wurde abgeschlossen',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => 'Ungültiger oder abgelaufener Bestätigungslink',
     ],
 ];

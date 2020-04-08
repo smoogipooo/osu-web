@@ -1,29 +1,29 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
+
+namespace Tests\Models;
+
 use App\Models\Beatmap;
 use App\Models\BeatmapDiscussion;
 use App\Models\Beatmapset;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
+use Tests\TestCase;
 
 class BeatmapDiscussionTest extends TestCase
 {
+    /**
+     * Valid beatmapset status always maps to a scope method sanity test.
+     *
+     * @dataProvider validBeatmapsetStatuses
+     */
+    public function testBeatmapsetScopesExist($scope)
+    {
+        $this->assertInstanceOf(Builder::class, Beatmapset::$scope());
+    }
+
     public function testMapperPost()
     {
         $mapper = factory(User::class)->create();
@@ -184,6 +184,13 @@ class BeatmapDiscussionTest extends TestCase
         $discussion->restore($user);
         $discussion = $discussion->fresh();
         $this->assertFalse($discussion->trashed());
+    }
+
+    public function validBeatmapsetStatuses()
+    {
+        return array_map(function ($status) {
+            return [camel_case($status)];
+        }, BeatmapDiscussion::VALID_BEATMAPSET_STATUSES);
     }
 
     private function newDiscussion($beatmapset)

@@ -1,24 +1,10 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'invalid' => '',
     'not_negative' => ':attribute nie może być ujemny.',
     'required' => ':attribute jest wymagany.',
     'too_long' => ':attribute przekroczył maksymalną liczbę znaków - możliwe jest użycie tylko :limit znaków.',
@@ -29,7 +15,7 @@ return [
         'first_post' => 'Nie możesz usunąć posta rozpoczynającego.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Wiadomość',
         ],
     ],
 
@@ -37,16 +23,17 @@ return [
         'beatmap_missing' => 'Został ustawiony znacznik czasu, ale nie odnaleziono beatmapy.',
         'beatmapset_no_hype' => "Nie możesz nagłośnić tej beatmapy.",
         'hype_requires_null_beatmap' => 'Priorytet musi zostać nadany w sekcji Główne (wszystkie poziomy trudności).',
-        'invalid_beatmap_id' => 'Ustawiono niewłaściwy poziom trudności.',
-        'invalid_beatmapset_id' => 'Ustawiono niewłaściwą beatmapę.',
+        'invalid_beatmap_id' => 'Ustawiono nieprawidłowy poziom trudności.',
+        'invalid_beatmapset_id' => 'Ustawiono nieprawidłową beatmapę.',
         'locked' => 'Dyskusja została zablokowana.',
 
         'attributes' => [
-            'message_type' => '',
-            'timestamp' => '',
+            'message_type' => 'Rodzaj wiadomości',
+            'timestamp' => 'Znacznik czasu',
         ],
 
         'hype' => [
+            'discussion_locked' => "Dyskusje dla tej beatmapy są zablokowane i nie możesz jej nagłośnić",
             'guest' => 'Musisz się zalogować, aby nagłośnić tę beatmapę.',
             'hyped' => 'Już nagłośniono tę beatmapę.',
             'limit_exceeded' => 'Zużyto całą liczbę nagłośnień.',
@@ -62,9 +49,10 @@ return [
 
     'comment' => [
         'deleted_parent' => 'Nie możesz odpowiedzieć na usunięty komentarz.',
+        'top_only' => 'Nie możesz przypiąć komentarza.',
 
         'attributes' => [
-            'message' => '',
+            'message' => 'Wiadomość',
         ],
     ],
 
@@ -83,23 +71,23 @@ return [
         ],
 
         'post' => [
-            'beatmapset_post_no_delete' => 'Nie możesz usuwać posta z metadanymi beatmapy.',
+            'beatmapset_post_no_delete' => 'Nie możesz usunąć posta z metadanymi beatmapy.',
             'beatmapset_post_no_edit' => 'Nie możesz edytować posta z metadanymi beatmapy.',
             'only_quote' => 'Twoja odpowiedź zawiera tylko cytat.',
 
             'attributes' => [
-                'post_text' => '',
+                'post_text' => 'Zawartość posta',
             ],
         ],
 
         'topic' => [
             'attributes' => [
-                'topic_title' => '',
+                'topic_title' => 'Tytuł tematu',
             ],
         ],
 
         'topic_poll' => [
-            'duplicate_options' => 'Nie możesz dodawać takich samych możliwości wyboru.',
+            'duplicate_options' => 'Nie możesz dodać takich samych możliwości wyboru.',
             'grace_period_expired' => 'Nie możesz edytować ankiety po upływie :limit godzin.',
             'hiding_results_forever' => 'Nie możesz ukryć wyników ankiety bez daty zakończenia.',
             'invalid_max_options' => 'Liczba odpowiedzi do zaznaczenia przez użytkownika nie może przekroczyć liczby wyborów.',
@@ -108,7 +96,7 @@ return [
             'too_many_options' => 'Przekroczono maksymalną liczbę możliwości wyboru.',
 
             'attributes' => [
-                'title' => '',
+                'title' => 'Tytuł ankiety',
             ],
         ],
 
@@ -118,12 +106,25 @@ return [
         ],
     ],
 
+    'oauth' => [
+        'client' => [
+            'too_many' => 'Przekroczono maksymalną liczbę dozwolonych aplikacji OAuth.',
+            'url' => 'Wprowadź prawidłowy adres URL.',
+
+            'attributes' => [
+                'name' => 'Nazwa aplikacji',
+                'redirect' => 'Adres URL wywołań zwrotnych aplikacji',
+            ],
+        ],
+    ],
+
     'user' => [
         'contains_username' => 'Hasło nie może zawierać nazwy użytkownika.',
         'email_already_used' => 'Ten adres e-mail jest już w użyciu.',
         'invalid_country' => 'Kraj nie występuje w bazie danych.',
         'invalid_discord' => 'Nieprawidłowa nazwa użytkownika na Discordzie.',
         'invalid_email' => "To nie wygląda na poprawny adres e-mail.",
+        'invalid_twitter' => 'Nieprawidłowa nazwa użytkownika na Twitterze.',
         'too_short' => 'Nowe hasło jest za krótkie.',
         'unknown_duplicate' => 'Nazwa użytkownika lub adres e-mail jest już w użyciu.',
         'username_available_in' => 'Ta nazwa użytkownika będzie dostępna za :duration.',
@@ -143,9 +144,9 @@ return [
         'too_long' => 'Przekroczono maksymalną liczbę znaków - możliwe jest użycie tylko :limit znaków.',
 
         'attributes' => [
-            'username' => '',
-            'user_email' => '',
-            'password' => '',
+            'username' => 'Nazwa użytkownika',
+            'user_email' => 'Adres e-mail',
+            'password' => 'Hasło',
         ],
 
         'change_username' => [
@@ -159,14 +160,15 @@ return [
     ],
 
     'user_report' => [
+        'reason_not_valid' => 'Powód „:reason” nie jest właściwy dla tego typu zgłoszenia.',
         'self' => "Nie możesz zgłosić swojego konta!",
     ],
 
     'store' => [
         'order_item' => [
             'attributes' => [
-                'quantity' => '',
-                'cost' => '',
+                'quantity' => 'Liczba',
+                'cost' => 'Koszt',
             ],
         ],
     ],

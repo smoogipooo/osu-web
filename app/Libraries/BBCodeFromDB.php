@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Libraries;
 
@@ -44,7 +29,7 @@ class BBCodeFromDB
         ];
 
         $this->text = $text;
-        $this->uid = $uid;
+        $this->uid = presence($uid) ?? config('osu.bbcode.uid');
         $this->options = array_merge($defaultOptions, $options);
 
         if ($this->options['withGallery']) {
@@ -59,8 +44,14 @@ class BBCodeFromDB
 
     public function parseAudio($text)
     {
-        $text = str_replace("[audio:{$this->uid}]", '<audio controls="controls" src="', $text);
-        $text = str_replace("[/audio:{$this->uid}]", '"></audio>', $text);
+        preg_match_all("#\[audio:{$this->uid}\](?<url>[^[]+)\[/audio:{$this->uid}\]#", $text, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            $proxiedSrc = proxy_media(html_entity_decode_better($match['url']));
+            $tag = '<audio controls="controls" preload="none" src="'.$proxiedSrc.'"></audio>';
+
+            $text = str_replace($match[0], $tag, $text);
+        }
 
         return $text;
     }
@@ -75,18 +66,20 @@ class BBCodeFromDB
 
     public function parseBox($text)
     {
-        $text = preg_replace("#\[box=(.*?):{$this->uid}\]#", $this->parseBoxHelperPrefix('\\1'), $text);
-        $text = str_replace("[/box:{$this->uid}]", $this->parseBoxHelperSuffix(), $text);
+        $text = preg_replace("#\[box=(.*?):{$this->uid}\]\n*#s", $this->parseBoxHelperPrefix('\\1'), $text);
+        $text = preg_replace("#\n*\[/box:{$this->uid}]\n?#s", $this->parseBoxHelperSuffix(), $text);
 
-        $text = str_replace("[spoilerbox:{$this->uid}]", $this->parseBoxHelperPrefix('SPOILER'), $text);
-        $text = str_replace("[/spoilerbox:{$this->uid}]", $this->parseBoxHelperSuffix(), $text);
+        $text = preg_replace("#\[spoilerbox:{$this->uid}\]\n*#s", $this->parseBoxHelperPrefix(), $text);
+        $text = preg_replace("#\n*\[/spoilerbox:{$this->uid}]\n?#s", $this->parseBoxHelperSuffix(), $text);
 
         return $text;
     }
 
-    public function parseBoxHelperPrefix($linkText)
+    public function parseBoxHelperPrefix($linkText = null)
     {
-        return "<div class='js-spoilerbox bbcode-spoilerbox'><button class='js-spoilerbox__link bbcode-spoilerbox__link' type='button'><i class='fas fa-fw fa-chevron-right bbcode-spoilerbox__arrow'></i>{$linkText}</button><div class='bbcode-spoilerbox__body'>";
+        $linkText = presence($linkText) ?? 'SPOILER';
+
+        return "<div class='js-spoilerbox bbcode-spoilerbox'><button class='js-spoilerbox__link bbcode-spoilerbox__link' type='button'><span class='bbcode-spoilerbox__link-icon'></span>{$linkText}</button><div class='bbcode-spoilerbox__body'>";
     }
 
     public function parseBoxHelperSuffix()
@@ -105,7 +98,7 @@ class BBCodeFromDB
     public function parseCode($text)
     {
         return preg_replace(
-            "#\n*\[code:{$this->uid}\]\n*(.*?)\n*\[/code:{$this->uid}\]\n*#s",
+            "#\[code:{$this->uid}\]\n*(.*?)\n*\[/code:{$this->uid}\]\n?#s",
             '<pre>\\1</pre>',
             $text);
     }
@@ -154,7 +147,7 @@ class BBCodeFromDB
         $index = 0;
 
         foreach ($images as $i) {
-            $proxiedSrc = proxy_image(html_entity_decode_better($i['url']));
+            $proxiedSrc = proxy_media(html_entity_decode_better($i['url']));
 
             $imageTag = $galleryAttributes = '';
 
@@ -191,8 +184,8 @@ class BBCodeFromDB
     public function parseList($text)
     {
         // basic list.
-        $text = preg_replace("#\[list=\d+:{$this->uid}\]\s*\[\*:{$this->uid}\]#", '<ol><li>', $text);
-        $text = preg_replace("#\[list(=.?)?:{$this->uid}\]\s*\[\*:{$this->uid}\]#", '<ol class="unordered"><li>', $text);
+        $text = preg_replace("#\[list=[^]]+:{$this->uid}\]\s*\[\*:{$this->uid}\]#", '<ol><li>', $text);
+        $text = preg_replace("#\[list:{$this->uid}\]\s*\[\*:{$this->uid}\]#", '<ol class="unordered"><li>', $text);
 
         // convert list items.
         $text = preg_replace("#\[/\*(:m)?:{$this->uid}\]\n?#", '</li>', $text);
@@ -203,8 +196,8 @@ class BBCodeFromDB
         $text = str_replace("[/list:u:{$this->uid}]", '</ol>', $text);
 
         // list with "title", with it being just a list without style.
-        $text = preg_replace("#\[list=\d+:{$this->uid}\](.+?)(<li>|</ol>)#s", '<ul class="bbcode__list-title"><li>$1</li></ul><ol>$2', $text);
-        $text = preg_replace("#\[list(=.?)?:{$this->uid}\](.+?)(<li>|</ol>)#s", '<ul class="bbcode__list-title"><li>$2</li></ul><ol class="unordered">$3', $text);
+        $text = preg_replace("#\[list=[^]]+:{$this->uid}\](.+?)(<li>|</ol>)#s", '<ul class="bbcode__list-title"><li>$1</li></ul><ol>$2', $text);
+        $text = preg_replace("#\[list:{$this->uid}\](.+?)(<li>|</ol>)#s", '<ul class="bbcode__list-title"><li>$1</li></ul><ol class="unordered">$2', $text);
 
         return $text;
     }
@@ -232,7 +225,7 @@ class BBCodeFromDB
 
     public function parseQuote($text)
     {
-        $text = preg_replace("#\[quote=&quot;([^:]+)&quot;:{$this->uid}\]\s*#", '<h4>\\1 wrote:</h4><blockquote>', $text);
+        $text = preg_replace("#\[quote=&quot;([^:]+)&quot;:{$this->uid}\]\s*#", '<blockquote><h4>\\1 wrote:</h4>', $text);
         $text = preg_replace("#\[quote:{$this->uid}\]\s*#", '<blockquote>', $text);
         $text = preg_replace("#\s*\[/quote:{$this->uid}\]\s*#", '</blockquote>', $text);
 
@@ -330,15 +323,10 @@ class BBCodeFromDB
         $text = str_replace("\n", '<br />', $text);
         $text = CleanHTML::purify($text);
 
-        $baseClassName = 'bbcode';
-        $className = $baseClassName;
+        $className = class_with_modifiers('bbcode', $this->options['modifiers']);
 
         if (present($this->options['extraClasses'])) {
             $className .= " {$this->options['extraClasses']}";
-        }
-
-        foreach ($this->options['modifiers'] as $mod) {
-            $className .= " {$baseClassName}--{$mod}";
         }
 
         if ($this->options['ignoreLineHeight']) {

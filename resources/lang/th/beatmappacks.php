@@ -1,25 +1,14 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'index' => [
+        'description' => 'แพ็คคอลเล็คชั่นของเพลงที่อยู่ในประเภทเดียวกัน',
+        'nav_title' => '',
+        'title' => 'แพ็คเกจ Beatmap',
+
         'blurb' => [
             'important' => 'กรุณาอ่านก่อนทำการดาวน์โหลด',
             'instruction' => [
@@ -30,11 +19,9 @@ return [
             ],
             'note' => [
                 '_' => 'แล้วก็ทางเราแนะนำให้คุณ :scary, เนื่องจากคุณภาพของ beatmap สมัยก่อนนั้นต่ำกว่าในสมัยนี้',
-                'scary' => 'ทำการดาวน์โหลดไฟล์จากล่าสุดไปเก่าสุด',
+                'scary' => 'ดาวน์โหลดไฟล์จากล่าสุดไปเก่าสุด',
             ],
         ],
-        'title' => 'แพ็คเกจ Beatmap',
-        'description' => 'แพ็คคอลเล็คชั่นของเพลงที่อยู่ในประเภทเดียวกัน',
     ],
 
     'show' => [
@@ -54,6 +41,6 @@ return [
 
     'require_login' => [
         '_' => 'คุณต้องทำการ :link เพื่อดาวน์โหลด',
-        'link_text' => 'ลงชื่อเข้าใช้แล้ว',
+        'link_text' => 'ลงชื่อเข้าใช้',
     ],
 ];

@@ -1,47 +1,36 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'Temas Fijados',
     'slogan' => "es peligroso jugar solo.",
     'subforums' => 'Subforos',
-    'title' => 'foros de osu!',
+    'title' => 'Foros',
 
     'covers' => [
+        'edit' => 'Editar portada',
+
         'create' => [
             '_' => 'Establecer imagen de portada',
-            'button' => 'Subir imagen',
-            'info' => 'El tamaño de la portada debe ser de: dimensions. También puedes soltar tu imagen aquí para subirla.',
+            'button' => 'Subir portada',
+            'info' => 'El tamaño de la portada debe ser de :dimensions. También puedes soltar tu imagen aquí para subirla.',
         ],
 
         'destroy' => [
-            '_' => 'Eliminar imagen de portada',
+            '_' => 'Eliminar portada',
             'confirm' => '¿Estás seguro de que quieres eliminar la imagen de portada?',
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] Nueva respuesta para el tema ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'Último mensaje',
+
+        'index' => [
+            'title' => 'Índice del foro',
+        ],
+
         'topics' => [
             'empty' => '¡No hay temas!',
         ],
@@ -53,18 +42,10 @@ return [
         'busy' => 'Marcando como leído...',
     ],
 
-    'poll' => [
-        'edit_warning' => 'Editando una encuesta eliminará los resultados actuales!',
-
-        'actions' => [
-            'edit' => 'Editar encuesta',
-        ],
-    ],
-
     'post' => [
         'confirm_destroy' => '¿Realmente quieres eliminar la publicación?',
         'confirm_restore' => '¿Realmente quieres restaurar la publicación?',
-        'edited' => 'Última edición por :user el :when, editado :count veces en total.',
+        'edited' => 'Última edición por :user :when, editado :count_delimited vez en total.|Última edición por :user :when, editado :count_delimited veces en total.',
         'posted_at' => 'publicado :when',
 
         'actions' => [
@@ -73,9 +54,15 @@ return [
             'edit' => 'Editar publicación',
         ],
 
+        'create' => [
+            'title' => [
+                'reply' => 'Nueva respuesta',
+            ],
+        ],
+
         'info' => [
             'post_count' => ':count_delimited publicación|:count_delimited publicaciones',
-            'topic_starter' => 'Topic Starter',
+            'topic_starter' => 'Creador del tema',
         ],
     ],
 
@@ -90,8 +77,8 @@ return [
         'go_to_latest' => 'ver la última publicación',
         'latest_post' => ':when por :user',
         'latest_reply_by' => 'última respuesta por :user',
-        'new_topic' => 'Escribir nuevo tema',
-        'new_topic_login' => 'Inicia sesión para publicar un nuevo tema',
+        'new_topic' => 'Nuevo tema',
+        'new_topic_login' => 'Inicie sesión para publicar un nuevo tema',
         'post_reply' => 'Publicar',
         'reply_box_placeholder' => 'Escribe aquí para responder',
         'reply_title_prefix' => 'Re',
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'iniciado por :user',
 
         'create' => [
+            'close' => 'Cerrar',
             'preview' => 'Previsualizar',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -106,11 +94,11 @@ return [
             'submit' => 'Publicar',
 
             'necropost' => [
-                'default' => 'Este tema ha estado inactivo por un tiempo. Solo publica aquí si tienes una razón específica para hacerlo.',
+                'default' => 'Este tema ha estado inactivo durante mucho tiempo. Sólo publique aquí si tiene una razón específica para hacerlo.',
 
                 'new_topic' => [
-                    '_' => "Este tema ha estado inactivo por un tiempo. Si no tienes una razón específica para publicar aquí, :create un tema.",
-                    'create' => 'crear un nuevo tema',
+                    '_' => "Este tema ha estado inactivo durante mucho tiempo. Si no tiene una razón específica para publicar aquí, por favor :create en su lugar.",
+                    'create' => 'cree un nuevo tema',
                 ],
             ],
 
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'Suscripciones a Temas',
             'title_compact' => 'suscripciones a foros',
-            'title_main' => '<strong>Suscripciones</strong> de foros',
 
             'box' => [
                 'total' => 'Temas suscritos',
@@ -153,8 +139,8 @@ return [
 
         'topic_buttons' => [
             'remove' => [
-                'confirmation' => '¿Desuscribirte de este tema??',
-                'title' => 'Desuscribirse',
+                'confirmation' => '¿Cancelar suscripción al tema?',
+                'title' => 'Cancelar suscripción',
             ],
         ],
     ],
@@ -163,7 +149,7 @@ return [
         '_' => 'Temas',
 
         'actions' => [
-            'login_reply' => 'Inicia sesión para responder',
+            'login_reply' => 'Inicie sesión para responder',
             'reply' => 'Responder',
             'reply_with_quote' => 'Citar publicación y responder',
             'search' => 'Buscar',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'Este tema está cerrado y no se puede responder',
             'to_0' => 'Abrir tema',
+            'to_0_confirm' => '¿Abrir tema?',
             'to_0_done' => 'El tema ha sido abierto',
             'to_1' => 'Cerrar tema',
+            'to_1_confirm' => '¿Cerrar tema?',
             'to_1_done' => 'El tema ha sido cerrado',
         ],
 
@@ -260,12 +248,20 @@ return [
         ],
 
         'moderate_pin' => [
-            'to_0' => 'Desfijar tema',
+            'to_0' => 'Dejar de fijar tema',
+            'to_0_confirm' => '¿Dejar de fijar tema?',
             'to_0_done' => 'El tema ya no está fijado',
             'to_1' => 'Fijar tema',
+            'to_1_confirm' => '¿Fijar tema?',
             'to_1_done' => 'El tema ya ha sido fijado',
             'to_2' => 'Fijar tema y marcar como anuncio',
+            'to_2_confirm' => '¿Fijar tema y marcar como anuncio?',
             'to_2_done' => 'El tema ya ha sido fijado y marcado como anuncio',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'Mostrar publicaciones eliminadas',
+            'hide' => 'Ocultar publicaciones eliminadas',
         ],
 
         'show' => [
@@ -277,8 +273,8 @@ return [
                 'do' => 'Apoyar esta solicitud',
 
                 'info' => [
-                    '_' => 'Esto es un :feature_request. Sugerencias pueden ser votadas por :supporters.',
-                    'feature_request' => 'sugerir una idea',
+                    '_' => 'Esta es una :feature_request. Las solicitudes de características pueden ser votadas por :supporters.',
+                    'feature_request' => 'solicitud de característica',
                     'supporters' => 'colaboradores',
                 ],
 
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'Editar encuesta',
+                'edit_warning' => '¡Editar una encuesta eliminará los resultados actuales!',
                 'vote' => 'Votar',
+
+                'button' => [
+                    'change_vote' => 'Cambiar voto',
+                    'edit' => 'Editar encuesta',
+                    'view_results' => 'Saltar a resultados',
+                    'vote' => 'Votar',
+                ],
 
                 'detail' => [
                     'end_time' => 'La encuesta terminará el :time',
@@ -305,7 +310,7 @@ return [
             'to_not_watching' => 'No marcado',
             'to_watching' => 'Marcado',
             'to_watching_mail' => 'Marcado con aviso de notificaciones',
-            'tooltip_mail_disable' => 'Notificación activada. Haga clics para desactivar',
+            'tooltip_mail_disable' => 'Notificación activada. Haga clic para desactivar',
             'tooltip_mail_enable' => 'Notificación desactivada. Haga clic para activar',
         ],
     ],

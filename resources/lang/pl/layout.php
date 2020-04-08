@@ -1,48 +1,75 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'defaults' => [
         'page_description' => 'osu! - rytm jest tylko o *klik* stąd! Z Ouendanem/EBA, Taiko i oryginalnymi trybami gry, a także w pełni funkcjonalnym edytorem!',
     ],
 
+    'header' => [
+        'admin' => [
+            'beatmapset' => 'zestaw beatmap',
+            'beatmapset_covers' => 'tła zestawów beatmap',
+            'contest' => 'konkurs',
+            'contests' => 'konkursy',
+            'root' => 'konsola',
+            'store_orders' => 'administrator sklepu',
+        ],
+
+        'artists' => [
+            'index' => 'lista',
+        ],
+
+        'changelog' => [
+            'index' => 'lista',
+        ],
+
+        'help' => [
+            'index' => 'strona główna',
+            'sitemap' => 'Mapa strony',
+        ],
+
+        'store' => [
+            'cart' => 'koszyk',
+            'orders' => 'historia zamówień',
+            'products' => 'produkty',
+        ],
+
+        'tournaments' => [
+            'index' => 'lista',
+        ],
+
+        'users' => [
+            'modding' => 'modowanie',
+            'show' => 'informacje',
+        ],
+    ],
+
+    'gallery' => [
+        'close' => 'Zamknij (Esc)',
+        'fullscreen' => 'Przełącz tryb pełnoekranowy',
+        'zoom' => 'Przybliż/oddal',
+        'previous' => 'Wstecz (strzałka w lewo)',
+        'next' => 'Dalej (strzałka w prawo)',
+    ],
+
     'menu' => [
-        'home' => [
-            '_' => 'strona główna',
-            'account-edit' => 'ustawienia',
-            'account-verifyLink' => '',
-            'friends-index' => 'znajomi',
-            'changelog-index' => 'zmiany',
-            'changelog-build' => 'kompilacja',
-            'getDownload' => 'pobierz',
-            'getIcons' => 'ikony',
-            'groups-show' => 'grupy',
-            'index' => 'przegląd',
-            'legal-show' => 'informacje',
-            'messages-index' => 'wiadomości',
-            'news-index' => 'aktualności',
-            'news-show' => 'aktualności',
-            'password-reset-index' => 'zresetuj hasło',
-            'search' => 'wyszukiwarka',
-            'supportTheGame' => 'wspomóż grę',
-            'team' => 'zespół',
+        'beatmaps' => [
+            '_' => 'beatmapy',
+            'artists' => 'wyróżnieni artyści',
+            'index' => 'lista',
+            'packs' => 'paczki',
+        ],
+        'community' => [
+            '_' => 'społeczność',
+            'chat' => 'czat',
+            'contests' => 'konkursy',
+            'dev' => 'rozwój',
+            'forum-forums-index' => 'forum',
+            'getLive' => 'na żywo',
+            'tournaments' => 'turnieje',
         ],
         'help' => [
             '_' => 'pomoc',
@@ -50,123 +77,28 @@ return [
             'getRules' => 'zasady',
             'getSupport' => 'pomoc techniczna',
             'getWiki' => 'wiki',
-            'wiki-show' => 'wiki',
         ],
-        'beatmaps' => [
-            '_' => 'beatmapy',
-            'artists' => 'wyróżnieni artyści',
-            'beatmap_discussion_posts-index' => 'posty w dyskusji',
-            'beatmap_discussions-index' => 'dyskusje',
-            'beatmapset-watches-index' => 'obserwowane dyskusje',
-            'beatmapset_discussion_votes-index' => 'głosy w dyskusji',
-            'beatmapset_events-index' => 'historia zdarzeń zestawów beatmap',
-            'index' => 'lista',
-            'packs' => 'paczki',
-            'show' => 'informacje',
-        ],
-        'beatmapsets' => [
-            '_' => 'beatmapy',
-            'discussion' => 'modowanie',
+        'home' => [
+            '_' => 'strona główna',
+            'changelog-index' => 'zmiany',
+            'getDownload' => 'pobierz',
+            'news-index' => 'aktualności',
+            'search' => 'wyszukiwarka',
+            'team' => 'zespół',
         ],
         'rankings' => [
             '_' => 'rankingi',
-            'index' => 'globalny',
-            'performance' => 'globalny',
             'charts' => 'wyróżnionych',
-            'score' => 'punktowy',
             'country' => 'krajowy',
+            'index' => 'globalny',
             'kudosu' => 'kudosu',
-        ],
-        'community' => [
-            '_' => 'społeczność',
-            'chat' => 'czat',
-            'chat-index' => 'czat',
-            'dev' => 'rozwój',
-            'getForum' => 'forum',
-            'getLive' => 'na żywo',
-            'comments-index' => 'komentarze',
-            'comments-show' => 'komentarz',
-            'contests' => 'konkursy',
-            'profile' => 'profil',
-            'tournaments' => 'turnieje',
-            'tournaments-index' => 'turnieje',
-            'tournaments-show' => 'informacje o turnieju',
-            'forum-topic-watches-index' => 'subskrybcje',
-            'forum-topics-create' => 'forum',
-            'forum-topics-show' => 'forum',
-            'forum-forums-index' => 'forum',
-            'forum-forums-show' => 'forum',
-        ],
-        'multiplayer' => [
-            '_' => 'tryb wieloosobowy',
-            'show' => 'mecz',
-        ],
-        'error' => [
-            '_' => 'błąd',
-            '404' => 'nie znaleziono strony',
-            '403' => 'brak dostępu',
-            '401' => 'brak dostępu',
-            '405' => 'nie znaleziono strony',
-            '500' => 'coś się popsuło',
-            '503' => 'przerwa techniczna',
-        ],
-        'user' => [
-            '_' => 'użytkownik',
-            'getLogin' => 'zaloguj się',
-            'disabled' => 'wyłączone',
-
-            'register' => 'zarejestruj się',
-            'reset' => 'odzyskaj dostęp',
-            'new' => 'nowy',
-
-            'help' => 'Pomoc',
-            'logout' => 'Wyloguj się',
-            'messages' => 'Wiadomości',
-            'modding-history-discussions' => 'dyskusje',
-            'modding-history-events' => 'historia zdarzeń',
-            'modding-history-index' => 'historia użytkownika',
-            'modding-history-posts' => 'historia postów',
-            'modding-history-votesGiven' => 'głosy oddane',
-            'modding-history-votesReceived' => 'głosy otrzymane',
-            'oauth_login' => 'zaloguj się, aby użyć oauth',
-            'oauth_request' => 'autoryzacja oauth',
-            'settings' => 'Ustawienia',
+            'score' => 'punktowy',
         ],
         'store' => [
             '_' => 'sklep',
-            'checkout-show' => 'kasa',
-            'getListing' => 'przedmioty',
             'cart-show' => 'koszyk',
-
-            'getCheckout' => 'płatność',
-            'getInvoice' => 'faktura',
+            'getListing' => 'przedmioty',
             'orders-index' => 'historia zamówień',
-            'products-show' => 'produkt',
-
-            'new' => 'nowy',
-            'home' => 'strona główna',
-            'index' => 'strona główna',
-            'thanks' => 'dzięki',
-        ],
-        'admin-forum' => [
-            '_' => 'admin::forum',
-            'forum-covers-index' => 'tła forum',
-        ],
-        'admin-store' => [
-            '_' => 'admin::store',
-            'orders-index' => 'zamówienia',
-            'orders-show' => 'zamówienie',
-        ],
-        'admin' => [
-            '_' => 'admin',
-            'beatmapsets-covers' => 'tła zestawu beatmap',
-            'logs-index' => 'logi',
-            'root' => 'strona główna',
-
-            'beatmapsets' => [
-                '_' => 'zestawy beatmap',
-                'show' => 'szczegóły',
-            ],
         ],
     ],
 
@@ -177,7 +109,6 @@ return [
             'changelog-index' => 'Zmiany',
             'beatmaps' => 'Beatmapy',
             'download' => 'Pobierz osu!',
-            'wiki' => 'Wiki',
         ],
         'help' => [
             '_' => 'Pomoc i społeczność',
@@ -185,6 +116,7 @@ return [
             'forum' => 'Forum',
             'livestreams' => 'Na żywo',
             'report' => 'Zgłoś problem',
+            'wiki' => 'Wiki',
         ],
         'legal' => [
             '_' => 'Prawne i status',
@@ -213,6 +145,10 @@ return [
             'error' => 'Nie znaleziono strony',
             'description' => "Przepraszamy, ale poszukiwana strona nie istnieje!",
         ],
+        '422' => [
+            'error' => 'Parametr żądania jest nieprawidłowy',
+            'description' => '',
+        ],
         '500' => [
             'error' => 'O nie! Coś się popsuło! ;_;',
             'description' => "Jesteśmy automatycznie powiadamiani o każdym problemie.",
@@ -235,10 +171,10 @@ return [
 
     'popup_login' => [
         'login' => [
-            'email' => 'adres e-mail',
             'forgot' => "Nie pamiętam swoich danych logowania",
             'password' => 'hasło',
             'title' => 'Zaloguj się, aby przejść dalej',
+            'username' => 'nazwa użytkownika',
 
             'error' => [
                 'email' => "Nazwa użytkownika bądź adres e-mail nie istnieją",
@@ -247,7 +183,8 @@ return [
         ],
 
         'register' => [
-            'info' => "Potrzebujesz konta. Dlaczego by takiego nie stworzyć?",
+            'download' => 'Pobierz',
+            'info' => 'Pobierz osu!, aby utworzyć swoje własne konto!',
             'title' => "Nie posiadasz konta?",
         ],
     ],

@@ -1,26 +1,23 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'all_read' => '已閱畢所有通知！',
-    'mark_all_read' => '全部清除',
+    'mark_read' => '',
+    'none' => '沒有通知',
+    'see_all' => '查看所有通知',
+
+    'filters' => [
+        '_' => '全部',
+        'user' => '個人簡介',
+        'beatmapset' => '圖譜',
+        'forum_topic' => '討論區',
+        'news_post' => '最新消息',
+        'build' => '版本',
+        'channel' => '聊天',
+    ],
 
     'item' => [
         'beatmapset' => [
@@ -31,14 +28,24 @@ return [
                 'beatmapset_discussion_lock' => '已鎖定「:title」的討論',
                 'beatmapset_discussion_lock_compact' => '討論已被鎖定',
                 'beatmapset_discussion_post_new' => '新帖子於 ":title" 的 :username',
+                'beatmapset_discussion_post_new_empty' => ':username發布了主題為:title的新貼文',
                 'beatmapset_discussion_post_new_compact' => ':username 的新主題',
+                'beatmapset_discussion_post_new_compact_empty' => ':username 的新主題',
                 'beatmapset_discussion_unlock' => '討論於 ":title" 已解鎖',
                 'beatmapset_discussion_unlock_compact' => '討論已被解鎖',
             ],
 
+            'beatmapset_problem' => [
+                '_' => 'Qualified 圖譜問題',
+                'beatmapset_discussion_qualified_problem' => '',
+                'beatmapset_discussion_qualified_problem_empty' => '',
+                'beatmapset_discussion_qualified_problem_compact' => '',
+                'beatmapset_discussion_qualified_problem_compact_empty' => '由 :username 回報',
+            ],
+
             'beatmapset_state' => [
                 '_' => '圖譜狀態已變更',
-                'beatmapset_disqualify' => '":title" 被取消資格',
+                'beatmapset_disqualify' => '「:title」被取消提名',
                 'beatmapset_disqualify_compact' => '圖譜被取消資格',
                 'beatmapset_love' => '":title" 被提升為 loved',
                 'beatmapset_love_compact' => '圖譜被提升為 loved',
@@ -110,7 +117,7 @@ return [
 
             'legacy_pm' => [
                 '_' => '',
-                'legacy_pm' => ':count_delimited 未讀信息',
+                'legacy_pm' => ':count_delimited 則未讀訊息',
             ],
         ],
 
@@ -120,6 +127,7 @@ return [
             'user_achievement_unlock' => [
                 '_' => '新成就',
                 'user_achievement_unlock' => '解鎖「:title」！',
+                'user_achievement_unlock_compact' => '解鎖「:title」！',
             ],
         ],
     ],

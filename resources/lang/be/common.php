@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'confirmation' => 'Вы ўпэўнены?',
@@ -29,21 +14,28 @@ return [
         'last_word_connector' => ', і ',
     ],
 
+    'badges' => [
+        'new' => '',
+    ],
+
     'buttons' => [
         'admin' => 'Кіраўнік',
+        'authorise' => '',
+        'authorising' => '',
         'back_to_previous' => 'Вярнуцца ў папярэднюю пазіцыю',
         'back_to_top' => 'Вярнуцца ў пачатак',
         'cancel' => 'Скасаваць',
         'change' => 'змяніць',
         'click_to_copy' => 'націсніце, каб скапіяваць',
         'click_to_copy_copied' => 'скапіявана!',
+        'close' => '',
         'collapse' => 'згарнуць',
         'delete' => 'Выдаліць',
         'edit' => 'Рэдагаваць',
         'expand' => 'разгарнуць',
         'hide' => 'схаваць',
         'permalink' => 'нязменная спасылка',
-        'permalink_copied' => 'спасылка скапіявана',
+        'pin' => '',
         'post' => 'Размясціць',
         'reply' => 'Адказаць',
         'reply_reopen' => 'Адказаць і пераадкрыць',
@@ -56,8 +48,11 @@ return [
         'see_more' => 'глядзець больш',
         'show' => 'паказаць',
         'show_deleted' => 'Паказ выдаленыя',
+        'show_less' => '',
         'show_more' => 'паказаць больш',
         'show_more_options' => 'паказаць больш параметраў',
+        'unpin' => '',
+        'update' => '',
         'upload_image' => 'запампаваць выяву',
 
         'watch' => [
@@ -75,8 +70,13 @@ return [
         'minute_short_unit' => 'хв',
         'minutes' => ':count хвіліна|:count хвіліны |:count хвілін',
         'months' => ':count месяц|:count месяцаў',
+        'notifications' => '',
+        'plus_others' => '',
+        'post' => '',
         'second_short_unit' => 'сек',
+        'star_priority' => '',
         'update' => ':count_delimited абнаўленне|:count_delimited абнаўленняў',
+        'view' => '',
         'years' => ':count год|:count гады|:count гадоў',
     ],
 
@@ -108,6 +108,10 @@ return [
         'target' => 'каб загрузіць, перацягніце сюды',
     ],
 
+    'input' => [
+        'search' => '',
+    ],
+
     'pagination' => [
         'previous' => 'папер.',
         'next' => 'наст.',
@@ -131,5 +135,10 @@ return [
 
     'title' => [
         'notice' => 'Заўвага',
+    ],
+
+    'wrong_user' => [
+        '_' => '',
+        'logout_link' => '',
     ],
 ];

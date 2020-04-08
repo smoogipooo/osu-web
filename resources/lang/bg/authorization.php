@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Моля влезте в профила си, за да продължите.',
+    'require_verification' => '',
+    'restricted' => "Не може да правите това докато сте с ограничен статут.",
+    'silenced' => "Не може докато сте заглушен.",
+    'unauthorized' => 'Достъпът е отказан.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Не може да отмените надъхването.',
@@ -27,7 +18,7 @@ return [
         'nominate' => [
             'exhausted' => 'Вие стигнахте вашия лимит за номиниране за деня, моля опитайте пак утре.',
             'full_bn_required' => '',
-            'full_bn_required_hybrid' => '',
+            'full_bn_required_hybrid' => 'Трябва да сте пълен номиниран, за да номинирате битмап сетове с повече от един режим на игра.',
             'incorrect_state' => 'Грешка при извършване на това действие, опитайте да презаредите страницата.',
             'owner' => "Не може да номинирате собствения си бийтмап.",
         ],
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Автоматично създанената публикация не може да бъде редактирана.',
-            'not_owner' => 'Само създателят на публикацията може да я редактира.',
+        'destroy' => [
+            'not_owner' => '',
+            'resolved' => '',
+            'system_generated' => '',
         ],
+
+        'edit' => [
+            'not_owner' => 'Само създателят на публикацията може да я редактира.',
+            'resolved' => '',
+            'system_generated' => 'Автоматично създанената публикация не може да бъде редактирана.',
+        ],
+
         'store' => [
             'beatmapset_locked' => '',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Само админ може да види този форум.',
         ],
     ],
-
-    'require_login' => 'Моля влезте в профила си, за да продължите.',
-
-    'unauthorized' => 'Достъпът е отказан.',
-
-    'silenced' => "Не може докато сте заглушен.",
-
-    'restricted' => "Не може да правите това докато сте с ограничен статут.",
 
     'user' => [
         'page' => [

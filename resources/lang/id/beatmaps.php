@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Gagal menyimpan kiriman',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Gagal memperbarui pilihan',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'izinkan kudosu',
+        'beatmap_information' => 'Laman Beatmap',
         'delete' => 'hapus',
         'deleted' => 'Dihapus oleh :editor :delete_time.',
         'deny_kudosu' => 'tolak kudosu',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Hilangkan Status Nominasi',
             'praise' => 'Pujian',
             'problem' => 'Masalah',
+            'review' => 'Ulasan',
             'suggestion' => 'Saran',
         ],
 
         'mode' => [
             'events' => 'Riwayat',
             'general' => 'Umum :scope',
+            'reviews' => 'Ulasan',
             'timeline' => 'Linimasa',
             'scopes' => [
                 'general' => 'Tingkat kesulitan ini',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Berikan vote positif pada untai diskusi ini',
-            'down' => 'Berikan vote negatif pada untai diskusi ini',
+            'none' => [
+                'down' => 'Belum ada downvote',
+                'up' => 'Belum ada upvote',
+            ],
+            'latest' => [
+                'down' => 'Downvotes terbaru',
+                'up' => 'Upvotes terbaru',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nominasi',
         'nominate_confirm' => 'Nominasikan beatmap ini?',
         'nominated_by' => 'dinominasikan oleh :users',
+        'not_enough_hype' => "Beatmap tidak memiliki hype yang cukup.",
         'qualified' => 'Diperkirakan akan berstatus Ranked pada :date jika tidak ada masalah yang ditemukan.',
         'qualified_soon' => 'Diperkirakan akan segera berstatus Ranked jika tidak ada masalah yang ditemukan.',
         'required_text' => 'Nominasi: :current/:required',
@@ -280,6 +269,7 @@ return [
         'HD' => 'Hidden',
         'HR' => 'Hard Rock',
         'HT' => 'Half Time',
+        'MR' => 'Mirror',
         'NC' => 'Nightcore',
         'NF' => 'No Fail',
         'NM' => 'No mods',

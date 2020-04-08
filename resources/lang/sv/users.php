@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[raderad användare]',
@@ -64,33 +49,58 @@ return [
         'send_message' => 'skicka meddelande',
     ],
 
+    'disabled' => [
+        'title' => '',
+        'warning' => "",
+
+        'if_mistake' => [
+            '_' => '',
+            'email' => '',
+        ],
+
+        'reasons' => [
+            'compromised' => '',
+            'opening' => '',
+
+            'tos' => [
+                '_' => '',
+                'community_rules' => '',
+                'tos' => '',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "",
+        ],
+    ],
+
     'login' => [
         '_' => 'Logga in',
-        'locked_ip' => 'din IP adress är låst. Var vänlig vänta några minuter.',
-        'username' => 'Användarnamn',
-        'password' => 'Lösenord',
         'button' => 'Logga in',
         'button_posting' => 'Loggar in...',
+        'email_login_disabled' => '',
+        'failed' => 'Felaktig inloggning',
+        'forgot' => 'Glömt ditt lösenord?',
+        'info' => '',
+        'locked_ip' => 'din IP adress är låst. Var vänlig vänta några minuter.',
+        'password' => 'Lösenord',
+        'register' => "Har du inget osu! konto? Skapa ett nytt",
         'remember' => 'Kom ihåg denna dator',
         'title' => 'Var vänlig logga in för att fortsätta',
-        'failed' => 'Felaktig inloggning',
-        'register' => "Har du inget osu! konto? Skapa ett nytt",
-        'forgot' => 'Glömt ditt lösenord?',
+        'username' => 'Användarnamn',
+
         'beta' => [
             'main' => 'Beta åtkomst är för nuvarande begränsad till privilegierade användare.',
             'small' => '(osu!supportrar kommer att komma in snart)',
         ],
-
-        'here' => 'här', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => ':username\'s inlägg',
     ],
 
-    'signup' => [
-        '_' => 'Registrera',
-    ],
     'anonymous' => [
         'login_link' => 'klicka för att logga in',
         'login_text' => 'logga in',
@@ -167,7 +177,7 @@ return [
         ],
 
         'extra' => [
-            'followers' => '1 följare|:count följare',
+            'none' => '',
             'unranked' => 'Inga senaste spel',
 
             'achievements' => [
@@ -196,6 +206,16 @@ return [
                     'title' => 'Väntade Beatmaps',
                 ],
             ],
+            'discussions' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
+            'events' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'historical' => [
                 'empty' => 'Inga prestanda uppgifter. :(',
                 'title' => 'Historisk',
@@ -218,8 +238,6 @@ return [
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu Tillängligt',
-                'available_info' => "Kudosu kan bli bytade mot kudosu stjärnor, vilket kommer hjälpa din beatmap att få mer uppmärksamhet. Detta är antalet kudosu du inte har bytt in än.",
                 'recent_entries' => 'Nyligen Kudosu Historia',
                 'title' => 'Kudosu!',
                 'total' => 'Total Kudosu Intjänad',
@@ -276,6 +294,11 @@ return [
                 'recent' => '',
                 'title' => 'Medaljer',
             ],
+            'posts' => [
+                'title' => '',
+                'title_longer' => '',
+                'show_more' => '',
+            ],
             'recent_activity' => [
                 'title' => 'Senaste',
             ],
@@ -292,6 +315,13 @@ return [
                 'first' => [
                     'title' => 'Förstaplats-ranker',
                 ],
+            ],
+            'votes' => [
+                'given' => '',
+                'received' => '',
+                'title' => '',
+                'title_longer' => '',
+                'vote_count' => '',
             ],
             'account_standing' => [
                 'title' => 'Kontoställning',
@@ -314,11 +344,6 @@ return [
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => '',
-            'info' => '',
         ],
 
         'info' => [
@@ -372,6 +397,11 @@ return [
             'score_ranks' => 'Poäng Ranker',
             'total_hits' => 'Totala Träffar',
             'total_score' => 'Total Poäng',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => '',
+            'loved_beatmapset_count' => '',
+            'unranked_beatmapset_count' => '',
+            'graveyard_beatmapset_count' => '',
         ],
     ],
 
@@ -388,6 +418,7 @@ return [
     ],
 
     'view_mode' => [
+        'brick' => '',
         'card' => '',
         'list' => '',
     ],

@@ -36,8 +36,6 @@ echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_per
 echo "Finshed importing data."
 
 php artisan es:index-documents --yes
-php artisan laroute:generate
 yarn
-yarn generate-localizations
 
 exec yarn watch

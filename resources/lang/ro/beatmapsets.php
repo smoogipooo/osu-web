@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
@@ -34,17 +19,10 @@ return [
         'discussion' => 'Discuție',
 
         'details' => [
-            'approved' => 'aprobat pe ',
             'favourite' => 'Adaugă acest beatmapset la favorite',
-            'favourited_count' => '+ 1 alta!|+ :count alte!',
             'logged-out' => 'Trebuie să te autentifici înainte de a descărca vreun beatmap!',
-            'loved' => 'loved pe ',
             'mapped_by' => 'mapat de :mapper',
-            'qualified' => 'calificat pe ',
-            'ranked' => 'clasat pe ',
-            'submitted' => 'trimis pe ',
             'unfavourite' => 'Elimină acest beatmapset de la favorite',
-            'updated' => 'ultima dată actualizat ',
             'updated_timeago' => 'ultima dată actualizat :timeago',
 
             'download' => [
@@ -58,6 +36,15 @@ return [
                 'bottom' => 'pentru a accesa mai multe avantaje',
                 'top' => 'Autentificare',
             ],
+        ],
+
+        'details_date' => [
+            'approved' => '',
+            'loved' => '',
+            'qualified' => '',
+            'ranked' => '',
+            'submitted' => '',
+            'updated' => '',
         ],
 
         'favourites' => [
@@ -75,6 +62,18 @@ return [
                     'qualified' => 'calificată',
                     'wip' => 'muncă în desfășurare',
                 ],
+            ],
+
+            'disqualify' => [
+                '_' => 'Dacă găsești o problemă cu acest beatmap, vă rugăm descalificați-o :link.',
+                'button_title' => 'Descalifică un beatmap calificat.',
+            ],
+
+            'report' => [
+                '_' => 'Dacă găsești o problemă cu acest beatmap, vă rugăm raportați-o :link ca să alertați echipa.',
+                'button' => 'Raportează problemă',
+                'button_title' => 'Raportează o problemă pe un beatmap calificat.',
+                'link' => 'aici',
             ],
         ],
 
@@ -139,6 +138,16 @@ return [
             'rating-spread' => 'Clasament grafic',
             'nominations' => 'Nominalizări',
             'playcount' => 'Numărul de jocuri',
+        ],
+
+        'status' => [
+            'ranked' => 'Clasat',
+            'approved' => 'Aprobat',
+            'loved' => 'Iubit',
+            'qualified' => 'Calificat',
+            'wip' => 'WIP',
+            'pending' => 'În Așteptare',
+            'graveyard' => 'Cimitir',
         ],
     ],
 ];

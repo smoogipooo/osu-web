@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Libraries\Multiplayer;
 
@@ -25,6 +10,7 @@ use App\Exceptions\InvariantException;
 class Mod
 {
     // common
+    const DIFFICULTY_ADJUST = 'DA';
     const DAYCORE = 'DC';
     const DOUBLETIME = 'DT';
     const EASY = 'EZ';
@@ -50,6 +36,7 @@ class Mod
     const OSU_GROW = 'GR';
     const OSU_DEFLATE = 'DF';
     const OSU_SPININ = 'SI';
+    const OSU_TRACEABLE = 'TC';
 
     // mania-specific
     const MANIA_KEY1 = '1K';
@@ -66,6 +53,9 @@ class Mod
     const MANIA_MIRROR = 'MR';
     const MANIA_RANDOM = 'RD';
 
+    // taiko-specific
+    const TAIKO_RANDOM = 'RD';
+
     // non-scorable
     const AUTOPLAY = 'AT';
     const CINEMA = 'CN';
@@ -74,6 +64,7 @@ class Mod
     const SCORABLE_COMMON = [
         // common
         self::DAYCORE,
+        self::DIFFICULTY_ADJUST,
         self::DOUBLETIME,
         self::EASY,
         self::FLASHLIGHT,
@@ -102,12 +93,15 @@ class Mod
         [
             self::HARDROCK,
             self::EASY,
+            self::DIFFICULTY_ADJUST,
         ],
         [
             self::DOUBLETIME,
             self::HALFTIME,
             self::DAYCORE,
             self::NIGHTCORE,
+        ],
+        [
             self::WIND_DOWN,
             self::WIND_UP,
         ],
@@ -130,8 +124,67 @@ class Mod
             self::OSU_GROW,
             self::OSU_DEFLATE,
             self::OSU_SPININ,
+            self::OSU_TRACEABLE,
+        ],
+        [
+            self::HIDDEN,
+            self::OSU_SPININ,
+            self::OSU_TRACEABLE,
         ],
     ];
+
+    const SETTINGS = [
+        self::DIFFICULTY_ADJUST => [
+            'drain_rate' => 'float',
+            'overall_difficulty' => 'float',
+            'circle_size' => 'float',
+            'approach_rate' => 'float',
+        ],
+        self::DOUBLETIME => [
+            'speed_change' => 'float',
+        ],
+        self::NIGHTCORE => [
+            'speed_change' => 'float',
+        ],
+        self::EASY => [
+            'retries' => 'int',
+        ],
+        self::HALFTIME => [
+            'speed_change' => 'float',
+        ],
+        self::DAYCORE => [
+            'speed_change' => 'float',
+        ],
+        self::WIND_UP => [
+            'initial_rate' => 'float',
+            'final_rate' => 'float',
+        ],
+        self::WIND_DOWN => [
+            'initial_rate' => 'float',
+            'final_rate' => 'float',
+        ],
+    ];
+
+    public static function filterSettings($mod, $settings)
+    {
+        if ($settings === null || !is_array($settings)) {
+            return (object) [];
+        }
+
+        $cleanSettings = [];
+
+        foreach ($settings as $key => $value) {
+            $type = static::SETTINGS[$mod][$key] ?? null;
+
+            if (isset($type)) {
+                $cleanSettings[$key] = get_param_value($value, $type);
+            } else {
+                throw new InvariantException("unknown setting for {$mod} ({$key})");
+            }
+        }
+
+        return (object) $cleanSettings;
+    }
 
     // Mapping of valid mods per ruleset
     public static function validityByRuleset()
@@ -152,13 +205,14 @@ class Mod
                         self::OSU_GROW,
                         self::OSU_DEFLATE,
                         self::OSU_SPININ,
+                        self::OSU_TRACEABLE,
                     ]
                 ),
 
                 Ruleset::TAIKO => array_merge(
                     self::SCORABLE_COMMON,
                     [
-                        // taiko-specific mods go here
+                        self::TAIKO_RANDOM,
                     ]
                 ),
 
@@ -235,6 +289,10 @@ class Mod
 
     public static function validateSelection($mods, $ruleset, $skipExclusivityCheck = false)
     {
+        if (!in_array($ruleset, Ruleset::ALL, true)) {
+            throw new InvariantException('invalid ruleset');
+        }
+
         $checkedMods = [];
         foreach ($mods as $mod) {
             if (!static::validForRuleset($mod, $ruleset)) {
@@ -268,9 +326,9 @@ class Mod
             if (isset($mod['acronym']) && present($mod['acronym'])) {
                 $acronym = strtoupper($mod['acronym']);
 
-                $filteredMods[$acronym] = [
+                $filteredMods[$acronym] = (object) [
                     'acronym' => $acronym,
-                    'settings' => [],
+                    'settings' => static::filterSettings($acronym, $mod['settings'] ?? null),
                 ];
                 continue;
             }

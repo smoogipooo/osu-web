@@ -12,10 +12,14 @@
     {
       "type": "vcs",
       "url": "https://github.com/nanaya/slack-php"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/nanaya/xsolla-sdk-php"
     }
   ],
   "require": {
-    "chaseconey/laravel-datadog-helper": "*",
+    "chaseconey/laravel-datadog-helper": ">=1.2.0",
     "doctrine/dbal": "*",
     "egulias/email-validator": "*",
     "elasticsearch/elasticsearch": ">=6.0, <6.6",
@@ -23,33 +27,35 @@
     "graham-campbell/github": "*",
     "guzzlehttp/guzzle": "*",
     "itsgoingd/clockwork": ">=3.0",
-    "jenssegers/agent": "^2.6",
-    "jonnybarnes/commonmark-linkify": "dev-master",
-    "laravel/framework": "5.5.*",
+    "jenssegers/agent": "*",
+    "laravel/framework": "6.8.0",
+    "laravel/helpers": "^1.1",
     "laravel/passport": "*",
-    "laravel/tinker": "~1.0",
-    "laravelcollective/html": "5.5.*",
+    "laravel/slack-notification-channel": "^2.0",
+    "laravel/tinker": "*",
+    "laravelcollective/html": "*",
     "league/commonmark": ">=0.16.0",
-    "league/flysystem-aws-s3-v3": "^1.0",
+    "league/commonmark-ext-autolink": "^1.0",
+    "league/commonmark-ext-table": "*",
+    "league/flysystem-aws-s3-v3": "*",
     "league/fractal": "*",
-    "league/html-to-markdown": "^4.7",
-    "lord/laroute": "*",
-    "maknz/slack": "dev-laravel-5.4",
+    "league/html-to-markdown": "*",
+    "maknz/slack": "dev-laravel-any",
     "mariuzzo/laravel-js-localization": "*",
-    "mpociot/laravel-apidoc-generator": "^3.7",
+    "mpociot/laravel-apidoc-generator": "*",
     "paypal/rest-api-sdk-php": "*",
     "sentry/sentry-laravel": "*",
     "symfony/yaml": "*",
-    "webuni/commonmark-table-extension": ">=0.8.0",
-    "xsolla/xsolla-sdk-php": "*"
+    "tightenco/ziggy": ">=0.8.1",
+    "xsolla/xsolla-sdk-php": ">=4.2.0"
   },
   "require-dev": {
-    "beyondcode/laravel-query-detector": "^1.0",
-    "filp/whoops": "~2.0",
-    "fzaninotto/faker": "~1.4",
-    "laravel/dusk": "^2.0",
-    "mockery/mockery": "~1.0",
-    "phpunit/phpunit": "~6.0",
+    "beyondcode/laravel-query-detector": "*",
+    "filp/whoops": "*",
+    "fzaninotto/faker": "*",
+    "laravel/dusk": "*",
+    "mockery/mockery": "*",
+    "phpunit/phpunit": "*",
     "symfony/css-selector": "*",
     "symfony/dom-crawler": "*"
   },
@@ -65,9 +71,6 @@
     ]
   },
   "autoload-dev": {
-    "classmap": [
-      "tests/TestCase.php"
-    ],
     "psr-4": {
       "Tests\\": "tests/"
     }

@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Nastala chyba během ukládání příspěvku',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Nastala chyba během hlasování',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'povolit kudosu',
+        'beatmap_information' => 'Stránka Beatmapy',
         'delete' => 'odstranit',
         'deleted' => 'Smazal uživatel :editor v :delete_time.',
         'deny_kudosu' => 'odepřít kudosu',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Obnovit nominace',
             'praise' => 'Chválit',
             'problem' => 'Problém',
+            'review' => 'Recenze',
             'suggestion' => 'Návrh',
         ],
 
         'mode' => [
             'events' => 'Historie',
             'general' => 'Obecný :scope',
+            'reviews' => 'Recenze',
             'timeline' => 'Časová osa',
             'scopes' => [
                 'general' => 'Tato obtížnost',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Upvotenout tuto diskuzi',
-            'down' => 'Downvotenout tuto diskuzi',
+            'none' => [
+                'down' => '',
+                'up' => '',
+            ],
+            'latest' => [
+                'down' => '',
+                'up' => '',
+            ],
         ],
     ],
 
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nominovat',
         'nominate_confirm' => 'Nominovat tuto beatmapu?',
         'nominated_by' => 'nominováno od :users',
+        'not_enough_hype' => "",
         'qualified' => 'Předpokládané datum zhodnocení této mapy je :date, pokud se nenaleznou žádné chyby.',
         'qualified_soon' => 'Již brzy bude tato mapa hodnocená, pokud se nenaleznou žádné chyby.',
         'required_text' => 'Nominace: :current/:required',
@@ -246,7 +235,7 @@ return [
         'approved' => 'Schválené',
         'favourites' => 'Oblíbené',
         'graveyard' => 'Hřbitov',
-        'leaderboard' => '',
+        'leaderboard' => 'Má žebříček',
         'loved' => 'Oblíbené',
         'mine' => 'Moje mapy',
         'pending' => 'Čekající & Rozpracované',
@@ -280,6 +269,7 @@ return [
         'HD' => '',
         'HR' => '',
         'HT' => '',
+        'MR' => '',
         'NC' => '',
         'NF' => '',
         'NM' => '',

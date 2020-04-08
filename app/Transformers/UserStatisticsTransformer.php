@@ -1,33 +1,16 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Transformers;
 
 use App\Models\UserStatistics;
-use League\Fractal;
 
-class UserStatisticsTransformer extends Fractal\TransformerAbstract
+class UserStatisticsTransformer extends TransformerAbstract
 {
     protected $availableIncludes = [
         'rank',
-        'scoreRanks',
         'user',
     ];
 
@@ -46,7 +29,7 @@ class UserStatisticsTransformer extends Fractal\TransformerAbstract
             'pp' => $stats->rank_score,
             'pp_rank' => $stats->rank_score_index,
             'ranked_score' => $stats->ranked_score,
-            'hit_accuracy' => $stats->accuracy_new,
+            'hit_accuracy' => $stats->hit_accuracy,
             'play_count' => $stats->playcount,
             'play_time' => $stats->total_seconds_played,
             'total_score' => $stats->total_score,
@@ -74,23 +57,6 @@ class UserStatisticsTransformer extends Fractal\TransformerAbstract
             return [
                 'global' => $stats->globalRank(),
                 'country' => $stats->countryRank(),
-            ];
-        });
-    }
-
-    public function includeScoreRanks(UserStatistics\Model $stats = null)
-    {
-        if ($stats === null) {
-            $stats = new UserStatistics\Osu();
-        }
-
-        return $this->item($stats, function ($stats) {
-            return [
-                'XH' => $stats->xh_rank_count,
-                'SH' => $stats->sh_rank_count,
-                'X' => $stats->x_rank_count,
-                'S' => $stats->s_rank_count,
-                'A' => $stats->a_rank_count,
             ];
         });
     }

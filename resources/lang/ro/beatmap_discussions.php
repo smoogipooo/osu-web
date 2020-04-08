@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'authorizations' => [
@@ -33,13 +18,24 @@ return [
 
     'index' => [
         'deleted_beatmap' => 'șters',
+        'none_found' => '',
         'title' => 'Discuții despre beatmap',
 
         'form' => [
             '_' => 'Caută',
             'deleted' => 'Include discuțiile șterse',
+            'only_unresolved' => 'Arată doar discuții nerezolvate',
             'types' => 'Tipuri de mesaje',
             'username' => 'Nume de utilizator',
+
+            'beatmapset_status' => [
+                '_' => 'Status de Beatmap',
+                'all' => 'Tot',
+                'disqualified' => 'Descalificat',
+                'never_qualified' => 'Niciodată Calificat',
+                'qualified' => 'Calificat',
+                'ranked' => 'Clasat',
+            ],
 
             'user' => [
                 'label' => 'Utilizator',
@@ -67,11 +63,28 @@ return [
         ],
     ],
 
+    'review' => [
+        'go_to_parent' => 'Vezi review-ul utilizatorului',
+        'go_to_child' => 'Vezi Discuția',
+        'validation' => [
+            'invalid_block_type' => '',
+            'invalid_document' => '',
+            'minimum_issues' => '',
+            'missing_text' => '',
+            'too_many_blocks' => '',
+        ],
+    ],
+
     'system' => [
         'resolved' => [
             'true' => 'Marcat ca rezolvat de :user',
             'false' => 'Redeschis de :user',
         ],
+    ],
+
+    'timestamp_display' => [
+        'general' => 'general',
+        'general_all' => 'general (tot)',
     ],
 
     'user_filter' => [

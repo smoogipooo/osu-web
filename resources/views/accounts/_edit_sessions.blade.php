@@ -1,3 +1,7 @@
+{{--
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+    See the LICENCE file in the repository root for full licence text.
+--}}
 <div class="account-edit">
     <div class="account-edit__section">
         <h2 class="account-edit__section-title">
@@ -38,7 +42,7 @@
                                     data-remote="1"
                                     data-confirm="{{trans('accounts.security.end_session_confirmation')}}"
                                     data-reload-on-success="1"
-                                    data-url="{{route('account.sessions.destroy', ['id' => $sessionId])}}"
+                                    data-url="{{route('account.sessions.destroy', ['session' => $sessionId])}}"
                                 >{{trans('accounts.security.end_session')}}<i class="fas fa-fw fa-sign-out-alt user-session-list-session__logout-icon"></i></button>
                             </div>
                         </div>

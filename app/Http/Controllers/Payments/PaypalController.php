@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 namespace App\Http\Controllers\Payments;
 
@@ -91,9 +76,12 @@ class PaypalController extends Controller
         $orderId = Request::input('order_id');
 
         $order = Order::where('user_id', Auth::user()->user_id)->processing()->find($orderId);
-        if ($order) {
-            (new OrderCheckout($order, Order::PROVIDER_PAYPAL))->failCheckout();
+
+        if ($order === null) {
+            return ujs_redirect(route('store.cart.show'));
         }
+
+        (new OrderCheckout($order, Order::PROVIDER_PAYPAL))->failCheckout();
 
         return $this->setAndRedirectCheckoutError($order, trans('store.checkout.declined'));
     }

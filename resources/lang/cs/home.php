@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'landing' => [
@@ -25,6 +10,7 @@ return [
         'peak' => 'Vrchol, :count online uživatelů',
         'players' => '<strong>:count</strong> registrovaných hráčů',
         'title' => 'vítejte',
+        'see_more_news' => 'zlédnout více novinek',
 
         'slogan' => [
             'main' => 'nejlepší free-to-win rytmická hra',
@@ -41,6 +27,7 @@ return [
         'title' => 'Hledat',
 
         'beatmapset' => [
+            'login_required' => 'Přihlašte se k hledání beatmap',
             'more' => ':count dalších výsledků vyhledávání map',
             'more_simple' => 'Zobrazit další výsledky vyhledávání map',
             'title' => 'Beatmapy',
@@ -49,6 +36,7 @@ return [
         'forum_post' => [
             'all' => 'Všechna fóra',
             'link' => 'Prohledat fórum',
+            'login_required' => 'Přihlašte se k hledání na fóru',
             'more_simple' => 'Zobrazit další výsledky prohledávání fór',
             'title' => 'Fórum',
 
@@ -69,6 +57,7 @@ return [
         ],
 
         'user' => [
+            'login_required' => 'Přihlašte se k hledání uživatelů',
             'more' => ':count dalších výsledků vyhledávání hráčů',
             'more_simple' => 'Zobrazit další výsledky vyhledávání hráčů',
             'more_hidden' => 'Vyhledávání hráčů je omezeno na :max hráčů. Zkus upravit tvé vyhledávání.',
@@ -119,8 +108,6 @@ return [
             'error' => 'Chyba načítání novinek, zkuste obnovit stránku?...',
         ],
         'header' => [
-            'welcome' => 'Vítej, <strong>:username</strong>!',
-            'messages' => 'Máte :count novou zprávu|Máte :count nové zprávy|Máte :count nových zpráv',
             'stats' => [
                 'friends' => 'Přátelé online',
                 'games' => 'Her',
@@ -130,8 +117,7 @@ return [
         'beatmaps' => [
             'new' => 'Nově hodnocené beatmapy',
             'popular' => 'Populární Beatmapy',
-            'by' => 'od',
-            'plays' => ':count zahrání',
+            'by_user' => 'od :user',
         ],
         'buttons' => [
             'download' => 'Stáhnout osu!',

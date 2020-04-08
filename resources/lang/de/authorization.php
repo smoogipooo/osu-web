@@ -1,24 +1,15 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
+    'require_login' => 'Zum Fortfahren bitte einloggen.',
+    'require_verification' => 'Bitte verifiziere Dich, um fortzufahren.',
+    'restricted' => "Nicht möglich, während man restricted ist.",
+    'silenced' => "Nicht möglich, während man stummgeschaltet ist.",
+    'unauthorized' => 'Zugang verwehrt.',
+
     'beatmap_discussion' => [
         'destroy' => [
             'is_hype' => 'Hype kann nicht rückgängig gemacht werden.',
@@ -47,10 +38,18 @@ return [
     ],
 
     'beatmap_discussion_post' => [
-        'edit' => [
-            'system_generated' => 'Automatisch erzeugte Beiträge können nicht bearbeitet werden.',
-            'not_owner' => 'Nur der Autor des Beitrages kann den Beitrag bearbeiten.',
+        'destroy' => [
+            'not_owner' => 'Du kannst nur deine eigenen Beiträge löschen.',
+            'resolved' => 'Du kannst keinen Beitrag einer gelösten Diskussion löschen.',
+            'system_generated' => 'Automatisch generierter Beitrag kann nicht gelöscht werden.',
         ],
+
+        'edit' => [
+            'not_owner' => 'Nur der Autor des Beitrages kann den Beitrag bearbeiten.',
+            'resolved' => 'Du kannst keinen Beitrag einer gelösten Diskussion bearbeiten.',
+            'system_generated' => 'Automatisch erzeugte Beiträge können nicht bearbeitet werden.',
+        ],
+
         'store' => [
             'beatmapset_locked' => 'Diese Beatmap Diskussion ist gesperrt.',
         ],
@@ -153,14 +152,6 @@ return [
             'admin_only' => 'Nur Administratoren können dieses Forum sehen.',
         ],
     ],
-
-    'require_login' => 'Zum Fortfahren bitte einloggen.',
-
-    'unauthorized' => 'Zugang verwehrt.',
-
-    'silenced' => "Nicht möglich, während man stummgeschaltet ist.",
-
-    'restricted' => "Nicht möglich, während man restricted ist.",
 
     'user' => [
         'page' => [

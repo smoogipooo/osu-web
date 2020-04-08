@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'deleted' => '[utente eliminato]',
@@ -54,43 +39,68 @@ return [
         'show_profile' => 'Visualizza profilo',
         'too_many' => 'Limite blocchi raggiunto.',
         'button' => [
-            'block' => 'blocca',
+            'block' => 'Blocca',
             'unblock' => 'sblocca',
         ],
     ],
 
     'card' => [
         'loading' => 'Caricamento...',
-        'send_message' => 'invia messaggio',
+        'send_message' => 'Invia messaggio',
+    ],
+
+    'disabled' => [
+        'title' => 'Uh-oh! Sembra che il tuo account sia stato disattivato.',
+        'warning' => "Nel caso tu abbia violato una regola, è necessario evidenziare che si tratta di un periodo dalla durata di un mese dove non saranno considerate alcune richieste di scuse. Dopo questo periodo, sarai libero di contattarci se lo ritieni opportuno. La creazione di nuovi account dopo la disattivazione di un altro sarà punita con <strong>l'estensione del periodo di un mese</strong>. È necessario sottolineare che <strong>creando un nuovo account ogni volta, violi ancora di più le regole</strong>. Ti suggeriamo caldamente di non prendere questa strada!",
+
+        'if_mistake' => [
+            '_' => 'Se pensi che si tratti di un\'errore, sei libero di contattarci (via :email o cliccando "?" presente nell\'angolo in basso a destra di questa pagina). Siamo pienamente fiduciosi delle nostre azioni, siccome si basano su prove consolidate. Ci riserviamo il diritto di rifiutare la tua richiesta nel caso capissimo la tua intenzione di essere disonesto.',
+            'email' => 'email',
+        ],
+
+        'reasons' => [
+            'compromised' => 'Il tuo account sembra essere stato compromesso. Potrebbe essere disattivato temporaneamente mentre la sua identità viene confermata.',
+            'opening' => 'Ci sono una serie di motivi che possono causare la disabilitazione del tuo account:',
+
+            'tos' => [
+                '_' => 'Hai violato una o più delle nostre :community_rules, oppure uno o più :tos.',
+                'community_rules' => 'regole della community',
+                'tos' => 'termini di servizio',
+            ],
+        ],
+    ],
+
+    'force_reactivation' => [
+        'reason' => [
+            'inactive_different_country' => "Il tuo account non è stato utilizzato per molto tempo.",
+        ],
     ],
 
     'login' => [
         '_' => 'Accedi',
-        'locked_ip' => 'il tuo indirizzo IP è bloccato. Aspetta qualche minuto per favore.',
-        'username' => 'Nome Utente',
-        'password' => 'Password',
         'button' => 'Accedi',
         'button_posting' => 'Accesso in corso...',
+        'email_login_disabled' => 'L\'accesso con email è attualmente disabilitato. Utilizza il nome utente.',
+        'failed' => 'Login non corretto',
+        'forgot' => 'Hai dimenticato la tua password?',
+        'info' => 'Accedi per continuare',
+        'locked_ip' => 'il tuo indirizzo IP è bloccato. Aspetta qualche minuto per favore.',
+        'password' => 'Password',
+        'register' => "Non hai un account di osu!? Fanne uno nuovo",
         'remember' => 'Ricorda questo computer',
         'title' => 'Per favore accedi per procedere',
-        'failed' => 'Login non corretto',
-        'register' => "Non hai un account di osu!? Fanne uno nuovo",
-        'forgot' => 'Hai dimenticato la tua password?',
+        'username' => 'Nome Utente',
+
         'beta' => [
             'main' => 'L\'accesso alla beta è attualmente limitato ad utenti privilegiati.',
             'small' => '(i supporter lo avranno a breve)',
         ],
-
-        'here' => 'qui', // this is substituted in when generating a link above. change it to suit the language.
     ],
 
     'posts' => [
         'title' => 'Post di :username',
     ],
 
-    'signup' => [
-        '_' => 'Registrati',
-    ],
     'anonymous' => [
         'login_link' => 'clicca per accedere',
         'login_text' => 'registrati',
@@ -101,10 +111,10 @@ return [
     'report' => [
         'button_text' => 'Segnala',
         'comments' => 'Ulteriori Commenti',
-        'placeholder' => 'Si prega di fornire qualsiasi informazione che ritieni possa essere utile.',
+        'placeholder' => 'Fornisci qualsiasi informazione che ritieni possa essere utile.',
         'reason' => 'Motivazione',
         'thanks' => 'Grazie per la tua segnalazione!',
-        'title' => 'Segnala :username?',
+        'title' => 'Segnalare :username?',
 
         'actions' => [
             'send' => 'Invia Segnalazione',
@@ -121,17 +131,17 @@ return [
         ],
     ],
     'restricted_banner' => [
-        'title' => 'Il tuo account è stato ristretto!',
-        'message' => 'Quando sei ristretto, non sarai in grado di interagire con gli altri giocatori e i tuoi punteggi saranno visibili solo a te. Questo è solitamente il risultato di un processo automatico e verrà risolto preferibilmente entro 24 ore. Se desideri fare appello alla tua restrizione, si prega di <a
-href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
+        'title' => 'Il tuo account è stato limitato!',
+        'message' => 'Quando sei limitato, non sarai in grado di interagire con gli altri giocatori e i tuoi punteggi saranno visibili solo a te. Solitamente questo è il risultato di un processo automatico e verrà risolto preferibilmente entro 24 ore. Se desideri fare appello alla tua restrizione, <a
+href="mailto:accounts@ppy.sh">contatta il supporto</a>.',
     ],
     'show' => [
         'age' => ':age anni',
         'change_avatar' => 'cambia il tuo avatar!',
         'first_members' => 'Qui dall\'inizio',
         'is_developer' => 'sviluppatore di osu!',
-        'is_supporter' => 'supporter di osu!',
-        'joined_at' => 'Registrato :date',
+        'is_supporter' => 'osu!supporter',
+        'joined_at' => 'Registrato da :date',
         'lastvisit' => 'Ultimo accesso :date',
         'lastvisit_online' => 'Attualmente online',
         'missingtext' => 'Potresti aver fatto un errore di battitura! (o l\'utente potrebbe essere stato bannato)',
@@ -144,9 +154,9 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
         'edit' => [
             'cover' => [
                 'button' => 'Cambia copertina del profilo',
-                'defaults_info' => 'Più opzioni per la copertina saranno disponibili nel futuro',
+                'defaults_info' => 'Più opzioni per la copertina saranno disponibili in futuro',
                 'upload' => [
-                    'broken_file' => 'Elaborazione dell\'immagine non riuscito. Controlla l\'immagine caricata e riprova.',
+                    'broken_file' => 'Elaborazione dell\'immagine non riuscita. Controlla l\'immagine caricata e riprova.',
                     'button' => 'Carica immagine',
                     'dropzone' => 'Trascina qui per caricarla',
                     'dropzone_info' => 'Puoi anche trascinare qui l\'immagine per caricarla',
@@ -155,8 +165,8 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
                     'unsupported_format' => 'Formato non supportato.',
 
                     'restriction_info' => [
-                        '_' => '',
-                        'link' => '',
+                        '_' => 'Caricamento disponibile solo per gli :link',
+                        'link' => 'osu!supporter',
                     ],
                 ],
             ],
@@ -168,11 +178,11 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
         ],
 
         'extra' => [
-            'followers' => '1 follower|:count followers',
+            'none' => 'nessuno',
             'unranked' => 'Nessuna partita recente',
 
             'achievements' => [
-                'achieved-on' => 'Raggiunto il :date',
+                'achieved-on' => 'Ottenuto il :date',
                 'locked' => 'Bloccato',
                 'title' => 'Obiettivi',
             ],
@@ -191,11 +201,21 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
                     'title' => 'Beatmap Amate',
                 ],
                 'ranked_and_approved' => [
-                    'title' => 'Beatmap Classificate e Approvate',
+                    'title' => 'Beatmap Classificate & Approvate',
                 ],
                 'unranked' => [
-                    'title' => 'Beatmap In Attesa',
+                    'title' => 'Beatmap in Attesa',
                 ],
+            ],
+            'discussions' => [
+                'title' => 'Discussioni',
+                'title_longer' => 'Discussioni Recenti',
+                'show_more' => 'guarda più discussioni',
+            ],
+            'events' => [
+                'title' => 'Eventi',
+                'title_longer' => 'Eventi Recenti',
+                'show_more' => 'guarda più eventi',
             ],
             'historical' => [
                 'empty' => 'Nessuna performance recente :(',
@@ -219,9 +239,7 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
                 ],
             ],
             'kudosu' => [
-                'available' => 'Kudosu Disponibili',
-                'available_info' => "I kudosu possono essere scambiati per delle stelle kudosu, che aiuteranno la tua beatmap ad ottenere più attenzione. Questo è il numero di kudosu che non hai ancora scambiato.",
-                'recent_entries' => 'Storico dei recenti kudosu',
+                'recent_entries' => 'Cronologia Kudosu Recenti',
                 'title' => 'Kudosu!',
                 'total' => 'Totale Kudosu Guadagnati',
 
@@ -231,24 +249,24 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
 
                     'beatmap_discussion' => [
                         'allow_kudosu' => [
-                            'give' => 'Ricevuto :amount dall\'annullamento del rifiuto di kudosu del modding post :post',
+                            'give' => 'Ricevuto :amount dall\'annullamento del rifiuto di kudosu del post di modding :post',
                         ],
 
                         'deny_kudosu' => [
-                            'reset' => 'Negato :amount dal modding post :post',
+                            'reset' => 'Negato :amount dal post di modding :post',
                         ],
 
                         'delete' => [
-                            'reset' => 'Perso :amount dalla rimozione del modding post :post',
+                            'reset' => 'Perso :amount dalla rimozione del post di modding di :post',
                         ],
 
                         'restore' => [
-                            'give' => 'Ricevuto :amount dal ripristino del modding post :post',
+                            'give' => 'Ricevuto :amount dal ripristino del post di modding di :post',
                         ],
 
                         'vote' => [
                             'give' => 'Ricevuto :amount dall\'ottenimento di voti nel post di modding di :post',
-                            'reset' => 'Perso :amount dalla perdita di voti nel posto di modding di :post',
+                            'reset' => 'Perso :amount dalla perdita di voti nel post di modding di :post',
                         ],
 
                         'recalculate' => [
@@ -259,14 +277,14 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
 
                     'forum_post' => [
                         'give' => 'Ricevuto :amount da :giver per il post in :post',
-                        'reset' => 'Kudosu resettato da :giver per il post :post',
-                        'revoke' => 'Kudosu negato da :giver per il post :post',
+                        'reset' => 'Kudosu resettati da :giver per il post :post',
+                        'revoke' => 'Kudosu negati da :giver per il post :post',
                     ],
                 ],
 
                 'total_info' => [
-                    '_' => '',
-                    'link' => '',
+                    '_' => 'Basato sul contributo che l\'utente ha dato nella moderazione delle beatmap. Visita :link per più informazioni.',
+                    'link' => 'questa pagina',
                 ],
             ],
             'me' => [
@@ -276,6 +294,11 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
                 'empty' => "Questo utente non ne ha ricevuti ancora. ;_;",
                 'recent' => 'Più recenti',
                 'title' => 'Medaglie',
+            ],
+            'posts' => [
+                'title' => 'Post',
+                'title_longer' => 'Post Recenti',
+                'show_more' => 'guarda più post',
             ],
             'recent_activity' => [
                 'title' => 'Recenti',
@@ -293,6 +316,13 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
                 'first' => [
                     'title' => 'Rank Primo Posto',
                 ],
+            ],
+            'votes' => [
+                'given' => 'Voti Assegnati (negli ultimi 3 mesi)',
+                'received' => 'Voti Ricevuti (negli ultimi 3 mesi)',
+                'title' => 'Voti',
+                'title_longer' => 'Voti Recenti',
+                'vote_count' => ':count_delimited voto|:count_delimited voti',
             ],
             'account_standing' => [
                 'title' => 'Stato dell\'account',
@@ -315,11 +345,6 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
                     ],
                 ],
             ],
-        ],
-
-        'header_title' => [
-            '_' => ':info giocatore',
-            'info' => 'Informazioni',
         ],
 
         'info' => [
@@ -346,13 +371,13 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
             'placeholder' => 'Scrivi il contenuto della pagina qui',
 
             'restriction_info' => [
-                '_' => '',
-                'link' => '',
+                '_' => 'Devi essere un :link per sbloccare questa funzionalità.',
+                'link' => 'osu!supporter',
             ],
         ],
         'post_count' => [
-            '_' => 'Ha contribuito :link',
-            'count' => ':count forum post |:count forum post',
+            '_' => 'Ha contribuito con :link',
+            'count' => ':count_delimited post nel forum|:count_delimited post nel forum',
         ],
         'rank' => [
             'country' => 'Rank del paese per :mode',
@@ -373,6 +398,11 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
             'score_ranks' => 'Rank dei Punteggi',
             'total_hits' => 'Colpi Totali',
             'total_score' => 'Punteggio Totale',
+            // modding stats
+            'ranked_and_approved_beatmapset_count' => 'Beatmap Classificate & Approvate',
+            'loved_beatmapset_count' => 'Beatmap Amate',
+            'unranked_beatmapset_count' => 'Beatmap in Attesa',
+            'graveyard_beatmapset_count' => 'Beatmap Abbandonate',
         ],
     ],
 
@@ -389,7 +419,8 @@ href="mailto:accounts@ppy.sh">contattare il supporto</a>.',
     ],
 
     'view_mode' => [
-        'card' => '',
-        'list' => '',
+        'brick' => 'Vista a blocchi',
+        'card' => 'Vista a schede',
+        'list' => 'Vista ad elenco',
     ],
 ];

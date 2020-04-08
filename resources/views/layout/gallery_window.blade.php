@@ -1,19 +1,6 @@
 {{--
-    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
-
-    This file is part of osu!web. osu!web is distributed with the hope of
-    attracting more community contributions to the core ecosystem of osu!.
-
-    osu!web is free software: you can redistribute it and/or modify
-    it under the terms of the Affero GNU General Public License version 3
-    as published by the Free Software Foundation.
-
-    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
-    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-    See the GNU Affero General Public License for more details.
-
-    You should have received a copy of the GNU Affero General Public License
-    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+    Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+    See the LICENCE file in the repository root for full licence text.
 --}}
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -43,11 +30,11 @@
 
                 <div class="pswp__counter"></div>
 
-                <button type="button" class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button type="button" class="pswp__button pswp__button--close" title="{{ trans('layout.gallery.close') }}"></button>
 
-                <button type="button" class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button type="button" class="pswp__button pswp__button--fs" title="{{ trans('layout.gallery.fullscreen') }}"></button>
 
-                <button type="button" class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <button type="button" class="pswp__button pswp__button--zoom" title="{{ trans('layout.gallery.zoom') }}"></button>
 
                 <div class="js-pswp-buttons"></div>
 
@@ -66,10 +53,10 @@
                 <div class="pswp__share-tooltip"></div>
             </div>
 
-            <button type="button" class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            <button type="button" class="pswp__button pswp__button--arrow--left" title="{{ trans('layout.gallery.previous') }}">
             </button>
 
-            <button type="button" class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            <button type="button" class="pswp__button pswp__button--arrow--right" title="{{ trans('layout.gallery.next') }}">
             </button>
 
             <div class="pswp__caption">

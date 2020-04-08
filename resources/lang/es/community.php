@@ -1,93 +1,92 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'support' => [
-        'header' => [
-            // size in font-size
-            'big_description' => '¿Te encanta osu!?<br/>
-                                Ayúdanos con su desarrollo :D',
-            'small_description' => '',
-            'support_button' => 'Quiero ayudar a osu!',
+        'convinced' => [
+            'title' => '¡Estoy convencido! :D',
+            'support' => 'apoyar a osu!',
+            'gift' => 'o regalar supporter a otros jugadores',
+            'instructions' => 'clic al botón del corazón para proceder a la osu!store',
         ],
+        'why-support' => [
+            'title' => '¿Por qué debo apoyar osu!? ¿Dónde va el dinero?',
 
-        'dev_quote' => 'osu! es un juego completamente gratuito, pero mantenerlo definitivamente no es tan gratis.
-        Entre el costo de alquilar servidores y el ancho de banda internacional de alta calidad, el tiempo dedicado al mantenimiento del sistema y la comunidad,
-        proporcionando premios para competencias, responder preguntas de soporte y, en general, mantener a la gente contenta, osu! ¡consume una cantidad considerable de dinero!
-        ¡Ah, y no olvides el hecho de que lo hacemos sin publicidad ni asociación con barras de herramientas tontas y cosas por el estilo!
-            <br/><br/>osu! es, al final del día, en gran parte administrado por mí, al que pueden conocer mejor como "peppy".
-            Tuve que dejar mi trabajo con el fin de manternerme al dia con osu!,
-            y en ocasiones lucho para mantener los estándares por los que me esfuerzo.
-            Me gustaría ofrecer mi agradecimiento personal a aquellos que han apoyado a osu! hasta ahora,
-            y tanto como para aquellos que continúan apoyando este increíble juego y comunidad en el futuro :).',
-
-        'supporter_status' => [
-            'contribution' => '¡Gracias por tu apoyo hasta ahora! ¡Has contribuido un total de :dollars con la compra de :tags tags!',
-            'gifted' => ':giftedTags de tus compras de tags han sido regaladas (un total de :giftedDollars regalados), ¡qué generoso!',
-            'not_yet' => "Todavía no tienes un tag de supporter aún :(",
-            'title' => 'Estado de supporter actual',
-            'valid_until' => 'Tu tag de supporter actual es válida hasta el :date!',
-            'was_valid_until' => 'Tu tag de supporter fue válida hasta :date.',
-        ],
-
-        'why_support' => [
-            'title' => '¿Por qué deberia apoyar a osu!?',
-            'blocks' => [
-                'dev' => 'Desarollado y mantenido principalmente por un hombre en Australia',
-                'time' => 'Toma demasiado tiempo para mantenerlo funcionando, llegando al punto de que ya no es posible llamarlo un "pasatiempo".',
-                'ads' => 'Sin anuncios en ningún lado. <br/><br/>
-                        Al contrario que el 99.95% de la web, no obtenemos ingresos poniéndote cosas en tu cara.',
-                'goodies' => '¡Obtienes algunos beneficios extra!',
+            'team' => [
+                'title' => 'Apoyar al equipo',
+                'description' => 'Un pequeño equipo desarrolla y ejecuta osu!. Tu apoyo les ayuda, tú sabes... en vivo.',
+            ],
+            'infra' => [
+                'title' => 'Infraestructura del servidor',
+                'description' => 'Las contribuciones se destinan a los servidores para el funcionamiento del sitio web, los servicios multijugador, las tablas de clasificación en línea, etc.',
+            ],
+            'featured-artists' => [
+                'title' => 'Artistas Destacados',
+                'description' => 'Con su apoyo, podemos acercarnos a artistas aún más impresionantes y licenciar más música para su uso en osu!',
+                'link_text' => 'Ver la lista actual &raquo;',
+            ],
+            'ads' => [
+                'title' => 'Mantener osu! autosuficiente',
+                'description' => 'Tus contribuciones ayudan a mantener el juego independiente y completamente libre de anuncios y patrocinadores externos.',
+            ],
+            'tournaments' => [
+                'title' => 'Torneos oficiales',
+                'description' => 'Ayuda a financiar el funcionamiento de (y los premios para) los torneos oficiales de la Copa Mundial.',
+                'link_text' => 'Explorar torneos &raquo;',
+            ],
+            'bounty-program' => [
+                'title' => 'Programa de Bounty de Código Abierto',
+                'description' => 'Apoye a los contribuyentes de la comunidad que han dado su tiempo y esfuerzo para ayudar a hacer que osu! sea mejor.',
+                'link_text' => 'Descubre más &raquo;',
             ],
         ],
-
         'perks' => [
-            'title' => '¿Oh? ¡¿Qué obtengo?!',
+            'title' => '¡Genial! ¿Qué beneficios obtengo?',
             'osu_direct' => [
                 'title' => 'osu!direct',
-                'description' => 'acceso rápido y sencillo para buscar Beatmaps sin salir del juego.',
+                'description' => 'Obtén acceso rápido y sencillo para buscar y descargar mapas sin tener que salir del juego.',
+            ],
+
+            'friend_ranking' => [
+                'title' => 'Clasificación entre Amigos',
+                'description' => "Observa cómo te enfrentas a tus amigos en la tabla de clasificación de un mapa, tanto dentro del juego como en el sitio web.",
+            ],
+
+            'country_ranking' => [
+                'title' => 'Clasificación Nacional',
+                'description' => 'Conquista tu país antes de conquistar el mundo.',
+            ],
+
+            'mod_filtering' => [
+                'title' => 'Filtrar por Mods',
+                'description' => '¿Asociarse sólo con personas que juegan con HDHR? ¡No hay problema!',
             ],
 
             'auto_downloads' => [
                 'title' => 'Descargas Automáticas',
-                'description' => '¡Descargas automáticas cuando juegas multijugador, espectas a otros, o al dar clic a enlaces en el chat!',
+                'description' => '¡Los mapas se descargarán automáticamente en partidas multijugador, mientras espectas a otros, o al hacer clic en enlaces relevantes en el chat!',
             ],
 
             'upload_more' => [
                 'title' => 'Sube más',
-                'description' => 'Ranuras de Beatmaps pendientes adicionales (por beatmap rankeado) hasta un máximo de 10.',
+                'description' => 'Espacios para mapas pendientes adicionales (por mapa clasificado) hasta un máximo de 10.',
             ],
 
             'early_access' => [
                 'title' => 'Acceso anticipado',
-                'description' => '¡Acceso a lanzamientos anticipados, donde puedes probar nuevas características antes de que sean públicas!',
+                'description' => '¡Obtén acceso anticipado a nuevos lanzamientos con nuevas características antes de que se hagan públicas!<br/><br/>¡Esto incluye el acceso anticipado a nuevas características en el sitio web también!',
             ],
 
             'customisation' => [
                 'title' => 'Personalización',
-                'description' => 'Personaliza tu perfil añadiendo una página de usuario totalmente personalizable.',
+                'description' => "Destaca subiendo una imagen de portada personalizada o creando una sección '¡yo!' totalmente personalizable dentro de tu perfil de usuario.",
             ],
 
             'beatmap_filters' => [
-                'title' => 'Filtros de Beatmap',
-                'description' => 'Filtra búsquedas de beatmaps por mapas jugados, no jugados y por puntuación obtenida. (Sí la hay).',
+                'title' => 'Filtros de Mapas',
+                'description' => 'Filtra las búsquedas de los mapas por mapas jugados, no jugados, y por puntuación obtenida.',
             ],
 
             'yellow_fellow' => [
@@ -102,7 +101,7 @@ return [
 
             'change_username' => [
                 'title' => 'Cambiar Nombre de usuario',
-                'description' => 'La habilidad de cambiar tu nombre de usuario sin costes adicionales. (máximo una vez)',
+                'description' => 'Un cambio de nombre gratuito se incluye con su primera compra de supporter.',
             ],
 
             'skinnables' => [
@@ -117,25 +116,33 @@ return [
 
             'sort_options' => [
                 'title' => 'Opciones de Orden',
-                'description' => 'La habilidad de ver rankings nacionales / amigos / por mod de un beatmap dentro del juego.',
+                'description' => 'La habilidad de ver las clasificaciones nacionales / amigos / por mod de un mapa dentro del juego.',
             ],
 
-            'feel_special' => [
-                'title' => 'Siéntete Especial',
-                'description' => 'La calidez y el sentimiento de hacer tu parte para mantener osu! funcionando sin problemas.',
+            'more_favourites' => [
+                'title' => 'Más favoritos',
+                'description' => 'El número máximo de mapas que puede marcar como favorito aumenta de :normally &rarr; :supporter',
+            ],
+            'more_friends' => [
+                'title' => 'Más amigos',
+                'description' => 'El número máximo de amigos que puedes tener aumenta de :normally &rarr; :supporter',
+            ],
+            'more_beatmaps' => [
+                'title' => 'Subir más mapas',
+                'description' => 'El número de mapas no clasificados que puedes tener a la vez se calcula a partir de un valor base más una bonificación adicional por cada mapa clasificado que tengas actualmente (hasta un límite).<br/><br/>Normalmente esto es :base más :bonus por mapa clasificado (hasta :bonus_max). Con supporter, esto aumenta a :supporter_base más :supporter_bonus por cada mapa clasificado (hasta :supporter_bonus_max).',
+            ],
+            'friend_filtering' => [
+                'title' => 'Amigos en la tabla de clasificación',
+                'description' => '¡Compita con sus amigos y vea cómo se clasifica contra ellos!*<br/><br/><small>* aún no disponible en el nuevo sitio, pronto(tm)</small>',
             ],
 
-            'more_to_come' => [
-                'title' => 'Más por venir',
-                'description' => '',
-            ],
         ],
-
-        'convinced' => [
-            'title' => '¡Estoy convencido! :D',
-            'support' => 'apoyar a osu!',
-            'gift' => 'o regalar supporter a otros jugadores',
-            'instructions' => 'clic al botón del corazón para proceder a la osu!store',
+        'supporter_status' => [
+            'contribution' => '¡Gracias por tu apoyo hasta ahora! ¡Has contribuido con :dollars con la compra de :tags tag(s)!',
+            'gifted' => "Has regalado :giftedTags de tus compras (eso es un valor de :giftedDollars), ¡qué generoso!",
+            'not_yet' => "Nunca has tenido un tag de osu!supporter :(",
+            'valid_until' => '¡Tu tag de osu!supporter actual es válida hasta el :date!',
+            'was_valid_until' => 'Tu tag de osu!supporter fue válida hasta el :date.',
         ],
     ],
 ];

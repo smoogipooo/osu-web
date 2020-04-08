@@ -1,33 +1,17 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'edit' => [
-        'title' => '<strong>帳號</strong>設定',
         'title_compact' => '設定',
         'username' => '使用者名稱',
 
         'avatar' => [
             'title' => '編輯頭像',
-            'rules' => '',
-            'rules_link' => '',
+            'rules' => '請確保您的頭像堅持 :link.<br/>這意味著必須 <strong>適合所有年齡</strong>. i.e. 沒有裸露，褻瀆或暗示性的內容。',
+            'rules_link' => '社群規則',
         ],
 
         'email' => [
@@ -67,10 +51,18 @@ return [
     'notifications' => [
         'title' => '通知',
         'topic_auto_subscribe' => '自動啟用自己創建的主題的通知',
+        'beatmapset_discussion_qualified_problem' => '在以下模式的 qualified 圖譜上接收新問題通知',
+
+        'mail' => [
+            '_' => '接收以下有關的電子郵件通知',
+            'beatmapset:modding' => '圖譜製作',
+            'forum_topic_reply' => '主題回復',
+        ],
     ],
 
     'oauth' => [
         'authorized_clients' => '已授權客戶端',
+        'own_clients' => '擁有的客戶端',
         'title' => 'OAuth',
     ],
 
@@ -98,21 +90,19 @@ return [
     ],
 
     'update_email' => [
-        'email_subject' => 'osu! 帳號電子郵件變更',
         'update' => '更新',
     ],
 
     'update_password' => [
-        'email_subject' => 'osu! 帳號密碼變更',
         'update' => '更新',
     ],
 
     'verification_completed' => [
-        'text' => '',
-        'title' => '',
+        'text' => '您可以關閉此選項/視窗',
+        'title' => '驗證已經完成',
     ],
 
     'verification_invalid' => [
-        'title' => '',
+        'title' => '無效或過期的驗證連結',
     ],
 ];

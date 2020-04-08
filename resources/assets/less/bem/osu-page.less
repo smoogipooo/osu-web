@@ -1,32 +1,7 @@
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 .osu-page {
-  .width(@extra-margin: 0px) {
-    width: calc(100% - (@extra-margin * 2));
-    max-width: (@container-sm - @extra-margin * 2);
-  }
-
-  .width-desktop(@extra-margin: 0px) {
-    width: calc(100% - ((@extra-margin + @grid-gutter-width) * 2));
-    max-width: (@container-sm - @extra-margin * 2);
-  }
-
   align-self: center;
   margin-left: auto;
   margin-right: auto;
@@ -39,13 +14,92 @@
     margin-bottom: 10px;
   }
 
-  .width();
+  .page-width();
   @media @desktop {
-    .width-desktop();
+    .page-width-desktop();
   }
 
   &--account-edit-header {
     .default-box-shadow();
+  }
+
+  &--admin {
+    .default();
+    .default-gutter-v2();
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    color: @osu-colour-c1;
+
+    h1, h3, h4 {
+      font-style: normal;
+      color: white;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    h3 {
+      font-size: 14px;
+    }
+
+    h4 {
+      font-size: 12px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    a {
+      .link-default();
+    }
+
+    pre {
+      background-color: @osu-colour-b6;
+      border: none;
+      color: white;
+    }
+
+    small {
+      color: @osu-colour-f1;
+    }
+
+    // bootstrap override
+    .label-default {
+      color: @osu-colour-f1;
+      background-color: @osu-colour-b6;
+    }
+  }
+
+  &--admin-store {
+    .default();
+    .default-gutter-v2();
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    color: #000;
+
+    a {
+      .link-blue-dark();
+    }
+
+    .panel-title > small {
+      font-size: 12px;
+      color: #000;
+    }
+  }
+
+  &--artist {
+    @media @desktop {
+      margin-top: 10px;
+    }
+  }
+
+  &--artists {
+    margin-bottom: 10px;
   }
 
   &--has-anchor {
@@ -76,33 +130,40 @@
     padding: 10px 0;
   }
 
-  &--contest {
-    @media @desktop {
-      .width-desktop(20px);
-      margin-bottom: 10px;
-    }
-  }
-
   &--contests {
     .default;
   }
 
+  &--description {
+    .default-gutter-v2();
+    background-color: @osu-colour-d3;
+    color: @osu-colour-c1;
+    font-size: @font-size--title-small;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
   &--download {
-    .width(20px);
+    .page-width(20px);
     .default;
 
     display: flex;
     flex-direction: column;
 
     @media @desktop {
-      .width-desktop(20px);
+      .page-width-desktop(20px);
     }
   }
 
-  &--forum-compact {
-    .default-box-shadow();
-    background-color: white;
+  &--forum {
+    background-color: @osu-colour-b5;
+    color: @osu-colour-c1;
     margin-bottom: 10px;
+  }
+
+  &--forum-topic {
+    background-color: @osu-colour-b4;
+    color: @osu-colour-c1;
   }
 
   &--forum-topic-feature-vote {
@@ -112,8 +173,40 @@
     margin-bottom: 5px;
   }
 
-  &--forum-pippi {
-    margin-bottom: 10px;
+  &--forum-topic-reply {
+    background-color: @osu-colour-b2;
+    color: @osu-colour-c1;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+
+    &.js-forum-topic-reply-flash {
+      animation: forum-topic-reply-flash 500ms ease-in-out;
+
+      @keyframes forum-topic-reply-flash {
+        50% { background-color: @osu-colour-b1; }
+      }
+    }
+
+    &[data-state=stick] {
+      position: fixed;
+      z-index: @z-index--forum-topic-reply-stick;
+      bottom: 0; // weird flashing in firefox android on certain scroll if using top
+      height: calc(var(--vh, 1vh) * 100 - @navbar-height);
+
+      @media @desktop {
+        position: relative;
+        top: auto;
+        z-index: auto;
+        height: auto;
+      }
+    }
+  }
+
+  &--forum-topic-watches-list {
+    .default();
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   &--full {
@@ -121,8 +214,10 @@
   }
 
   &--generic {
-    .default;
-    padding: 20px;
+    .default();
+    .default-gutter-v2();
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   &--generic-compact {
@@ -139,27 +234,17 @@
     background-color: #333;
   }
 
-  &--header-v3 {
-    align-self: auto;
+  &--info-bar {
+    .default-gutter-v2();
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: @osu-colour-d3;
+    display: flex;
   }
 
-  &--header-v3-compact {
-    @media @desktop {
-      align-self: flex-start;
-      margin-top: 90px;
-      width: 100%;
-    }
-  }
-
-  &--landing-buttons {
-    flex: 1 0 auto;
-  }
-
-  &--news {
-    .default;
-    .default-gutter();
-    padding-bottom: 20px;
-    padding-top: 20px;
+  &--mp-history {
+    .default();
+    .default-gutter-v2();
   }
 
   &--notification-banners {
@@ -169,24 +254,28 @@
     }
   }
 
-  &--password-reset {
-    .default;
-    .inner-shadow-top();
-
-    @media @desktop {
-      .width-desktop(20px);
-    }
-  }
-
-  &--rankings {
-    .default;
-    padding: 15px 20px 0;
-  }
-
   &--small {
     @media @desktop {
-      .width-desktop(20px);
+      .page-width-desktop(20px);
     }
+  }
+
+  &--store {
+    .default-box-shadow();
+    background-color: @osu-colour-b5;
+    color: @osu-colour-c1;
+
+    @media @desktop {
+      margin-bottom: 10px;
+    }
+  }
+
+  &--store-product {
+    .default-gutter-v2();
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: @osu-colour-b5;
+    color: @osu-colour-c1;
   }
 
   &--supporter {
@@ -195,16 +284,9 @@
     flex-direction: column;
   }
 
-  &--tournament {
-    @media @desktop {
-      .width-desktop(20px);
-      margin-bottom: 10px;
-    }
-  }
-
   &--users {
     .default;
-    background-color: @osu-colour-b4;
+    background-color: @osu-colour-b3;
   }
 
   &--users-show-header {
@@ -212,14 +294,14 @@
   }
 
   &--wiki {
-    .default;
+    .default();
     font-size: @font-size--wiki;
-    padding: 20px;
+  }
 
-    @media @desktop {
-      padding-left: @padding-wiki-desktop;
-      padding-right: @padding-wiki-desktop;
-    }
+  &--wiki-main {
+    .default-gutter-v2();
+    padding-top: 20px;
+    padding-bottom: $padding-top;
   }
 
   &--chat {
@@ -227,12 +309,11 @@
 
     flex: 1 0 auto;
     display: flex;
-    height: calc((var(--vh, 1vh) * 100) - 150px); // viewport height - compact header+footer
-    width: 100vw;
+    height: calc((var(--vh, 1vh) * 100) - (@nav2-height + 70px + 50px)); // viewport height - compact header+footer
     margin-bottom: 0;
 
     @media @mobile {
-      height: calc((var(--vh, 1vh) * 100) - 110px);
+      height: calc((var(--vh, 1vh) * 100) - 90px);
     }
   }
 }

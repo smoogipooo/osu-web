@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'pinned_topics' => 'หัวข้อที่ปักหมุดไว้',
@@ -25,6 +10,8 @@ return [
     'title' => 'ฟอรั่ม osu!',
 
     'covers' => [
+        'edit' => 'แก้ไขหน้าปก',
+
         'create' => [
             '_' => 'ตั้งภาพหน้าปก',
             'button' => 'อัพโหลดรูปภาพ',
@@ -37,11 +24,13 @@ return [
         ],
     ],
 
-    'email' => [
-        'new_reply' => '[osu!] มีการตอบกลับใหม่ใน ":title"',
-    ],
-
     'forums' => [
+        'latest_post' => 'โพสต์ล่าสุด',
+
+        'index' => [
+            'title' => '',
+        ],
+
         'topics' => [
             'empty' => 'ไม่มีหัวข้อ',
         ],
@@ -51,14 +40,6 @@ return [
         'forum' => 'ทำเครื่องหมายว่าอ่านทั้งหมดแล้ว',
         'forums' => 'ทำเครื่องหมายว่าอ่านทั้งหมดแล้ว',
         'busy' => 'กําลังทำเครื่องหมายว่าอ่านแล้ว...',
-    ],
-
-    'poll' => [
-        'edit_warning' => 'การแก้ไขโพลล์จะลบผลลัพท์ทั้งหมด!',
-
-        'actions' => [
-            'edit' => 'แก้ไขโพลล์',
-        ],
     ],
 
     'post' => [
@@ -71,6 +52,12 @@ return [
             'destroy' => 'ลบโพสต์',
             'restore' => 'กู้คืนโพสต์',
             'edit' => 'แก้ไขโพสต์',
+        ],
+
+        'create' => [
+            'title' => [
+                'reply' => 'ตอบกลับ',
+            ],
         ],
 
         'info' => [
@@ -99,6 +86,7 @@ return [
         'started_by_verbose' => 'เริ่มโดย :user',
 
         'create' => [
+            'close' => 'ปิด',
             'preview' => 'Preview',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
@@ -136,9 +124,7 @@ return [
 
     'topic_watches' => [
         'index' => [
-            'title' => 'กระทู้ที่ติดตาม',
             'title_compact' => 'กระทู้ที่ติดตาม',
-            'title_main' => 'ฟอรั่ม <strong>ติดตาม</strong>',
 
             'box' => [
                 'total' => 'ติดตามกระทู้แล้ว',
@@ -250,8 +236,10 @@ return [
         'lock' => [
             'is_locked' => 'This topic is locked and can not be replied to',
             'to_0' => 'ปลดล็อกหัวข้อ',
+            'to_0_confirm' => '',
             'to_0_done' => 'หัวข้อถูกปลดล็อกแล้ว',
             'to_1' => 'ล็อกหัวข้อ',
+            'to_1_confirm' => '',
             'to_1_done' => 'หัวข้อถูกล็อกแล้ว',
         ],
 
@@ -261,11 +249,19 @@ return [
 
         'moderate_pin' => [
             'to_0' => 'เลิกปักหมุดหัวข้อ',
+            'to_0_confirm' => '',
             'to_0_done' => 'หัวข้อถูกเลิกปักหมุดแล้ว',
             'to_1' => 'ปักหมุดหัวข้อ',
+            'to_1_confirm' => '',
             'to_1_done' => 'หัวข้อถูกปักหมุดแล้ว',
             'to_2' => 'ปักหมุดหัวข้อและตั้งให้เป็นประกาศ',
+            'to_2_confirm' => '',
             'to_2_done' => 'หัวข้อถูกปักหมุดและตั้งให้เป็นประกาศแล้ว',
+        ],
+
+        'moderate_toggle_deleted' => [
+            'show' => 'แสดงโพสต์ที่ถูกลบ',
+            'hide' => 'ซ่อนโพสต์ที่ถูกลบ',
         ],
 
         'show' => [
@@ -290,7 +286,16 @@ return [
             ],
 
             'poll' => [
+                'edit' => 'แก้ไขโพลล์',
+                'edit_warning' => 'ถ้าแก้ไขโพลล์แล้วผลโหวตจะหายนะ',
                 'vote' => 'Vote',
+
+                'button' => [
+                    'change_vote' => 'เปลี่ยนตัวเลือกโหวต',
+                    'edit' => 'แก้ไขโพลล์',
+                    'view_results' => 'ไปดูผลโหวต',
+                    'vote' => 'โหวต',
+                ],
 
                 'detail' => [
                     'end_time' => 'Polling will end at :time',

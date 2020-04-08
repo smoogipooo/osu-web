@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'event' => [
@@ -61,12 +46,12 @@ return [
     'type' => [
         'approve' => 'Approbation',
         'discussion_delete' => 'Suppression de la discussion',
-        'discussion_post_delete' => 'Suppression de réponse de discussion',
+        'discussion_post_delete' => 'Suppression de la réponse de discussion',
         'discussion_post_restore' => 'Restauration de réponse de discussion',
-        'discussion_restore' => 'Restauration de discussion',
+        'discussion_restore' => 'Restauration de la discussion',
         'disqualify' => 'Disqualification',
-        'issue_reopen' => 'Réouverture de discussion',
-        'issue_resolve' => 'Résolution de discussion',
+        'issue_reopen' => 'Réouverture de la discussion',
+        'issue_resolve' => 'Résolution de la discussion',
         'kudosu_allow' => 'Allocation de Kudosu',
         'kudosu_deny' => 'Déni de Kudosu',
         'kudosu_gain' => 'Gain de Kudosu',

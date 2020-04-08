@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'box' => [
@@ -26,17 +11,13 @@ return [
         'issuing' => 'Отправка другого письма...',
 
         'info' => [
-            'check_spam' => "Проверьте папку спам, если вы не можете найти письмо",
+            'check_spam' => "Проверьте папку «Спам», если Вы не можете найти письмо.",
             'recover' => "Если вы потеряли доступ к своей почте или забыли его, пройдите :link.",
             'recover_link' => 'процедуру восстановления',
             'reissue' => 'Также, вы можете :reissue_link или :logout_link.',
             'reissue_link' => 'запросить другой код',
             'logout_link' => 'выйти',
         ],
-    ],
-
-    'email' => [
-        'subject' => 'Подтверждение доступа к аккаунту osu!',
     ],
 
     'errors' => [

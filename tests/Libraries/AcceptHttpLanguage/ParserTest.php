@@ -1,42 +1,22 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 /**
  * This is a port of parser_spec from the http_accept_language gem
  * https://github.com/iain/http_accept_language/blob/v2.1.1/spec/parser_spec.rb.
  */
 
-namespace Test\Libraries\AcceptHttpLanguage;
+namespace Tests\Libraries\AcceptHttpLanguage;
 
 use App\Libraries\AcceptHttpLanguage\Parser;
-use TestCase;
+use Tests\TestCase;
 
 class ParserTest extends TestCase
 {
     /** @var Parser */
     private $parser;
-
-    public function setUp()
-    {
-        $this->parser = new Parser('en-us,en-gb;q=0.8,en;q=0.6,es-419');
-    }
 
     public function testShouldReturnEmptyArray()
     {
@@ -96,5 +76,10 @@ class ParserTest extends TestCase
     {
         $this->parser->header = 'ja,en-gb,en-us,fr-fr';
         $this->assertSame('ja-JP', $this->parser->languageRegionCompatibleFrom(['en-UK', 'en-US', 'ja-JP']));
+    }
+
+    protected function setUp(): void
+    {
+        $this->parser = new Parser('en-us,en-gb;q=0.8,en;q=0.6,es-419');
     }
 }

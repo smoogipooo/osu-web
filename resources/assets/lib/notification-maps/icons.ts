@@ -1,20 +1,5 @@
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 interface IconsMap {
   [key: string]: string[];
@@ -22,6 +7,7 @@ interface IconsMap {
 
 export const categoryToIcons: IconsMap = {
   beatmapset_discussion: ['fas fa-drafting-compass', 'fas fa-comment'],
+  beatmapset_problem: ['fas fa-drafting-compass', 'fas fa-exclamation-circle'],
   beatmapset_state: ['fas fa-drafting-compass'],
   channel: ['fas fa-comments'],
   comment: ['fas fa-comment'],
@@ -32,6 +18,7 @@ export const categoryToIcons: IconsMap = {
 export const nameToIcons: IconsMap = {
   beatmapset_discussion_lock: ['fas fa-drafting-compass', 'fas fa-lock'],
   beatmapset_discussion_post_new: ['fas fa-drafting-compass', 'fas fa-comment-medical'],
+  beatmapset_discussion_qualified_problem: ['fas fa-drafting-compass', 'fas fa-exclamation-circle'],
   beatmapset_discussion_unlock: ['fas fa-drafting-compass', 'fas fa-unlock'],
   beatmapset_disqualify: ['fas fa-drafting-compass', 'far fa-times-circle'],
   beatmapset_love: ['fas fa-drafting-compass', 'fas fa-heart'],
@@ -49,6 +36,7 @@ export const nameToIcons: IconsMap = {
 export const nameToIconsCompact: IconsMap = {
   beatmapset_discussion_lock: ['fas fa-lock'],
   beatmapset_discussion_post_new: ['fas fa-comment-medical'],
+  beatmapset_discussion_qualified_problem: ['fas fa-exclamation-circle'],
   beatmapset_discussion_unlock: ['fas fa-unlock'],
   beatmapset_disqualify: ['far fa-times-circle'],
   beatmapset_love: ['fas fa-heart'],

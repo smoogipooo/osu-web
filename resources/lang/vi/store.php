@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'admin' => [
@@ -25,6 +10,7 @@ return [
 
     'cart' => [
         'checkout' => 'Thanh Toán',
+        'info' => '',
         'more_goodies' => 'Tôi muốn xem thêm nhiều mặt hàng nữa trước khi hoàn thành đơn hàng',
         'shipping_fees' => 'phí vận chuyển',
         'title' => 'Giỏ Hàng',
@@ -51,6 +37,7 @@ return [
         'delayed_shipping' => 'Hiện tại chúng tôi đang có một lượng đơn hàng rất lớn! Bạn vẫn có thể thoải mái đặt hàng, nhưng vui lòng đợi **thêm 1-2 tuần** trong khi chúng tôi bắt kịp với những đơn hàng hiện tại.',
         'old_cart' => 'Giỏ hàng của bạn đã hết hạn và đã được nạp lại, vui lòng thử lại sau.',
         'pay' => 'Thanh toán với Paypal',
+        'title_compact' => '',
 
         'has_pending' => [
             '_' => 'Bạn có thanh toán chưa hoàn thành, nhấp vào :link để xem.',
@@ -67,6 +54,8 @@ return [
 
     'invoice' => [
         'echeck_delay' => 'Vì bạn thanh toán bằng eCheck, hãy chờ thêm tối đa 10 ngày để thanh toán qua khỏi PayPal!',
+        'title_compact' => '',
+
         'status' => [
             'processing' => [
                 'title' => 'Thanh toán của bạn chưa được xác nhận!',
@@ -76,12 +65,6 @@ return [
                     'link_text' => 'nhấp vào đây để tiếp tục quá trình thanh toán',
                 ],
             ],
-        ],
-    ],
-
-    'mail' => [
-        'payment_completed' => [
-            'subject' => 'Chúng tôi đã nhận được đơn hàng osu!store của bạn!',
         ],
     ],
 
@@ -151,5 +134,9 @@ return [
             '_' => 'Bạn cần phải :link để đổi tên!',
             'link_text' => 'đăng nhập',
         ],
+    ],
+
+    'xsolla' => [
+        'distributor' => '',
     ],
 ];

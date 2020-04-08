@@ -1,30 +1,9 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
-    'discussion-posts' => [
-        'store' => [
-            'error' => 'Speichern des Beitrages fehlgeschlagen',
-        ],
-    ],
-
     'discussion-votes' => [
         'update' => [
             'error' => 'Aktualisieren der Stimme fehlgeschlagen',
@@ -33,6 +12,7 @@ return [
 
     'discussions' => [
         'allow_kudosu' => 'kudosu erlauben',
+        'beatmap_information' => 'Beatmap-Seite',
         'delete' => 'löschen',
         'deleted' => 'Von :editor gelöscht (:delete_time).',
         'deny_kudosu' => 'kudosu verweigern',
@@ -90,12 +70,14 @@ return [
             'nomination_reset' => 'Nominierung zurücksetzen',
             'praise' => 'Loben',
             'problem' => 'Problem',
+            'review' => 'Bewertung',
             'suggestion' => 'Vorschlag',
         ],
 
         'mode' => [
             'events' => 'Geschichte',
             'general' => 'Allgemein',
+            'reviews' => 'Rezensionen',
             'timeline' => 'Timeline',
             'scopes' => [
                 'general' => 'Diese Schwierigkeitsstufe',
@@ -140,8 +122,14 @@ return [
         ],
 
         'votes' => [
-            'up' => 'Diskussion aufwerten',
-            'down' => 'Diskussion abwerten',
+            'none' => [
+                'down' => 'Noch keine Downvotes',
+                'up' => 'Noch keine Upvotes',
+            ],
+            'latest' => [
+                'down' => 'Letzte Upvotes',
+                'up' => 'Letzte Upvotes',
+            ],
         ],
     ],
 
@@ -149,7 +137,7 @@ return [
         'button' => 'Beatmap hypen!',
         'button_done' => 'Schon gehypt!',
         'confirm' => "Sicher? Dies wird eins deiner letzten :n Hypes verwenden und kann nicht rückgängig gemacht werden.",
-        'explanation' => 'Hype diese Beatmap, um sie für Nominierungen und ranked sichtbarer zu machen!',
+        'explanation' => 'Hype diese Beatmap, um sie für Nominierungen und Ranking sichtbarer zu machen!',
         'explanation_guest' => 'Einloggen und diese Beatmap hypen, um sie für Nominierungen und ranked sichtbarer zu machen!',
         'new_time' => "Um :new_time wirst du deinen nächsten Hype erhalten.",
         'remaining' => 'Du hast noch :remaining Hypes übrig.',
@@ -176,6 +164,7 @@ return [
         'nominate' => 'Nominieren',
         'nominate_confirm' => 'Diese Beatmap nominieren?',
         'nominated_by' => 'Nominiert von :users',
+        'not_enough_hype' => "Nicht ausreichend Hype vorhanden.",
         'qualified' => 'Die Beatmap wird voraussichtlich am :date ranked, wenn keine Probleme gefunden werden.',
         'qualified_soon' => 'Die Beatmap wird bald ranked, wenn keine Probleme gefunden werden.',
         'required_text' => 'Nominierungen: :current/:required',
@@ -280,6 +269,7 @@ return [
         'HD' => 'Hidden',
         'HR' => 'Hard Rock',
         'HT' => 'Half Time',
+        'MR' => 'Spiegel',
         'NC' => 'Nightcore',
         'NF' => 'No Fail',
         'NM' => 'No mods',

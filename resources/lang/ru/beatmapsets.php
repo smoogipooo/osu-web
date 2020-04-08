@@ -1,22 +1,7 @@
 <?php
 
-/**
- *    Copyright (c) ppy Pty Ltd <contact@ppy.sh>.
- *
- *    This file is part of osu!web. osu!web is distributed with the hope of
- *    attracting more community contributions to the core ecosystem of osu!.
- *
- *    osu!web is free software: you can redistribute it and/or modify
- *    it under the terms of the Affero GNU General Public License version 3
- *    as published by the Free Software Foundation.
- *
- *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
- *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- *    See the GNU Affero General Public License for more details.
- *
- *    You should have received a copy of the GNU Affero General Public License
- *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
- */
+// Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
+// See the LICENCE file in the repository root for full licence text.
 
 return [
     'availability' => [
@@ -34,18 +19,11 @@ return [
         'discussion' => 'Обсуждение',
 
         'details' => [
-            'approved' => 'одобрен ',
             'favourite' => 'Добавить в избранное',
-            'favourited_count' => '+ 1 другой!|+ :count других!',
             'logged-out' => 'Вы должны войти для загрузки карты!',
-            'loved' => 'избран ',
             'mapped_by' => 'сделана :mapper',
-            'qualified' => 'квалифицирован ',
-            'ranked' => 'ранкнут ',
-            'submitted' => 'опубликован ',
             'unfavourite' => 'Удалить из избранного',
-            'updated' => 'обновлён ',
-            'updated_timeago' => 'обновлён :timeago',
+            'updated_timeago' => 'обновлена :timeago',
 
             'download' => [
                 '_' => 'Скачать',
@@ -60,12 +38,21 @@ return [
             ],
         ],
 
+        'details_date' => [
+            'approved' => 'одобрена :timeago',
+            'loved' => 'стала любимой :timeago',
+            'qualified' => 'квалифицирована :timeago',
+            'ranked' => 'стала рейтинговой :timeago',
+            'submitted' => 'загружена :timeago',
+            'updated' => 'обновлена :timeago',
+        ],
+
         'favourites' => [
-            'limit_reached' => 'У вас слишком много любимых карт! Удалите некоторые из них и попробуйте снова.',
+            'limit_reached' => 'У вас слишком много избранных карт! Пожалуйста, удалите некоторые из них из избранных и попробуйте снова.',
         ],
 
         'hype' => [
-            'action' => 'Хайпаните эту карту если вам понравилось в неё играть чтобы помочь карте получить <strong>Ранкед</strong>.',
+            'action' => 'Хайпаните эту карту, если Вам понравилось в неё играть, чтобы помочь ей стать <strong>Рейтинговой</strong>.',
 
             'current' => [
                 '_' => 'Эта карта сейчас :status.',
@@ -73,8 +60,20 @@ return [
                 'status' => [
                     'pending' => 'на рассмотрении',
                     'qualified' => 'квалифицирована',
-                    'wip' => 'работа в процессе',
+                    'wip' => 'в разработке',
                 ],
+            ],
+
+            'disqualify' => [
+                '_' => 'Если Вы обнаружили проблему у этой карты, пожалуйста, дисквалифицируйте её :link.',
+                'button_title' => 'Дисквалифицировать квалифицированную карту.',
+            ],
+
+            'report' => [
+                '_' => 'Если вы обнаружили проблему, связанную с этой картой, пожалуйста, сообщите об этом :link, чтобы оповестить команду osu!.',
+                'button' => 'Сообщить о проблеме',
+                'button_title' => 'Сообщить о проблеме с квалифицированной картой.',
+                'link' => 'здесь',
             ],
         ],
 
@@ -87,15 +86,15 @@ return [
             'source' => 'Источник',
             'success-rate' => 'Шанс успеха',
             'tags' => 'Теги',
-            'unranked' => 'Unranked карта',
+            'unranked' => 'Безрейтинговая карта',
         ],
 
         'scoreboard' => [
             'achieved' => 'достигнут :when',
-            'country' => 'Рейтинг стран',
-            'friend' => 'Рейтинг друзей',
+            'country' => 'Рейтинг по стране',
+            'friend' => 'Рейтинг среди друзей',
             'global' => 'Глобальный рейтинг',
-            'supporter-link' => 'Нажмите <a href=":link">сюда</a> для просмотра всех возможностей которые Вы получаете!',
+            'supporter-link' => 'Нажмите <a href=":link">сюда</a> для просмотра всех возможностей, что Вы можете получить!',
             'supporter-only' => 'Вы должны иметь osu!supporter для использования данной возможности!',
             'title' => 'Табло',
 
@@ -116,7 +115,7 @@ return [
                 'friend' => 'Никто из ваших друзей ещё не играл в эту карту!',
                 'global' => 'Никто ещё не играл в эту карту! Может быть вы попробуете?',
                 'loading' => 'Результаты загружаются...',
-                'unranked' => 'Unranked карта.',
+                'unranked' => 'Безрейтинговая карта.',
             ],
             'score' => [
                 'first' => 'Лидирует',
@@ -126,19 +125,29 @@ return [
 
         'stats' => [
             'cs' => 'Размер нот',
-            'cs-mania' => 'Количество нот',
+            'cs-mania' => 'Количество клавиш',
             'drain' => 'Потеря HP',
             'accuracy' => 'Точность',
             'ar' => 'Скорость подхода',
             'stars' => 'Сложность',
-            'total_length' => 'Длительность',
+            'total_length' => 'Длительность (длительность дренажа: :hit_length)',
             'bpm' => 'BPM',
             'count_circles' => 'Количество нот',
             'count_sliders' => 'Количество слайдеров',
-            'user-rating' => 'Рейтинг пользователей',
-            'rating-spread' => 'Шкала рейтинга',
+            'user-rating' => 'Оценки пользователей',
+            'rating-spread' => 'Шкала оценок',
             'nominations' => 'Номинации',
             'playcount' => 'Количество игр',
+        ],
+
+        'status' => [
+            'ranked' => 'Рейтинговая',
+            'approved' => 'Одобренная',
+            'loved' => 'Любимая',
+            'qualified' => 'Квалифицированная',
+            'wip' => 'В разработке',
+            'pending' => 'Ожидающая',
+            'graveyard' => 'Заброшенная',
         ],
     ],
 ];
