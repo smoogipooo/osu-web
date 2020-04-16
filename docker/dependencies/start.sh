@@ -20,6 +20,7 @@ php artisan route:clear
 
 echo "ES_HOST=elasticsearch:9200" >> .env
 echo "ES_SCORES_HOST=elasticsearch:9200" >> .env
+echo "QUERY_DETECTOR_ENABLED=0" >> .env
 echo "Importing data..."
 
 cat ./sql/*.sql | mysql -u osuweb --host=db --database=osu
@@ -34,6 +35,10 @@ echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_per
  INSERT INTO osu_user_performance_rank (user_id, mode, r0) SELECT user_id, ${MODE}, 1 FROM phpbb_users;" | mysql -u osuweb --host=db --database=osu
 
 echo "Finshed importing data."
+
+# undo config and route caching by the script above
+php artisan config:clear
+php artisan route:clear
 
 php artisan es:index-documents --yes
 php artisan es:create-search-blacklist
