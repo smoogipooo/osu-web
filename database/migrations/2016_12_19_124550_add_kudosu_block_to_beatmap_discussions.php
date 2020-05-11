@@ -17,7 +17,7 @@ class AddKudosuBlockToBeatmapDiscussions extends Migration
     {
         Schema::table('beatmap_discussions', function ($table) {
             $table->boolean('kudosu_denied')->default(false);
-            $table->unsignedMediumInteger('kudosu_denied_by_id')->nullable();
+            $table->unsignedInteger('kudosu_denied_by_id')->nullable();
             $table->foreign('kudosu_denied_by_id')
                 ->references('user_id')
                 ->on('phpbb_users')

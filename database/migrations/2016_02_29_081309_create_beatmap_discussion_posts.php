@@ -18,7 +18,7 @@ class CreateBeatmapDiscussionPosts extends Migration
         Schema::create('beatmap_discussion_posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('beatmap_discussion_id')->unsigned();
-            $table->mediumInteger('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->nullableTimestamps();
 
             $table->text('message');

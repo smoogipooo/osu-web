@@ -62,7 +62,7 @@ class CreateContestTables extends Migration
                 ->on('contests')
                 ->onDelete('restrict');
 
-            $table->mediumInteger('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('user_id')
                 ->on('phpbb_users')

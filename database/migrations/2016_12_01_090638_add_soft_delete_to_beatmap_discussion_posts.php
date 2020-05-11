@@ -18,7 +18,7 @@ class AddSoftDeleteToBeatmapDiscussionPosts extends Migration
         //
         Schema::table('beatmap_discussion_posts', function ($table) {
             $table->softDeletes();
-            $table->unsignedMediumInteger('deleted_by_id')->nullable();
+            $table->unsignedInteger('deleted_by_id')->nullable();
             $table->foreign('deleted_by_id')
                 ->references('user_id')
                 ->on('phpbb_users')

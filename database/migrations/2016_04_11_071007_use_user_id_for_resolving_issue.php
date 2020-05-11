@@ -14,7 +14,7 @@ class UseUserIdForResolvingIssue extends Migration
     public function up()
     {
         Schema::table('beatmap_discussions', function ($table) {
-            $table->mediumInteger('resolver_id')->unsigned()->nullable();
+            $table->integer('resolver_id')->unsigned()->nullable();
 
             $table->foreign('resolver_id')
                 ->references('user_id')

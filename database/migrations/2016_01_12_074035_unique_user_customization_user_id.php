@@ -14,7 +14,7 @@ class UniqueUserCustomizationUserId extends Migration
      */
     public function up()
     {
-        DB::statement('ALTER TABLE user_profile_customizations MODIFY user_id MEDIUMINT UNSIGNED NULL');
+        DB::statement('ALTER TABLE user_profile_customizations MODIFY user_id INT UNSIGNED NULL');
 
         Schema::table('user_profile_customizations', function ($table) {
             $table->foreign('user_id')->references('user_id')->on('phpbb_users');

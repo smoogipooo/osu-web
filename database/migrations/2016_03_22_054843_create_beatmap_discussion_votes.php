@@ -18,7 +18,7 @@ class CreateBeatmapDiscussionVotes extends Migration
         Schema::create('beatmap_discussion_votes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('beatmap_discussion_id')->unsigned();
-            $table->mediumInteger('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->tinyInteger('score');
             $table->nullableTimestamps();
 

@@ -18,7 +18,7 @@ class AddBeatmapsetWatches extends Migration
         Schema::create('beatmapset_watches', function ($table) {
             $table->bigIncrements('id');
             $table->mediumInteger('beatmapset_id')->unsigned();
-            $table->mediumInteger('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestampTz('last_read')->useCurrent();
             $table->timestampTz('last_notified')->nullable()->default(null);
             $table->timestampsTz();

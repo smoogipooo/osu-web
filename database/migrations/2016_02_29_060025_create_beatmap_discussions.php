@@ -19,7 +19,7 @@ class CreateBeatmapDiscussions extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('beatmapset_discussion_id')->unsigned();
             $table->mediumInteger('beatmap_id')->unsigned()->nullable();
-            $table->mediumInteger('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
 
             $table->integer('message_type')->nullable();
             $table->integer('timestamp')->nullable();

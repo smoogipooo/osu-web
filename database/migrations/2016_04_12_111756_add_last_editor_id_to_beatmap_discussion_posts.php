@@ -15,7 +15,7 @@ class AddLastEditorIdToBeatmapDiscussionPosts extends Migration
     public function up()
     {
         Schema::table('beatmap_discussion_posts', function ($table) {
-            $table->mediumInteger('last_editor_id')->unsigned()->nullable();
+            $table->integer('last_editor_id')->unsigned()->nullable();
 
             $table->foreign('last_editor_id')
                 ->references('user_id')
