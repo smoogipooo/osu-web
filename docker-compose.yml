@@ -14,6 +14,7 @@ x-env: &x-env
   DOCKER: 1
   MODE: ${MODE:-0}
   MODE_LITERAL: ${MODE_LITERAL:-osu}
+  UID: ${UID:-0}
 
 services:
   nginx:
