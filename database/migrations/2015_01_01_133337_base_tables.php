@@ -1384,7 +1384,7 @@ class BaseTables extends Migration
             $table->collation = 'utf8_bin';
 
             $table->mediumInteger('group_id')->unsigned()->default(0);
-            $table->mediumInteger('user_id')->unsigned()->default(0)->index('user_id');
+            $table->integer('user_id')->unsigned()->default(0)->index('user_id');
             $table->boolean('group_leader')->unsigned()->default(0);
             $table->boolean('user_pending')->unsigned()->default(1);
             $table->primary(['group_id', 'user_id']);
