@@ -23,7 +23,7 @@ echo "ES_SCORES_HOST=elasticsearch:9200" >> .env
 echo "QUERY_DETECTOR_ENABLED=0" >> .env
 echo "Importing data..."
 
-$SQL_CONN='mysql -u osuweb --host=db --database=osu'
+SQL_CONN='mysql -u osuweb --host=db --database=osu'
 
 # Initial import.
 cat ./sql/*.sql \
