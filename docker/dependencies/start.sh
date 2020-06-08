@@ -61,7 +61,7 @@ echo '(new App\Libraries\UserRegistration(["username" => "username", "user_email
 php artisan config:clear
 php artisan route:clear
 
-php artisan es:index-documents --yes
+php artisan es:index-documents --yes --inplace
 php artisan es:create-search-blacklist
 yarn
 
