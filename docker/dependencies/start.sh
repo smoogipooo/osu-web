@@ -18,11 +18,13 @@ test -f .env || cp .env.example .env
 php artisan config:clear
 php artisan route:clear
 
+# .env hax.
 echo "ES_HOST=elasticsearch:9200" >> .env
 echo "ES_SCORES_HOST=elasticsearch:9200" >> .env
 echo "QUERY_DETECTOR_ENABLED=0" >> .env
-echo "Importing data..."
+sed -i 's@^.*APP_URL=.*$@'"APP_URL=$HTTP_URL"'@' .env
 
+echo "Importing data..."
 SQL_CONN='mysql -u osuweb --host=db --database=osu'
 
 # Initial import.

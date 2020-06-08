@@ -15,6 +15,7 @@ x-env: &x-env
   MODE: ${MODE:-0}
   MODE_LITERAL: ${MODE_LITERAL:-osu}
   UID: ${UID:-0}
+  HTTP_URL: ${HTTP_URL:-http://localhost:8080}
 
 services:
   nginx:
