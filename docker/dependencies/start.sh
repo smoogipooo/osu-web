@@ -53,6 +53,10 @@ echo "INSERT INTO osu_counts (name, count) VALUES ('docker_db_step', '1');" \
   | $SQL_CONN
 echo "Finshed importing data."
 
+# Add default user (u: username, p: password), for the ability to search beatmap listing.
+echo '(new App\Libraries\UserRegistration(["username" => "username", "user_email" => "admin@smgi.me", "password" => "password"]))->save();' \
+  | php artisan tinker
+
 # undo config and route caching by the script above
 php artisan config:clear
 php artisan route:clear
