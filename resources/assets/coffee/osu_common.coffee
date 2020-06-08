@@ -27,6 +27,10 @@
     _.find currentUser.friends, target_id: user_id
 
 
+  diffColour: (difficultyRating) ->
+    '--diff': "var(--diff-#{difficultyRating ? 'default'})"
+
+
   executeAction: (element) =>
     if !element?
       osu.reloadPage()
@@ -174,7 +178,7 @@
 
   timeago: (time) ->
     el = document.createElement('time')
-    el.classList.add 'timeago'
+    el.classList.add 'js-timeago'
     el.setAttribute 'datetime', time
     el.textContent = time
     el.outerHTML
@@ -365,7 +369,10 @@
   updateQueryString: (url, params) ->
     urlObj = new URL(url ? window.location.href, document.location.origin)
     for own key, value of params
-      urlObj.searchParams.set(key, value)
+      if value?
+        urlObj.searchParams.set(key, value)
+      else
+        urlObj.searchParams.delete(key)
 
     return urlObj.href
 

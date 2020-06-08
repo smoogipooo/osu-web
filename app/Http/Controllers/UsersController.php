@@ -12,6 +12,7 @@ use App\Libraries\Search\PostSearchRequestParams;
 use App\Libraries\UserRegistration;
 use App\Models\Achievement;
 use App\Models\Beatmap;
+use App\Models\BeatmapDiscussion;
 use App\Models\Country;
 use App\Models\IpBan;
 use App\Models\Log;
@@ -21,7 +22,9 @@ use App\Models\UserNotFound;
 use Auth;
 use Elasticsearch\Common\Exceptions\ElasticsearchException;
 use Illuminate\Cache\RateLimiter;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Request;
+use Sentry\State\Scope;
 
 class UsersController extends Controller
 {
@@ -39,16 +42,14 @@ class UsersController extends Controller
 
         $this->middleware('throttle:60,10', ['only' => ['store']]);
 
-        if (is_api_request()) {
-            $this->middleware('require-scopes:identify', ['only' => ['me']]);
-            $this->middleware('require-scopes:users.read', ['only' => [
-                'beatmapsets',
-                'kudosu',
-                'recentActivity',
-                'scores',
-                'show',
-            ]]);
-        }
+        $this->middleware('require-scopes:identify', ['only' => ['me']]);
+        $this->middleware('require-scopes:public', ['only' => [
+            'beatmapsets',
+            'kudosu',
+            'recentActivity',
+            'scores',
+            'show',
+        ]]);
 
         $this->middleware(function ($request, $next) {
             $this->parsePaginationParams();
@@ -121,7 +122,8 @@ class UsersController extends Controller
         }
 
         $params = get_params(request(), 'user', ['username', 'user_email', 'password']);
-        $country = Country::find(request_country());
+        $countryCode = request_country();
+        $country = Country::find($countryCode);
         $params['user_ip'] = $ip;
         $params['country_acronym'] = $country === null ? '' : $country->getKey();
 
@@ -142,6 +144,17 @@ class UsersController extends Controller
 
             $registration->save();
             app(RateLimiter::class)->hit($throttleKey, 600);
+
+            if ($country === null) {
+                app('sentry')->getClient()->captureMessage(
+                    'User registered from unknown country: '.$countryCode,
+                    null,
+                    (new Scope)
+                        ->setExtra('country', $countryCode)
+                        ->setExtra('ip', $ip)
+                        ->setExtra('user_id', $registration->user()->getKey())
+                );
+            }
 
             return $registration->user()->fresh()->defaultJson();
         } catch (ValidationException $e) {
@@ -237,7 +250,9 @@ class UsersController extends Controller
         }
 
         if ((string) $user->user_id !== (string) $id) {
-            return ujs_redirect(route('users.show', ['user' => $user, 'mode' => $mode]));
+            $route = is_api_request() ? 'api.users.show' : 'users.show';
+
+            return ujs_redirect(route($route, compact('user', 'mode')));
         }
 
         $currentMode = $mode ?? $user->playmode;
@@ -255,7 +270,7 @@ class UsersController extends Controller
             'favourite_beatmapset_count',
             'follower_count',
             'graveyard_beatmapset_count',
-            'group_badge',
+            'groups',
             'loved_beatmapset_count',
             'monthly_playcounts',
             'page',
@@ -439,7 +454,10 @@ class UsersController extends Controller
                 case 'recentlyReceivedKudosu':
                     $transformer = 'KudosuHistory';
                     $query = $user->receivedKudosu()
-                        ->with('post', 'post.topic', 'giver', 'kudosuable')
+                        ->with('post', 'post.topic', 'giver')
+                        ->with(['kudosuable' => function (MorphTo $morphTo) {
+                            $morphTo->morphWith([BeatmapDiscussion::class => ['beatmap', 'beatmapset']]);
+                        }])
                         ->orderBy('exchange_id', 'desc');
                     break;
 

@@ -27,6 +27,7 @@ export class NewDiscussion extends React.PureComponent
 
 
   componentDidMount: =>
+    @setTop()
     $(window).on 'throttled-resize.new-discussion', @setTop
     @inputBox.current?.focus() if @props.autoFocus
 
@@ -187,6 +188,7 @@ export class NewDiscussion extends React.PureComponent
 
 
   canPost: =>
+    !@props.currentUser.is_silenced &&
     (!@props.beatmapset.discussion_locked || BeatmapDiscussionHelper.canModeratePosts(@props.currentUser)) &&
     (!@props.currentBeatmap.deleted_at? || @props.mode == 'generalAll')
 
@@ -211,7 +213,9 @@ export class NewDiscussion extends React.PureComponent
     if @canPost()
       osu.trans "beatmaps.discussions.message_placeholder.#{@props.mode}", version: @props.currentBeatmap.version
     else
-      if @props.beatmapset.discussion_locked
+      if @props.currentUser.is_silenced
+        osu.trans 'beatmaps.discussions.message_placeholder_silenced'
+      else if @props.beatmapset.discussion_locked
         osu.trans 'beatmaps.discussions.message_placeholder_locked'
       else
         osu.trans 'beatmaps.discussions.message_placeholder_deleted_beatmap'
@@ -257,16 +261,6 @@ export class NewDiscussion extends React.PureComponent
 
   onFocus: =>
     @setSticky true
-
-
-  parseTimestamp: (message) =>
-    timestampRe = message.match /\b(\d{2,}):([0-5]\d)[:.](\d{3})\b/
-
-    if timestampRe?
-      timestamp = timestampRe.slice(1).map (x) => parseInt x, 10
-
-      # this isn't all that smart
-      (timestamp[0] * 60 + timestamp[1]) * 1000 + timestamp[2]
 
 
   post: (e) =>
@@ -333,6 +327,7 @@ export class NewDiscussion extends React.PureComponent
     @setState message: e.currentTarget.value
 
 
+  # TODO: to whoever refactors this - this 'sticky' behaviour was ported to new-review.tsx, so remember to refactor that too
   setSticky: (sticky = true) =>
     @setState
       cssTop: @cssTop(sticky)
@@ -370,7 +365,7 @@ export class NewDiscussion extends React.PureComponent
     if !@timestampCache?
       @timestampCache =
         message: @state.message
-        timestamp: @parseTimestamp(@state.message)
+        timestamp: BeatmapDiscussionHelper.parseTimestamp(@state.message)
 
     @timestampCache.timestamp
 

@@ -237,6 +237,11 @@ function db_unsigned_increment($column, $count)
     return DB::raw($value);
 }
 
+function default_mode()
+{
+    return optional(auth()->user())->playmode ?? 'osu';
+}
+
 function es_query_and_words($words)
 {
     $parts = preg_split("/\s+/", $words, null, PREG_SPLIT_NO_EMPTY);
@@ -716,6 +721,13 @@ function is_sql_unique_exception($ex)
     );
 }
 
+function js_localtime($date)
+{
+    $formatted = json_time($date);
+
+    return "<time class='js-localtime' datetime='{$formatted}'>{$formatted}</time>";
+}
+
 function page_title()
 {
     $currentRoute = app('route-section')->getCurrent();
@@ -761,10 +773,9 @@ function route_redirect($path, $target)
 
 function timeago($date)
 {
-    $display_date = i18n_time($date);
-    $attribute_date = json_time($date);
+    $formatted = json_time($date);
 
-    return "<time class='timeago' datetime='{$attribute_date}'>{$display_date}</time>";
+    return "<time class='js-timeago' datetime='{$formatted}'>{$formatted}</time>";
 }
 
 function link_to_user($id, $username = null, $color = null, $classNames = null)
@@ -892,6 +903,7 @@ function lazy_load_image($url, $class = '', $alt = '')
 
 function nav_links()
 {
+    $defaultMode = default_mode();
     $links = [];
 
     $links['home'] = [
@@ -908,10 +920,10 @@ function nav_links()
         'packs' => route('packs.index'),
     ];
     $links['rankings'] = [
-        'index' => route('rankings', ['mode' => 'osu', 'type' => 'performance']),
-        'charts' => route('rankings', ['mode' => 'osu', 'type' => 'charts']),
-        'score' => route('rankings', ['mode' => 'osu', 'type' => 'score']),
-        'country' => route('rankings', ['mode' => 'osu', 'type' => 'country']),
+        'index' => route('rankings', ['mode' => $defaultMode, 'type' => 'performance']),
+        'charts' => route('rankings', ['mode' => $defaultMode, 'type' => 'charts']),
+        'score' => route('rankings', ['mode' => $defaultMode, 'type' => 'score']),
+        'country' => route('rankings', ['mode' => $defaultMode, 'type' => 'country']),
         'kudosu' => osu_url('rankings.kudosu'),
     ];
     $links['community'] = [
@@ -1049,12 +1061,6 @@ function i18n_number_format($number, $style = null, $pattern = null, $precision 
     }
 
     return $formatter->format($number);
-}
-
-function i18n_time($datetime, $format = IntlDateFormatter::LONG)
-{
-    return IntlDateFormatter::create(App::getLocale(), $format, $format)
-        ->format($datetime);
 }
 
 function open_image($path, $dimensions = null)
@@ -1564,7 +1570,7 @@ function section_to_hue_map($section): int
         'blue' => 200,
         'darkorange' => 20,
         'green' => 115,
-        'orange' => 46,
+        'orange' => 45,
         'pink' => 333,
         'purple' => 255,
         'red' => 0,

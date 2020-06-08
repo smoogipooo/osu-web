@@ -5,7 +5,6 @@
 
 namespace App\Models\Chat;
 
-use App\Events\UserSubscriptionChangeEvent;
 use App\Exceptions\API;
 use App\Models\Multiplayer\Match;
 use App\Models\Notification;
@@ -41,6 +40,30 @@ class Channel extends Model
         'pm' => 'PM',
         'group' => 'GROUP',
     ];
+
+    public static function createPM($user1, $user2)
+    {
+        $channel = new static([
+            'name' => static::getPMChannelName($user1, $user2),
+            'type' => static::TYPES['pm'],
+            'description' => '', // description is not nullable
+        ]);
+
+        $channel->getConnection()->transaction(function () use ($channel, $user1, $user2) {
+            $channel->save();
+            $channel->addUser($user1);
+            $channel->addUser($user2);
+        });
+
+        return $channel;
+    }
+
+    public static function findPM($user1, $user2)
+    {
+        $channelName = static::getPMChannelName($user1, $user2);
+
+        return static::where('name', $channelName)->first();
+    }
 
     /**
      * @param User $user1
@@ -216,16 +239,16 @@ class Channel extends Model
         ])->first();
 
         if ($userChannel) {
+            if (!$userChannel->isHidden()) {
+                return;
+            }
+
             $userChannel->update(['hidden' => false]);
         } else {
             $userChannel = new UserChannel();
             $userChannel->user()->associate($user);
             $userChannel->channel()->associate($this);
             $userChannel->save();
-        }
-
-        if ($this->isPM()) {
-            event(new UserSubscriptionChangeEvent('add', $user, $this));
         }
 
         Datadog::increment('chat.channel.join', 1, ['type' => $this->type]);
@@ -244,7 +267,6 @@ class Channel extends Model
         }
 
         if ($this->isPM()) {
-            event(new UserSubscriptionChangeEvent('remove', $user, $this));
             $userChannel->update(['hidden' => true]);
         } else {
             $userChannel->delete();
@@ -268,16 +290,10 @@ class Channel extends Model
             return;
         }
 
-        $hiddenUserChannels = UserChannel::where([
+        UserChannel::where([
             'channel_id' => $this->channel_id,
             'hidden' => true,
-        ]);
-
-        foreach ($hiddenUserChannels->get() as $userChannel) {
-            event(new UserSubscriptionChangeEvent('add', $userChannel->user, $this));
-        }
-
-        $hiddenUserChannels->update([
+        ])->update([
             'hidden' => false,
         ]);
     }
