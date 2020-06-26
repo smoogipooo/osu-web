@@ -5,6 +5,7 @@ x-env: &x-env
   CACHE_DRIVER: redis
   COMPOSER_HOME: /data/osuweb/.docker/.composer
   DB_HOST: db
+  DB_USER: osuweb
   ES_HOST: elasticsearch:9200
   HOME: /data/osuweb/.docker
   NOTIFICATION_REDIS_HOST: redis
@@ -96,6 +97,9 @@ services:
     environment:
       <<: *x-env
       THREADS: 8
+      BEATMAPS_PATH: /beatmaps
+      ALLOW_DOWNLOAD: true
+      SAVE_DOWNLOADED: true
     command: [ './run.sh' ]
   ppcalc:
     build:
