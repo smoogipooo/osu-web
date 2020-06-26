@@ -98,8 +98,8 @@ services:
       <<: *x-env
       THREADS: 8
       BEATMAPS_PATH: /beatmaps
-      ALLOW_DOWNLOAD: true
-      SAVE_DOWNLOADED: true
+      ALLOW_DOWNLOAD: 1
+      SAVE_DOWNLOADED: 1
     command: [ './run.sh' ]
   ppcalc:
     build:

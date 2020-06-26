@@ -2,7 +2,7 @@
 
 OUT_DIR='/out'
 
-dotnet run -c:Release -o ${OUT_DIR}
+dotnet build -c:Release -o ${OUT_DIR}
 
 cd ${OUT_DIR}
 
