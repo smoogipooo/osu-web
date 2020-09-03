@@ -6,6 +6,7 @@
 namespace Tests\Browser;
 
 use App\Models\Country;
+use App\Models\Multiplayer\Room;
 use DB;
 use Route;
 use Tests\Browser;
@@ -132,8 +133,8 @@ class SanityTest extends DuskTestCase
             ]);
 
             // factory for matches
-            self::$scaffolding['match'] = factory(\App\Models\Multiplayer\Match::class)->create();
-            self::$scaffolding['event'] = factory(\App\Models\Multiplayer\Event::class)->states('join')->create([
+            self::$scaffolding['match'] = factory(\App\Models\Match\Match::class)->create();
+            self::$scaffolding['event'] = factory(\App\Models\Match\Event::class)->states('join')->create([
                 'match_id' => self::$scaffolding['match']->getKey(),
             ]);
 
@@ -145,6 +146,8 @@ class SanityTest extends DuskTestCase
 
             // score factory
             self::$scaffolding['score'] = factory(\App\Models\Score\Best\Osu::class)->states('with_replay')->create();
+
+            self::$scaffolding['room'] = factory(Room::class)->create(['category' => 'spotlight']);
         }
     }
 

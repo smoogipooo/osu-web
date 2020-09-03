@@ -96,6 +96,7 @@ return [
             'country' => 'maa',
             'index' => 'suorituskyky',
             'kudosu' => 'kudosu',
+            'multiplayer' => '',
             'score' => 'pisteet',
         ],
         'store' => [
@@ -178,6 +179,8 @@ return [
     ],
 
     'popup_login' => [
+        'button' => '',
+
         'login' => [
             'forgot' => "Olen unohtanut tietoni",
             'password' => 'salasana',

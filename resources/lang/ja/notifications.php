@@ -31,6 +31,8 @@ return [
                 'beatmapset_discussion_post_new_empty' => ':username による「:title」への新しい投稿',
                 'beatmapset_discussion_post_new_compact' => ':username による新しい投稿: 「:content」',
                 'beatmapset_discussion_post_new_compact_empty' => ':username による新しい投稿',
+                'beatmapset_discussion_review_new' => ':usernameが「:title」で問題：:problems、提案：:suggestions、称賛：:praisesを含む新しいレビューを投稿しました。',
+                'beatmapset_discussion_review_new_compact' => ':usernameが問題：:problems、提案：:suggestions、称賛：:praisesを含む新しいレビューを投稿しました。',
                 'beatmapset_discussion_unlock' => 'ビートマップ「:title」ディスカッションのためにロック解除されました。',
                 'beatmapset_discussion_unlock_compact' => 'ディスカッションはアンロックされました。',
             ],
@@ -64,6 +66,8 @@ return [
 
                 'comment_new' => ':usernameが「:title」でコメント「:content」',
                 'comment_new_compact' => ':usernameがコメント「:content」',
+                'comment_reply' => '',
+                'comment_reply_compact' => '',
             ],
         ],
 
@@ -88,6 +92,8 @@ return [
 
                 'comment_new' => ':usernameが「:title」でコメント「:content」',
                 'comment_new_compact' => ':usernameがコメント「:content」',
+                'comment_reply' => '',
+                'comment_reply_compact' => '',
             ],
         ],
 
@@ -99,6 +105,8 @@ return [
 
                 'comment_new' => ':usernameが「:title」でコメント「:content」',
                 'comment_new_compact' => ':usernameがコメント「:content」',
+                'comment_reply' => '',
+                'comment_reply_compact' => '',
             ],
         ],
 
@@ -128,6 +136,64 @@ return [
                 '_' => '新しいメダル',
                 'user_achievement_unlock' => ':title をアンロック！',
                 'user_achievement_unlock_compact' => ':title をアンロック！',
+            ],
+        ],
+    ],
+
+    'mail' => [
+        'beatmapset' => [
+            'beatmapset_discussion' => [
+                'beatmapset_discussion_lock' => '',
+                'beatmapset_discussion_post_new' => '',
+                'beatmapset_discussion_unlock' => '',
+            ],
+
+            'beatmapset_problem' => [
+                'beatmapset_discussion_qualified_problem' => '',
+            ],
+
+            'beatmapset_state' => [
+                'beatmapset_disqualify' => '',
+                'beatmapset_love' => '',
+                'beatmapset_nominate' => '',
+                'beatmapset_qualify' => '',
+                'beatmapset_rank' => '',
+                'beatmapset_reset_nominations' => '',
+            ],
+
+            'comment' => [
+                'comment_new' => '',
+            ],
+        ],
+
+        'channel' => [
+            'channel' => [
+                'pm' => '',
+            ],
+        ],
+
+        'build' => [
+            'comment' => [
+                'comment_new' => '',
+            ],
+        ],
+
+        'news_post' => [
+            'comment' => [
+                'comment_new' => '',
+            ],
+        ],
+
+        'forum_topic' => [
+            'forum_topic_reply' => [
+                'forum_topic_reply' => '',
+            ],
+        ],
+
+        'user' => [
+            'user_achievement_unlock' => [
+                'user_achievement_unlock' => '',
+                'user_achievement_unlock_self' => '',
             ],
         ],
     ],

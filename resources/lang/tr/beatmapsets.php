@@ -93,7 +93,6 @@ return [
             'source' => 'Kaynak',
             'success-rate' => 'Başarı Oranı',
             'tags' => 'Etiketler',
-            'unranked' => 'Derecelendirilmemiş beatmap',
         ],
 
         'scoreboard' => [
@@ -115,6 +114,7 @@ return [
                 'rank' => 'Sıralama',
                 'score_total' => 'Toplam Skor',
                 'score' => 'Skor',
+                'time' => 'Zaman',
             ],
 
             'no_scores' => [

@@ -74,6 +74,13 @@ return [
     'download' => [
         'tagline' => "لنجعلك<br>مستعداََ!",
         'action' => 'حمل osu!',
+
+        'help' => [
+            '_' => '',
+            'help_forum_link' => '',
+            'support_button' => '',
+        ],
+
         'os' => [
             'windows' => 'لنظام التشغيل Windows',
             'macos' => 'لنظام التشغل MacOS',
@@ -122,7 +129,7 @@ return [
         'buttons' => [
             'download' => 'حَمِل osu!',
             'support' => 'اِدعم osu!',
-            'store' => 'متجر!osu',
+            'store' => 'osu!store',
         ],
     ],
 

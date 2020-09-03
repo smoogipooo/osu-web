@@ -4,15 +4,25 @@
 // See the LICENCE file in the repository root for full licence text.
 
 return [
-    'country' => [
-        'filter' => '',
+    'countries' => [
+        'all' => '',
+        'title' => '',
+    ],
+
+    'filter' => [
+        'title' => '',
+
+        'variant' => [
+            'title' => '',
+        ],
     ],
 
     'type' => [
-        'performance' => 'Suorituskyky',
         'charts' => 'Valokeilassa',
-        'score' => 'Piste',
         'country' => 'Maa',
+        'multiplayer' => '',
+        'performance' => 'Suorituskyky',
+        'score' => 'Piste',
     ],
 
     'spotlight' => [

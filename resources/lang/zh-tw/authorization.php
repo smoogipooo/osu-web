@@ -21,6 +21,7 @@ return [
             'full_bn_required_hybrid' => '你必須是一個完整的提名者至提名圖譜設定最少一個遊戲模式。',
             'incorrect_state' => '執行操作時發生錯誤，請重新載入頁面。',
             'owner' => "不能提名自己的圖譜。",
+            'set_metadata' => '',
         ],
         'resolve' => [
             'not_owner' => '只有樓主和圖譜所有者才能標記為已解決。',
@@ -31,6 +32,7 @@ return [
         ],
 
         'vote' => [
+            'bot' => "",
             'limit_exceeded' => '在投更多票之前請稍等一會',
             'owner' => "不能為自己的討論投票。",
             'wrong_beatmapset_state' => '只能對待處理的圖譜討論進行投票。',
@@ -52,6 +54,12 @@ return [
 
         'store' => [
             'beatmapset_locked' => '這個圖譜被鎖定討論。',
+        ],
+    ],
+
+    'beatmapset' => [
+        'metadata' => [
+            'nominated' => '',
         ],
     ],
 

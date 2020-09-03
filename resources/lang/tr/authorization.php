@@ -21,6 +21,7 @@ return [
             'full_bn_required_hybrid' => 'Birden fazla oyun modu olan beatmap setlerini oylamak için tam bir nominatör olmanız gerekmektedir.',
             'incorrect_state' => 'Bu işlemi gerçekleştirirken hata oluştu, sayfayı yenilemeyi deneyin.',
             'owner' => "Kendi beatmapinizi aday gösteremezsiniz.",
+            'set_metadata' => 'Aday göstermeden önce türü ve dili ayarlamalısınız.',
         ],
         'resolve' => [
             'not_owner' => 'Yalnızca başlık sahibi ile beatmap sahibi bir tartışmayı sonlandırabilir.',
@@ -31,6 +32,7 @@ return [
         ],
 
         'vote' => [
+            'bot' => "Bot tarafından açılan tartışmada oy kullanılamaz",
             'limit_exceeded' => 'Lütfen daha fazla oy vermeden önce bir süre bekleyin',
             'owner' => "Kendi tartışmanıza oy veremezsiniz.",
             'wrong_beatmapset_state' => 'Yalnızca beklemede olan beatmaplerin tartışmalarında oy kullanabilirsiniz.',
@@ -52,6 +54,12 @@ return [
 
         'store' => [
             'beatmapset_locked' => 'Bu beatmap tartışma için kilitlenmiş.',
+        ],
+    ],
+
+    'beatmapset' => [
+        'metadata' => [
+            'nominated' => 'Aday gösterilen bir mapin metaverisini değiştiremezsiniz. Hatalı ayarlandığını düşünüyorsanız bir BN ya da NAT üyesiyle iletişime geçiniz.',
         ],
     ],
 

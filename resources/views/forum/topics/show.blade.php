@@ -5,12 +5,6 @@
 @extends('master', [
     'titlePrepend' => $topic->topic_title,
     'canonicalUrl' => route('forum.topics.show', $topic->topic_id),
-    'search' => [
-        'params' => [
-            'topic_id' => $topic->topic_id,
-        ],
-        'url' => route('forum.forums.search'),
-    ],
     'pageDescription' => $topic->toMetaDescription(),
 ])
 
@@ -109,7 +103,7 @@
                     @endif
 
                     @if (isset($toolbarItems['edit_cover']))
-                        <div class="forum-topic-toolbar__item">
+                        <div class="forum-topic-toolbar__item u-relative">
                             @include('forum.topics._cover_editor')
                         </div>
                     @endif
@@ -156,7 +150,7 @@
 @section('permanent-fixed-footer')
     @parent
 
-    <div class="forum-topic-nav">
+    <div class="forum-topic-nav u-fancy-scrollbar">
         <div class="forum-topic-nav__seek-tooltip js-forum-posts-seek--tooltip" data-visibility="hidden">
             <div class="forum-topic-nav__seek-tooltip-number js-forum-posts-seek-tooltip-number">0</div>
         </div>

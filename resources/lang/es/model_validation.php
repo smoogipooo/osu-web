@@ -10,15 +10,6 @@ return [
     'too_long' => ':attribute ha excedido el límite máximo - sólo puede ser de hasta :limit caracteres.',
     'wrong_confirmation' => 'La confirmación no coincide.',
 
-    'beatmap_discussion_post' => [
-        'discussion_locked' => 'La discusión está cerrada.',
-        'first_post' => 'No se puede eliminar la publicación inicial.',
-
-        'attributes' => [
-            'message' => 'El mensaje',
-        ],
-    ],
-
     'beatmapset_discussion' => [
         'beatmap_missing' => 'La marca de tiempo ha sido especificada pero el mapa no se encontró.',
         'beatmapset_no_hype' => "El mapa no puede ser hypeado.",
@@ -47,9 +38,18 @@ return [
         ],
     ],
 
+    'beatmapset_discussion_post' => [
+        'discussion_locked' => 'La discusión está cerrada.',
+        'first_post' => 'No se puede eliminar la publicación inicial.',
+
+        'attributes' => [
+            'message' => 'El mensaje',
+        ],
+    ],
+
     'comment' => [
-        'deleted_parent' => 'Responder a un comentario eliminado no esta permitido.',
-        'top_only' => 'No se permite fijar la respuesta a los comentarios.',
+        'deleted_parent' => 'Responder a un comentario eliminado no está permitido.',
+        'top_only' => 'Anclar la respuesta de un comentario no está permitido.',
 
         'attributes' => [
             'message' => 'El mensaje',
@@ -150,7 +150,7 @@ return [
         ],
 
         'change_username' => [
-            'restricted' => 'No puedes cambiar tu nombre de usuario mientras está restringido.',
+            'restricted' => 'No puede cambiar su nombre de usuario mientras esté restringido.',
             'supporter_required' => [
                 '_' => '¡Debes tener :link para cambiar tu nombre!',
                 'link_text' => 'apoyar a osu!',
@@ -161,7 +161,7 @@ return [
 
     'user_report' => [
         'reason_not_valid' => ':reason no es válido para este tipo de reporte.',
-        'self' => "¡No puedes denunciarte a ti mismo!",
+        'self' => "¡No puede reportarse a sí mismo!",
     ],
 
     'store' => [

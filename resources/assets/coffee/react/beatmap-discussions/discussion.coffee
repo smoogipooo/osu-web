@@ -104,13 +104,13 @@ export class Discussion extends React.PureComponent
           a
             href: BeatmapDiscussionHelper.url({discussion: @props.parentDiscussion})
             title: osu.trans('beatmap_discussions.review.go_to_parent')
-            className: "#{bn}__link-to-parent",
+            className: "#{bn}__link-to-parent js-beatmap-discussion--jump",
             i className: 'fas fa-tasks'
 
         ['up', 'down'].map (type) =>
           div
             key: type
-            type: type
+            'data-type': type
             className: "#{bn}__action"
             onMouseOver: @showVoters
             onTouchStart: @showVoters
@@ -162,7 +162,8 @@ export class Discussion extends React.PureComponent
 
     topClasses = "#{vbn} #{vbn}--#{type}"
     topClasses += " #{vbn}--inactive" if score != 0
-    disabled = @isOwner() || (type == 'down' && !@canDownvote()) || !@canBeRepliedTo()
+    user = @props.users[@props.discussion.user_id]
+    disabled = @isOwner() || user.is_bot || (type == 'down' && !@canDownvote()) || !@canBeRepliedTo()
 
     button
       className: topClasses
@@ -215,7 +216,7 @@ export class Discussion extends React.PureComponent
 
     target._tooltip = true
 
-    type = target.getAttribute('type')
+    type = target.getAttribute('data-type')
 
     @tooltips[type] =
       $(target).qtip

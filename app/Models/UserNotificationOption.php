@@ -25,9 +25,17 @@ class UserNotificationOption extends Model
     ];
 
     const BEATMAPSET_MODDING = 'beatmapset:modding'; // matches Follow notifiable_type:subtype
+    const COMMENT_REPLY = 'comment_reply';
     const DELIVERY_MODES = ['mail', 'push'];
     const FORUM_TOPIC_REPLY = Notification::FORUM_TOPIC_REPLY;
-    const HAS_DELIVERY_MODES = [self::BEATMAPSET_MODDING, self::FORUM_TOPIC_REPLY];
+
+    const HAS_DELIVERY_MODES = [
+        self::BEATMAPSET_MODDING,
+        Notification::CHANNEL_MESSAGE,
+        Notification::COMMENT_NEW,
+        self::FORUM_TOPIC_REPLY,
+        Notification::USER_ACHIEVEMENT_UNLOCK,
+    ];
 
     protected $casts = [
         'details' => 'array',
@@ -66,6 +74,12 @@ class UserNotificationOption extends Model
                 if (isset($value[$mode])) {
                     $details[$mode] = get_bool($value[$mode] ?? null);
                 }
+            }
+        }
+
+        if ($this->name === Notification::COMMENT_NEW) {
+            if (isset($value[static::COMMENT_REPLY])) {
+                $details[static::COMMENT_REPLY] = get_bool($value[static::COMMENT_REPLY]);
             }
         }
 

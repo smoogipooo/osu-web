@@ -6,13 +6,13 @@
 return [
     'require_login' => 'Por favor, inicia sesión para continuar.',
     'require_verification' => 'Por favor verifica para proceder.',
-    'restricted' => "No puedes hacer eso mientras estés restringido.",
-    'silenced' => "No puedes hacer eso mientras estés silenciado.",
+    'restricted' => "No puede hacer eso mientras esté restringido.",
+    'silenced' => "No puede hacer eso mientras esté silenciado.",
     'unauthorized' => 'Acceso denegado.',
 
     'beatmap_discussion' => [
         'destroy' => [
-            'is_hype' => 'No puedes deshacer el hyping.',
+            'is_hype' => 'No se puede deshacer el hyping.',
             'has_reply' => 'No se puede eliminar una discusión con respuestas',
         ],
         'nominate' => [
@@ -21,6 +21,7 @@ return [
             'full_bn_required_hybrid' => 'Debe ser un nominador completo para nominar sets de mapas con más de un modo de juego.',
             'incorrect_state' => 'Error al realizar esa acción, intenta actualizando la página.',
             'owner' => "No puedes nominar tu propio mapa.",
+            'set_metadata' => 'Debe establecer el género y el idioma antes de nominar.',
         ],
         'resolve' => [
             'not_owner' => 'Solo el creador del tema y el dueño del mapa pueden resolver una discusión.',
@@ -31,6 +32,7 @@ return [
         ],
 
         'vote' => [
+            'bot' => "",
             'limit_exceeded' => 'Espera un poco antes de seguir votando',
             'owner' => "No puedes votar tus propias discusiones.",
             'wrong_beatmapset_state' => 'Solo puedes votar en discusiones de mapas pendientes.',
@@ -55,12 +57,18 @@ return [
         ],
     ],
 
+    'beatmapset' => [
+        'metadata' => [
+            'nominated' => 'No puedes cambiar los metadatos de un mapa nominado. Contacta con un miembro de los BN o del NAT si crees que están establecidos incorrectamente.',
+        ],
+    ],
+
     'chat' => [
         'blocked' => 'No puedes enviar mensajes a un usuario que bloqueaste o que te haya bloqueado.',
         'friends_only' => 'Este usuario está bloqueando los mensajes de personas que no están en su lista de amigos.',
         'moderated' => 'Ese canal está actualmente siendo moderado.',
         'no_access' => 'No tienes acceso a ese canal.',
-        'restricted' => 'No puedes enviar mensajes mientras estés silenciado, restringido o baneado.',
+        'restricted' => 'No puede enviar mensajes mientras esté silenciado, restringido o baneado.',
     ],
 
     'comment' => [
@@ -109,8 +117,8 @@ return [
 
                 'user' => [
                     'require_login' => 'Por favor, inicia sesión para responder.',
-                    'restricted' => "No puedes responder mientras estés restringido.",
-                    'silenced' => "No puedes responder mientras estés silenciado.",
+                    'restricted' => "No puede responder mientras esté restringido.",
+                    'silenced' => "No puede responder mientras esté silenciado.",
                 ],
             ],
 
@@ -128,8 +136,8 @@ return [
 
                 'user' => [
                     'require_login' => 'Por favor, Inicia sesión para votar.',
-                    'restricted' => "No puedes votar mientras estés restringido.",
-                    'silenced' => "No puedes votar mientras estés silenciado.",
+                    'restricted' => "No puede votar mientras esté restringido.",
+                    'silenced' => "No puede votar mientras esté silenciado.",
                 ],
             ],
 

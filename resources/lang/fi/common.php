@@ -26,6 +26,7 @@ return [
         'back_to_top' => 'Takaisin ylös',
         'cancel' => 'Peruuta',
         'change' => 'vaihda',
+        'clear' => '',
         'click_to_copy' => 'kopioi leikepöydälle',
         'click_to_copy_copied' => 'kopioitu leikepöydälle!',
         'close' => 'Sulje',
@@ -125,6 +126,21 @@ return [
         'count_geki' => 'MAX',
         'count_katu' => '200',
         'count_miss' => 'Ohi',
+    ],
+
+    'scoreboard_time' => [
+        'd' => '%d pv',
+        'dd' => '%d pv',
+        'h' => '%d t',
+        'hh' => '%d t',
+        'M' => '%d kk',
+        'm' => '%d min',
+        'MM' => '%d kk',
+        'mm' => '',
+        'past' => '',
+        's' => '',
+        'y' => '',
+        'yy' => '',
     ],
 
     'time' => [

@@ -5,7 +5,7 @@
 
 return [
     'audio' => [
-        'autoplay' => '',
+        'autoplay' => 'Sıradaki parçayı otomatik oynat',
     ],
 
     'defaults' => [
@@ -96,6 +96,7 @@ return [
             'country' => 'ülke',
             'index' => 'performans',
             'kudosu' => 'kudosu',
+            'multiplayer' => 'Çok Oyunculu',
             'score' => 'skor',
         ],
         'store' => [
@@ -178,6 +179,8 @@ return [
     ],
 
     'popup_login' => [
+        'button' => 'giriş yap / kayıt ol',
+
         'login' => [
             'forgot' => "Bilgilerimi unuttum",
             'password' => 'şifre',

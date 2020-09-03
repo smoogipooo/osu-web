@@ -21,6 +21,7 @@ return [
             'full_bn_required_hybrid' => 'Devi essere un nominatore completo per nominare dei set di beatmap con più di una modalità di gioco.',
             'incorrect_state' => 'Errore nell\'eseguire questa azione, prova a ricaricare la pagina.',
             'owner' => "Non puoi nominare la tua beatmap.",
+            'set_metadata' => 'Devi impostare il genere e la lingua prima di nominarla.',
         ],
         'resolve' => [
             'not_owner' => 'Solo l\'autore del topic e il creatore della mappa possono risolvere una discussione.',
@@ -31,6 +32,7 @@ return [
         ],
 
         'vote' => [
+            'bot' => "Non puoi votare in una discussione creata da un bot",
             'limit_exceeded' => 'Per favore attendi un po\' prima di esprimere altri voti',
             'owner' => "Non puoi votare la tua discussione.",
             'wrong_beatmapset_state' => 'Puoi votare solo su discussioni di beatmap in sospeso.',
@@ -52,6 +54,12 @@ return [
 
         'store' => [
             'beatmapset_locked' => 'Questa beatmap è bloccata per la discussione.',
+        ],
+    ],
+
+    'beatmapset' => [
+        'metadata' => [
+            'nominated' => 'Non puoi modificare i metadata di una mappa nominata. Contatta un membro di BN o NAT se pensi che siano stati impostati in modo errato.',
         ],
     ],
 

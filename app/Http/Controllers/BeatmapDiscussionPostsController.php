@@ -6,7 +6,6 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\ModelNotSavedException;
-use App\Jobs\NotifyBeatmapsetUpdate;
 use App\Libraries\BeatmapsetDiscussionReview;
 use App\Models\BeatmapDiscussion;
 use App\Models\BeatmapDiscussionPost;
@@ -138,13 +137,7 @@ class BeatmapDiscussionPostsController extends Controller
         $notifyQualifiedProblem = false;
 
         if (!$disqualify && $discussion->beatmapset->isQualified() && $discussion->message_type === 'problem') {
-            $openProblems = $discussion
-                ->beatmapset
-                ->beatmapDiscussions()
-                ->withoutTrashed()
-                ->ofType('problem')
-                ->where(['resolved' => false])
-                ->count();
+            $openProblems = $discussion->beatmapset->beatmapDiscussions()->openProblems()->count();
 
             $notifyQualifiedProblem = $openProblems === 0 && ($newDiscussion || $reopen);
         }
@@ -190,10 +183,6 @@ class BeatmapDiscussionPostsController extends Controller
         }
 
         broadcast_notification(Notification::BEATMAPSET_DISCUSSION_POST_NEW, $post, Auth::user());
-        (new NotifyBeatmapsetUpdate([
-            'user' => Auth::user(),
-            'beatmapset' => $beatmapset,
-        ]))->delayedDispatch();
 
         return [
             'beatmapset' => $beatmapset->defaultDiscussionJson(),

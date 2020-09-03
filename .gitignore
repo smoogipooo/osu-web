@@ -28,6 +28,7 @@ desktop.ini
 /public/mix-manifest.json
 
 # Compiled/copied assets
+/public/docs
 /public/fonts/vendor
 /public/js
 /public/css
@@ -91,5 +92,3 @@ composer-installer
 /storage/oauth-private.key
 
 /storage/paypal_auth.cache
-
-/notification-server/

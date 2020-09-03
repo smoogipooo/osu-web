@@ -5,6 +5,7 @@
 
 namespace App\Libraries;
 
+use App\Models\Beatmap;
 use App\Models\BeatmapDiscussion;
 use App\Models\BeatmapDiscussionPost;
 use App\Models\BeatmapDiscussionVote;
@@ -87,6 +88,7 @@ class ModdingHistoryEventsBundle
                     'BeatmapsetEvent',
                     ['discussion.starting_post', 'beatmapset.user']
                 ),
+                'reviewsConfig' => BeatmapsetDiscussionReview::config(),
                 'users' => json_collection(
                     $this->getUsers(),
                     'UserCompact',
@@ -95,6 +97,11 @@ class ModdingHistoryEventsBundle
             ];
 
             if ($this->withExtras) {
+                $array['beatmaps'] = json_collection(
+                    $this->getBeatmaps(),
+                    'Beatmap'
+                );
+
                 $array['discussions'] = json_collection(
                     $this->getDiscussions(),
                     'BeatmapDiscussion',
@@ -159,6 +166,22 @@ class ModdingHistoryEventsBundle
         }
 
         return $this->memoized[$key];
+    }
+
+    private function getBeatmaps()
+    {
+        return $this->memoize(__FUNCTION__, function () {
+            if (!$this->withExtras) {
+                return collect();
+            }
+
+            $beatmapsetId = $this->getDiscussions()
+                ->pluck('beatmapset_id')
+                ->unique()
+                ->toArray();
+
+            return Beatmap::whereIn('beatmapset_id', $beatmapsetId)->get();
+        });
     }
 
     private function getDiscussions()

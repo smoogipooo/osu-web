@@ -110,7 +110,7 @@ return [
             '_' => 'sıralama',
         ],
         'scores_controller' => [
-            '_' => '',
+            '_' => 'performans',
         ],
         'store_controller' => [
             '_' => 'osu!store',
@@ -124,6 +124,11 @@ return [
         ],
         'wiki_controller' => [
             '_' => 'bilgi bankası',
+        ],
+    ],
+    'multiplayer' => [
+        'rooms_controller' => [
+            '_' => 'sıralama',
         ],
     ],
     'store' => [

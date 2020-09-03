@@ -26,6 +26,7 @@ return [
         'back_to_top' => 'Yukarıya geri dön',
         'cancel' => 'İptal',
         'change' => 'değiştir',
+        'clear' => 'Temizle',
         'click_to_copy' => 'panoya kopyalamak için tıklayın',
         'click_to_copy_copied' => 'panoya kopyalandı!',
         'close' => 'Kapat',
@@ -37,7 +38,7 @@ return [
         'permalink' => 'kalıcı bağlantı',
         'pin' => 'sabitle',
         'post' => 'Gönder',
-        'read_more' => '',
+        'read_more' => 'daha fazlası',
         'reply' => 'Cevapla',
         'reply_reopen' => 'Cevapla ve Yeniden Aç',
         'reply_resolve' => 'Yanıtla ve Çözümle',
@@ -125,6 +126,21 @@ return [
         'count_geki' => 'MAX',
         'count_katu' => '200',
         'count_miss' => 'Miss',
+    ],
+
+    'scoreboard_time' => [
+        'd' => '%d gün',
+        'dd' => '%d gün',
+        'h' => '%d saat',
+        'hh' => '%d saat',
+        'M' => '%d ay',
+        'm' => '%d dk',
+        'MM' => '%d ay',
+        'mm' => '%d dk',
+        'past' => '',
+        's' => '%d sn',
+        'y' => '%d yıl',
+        'yy' => '%d yıl',
     ],
 
     'time' => [

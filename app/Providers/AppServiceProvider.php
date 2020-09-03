@@ -6,7 +6,6 @@
 namespace App\Providers;
 
 use App\Hashing\OsuHashManager;
-use App\Http\Middleware\RequireScopes;
 use App\Http\Middleware\StartSession;
 use App\Libraries\Groups;
 use App\Libraries\MorphMap;
@@ -37,16 +36,14 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Queue::after(function (JobProcessed $event) {
-            if (config('datadog-helper.enabled')) {
-                Datadog::increment(
-                    config('datadog-helper.prefix_web').'.queue.run',
-                    1,
-                    [
-                        'job' => $event->job->resolveName(),
-                        'queue' => $event->job->getQueue(),
-                    ]
-                );
-            }
+            Datadog::increment(
+                config('datadog-helper.prefix_web').'.queue.run',
+                1,
+                [
+                    'job' => $event->job->resolveName(),
+                    'queue' => $event->job->getQueue(),
+                ]
+            );
         });
 
         $this->app->make('translator')->setSelector(new OsuMessageSelector);
@@ -84,10 +81,6 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton('OsuAuthorize', function () {
             return new OsuAuthorize();
-        });
-
-        $this->app->singleton(RequireScopes::class, function () {
-            return new RequireScopes;
         });
 
         $this->app->singleton('route-section', function () {

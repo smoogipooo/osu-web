@@ -21,6 +21,7 @@ return [
             'full_bn_required_hybrid' => 'You must be a full nominator to nominate beatmap sets with more than one game mode.',
             'incorrect_state' => 'Error performing that action, try refreshing the page.',
             'owner' => "Can't nominate own beatmap.",
+            'set_metadata' => 'You must set the genre and language before nominating.',
         ],
         'resolve' => [
             'not_owner' => 'Only thread starter and beatmap owner can resolve a discussion.',
@@ -31,6 +32,7 @@ return [
         ],
 
         'vote' => [
+            'bot' => "Can't vote on discussion made by bot",
             'limit_exceeded' => 'Please wait a while before casting more votes',
             'owner' => "Can't vote on own discussion.",
             'wrong_beatmapset_state' => 'Can only vote on discussions of pending beatmaps.',
@@ -52,6 +54,12 @@ return [
 
         'store' => [
             'beatmapset_locked' => 'This beatmap is locked for discussion.',
+        ],
+    ],
+
+    'beatmapset' => [
+        'metadata' => [
+            'nominated' => 'You cannot change metadata of a nominated map. Contact a BN or NAT member if you think it is set incorrectly.',
         ],
     ],
 

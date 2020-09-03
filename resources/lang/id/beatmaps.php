@@ -25,7 +25,7 @@ return [
         'message_type_select' => 'Pilih Jenis Komentar',
         'reply_notice' => 'Tekan enter untuk membalas.',
         'reply_placeholder' => 'Ketik balasan Anda di sini',
-        'require-login' => 'Silakan masuk untuk posting atau membalas',
+        'require-login' => 'Silakan masuk untuk membuka topik bahasan baru atau mengirimkan balasan',
         'resolved' => 'Terjawab',
         'restore' => 'kembalikan',
         'show_deleted' => 'Tampilan dihapus',
@@ -48,8 +48,8 @@ return [
             ],
 
             'prompt' => [
-                'lock' => 'Alasan untuk membuka kunci',
-                'unlock' => 'Apakah Anda yakin untuk membuka kunci?',
+                'lock' => 'Alasan penguncian',
+                'unlock' => 'Apakah Anda yakin untuk membuka kembali topik diskusi ini?',
             ],
         ],
 
@@ -59,9 +59,10 @@ return [
         ],
 
         'message_placeholder' => [
-            'general' => 'Ketik disini untuk posting ke General (:version)',
-            'generalAll' => 'Ketik disini untuk posting ke General (Semua tingkat kesulitan)',
-            'timeline' => 'Ketik disini untuk posting ke Timeline (:version)',
+            'general' => 'Ketik di sini untuk membuka topik bahasan baru pada Umum (:version)',
+            'generalAll' => 'Ketik di sini untuk membuka topik bahasan baru pada Umum (Semua tingkat kesulitan)',
+            'review' => 'Ketik di sini untuk memulai kajian baru',
+            'timeline' => 'Ketik di sini untuk membuka topik bahasan baru pada Linimasa (:version)',
         ],
 
         'message_type' => [
@@ -71,14 +72,14 @@ return [
             'nomination_reset' => 'Hilangkan Status Nominasi',
             'praise' => 'Pujian',
             'problem' => 'Masalah',
-            'review' => 'Ulasan',
+            'review' => 'Kajian',
             'suggestion' => 'Saran',
         ],
 
         'mode' => [
             'events' => 'Riwayat',
             'general' => 'Umum :scope',
-            'reviews' => 'Ulasan',
+            'reviews' => 'Kajian',
             'timeline' => 'Linimasa',
             'scopes' => [
                 'general' => 'Tingkat kesulitan ini',
@@ -92,6 +93,26 @@ return [
             'timestamp_missing' => 'Salin (ctrl+c) keterangan waktu yang spesifik dari editor dan tempelkan (ctrl+v) pada boks yang tersedia untuk menambahkan keterangan waktu!',
             'title' => 'Diskusi Baru',
             'unpin' => 'Lepas sematan',
+        ],
+
+        'review' => [
+            'new' => 'Kajian Baru',
+            'embed' => [
+                'delete' => 'Hapus',
+                'missing' => '[TOPIK DISKUSI DIHAPUS]',
+                'unlink' => 'Hapus Tautan',
+                'unsaved' => 'Belum Tersimpan',
+                'timestamp' => [
+                    'all-diff' => 'Anda tidak dapat membubuhkan keterangan waktu pada topik bahasan yang tertuju pada "Umum (Semua tingkat kesulitan)".',
+                    'diff' => 'Apabila terdapat keterangan waktu pada :type ini, topik bahasan yang bersangkutan akan muncul pada Linimasa.',
+                ],
+            ],
+            'insert-block' => [
+                'paragraph' => 'sisipkan paragraf baru',
+                'praise' => 'sisipkan pujian',
+                'problem' => 'sisipkan masalah',
+                'suggestion' => 'sisipkan saran',
+            ],
         ],
 
         'show' => [
@@ -180,7 +201,7 @@ return [
 
         'reset_confirm' => [
             'nomination_reset' => 'Apakah kamu yakin? Memposting masalah baru akan mengulang proses nominasi.',
-            'disqualify' => 'Apakah Anda yakin? Tindakan ini akan menghilangkan status Qualified beatmap ini dan mengulang proses nominasi dari awal.',
+            'disqualify' => 'Apakah Anda yakin? Tindakan ini akan menganulir status Qualified pada beatmap ini dan mengulang proses nominasi dari awal.',
         ],
     ],
 
@@ -206,13 +227,13 @@ return [
                 'title' => 'Judul',
                 'artist' => 'Artis',
                 'difficulty' => 'Tingkat Kesulitan',
-                'favourites' => 'Favorit',
-                'updated' => 'Terbaru',
-                'ranked' => 'Ranked',
-                'rating' => 'Rating',
+                'favourites' => 'Jumlah Favorit',
+                'updated' => 'Tanggal Pembaruan Terakhir',
+                'ranked' => 'Tanggal Ranked',
+                'rating' => 'Nilai Pengguna',
                 'plays' => 'Jumlah Dimainkan',
                 'relevance' => 'Relevansi',
-                'nominations' => 'Nominasi',
+                'nominations' => 'Jumlah Nominasi',
             ],
             'supporter_filter_quote' => [
                 '_' => 'Penyaringan dengan :filters memerlukan :link aktif',
@@ -245,7 +266,7 @@ return [
     ],
     'genre' => [
         'any' => 'Semua',
-        'unspecified' => 'Tidak Terdefinisi',
+        'unspecified' => 'Belum Ditentukan',
         'video-game' => 'Video Game',
         'anime' => 'Anime',
         'rock' => 'Rock',
@@ -254,6 +275,10 @@ return [
         'novelty' => 'Novelty',
         'hip-hop' => 'Hip Hop',
         'electronic' => 'Electronic',
+        'metal' => 'Metal',
+        'classical' => 'Klasik',
+        'folk' => 'Folk',
+        'jazz' => 'Jazz',
     ],
     'mods' => [
         '4K' => '4K',
@@ -279,6 +304,7 @@ return [
         'SD' => 'Sudden Death',
         'SO' => 'Spun Out',
         'TD' => 'Touch Device',
+        'V2' => 'Score V2',
     ],
     'language' => [
         'any' => 'Semua',
@@ -291,8 +317,11 @@ return [
         'korean' => 'Korea',
         'spanish' => 'Spanyol',
         'swedish' => 'Swedia',
+        'russian' => 'Rusia',
+        'polish' => 'Polandia',
         'instrumental' => 'Instrumental',
         'other' => 'Lainnya',
+        'unspecified' => 'Belum Ditentukan',
     ],
     'played' => [
         'any' => 'Semua',
@@ -317,5 +346,12 @@ return [
     'panel' => [
         'playcount' => 'Jumlah dimainkan: :count',
         'favourites' => 'Jumlah favorit: :count',
+    ],
+    'variant' => [
+        'mania' => [
+            '4k' => '4K',
+            '7k' => '7K',
+            'all' => 'Semua',
+        ],
     ],
 ];

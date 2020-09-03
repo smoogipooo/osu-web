@@ -38,7 +38,8 @@ class AccountController extends Controller
                 'edit',
                 'reissueCode',
                 'updateEmail',
-                'updatePage',
+                'updateNotificationOptions',
+                'updateOptions',
                 'updatePassword',
                 'verify',
                 'verifyLink',
@@ -122,14 +123,9 @@ class AccountController extends Controller
         $user = Auth::user();
 
         $params = get_params(request(), 'user', [
-            'hide_presence:bool',
-            'osu_playstyle:string[]',
-            'playmode:string',
-            'pm_friends_only:bool',
             'user_from:string',
             'user_interests:string',
             'user_msnm:string',
-            'user_notify:bool',
             'user_occ:string',
             'user_sig:string',
             'user_twitter:string',
@@ -197,14 +193,25 @@ class AccountController extends Controller
     public function updateOptions()
     {
         $user = Auth::user();
+        $params = request()->all();
 
-        $params = get_params(request(), 'user_profile_customization', [
+        $userParams = get_params($params, 'user', [
+            'hide_presence:bool',
+            'osu_playstyle:string[]',
+            'playmode:string',
+            'pm_friends_only:bool',
+            'user_notify:bool',
+        ]);
+
+        $profileParams = get_params($params, 'user_profile_customization', [
             'audio_autoplay:bool',
             'audio_muted:bool',
             'audio_volume:float',
             'beatmapset_download:string',
+            'beatmapset_title_show_original:bool',
             'comments_sort:string',
             'extras_order:string[]',
+            'forum_posts_show_deleted:bool',
             'ranking_expanded:bool',
             'user_list_filter:string',
             'user_list_sort:string',
@@ -212,7 +219,13 @@ class AccountController extends Controller
         ]);
 
         try {
-            $user->profileCustomization()->fill($params)->saveOrExplode();
+            if (!empty($userParams)) {
+                $user->fill($userParams)->saveOrExplode();
+            }
+
+            if (!empty($profileParams)) {
+                $user->profileCustomization()->fill($profileParams)->saveOrExplode();
+            }
         } catch (ModelNotSavedException $e) {
             return $this->errorResponse($user, $e);
         }

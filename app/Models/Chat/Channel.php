@@ -6,7 +6,7 @@
 namespace App\Models\Chat;
 
 use App\Exceptions\API;
-use App\Models\Multiplayer\Match;
+use App\Models\Match\Match;
 use App\Models\Notification;
 use App\Models\User;
 use Carbon\Carbon;
@@ -27,6 +27,11 @@ use LaravelRedis as Redis;
 class Channel extends Model
 {
     protected $primaryKey = 'channel_id';
+
+    protected $casts = [
+        'moderated' => 'boolean',
+    ];
+
     protected $dates = [
         'creation_time',
     ];
