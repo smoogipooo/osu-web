@@ -113,6 +113,10 @@ services:
     ports:
       - "${NGINX_PORT:-8080}:80"
 
+  import:
+    <<: *x-web
+    command: ['import']
+
   diffcalc:
     image: mcr.microsoft.com/dotnet/core/sdk:3.1
     volumes:
@@ -155,10 +159,6 @@ services:
     environment:
       <<: *x-env
     command: [ './run.sh' ]
-
-  import:
-    <<: *x-web
-    command: ['import']
 
 volumes:
   database:
