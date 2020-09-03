@@ -37,7 +37,8 @@ _job() {
 }
 
 _migrate() {
-    _rexec /app/bin/wait_for.sh db:3306 -- php /app/artisan migrate:fresh-or-run
+    _run /app/bin/wait_for.sh db:3306 -- php /app/artisan migrate:fresh-or-run
+    _rexec /app/bin/import_data.sh
 }
 
 _schedule() {
@@ -68,10 +69,6 @@ _test() {
 _watch() {
     _run yarnpkg --network-timeout 100000
     _rexec yarnpkg watch
-}
-
-_import() {
-    _rexec /app/bin/wait_for.sh db:3306 -- /app/bin/import_data.sh
 }
 
 case "$command" in
