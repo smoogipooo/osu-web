@@ -32,11 +32,6 @@ echo "INSERT INTO osu_genres (genre_id,name) VALUES (0, 'genre-1');
       UPDATE osu_beatmapsets SET genre_id=1,language_id=1 WHERE 1;" \
   | $SQL_CONN
 
-# Notify of completion.
-echo "INSERT INTO osu_counts (name, count) VALUES ('docker_db_step', '1');" \
-  | $SQL_CONN
-echo "Finshed importing data."
-
 # undo config and route caching by the script above
 php /app/artisan config:clear
 php /app/artisan route:clear
@@ -47,3 +42,8 @@ php /app/artisan es:create-search-blacklist
 # Add default user (u: username, p: password), for the ability to search beatmap listing.
 echo '(new App\Libraries\UserRegistration(["username" => "username", "user_email" => "admin@smgi.me", "password" => "password"]))->save();' \
   | php /app/artisan tinker
+
+# Notify of completion.
+echo "INSERT INTO osu_counts (name, count) VALUES ('docker_db_step', '1');" \
+  | $SQL_CONN
+echo "Finshed importing data."
