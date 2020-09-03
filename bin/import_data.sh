@@ -21,6 +21,10 @@ echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_per
 echo "UPDATE phpbb_users SET user_lastvisit=4294967295, osu_playmode=${MODE} WHERE 1;" \
   | $SQL_CONN
 
+# Prevent the no_profile group from ever being used.
+echo "INSERT INTO phpbb_groups (group_id,group_name,group_desc) VALUES (999, 'no_profile', 'no_profile');" \
+  | $SQL_CONN
+
 # Add default country + performance rank (fixes errors on user page).
 echo "INSERT INTO osu_countries (acronym,name,rankedscore,playcount) VALUES ('AU','Australia',0,0);
       INSERT INTO osu_user_performance_rank (user_id, mode, r0) SELECT user_id, ${MODE}, 1 FROM phpbb_users;" \
