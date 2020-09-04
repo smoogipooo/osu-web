@@ -129,7 +129,7 @@
         @include('layout._loading_overlay')
         @include('layout.popup-container')
 
-        <div class="not-official-footer" style="width: 100%; height: 50px; background: #ff0000; position: fixed; bottom: 0; left: 0; text-align: center; color: #fff; line-height: 50px;">
+        <div class="not-official-footer" style="width: 100%; height: 50px; background: #ff0000; position: fixed; bottom: 0; left: 0; text-align: center; color: #fff; line-height: 50px; z-index: 9999">
           <b>This is NOT the official <a href="https://osu.ppy.sh" style="color: #fff; text-decoration: underline;">osu! website</a>. Do not login with your osu! credentials.</b>
         </div>
 
