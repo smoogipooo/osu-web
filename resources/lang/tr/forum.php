@@ -50,8 +50,9 @@ return [
 
         'actions' => [
             'destroy' => 'Gönderiyi sil',
-            'restore' => 'Gönderiyi geri getir',
             'edit' => 'Gönderiyi düzenle',
+            'report' => 'Gönderiyi bildir',
+            'restore' => 'Gönderiyi geri getir',
         ],
 
         'create' => [
@@ -61,8 +62,8 @@ return [
         ],
 
         'info' => [
-            'post_count' => ':count_delimited gönderi',
-            'topic_starter' => 'Konu Başlığı',
+            'post_count' => ':count_delimited gönderi|:count_delimited gönderi',
+            'topic_starter' => 'Konuyu Başlatan',
         ],
     ],
 
@@ -76,6 +77,7 @@ return [
         'deleted' => 'silinmiş konu',
         'go_to_latest' => 'son yazılan mesajı göster',
         'has_replied' => 'Bu konuyu yanıtladınız',
+        'in_forum' => ':forum da',
         'latest_post' => ':user tarafından :when',
         'latest_reply_by' => 'son cevap :user tarafından',
         'new_topic' => 'Yeni konu aç',
@@ -88,7 +90,7 @@ return [
 
         'create' => [
             'close' => 'Kapat',
-            'preview' => 'Ön izleme ',
+            'preview' => 'Önizleme ',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
             'preview_hide' => 'Yaz',
@@ -159,7 +161,7 @@ return [
         'create' => [
             'create_poll' => 'Anket Oluşturma',
 
-            'preview' => 'Yazı önizleme',
+            'preview' => 'Gönderi Önizleme',
 
             'create_poll_button' => [
                 'add' => 'Anket oluştur',
@@ -274,13 +276,13 @@ return [
                 'do' => 'Bu isteği destekle',
 
                 'info' => [
-                    '_' => 'Bu bir: özellik isteğidir. Özellik istekleri aşağıdakiler tarafından oylanabilir: destek Personeli.',
-                    'feature_request' => 'özellik isteği',
-                    'supporters' => 'destek Personeli',
+                    '_' => 'Bu bir :feature_request. Özellik talepleri :supporters tarafından oylanabilir.',
+                    'feature_request' => 'özellik talebi',
+                    'supporters' => 'supporter\'lar',
                 ],
 
                 'user' => [
-                    'count' => '{0} oy yok|{1} :count oy|[2,*] :count oy',
+                    'count' => '{0} oy yok|{1} :count_delimited oy|[2,*] :count_delimited oy',
                     'current' => ':votes oyunuz var.',
                     'not_enough' => "Başka oyunuz kalmadı",
                 ],

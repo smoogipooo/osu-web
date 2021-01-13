@@ -5,9 +5,12 @@
 
 return [
     'all_read' => 'Alle notifikationer læst!',
+    'delete' => '',
+    'loading' => '',
     'mark_read' => 'Ryd :type',
     'none' => 'Ingen notifikationer',
     'see_all' => 'se alle notifikationer',
+    'see_channel' => '',
 
     'filters' => [
         '_' => 'alle',
@@ -57,6 +60,8 @@ return [
                 'beatmapset_qualify_compact' => 'Beatmap er gået ind i ranking ventelisten',
                 'beatmapset_rank' => '":title" er blevet ranked',
                 'beatmapset_rank_compact' => 'Beatmap blev ranked',
+                'beatmapset_remove_from_loved' => '',
+                'beatmapset_remove_from_loved_compact' => '',
                 'beatmapset_reset_nominations' => 'Nominering af ":title" blev nulstillet',
                 'beatmapset_reset_nominations_compact' => 'Nominering blev nulstillet',
             ],
@@ -129,6 +134,16 @@ return [
             ],
         ],
 
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
+            ],
+        ],
+
         'user_achievement' => [
             '_' => 'Medaljer',
 
@@ -136,6 +151,7 @@ return [
                 '_' => 'Ny medalje',
                 'user_achievement_unlock' => 'Optjent ":title"!',
                 'user_achievement_unlock_compact' => 'Opnået ":title"!',
+                'user_achievement_unlock_group' => '',
             ],
         ],
     ],
@@ -158,6 +174,7 @@ return [
                 'beatmapset_nominate' => '',
                 'beatmapset_qualify' => '',
                 'beatmapset_rank' => '',
+                'beatmapset_remove_from_loved' => '',
                 'beatmapset_reset_nominations' => '',
             ],
 
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => '',
                 'user_achievement_unlock_self' => '',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

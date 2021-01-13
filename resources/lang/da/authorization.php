@@ -4,6 +4,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 return [
+    'play_more' => '',
     'require_login' => 'Log venligst ind for at fortsætte.',
     'require_verification' => 'Verificer venligst for at fortsætte.',
     'restricted' => "Det kan du ikke gøre, når du er tilbageholdt.",
@@ -17,8 +18,6 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Du har nået dit maksimale antal nomineringer i dag, prøv igen i morgen!',
-            'full_bn_required' => 'Du skal være en fuld nominator for at kunne udføre denne kvalificerende nominering.',
-            'full_bn_required_hybrid' => 'Du skal være en fuld nominator for at kunne nominere beatmap sæt med mere end en spiltilstand.',
             'incorrect_state' => 'Fejl i udføringen af handlingen, prøv at genindlæse siden.',
             'owner' => "Kan ikke nominere din egen beatmap.",
             'set_metadata' => '',

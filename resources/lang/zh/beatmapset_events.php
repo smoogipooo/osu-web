@@ -25,9 +25,11 @@ return [
         'language_edit' => '语言由:old更改为:new。',
         'love' => '受到 :user 的喜爱',
         'nominate' => '被 :user 提名。',
+        'nominate_modes' => '',
         'nomination_reset' => '新问题 :discussion（:text）导致提名被重置。',
         'qualify' => '这张谱面已经有了足够数量的提名并已经 Qualified。',
         'rank' => 'Ranked.',
+        'remove_from_loved' => '由 :user 从 Loved 中移除。（:text）',
     ],
 
     'index' => [
@@ -66,5 +68,6 @@ return [
         'nomination_reset' => '重置提名',
         'qualify' => '审核通过',
         'rank' => '被 Ranked',
+        'remove_from_loved' => 'Loved 移除',
     ],
 ];

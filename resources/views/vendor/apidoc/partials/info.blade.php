@@ -7,10 +7,10 @@
 Welcome to the documentation for osu!api v2. You can use this API to get information on various circles and those who click them.
 
 <aside class="warning">
-WARNING: The API in under heavy development and has not stabilised yet. If you choose to use it at this stage, you do so at your own risk. Endpoints may appear, disappear, be renamed and completely change behaviour without warning.
+WARNING: The API is under heavy development and has not stabilised yet. If you choose to use it at this stage, you do so at your own risk. Endpoints may appear, disappear, be renamed and completely change behaviour without warning.
 </aside>
 
-Note that while we endeavour to keep this documentation up to date, consider it a work-in-progress and note that it will likely contains errors.
+Note that while we endeavour to keep this documentation up to date, consider it a work-in-progress and note that it will likely contain errors.
 
 If you notice any errors in the documentation or encounter problems using the API, please check for (or create if necessary) [issues on GitHub](https://github.com/ppy/osu-web/issues). Alternatively, you can ask in `#osu-web` [on the development discord](https://discord.gg/ppy).
 
@@ -43,7 +43,9 @@ v1      | _legacy api provided by the old site, will be deprecated soon_
 
 # Authentication
 
-osu!api uses OAuth2 to grant access to the API. More information about applications you have registered and granted permissions to can be found [here](#managing-oauth-applications).
+Routes marked with the <a class="scope scope--oauth" name="scope-oauth">OAuth</a> label require a valid OAuth2 token for access.
+
+More information about applications you have registered and granted permissions to can be found [here](#managing-oauth-applications).
 
 The API supports the following grant types:
 - [Authorization Code Grant](https://oauth.net/2/grant-types/authorization-code/)
@@ -83,7 +85,7 @@ The flow to authorize users for your application is:
 
 ### Request authorization from a user
 
-To obtain an access token, you must first get an authorization code that is created when a user grants permissions to your application. To request permission from the user, they should to redirected to:
+To obtain an access token, you must first get an authorization code that is created when a user grants permissions to your application. To request permission from the user, they should be redirected to:
 
 `GET {{ route('oauth.authorizations.authorize') }}`
 
@@ -100,7 +102,7 @@ state         | string | Data that will be returned when a temporary code is iss
 
 ### User is redirected back to your site
 
-If the user accepts your request, they will be redirect back to your site with a temporary single-use `code` contained in the URL paramater.
+If the user accepts your request, they will be redirected back to your site with a temporary single-use `code` contained in the URL parameter.
 If a `state` value was provided in the previous request, it will be returned here.
 
 <aside class="notice">
@@ -219,7 +221,7 @@ access_token  | string | The access token.
 
 With the access token, you can make requests to osu!api on behalf of a user.
 
-The token should in included in the header of requests to the API.
+The token should be included in the header of requests to the API.
 
 `Authorization: Bearer @{{token}}`
 
@@ -249,13 +251,23 @@ You must replace <code>@{{token}}</code> with your OAuth2 token.
 
 The following scopes are currently supported:
 
-Name          | Description
---------------|-------------------------------
-identify      | Allows reading of the public profile of the authorizing user (`/me`).
-friends.read  | Allows reading of the authorizing user's friend list.
-public        | Allows reading of publicly available data on behalf of the authorizing user.
+@php
+$scopeDescriptions = [
+    'identify' => 'Allows reading of the public profile of the authorizing user (`/me`).',
+    'friends.read' => 'Allows reading of the authorizing user\'s friend list.',
+    'public' => 'Allows reading of publicly available data on behalf of the authorizing user.',
+];
+@endphp
+
+Name   | Description
+-------|-------------------------------
+@foreach ($scopeDescriptions as $scope => $description)
+<a class="scope scope--{{ $scope }}"name="scope-{{ $scope }}">{{ $scope }}</a> | {{ $description }}
+@endforeach
 
 `identify` is the default scope for the [Authorization Code Grant](#authorization-code-grant) and always implicitly provided. The [Client Credentials Grant](#client-credentials-grant) does not currently have any default scopes.
+
+Routes marked with <a class="scope scope--lazer" name="scope-lazer">lazer</a> are intended for use by the [osu!lazer](https://github.com/ppy/osu) client and not currently available for use with Authorization Code or Client Credentials grants.
 
 
 ## Managing OAuth applications
@@ -274,8 +286,14 @@ For a full list of changes, see the
 
 ## Breaking Changes
 
+### 2020-09-08
+- `presence` removed from `chat/new` response.
+
+### 2020-08-28
+- `/rooms/{room_id}/leaderboard` no longer returns an array at the top level; an object with keys is now returned.
+
 ### 2020-05-01
-- `users.read` scope removed, replace with more general `public` scope.
+- `users.read` scope removed, replaced with more general `public` scope.
 
 ### 2020-02-18
 - Beatmap `max_combo` and build update stream `user_count` now return the values as primitives instead of numbers wrapped in an array.

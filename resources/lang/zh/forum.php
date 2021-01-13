@@ -50,8 +50,9 @@ return [
 
         'actions' => [
             'destroy' => '删除回复',
-            'restore' => '恢复回复',
             'edit' => '编辑回复',
+            'report' => '举报帖子',
+            'restore' => '恢复回复',
         ],
 
         'create' => [
@@ -76,6 +77,7 @@ return [
         'deleted' => '已删除的主题',
         'go_to_latest' => '查看最后的帖子',
         'has_replied' => '你已回复过此主题',
+        'in_forum' => '在 :forum',
         'latest_post' => ':when :user',
         'latest_reply_by' => '最后回复： :user',
         'new_topic' => '发表新主题',

@@ -4,6 +4,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 return [
+    'play_more' => 'Vad sägs om att spela lite osu! istället?',
     'require_login' => 'Var vänlig logga in för att fortsätta.',
     'require_verification' => 'Vänligen verifiera för att fortsätta.',
     'restricted' => "Kan ej göra det när man är begränsad.",
@@ -17,8 +18,6 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Du har uppnått din nomineringsgräns för idag, var god försök igen imorgon.',
-            'full_bn_required' => 'Du måste vara en fullständig väljare för att utföra denna kvalificerande nominering.',
-            'full_bn_required_hybrid' => 'Du måste vara en fullständig väljare för att nominera beatmap-set med mer än ett spelläge.',
             'incorrect_state' => 'Ett fel uppstod, försök att uppdatera sidan.',
             'owner' => "Kan ej nominera sin egna beatmap.",
             'set_metadata' => 'Du måste ange genren och språket innan du nominerar.',

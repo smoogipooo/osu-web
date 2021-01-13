@@ -5,9 +5,12 @@
 
 return [
     'all_read' => '已经阅读所有通知！',
+    'delete' => '删除 :type',
+    'loading' => '',
     'mark_read' => '清除 :type 类型的通知',
     'none' => '没有新通知',
     'see_all' => '显示所有通知',
+    'see_channel' => '前往聊天',
 
     'filters' => [
         '_' => '所有',
@@ -50,13 +53,15 @@ return [
                 'beatmapset_disqualify' => '谱面 :title 被 :username 取消提名。',
                 'beatmapset_disqualify_compact' => '谱面被取消资格',
                 'beatmapset_love' => '谱面 :title 已经被 :username 推荐为 loved 。',
-                'beatmapset_love_compact' => '谱面被提升至最爱',
+                'beatmapset_love_compact' => '谱面已被 Loved',
                 'beatmapset_nominate' => '谱面 :title 被 :username 提名。',
                 'beatmapset_nominate_compact' => '谱面被提名',
                 'beatmapset_qualify' => '谱面 :title 已经得到足够数量的提名并进入到 ranking 队列。',
                 'beatmapset_qualify_compact' => '谱面进入 Ranked 序列',
                 'beatmapset_rank' => '":title" 已 Rank',
                 'beatmapset_rank_compact' => '谱面已 Ranked',
+                'beatmapset_remove_from_loved' => '谱面 :title 已被从 Loved 移除',
+                'beatmapset_remove_from_loved_compact' => '谱面从 Loved 中移除',
                 'beatmapset_reset_nominations' => ':username 提出的问题重置了谱面 :title 的提名过程 ',
                 'beatmapset_reset_nominations_compact' => '提名被重置',
             ],
@@ -129,6 +134,16 @@ return [
             ],
         ],
 
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
+            ],
+        ],
+
         'user_achievement' => [
             '_' => '奖章',
 
@@ -136,6 +151,7 @@ return [
                 '_' => '新奖章',
                 'user_achievement_unlock' => '解锁 ":title"！',
                 'user_achievement_unlock_compact' => '您已解锁 ":title" 成就！',
+                'user_achievement_unlock_group' => '奖章已解锁！',
             ],
         ],
     ],
@@ -153,11 +169,12 @@ return [
             ],
 
             'beatmapset_state' => [
-                'beatmapset_disqualify' => '',
-                'beatmapset_love' => '',
+                'beatmapset_disqualify' => '谱面 :title 已被 DQ',
+                'beatmapset_love' => '谱面 :title 已被 Loved',
                 'beatmapset_nominate' => '“:title”已被提名',
-                'beatmapset_qualify' => '',
+                'beatmapset_qualify' => '谱面 :title 已获得足够的提名，已进入 Ranked 流程',
                 'beatmapset_rank' => '“:title”已被 ranked',
+                'beatmapset_remove_from_loved' => '谱面 :title 已被从 Loved 移除',
                 'beatmapset_reset_nominations' => '“:title”的提名被重置',
             ],
 
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => ':username 解锁了新成就“:title”！',
                 'user_achievement_unlock_self' => '您已解锁了新成就“:title”！',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

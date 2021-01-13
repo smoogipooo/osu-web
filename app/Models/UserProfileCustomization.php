@@ -48,18 +48,17 @@ class UserProfileCustomization extends Model
     public static function repairExtrasOrder($value)
     {
         // read from inside out
-        return
-            array_values(
-                // remove duplicate sections from previous merge
-                array_unique(
-                    // ensure all sections are included
-                    array_merge(
-                        // remove invalid sections
-                        array_intersect($value, static::SECTIONS),
-                        static::SECTIONS
-                    )
+        return array_values(
+            // remove duplicate sections from previous merge
+            array_unique(
+                // ensure all sections are included
+                array_merge(
+                    // remove invalid sections
+                    array_intersect($value, static::SECTIONS),
+                    static::SECTIONS
                 )
-            );
+            )
+        );
     }
 
     public function cover()
@@ -132,6 +131,20 @@ class UserProfileCustomization extends Model
         }
 
         $this->setOption('beatmapset_download', $value);
+    }
+
+    public function getBeatmapsetShowNsfwAttribute()
+    {
+        return $this->options['beatmapset_show_nsfw'] ?? false;
+    }
+
+    public function setBeatmapsetShowNsfwAttribute($value)
+    {
+        if (!is_bool($value)) {
+            $value = null;
+        }
+
+        $this->setOption('beatmapset_show_nsfw', $value);
     }
 
     public function getBeatmapsetTitleShowOriginalAttribute()

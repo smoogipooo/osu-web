@@ -21,7 +21,7 @@ return [
         'kudosu_denied' => 'Đã từ chối nhận kudosu.',
         'message_placeholder_deleted_beatmap' => 'Difficulty này đã bị xóa nên nó có thể sẽ không còn được thảo luận nữa.',
         'message_placeholder_locked' => 'Chức năng bàn luận của beatmap này đã bị vô hiệu hóa.',
-        'message_placeholder_silenced' => "",
+        'message_placeholder_silenced' => "Không thể đăng thảo luận khi bị khoá mõm.",
         'message_type_select' => 'Chọn Loại Nhận Xét',
         'reply_notice' => 'Nhấn enter để trả lời.',
         'reply_placeholder' => 'Nhập câu trả lời của bạn tại đây',
@@ -61,7 +61,7 @@ return [
         'message_placeholder' => [
             'general' => 'Nhập vào đây để đăng vào Chung (:version)',
             'generalAll' => 'Nhập vào đây để đăng vào Chung (Tất cả difficulties)',
-            'review' => '',
+            'review' => 'Gõ ở đây để đăng một bài đánh giá',
             'timeline' => 'Nhập vào đây để đăng vào Timeline (:version)',
         ],
 
@@ -96,22 +96,22 @@ return [
         ],
 
         'review' => [
-            'new' => '',
+            'new' => 'Nhận xét mới',
             'embed' => [
-                'delete' => '',
-                'missing' => '',
-                'unlink' => '',
-                'unsaved' => '',
+                'delete' => 'Xoá',
+                'missing' => '[ĐÃ XOÁ THẢO LUẬN]',
+                'unlink' => 'Gỡ liên kết',
+                'unsaved' => 'Huỷ lưu',
                 'timestamp' => [
-                    'all-diff' => '',
+                    'all-diff' => 'Các bài đăng trên "Mọi độ khó" không thể gắn mốc thời gian.',
                     'diff' => '',
                 ],
             ],
             'insert-block' => [
-                'paragraph' => '',
-                'praise' => '',
-                'problem' => '',
-                'suggestion' => '',
+                'paragraph' => 'chèn đoạn văn',
+                'praise' => 'chèn lời ca ngợi',
+                'problem' => 'chèn vấn đề',
+                'suggestion' => 'chèn gợi ý',
             ],
         ],
 
@@ -145,8 +145,8 @@ return [
 
         'votes' => [
             'none' => [
-                'down' => '',
-                'up' => '',
+                'down' => 'Chưa có downvote',
+                'up' => 'Chưa có upvote',
             ],
             'latest' => [
                 'down' => '',
@@ -187,12 +187,18 @@ return [
         'nominate_confirm' => 'Đề cử (nominate) beatmap này?',
         'nominated_by' => 'Được :users đề cử',
         'not_enough_hype' => "",
-        'qualified' => 'Dự tính sẽ xếp hạng (rank) vào :date, nếu không tìm thấy vấn đề gì.',
-        'qualified_soon' => 'Dự tính sẽ sớm được xếp hạng (rank), nếu không tìm thấy vấn đề gì.',
+        'remove_from_loved' => '',
+        'remove_from_loved_prompt' => '',
         'required_text' => 'Trạng thái đề cử: :current/:required',
         'reset_message_deleted' => 'đã xóa',
         'title' => 'Trạng Thái Đề Cử',
         'unresolved_issues' => 'Vẫn còn một số vấn đề chưa giải quyết cần được xem lại trước.',
+
+        'rank_estimate' => [
+            '_' => '',
+            'queue' => '',
+            'soon' => '',
+        ],
 
         'reset_at' => [
             'nomination_reset' => 'Quá trình đề cử (nomination) thiết lập lại vào :time_ago bởi :user với vấn đề mới :discussion (:message).',
@@ -246,6 +252,7 @@ return [
         'converts' => 'Bao gồm beatmap được chuyển đổi',
     ],
     'mode' => [
+        'all' => '',
         'any' => 'Bất Kì',
         'osu' => 'osu!',
         'taiko' => 'osu!taiko',

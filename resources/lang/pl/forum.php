@@ -50,8 +50,9 @@ return [
 
         'actions' => [
             'destroy' => 'Usuń post',
-            'restore' => 'Przywróć post',
             'edit' => 'Edytuj post',
+            'report' => 'Zgłoś post',
+            'restore' => 'Przywróć post',
         ],
 
         'create' => [
@@ -76,6 +77,7 @@ return [
         'deleted' => 'usunięty wątek',
         'go_to_latest' => 'pokaż najnowszy post',
         'has_replied' => 'Twoja odpowiedź znajduje się w tym wątku',
+        'in_forum' => 'forum: :forum',
         'latest_post' => ':when przez :user',
         'latest_reply_by' => 'ostatnia odpowiedź od :user',
         'new_topic' => 'Utwórz nowy wątek',
@@ -83,7 +85,7 @@ return [
         'post_reply' => 'Opublikuj',
         'reply_box_placeholder' => 'Napisz tutaj swoją odpowiedź',
         'reply_title_prefix' => 'Odp.',
-        'started_by' => 'Autor: :user',
+        'started_by' => 'autor: :user',
         'started_by_verbose' => 'utworzony przez :user',
 
         'create' => [
@@ -91,7 +93,7 @@ return [
             'preview' => 'Podgląd',
             // TL note: this is used in the topic reply preview, when
             // the user goes back from previewing to editing the reply
-            'preview_hide' => 'Napisz',
+            'preview_hide' => 'Edytuj',
             'submit' => 'Opublikuj',
 
             'necropost' => [

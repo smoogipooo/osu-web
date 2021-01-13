@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => 'Membros por modo de jogo',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "Sua conta não foi usada há muito tempo.",
@@ -84,7 +88,7 @@ return [
         'failed' => 'Login incorreto',
         'forgot' => 'Esqueceu sua senha?',
         'info' => 'Por favor, conecte-se para continuar',
-        'invalid_captcha' => '',
+        'invalid_captcha' => 'Captcha inválido, atualize a página e tente novamente.',
         'locked_ip' => 'seu endereço IP está bloqueado. Por favor, espere alguns minutos.',
         'password' => 'Senha',
         'register' => "Você não tem uma conta no osu!? Faça uma!",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Joga com :devices',
         'title' => "Perfil de :username",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Mudar Capa de Perfil',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => 'Discord',
             'interests' => 'Interesses',
-            'lastfm' => 'Last.fm',
             'location' => 'Local Atual',
             'occupation' => 'Ocupação',
             'skype' => 'Skype',

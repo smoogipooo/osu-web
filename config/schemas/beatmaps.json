@@ -1,6 +1,6 @@
 {
   "mappings": {
-    "beatmaps": {
+    "_doc": {
       "dynamic": false,
       "properties": {
         "approved": {
@@ -139,6 +139,9 @@
         },
         "nominations": {
           "type": "long"
+        },
+        "nsfw": {
+          "type": "boolean"
         },
         "offset": {
           "type": "long"

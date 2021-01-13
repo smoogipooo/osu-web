@@ -186,10 +186,11 @@ class BeatmapsetsController extends Controller
     public function nominate($id)
     {
         $beatmapset = Beatmapset::findOrFail($id);
+        $params = get_params(request()->all(), null, ['playmodes:string[]']);
 
         priv_check('BeatmapsetNominate', $beatmapset)->ensureCan();
 
-        $nomination = $beatmapset->nominate(Auth::user());
+        $nomination = $beatmapset->nominate(Auth::user(), $params['playmodes'] ?? []);
         if (!$nomination['result']) {
             return error_popup($nomination['message']);
         }
@@ -208,6 +209,22 @@ class BeatmapsetsController extends Controller
         $nomination = $beatmapset->love(Auth::user());
         if (!$nomination['result']) {
             return error_popup($nomination['message']);
+        }
+
+        BeatmapsetWatch::markRead($beatmapset, Auth::user());
+
+        return $beatmapset->defaultDiscussionJson();
+    }
+
+    public function removeFromLoved($id)
+    {
+        $beatmapset = Beatmapset::findOrFail($id);
+
+        priv_check('BeatmapsetLove')->ensureCan();
+
+        $result = $beatmapset->removeFromLoved(Auth::user(), request('reason'));
+        if (!$result['result']) {
+            return error_popup($result['message']);
         }
 
         BeatmapsetWatch::markRead($beatmapset, Auth::user());
@@ -235,6 +252,7 @@ class BeatmapsetsController extends Controller
         $metadataParams = get_params($params, 'beatmapset', [
             'language_id:int',
             'genre_id:int',
+            'nsfw:bool',
         ]);
 
         if (count($metadataParams) > 0) {
@@ -277,7 +295,7 @@ class BeatmapsetsController extends Controller
         return [
             'beatmapsets' => json_collection(
                 $records,
-                new BeatmapsetTransformer,
+                new BeatmapsetTransformer(),
                 'beatmaps.max_combo'
             ),
             'cursor' => $search->getSortCursor(),

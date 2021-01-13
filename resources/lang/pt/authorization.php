@@ -4,6 +4,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 return [
+    'play_more' => 'Que tal jogar um pouco de osu! em vez disso?',
     'require_login' => 'Por favor inicia sessão para proceder.',
     'require_verification' => 'Por favor verifica para proceder.',
     'restricted' => "Não é possível fazeres isso enquanto estiveres restrito.",
@@ -17,8 +18,6 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Alcançaste o teu limite de nomeações por dia, por favor tenta outra vez amanhã.',
-            'full_bn_required' => 'Tens que ser um nomeador por completo para desempenhar esta nomeação de qualificação.',
-            'full_bn_required_hybrid' => 'Tens que ser um nomeador por completo para nomear grupos de beatmaps com mais de um modo de jogo.',
             'incorrect_state' => 'Erro ao executar essa ação, tenta recarregar a página.',
             'owner' => "Não é possível nomeares o teu próprio beatmap.",
             'set_metadata' => 'Tens de definir o género e a língua antes de nomeares.',

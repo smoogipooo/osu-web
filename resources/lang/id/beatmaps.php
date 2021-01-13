@@ -21,14 +21,14 @@ return [
         'kudosu_denied' => 'Perolehan kudosu ditolak.',
         'message_placeholder_deleted_beatmap' => 'Tingkat kesulitan ini telah dihapus sehingga diskusi lebih lanjut tidak lagi diperkenankan.',
         'message_placeholder_locked' => 'Laman diskusi pada beatmap ini telah ditutup.',
-        'message_placeholder_silenced' => "Anda tidak dapat berpartisipasi pada laman diskusi beatmap ketika Anda sedang ter-silence.",
+        'message_placeholder_silenced' => "Anda tidak dapat berpartisipasi pada laman diskusi beatmap ketika akun Anda sedang di-silence.",
         'message_type_select' => 'Pilih Jenis Komentar',
         'reply_notice' => 'Tekan enter untuk membalas.',
         'reply_placeholder' => 'Ketik balasan Anda di sini',
         'require-login' => 'Silakan masuk untuk membuka topik bahasan baru atau mengirimkan balasan',
         'resolved' => 'Terjawab',
         'restore' => 'kembalikan',
-        'show_deleted' => 'Tampilan dihapus',
+        'show_deleted' => 'Tampilkan yang sudah dihapus',
         'title' => 'Diskusi',
 
         'collapse' => [
@@ -187,12 +187,18 @@ return [
         'nominate_confirm' => 'Nominasikan beatmap ini?',
         'nominated_by' => 'dinominasikan oleh :users',
         'not_enough_hype' => "Beatmap tidak memiliki hype yang cukup.",
-        'qualified' => 'Diperkirakan akan berstatus Ranked pada :date jika tidak ada masalah yang ditemukan.',
-        'qualified_soon' => 'Diperkirakan akan segera berstatus Ranked jika tidak ada masalah yang ditemukan.',
+        'remove_from_loved' => 'Lepas dari Loved',
+        'remove_from_loved_prompt' => 'Alasan pelepasan status Loved:',
         'required_text' => 'Nominasi: :current/:required',
         'reset_message_deleted' => 'dihapus',
         'title' => 'Status Nominasi',
-        'unresolved_issues' => 'Masih ada masalah yang belum terselesaikan yang harus ditangani terlebih dahulu.',
+        'unresolved_issues' => 'Terdapat satu atau lebih masalah yang belum terjawab dan harus ditangani terlebih dahulu.',
+
+        'rank_estimate' => [
+            '_' => 'Map ini akan berstatus Ranked pada :date apabila tidak terdapat masalah baru yang ditemukan. Map ini berada pada urutan ke-:position dalam :queue.',
+            'queue' => 'antrian ranking',
+            'soon' => 'segera',
+        ],
 
         'reset_at' => [
             'nomination_reset' => 'Proses nominasi diulang :time_ago oleh :user akibat ditemukannya masalah baru :discussion (:message).',
@@ -209,7 +215,7 @@ return [
         'search' => [
             'prompt' => 'ketik kata kunci...',
             'login_required' => 'Masuk untuk mencari.',
-            'options' => 'Opsi Pencarian Lebih Lanjut',
+            'options' => 'Pilihan Pencarian Lebih Lanjut',
             'supporter_filter' => 'Penyaringan berdasarkan :filters memerlukan osu!supporter tag yang aktif',
             'not-found' => 'tidak ada hasil',
             'not-found-quote' => '... tidak, tidak ditemukan apa pun.',
@@ -219,9 +225,9 @@ return [
                 'status' => 'Status',
                 'genre' => 'Aliran',
                 'language' => 'Bahasa',
-                'extra' => 'Tambahan',
-                'rank' => 'Peringkat yang Diraih',
-                'played' => 'Telah Dimainkan',
+                'extra' => 'Konten Ekstra',
+                'rank' => 'Torehan Peringkat',
+                'played' => 'Riwayat Permainan',
             ],
             'sorting' => [
                 'title' => 'Judul',
@@ -231,7 +237,7 @@ return [
                 'updated' => 'Tanggal Pembaruan Terakhir',
                 'ranked' => 'Tanggal Ranked',
                 'rating' => 'Nilai Pengguna',
-                'plays' => 'Jumlah Dimainkan',
+                'plays' => 'Jumlah Permainan',
                 'relevance' => 'Relevansi',
                 'nominations' => 'Jumlah Nominasi',
             ],
@@ -246,6 +252,7 @@ return [
         'converts' => 'Sertakan beatmap yang dikonversi',
     ],
     'mode' => [
+        'all' => 'Semua',
         'any' => 'Semua',
         'osu' => 'osu!',
         'taiko' => 'osu!taiko',
@@ -272,9 +279,9 @@ return [
         'rock' => 'Rock',
         'pop' => 'Pop',
         'other' => 'Lainnya',
-        'novelty' => 'Novelty',
+        'novelty' => 'Novelti',
         'hip-hop' => 'Hip Hop',
-        'electronic' => 'Electronic',
+        'electronic' => 'Elektronik',
         'metal' => 'Metal',
         'classical' => 'Klasik',
         'folk' => 'Folk',
@@ -326,7 +333,7 @@ return [
     'played' => [
         'any' => 'Semua',
         'played' => 'Pernah Dimainkan',
-        'unplayed' => 'Belum Dimainkan',
+        'unplayed' => 'Belum Pernah Dimainkan',
     ],
     'extra' => [
         'video' => 'Memiliki Video',
@@ -344,7 +351,7 @@ return [
         'D' => 'D',
     ],
     'panel' => [
-        'playcount' => 'Jumlah dimainkan: :count',
+        'playcount' => 'Jumlah permainan: :count',
         'favourites' => 'Jumlah favorit: :count',
     ],
     'variant' => [

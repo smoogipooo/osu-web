@@ -5,9 +5,12 @@
 
 return [
     'all_read' => 'Todas as notificações foram lidas!',
+    'delete' => 'Eliminar :type',
+    'loading' => '',
     'mark_read' => 'Limpar :type',
     'none' => 'Sem notificações',
     'see_all' => 'ver todas as notificações',
+    'see_channel' => 'ir para a conversa',
 
     'filters' => [
         '_' => 'todas',
@@ -57,6 +60,8 @@ return [
                 'beatmapset_qualify_compact' => 'O beatmap entrou na fila para se classificar',
                 'beatmapset_rank' => 'O beatmap ":title" foi classificado',
                 'beatmapset_rank_compact' => 'O beatmap foi classificado',
+                'beatmapset_remove_from_loved' => 'O ":title" foi removido de Adorado',
+                'beatmapset_remove_from_loved_compact' => 'O beatmap foi removido de Adorado',
                 'beatmapset_reset_nominations' => 'A nomeação do ":title" foi reiniciada',
                 'beatmapset_reset_nominations_compact' => 'A nomeação foi reiniciada',
             ],
@@ -129,6 +134,16 @@ return [
             ],
         ],
 
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
+            ],
+        ],
+
         'user_achievement' => [
             '_' => 'Medalhas',
 
@@ -136,6 +151,7 @@ return [
                 '_' => 'Nova medalha',
                 'user_achievement_unlock' => 'Desbloqueaste ":title"!',
                 'user_achievement_unlock_compact' => 'Desbloqueaste ":title"!',
+                'user_achievement_unlock_group' => 'Medalhas desbloqueadas!',
             ],
         ],
     ],
@@ -156,9 +172,10 @@ return [
                 'beatmapset_disqualify' => '":title" foi desqualificado',
                 'beatmapset_love' => '":title" foi promovido a adorado',
                 'beatmapset_nominate' => '":title" foi nomeado',
-                'beatmapset_qualify' => '',
+                'beatmapset_qualify' => 'A ":title" ganhou nomeações suficientes e entrou para a fila de classificação',
                 'beatmapset_rank' => '":title" foi classificado',
-                'beatmapset_reset_nominations' => '',
+                'beatmapset_remove_from_loved' => 'O ":title" foi removido de Adorado',
+                'beatmapset_reset_nominations' => 'A nomeação de ":title" foi reiniciada',
             ],
 
             'comment' => [
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => ':username desbloqueou uma nova medalha, ":title"!',
                 'user_achievement_unlock_self' => 'Desbloqueaste uma nova medalha: ":title"!',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

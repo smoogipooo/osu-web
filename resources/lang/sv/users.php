@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => 'Medlemmar efter spelläge',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "Ditt konto har inte använts på länge.",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Spelar med :devices',
         'title' => ":username's profil",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Ändra Profilomslag',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => 'Discord',
             'interests' => 'Intressen',
-            'lastfm' => 'Last.fm',
             'location' => 'Nuvarande plats',
             'occupation' => 'Sysselsättning',
             'skype' => 'Skype',

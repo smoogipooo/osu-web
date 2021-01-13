@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Chơi bằng :devices',
         'title' => "Trang cá nhân của :username",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Đổi Ảnh Bìa Trang Cá Nhân',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => 'Discord',
             'interests' => 'Sở Thích',
-            'lastfm' => 'Last.fm',
             'location' => 'Vị Trí Hiện Tại',
             'occupation' => 'Nghề Nghiệp',
             'skype' => 'Skype',

@@ -15,7 +15,7 @@ use Tests\DuskTestCase;
 
 class BeatmapDiscussionPostsTest extends DuskTestCase
 {
-    private $new_reply_widget_selector = '.beatmap-discussion__full .beatmap-discussion-post--new-reply';
+    private $new_reply_widget_selector = '.beatmap-discussion-post--new-reply';
 
     public function testConcurrentPostAfterResolve()
     {
@@ -66,9 +66,8 @@ class BeatmapDiscussionPostsTest extends DuskTestCase
     {
         $browser->loginAs($user)
             ->visit('/_dusk/verify')
-            ->visitRoute('beatmap-discussions.show', [
-                'beatmapset' => $this->beatmapset->getKey(),
-                'beatmap_discussion' => $this->beatmapDiscussion->getKey(),
+            ->visitRoute('beatmapsets.discussions.show', [
+                'discussion' => $this->beatmapDiscussion->getKey(),
             ]);
     }
 

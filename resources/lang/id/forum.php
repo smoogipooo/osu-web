@@ -50,8 +50,9 @@ return [
 
         'actions' => [
             'destroy' => 'Hapus Kiriman',
-            'restore' => 'Kembalikan post',
             'edit' => 'Sunting post',
+            'report' => 'Laporkan post',
+            'restore' => 'Kembalikan post',
         ],
 
         'create' => [
@@ -76,6 +77,7 @@ return [
         'deleted' => 'topik yang dihapus',
         'go_to_latest' => 'lihat posting terbaru',
         'has_replied' => 'Anda telah mengirimkan balasan pada topik ini',
+        'in_forum' => 'pada forum :forum',
         'latest_post' => ':when oleh :user',
         'latest_reply_by' => 'balasan terbaru oleh :user',
         'new_topic' => 'Post topik baru',

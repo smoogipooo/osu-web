@@ -1,7 +1,7 @@
 // Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
 // See the LICENCE file in the repository root for full licence text.
 
-import { action, computed, observable } from 'mobx';
+import { action, computed, intercept, observable } from 'mobx';
 
 type filterValueType = string | null;
 
@@ -11,6 +11,7 @@ export interface BeatmapsetSearchParams {
   genre: filterValueType;
   language: filterValueType;
   mode: filterValueType;
+  nsfw: filterValueType;
   played: filterValueType;
   query: filterValueType;
   rank: filterValueType;
@@ -26,11 +27,12 @@ export class BeatmapsetSearchFilters implements BeatmapsetSearchParams {
   @observable genre: filterValueType = null;
   @observable language: filterValueType = null;
   @observable mode: filterValueType = null;
+  @observable nsfw: filterValueType = null;
   @observable played: filterValueType = null;
+  @observable query: filterValueType = null;
   @observable rank: filterValueType = null;
   @observable sort: filterValueType = null;
   @observable status: filterValueType = null;
-  @observable private sanitizedQuery: filterValueType = null;
 
   [key: string]: any;
 
@@ -39,23 +41,17 @@ export class BeatmapsetSearchFilters implements BeatmapsetSearchParams {
     for (const key of Object.keys(filters)) {
       this[key] = filters[key];
     }
+
+    intercept(this, 'query', (change) => {
+      change.newValue = osu.presence((change.newValue as filterValueType)?.trim());
+
+      return change;
+    });
   }
 
   @computed
   get displaySort() {
     return this.selectedValue('sort');
-  }
-
-  @computed
-  get query() {
-    return this.sanitizedQuery;
-  }
-
-  set query(value: string | null) {
-    const sanitizedQuery = osu.presence((value || '').trim());
-    if (this.sanitizedQuery !== sanitizedQuery) {
-      this.sanitizedQuery = sanitizedQuery;
-    }
   }
 
   @computed
@@ -102,12 +98,7 @@ export class BeatmapsetSearchFilters implements BeatmapsetSearchParams {
    * Returns a copy of the values in the filter.
    */
   @computed
-  private get values() {
-    // Object.assign doesn't copy the methods
-    const values = Object.assign({}, this);
-    values.query = this.sanitizedQuery;
-    delete values.sanitizedQuery;
-
-    return values as BeatmapsetSearchParams;
+  private get values(): BeatmapsetSearchParams {
+    return Object.assign({}, this);
   }
 }

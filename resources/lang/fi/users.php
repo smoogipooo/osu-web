@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "Käyttäjätiliäsi ei ole käytetty pitkään aikaan.",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Pelityylinä :devices',
         'title' => ":username:n profiili",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Muuta profiilin kansikuvaa',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => '',
             'interests' => 'Kiinnostuksen kohteet',
-            'lastfm' => 'Last.fm',
             'location' => 'Tämänhetkinen sijainti',
             'occupation' => 'Ammatti',
             'skype' => '',
@@ -390,7 +397,7 @@ return [
             'medals' => 'Mitalit',
             'play_count' => 'Pelikertoja',
             'play_time' => 'Pelattu aika',
-            'ranked_score' => 'Tilastopisteet',
+            'ranked_score' => 'Tilastoidut pisteet',
             'replays_watched_by_others' => 'Muiden Katsomat Uusinnat',
             'score_ranks' => 'Luokitukset',
             'total_hits' => 'Osumat',

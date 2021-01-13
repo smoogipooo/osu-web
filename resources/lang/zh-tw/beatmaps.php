@@ -101,7 +101,7 @@ return [
                 'delete' => '刪除',
                 'missing' => '',
                 'unlink' => '',
-                'unsaved' => '',
+                'unsaved' => '尚未儲存',
                 'timestamp' => [
                     'all-diff' => '',
                     'diff' => '',
@@ -187,12 +187,18 @@ return [
         'nominate_confirm' => '確定要提名這張圖譜？',
         'nominated_by' => '被 :users 提名',
         'not_enough_hype' => "沒有足夠的推薦。",
-        'qualified' => '如果沒有問題，預計將於 :date 被 Ranked 。',
-        'qualified_soon' => '如果沒有問題，預計不久將被 Ranked 。',
+        'remove_from_loved' => '',
+        'remove_from_loved_prompt' => '',
         'required_text' => '提名數: :current/:required',
         'reset_message_deleted' => '已刪除',
         'title' => '提名狀態',
         'unresolved_issues' => '仍然有需解決的問題 。',
+
+        'rank_estimate' => [
+            '_' => '',
+            'queue' => '',
+            'soon' => '',
+        ],
 
         'reset_at' => [
             'nomination_reset' => '提名於 :time_ago 被新問題 :discussion 重置。',
@@ -246,6 +252,7 @@ return [
         'converts' => '包括轉換圖譜',
     ],
     'mode' => [
+        'all' => '全部',
         'any' => '所有',
         'osu' => 'osu!',
         'taiko' => 'osu!taiko',
@@ -275,10 +282,10 @@ return [
         'novelty' => '新奇',
         'hip-hop' => '嘻哈',
         'electronic' => '電音',
-        'metal' => '',
-        'classical' => '',
+        'metal' => '重金屬',
+        'classical' => '古典樂',
         'folk' => '',
-        'jazz' => '',
+        'jazz' => '爵士樂',
     ],
     'mods' => [
         '4K' => '4K',
@@ -318,7 +325,7 @@ return [
         'spanish' => '西班牙語',
         'swedish' => '瑞典語',
         'russian' => '俄語',
-        'polish' => '',
+        'polish' => '波蘭語',
         'instrumental' => '樂器演奏',
         'other' => '其他',
         'unspecified' => '',
@@ -349,8 +356,8 @@ return [
     ],
     'variant' => [
         'mania' => [
-            '4k' => '',
-            '7k' => '',
+            '4k' => '4K',
+            '7k' => '7K',
             'all' => '全部',
         ],
     ],

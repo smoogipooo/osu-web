@@ -187,12 +187,18 @@ return [
         'nominate_confirm' => 'Nominálod ezt a beatmapot?',
         'nominated_by' => 'nominálva :users által',
         'not_enough_hype' => "Nincs elég hype.",
-        'qualified' => 'Előreláthatólag :date-kor lesz rangsorolva, ha nem találnak benne problémát.',
-        'qualified_soon' => 'Hamarosan rangsorolva lesz, ha nem találnak benne problémát.',
+        'remove_from_loved' => 'Eltávolítás a szeretettek közül',
+        'remove_from_loved_prompt' => 'Indoka a szeretettek közül való eltávolításnak:',
         'required_text' => 'Nominálások: :current/:required',
         'reset_message_deleted' => 'törölve',
         'title' => 'Nominálási Állapot',
         'unresolved_issues' => 'Még mindig vannak megoldatlan problémák amelyeket először kezelni kell.',
+
+        'rank_estimate' => [
+            '_' => 'Ez a pálya ranglistázott lesz :date napján, ha további problémák nem merülnek fel. Jelenleg a :position. helyen áll a :queue.',
+            'queue' => 'ranglistázási sorban',
+            'soon' => 'a közeljövő egy',
+        ],
 
         'reset_at' => [
             'nomination_reset' => 'A nominálási folyamat újraindításra került :time_ago-kor :user által: :discussion (:message).',
@@ -246,6 +252,7 @@ return [
         'converts' => 'Konvertált beatmap-ek tartalmazása',
     ],
     'mode' => [
+        'all' => 'Összes',
         'any' => 'Bármelyik',
         'osu' => '',
         'taiko' => '',

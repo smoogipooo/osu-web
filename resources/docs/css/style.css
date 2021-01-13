@@ -1085,6 +1085,11 @@ body {
 .content h1 {
   font-size: 25px;
 }
+.content h4,
+.content h5,
+.content h6 {
+  font-size: 12px;
+}
 .content blockquote {
   padding: 0;
 }
@@ -1100,6 +1105,10 @@ body {
 .content pre > code {
   overflow: visible;
 }
+.content table td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 .content table tr:nth-child(2n+1) > td {
   background-color: #fff;
 }
@@ -1110,15 +1119,27 @@ body {
   max-width: 150px;
   margin: 10px auto;
 }
-.authenticated {
+.scope {
   padding: 1px 10px;
   text-shadow: none;
+  font-size: smaller;
   font-weight: bold;
   white-space: nowrap;
   color: #fff;
   border-radius: 9px;
-  background-color: #3a87ad;
-  display: block;
+  background-color: #87ad3a;
   width: max-content;
-  margin-bottom: 1em;
+  text-decoration: none;
+}
+.scope--lazer {
+  background-color: #ba6436;
+}
+.scope--oauth {
+  background-color: #3a87ad;
+}
+.scope-list .scope {
+  margin-right: 5px;
+}
+.scope-list {
+  display: flex;
 }

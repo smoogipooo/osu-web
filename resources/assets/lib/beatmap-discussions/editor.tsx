@@ -18,6 +18,7 @@ import EditorDiscussionComponent from './editor-discussion-component';
 import {
   blockCount,
   insideEmbed,
+  insideEmptyNode,
   serializeSlateDocument,
   slateDocumentContainsNewProblem,
   slateDocumentIsEmpty,
@@ -30,7 +31,7 @@ import { ReviewEditorConfigContext } from './review-editor-config-context';
 import { SlateContext } from './slate-context';
 
 interface CacheInterface {
-  draftEmbeds?: SlateNode[];
+  draftEmbeds?: SlateElement[];
   sortedBeatmaps?: BeatmapJsonExtended[];
 }
 
@@ -38,19 +39,20 @@ interface Props {
   beatmaps: Record<number, BeatmapJsonExtended>;
   beatmapset: BeatmapsetJson;
   currentBeatmap: BeatmapJsonExtended;
-  currentDiscussions: BeatmapDiscussion[];
-  discussion?: BeatmapDiscussion;
-  discussions: Record<number, BeatmapDiscussion>;
+  currentDiscussions: BeatmapsetDiscussionJson[];
+  discussion?: BeatmapsetDiscussionJson;
+  discussions: Record<number, BeatmapsetDiscussionJson>;
   document?: string;
   editing: boolean;
   editMode?: boolean;
+  onChange?: () => void;
   onFocus?: () => void;
 }
 
 interface State {
   blockCount: number;
   posting: boolean;
-  value: SlateNode[];
+  value: SlateElement[];
 }
 
 interface TimestampRange extends Range {
@@ -65,6 +67,7 @@ export default class Editor extends React.Component<Props, State> {
 
   bn = 'beatmap-discussion-editor';
   cache: CacheInterface = {};
+  context!: React.ContextType<typeof ReviewEditorConfigContext>;
   emptyDocTemplate = [{children: [{text: ''}], type: 'paragraph'}];
   insertMenuRef: React.RefObject<EditorInsertionMenu>;
   localStorageKey: string;
@@ -80,17 +83,23 @@ export default class Editor extends React.Component<Props, State> {
     this.scrollContainerRef = React.createRef();
     this.toolbarRef = React.createRef();
     this.insertMenuRef = React.createRef();
-
-    let initialValue = this.emptyDocTemplate;
     this.localStorageKey = `newDiscussion-${this.props.beatmapset.id}`;
-    const saved = localStorage.getItem(this.localStorageKey);
-    if (!props.editMode && saved) {
-      try {
-        initialValue = JSON.parse(saved);
-      } catch (error) {
-        // tslint:disable-next-line:no-console
-        console.error('invalid json in localStorage, ignoring');
-        localStorage.removeItem(this.localStorageKey);
+
+    let initialValue: SlateElement[] = this.emptyDocTemplate;
+
+    if (props.editMode) {
+      initialValue = this.valueFromProps();
+    } else {
+      const saved = localStorage.getItem(this.localStorageKey);
+
+      if (saved != null) {
+        try {
+          initialValue = JSON.parse(saved);
+        } catch (error) {
+          // tslint:disable-next-line:no-console
+          console.error('invalid json in localStorage, ignoring');
+          localStorage.removeItem(this.localStorageKey);
+        }
       }
     }
 
@@ -109,6 +118,10 @@ export default class Editor extends React.Component<Props, State> {
     );
   }
 
+  get canSave() {
+    return !this.state.posting && this.state.blockCount <= this.context.max_blocks;
+  }
+
   componentDidMount() {
     if (this.scrollContainerRef.current) {
       if (this.toolbarRef.current) {
@@ -121,8 +134,13 @@ export default class Editor extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<any>, snapshot?: any): void {
-    if (this.props.editing !== prevProps.editing) {
-      this.toggleEditing();
+    if (this.props.document !== prevProps.document) {
+      const newValue = this.valueFromProps();
+
+      this.setState({
+        blockCount: blockCount(newValue),
+        value: newValue,
+      });
     }
   }
 
@@ -159,7 +177,12 @@ export default class Editor extends React.Component<Props, State> {
     return ranges;
   }
 
-  onChange = (value: SlateNode[]) => {
+  onChange = (value: SlateElement[]) => {
+    // prevent document from becoming empty (and invalid) - ideally this would be handled in `withNormalization`, but that isn't run on every change
+    if (value.length === 0) {
+      value = this.emptyDocTemplate;
+    }
+
     if (!this.props.editMode) {
       const content = JSON.stringify(value);
 
@@ -170,14 +193,19 @@ export default class Editor extends React.Component<Props, State> {
       }
     }
 
-    this.setState({
-      blockCount: blockCount(value),
-      value,
-    });
+    this.setState(
+      {
+        blockCount: blockCount(value),
+        value,
+      },
+      () => {
+        if (ReactEditor.isFocused(this.slateEditor) && this.props.onFocus) {
+          this.props.onFocus();
+        }
 
-    if (ReactEditor.isFocused(this.slateEditor) && this.props.onFocus) {
-      this.props.onFocus();
-    }
+        this.props.onChange?.();
+      },
+    );
   }
 
   onKeyDown = (event: KeyboardEvent) => {
@@ -191,6 +219,11 @@ export default class Editor extends React.Component<Props, State> {
       if (insideEmbed(this.slateEditor)) {
         event.preventDefault();
         this.slateEditor.insertText('\n');
+      }
+    } else if (isHotkey('delete', event) || isHotkey('backspace', event)) {
+      if (insideEmptyNode(this.slateEditor)) {
+        event.preventDefault();
+        Transforms.removeNodes(this.slateEditor);
       }
     }
   }
@@ -215,7 +248,6 @@ export default class Editor extends React.Component<Props, State> {
   render(): React.ReactNode {
     const editorClass = 'beatmap-discussion-editor';
     const modifiers = this.props.editMode ? ['edit-mode'] : [];
-    const overLimit = this.state.blockCount > this.context.max_blocks;
     if (this.state.posting) {
       modifiers.push('readonly');
     }
@@ -266,7 +298,7 @@ export default class Editor extends React.Component<Props, State> {
                     </span>
                     <button
                       className='btn-osu-big btn-osu-big--forum-primary'
-                      disabled={this.state.posting || overLimit}
+                      disabled={!this.canSave}
                       type='submit'
                       onClick={this.post}
                     >
@@ -330,8 +362,7 @@ export default class Editor extends React.Component<Props, State> {
     }
 
     if (props.leaf.timestamp) {
-      // TODO: fix this nested stuff
-      return <span className='beatmapset-discussion-message' {...props.attributes}><span className={'beatmapset-discussion-message__timestamp'}>{children}</span></span>;
+      return <span className='beatmap-discussion-timestamp-decoration' {...props.attributes}>{children}</span>;
     }
 
     return (
@@ -385,19 +416,6 @@ export default class Editor extends React.Component<Props, State> {
     return this.cache.sortedBeatmaps;
   }
 
-  toggleEditing = () => {
-    if (!this.props.document || !this.props.discussions || _.isEmpty(this.props.discussions)) {
-      return;
-    }
-
-    const value = this.props.editing ? parseFromJson(this.props.document, this.props.discussions) : [];
-
-    this.setState({
-      blockCount: blockCount(value),
-      value,
-    });
-  }
-
   updateDrafts = () => {
     this.cache.draftEmbeds = this.state.value.filter((block) => block.type === 'embed' && !block.discussion_id);
   }
@@ -429,7 +447,8 @@ export default class Editor extends React.Component<Props, State> {
           }
 
           // clear invalid beatmapId references (for pasted embed content)
-          if (node.beatmapId && (!this.props.beatmaps[node.beatmapId] || this.props.beatmaps[node.beatmapId].deleted_at)) {
+          const beatmapId = node.beatmapId as number | undefined;
+          if (beatmapId && (!this.props.beatmaps[beatmapId] || this.props.beatmaps[beatmapId].deleted_at)) {
             Transforms.setNodes(editor, {beatmapId: null}, {at: path});
           }
         }
@@ -439,5 +458,13 @@ export default class Editor extends React.Component<Props, State> {
     };
 
     return editor;
+  }
+
+  private valueFromProps() {
+    if (!this.props.editing || this.props.document == null || this.props.discussions == null) {
+      return [];
+    }
+
+    return parseFromJson(this.props.document, this.props.discussions);
   }
 }

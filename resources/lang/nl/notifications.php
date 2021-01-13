@@ -5,9 +5,12 @@
 
 return [
     'all_read' => 'Alle meldingen gelezen!',
+    'delete' => '',
+    'loading' => '',
     'mark_read' => 'Wissen :type',
     'none' => 'Geen meldingen',
     'see_all' => 'alle meldingen bekijken',
+    'see_channel' => '',
 
     'filters' => [
         '_' => 'alle',
@@ -57,6 +60,8 @@ return [
                 'beatmapset_qualify_compact' => 'Beatmap staat in de ranked wachtlijst',
                 'beatmapset_rank' => '":title" is geranked',
                 'beatmapset_rank_compact' => 'Beatmap was geranked',
+                'beatmapset_remove_from_loved' => '',
+                'beatmapset_remove_from_loved_compact' => '',
                 'beatmapset_reset_nominations' => 'Probleem geplaatst door :username reset nominatie van beatmap ":title" ',
                 'beatmapset_reset_nominations_compact' => 'Nominatie is gereset',
             ],
@@ -129,6 +134,16 @@ return [
             ],
         ],
 
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
+            ],
+        ],
+
         'user_achievement' => [
             '_' => 'Medailles',
 
@@ -136,6 +151,7 @@ return [
                 '_' => 'Nieuwe medaille',
                 'user_achievement_unlock' => '":title" ontgrendeld!',
                 'user_achievement_unlock_compact' => '":title" ontgrendeld!',
+                'user_achievement_unlock_group' => '',
             ],
         ],
     ],
@@ -158,6 +174,7 @@ return [
                 'beatmapset_nominate' => '":title" is genomineerd',
                 'beatmapset_qualify' => '":title" heeft genoeg nominaties gekregen en de rij van rangen ingevoerd',
                 'beatmapset_rank' => '":title" is gerangschikt',
+                'beatmapset_remove_from_loved' => '',
                 'beatmapset_reset_nominations' => 'Nominatie van ":title" is gereset',
             ],
 
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => ':username heeft een nieuwe medaille ontgrendeld, ":title"!',
                 'user_achievement_unlock_self' => 'Je hebt een nieuwe medaille, ":title"!',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

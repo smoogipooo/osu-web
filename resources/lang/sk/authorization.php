@@ -4,6 +4,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 return [
+    'play_more' => '',
     'require_login' => 'Prosím, prihláste sa, aby ste mohli pokračovať.',
     'require_verification' => 'Prosím overte pre pokračovanie.',
     'restricted' => "Toto nemôžete robiť, kým ste umlčaný.",
@@ -17,8 +18,6 @@ return [
         ],
         'nominate' => [
             'exhausted' => 'Dosiahli ste limit nominácii pre tento deň, prosím, skúste to znovu zajtra.',
-            'full_bn_required' => 'Musíte byť plný nominátor aby ste mohli kvalifikovať túto nomináciu.',
-            'full_bn_required_hybrid' => 'Musíte byť plný nominátor pre nominovanie setov beatmáp pre viacej ako jeden herný mód.',
             'incorrect_state' => 'Nastala chyba pri vykonávaní tejto činnosti, skús obnoviť túto stránku.',
             'owner' => "Nemôžete nominovať vlastnú beatmapu.",
             'set_metadata' => 'Musíš nastaviť žáner a jazyk pred nominovaním.',

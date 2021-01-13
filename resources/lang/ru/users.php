@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => 'Участники по игровому режиму',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "Ваш аккаунт не использовался в течение долгого времени.",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Играет с :devices',
         'title' => "Профиль :username",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Сменить обложку профиля',
@@ -311,7 +319,7 @@ return [
                     'title' => 'Лучшие результаты',
                 ],
                 'first' => [
-                    'title' => 'Рекорды',
+                    'title' => 'Первые места',
                 ],
             ],
             'votes' => [
@@ -322,7 +330,7 @@ return [
                 'vote_count' => ':count_delimited голос|:count_delimited голоса|:count_delimited голосов',
             ],
             'account_standing' => [
-                'title' => 'Состояние аккаунта',
+                'title' => 'Нарушения',
                 'bad_standing' => "с аккаунтом <strong>:username</strong> не всё хорошо :(",
                 'remaining_silence' => 'пользователю <strong>:username</strong> можно будет говорить через :duration.',
 
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => 'Discord',
             'interests' => 'Интересы',
-            'lastfm' => 'Last.fm',
             'location' => 'Текущее местоположение',
             'occupation' => 'Род деятельности',
             'skype' => 'Skype',

@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "لم تستعمل حسابك منذ وقتِِ طويل.",
@@ -84,7 +88,7 @@ return [
         'failed' => 'تسجيل دخول غير صحيح',
         'forgot' => 'نسيت كلمة المرور؟',
         'info' => 'الرجاء تسجيل الدخول للاستمرار',
-        'invalid_captcha' => '',
+        'invalid_captcha' => 'فَشِلت الكابتشا، قم بتحديث الصفحة وحاول مرة أخرى.',
         'locked_ip' => 'عنوان IP الخاص بك مؤمن. الرجاء الانتظار بضع دقائق.',
         'password' => 'كلمة السر',
         'register' => "ليس لديك حساب osu!؟ قم باِنشاء واحد",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'يستخدم :devices',
         'title' => "صفحة:username الشخصية",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'تغيير صورة الغلاف',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => '',
             'interests' => 'الاهتمامات',
-            'lastfm' => 'Last.fm',
             'location' => 'الموقع الحالي',
             'occupation' => 'المهنة',
             'skype' => '',

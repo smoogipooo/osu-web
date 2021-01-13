@@ -50,8 +50,9 @@ return [
 
         'actions' => [
             'destroy' => '삭제',
-            'restore' => '복원',
             'edit' => '수정',
+            'report' => '게시글 신고',
+            'restore' => '복원',
         ],
 
         'create' => [
@@ -76,6 +77,7 @@ return [
         'deleted' => '삭제된 주제',
         'go_to_latest' => '최근에 올라온 글 보기',
         'has_replied' => '이 주제에 답글을 달았습니다.',
+        'in_forum' => ':forum 에서',
         'latest_post' => ':when by :user',
         'latest_reply_by' => ':user님이 마지막 답변 작성',
         'new_topic' => '새 주제글 작성',

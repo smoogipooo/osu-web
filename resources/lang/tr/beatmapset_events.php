@@ -25,9 +25,11 @@ return [
         'language_edit' => 'Dil :old\'dan :new\'e değiştirildi.',
         'love' => ':user tarafından sevildi',
         'nominate' => ':user tarafından aday gösterildi.',
+        'nominate_modes' => '',
         'nomination_reset' => 'Yeni sorun :discussion (:text) bir adaylık sıfırlamasını tetikledi.',
         'qualify' => 'Bu beatmap gerekli aday gösterilme miktarına ulaştı ve nitelikli oldu.',
         'rank' => 'Dereceli.',
+        'remove_from_loved' => ':user tarafından Sevilenlerden çıkarıldı (:text)',
     ],
 
     'index' => [
@@ -66,5 +68,6 @@ return [
         'nomination_reset' => 'Adaylık Sıfırlama',
         'qualify' => 'Adaylık',
         'rank' => 'Sıralama',
+        'remove_from_loved' => 'Sevilenlerden çıkarma',
     ],
 ];

@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "Kontoen din har ikke blitt brukt på lang tid.",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Spiller med :devices',
         'title' => "Profilen til :username",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Endre profilbanner',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => 'Discord',
             'interests' => 'Interesser',
-            'lastfm' => 'Last.fm',
             'location' => 'Nåværende Plassering',
             'occupation' => 'Yrke',
             'skype' => 'Skype',

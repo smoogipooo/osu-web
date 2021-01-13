@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '게임 모드 별 멤버',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "당신의 계정은 오랫동안 사용되지 않았네요.",
@@ -150,6 +154,10 @@ return [
         'plays_with' => '플레이 장비: :devices',
         'title' => ":username님의 프로필",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => '프로필 표지 변경',
@@ -199,7 +207,7 @@ return [
                     'title' => 'Loved 비트맵',
                 ],
                 'ranked_and_approved' => [
-                    'title' => 'Ranked / Approved 된 비트맵',
+                    'title' => 'Ranked 및 Approved 상태의 비트맵',
                 ],
                 'unranked' => [
                     'title' => 'Pending 비트맵',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => '디스코드',
             'interests' => '관심 분야',
-            'lastfm' => 'Last.fm',
             'location' => '거주지',
             'occupation' => '직업',
             'skype' => '스카이프',

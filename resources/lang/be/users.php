@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Гуляе з :devices',
         'title' => "Профіль :username",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Змяніць фон профілю',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => '',
             'interests' => 'Цікаўнасці',
-            'lastfm' => 'Last.fm',
             'location' => 'Бягучае месцазнаходжанне',
             'occupation' => 'Занятак',
             'skype' => '',

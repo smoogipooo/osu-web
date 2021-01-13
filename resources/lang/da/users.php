@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "Din account har ikke været i brug i lang tid.",
@@ -150,6 +154,10 @@ return [
         'plays_with' => 'Spiller med :devices',
         'title' => ":username´s profil",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Skift Coverbillede',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => '',
             'interests' => 'Interesser',
-            'lastfm' => 'Last.fm',
             'location' => 'Nuværende Position',
             'occupation' => 'Stilling',
             'skype' => 'Skype',

@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "あなたのアカウントは長期間使用されていません。",
@@ -84,7 +88,7 @@ return [
         'failed' => 'ログインに失敗しました',
         'forgot' => 'パスワードを忘れましたか？',
         'info' => 'ログインして続行してください',
-        'invalid_captcha' => '',
+        'invalid_captcha' => 'Captcha が無効です。ページを更新して再度お試し下さい。',
         'locked_ip' => 'あなたのIPアドレスはロックされています。数分後もう一度お試しください。',
         'password' => 'パスワード',
         'register' => "osu!アカウントを持っていませんか？新しいアカウントを作るにはこちらから",
@@ -150,6 +154,10 @@ return [
         'plays_with' => '使用デバイス :devices',
         'title' => ":usernameのプロフィール",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'カバー画像の変更',
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => 'Discord',
             'interests' => '趣味',
-            'lastfm' => 'Last.fm',
             'location' => '現在地',
             'occupation' => '職業',
             'skype' => 'Skype',

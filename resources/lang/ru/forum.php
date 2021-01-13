@@ -50,8 +50,9 @@ return [
 
         'actions' => [
             'destroy' => 'Удалить ответ',
-            'restore' => 'Восстановить ответ',
             'edit' => 'Редактировать ответ',
+            'report' => 'Пожаловаться на запись',
+            'restore' => 'Восстановить ответ',
         ],
 
         'create' => [
@@ -76,6 +77,7 @@ return [
         'deleted' => 'удалённая тема',
         'go_to_latest' => 'перейти к последнему ответу',
         'has_replied' => 'Вы отвечали на эту тему',
+        'in_forum' => 'в :forum',
         'latest_post' => ':when от :user',
         'latest_reply_by' => 'последний ответ от :user',
         'new_topic' => 'Создать новую тему',

@@ -5,9 +5,12 @@
 
 return [
     'all_read' => '已閱畢所有通知！',
+    'delete' => '',
+    'loading' => '',
     'mark_read' => '',
     'none' => '沒有通知',
     'see_all' => '查看所有通知',
+    'see_channel' => '',
 
     'filters' => [
         '_' => '全部',
@@ -57,6 +60,8 @@ return [
                 'beatmapset_qualify_compact' => '圖譜已進入上架列隊',
                 'beatmapset_rank' => '「:title」已進榜',
                 'beatmapset_rank_compact' => '圖譜已進榜',
+                'beatmapset_remove_from_loved' => '',
+                'beatmapset_remove_from_loved_compact' => '',
                 'beatmapset_reset_nominations' => '「:title」的提名已被重置',
                 'beatmapset_reset_nominations_compact' => '提名已被重置',
             ],
@@ -129,6 +134,16 @@ return [
             ],
         ],
 
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
+            ],
+        ],
+
         'user_achievement' => [
             '_' => '成就',
 
@@ -136,6 +151,7 @@ return [
                 '_' => '新成就',
                 'user_achievement_unlock' => '解鎖「:title」！',
                 'user_achievement_unlock_compact' => '解鎖「:title」！',
+                'user_achievement_unlock_group' => '',
             ],
         ],
     ],
@@ -158,6 +174,7 @@ return [
                 'beatmapset_nominate' => '',
                 'beatmapset_qualify' => '',
                 'beatmapset_rank' => '',
+                'beatmapset_remove_from_loved' => '',
                 'beatmapset_reset_nominations' => '',
             ],
 
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => '',
                 'user_achievement_unlock_self' => '',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

@@ -29,7 +29,7 @@ class AccountController extends Controller
 
         $this->middleware(function ($request, $next) {
             if (Auth::check() && Auth::user()->isSilenced()) {
-                return abort(403);
+                return abort(403, trans('authorization.silenced'));
             }
 
             return $next($request);
@@ -122,7 +122,7 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
-        $params = get_params(request(), 'user', [
+        $params = get_params(request()->all(), 'user', [
             'user_from:string',
             'user_interests:string',
             'user_msnm:string',
@@ -144,7 +144,7 @@ class AccountController extends Controller
 
     public function updateEmail()
     {
-        $params = get_params(request(), 'user', ['current_password', 'user_email', 'user_email_confirmation']);
+        $params = get_params(request()->all(), 'user', ['current_password', 'user_email', 'user_email_confirmation']);
         $user = Auth::user()->validateCurrentPassword()->validateEmailConfirmation();
         $previousEmail = $user->user_email;
 
@@ -208,6 +208,7 @@ class AccountController extends Controller
             'audio_muted:bool',
             'audio_volume:float',
             'beatmapset_download:string',
+            'beatmapset_show_nsfw:bool',
             'beatmapset_title_show_original:bool',
             'comments_sort:string',
             'extras_order:string[]',
@@ -235,7 +236,7 @@ class AccountController extends Controller
 
     public function updatePassword()
     {
-        $params = get_params(request(), 'user', ['current_password', 'password', 'password_confirmation']);
+        $params = get_params(request()->all(), 'user', ['current_password', 'password', 'password_confirmation']);
         $user = Auth::user()->validateCurrentPassword()->validatePasswordConfirmation();
 
         if ($user->update($params) === true) {

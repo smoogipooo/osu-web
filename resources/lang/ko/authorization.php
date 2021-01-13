@@ -4,6 +4,7 @@
 // See the LICENCE file in the repository root for full licence text.
 
 return [
+    'play_more' => 'osu!를 조금 더 해보시는 건 어떨까요?',
     'require_login' => '계속하려면 로그인해 주세요.',
     'require_verification' => '계속하려면 인증해 주세요.',
     'restricted' => "제한된 상태에서는 할 수 없습니다.",
@@ -17,8 +18,6 @@ return [
         ],
         'nominate' => [
             'exhausted' => '오늘은 더 이상 추천할 수 없습니다. 내일 다시 시도해주세요.',
-            'full_bn_required' => '완전한 nominator가 되어야만 qualify 추천을 할 수 있습니다.',
-            'full_bn_required_hybrid' => '완전한 nominator가 되어야 한 게임모드 이상의 비트맵 셋을 추천할 수 있습니다.',
             'incorrect_state' => '해당 작업을 수행하는 중 오류가 발생했습니다. 페이지를 새로 고쳐주세요.',
             'owner' => "자신의 비트맵을 추천할 수 없습니다.",
             'set_metadata' => '추천하려면 먼저 장르와 언어를 지정해야 합니다.',

@@ -67,9 +67,18 @@ class BeatmapsetSearchRequestParams extends BeatmapsetSearchParams
             $generals = explode('.', $request['c'] ?? null) ?? [];
             $this->includeConverts = in_array('converts', $generals, true);
             $this->showRecommended = in_array('recommended', $generals, true);
-        } /* else {
+
+            $includeNsfw = get_bool($request['nsfw'] ?? null);
+            if (!isset($includeNsfw) && $user !== null && $user->userProfileCustomization !== null) {
+                $includeNsfw = $user->userProfileCustomization->beatmapset_show_nsfw;
+            }
+
+            if (isset($includeNsfw)) {
+                $this->includeNsfw = $includeNsfw;
+            }
+        } else {
             $sort = null;
-        } */
+        }
 
         $this->parseSortOrder($sort);
         $this->searchAfter = $this->getSearchAfter($request['cursor'] ?? null);
@@ -122,7 +131,12 @@ class BeatmapsetSearchRequestParams extends BeatmapsetSearchParams
             $statuses[] = ['id' => $id, 'name' => trans("beatmaps.status.{$id}")];
         }
 
-        return compact('extras', 'general', 'genres', 'languages', 'modes', 'played', 'ranks', 'statuses');
+        $nsfw = [
+            ['id' => false, 'name' => trans('beatmaps.nsfw.exclude')],
+            ['id' => true, 'name' => trans('beatmaps.nsfw.include')],
+        ];
+
+        return compact('extras', 'general', 'genres', 'languages', 'modes', 'nsfw', 'played', 'ranks', 'statuses');
     }
 
     public function isLoginRequired(): bool
@@ -195,7 +209,7 @@ class BeatmapsetSearchRequestParams extends BeatmapsetSearchParams
 
         // use relevant mode when sorting on nested field
         if (starts_with($sort->field, 'beatmaps.')) {
-            $sortFilter = new BoolQuery;
+            $sortFilter = new BoolQuery();
 
             if (!$this->includeConverts) {
                 $sortFilter->filter(['term' => ['beatmaps.convert' => false]]);

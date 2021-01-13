@@ -5,9 +5,12 @@
 
 return [
     'all_read' => 'Lette tutte le notifiche!',
-    'mark_read' => 'Svuota :type',
+    'delete' => 'Elimina :type',
+    'loading' => '',
+    'mark_read' => 'Segna :type come letto',
     'none' => 'Nessuna notifica',
     'see_all' => 'vedi tutte le notifiche',
+    'see_channel' => 'vai alla chat',
 
     'filters' => [
         '_' => 'tutto',
@@ -53,10 +56,12 @@ return [
                 'beatmapset_love_compact' => 'La beatmap è stata promossa tra le amate',
                 'beatmapset_nominate' => '":title" è stata nominata',
                 'beatmapset_nominate_compact' => 'La beatmap è stata nominata',
-                'beatmapset_qualify' => '":title" ha ottenuto abbastanza nomine ed è entrata nella coda di classificazione',
+                'beatmapset_qualify' => '":title" ha ottenuto abbastanza nomine ed è entrata nella coda di raking',
                 'beatmapset_qualify_compact' => 'La beatmap è entrata nella coda di classificazione',
                 'beatmapset_rank' => '":title" è stata classificata',
                 'beatmapset_rank_compact' => 'La beatmap è stata classificata',
+                'beatmapset_remove_from_loved' => '":title" è stato rimossa da Loved',
+                'beatmapset_remove_from_loved_compact' => 'La beatmap è stata rimossa dalle amate',
                 'beatmapset_reset_nominations' => 'La nomina di ":title" è stata reimpostata',
                 'beatmapset_reset_nominations_compact' => 'La nomina è stata reimpostata',
             ],
@@ -129,6 +134,16 @@ return [
             ],
         ],
 
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
+            ],
+        ],
+
         'user_achievement' => [
             '_' => 'Medaglie',
 
@@ -136,6 +151,7 @@ return [
                 '_' => 'Nuova medaglia',
                 'user_achievement_unlock' => 'Sbloccato ":title"!',
                 'user_achievement_unlock_compact' => 'Sbloccato ":title"!',
+                'user_achievement_unlock_group' => 'Medaglie sbloccate!',
             ],
         ],
     ],
@@ -156,9 +172,10 @@ return [
                 'beatmapset_disqualify' => '":title" è stata squalificata',
                 'beatmapset_love' => '":title" è stata promossa tra le amate',
                 'beatmapset_nominate' => '":title" è stata nominata',
-                'beatmapset_qualify' => '',
+                'beatmapset_qualify' => '":title" ha ottenuto abbastanza nomine ed è entrata nella coda di ranking',
                 'beatmapset_rank' => '":title" è stata rankata',
-                'beatmapset_reset_nominations' => '',
+                'beatmapset_remove_from_loved' => '":title" è stata rimossa dalle amate',
+                'beatmapset_reset_nominations' => 'La nomina di ":title" è stata resettata',
             ],
 
             'comment' => [
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => ':username ha sbloccato una nuova medaglia, ":title"!',
                 'user_achievement_unlock_self' => 'Hai sbloccato una nuova medaglia, ":title"!',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

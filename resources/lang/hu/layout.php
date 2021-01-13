@@ -77,6 +77,7 @@ return [
         ],
         'help' => [
             '_' => 'segítség',
+            'getAbuse' => 'visszaélés jelentése',
             'getFaq' => 'gyik',
             'getRules' => 'szabályok',
             'getSupport' => 'nem, tényleg segítség kell!',
@@ -179,7 +180,7 @@ return [
     ],
 
     'popup_login' => [
-        'button' => '',
+        'button' => 'bejelentkezés / regisztráció',
 
         'login' => [
             'forgot' => "Elfelejtettem az adataimat",
@@ -203,6 +204,7 @@ return [
     'popup_user' => [
         'links' => [
             'account-edit' => 'Beállítások',
+            'follows' => '',
             'friends' => 'Barátok',
             'logout' => 'Kijelentkezés',
             'profile' => 'Profilom',

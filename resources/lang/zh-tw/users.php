@@ -70,6 +70,10 @@ return [
         ],
     ],
 
+    'filtering' => [
+        'by_game_mode' => '',
+    ],
+
     'force_reactivation' => [
         'reason' => [
             'inactive_different_country' => "你的帳號已經一段時間沒有登入了",
@@ -84,7 +88,7 @@ return [
         'failed' => '登入失敗',
         'forgot' => '忘記密碼？',
         'info' => '請先登入以繼續',
-        'invalid_captcha' => '',
+        'invalid_captcha' => '登入失敗的次數過多，請完成Captcha挑戰後再試。 (如果看不見Captcha請重新載入頁面)',
         'locked_ip' => '您的 IP 位址已被鎖定。請稍候幾分鐘。',
         'password' => '密碼',
         'register' => "沒有 osu! 帳號嗎？現在就註冊一個吧！",
@@ -150,6 +154,10 @@ return [
         'plays_with' => '慣用 :devices',
         'title' => ":username 的個人簡介",
 
+        'comments_count' => [
+            '_' => '',
+            'count' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => '變更個人簡介封面',
@@ -304,7 +312,7 @@ return [
                 'download_replay' => '下載重播',
                 'not_ranked' => '僅被列入排名的圖譜才能獲得 pp。',
                 'pp_weight' => '權重 :percentage',
-                'view_details' => '',
+                'view_details' => '查看資訊',
                 'title' => '排名',
 
                 'best' => [
@@ -347,7 +355,6 @@ return [
         'info' => [
             'discord' => 'Discord',
             'interests' => '興趣愛好',
-            'lastfm' => 'Last.fm',
             'location' => '所在地',
             'occupation' => '職業',
             'skype' => 'Skype',
@@ -378,7 +385,7 @@ return [
         ],
         'rank' => [
             'country' => ':mode 模式的國內排名',
-            'country_simple' => '國內/區內排行榜',
+            'country_simple' => '國內排名',
             'global' => ':mode 模式的全球排名',
             'global_simple' => '全球排名',
         ],

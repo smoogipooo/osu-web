@@ -25,9 +25,11 @@ return [
         'language_edit' => '',
         'love' => 'Дададзена :user да ўлюбёных',
         'nominate' => 'Вылучына :user.',
+        'nominate_modes' => '',
         'nomination_reset' => 'З-за новай праблемы :discussion (:text) стан намінацыі быў скінуты.',
         'qualify' => 'Гэтая бітмапа дасягнула патрабавальнай колькасці намінавання для кваліфікацыі і была кваліфікавана.',
         'rank' => 'Ранкавана.',
+        'remove_from_loved' => '',
     ],
 
     'index' => [
@@ -66,5 +68,6 @@ return [
         'nomination_reset' => 'Скід намінацыі',
         'qualify' => 'Кваліфікацыя',
         'rank' => 'Рэйтынг',
+        'remove_from_loved' => '',
     ],
 ];

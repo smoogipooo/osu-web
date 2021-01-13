@@ -38,7 +38,7 @@ return [
             'verify_link' => 'hesap doğrulama',
         ],
         'artists_controller' => [
-            '_' => 'featured artists',
+            '_' => 'featured artist\'ler',
         ],
         'beatmap_discussion_posts_controller' => [
             '_' => 'beatmap tartışma gönderileri',
@@ -74,6 +74,9 @@ return [
         ],
         'contests_controller' => [
             '_' => 'yarışmalar',
+        ],
+        'follows_controller' => [
+            'index' => '',
         ],
         'friends_controller' => [
             'index' => 'kontrol paneli',

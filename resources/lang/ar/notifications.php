@@ -5,9 +5,12 @@
 
 return [
     'all_read' => 'تم قراءة جميع الإشعارات!',
+    'delete' => '',
+    'loading' => '',
     'mark_read' => 'مَحو :type',
     'none' => 'لا إشعارات',
     'see_all' => 'أِظهار جميع الإشعارات',
+    'see_channel' => '',
 
     'filters' => [
         '_' => 'الكل',
@@ -57,6 +60,8 @@ return [
                 'beatmapset_qualify_compact' => 'دخلت الخريطة قائمة التصنيف',
                 'beatmapset_rank' => 'اصبحت ":title" مصنفة',
                 'beatmapset_rank_compact' => 'تم تصنيف الخريطة',
+                'beatmapset_remove_from_loved' => '',
+                'beatmapset_remove_from_loved_compact' => '',
                 'beatmapset_reset_nominations' => 'تم اعادة تعيين ترشيحات ":title"',
                 'beatmapset_reset_nominations_compact' => 'تم اعادة ضبط الترشيح',
             ],
@@ -66,8 +71,8 @@ return [
 
                 'comment_new' => 'علق :username ":content" على ":title"',
                 'comment_new_compact' => 'علق :username ":content"',
-                'comment_reply' => '',
-                'comment_reply_compact' => '',
+                'comment_reply' => ':username رد ":content" على ":title"',
+                'comment_reply_compact' => ':username رد ":content"',
             ],
         ],
 
@@ -92,8 +97,8 @@ return [
 
                 'comment_new' => 'علق :username ":content" في ":title"',
                 'comment_new_compact' => 'علق:username ":content"',
-                'comment_reply' => '',
-                'comment_reply_compact' => '',
+                'comment_reply' => ':username رد ":content" على ":title"',
+                'comment_reply_compact' => ':username رد ":content"',
             ],
         ],
 
@@ -105,8 +110,8 @@ return [
 
                 'comment_new' => 'علق :username ":content" في ":title"',
                 'comment_new_compact' => 'علق :username ":content"',
-                'comment_reply' => '',
-                'comment_reply_compact' => '',
+                'comment_reply' => ':username رد ":content" على ":title"',
+                'comment_reply_compact' => ':username رد ":content"',
             ],
         ],
 
@@ -129,6 +134,16 @@ return [
             ],
         ],
 
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
+            ],
+        ],
+
         'user_achievement' => [
             '_' => 'ميدالية',
 
@@ -136,6 +151,7 @@ return [
                 '_' => 'ميدالية جديدة',
                 'user_achievement_unlock' => 'تم فتح !:title',
                 'user_achievement_unlock_compact' => 'تم فتح ":title"!',
+                'user_achievement_unlock_group' => '',
             ],
         ],
     ],
@@ -153,12 +169,13 @@ return [
             ],
 
             'beatmapset_state' => [
-                'beatmapset_disqualify' => '',
-                'beatmapset_love' => '',
-                'beatmapset_nominate' => '',
-                'beatmapset_qualify' => '',
-                'beatmapset_rank' => '',
-                'beatmapset_reset_nominations' => '',
+                'beatmapset_disqualify' => 'حُرِمَت ":title" من التأهُل',
+                'beatmapset_love' => 'اصبحت ":title" محبوبة',
+                'beatmapset_nominate' => 'اصبحت ":title" مرشحة',
+                'beatmapset_qualify' => '":title" حصلت على ترشيحات كافية ودخلت حالة التصنيف',
+                'beatmapset_rank' => 'اصبحت ":title" مصنفة',
+                'beatmapset_remove_from_loved' => '',
+                'beatmapset_reset_nominations' => 'تم اعادة تعيين ترشيحات ":title"',
             ],
 
             'comment' => [
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => ':username فتح ميدالية جديدة، ":title"!',
                 'user_achievement_unlock_self' => 'لقد فتحت ميدالية جديدة، ":title"!',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

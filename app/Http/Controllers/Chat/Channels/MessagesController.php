@@ -7,10 +7,8 @@ namespace App\Http\Controllers\Chat\Channels;
 
 use App\Http\Controllers\Chat\Controller as BaseController;
 use App\Libraries\Chat;
-use App\Models\Chat\Channel;
 use App\Models\Chat\UserChannel;
 use Auth;
-use Request;
 
 /**
  * @group Chat
@@ -27,8 +25,6 @@ class MessagesController extends BaseController
      * ### Response Format
      *
      * Returns an array of [ChatMessage](#chatmessage)
-     *
-     * @authenticated
      *
      * @urlParam channel_id required The ID of the channel to retrieve messages for
      * @queryParam limit number of messages to return (max of 50)
@@ -139,8 +135,6 @@ class MessagesController extends BaseController
      * <aside class="notice">
      *   When sending a message, the <code>last_read_id</code> for the <a href='#chatchannel'>ChatChannel</a> is also updated to mark the new message as read.
      * </aside>
-     *
-     * @authenticated
      *
      * @queryParam channel_id required The `channel_id` of the channel to send message to
      *

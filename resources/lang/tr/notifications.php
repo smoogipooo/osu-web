@@ -5,16 +5,19 @@
 
 return [
     'all_read' => 'Tüm bildirimler okundu!',
-    'mark_read' => 'Temizle: :type',
+    'delete' => ':type sil',
+    'loading' => '',
+    'mark_read' => ':type temizle',
     'none' => 'Bildirim yok',
     'see_all' => 'tüm bildirimleri gör',
+    'see_channel' => 'sohbete git',
 
     'filters' => [
         '_' => 'hepsi',
         'user' => 'profil',
         'beatmapset' => 'beatmapler',
         'forum_topic' => 'forum',
-        'news_post' => 'haberler',
+        'news_post' => 'gelişmeler',
         'build' => 'sürümler',
         'channel' => 'sohbet',
     ],
@@ -25,16 +28,16 @@ return [
 
             'beatmapset_discussion' => [
                 '_' => 'Beatmap tartışması',
-                'beatmapset_discussion_lock' => 'Beatmap ":title" tartışmak için kilitlendi.',
+                'beatmapset_discussion_lock' => '":title" setinin tartışması kilitlendi',
                 'beatmapset_discussion_lock_compact' => 'Tartışma kilitlenmiş',
-                'beatmapset_discussion_post_new' => ':username ":title" beatmapinin tartışmasında yeni mesaj attı.',
-                'beatmapset_discussion_post_new_empty' => ':title için :username tarafından gönderi',
-                'beatmapset_discussion_post_new_compact' => ':username tarafından yeni gönderi',
+                'beatmapset_discussion_post_new' => '":title" setinde :username tarafından yeni bir gönderi mevcut: ":content"',
+                'beatmapset_discussion_post_new_empty' => '":title" setinde :username tarafından yeni gönderi',
+                'beatmapset_discussion_post_new_compact' => ':username tarafından yeni gönderi: ":content"',
                 'beatmapset_discussion_post_new_compact_empty' => ':username tarafından yeni gönderi',
                 'beatmapset_discussion_review_new' => '":title" için :username tarafından yeni inceleme, :problems sorun, :suggestions öneri, :praises övgü içeriyor',
                 'beatmapset_discussion_review_new_compact' => ':username tarafından yeni inceleme, :problems sorun, :suggestions öneri, :praises övgü içeriyor',
-                'beatmapset_discussion_unlock' => '":title" beatmapinin kilidi tartışmak için açıldı.',
-                'beatmapset_discussion_unlock_compact' => 'Tartışmanın kilidi açılmış',
+                'beatmapset_discussion_unlock' => '":title" setinin tartışmasının kilidi kaldırıldı',
+                'beatmapset_discussion_unlock_compact' => 'Tartışmanın kilidi kaldırılmış',
             ],
 
             'beatmapset_problem' => [
@@ -49,16 +52,18 @@ return [
                 '_' => 'Beatmap durumu değişti',
                 'beatmapset_disqualify' => '":title" diskalifiye edildi',
                 'beatmapset_disqualify_compact' => 'Beatmap diskalifiye edildi',
-                'beatmapset_love' => '":title" loved\'a yükseltildi',
-                'beatmapset_love_compact' => 'Beatmap loved\'a yükseltildi',
-                'beatmapset_nominate' => '":title" oylandı',
-                'beatmapset_nominate_compact' => 'Beatmap oylandı',
-                'beatmapset_qualify' => '":title" yeterli oy aldı ve derecelendirme sırasına girdi',
-                'beatmapset_qualify_compact' => 'Beatmap ranking sırasına girdi',
-                'beatmapset_rank' => '":title" ranked oldu',
-                'beatmapset_rank_compact' => 'Beatmap ranked oldu',
-                'beatmapset_reset_nominations' => '":title" \'ın oylaması yeniden başlatıldı',
-                'beatmapset_reset_nominations_compact' => 'Oylama yeniden başlatıldı',
+                'beatmapset_love' => '":title" sevilenlere yükseltildi',
+                'beatmapset_love_compact' => 'Beatmap sevilenlere yükseltildi',
+                'beatmapset_nominate' => '":title" aday gösterildi',
+                'beatmapset_nominate_compact' => 'Beatmap aday gösterildi',
+                'beatmapset_qualify' => '":title" yeterli aday gösterimi aldı ve derecelendirme sırasına girdi',
+                'beatmapset_qualify_compact' => 'Beatmap derecelendirme sırasına girdi',
+                'beatmapset_rank' => '":title" dereceli oldu',
+                'beatmapset_rank_compact' => 'Beatmap dereceli oldu',
+                'beatmapset_remove_from_loved' => '":title" Sevilenlerden çıkarıldı',
+                'beatmapset_remove_from_loved_compact' => 'Beatmap Sevilenlerden çıkarıldı',
+                'beatmapset_reset_nominations' => '":title" setinin aday gösterimi sıfırlandı',
+                'beatmapset_reset_nominations_compact' => 'Aday gösterim sıfırlandı',
             ],
 
             'comment' => [
@@ -66,8 +71,8 @@ return [
 
                 'comment_new' => ':username ":title" üzerinde ":content" yorumunu yaptı',
                 'comment_new_compact' => ':username ":content" yorumunu yaptı',
-                'comment_reply' => ':username ":title" üzerinde ":content" yorumunu yaptı',
-                'comment_reply_compact' => ':username ":content" yorumunu yaptı',
+                'comment_reply' => ':username ":title" üzerinde ":content" yanıtını verdi',
+                'comment_reply_compact' => ':username ":content" yanıtını verdi',
             ],
         ],
 
@@ -92,8 +97,8 @@ return [
 
                 'comment_new' => ':username ":title" üzerinde ":content" yorumunu yaptı',
                 'comment_new_compact' => ':username ":content" yorumunu yaptı',
-                'comment_reply' => ':username ":title" üzerinde ":content" yorumunu yaptı',
-                'comment_reply_compact' => ':username ":content" yorumunu yaptı',
+                'comment_reply' => ':username ":title" üzerinde ":content" yanıtını verdi',
+                'comment_reply_compact' => ':username ":content" yanıtını verdi',
             ],
         ],
 
@@ -105,8 +110,8 @@ return [
 
                 'comment_new' => ':username ":title" üzerinde ":content" yorumunu yaptı',
                 'comment_new_compact' => ':username ":content" yorumunu yaptı',
-                'comment_reply' => ':username ":title" üzerinde ":content" yorumunu yaptı',
-                'comment_reply_compact' => ':username ":content" yorumunu yaptı',
+                'comment_reply' => ':username ":title" üzerinde ":content" yanıtını verdi',
+                'comment_reply_compact' => ':username ":content" yanıtını verdi',
             ],
         ],
 
@@ -125,7 +130,17 @@ return [
 
             'legacy_pm' => [
                 '_' => '',
-                'legacy_pm' => ':count_delimited okunmamış mesaj.|:count_delimited okunmamış mesajlar.',
+                'legacy_pm' => ':count_delimited okunmamış mesaj.|:count_delimited okunmamış mesaj',
+            ],
+        ],
+
+        'user' => [
+            'user_beatmapset_new' => [
+                '_' => '',
+
+                'user_beatmapset_new' => '',
+                'user_beatmapset_new_compact' => '',
+                'user_beatmapset_new_group' => '',
             ],
         ],
 
@@ -135,7 +150,8 @@ return [
             'user_achievement_unlock' => [
                 '_' => 'Yeni madalya',
                 'user_achievement_unlock' => '":title" \'ın kilidi açıldı!',
-                'user_achievement_unlock_compact' => '":title" Açıldı!',
+                'user_achievement_unlock_compact' => '":title" \'ın kilidi açıldı!',
+                'user_achievement_unlock_group' => 'Madalyalar açıldı!',
             ],
         ],
     ],
@@ -154,10 +170,11 @@ return [
 
             'beatmapset_state' => [
                 'beatmapset_disqualify' => '":title" diskalifiye edildi',
-                'beatmapset_love' => '":title" loved\'a yükseltildi',
+                'beatmapset_love' => '":title" sevilenlere yükseltildi',
                 'beatmapset_nominate' => '":title" aday gösterildi',
                 'beatmapset_qualify' => '":title" yeterli aday gösterimi aldı ve derecelendirme sırasına girdi',
                 'beatmapset_rank' => '":title" dereceli oldu',
+                'beatmapset_remove_from_loved' => '":title" Sevilenlerden çıkarıldı',
                 'beatmapset_reset_nominations' => '":title" setinin aday gösterimi sıfırlandı',
             ],
 
@@ -194,6 +211,10 @@ return [
             'user_achievement_unlock' => [
                 'user_achievement_unlock' => ':username yeni bir madalya açtı, ":title"!',
                 'user_achievement_unlock_self' => 'Yeni bir madalya açtınız, ":title"!',
+            ],
+
+            'user_beatmapset_new' => [
+                'user_beatmapset_new' => '',
             ],
         ],
     ],

@@ -25,9 +25,11 @@ return [
         'language_edit' => 'Zmieniono język z :old na :new.',
         'love' => ':user nadał(a) tej beatmapie status ulubionej społeczności',
         'nominate' => 'Nominowana przez :user.',
+        'nominate_modes' => '',
         'nomination_reset' => 'Nowy problem :discussion spowodował zresetowanie nominacji.',
         'qualify' => 'Ta beatmapa osiągnęła wystarczającą liczbę nominacji i została zakwalifikowana.',
         'rank' => 'Rankingowa.',
+        'remove_from_loved' => 'Usunięta z ulubionych beatmap społeczności przez użytkownika :user (:text).',
     ],
 
     'index' => [
@@ -66,5 +68,6 @@ return [
         'nomination_reset' => 'Zresetowanie nominacji',
         'qualify' => 'Kwalifikacja',
         'rank' => 'Nadanie statusu rankingowego',
+        'remove_from_loved' => 'Usunięcie z ulubionych beatmap społeczności',
     ],
 ];
