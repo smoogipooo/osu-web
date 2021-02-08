@@ -41,6 +41,10 @@ return [
         ],
     ],
 
+    'nsfw_badge' => [
+        'label' => 'Explicitní',
+    ],
+
     'show' => [
         'discussion' => 'Diskuze',
 
@@ -106,10 +110,22 @@ return [
             'genre' => 'Žánr',
             'language' => 'Jazyk',
             'no_scores' => 'Data se vypočítávají...',
+            'nsfw' => 'Explicitní obsah',
             'points-of-failure' => 'Body neúspěchů',
             'source' => 'Zdroj',
             'success-rate' => 'Úspěšnost',
             'tags' => 'Tagy',
+        ],
+
+        'nsfw_warning' => [
+            'details' => 'Tato beatmapa obsahuje explicitní, urážlivý nebo rušivý obsah. Chcete ji přesto zobrazit?',
+            'title' => 'Explicitní obsah',
+
+            'buttons' => [
+                'disable' => 'Vypnout varování',
+                'listing' => 'Seznam beatmap',
+                'show' => 'Zobrazit',
+            ],
         ],
 
         'scoreboard' => [

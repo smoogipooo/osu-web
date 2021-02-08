@@ -220,14 +220,15 @@ return [
             'not-found' => 'keine ergebnisse',
             'not-found-quote' => '... nope, nichts gefunden.',
             'filters' => [
+                'extra' => 'Extra',
                 'general' => 'Generell',
-                'mode' => 'Modus',
-                'status' => 'Kategorien',
                 'genre' => 'Genre',
                 'language' => 'Sprache',
-                'extra' => 'Extra',
-                'rank' => 'Erreichter Rang',
+                'mode' => 'Modus',
+                'nsfw' => 'Explizite Beatmaps',
                 'played' => 'Gespielt',
+                'rank' => 'Erreichter Rang',
+                'status' => 'Kategorien',
             ],
             'sorting' => [
                 'title' => 'Titel',
@@ -330,6 +331,12 @@ return [
         'other' => 'Andere',
         'unspecified' => 'Nicht angegeben',
     ],
+
+    'nsfw' => [
+        'exclude' => 'Ausblenden',
+        'include' => 'Anzeigen',
+    ],
+
     'played' => [
         'any' => 'Alle',
         'played' => 'Gespielt',
