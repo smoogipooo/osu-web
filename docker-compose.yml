@@ -113,7 +113,7 @@ services:
       - "${NGINX_PORT:-8080}:80"
 
   diffcalc:
-    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    image: mcr.microsoft.com/dotnet/sdk:5.0
     volumes:
       - ./osu-server:/data
       - ./beatmaps:/beatmaps
@@ -144,7 +144,7 @@ services:
     command: [ './run.sh' ]
 
   esindexer:
-    image: mcr.microsoft.com/dotnet/core/sdk:3.1
+    image: mcr.microsoft.com/dotnet/sdk:3.1
     volumes:
       - ./osu-elastic-indexer:/data
       - ./docker/esindexer/run.sh:/data/run.sh
