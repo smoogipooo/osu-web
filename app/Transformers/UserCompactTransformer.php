@@ -61,6 +61,10 @@ class UserCompactTransformer extends TransformerAbstract
         'scores_first_count',
         'scores_recent_count',
         'statistics',
+        'statistics_fruits',
+        'statistics_mania',
+        'statistics_osu',
+        'statistics_taiko',
         'support_level',
         'unranked_beatmapset_count',
         'unread_pm_count',
@@ -339,6 +343,26 @@ class UserCompactTransformer extends TransformerAbstract
         return $this->item($stats, new UserStatisticsTransformer());
     }
 
+    public function includeStatisticsFruits(User $user)
+    {
+        return $this->item($user->statisticsFruits, new UserStatisticsTransformer());
+    }
+
+    public function includeStatisticsMania(User $user)
+    {
+        return $this->item($user->statisticsMania, new UserStatisticsTransformer());
+    }
+
+    public function includeStatisticsOsu(User $user)
+    {
+        return $this->item($user->statisticsOsu, new UserStatisticsTransformer());
+    }
+
+    public function includeStatisticsTaiko(User $user)
+    {
+        return $this->item($user->statisticsTaiko, new UserStatisticsTransformer());
+    }
+
     public function includeSupportLevel(User $user)
     {
         return $this->primitive($user->supportLevel());
@@ -373,6 +397,7 @@ class UserCompactTransformer extends TransformerAbstract
             'beatmapset_download',
             'beatmapset_show_nsfw',
             'beatmapset_title_show_original',
+            'comments_show_deleted',
             'forum_posts_show_deleted',
             'ranking_expanded',
             'user_list_filter',
