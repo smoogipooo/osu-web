@@ -6,7 +6,7 @@
 return [
     'discussion-votes' => [
         'update' => [
-            'error' => 'Impossible de modifier le vote',
+            'error' => 'Échec pendant l\'actualisation du vote',
         ],
     ],
 
@@ -18,14 +18,14 @@ return [
         'deny_kudosu' => 'refuser le kudosu',
         'edit' => 'éditer',
         'edited' => 'Dernière modification par :editor :update_time',
-        'kudosu_denied' => 'Le kudosu a été refusé pour ce post.',
+        'kudosu_denied' => 'Refusé d\'obtenir le kudosu.',
         'message_placeholder_deleted_beatmap' => 'Cette difficulté a été supprimée, il n\'est plus possible d\'en discuter.',
         'message_placeholder_locked' => 'La discussion pour cette beatmap a été désactivée.',
         'message_placeholder_silenced' => "Impossible de publier la discussion en étant réduit au silence.",
         'message_type_select' => 'Sélectionnez un type de commentaire',
         'reply_notice' => 'Appuyez sur Entrée pour répondre.',
         'reply_placeholder' => 'Écrivez votre réponse ici',
-        'require-login' => 'Connectez-vous pour poster ou répondre',
+        'require-login' => 'Veuillez vous connecter pour poster ou répondre',
         'resolved' => 'Résolu',
         'restore' => 'restaurer',
         'show_deleted' => 'Afficher le contenu supprimé',
@@ -33,11 +33,11 @@ return [
 
         'collapse' => [
             'all-collapse' => 'Tout réduire',
-            'all-expand' => 'Tout déplier',
+            'all-expand' => 'Tout développer ',
         ],
 
         'empty' => [
-            'empty' => 'Pas encore de discussion !',
+            'empty' => 'Pas de discussion !',
             'hidden' => 'Aucune discussion ne correspond à vos critères.',
         ],
 
@@ -49,7 +49,7 @@ return [
 
             'prompt' => [
                 'lock' => 'Raison du verrouillage',
-                'unlock' => 'Êtes-vous sûr de vouloir déverrouiller cette discussion?',
+                'unlock' => 'Êtes-vous sûr de vouloir déverrouiller cette discussion ?',
             ],
         ],
 
@@ -187,8 +187,8 @@ return [
         'nominate_confirm' => 'Nominer cette beatmap ?',
         'nominated_by' => 'nominée par :users',
         'not_enough_hype' => "Il n'y a pas assez de hype.",
-        'remove_from_loved' => '',
-        'remove_from_loved_prompt' => '',
+        'remove_from_loved' => 'Retirer des Favoris',
+        'remove_from_loved_prompt' => 'Raison de la suppression a partir de Aimer:',
         'required_text' => 'Nominations: :current/:required',
         'reset_message_deleted' => 'supprimé',
         'title' => 'Statut de la nomination',
@@ -249,8 +249,9 @@ return [
         ],
     ],
     'general' => [
-        'recommended' => 'Difficulté recommandée',
         'converts' => 'Inclure les beatmaps converties',
+        'follows' => 'Mappeurs auquels vous êtes abonnés',
+        'recommended' => 'Difficulté recommandée',
     ],
     'mode' => [
         'all' => 'Tous',

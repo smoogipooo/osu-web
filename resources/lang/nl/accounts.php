@@ -35,7 +35,6 @@ return [
                 'user_discord' => '',
                 'user_from' => 'huidige locatie',
                 'user_interests' => 'interesses',
-                'user_msnm' => '',
                 'user_occ' => 'bezigheid',
                 'user_twitter' => '',
                 'user_website' => 'website',
@@ -62,6 +61,7 @@ return [
             'comment_new' => 'nieuwe reacties',
             'forum_topic_reply' => 'topic antwoord',
             'mail' => 'e-mail',
+            'mapping' => 'beatmap mapper',
             'push' => 'push',
             'user_achievement_unlock' => 'medaille verdiend',
         ],
@@ -74,7 +74,7 @@ return [
     ],
 
     'options' => [
-        'beatmapset_show_nsfw' => '',
+        'beatmapset_show_nsfw' => 'verberg waarschuwingen voor expliciete inhoud in beatmaps',
         'beatmapset_title_show_original' => 'beatmap metadata in originele taal weergeven',
         'title' => 'Opties',
 

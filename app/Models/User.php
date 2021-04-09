@@ -22,6 +22,7 @@ use App\Traits\Validatable;
 use Cache;
 use Carbon\Carbon;
 use DB;
+use Ds\Set;
 use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\NoRFCWarningsValidation;
 use Exception;
@@ -214,7 +215,6 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
         'user_discord' => 37, // max 32char username + # + 4-digit discriminator
         'user_from' => 30,
         'user_interests' => 30,
-        'user_msnm' => 255,
         'user_occ' => 30,
         'user_sig' => 3000,
         'user_twitter' => 255,
@@ -703,17 +703,6 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
     public function getUserDiscordAttribute($value)
     {
         return presence($this->user_jabber);
-    }
-
-    public function getUserMsnmAttribute($value)
-    {
-        return presence($value);
-    }
-
-    public function setUserMsnmAttribute($value)
-    {
-        // skype does not allow accents in usernames.
-        $this->attributes['user_msnm'] = unzalgo($value, 0);
     }
 
     public function getOsuPlaystyleAttribute($value)
@@ -1535,17 +1524,23 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
 
     public function hasBlocked(self $user)
     {
-        return $this->blocks->where('user_id', $user->user_id)->count() > 0;
+        return $this->memoize(__FUNCTION__, function () {
+            return new Set($this->blocks->pluck('user_id'));
+        })->contains($user->getKey());
     }
 
     public function hasFriended(self $user)
     {
-        return $this->friends->where('user_id', $user->user_id)->count() > 0;
+        return $this->memoize(__FUNCTION__, function () {
+            return new Set($this->friends->pluck('user_id'));
+        })->contains($user->getKey());
     }
 
     public function hasFavourited($beatmapset)
     {
-        return $this->favourites->contains('beatmapset_id', $beatmapset->getKey());
+        return $this->memoize(__FUNCTION__, function () {
+            return new Set($this->favourites->pluck('beatmapset_id'));
+        })->contains($beatmapset->getKey());
     }
 
     public function remainingHype()

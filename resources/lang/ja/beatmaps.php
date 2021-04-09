@@ -249,8 +249,9 @@ return [
         ],
     ],
     'general' => [
-        'recommended' => '推奨難易度',
         'converts' => 'コンバートビートマップを含める',
+        'follows' => '購読中のマッパー',
+        'recommended' => '推奨難易度',
     ],
     'mode' => [
         'all' => '全て',

@@ -42,7 +42,6 @@
     "top_ranks",
     "medals"
   ],
-  "skype": null,
   "title": null,
   "twitter": "osuuser",
   "website": "https://osu.ppy.sh",
@@ -120,7 +119,7 @@
       "progress": 55
     },
     "pp": 100,
-    "pp_rank": 2000,
+    "global_rank": 2000,
     "ranked_score": 2000000,
     "hit_accuracy": 90.5,
     "play_count": 1000,
@@ -180,8 +179,8 @@ playmode         | [GameMode](#gamemode)              | |
 playstyle        | string[]                           | Device choices of the user.
 post_count       | number                             | number of forum posts
 profile_order    | [ProfilePage](#user-profilepage)[] | ordered array of sections in user profile page
-skype            | string?                            | |
 title            | string?                            | user-specific title
+title_url        | string?                            | |
 twitter          | string?                            | |
 website          | string?                            | |
 

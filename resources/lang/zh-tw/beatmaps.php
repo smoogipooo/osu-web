@@ -21,7 +21,7 @@ return [
         'kudosu_denied' => 'kudosu 被收回',
         'message_placeholder_deleted_beatmap' => '該難度已被刪除，無法繼續討論',
         'message_placeholder_locked' => '此圖譜的討論已被禁用。',
-        'message_placeholder_silenced' => "",
+        'message_placeholder_silenced' => "帳戶被禁言，無法發佈討論。",
         'message_type_select' => '選擇回覆類型',
         'reply_notice' => '按下 Enter 以回覆',
         'reply_placeholder' => '在此處輸入您的回覆',
@@ -100,7 +100,7 @@ return [
             'embed' => [
                 'delete' => '刪除',
                 'missing' => '',
-                'unlink' => '',
+                'unlink' => '取消連結',
                 'unsaved' => '尚未儲存',
                 'timestamp' => [
                     'all-diff' => '',
@@ -108,10 +108,10 @@ return [
                 ],
             ],
             'insert-block' => [
-                'paragraph' => '',
+                'paragraph' => '插入段落',
                 'praise' => '',
-                'problem' => '',
-                'suggestion' => '',
+                'problem' => '插入問題',
+                'suggestion' => '插入建議',
             ],
         ],
 
@@ -197,7 +197,7 @@ return [
         'rank_estimate' => [
             '_' => '',
             'queue' => '',
-            'soon' => '',
+            'soon' => '不久後',
         ],
 
         'reset_at' => [
@@ -227,7 +227,7 @@ return [
                 'mode' => '模式',
                 'nsfw' => '',
                 'played' => '玩過',
-                'rank' => '已 Rank',
+                'rank' => '成績',
                 'status' => '分類',
             ],
             'sorting' => [
@@ -249,8 +249,9 @@ return [
         ],
     ],
     'general' => [
-        'recommended' => '推薦難度',
         'converts' => '包括轉換圖譜',
+        'follows' => '訂閱的作圖者',
+        'recommended' => '推薦難度',
     ],
     'mode' => [
         'all' => '全部',
@@ -285,7 +286,7 @@ return [
         'electronic' => '電音',
         'metal' => '重金屬',
         'classical' => '古典樂',
-        'folk' => '',
+        'folk' => '民謠',
         'jazz' => '爵士樂',
     ],
     'mods' => [
@@ -312,7 +313,7 @@ return [
         'SD' => '',
         'SO' => '',
         'TD' => '',
-        'V2' => '',
+        'V2' => 'Score V2',
     ],
     'language' => [
         'any' => '所有',
@@ -329,12 +330,12 @@ return [
         'polish' => '波蘭語',
         'instrumental' => '樂器演奏',
         'other' => '其他',
-        'unspecified' => '',
+        'unspecified' => '未指定',
     ],
 
     'nsfw' => [
-        'exclude' => '',
-        'include' => '',
+        'exclude' => '隱藏',
+        'include' => '顯示',
     ],
 
     'played' => [

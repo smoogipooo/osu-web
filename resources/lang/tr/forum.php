@@ -47,6 +47,7 @@ return [
         'confirm_restore' => 'Gönderiyi geri yükle?',
         'edited' => 'En son :user tarafından :when, toplamda :count_delimited defa düzenlendi.|En son :user tarafından :when, toplamda :count_delimited defa düzenlendi.',
         'posted_at' => ':when gönderildi',
+        'posted_by' => ':username tarafından gönderildi',
 
         'actions' => [
             'destroy' => 'Gönderiyi sil',
@@ -74,8 +75,10 @@ return [
     ],
 
     'topic' => [
+        'confirm_destroy' => 'Konu gerçekten silinsin mi?',
+        'confirm_restore' => 'Konu gerçekten geri yüklensin mi?',
         'deleted' => 'silinmiş konu',
-        'go_to_latest' => 'son yazılan mesajı göster',
+        'go_to_latest' => 'son gönderiyi görüntüle',
         'has_replied' => 'Bu konuyu yanıtladınız',
         'in_forum' => ':forum forumunda',
         'latest_post' => ':user tarafından :when',
@@ -88,6 +91,11 @@ return [
         'started_by' => ':user tarafından',
         'started_by_verbose' => ':user tarafından başlatıldı',
 
+        'actions' => [
+            'destroy' => 'Konuyu sil',
+            'restore' => 'Konuyu geri yükle',
+        ],
+
         'create' => [
             'close' => 'Kapat',
             'preview' => 'Önizleme ',
@@ -97,11 +105,11 @@ return [
             'submit' => 'Gönder',
 
             'necropost' => [
-                'default' => 'Bu konu bir süredir inaktif. Sadece mantıklı bir nedeniniz varsa buraya gönderi yapın.',
+                'default' => 'Bu konu uzun bir süredir inaktif. Yalnızca geçerli bir nedeniniz varsa bir gönderi oluşturun.',
 
                 'new_topic' => [
-                    '_' => "Bu konu bir süredir inaktif. Eğer buraya gönderi yapmak için mantıklı bir nedeniniz yoksa, :create lütfen.",
-                    'create' => 'yeni bir konu aç',
+                    '_' => "Bu konu uzun bir süredir inaktif. Eğer burada gönderi oluşturmak için mantıklı bir nedeniniz yoksa, bunun yerine lütfen :create.",
+                    'create' => 'yeni bir konu açın',
                 ],
             ],
 

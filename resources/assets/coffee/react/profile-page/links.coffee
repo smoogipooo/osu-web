@@ -36,9 +36,6 @@ export class Links extends React.PureComponent
         el ClickToCopy, value: val, showIcon: true
     interests: ->
       icon: 'far fa-heart'
-    skype: (val) ->
-      icon: 'fab fa-skype'
-      url: "skype:#{val}?chat"
     location: ->
       icon: 'fas fa-map-marker-alt'
     occupation: ->
@@ -96,12 +93,21 @@ export class Links extends React.PureComponent
     rows = [
       ['join_date', 'last_visit', 'playstyle', 'post_count', 'comments_count'].map @renderText
       ['location', 'interests', 'occupation'].map @renderLink
-      ['twitter', 'discord', 'skype', 'website'].map @renderLink
+      ['twitter', 'discord', 'website'].map @renderLink
     ]
 
     div className: bn,
       for row, j in rows when _.compact(row).length > 0
         div key: j, className: "#{bn}__row #{bn}__row--#{j}", row
+
+      if @props.user.id == currentUser.id
+        div
+          className: "#{bn}__edit"
+          a
+            className: 'profile-page-toggle'
+            href: laroute.route('account.edit')
+            title: osu.trans('users.show.page.button')
+            span className: 'fas fa-pencil-alt'
 
 
   renderLink: (key) =>

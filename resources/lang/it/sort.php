@@ -16,12 +16,17 @@ return [
     'username' => 'Nome utente',
 
     'forum_posts' => [
-        'created' => '',
-        'relevance' => '',
+        'created' => 'Data del post',
+        'relevance' => 'Pertinenza',
     ],
 
     'forum_topics' => [
         'feature_votes' => 'Stelle di priorità',
         'new' => 'Ultima risposta',
+    ],
+
+    'users' => [
+        'relevance' => 'Pertinenza',
+        'username' => 'Nome',
     ],
 ];

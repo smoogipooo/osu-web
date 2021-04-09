@@ -3,7 +3,7 @@
 
 @osu =
   isIos: /iPad|iPhone|iPod/.test(navigator.platform)
-  urlRegex: /(https?:\/\/((?:(?:[a-z0-9]\.|[a-z0-9][a-z0-9-]*[a-z0-9]\.)*[a-z][a-z0-9-]*[a-z0-9](?::\d+)?)(?:(?:(?:\/+(?:[a-z0-9$_\.\+!\*',;:@&=-]|%[0-9a-f]{2})*)*(?:\?(?:[a-z0-9$_\.\+!\*',;:@&=-]|%[0-9a-f]{2})*)?)?(?:#(?:[a-z0-9$_\.\+!\*',;:@&=/?-]|%[0-9a-f]{2})*)?)?))/ig
+  urlRegex: /(https?:\/\/((?:(?:[a-z0-9]\.|[a-z0-9][a-z0-9-]*[a-z0-9]\.)*[a-z][a-z0-9-]*[a-z0-9](?::\d+)?)(?:(?:(?:\/+(?:[a-z0-9$_\.\+!\*',;:@&=-]|%[0-9a-f]{2})*)*(?:\?(?:[a-z0-9$_\.\+!\*',;:@&=-]|%[0-9a-f]{2})*)?)?(?:#(?:[a-z0-9$_\.\+!\*',;:@&=/?-]|%[0-9a-f]{2})*)?)?(?:[^\.,:\s])))/ig
 
   bottomPage: ->
     osu.bottomPageDistance() == 0
@@ -31,24 +31,6 @@
     '--diff': "var(--diff-#{difficultyRating ? 'default'})"
 
 
-  executeAction: (element) =>
-    if !element?
-      osu.reloadPage()
-      return
-
-    if element.dataset.isFileupload == '1'
-      $(element).trigger 'fileuploadRetry'
-    else if element.submit
-      # plain javascript here doesn't trigger submit events
-      # which means jquery-ujs handler won't be triggered
-      # reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit
-      $(element).submit()
-    else if element.click
-      # inversely, using jquery here won't actually click the thing
-      # reference: https://github.com/jquery/jquery/blob/f5aa89af7029ae6b9203c2d3e551a8554a0b4b89/src/event.js#L586
-      element.click()
-
-
   groupColour: (group) ->
     '--group-colour': group?.colour ? 'initial'
 
@@ -63,8 +45,8 @@
 
 
   ajaxError: (xhr) ->
-    return if userLogin.showOnError({}, xhr)
-    return if userVerification.showOnError({}, xhr)
+    return if osuCore.userLogin.showOnError(xhr)
+    return if osuCore.userVerification.showOnError(xhr)
 
     osu.popup osu.xhrErrorMessage(xhr), 'danger'
 
@@ -72,19 +54,6 @@
   emitAjaxError: (element = document.body) =>
     (xhr, status, error) =>
       $(element).trigger 'ajax:error', [xhr, status, error]
-
-
-  fileuploadFailCallback: ($elFunction) =>
-    (_e, data) =>
-      $el = $elFunction()
-      $el[0].dataset.isFileupload ?= '1'
-
-      $el
-      .off 'fileuploadRetry'
-      .one 'fileuploadRetry', =>
-        data.submit()
-
-      osu.emitAjaxError($el[0]) data.jqXHR
 
 
   pageChange: ->
@@ -161,6 +130,10 @@
 
 
   link: (url, text, options = {}) ->
+    if options.unescape
+      url = _.unescape(url)
+      text = _.unescape(text)
+
     el = document.createElement('a')
     el.setAttribute 'href', url
     el.setAttribute 'data-remote', true if options.isRemote
@@ -168,7 +141,7 @@
     el.textContent = text
     if options.props
       _.each options.props, (val, prop) ->
-        el.setAttribute prop, val
+        el.setAttribute prop, val if val?
     el.outerHTML
 
 
@@ -204,25 +177,6 @@
       options.maximumFractionDigits = precision
 
     number.toLocaleString locale ? currentLocale, options
-
-
-  formatNumberSuffixed: (number, precision, options = {}) ->
-    suffixes = ['', 'k', 'm', 'b', 't']
-    k = 1000
-
-    format = (n) ->
-      options ?= {}
-
-      if precision?
-        options.minimumFractionDigits = precision
-        options.maximumFractionDigits = precision
-
-      n.toLocaleString 'en', options
-
-    return "#{format number}" if (number < k)
-
-    i = Math.min suffixes.length - 1, Math.floor(Math.log(number) / Math.log(k))
-    "#{format(number / Math.pow(k, i))}#{suffixes[i]}"
 
 
   reloadPage: (keepScroll = true) ->

@@ -23,7 +23,7 @@ return [
     ],
 
     'status' => [
-        'non_best' => '',
-        'processing' => '',
+        'non_best' => 'Endast personbästa poäng ger pp',
+        'processing' => 'Poängsiffran räknas ännu ut och kommer snart att visas',
     ],
 ];

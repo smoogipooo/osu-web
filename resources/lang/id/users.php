@@ -54,12 +54,12 @@ return [
         'warning' => "Apabila Anda telah melakukan suatu pelanggaran yang berdampak langsung terhadap status akun Anda, akun Anda akan dikondisikan di dalam masa hukuman percobaan selama satu bulan di mana selama satu bulan ini kami tidak akan menggubris segala laporan dan permintaan yang masuk terkait dengan akun Anda. Setelah masa hukuman ini berakhir, Anda baru akan kemudian dapat mengontak kami apabila Anda ingin kembali bermain dengan akun Anda. Mohon diperhatikan bahwa membuat akun baru di kala akun utama Anda sedang dibatasi <strong>akan menambah masa hukuman Anda</strong>, dan <strong>masa hukuman ini akan senantiasa bertambah panjang dengan setiap akun baru yang Anda coba untuk buat</strong>. Kami harap Anda dapat memetik pelajaran dari kasus ini dan tidak akan melakukan pelanggaran lagi ke depannya!",
 
         'if_mistake' => [
-            '_' => 'Apabila Anda merasa hal ini merupakan sebuah kesalahpahaman, Anda dianjurkan untuk mengontak pihak kami sesegera mungkin (melalui :email atau tombol "?" yang tersedia pada pojok kanan bawah halaman ini). Mohon diperhatikan bahwa segala keputusan yang kami ambil terkait dengan akun Anda selalu berdasar pada data-data konkrit yang kami punya dan senantiasa diambil dengan penuh keyakinan. Selain itu, kami juga berhak untuk tidak menindaklanjuti laporan Anda lebih lanjut apabila kami merasa Anda dengan sengaja berbohong kepada kami dalam aduan yang Anda ajukan.',
+            '_' => 'Apabila Anda merasa hal ini merupakan sebuah kesalahpahaman, Anda dianjurkan untuk mengontak kami sesegera mungkin (melalui :email atau tombol "?" yang tersedia pada pojok kanan bawah halaman ini). Mohon diperhatikan bahwa segala keputusan yang kami ambil terkait dengan akun Anda selalu berdasar pada data-data konkrit yang kami punya dan senantiasa diambil dengan penuh keyakinan. Selain itu, kami juga berhak untuk tidak menindaklanjuti laporan Anda lebih lanjut apabila kami merasa Anda dengan sengaja berbohong kepada kami dalam aduan yang Anda ajukan.',
             'email' => 'email',
         ],
 
         'reasons' => [
-            'compromised' => 'Akun Anda terindikasi telah disalahgunakan oleh pihak-pihak yang tidak bertanggung jawab untuk hal-hal yang membahayakan. Akun Anda mungkin akan dinonaktifkan untuk sementara waktu hingga identitas pengguna akun telah terkonfirmasi.',
+            'compromised' => 'Akun Anda terindikasi telah disalahgunakan oleh pihak-pihak yang tidak bertanggung jawab untuk hal-hal yang membahayakan. Akun Anda akan dinonaktifkan untuk sementara waktu hingga identitas pengguna akun telah terkonfirmasi.',
             'opening' => 'Ada sejumlah alasan yang dapat menyebabkan akun Anda dinonaktifkan:',
 
             'tos' => [
@@ -84,7 +84,7 @@ return [
         '_' => 'Masuk',
         'button' => 'Masuk',
         'button_posting' => 'Mencoba masuk...',
-        'email_login_disabled' => 'Masuk menggunakan email saat ini dinonaktifkan. Silakan masuk menggunakan nama pengguna.',
+        'email_login_disabled' => 'Anda tidak lagi dapat masuk dengan menggunakan alamat email. Silakan masuk dengan menggunakan nama pengguna.',
         'failed' => 'Gagal masuk',
         'forgot' => 'Lupa kata sandi?',
         'info' => 'Silahkan sign in untuk melanjutkan',
@@ -155,7 +155,7 @@ return [
         'title' => "profil :username",
 
         'comments_count' => [
-            '_' => 'Di-post :link',
+            '_' => 'Telah menulis :link',
             'count' => ':count_delimited komentar|:count_delimited komentar',
         ],
         'edit' => [
@@ -167,7 +167,7 @@ return [
                     'button' => 'Unggah gambar',
                     'dropzone' => 'Letakkan di sini untuk mengunggah',
                     'dropzone_info' => 'Anda juga dapat meletakkan gambar Anda di sini untuk mengunggah.',
-                    'size_info' => 'Ukuran gambar sampul yang optimal selayaknya adalah 2400x620',
+                    'size_info' => 'Ukuran gambar sampul yang disarankan adalah 2400x640',
                     'too_large' => 'Berkas yang diunggah terlalu besar.',
                     'unsupported_format' => 'Format tidak didukung.',
 
@@ -189,7 +189,7 @@ return [
             'unranked' => 'Tidak ada rekam jejak permainan yang tercatat dalam beberapa waktu ke belakang',
 
             'achievements' => [
-                'achieved-on' => 'Dicapai pada :date',
+                'achieved-on' => 'Diraih pada :date',
                 'locked' => 'Terkunci',
                 'title' => 'Pencapaian',
             ],
@@ -357,14 +357,13 @@ return [
             'interests' => 'Minat',
             'location' => 'Lokasi Saat Ini',
             'occupation' => 'Pekerjaan',
-            'skype' => '',
             'twitter' => '',
             'website' => 'Website',
         ],
         'not_found' => [
-            'reason_1' => 'Pengguna mungkin telah mengubah nama penggunanya.',
-            'reason_2' => 'Akun tersebut mungkin tidak tersedia untuk sementara waktu karena memiliki riwayat masalah yang berhubungan dengan keamanan atau penyalahgunaan akun.',
-            'reason_3' => 'Mungkin Anda salah ketik!',
+            'reason_1' => 'Pengguna yang hendak Anda tuju telah mengubah nama penggunanya.',
+            'reason_2' => 'Pengguna yang hendak Anda tuju telah dinonaktifkan untuk sementara waktu karena memiliki riwayat masalah yang berhubungan dengan keamanan atau penyalahgunaan akun.',
+            'reason_3' => 'Atau mungkin Anda salah ketik!',
             'reason_header' => 'Ada beberapa kemungkinan mengapa hal ini bisa terjadi:',
             'title' => 'Pengguna tidak ditemukan! ;_;',
         ],
@@ -381,7 +380,7 @@ return [
         ],
         'post_count' => [
             '_' => 'Berkontribusi sebanyak :link',
-            'count' => ':count postingan forum',
+            'count' => ':count_delimited postingan forum|:count_delimited postingan forum',
         ],
         'rank' => [
             'country' => 'Peringkat negara untuk :mode',
@@ -408,6 +407,11 @@ return [
             'unranked_beatmapset_count' => 'Beatmap Pending',
             'graveyard_beatmapset_count' => 'Beatmap Graveyard',
         ],
+    ],
+
+    'silenced_banner' => [
+        'title' => 'Anda sedang di-silence.',
+        'message' => 'Anda tidak dapat melakukan tindakan-tindakan tertentu.',
     ],
 
     'status' => [
