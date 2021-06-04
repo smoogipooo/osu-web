@@ -17,7 +17,7 @@ return [
 
     'avatar' => [
         'cache_purge_prefix' => env('AVATAR_CACHE_PURGE_PREFIX'),
-        'default' => env('DEFAULT_AVATAR', '/images/layout/avatar-guest.png'),
+        'default' => env('DEFAULT_AVATAR', env('APP_URL', 'http://localhost').'/images/layout/avatar-guest.png'),
         'storage' => env('AVATAR_STORAGE', 'local-avatar'),
     ],
 
@@ -115,6 +115,7 @@ return [
         'video_url' => env('LANDING_VIDEO_URL', 'https://assets.ppy.sh/media/landing.mp4'),
     ],
     'legacy' => [
+        'bancho_bot_user_id' => get_int(env('BANCHO_BOT_USER_ID')) ?? 3,
         'shared_interop_secret' => env('SHARED_INTEROP_SECRET', ''),
     ],
     'multiplayer' => [

@@ -27,7 +27,7 @@ interface Props {
 @observer
 export default class Item extends React.Component<Props> {
   static contextType = NotificationContext;
-  context!: React.ContextType<typeof NotificationContext>;
+  declare context: React.ContextType<typeof NotificationContext>;
 
   private get canMarkAsRead() {
     return this.props.canMarkAsRead ?? this.props.item.canMarkRead;
@@ -151,9 +151,9 @@ export default class Item extends React.Component<Props> {
   private renderMessage() {
     return (
       <a
-        onClick={this.props.markRead}
-        href={this.props.url}
         className='notification-popup-item__row notification-popup-item__row--message clickable-row-link'
+        href={this.props.url}
+        onClick={this.props.markRead}
       >
         {this.props.message}
       </a>

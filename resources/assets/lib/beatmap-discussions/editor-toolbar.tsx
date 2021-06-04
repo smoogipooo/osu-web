@@ -13,7 +13,7 @@ const bn = 'beatmap-discussion-editor-toolbar';
 
 export class EditorToolbar extends React.Component {
   static contextType = SlateContext;
-  context!: React.ContextType<typeof SlateContext>;
+  declare context: React.ContextType<typeof SlateContext>;
   ref = React.createRef<HTMLDivElement>();
   scrollContainer: HTMLElement | undefined;
   private scrollTimer: number | undefined;
@@ -54,8 +54,8 @@ export class EditorToolbar extends React.Component {
     return (
       <Portal>
         <div
-          className={bn}
           ref={this.ref}
+          className={bn}
         >
           <EditorToolbarButton format='bold' />
           <EditorToolbarButton format='italic' />
