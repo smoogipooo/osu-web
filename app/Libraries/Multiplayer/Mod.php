@@ -38,6 +38,8 @@ class Mod
     const OSU_SPININ = 'SI';
     const OSU_TRACEABLE = 'TC';
     const OSU_CLASSIC = 'CL';
+    const OSU_BARRELROLL = 'BR';
+    const OSU_RANDOM = 'RD';
 
     // mania-specific
     const MANIA_KEY1 = '1K';
@@ -57,8 +59,12 @@ class Mod
     const MANIA_INVERT = 'IN';
     const MANIA_CONSTANTSPEED = 'CS';
 
+    // catch-specific
+    const CATCH_FLOATINGFRUIT = 'FF';
+
     // taiko-specific
     const TAIKO_RANDOM = 'RD';
+    const TAIKO_SWAP = 'SW';
 
     // non-scorable
     const AUTOPLAY = 'AT';
@@ -175,6 +181,9 @@ class Mod
             'final_rate' => 'float',
             'adjust_pitch' => 'bool',
         ],
+        self::FLASHLIGHT => [
+            'follow_delay' => 'float',
+        ],
         self::OSU_GROW => [
             'start_scale' => 'float',
         ],
@@ -187,6 +196,13 @@ class Mod
             'no_slider_head_accuracy' => 'bool',
             'no_slider_head_movement' => 'bool',
             'always_play_tail_sample' => 'bool',
+        ],
+        self::OSU_BARRELROLL => [
+            'spin_speed' => 'float',
+            'direction' => 'int',
+        ],
+        self::OSU_RANDOM => [
+            'seed' => 'int',
         ],
     ];
 
@@ -257,6 +273,8 @@ class Mod
                         self::OSU_SPININ,
                         self::OSU_TRACEABLE,
                         self::OSU_CLASSIC,
+                        self::OSU_BARRELROLL,
+                        self::OSU_RANDOM,
                     ]
                 ),
 
@@ -264,13 +282,14 @@ class Mod
                     self::SCORABLE_COMMON,
                     [
                         self::TAIKO_RANDOM,
+                        self::TAIKO_SWAP,
                     ]
                 ),
 
                 Ruleset::CATCH => array_merge(
                     self::SCORABLE_COMMON,
                     [
-                        // catch-specific mods go here
+                        self::CATCH_FLOATINGFRUIT,
                     ]
                 ),
 
@@ -308,7 +327,15 @@ class Mod
         if (!$value) {
             $value = [
                 Ruleset::OSU => self::EXCLUSIVITY_COMMON,
-                Ruleset::TAIKO => self::EXCLUSIVITY_COMMON,
+                Ruleset::TAIKO => array_merge(
+                    self::EXCLUSIVITY_COMMON,
+                    [
+                        [
+                            self::TAIKO_RANDOM,
+                            self::TAIKO_SWAP,
+                        ],
+                    ]
+                ),
                 Ruleset::CATCH => self::EXCLUSIVITY_COMMON,
                 Ruleset::MANIA => array_merge(
                     self::EXCLUSIVITY_COMMON,

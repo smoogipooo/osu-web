@@ -4,9 +4,10 @@
 import { Paginator } from './paginator'
 import { SearchPanel } from './search-panel'
 import { SearchSort } from './search-sort'
-import { BeatmapsetPanel } from 'beatmapset-panel'
-import { Img2x } from 'img2x'
-import { observe, observable } from 'mobx'
+import BeatmapsetCardSizeSelector from 'beatmaps/beatmapset-card-size-selector'
+import VirtualListMeta from 'beatmaps/virtual-list-meta'
+import BeatmapsetPanel, { beatmapsetCardSizes } from 'beatmapset-panel'
+import Img2x from 'img2x'
 import { Observer } from 'mobx-react'
 import core from 'osu-core-singleton'
 import * as React from 'react'
@@ -16,12 +17,9 @@ import { showVisual } from 'utils/beatmapset-helper'
 
 el = React.createElement
 
-ITEM_HEIGHT = 205 # needs to be known in advance to calculate size of virtual scrolling area.
-
 ListRender = ({ virtual, itemHeight }) ->
-  style = _.extend {}, virtual.style
   div
-    style: style
+    style: virtual.style
     div
       className: 'beatmapsets__items'
       virtual.items.map (row) ->
@@ -32,27 +30,14 @@ ListRender = ({ virtual, itemHeight }) ->
             div
               className: 'beatmapsets__item'
               key: beatmapsetId
-              el BeatmapsetPanel, beatmap: core.dataStore.beatmapsetStore.get(beatmapsetId)
+              el BeatmapsetPanel, beatmapset: core.dataStore.beatmapsetStore.get(beatmapsetId)
 
-# stored in an observable so a rerender will occur when the HOC gets updated.
-Observables = observable
-  BeatmapList: VirtualList()(ListRender)
-  numberOfColumns: if osu.isDesktop() then 2 else 1
-
-observe Observables, 'numberOfColumns', (change) ->
-  if change.oldValue != change.newValue
-    Observables.BeatmapList = VirtualList()(ListRender)
+BeatmapList = VirtualList()(ListRender)
 
 
 export class SearchContent extends React.Component
-  componentDidMount: ->
-    $(window).on 'resize.beatmaps-search-content', ->
-      count = if osu.isDesktop() then 2 else 1
-      Observables.numberOfColumns = count if Observables.numberOfColumns != count
-
-
-  componentWillUnmount: ->
-    $(window).off '.beatmaps-search-content'
+  constructor: ->
+    @virtualListMeta = new VirtualListMeta
 
 
   render: ->
@@ -78,10 +63,16 @@ export class SearchContent extends React.Component
           className: 'osu-layout__row osu-layout__row--page-compact'
           div className: listCssClasses,
             if controller.advancedSearch
-              div
-                className: 'beatmapsets__sort'
-                el SearchSort,
-                  filters: controller.filters
+              div className: 'beatmapsets__toolbar',
+                div className: 'beatmapsets__toolbar-item',
+                  el SearchSort, filters: controller.filters
+                div className: 'beatmapsets__toolbar-item',
+                  div className: 'sort hidden-xs', div className: 'sort__items',
+                    beatmapsetCardSizes.map (size) =>
+                      el BeatmapsetCardSizeSelector,
+                        key: size
+                        classElement: 'sort__item'
+                        size: size
 
             div
               className: 'beatmapsets__content js-audio--group'
@@ -96,10 +87,10 @@ export class SearchContent extends React.Component
 
               else
                 if beatmapsetIds.length > 0
-                  el Observables.BeatmapList,
-                    items: _.chunk(beatmapsetIds, Observables.numberOfColumns)
+                  el BeatmapList,
+                    items: _.chunk(beatmapsetIds, @virtualListMeta.numberOfColumns)
                     itemBuffer: 5
-                    itemHeight: ITEM_HEIGHT
+                    itemHeight: @virtualListMeta.itemHeight
 
                 else
                   div className: 'beatmapsets__empty',

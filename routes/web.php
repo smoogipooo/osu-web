@@ -47,6 +47,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::group(['as' => 'beatmaps.', 'prefix' => '{beatmap}'], function () {
             Route::get('scores/users/{user}', 'BeatmapsController@userScore');
             Route::get('scores', 'BeatmapsController@scores')->name('scores');
+            Route::put('update-owner', 'BeatmapsController@updateOwner')->name('update-owner');
         });
     });
 
@@ -521,6 +522,7 @@ Route::group(['prefix' => '_lio', 'middleware' => 'lio', 'as' => 'interop.'], fu
     Route::apiResource('users', 'InterOp\UsersController', ['only' => ['store']]);
 
     Route::group(['namespace' => 'InterOp'], function () {
+        Route::resource('beatmapsets', 'BeatmapsetsController', ['only' => ['destroy']]);
         Route::post('beatmapsets/{beatmapset}/broadcast-new', 'BeatmapsetsController@broadcastNew');
 
         Route::group(['as' => 'indexing.', 'prefix' => 'indexing'], function () {
