@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./UseLocalOsu.sh
+
 OUT_DIR='/out'
 
 dotnet build -c:Release -o ${OUT_DIR}
