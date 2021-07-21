@@ -128,6 +128,7 @@ return [
 
         'options' => [
             'cheating' => 'Gioco scorretto / Cheating',
+            'multiple_accounts' => '',
             'insults' => 'Insulti a me / altri',
             'spam' => 'Spamming',
             'unwanted_content' => 'Condivisione di contenuti inappropriati',
@@ -207,10 +208,10 @@ return [
                     'title' => 'Beatmap Amate',
                 ],
                 'pending' => [
-                    'title' => 'Beatmap in Attesa',
+                    'title' => 'Beatmap In Attesa',
                 ],
                 'ranked' => [
-                    'title' => 'Beatmap Classificate & Approvate',
+                    'title' => 'Beatmap Classificate',
                 ],
             ],
             'discussions' => [
@@ -232,7 +233,7 @@ return [
                 ],
                 'most_played' => [
                     'count' => 'volte giocata',
-                    'title' => 'Beatmap più Giocate',
+                    'title' => 'Beatmap Più Giocate',
                 ],
                 'recent_plays' => [
                     'accuracy' => 'precisione: :percentage',
@@ -299,6 +300,9 @@ return [
                 'empty' => "Questo utente non ne ha ricevuti ancora. ;_;",
                 'recent' => 'Più recenti',
                 'title' => 'Medaglie',
+            ],
+            'multiplayer' => [
+                'title' => '',
             ],
             'posts' => [
                 'title' => 'Post',
@@ -404,8 +408,8 @@ return [
             // modding stats
             'graveyard_beatmapset_count' => 'Beatmap Abbandonate',
             'loved_beatmapset_count' => 'Beatmap Amate',
-            'pending_beatmapset_count' => 'Beatmap in Attesa',
-            'ranked_beatmapset_count' => 'Beatmap Classificate & Approvate',
+            'pending_beatmapset_count' => 'Beatmap In Attesa',
+            'ranked_beatmapset_count' => 'Beatmap Classificate',
         ],
     ],
 
@@ -429,6 +433,6 @@ return [
     'view_mode' => [
         'brick' => 'Vista a blocchi',
         'card' => 'Vista a schede',
-        'list' => 'Vista ad elenco',
+        'list' => 'Vista a elenco',
     ],
 ];
