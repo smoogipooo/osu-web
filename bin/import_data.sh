@@ -4,6 +4,7 @@
 echo "ES_HOST=elasticsearch:9200" >> /app/.env
 echo "ES_SCORES_HOST=elasticsearch:9200" >> /app/.env
 echo "QUERY_DETECTOR_ENABLED=0" >> /app/.env
+echo "BEATMAPSET_GUEST_ADVANCED_SEARCH=1" >> /app/.env
 sed -i 's@^.*APP_URL=.*$@'"APP_URL=$HTTP_URL"'@' /app/.env
 
 echo "Importing data..."
