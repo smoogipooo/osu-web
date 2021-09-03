@@ -24,7 +24,6 @@ x-web: &x-web
   volumes:
     - .:/app
     - ./sql:/app/sql
-    - ./beatmaps:/app/beatmaps
   environment:
     <<: *x-env
 
@@ -81,7 +80,6 @@ services:
       - database:/var/lib/mysql
       - ./bin/db_setup.sh:/docker-entrypoint-initdb.d/db_setup.sh
       - ./docker/development/db_user.sql:/docker-entrypoint-initdb.d/db_user.sql
-      - ./docker/mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
     environment:
       <<: *x-env
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
@@ -113,49 +111,6 @@ services:
       - .:/app
     ports:
       - "${NGINX_PORT:-8080}:80"
-
-  diffcalc:
-    image: mcr.microsoft.com/dotnet/sdk:5.0
-    volumes:
-      - ./osu-server:/data
-      - ./beatmaps:/beatmaps
-      - ./docker/diffcalc/run.sh:/data/run.sh
-    depends_on:
-      - db
-    working_dir: /data
-    environment:
-      <<: *x-env
-      THREADS: 8
-      BEATMAPS_PATH: /beatmaps
-      ALLOW_DOWNLOAD: 1
-      SAVE_DOWNLOADED: 1
-    command: [ './run.sh' ]
-
-  ppcalc:
-    build:
-      context: ./docker/ppcalc
-    volumes:
-      - ./osu-performance:/data
-      - ./docker/ppcalc/run.sh:/data/run.sh
-    depends_on:
-      - db
-    working_dir: /data
-    environment:
-      <<: *x-env
-      THREADS: 8
-    command: [ './run.sh' ]
-
-  esindexer:
-    image: mcr.microsoft.com/dotnet/sdk:3.1
-    volumes:
-      - ./osu-elastic-indexer:/data
-      - ./docker/esindexer/run.sh:/data/run.sh
-    depends_on:
-      - db
-    working_dir: /data
-    environment:
-      <<: *x-env
-    command: [ './run.sh' ]
 
 volumes:
   database:
