@@ -252,6 +252,7 @@ return [
     ],
     'general' => [
         'converts' => 'Inclure les beatmaps converties',
+        'featured_artists' => 'Artistes plébiscités',
         'follows' => 'Mappeurs abonnés',
         'recommended' => 'Difficulté recommandée',
     ],

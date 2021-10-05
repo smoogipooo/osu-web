@@ -252,6 +252,7 @@ return [
     ],
     'general' => [
         'converts' => 'Tel geconverteerde beatmaps mee',
+        'featured_artists' => 'Aanbevolen artiesten',
         'follows' => 'Geabonneerde mappers',
         'recommended' => 'Aanbevolen moeilijkheid',
     ],

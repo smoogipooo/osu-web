@@ -100,6 +100,9 @@ class SanityTest extends DuskTestCase
 
         // factories for /beatmaps/artists/*
         self::$scaffolding['artist'] = factory(\App\Models\Artist::class)->create();
+        self::$scaffolding['track'] = \App\Models\ArtistTrack::factory()->create([
+            'artist_id' => self::$scaffolding['artist']->getKey(),
+        ]);
 
         // factories for /store/*
         self::$scaffolding['product'] = factory(\App\Models\Store\Product::class)->states('master_tshirt')->create();
@@ -164,7 +167,7 @@ class SanityTest extends DuskTestCase
         self::$scaffolding['changelog'] = factory(\App\Models\Changelog::class)->create([
             'stream_id' => self::$scaffolding['stream']->stream_id,
         ]);
-        self::$scaffolding['build'] = factory(\App\Models\Build::class)->create([
+        self::$scaffolding['build'] = \App\Models\Build::factory()->create([
             'stream_id' => self::$scaffolding['stream']->stream_id,
         ]);
 
