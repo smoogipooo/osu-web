@@ -56,6 +56,9 @@ class Room extends Model
     const REALTIME_DEFAULT_TYPE = 'head_to_head';
     const REALTIME_TYPES = ['head_to_head', 'team_versus'];
 
+    const REALTIME_DEFAULT_QUEUE_MODE = 'host_only';
+    const REALTIME_QUEUE_MODES = [ 'host_only', 'free_for_all', 'fair_rotate' ];
+
     protected $casts = [
         'password' => PresentString::class,
     ];
@@ -325,6 +328,7 @@ class Room extends Model
             'password',
             'playlist:array',
             'type',
+            'queue_mode',
         ], ['null_missing' => true]);
 
         $this->fill([
@@ -332,6 +336,7 @@ class Room extends Model
             'name' => $params['name'],
             'starts_at' => now(),
             'type' => $params['type'],
+            'queue_mode' => $params['queue_mode'],
             'user_id' => $owner->getKey(),
         ]);
 
@@ -341,6 +346,9 @@ class Room extends Model
         if ($this->isRealtime() || $params['category'] === 'realtime') {
             if (!in_array($this->type, static::REALTIME_TYPES, true)) {
                 $this->type = static::REALTIME_DEFAULT_TYPE;
+            }
+            if (!in_array($this->queue_mode, static::REALTIME_QUEUE_MODES, true)) {
+                $this->queue_mode = static::REALTIME_DEFAULT_QUEUE_MODE;
             }
             // only for realtime rooms for now
             $this->password = $params['password'];
