@@ -135,6 +135,11 @@ return [
             '_' => 'rangsorolás',
         ],
     ],
+    'passport' => [
+        'authorization_controller' => [
+            '_' => 'alkalmazás engedélyezése',
+        ],
+    ],
     'store' => [
         '_' => 'áruház',
     ],
