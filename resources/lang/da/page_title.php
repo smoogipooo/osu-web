@@ -38,6 +38,9 @@ return [
             'edit' => 'instrumentbræt',
             'verify_link' => 'kontobekræftelse',
         ],
+        'artist_tracks_controller' => [
+            '_' => '',
+        ],
         'artists_controller' => [
             '_' => 'udvalgte kunstnere',
         ],
@@ -111,13 +114,13 @@ return [
             '_' => 'nulstil adgangskode',
         ],
         'ranking_controller' => [
-            '_' => 'rang',
+            '_' => 'rangering',
         ],
         'scores_controller' => [
             '_' => '',
         ],
         'store_controller' => [
-            '_' => 'osu!butik',
+            '_' => 'butik',
         ],
         'tournaments_controller' => [
             '_' => 'turneringer',
@@ -127,7 +130,7 @@ return [
             'disabled' => 'notits',
         ],
         'wiki_controller' => [
-            '_' => 'vidensbase',
+            '_' => 'wiki',
         ],
     ],
     'multiplayer' => [
@@ -135,8 +138,13 @@ return [
             '_' => '',
         ],
     ],
+    'passport' => [
+        'authorization_controller' => [
+            '_' => '',
+        ],
+    ],
     'store' => [
-        '_' => 'osu!butik',
+        '_' => 'butik',
     ],
     'users' => [
         'modding_history_controller' => [

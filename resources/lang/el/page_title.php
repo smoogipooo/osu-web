@@ -38,6 +38,9 @@ return [
             'edit' => '',
             'verify_link' => '',
         ],
+        'artist_tracks_controller' => [
+            '_' => '',
+        ],
         'artists_controller' => [
             '_' => '',
         ],
@@ -111,13 +114,13 @@ return [
             '_' => '',
         ],
         'ranking_controller' => [
-            '_' => '',
+            '_' => 'κατατάξεις',
         ],
         'scores_controller' => [
             '_' => '',
         ],
         'store_controller' => [
-            '_' => '',
+            '_' => 'κατάστημα',
         ],
         'tournaments_controller' => [
             '_' => '',
@@ -127,7 +130,7 @@ return [
             'disabled' => '',
         ],
         'wiki_controller' => [
-            '_' => '',
+            '_' => 'wiki',
         ],
     ],
     'multiplayer' => [
@@ -135,8 +138,13 @@ return [
             '_' => '',
         ],
     ],
+    'passport' => [
+        'authorization_controller' => [
+            '_' => '',
+        ],
+    ],
     'store' => [
-        '_' => '',
+        '_' => 'κατάστημα',
     ],
     'users' => [
         'modding_history_controller' => [

@@ -38,6 +38,9 @@ return [
             'edit' => 'dashboard',
             'verify_link' => 'account verificatie',
         ],
+        'artist_tracks_controller' => [
+            '_' => '',
+        ],
         'artists_controller' => [
             '_' => 'aanbevolen artiesten',
         ],
@@ -111,13 +114,13 @@ return [
             '_' => 'wachtwoord opnieuw instellen',
         ],
         'ranking_controller' => [
-            '_' => 'ranglijst',
+            '_' => 'rankings',
         ],
         'scores_controller' => [
             '_' => 'prestatie',
         ],
         'store_controller' => [
-            '_' => 'osu!store',
+            '_' => 'winkel',
         ],
         'tournaments_controller' => [
             '_' => 'toernooien',
@@ -127,7 +130,7 @@ return [
             'disabled' => 'waarschuwing',
         ],
         'wiki_controller' => [
-            '_' => 'kennisbank',
+            '_' => 'wiki',
         ],
     ],
     'multiplayer' => [
@@ -135,15 +138,20 @@ return [
             '_' => 'ranglijst',
         ],
     ],
+    'passport' => [
+        'authorization_controller' => [
+            '_' => 'app machtigen',
+        ],
+    ],
     'store' => [
-        '_' => 'osu!store',
+        '_' => 'winkel',
     ],
     'users' => [
         'modding_history_controller' => [
             '_' => 'modder info',
         ],
         'multiplayer_controller' => [
-            '_' => '',
+            '_' => 'multiplayer geschiedenis',
         ],
     ],
 ];

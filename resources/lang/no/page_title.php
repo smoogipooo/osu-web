@@ -38,6 +38,9 @@ return [
             'edit' => 'dashbord',
             'verify_link' => 'kontobekreftelse',
         ],
+        'artist_tracks_controller' => [
+            '_' => '',
+        ],
         'artists_controller' => [
             '_' => 'utvalgte artister',
         ],
@@ -117,7 +120,7 @@ return [
             '_' => 'gjennomføring',
         ],
         'store_controller' => [
-            '_' => 'osu!butikken',
+            '_' => 'butikk',
         ],
         'tournaments_controller' => [
             '_' => 'turneringer',
@@ -127,7 +130,7 @@ return [
             'disabled' => 'varsel',
         ],
         'wiki_controller' => [
-            '_' => 'kunnskapsbase',
+            '_' => 'wiki',
         ],
     ],
     'multiplayer' => [
@@ -135,8 +138,13 @@ return [
             '_' => 'rangering',
         ],
     ],
+    'passport' => [
+        'authorization_controller' => [
+            '_' => '',
+        ],
+    ],
     'store' => [
-        '_' => 'osu!butikken',
+        '_' => 'butikk',
     ],
     'users' => [
         'modding_history_controller' => [

@@ -41,13 +41,13 @@ export class PopupMenu extends PureComponent
       @portal.style.display = 'none'
       return
 
-    $element = $(@menu.current)
-    { top, left } = $element.offset()
+    rect = @menu.current.getBoundingClientRect()
+    { scrollX, scrollY } = window
 
     @portal.style.display = 'block'
     @portal.style.position = 'absolute'
-    @portal.style.top = "#{Math.floor(top + $element.height() / 2)}px"
-    @portal.style.left = "#{Math.floor(left + $element.width())}px"
+    @portal.style.top = "#{Math.floor(scrollY + rect.bottom + 5)}px"
+    @portal.style.left = "#{Math.floor(scrollX + rect.right)}px"
 
     # keeps the menu showing above the tooltip;
     # portal should be after the tooltip in the document body.
@@ -133,11 +133,9 @@ export class PopupMenu extends PureComponent
 
 
   renderMenu: =>
-    # using Fade.in causes rendering glitches from the stacking context due to will-change
+    # using fadeIn causes rendering glitches from the stacking context due to will-change
     return null unless @state.active
 
     div
-      className: "popup-menu__menu"
-      div
-        className: 'simple-menu simple-menu--popup-menu'
-        @props.children @dismiss
+      className: "popup-menu-float"
+      @props.children @dismiss

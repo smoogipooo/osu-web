@@ -1,7 +1,8 @@
 // Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
 // See the LICENCE file in the repository root for full licence text.
 
-import BeatmapJsonExtended from 'interfaces/beatmap-json-extended';
+import { discussionTypeIcons } from 'beatmap-discussions/discussion-type';
+import BeatmapExtendedJson from 'interfaces/beatmap-extended-json';
 import { Cancelable, throttle } from 'lodash';
 import { Portal } from 'portal';
 import * as React from 'react';
@@ -11,7 +12,7 @@ import { nextVal } from 'utils/seq';
 import { SlateContext } from './slate-context';
 
 interface Props {
-  currentBeatmap: BeatmapJsonExtended;
+  currentBeatmap: BeatmapExtendedJson;
 }
 
 export class EditorInsertionMenu extends React.Component<Props> {
@@ -226,7 +227,7 @@ export class EditorInsertionMenu extends React.Component<Props> {
       case 'praise':
       case 'problem':
       case 'suggestion':
-        icon = BeatmapDiscussionHelper.messageType.icon[type];
+        icon = discussionTypeIcons[type];
         break;
       case 'paragraph':
         icon = 'fas fa-indent';

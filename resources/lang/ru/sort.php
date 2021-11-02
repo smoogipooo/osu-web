@@ -6,14 +6,25 @@
 return [
     '_' => 'Сортировать по',
 
-    'all' => 'Все',
-    'friends' => 'Друзья',
+    'all' => 'Всех',
+    'friends' => 'Друзей',
     'last_visit' => 'Недавно активным',
     'new' => 'Последним',
     'old' => 'Старым',
     'rank' => 'Рейтингу',
     'top' => 'Популярным',
     'username' => 'Имени пользователя',
+
+    'artist_tracks' => [
+        'album' => '',
+        'artist' => '',
+        'bpm' => '',
+        'genre' => '',
+        'length' => '',
+        'relevance' => '',
+        'title' => '',
+        'update' => '',
+    ],
 
     'forum_posts' => [
         'created' => 'Время публикации',

@@ -38,6 +38,9 @@ return [
             'edit' => '대시보드',
             'verify_link' => '계정 인증',
         ],
+        'artist_tracks_controller' => [
+            '_' => '',
+        ],
         'artists_controller' => [
             '_' => '공식 아티스트',
         ],
@@ -117,7 +120,7 @@ return [
             '_' => '퍼포먼스',
         ],
         'store_controller' => [
-            '_' => 'osu!store',
+            '_' => '상점',
         ],
         'tournaments_controller' => [
             '_' => '토너먼트',
@@ -127,7 +130,7 @@ return [
             'disabled' => '알림',
         ],
         'wiki_controller' => [
-            '_' => '지식 창고',
+            '_' => '위키',
         ],
     ],
     'multiplayer' => [
@@ -135,15 +138,20 @@ return [
             '_' => '순위',
         ],
     ],
+    'passport' => [
+        'authorization_controller' => [
+            '_' => '앱 인증',
+        ],
+    ],
     'store' => [
-        '_' => 'osu!store',
+        '_' => '상점',
     ],
     'users' => [
         'modding_history_controller' => [
             '_' => '모더 정보',
         ],
         'multiplayer_controller' => [
-            '_' => '',
+            '_' => '멀티플레이 기록',
         ],
     ],
 ];

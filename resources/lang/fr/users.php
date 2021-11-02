@@ -51,10 +51,10 @@ return [
 
     'disabled' => [
         'title' => 'Oh-oh ! Il semble que votre compte ait été désactivé.',
-        'warning' => "Dans le cas où vous avez enfreint une règle, veuillez noter qu'il y a généralement une période de temps d'un mois pendant laquelle nous n'examinerons aucune demande d'amnistie. Après cette période, vous êtes libre de nous contacter si vous le jugez nécessaire. Veuillez noter que la création de nouveaux comptes une fois que vous en ayez eu un désactivé, entraînera une prolongation <strong>de ce délai de récupération d'un mois</strong>. Veuillez également noter que pour <strong>chaque compte que vous créez, vous enfreignez à nouveau les règles</strong>. Nous vous suggérons fortement de ne pas suivre cette voie !",
+        'warning' => "Dans le cas où vous avez enfreint une règle, veuillez noter qu'il y a généralement une période d'un mois pendant laquelle nous n'accepterons aucune demande de réactivation. Après cette période, vous êtes libre de nous contacter si vous le jugez nécessaire. Veuillez noter que la création de nouveaux comptes entraînera une prolongation <strong>de ce délai de récupération d'un mois</strong>. Veuillez également noter que pour <strong>chaque compte que vous créez, vous enfreignez à nouveau les règles</strong>. Nous vous suggérons fortement de ne pas suivre cette voie !",
 
         'if_mistake' => [
-            '_' => 'Si vous pensez que c\'est une erreur, vous êtes invités à nous contacter (via :email ou en cliquant sur le "?" dans le coin en bas à droite de cette page). Veuillez noter que nous sommes confiants en nos actions, car elles reposent sur des données solides. Nous nous réservons le droit de ne pas tenir compte de votre demande si nous pensons que vous êtes délibérément malhonnête.',
+            '_' => 'Si vous pensez qu\'il s\'agit d\'une erreur, vous êtes invités à nous contacter (via :email ou en cliquant sur le "?" dans le coin en bas à droite de cette page). Veuillez noter que nous sommes confiants en nos actions, car elles reposent sur des données solides. Nous nous réservons le droit de ne pas tenir compte de votre demande si nous pensons que vous êtes délibérément malhonnête.',
             'email' => 'email',
         ],
 
@@ -65,7 +65,7 @@ return [
             'tos' => [
                 '_' => 'Vous avez enfreint une ou plusieurs de nos :community_rules ou des :tos.',
                 'community_rules' => 'règles de la communauté',
-                'tos' => 'conditions de service',
+                'tos' => 'conditions générales d\'utilisation',
             ],
         ],
     ],
@@ -128,7 +128,7 @@ return [
 
         'options' => [
             'cheating' => 'Anti-jeu / Tricherie',
-            'multiple_accounts' => '',
+            'multiple_accounts' => 'Utilisation de plusieurs comptes',
             'insults' => 'M’insulte / insulte les autres',
             'spam' => 'Spam',
             'unwanted_content' => 'Envoi de contenu inapproprié',
@@ -164,11 +164,11 @@ return [
                 'button' => 'Changer la bannière du profil',
                 'defaults_info' => 'D\'autres options de bannières seront disponibles à l\'avenir',
                 'upload' => [
-                    'broken_file' => 'Impossible de traiter l\'image. Vérifiez l\'image mise en ligne et réessayez.',
-                    'button' => 'Mettre en ligne l\'image',
-                    'dropzone' => 'Déplacez ici pour uploader',
+                    'broken_file' => 'Impossible de traiter l\'image. Vérifiez l\'image uploadée et réessayez.',
+                    'button' => 'Mettre en ligne une image',
+                    'dropzone' => 'Déplacez ici pour mettre en ligne',
                     'dropzone_info' => 'Vous pouvez aussi déplacer l\'image ici pour la mettre en ligne',
-                    'size_info' => 'La taille de la bannière devrait être de 2400x620',
+                    'size_info' => 'La taille de la bannière devrait être de 2400x640',
                     'too_large' => 'Le fichier est trop volumineux.',
                     'unsupported_format' => 'Format non supporté.',
 
@@ -190,9 +190,9 @@ return [
             'unranked' => 'Aucune partie récente',
 
             'achievements' => [
-                'achieved-on' => 'Acquis le :date',
-                'locked' => 'Verrouillé',
-                'title' => 'Succès',
+                'achieved-on' => 'Obtenue le :date',
+                'locked' => 'Verrouillée',
+                'title' => 'Médailles',
             ],
             'beatmaps' => [
                 'by_artist' => 'par :artist',
@@ -240,7 +240,7 @@ return [
                     'title' => 'Parties récentes (dernières 24h)',
                 ],
                 'replays_watched_counts' => [
-                    'title' => 'Historique des replays regardées',
+                    'title' => 'Historique des replays regardés',
                     'count_label' => 'Replays regardés',
                 ],
             ],
@@ -289,7 +289,7 @@ return [
                 ],
 
                 'total_info' => [
-                    '_' => 'Basé sur la quantité d\'une contribution que l\'utilisateur a apportée à la modération de la beatmap. Voir :link pour plus d\'informations.',
+                    '_' => 'Selon la contribution que l\'utilisateur a apportée à la modération de beatmaps. Voir :link pour plus d\'informations.',
                     'link' => 'cette page',
                 ],
             ],
@@ -298,11 +298,11 @@ return [
             ],
             'medals' => [
                 'empty' => "Cet utilisateur n'en a encore jamais reçue. ;_;",
-                'recent' => 'Dernier',
+                'recent' => 'Les plus récentes',
                 'title' => 'Médailles',
             ],
             'multiplayer' => [
-                'title' => '',
+                'title' => 'Parties multijoueurs',
             ],
             'posts' => [
                 'title' => 'Messages',
@@ -407,7 +407,7 @@ return [
             'total_score' => 'Score total',
             // modding stats
             'graveyard_beatmapset_count' => 'Beatmaps dans le cimetière',
-            'loved_beatmapset_count' => 'Beatmaps adorées',
+            'loved_beatmapset_count' => 'Beatmaps loved',
             'pending_beatmapset_count' => 'Beatmaps en attente',
             'ranked_beatmapset_count' => 'Beatmaps classées et approuvées',
         ],

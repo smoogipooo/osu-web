@@ -40,7 +40,7 @@ return [
         'post' => 'Post',
         'read_more' => 'lire plus',
         'reply' => 'Répondre',
-        'reply_reopen' => 'Répondre et rouvrir',
+        'reply_reopen' => 'Répondre et réouvrir',
         'reply_resolve' => 'Répondre et Résoudre',
         'reset' => 'Réinitialiser',
         'restore' => 'Restaurer',
@@ -49,13 +49,14 @@ return [
         'search' => 'Rechercher',
         'see_more' => 'voir plus',
         'show' => 'afficher',
-        'show_deleted' => 'Afficher supprimé',
+        'show_deleted' => 'Afficher le contenu supprimé',
         'show_less' => 'afficher moins',
         'show_more' => 'voir plus',
         'show_more_options' => 'afficher plus d’options',
+        'submit' => 'Envoyer',
         'unpin' => 'désépingler',
         'update' => 'Modifier',
-        'upload_image' => 'mettre en ligne une image',
+        'upload_image' => 'uploader une image',
 
         'watch' => [
             'to_0' => 'Ne plus suivre',
@@ -125,7 +126,7 @@ return [
         'count_50' => '50',
         'count_geki' => '',
         'count_katu' => '200',
-        'count_miss' => 'Raté',
+        'count_miss' => 'Manqué',
     ],
 
     'scoreboard_time' => [
@@ -133,10 +134,10 @@ return [
         'dd' => '%d j',
         'h' => '%dh',
         'hh' => '%dh',
-        'M' => '%dmois',
         'm' => 'maintenant',
-        'MM' => '%dmois',
         'mm' => 'maintenant',
+        'month' => '%dmois',
+        'months' => '%dmois',
         'past' => '',
         's' => 'maintenant',
         'y' => '%dan',
@@ -144,8 +145,8 @@ return [
     ],
 
     'time' => [
-        'days_ago' => 'Il y à :count_delimited jour|Il y à :count_delimited jours',
-        'hours_ago' => 'Il y à :count_delimited heure|Il y à :count_delimited heures',
+        'days_ago' => 'Il y a :count_delimited jour|Il y a :count_delimited jours',
+        'hours_ago' => 'Il y a :count_delimited heure|Il y a :count_delimited heures',
         'now' => 'maintenant',
         'remaining' => 'Temps restant',
     ],
@@ -156,6 +157,6 @@ return [
 
     'wrong_user' => [
         '_' => 'Vous êtes connecté en tant que :user. :logout_link.',
-        'logout_link' => 'Cliquez ici pour vous connecter en tant qu\'utilisateur différent',
+        'logout_link' => 'Cliquez ici pour vous connecter en tant qu\'un autre utilisateur',
     ],
 ];

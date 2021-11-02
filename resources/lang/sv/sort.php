@@ -11,12 +11,23 @@ return [
     'last_visit' => 'Nyligen aktiva',
     'new' => 'Nyligen',
     'old' => 'Gammal',
-    'rank' => 'Rang',
+    'rank' => 'Rank',
     'top' => 'Topp',
     'username' => 'Användarnamn',
 
+    'artist_tracks' => [
+        'album' => '',
+        'artist' => '',
+        'bpm' => '',
+        'genre' => '',
+        'length' => '',
+        'relevance' => '',
+        'title' => '',
+        'update' => '',
+    ],
+
     'forum_posts' => [
-        'created' => '',
+        'created' => 'Inläggstid',
         'relevance' => 'Relevans',
     ],
 

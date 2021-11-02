@@ -15,6 +15,17 @@ return [
     'top' => 'Hàng đầu',
     'username' => 'Tên người chơi',
 
+    'artist_tracks' => [
+        'album' => '',
+        'artist' => '',
+        'bpm' => '',
+        'genre' => '',
+        'length' => '',
+        'relevance' => '',
+        'title' => '',
+        'update' => '',
+    ],
+
     'forum_posts' => [
         'created' => 'Thời gian đăng',
         'relevance' => 'Mức độ liên quan',
@@ -26,7 +37,7 @@ return [
     ],
 
     'users' => [
-        'relevance' => '',
-        'username' => '',
+        'relevance' => 'Mức độ liên quan',
+        'username' => 'Tên',
     ],
 ];

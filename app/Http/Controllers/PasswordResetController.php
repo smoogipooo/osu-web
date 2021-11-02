@@ -54,16 +54,26 @@ class PasswordResetController extends Controller
     public function update()
     {
         $session = Session::get('password_reset');
-        $user = User::find($session['user_id']);
-        $inputKey = str_replace(' ', '', Request::input('key'));
 
-        if ($user === null) {
+        if ($session === null) {
             return $this->restart('invalid');
         }
 
         if ($session['expire']->isPast()) {
             return $this->restart('expired');
         }
+
+        $user = User::find($session['user_id']);
+
+        if ($user === null) {
+            return $this->restart('invalid');
+        }
+
+        if (!hash_equals($session['auth_hash'], $user->authHash())) {
+            return $this->restart('expired');
+        }
+
+        $inputKey = str_replace(' ', '', Request::input('key'));
 
         if (!present($inputKey)) {
             return response(['form_error' => [
@@ -91,6 +101,7 @@ class PasswordResetController extends Controller
 
         if ($user->update($params)) {
             $this->clear();
+            $user->resetSessions();
             $this->login($user);
 
             UserAccountHistory::logUserResetPassword($user);
@@ -125,6 +136,7 @@ class PasswordResetController extends Controller
         }
 
         $session = [
+            'auth_hash' => $user->authHash(),
             'username' => $username,
             'user_id' => $user->user_id,
             'key' => bin2hex(random_bytes(config('osu.user.password_reset.key_length') / 2)),
@@ -144,6 +156,6 @@ class PasswordResetController extends Controller
     {
         $this->clear();
 
-        return ['message' => osu_trans("password_reset.restart.{$reasonKey}")];
+        return ['message' => osu_trans("password_reset.error.{$reasonKey}")];
     }
 }

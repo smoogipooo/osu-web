@@ -2,16 +2,17 @@
 // See the LICENCE file in the repository root for full licence text.
 
 import { DiscussionsContext } from 'beatmap-discussions/discussions-context';
-import { BeatmapsetJson } from 'beatmapsets/beatmapset-json';
-import BeatmapJsonExtended from 'interfaces/beatmap-json-extended';
+import BeatmapExtendedJson from 'interfaces/beatmap-extended-json';
+import BeatmapsetJson from 'interfaces/beatmapset-json';
 import UserJson from 'interfaces/user-json';
 import * as React from 'react';
+import { classWithModifiers } from 'utils/css';
 import Editor from './editor';
 
 interface Props {
-  beatmaps: BeatmapJsonExtended[];
+  beatmaps: BeatmapExtendedJson[];
   beatmapset: BeatmapsetJson;
-  currentBeatmap: BeatmapJsonExtended;
+  currentBeatmap: BeatmapExtendedJson;
   currentDiscussions: BeatmapsetDiscussionJson[];
   currentUser: UserJson;
   pinned?: boolean;
@@ -75,7 +76,7 @@ export default class NewReview extends React.Component<Props, State> {
     }
 
     return (
-      <div className={osu.classWithModifiers(floatClass, floatMods)} style={{top: this.state.cssTop}}>
+      <div className={classWithModifiers(floatClass, floatMods)} style={{ top: this.state.cssTop }}>
         <div className={`${floatClass}__floatable ${floatClass}__floatable--pinned`}>
           <div className={`${floatClass}__content`}>
             <div className='osu-page osu-page--small'>
