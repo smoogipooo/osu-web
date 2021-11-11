@@ -35,6 +35,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Carbon\Carbon $starts_at
  * @property \Carbon\Carbon|null $updated_at
  * @property int $user_id
+ * @property string $type
+ * @property string $queue_mode
  */
 class Room extends Model
 {
