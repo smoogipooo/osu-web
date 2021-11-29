@@ -18,7 +18,6 @@ use App\Libraries\UsernameValidation;
 use App\Models\Forum\TopicWatch;
 use App\Models\OAuth\Client;
 use App\Traits\Memoizes;
-use App\Traits\UserAvatar;
 use App\Traits\Validatable;
 use Cache;
 use Carbon\Carbon;
@@ -173,8 +172,7 @@ use Request;
  */
 class User extends Model implements AfterCommit, AuthenticatableContract, HasLocalePreference, Indexable
 {
-    use Elasticsearch\UserTrait, Store\UserTrait;
-    use Authenticatable, HasApiTokens, Memoizes, Reportable, UserAvatar, UserScoreable, Validatable;
+    use Authenticatable, HasApiTokens, Memoizes, Traits\Es\UserSearch, Traits\Reportable, Traits\UserAvatar, Traits\UserScoreable, Traits\UserStore, Validatable;
 
     protected $table = 'phpbb_users';
     protected $primaryKey = 'user_id';
@@ -1644,20 +1642,6 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
     public function notificationCount()
     {
         return $this->user_unread_privmsg;
-    }
-
-    // TODO: we should rename this to currentUserJson or something.
-    public function defaultJson()
-    {
-        return json_item($this, 'User', [
-            'blocks',
-            'follow_user_mapping',
-            'friends',
-            'groups',
-            'is_admin',
-            'unread_pm_count',
-            'user_preferences',
-        ]);
     }
 
     public function supportLength()

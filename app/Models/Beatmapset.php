@@ -25,7 +25,6 @@ use App\Libraries\Elasticsearch\Indexable;
 use App\Libraries\ImageProcessorService;
 use App\Libraries\StorageWithUrl;
 use App\Libraries\Transactions\AfterCommit;
-use App\Traits\CommentableDefaults;
 use App\Traits\Memoizes;
 use App\Traits\Validatable;
 use Cache;
@@ -103,7 +102,7 @@ use Illuminate\Database\QueryException;
  */
 class Beatmapset extends Model implements AfterCommit, Commentable, Indexable
 {
-    use CommentableDefaults, Elasticsearch\BeatmapsetTrait, Memoizes, Reportable, SoftDeletes, Validatable;
+    use Memoizes, SoftDeletes, Traits\CommentableDefaults, Traits\Es\BeatmapsetSearch, Traits\Reportable, Validatable;
 
     protected $_storage = null;
     protected $table = 'osu_beatmapsets';
@@ -1134,15 +1133,6 @@ class Beatmapset extends Model implements AfterCommit, Commentable, Indexable
     public function status()
     {
         return array_search_null($this->approved, static::STATES);
-    }
-
-    public function defaultJson()
-    {
-        return json_item($this, 'Beatmapset', [
-            'beatmaps',
-            'current_user_attributes',
-            'nominations',
-        ]);
     }
 
     public function defaultDiscussionJson()

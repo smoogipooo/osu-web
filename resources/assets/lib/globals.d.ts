@@ -23,7 +23,8 @@ declare const Turbolinks: import('turbolinks').default;
 // our helpers
 declare const tooltipDefault: TooltipDefault;
 declare const osu: OsuCommon;
-declare const currentUser: import('interfaces/current-user').default;
+// FIXME: this typing is wrong (may be just "{}"). Use core.currentUser instead of fixing this typing.
+declare const currentUser: import('interfaces/current-user-json').default;
 
 // external (to typescript) classes
 declare const BeatmapsetFilter: import('interfaces/beatmapset-filter-class').default;
@@ -31,6 +32,12 @@ declare const BeatmapDiscussionHelper: BeatmapDiscussionHelperClass;
 declare const Lang: LangClass;
 declare const fallbackLocale: string;
 declare const currentLocale: string;
+
+declare class LineChart {
+  loadData: (data: { x: number; y: number }[]) => void;
+  resize: () => void;
+  constructor(area: HTMLElement, options: Record<string, unknown>);
+}
 
 // Global object types
 interface Comment {
@@ -92,19 +99,6 @@ interface ChangelogBuild {
     name: string;
   };
   version: string;
-}
-
-// FIXME: make importable
-interface Country {
-  code: string;
-  display?: number;
-  name: string;
-}
-
-interface Cover {
-  custom_url: string | null;
-  id: string | null;
-  url: string | null;
 }
 
 interface BeatmapFailTimesArray {
