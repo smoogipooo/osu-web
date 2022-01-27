@@ -42,7 +42,7 @@ interface UserJsonAvailableIncludes {
   is_silenced: boolean;
   loved_beatmapset_count: number;
   mapping_follower_count: number;
-  monthly_playcounts: UserMonthlyPlaycountJson;
+  monthly_playcounts: UserMonthlyPlaycountJson[];
   page: {
     html: string;
     raw: string;
@@ -54,6 +54,7 @@ interface UserJsonAvailableIncludes {
   replays_watched_counts: UserReplaysWatchedCountJson[];
   scores_best_count: number;
   scores_first_count: number;
+  scores_pinned_count: number;
   scores_recent_count: number;
   statistics: UserStatisticsJson;
   statistics_rulesets: UserStatisticsRulesetsJson;

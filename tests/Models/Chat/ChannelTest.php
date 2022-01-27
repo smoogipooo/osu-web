@@ -3,18 +3,38 @@
 // Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
 // See the LICENCE file in the repository root for full licence text.
 
+declare(strict_types=1);
+
 namespace Tests\Models\Chat;
 
+use App\Events\ChatChannelEvent;
+use App\Jobs\Notifications\ChannelAnnouncement;
+use App\Libraries\BroadcastsPendingForTests;
 use App\Models\Chat\Channel;
 use App\Models\User;
 use App\Models\UserRelation;
+use Event;
 use Illuminate\Filesystem\Filesystem;
+use Queue;
 use SplFileInfo;
 use Storage;
 use Tests\TestCase;
 
 class ChannelTest extends TestCase
 {
+    public function testAnnouncementSendMessage()
+    {
+        Queue::fake();
+
+        $user = User::factory()->withGroup('announce')->create();
+        $otherUser = User::factory()->create();
+        $channel = $this->createChannel([$user, $otherUser], 'announce');
+
+        $channel->receiveMessage($user, 'test');
+
+        Queue::assertPushed(ChannelAnnouncement::class);
+    }
+
     public function testPublicChannelDoesNotShowUsers()
     {
         $user = User::factory()->create();
@@ -49,9 +69,9 @@ class ChannelTest extends TestCase
     {
         $user = User::factory()->withGroup($group)->create();
         $otherUser = User::factory()->create();
-        $channel = $this->createChannel([$user, $otherUser], 'moderated', 'pm');
+        $channel = $this->createChannel([$user, $otherUser], 'pm', true);
 
-        $this->assertSame($canMessage, $channel->canMessage($user));
+        $this->assertSame($canMessage, $channel->checkCanMessage($user)->can());
     }
 
     /**
@@ -60,9 +80,9 @@ class ChannelTest extends TestCase
     public function testChannelCanMessageModeratedPublicChannel(?string $group, bool $canMessage)
     {
         $user = User::factory()->withGroup($group)->create();
-        $channel = $this->createChannel([$user], 'moderated', 'public');
+        $channel = $this->createChannel([$user], 'public', true);
 
-        $this->assertSame($canMessage, $channel->canMessage($user));
+        $this->assertSame($canMessage, $channel->checkCanMessage($user)->can());
     }
 
     /**
@@ -87,7 +107,7 @@ class ChannelTest extends TestCase
 
         // this assertion to make sure the correct block direction is being tested.
         $this->assertTrue($user->hasBlocked($otherUser));
-        $this->assertSame($canMessage, $channel->canMessage($user));
+        $this->assertSame($canMessage, $channel->checkCanMessage($user)->can());
     }
 
     /**
@@ -112,7 +132,7 @@ class ChannelTest extends TestCase
 
         // this assertion to make sure the correct block direction is being tested.
         $this->assertTrue($otherUser->hasBlocked($user));
-        $this->assertSame($canMessage, $channel->canMessage($user));
+        $this->assertSame($canMessage, $channel->checkCanMessage($user)->can());
     }
 
     /**
@@ -126,7 +146,26 @@ class ChannelTest extends TestCase
 
         app('OsuAuthorize')->resetCache();
 
-        $this->assertSame($canMessage, $channel->canMessage($user));
+        $this->assertSame($canMessage, $channel->checkCanMessage($user)->can());
+    }
+
+    public function testCreateAnnouncement()
+    {
+        Event::fake(ChatChannelEvent::class);
+
+        $users = User::factory()->count(2)->create();
+
+        $channel = Channel::createAnnouncement($users, ['description' => 'channel', 'name' => 'the best']);
+
+        $channel = $channel->fresh();
+
+        $this->assertEmpty($users->diff($channel->users()), 'created channel has too many users.');
+        $this->assertEmpty($channel->users()->diff($users), 'created channel is missing users.');
+        $this->assertSame(Channel::TYPES['announce'], $channel->type);
+
+        $broadcastsPending = app(BroadcastsPendingForTests::class)->dispatched(ChatChannelEvent::class, fn (ChatChannelEvent $event) => $event->action === 'join');
+        $this->assertSame(2, count($broadcastsPending));
+        Event::assertNotDispatched(ChatChannelEvent::class);
     }
 
     public function testPmChannelIcon()
@@ -194,9 +233,15 @@ class ChannelTest extends TestCase
         ];
     }
 
-    private function createChannel(array $users, ...$types): Channel
+    private function createChannel(array $users, string $type, bool $moderated = false): Channel
     {
-        $channel = factory(Channel::class)->states($types)->create();
+        $channel = Channel::factory()->type($type);
+        if ($moderated) {
+            $channel = $channel->moderated();
+        }
+
+        $channel = $channel->create();
+
         foreach ($users as $user) {
             $channel->addUser($user);
         }

@@ -183,6 +183,10 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
 
     protected $visible = ['user_id', 'username', 'username_clean', 'user_rank', 'osu_playstyle', 'user_colour'];
 
+    protected $attributes = [
+        'user_allow_pm' => true,
+    ];
+
     protected $casts = [
         'osu_subscriber' => 'boolean',
         'user_allow_pm' => 'boolean',
@@ -794,6 +798,11 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
         return $this->isGroup(app('groups')->byIdentifier('admin'));
     }
 
+    public function isChatAnnouncer()
+    {
+        return $this->findUserGroup(app('groups')->byIdentifier('announce'), true) !== null;
+    }
+
     public function isGMT()
     {
         return $this->isGroup(app('groups')->byIdentifier('gmt'));
@@ -1014,6 +1023,11 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
     public function reportsMade()
     {
         return $this->hasMany(UserReport::class, 'reporter_id');
+    }
+
+    public function scorePins()
+    {
+        return $this->hasMany(ScorePin::class);
     }
 
     public function userGroups()
@@ -1333,9 +1347,19 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
         return $this->isSupporter() ? config('osu.user.max_friends_supporter') : config('osu.user.max_friends');
     }
 
+    public function maxMultiplayerDuration()
+    {
+        return $this->isSupporter() ? config('osu.user.max_multiplayer_duration_supporter') : config('osu.user.max_multiplayer_duration');
+    }
+
     public function maxMultiplayerRooms()
     {
         return $this->isSupporter() ? config('osu.user.max_multiplayer_rooms_supporter') : config('osu.user.max_multiplayer_rooms');
+    }
+
+    public function maxScorePins()
+    {
+        return $this->isSupporter() ? config('osu.user.max_score_pins_supporter') : config('osu.user.max_score_pins');
     }
 
     public function beatmapsetDownloadAllowance()
@@ -2040,12 +2064,16 @@ class User extends Model implements AfterCommit, AuthenticatableContract, HasLoc
             $this->isValidEmail();
         }
 
-        if ($this->isDirty('country_acronym') && present($this->country_acronym)) {
-            if (($country = Country::find($this->country_acronym)) !== null) {
-                // ensure matching case
-                $this->country_acronym = $country->getKey();
+        if ($this->isDirty('country_acronym')) {
+            if (present($this->country_acronym)) {
+                if (($country = Country::find($this->country_acronym)) !== null) {
+                    // ensure matching case
+                    $this->country_acronym = $country->getKey();
+                } else {
+                    $this->validationErrors()->add('country', '.invalid_country');
+                }
             } else {
-                $this->validationErrors()->add('country', '.invalid_country');
+                $this->country_acronym = Country::UNKNOWN;
             }
         }
 

@@ -2,7 +2,10 @@
 # See the LICENCE file in the repository root for full licence text.
 
 import core from 'osu-core-singleton'
+import { bottomPage } from 'utils/html'
 import { hideLoadingOverlay } from 'utils/loading-overlay'
+import { pageChange } from 'utils/page-change'
+import { currentUrl } from 'utils/turbolinks'
 
 replaceUrl = (url) ->
   Turbolinks.controller.replaceHistory url
@@ -161,7 +164,7 @@ class window.Forum
 
     currentPost = null
 
-    if osu.bottomPage()
+    if bottomPage()
       currentPost = @posts[@posts.length - 1]
     else
       scrollOffset = core.stickyHeader.scrollOffsetValue
@@ -261,7 +264,7 @@ class window.Forum
     $(document).one 'turbolinks:before-cache', ->
       history.scrollRestoration = 'auto'
 
-    shouldScroll = _exported.currentUrl().hash == '' && osu.present(topicMeta.postJumpTo)
+    shouldScroll = currentUrl().hash == '' && osu.present(topicMeta.postJumpTo)
 
     if shouldScroll
       @scrollTo parseInt(topicMeta.postJumpTo, 10)
@@ -279,7 +282,7 @@ class window.Forum
 
 
   postUrlN: (postN) ->
-    "#{_exported.currentUrl().pathname}?n=#{postN}"
+    "#{currentUrl().pathname}?n=#{postN}"
 
 
   showMore: (e) =>
@@ -327,7 +330,7 @@ class window.Forum
       targetDocumentScrollTop = currentDocumentScrollTop + currentScrollReferenceTop - scrollReferenceTop
       window.scrollTo x, targetDocumentScrollTop
 
-      _exported.pageChange()
+      pageChange()
       link.dataset.failed = '0'
 
     .always ->

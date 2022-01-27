@@ -1,17 +1,10 @@
 # Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
 # See the LICENCE file in the repository root for full licence text.
 
+import { currentUrl } from 'utils/turbolinks'
+
 window.osu =
   isIos: /iPad|iPhone|iPod/.test(navigator.platform)
-
-  bottomPage: ->
-    osu.bottomPageDistance() == 0
-
-
-  bottomPageDistance: ->
-    body = document.documentElement ? document.body.parent ? document.body
-    (body.scrollHeight - body.scrollTop) - body.clientHeight
-
 
   currentUserIsFriendsWith: (user_id) ->
     _.find currentUser.friends, target_id: user_id
@@ -22,11 +15,11 @@ window.osu =
 
 
   setHash: (newHash) ->
-    currentUrl = _exported.currentUrl().href
-    newUrl = currentUrl.replace /#.*/, ''
+    currUrl = currentUrl().href
+    newUrl = currUrl.replace /#.*/, ''
     newUrl += newHash
 
-    return if newUrl == currentUrl
+    return if newUrl == currUrl
 
     history.replaceState history.state, null, newUrl
 
@@ -93,7 +86,7 @@ window.osu =
     $(document).off '.ujsHideLoadingOverlay'
     Turbolinks.clearCache()
 
-    osu.navigate _exported.currentUrl().href, keepScroll, action: 'replace'
+    osu.navigate currentUrl().href, keepScroll, action: 'replace'
 
 
   urlPresence: (url) ->

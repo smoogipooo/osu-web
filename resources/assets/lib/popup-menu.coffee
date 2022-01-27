@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom'
 import * as React from 'react'
 import { button, div, i } from 'react-dom-factories'
 import { TooltipContext } from 'tooltip-context'
-import { Modal } from 'modal'
+import { isModalShowing } from 'modal-helper'
 import { nextVal } from 'utils/seq'
 
 export class PopupMenu extends PureComponent
@@ -73,20 +73,20 @@ export class PopupMenu extends PureComponent
       @resize()
       @tooltipElement().qtip 'option', 'hide.event', false
 
-      $(document).on "click.#{@uuid} keydown.#{@uuid}", @hide
+      $(document).on "click.#{@eventId} keydown.#{@eventId}", @hide
       @props.onShow?()
 
     else
       @removePortal()
       @tooltipElement().qtip 'option', 'hide.event', @tooltipHideEvent
 
-      $(document).off "click.#{@uuid} keydown.#{@uuid}", @hide
+      $(document).off "click.#{@eventId} keydown.#{@eventId}", @hide
       @props.onHide?()
 
 
   componentWillUnmount: =>
-    $(document).off ".#{@uuid}"
-    $(window).off ".#{@uuid}"
+    $(document).off ".#{@eventId}"
+    $(window).off ".#{@eventId}"
 
 
   dismiss: =>
@@ -94,7 +94,7 @@ export class PopupMenu extends PureComponent
 
 
   hide: (e) =>
-    return if !@state.active || Modal.isOpen() || osu.popupShowing()
+    return if !@state.active || isModalShowing()
 
     event = e.originalEvent
     return if !event? # originalEvent gets eaten by error popup?
