@@ -1,11 +1,10 @@
 # Copyright (c) ppy Pty Ltd <contact@ppy.sh>. Licensed under the GNU Affero General Public License v3.0.
 # See the LICENCE file in the repository root for full licence text.
 
+import Forum from 'core-legacy/forum'
 import Gallery from 'gallery'
 import { StoreCheckout } from 'store-checkout'
 import { hideLoadingOverlay, showLoadingOverlay } from 'utils/loading-overlay'
-
-window.polyfills ?= new Polyfills
 
 Turbolinks.start()
 Turbolinks.setProgressBarDelay(0)
@@ -45,7 +44,6 @@ window.checkboxValidation ?= new CheckboxValidation
 window.fancyGraph ?= new FancyGraph
 window.formClear ?= new FormClear
 window.formError ?= new FormError
-window.formPlaceholderHide ?= new FormPlaceholderHide
 window.formToggle ?= new FormToggle
 window.forum ?= new Forum
 window.forumAutoClick ?= new ForumAutoClick

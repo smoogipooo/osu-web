@@ -7,6 +7,7 @@ namespace App\Models\Multiplayer;
 
 use App\Casts\PresentString;
 use App\Exceptions\InvariantException;
+use App\Models\Beatmap;
 use App\Models\Chat\Channel;
 use App\Models\Model;
 use App\Models\Traits\WithDbCursorHelper;
@@ -54,6 +55,12 @@ class Room extends Model
 
     const DEFAULT_SORT = 'created';
 
+    const CATEGORIES = ['normal', 'spotlight'];
+    const TYPE_GROUPS = [
+        'playlists' => [self::PLAYLIST_TYPE],
+        'realtime' => self::REALTIME_TYPES,
+    ];
+
     const PLAYLIST_TYPE = 'playlists';
     const REALTIME_DEFAULT_TYPE = 'head_to_head';
     const REALTIME_TYPES = ['head_to_head', 'team_versus'];
@@ -94,30 +101,41 @@ class Room extends Model
         }
     }
 
-    public static function search($params)
+    public static function search(array $params)
     {
-        $query = static::query();
+        $params = get_params($params, null, [
+            'category',
+            'cursor:array',
+            'limit:int',
+            'mode',
+            'sort',
+            'type_group',
+            'user:any',
+        ], ['null_missing' => true]);
 
-        $mode = presence(get_string($params['mode'] ?? null));
         $user = $params['user'];
-        $sort = $params['sort'] ?? null;
+        $sort = $params['sort'];
+        $category = $params['category'];
+        $typeGroup = $params['type_group'];
 
-        $category = presence(get_string($params['category'] ?? null)) ?? 'any';
-        switch ($category) {
-            case 'any':
-                $query->where('type', static::PLAYLIST_TYPE);
-                break;
-            case 'realtime':
-                $query->whereIn('type', static::REALTIME_TYPES);
-                break;
-            default:
-                $query->where([
-                    'type' => static::PLAYLIST_TYPE,
-                    'category' => $category,
-                ]);
+        // support old query string param
+        // TODO: redirect instead?
+        if ($category === 'realtime') {
+            $typeGroup = 'realtime';
+            $category = null;
         }
 
-        switch ($mode) {
+        if (!array_key_exists($typeGroup, static::TYPE_GROUPS)) {
+            $typeGroup = 'playlists';
+        }
+
+        $query = static::whereIn('type', static::TYPE_GROUPS[$typeGroup]);
+
+        if (in_array($category, static::CATEGORIES, true)) {
+            $query->where('category', $category);
+        }
+
+        switch ($params['mode']) {
             case 'ended':
                 $query->ended();
                 $sort ??= 'ended';
@@ -133,9 +151,9 @@ class Room extends Model
         }
 
         $cursorHelper = static::makeDbCursorHelper($sort);
-        $query->cursorSort($cursorHelper, get_arr($params['cursor'] ?? null));
+        $query->cursorSort($cursorHelper, $params['cursor']);
 
-        $limit = clamp(get_int($params['limit'] ?? 250), 1, 250);
+        $limit = clamp($params['limit'] ?? 250, 1, 250);
         $query->limit($limit);
 
         return [
@@ -148,6 +166,14 @@ class Room extends Model
     public function channel()
     {
         return $this->belongsTo(Channel::class, 'channel_id');
+    }
+
+    /**
+     * See getCurrentPlaylistItemIdAttribute.
+     */
+    public function currentPlaylistItem()
+    {
+        return $this->belongsTo(PlaylistItem::class, 'current_playlist_item_id');
     }
 
     public function host()
@@ -226,6 +252,48 @@ class Room extends Model
         ", 'recent_participant_ids');
     }
 
+    public function difficultyRange()
+    {
+        $extraQuery = true;
+
+        if ($this->relationLoaded('playlist')) {
+            if ($this->playlist->count() > 0) {
+                $firstItem = $this->playlist[0];
+
+                if ($firstItem->relationLoaded('beatmap')) {
+                    $extraQuery = false;
+                    foreach ($this->playlist as $item) {
+                        $rating = $item->beatmap->difficultyrating;
+                        $max ??= $rating;
+                        $min ??= $rating;
+
+                        if ($max < $rating) {
+                            $max = $rating;
+                        } elseif ($min > $rating) {
+                            $min = $rating;
+                        }
+                    }
+                }
+            } else {
+                $extraQuery = false;
+            }
+        }
+
+        if ($extraQuery) {
+            $range = Beatmap::selectRaw('
+                MIN(difficultyrating) as min_difficulty,
+                MAX(difficultyrating) as max_difficulty
+            ')->whereIn('beatmap_id', $this->playlist()->select('beatmap_id'))->first();
+            $max = $range->max_difficulty;
+            $min = $range->min_difficulty;
+        }
+
+        return [
+            'max' => $max ?? 0,
+            'min' => $min ?? 0,
+        ];
+    }
+
     public function hasEnded()
     {
         return $this->ends_at !== null && Carbon::now()->gte($this->ends_at);
@@ -244,6 +312,16 @@ class Room extends Model
     {
         // TODO: move grace period to config or use the beatmap's duration
         return $this->ends_at === null || Carbon::now()->lte($this->ends_at->addMinutes(5));
+    }
+
+    /**
+     * This allows nested preloading of playlist item relations.
+     *
+     * playlist should be preloaded beforehand unless it's for single Room model.
+     */
+    public function getCurrentPlaylistItemIdAttribute(): ?int
+    {
+        return $this->findAndSetCurrentPlaylistItem()?->getKey();
     }
 
     public function getRecentParticipantIdsAttribute()
@@ -282,6 +360,46 @@ class Room extends Model
         });
     }
 
+    public function findAndSetCurrentPlaylistItem(): ?PlaylistItem
+    {
+        return $this->memoize(__FUNCTION__, function () {
+            if ($this->playlist->count() === 0) {
+                $ret = null;
+            } else {
+                if ($this->isRealtime()) {
+                    $groupedItems = $this->playlist->groupBy('expired');
+
+                    // the key is casted to int
+                    $ret = isset($groupedItems[0])
+                        ? $groupedItems[0]->reduce(function (?PlaylistItem $prevItem, PlaylistItem $i) {
+                            if ($prevItem === null) {
+                                return $i;
+                            }
+
+                            return $i->playlist_order < $prevItem->playlist_order
+                                ? $i
+                                : $prevItem;
+                        })
+                        : $groupedItems[1]->reduce(function (?PlaylistItem $prevItem, PlaylistItem $i) {
+                            if ($prevItem === null) {
+                                return $i;
+                            }
+
+                            return $i->played_at > $prevItem->played_at
+                                ? $i
+                                : $prevItem;
+                        });
+                } else {
+                    $ret = $this->playlist[0];
+                }
+            }
+
+            $this->setRelation('currentPlaylistItem', $ret);
+
+            return $ret;
+        });
+    }
+
     public function join(User $user)
     {
         if (!$this->channel->hasUser($user)) {
@@ -299,6 +417,18 @@ class Room extends Model
         }
 
         return $query;
+    }
+
+    public function playlistItemStats(): array
+    {
+        $active = $this->playlist->whereStrict('expired', false);
+        $activeCount = $active->count();
+
+        return [
+            'count_active' => $activeCount,
+            'count_total' => $this->playlist->count(),
+            'ruleset_ids' => ($activeCount === 0 ? $this->playlist : $active)->pluck('ruleset_id')->unique()->values(),
+        ];
     }
 
     public function recentParticipants(): array
