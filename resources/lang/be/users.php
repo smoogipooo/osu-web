@@ -159,6 +159,10 @@ return [
             '_' => 'Апублікавана :link',
             'count' => ':count_delimited каментарый|:count_delimited каментарыі',
         ],
+        'cover' => [
+            'to_0' => '',
+            'to_1' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Змяніць фон профілю',
@@ -400,7 +404,7 @@ return [
         ],
         'rank' => [
             'country' => 'Рэйтынг краін для :mode',
-            'country_simple' => 'Рэйтынг краін',
+            'country_simple' => 'Рэйтынг па краіне',
             'global' => 'Глабальны рэйтынг для :mode',
             'global_simple' => 'Глабальны рэйтынг',
         ],

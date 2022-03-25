@@ -44,6 +44,7 @@ return [
         'reply_resolve' => 'Balas dan Tutup',
         'reset' => 'Atur Ulang',
         'restore' => 'Pulihkan',
+        'retry' => 'Coba lagi',
         'save' => 'Simpan',
         'saving' => 'Menyimpan...',
         'search' => 'Cari',

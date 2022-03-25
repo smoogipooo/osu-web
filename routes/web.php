@@ -382,6 +382,7 @@ Route::group(['as' => 'api.', 'prefix' => 'api', 'middleware' => ['api', Throttl
 
             Route::group(['prefix' => '{beatmap}'], function () {
                 Route::get('scores/users/{user}', 'BeatmapsController@userScore');
+                Route::get('scores/users/{user}/all', 'BeatmapsController@userScoreAll');
                 Route::get('scores', 'BeatmapsController@scores')->name('scores');
 
                 Route::group(['as' => 'solo.', 'prefix' => 'solo'], function () {
@@ -394,6 +395,7 @@ Route::group(['as' => 'api.', 'prefix' => 'api', 'middleware' => ['api', Throttl
         });
 
         Route::resource('beatmaps', 'BeatmapsController', ['only' => ['index', 'show']]);
+        Route::post('beatmaps/{beatmap}/attributes', 'BeatmapsController@attributes')->name('beatmaps.attributes');
 
         Route::group(['as' => 'beatmapsets.', 'prefix' => 'beatmapsets'], function () {
             Route::apiResource('events', 'BeatmapsetEventsController', ['only' => ['index']]);

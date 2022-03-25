@@ -143,6 +143,7 @@ return [
         'scoreboard' => [
             'achieved' => '',
             'country' => '',
+            'error' => 'بارگزاری رتبه بندی ها شکست خورد',
             'friend' => '',
             'global' => '',
             'supporter-link' => '',

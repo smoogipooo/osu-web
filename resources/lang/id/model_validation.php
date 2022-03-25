@@ -67,7 +67,7 @@ return [
         ],
 
         'poll_vote' => [
-            'invalid' => 'Opsi yang ditentukan tidak valid.',
+            'invalid' => 'Pilihan yang ditentukan tidak valid.',
         ],
 
         'post' => [
@@ -158,7 +158,7 @@ return [
                 '_' => 'Anda harus memiliki :link untuk dapat mengubah nama pengguna Anda!',
                 'link_text' => 'osu!supporter',
             ],
-            'username_is_same' => 'Ini nama penggunamu yang sekarang, bodoh!',
+            'username_is_same' => 'Ini adalah nama penggunamu yang sekarang, duh!',
         ],
     ],
 

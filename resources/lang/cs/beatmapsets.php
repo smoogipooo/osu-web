@@ -8,11 +8,11 @@ return [
         'disabled' => 'Tato beatmapa není momentálně dostupná ke stažení.',
         'parts-removed' => 'Část této beatmapy byla smazána na žádost tvůrce nebo vlastníka třetí strany.',
         'more-info' => 'Pro více informací klikněte zde.',
-        'rule_violation' => '',
+        'rule_violation' => 'Některé assety obsažené v této mapě byly odstraněny poté, co byly posouzeny jako nevhodné pro použití v osu!.',
     ],
 
     'download' => [
-        'limit_exceeded' => '',
+        'limit_exceeded' => 'Zpomal, více hraj.',
     ],
 
     'featured_artist_badge' => [
@@ -36,15 +36,15 @@ return [
     ],
 
     'nominate' => [
-        'hybrid_requires_modes' => '',
-        'incorrect_mode' => '',
-        'full_bn_required' => '',
-        'too_many' => '',
+        'hybrid_requires_modes' => 'Hybridní beatmapa vyžaduje, abyste vybrali alespoň jeden herní režim, za který ji chcete nominovat.',
+        'incorrect_mode' => 'Nemáte oprávnění k nominaci za mód: :mode',
+        'full_bn_required' => 'Musíte být plný nominátor, abyste mohli provést kvalifikační nominaci.',
+        'too_many' => 'Požadavek na nominaci je již splněn.',
 
         'dialog' => [
-            'confirmation' => '',
+            'confirmation' => 'Jste si jisti, že chcete nominovat tuto beatmapu?',
             'header' => 'Nominovat beatmapu',
-            'hybrid_warning' => '',
+            'hybrid_warning' => 'poznámka: můžete nominovat pouze jednou, takže se ujistěte, že nominujete za všechny herní režimy, které chcete',
             'which_modes' => '',
         ],
     ],
@@ -143,6 +143,7 @@ return [
         'scoreboard' => [
             'achieved' => 'dosaženo :when',
             'country' => 'Státní žebříčky',
+            'error' => '',
             'friend' => 'Žebříček přátel',
             'global' => 'Celosvětové žebříčky',
             'supporter-link' => 'Klikněte <a href=":link">zde</a> pro zobrazení všech výhod, které dostanete!',

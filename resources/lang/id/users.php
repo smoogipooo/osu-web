@@ -159,6 +159,10 @@ return [
             '_' => 'Telah mengirimkan :link',
             'count' => ':count_delimited komentar|:count_delimited komentar',
         ],
+        'cover' => [
+            'to_0' => '',
+            'to_1' => '',
+        ],
         'edit' => [
             'cover' => [
                 'button' => 'Ubah Sampul Profil',
@@ -216,12 +220,12 @@ return [
             ],
             'discussions' => [
                 'title' => 'Diskusi',
-                'title_longer' => 'Topik-Topik Diskusi Terkini',
+                'title_longer' => 'Topik Diskusi Terkini',
                 'show_more' => 'lihat lebih banyak diskusi',
             ],
             'events' => [
                 'title' => 'Aktivitas',
-                'title_longer' => 'Aktivitas-Aktivitas Terkini',
+                'title_longer' => 'Aktivitas Terkini',
                 'show_more' => 'lihat lebih banyak aktivitas',
             ],
             'historical' => [
@@ -306,7 +310,7 @@ return [
             ],
             'posts' => [
                 'title' => 'Posting',
-                'title_longer' => 'Postingan-Postingan Terkini',
+                'title_longer' => 'Postingan Terkini',
                 'show_more' => 'lihat lebih banyak post',
             ],
             'recent_activity' => [

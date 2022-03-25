@@ -2,6 +2,7 @@
 # See the LICENCE file in the repository root for full licence text.
 
 import { SearchFilter } from './search-filter'
+import { runInAction } from 'mobx'
 import { Observer } from 'mobx-react'
 import core from 'osu-core-singleton'
 import * as React from 'react'
@@ -43,7 +44,8 @@ export class SearchPanel extends React.Component
 
   expand: (e) ->
     e.preventDefault()
-    controller.isExpanded = true
+    runInAction =>
+      controller.isExpanded = true
 
 
   render: =>
@@ -187,6 +189,10 @@ export class SearchPanel extends React.Component
         name: 'status'
         options: filters.statuses
 
+      @renderFilter
+        name: 'nsfw'
+        options: filters.nsfw
+
       a
         className: 'beatmapsets-search__expand-link'
         href: '#'
@@ -216,10 +222,6 @@ export class SearchPanel extends React.Component
         @renderFilter
           name: 'played'
           options: filters.played
-
-        @renderFilter
-          name: 'nsfw'
-          options: filters.nsfw
 
 
   setHeaderPinned: (_event, pinned) =>

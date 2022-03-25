@@ -73,6 +73,7 @@ return [
             'nomination_reset' => '',
             'praise' => '',
             'problem' => '',
+            'problem_warning' => 'گزارش مشکل',
             'review' => '',
             'suggestion' => '',
         ],
@@ -208,8 +209,9 @@ return [
         ],
 
         'reset_confirm' => [
-            'nomination_reset' => '',
             'disqualify' => '',
+            'nomination_reset' => '',
+            'problem_warning' => 'آیا مطمئنید که میخواهید یک ایراد در بیت مپ را گزارش کنید؟ این برای نامزد کننده های بیت مپ یک هشدار ارسال می کند.',
         ],
     ],
 
@@ -273,6 +275,7 @@ return [
         'loved' => '',
         'mine' => '',
         'pending' => '',
+        'wip' => 'در حال کار',
         'qualified' => '',
         'ranked' => '',
     ],
