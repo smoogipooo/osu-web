@@ -188,7 +188,7 @@ return [
 
         'stats' => [
             'cs' => 'Circle Size',
-            'cs-mania' => 'Key Amount',
+            'cs-mania' => 'Key Count',
             'drain' => 'HP Drain',
             'accuracy' => 'Accuracy',
             'ar' => 'Approach Rate',
@@ -213,5 +213,9 @@ return [
             'pending' => 'Pending',
             'graveyard' => 'Graveyard',
         ],
+    ],
+
+    'spotlight_badge' => [
+        'label' => 'Spotlight',
     ],
 ];
