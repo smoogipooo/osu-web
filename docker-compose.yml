@@ -79,7 +79,7 @@ services:
       <<: *x-env
 
   db:
-    image: mysql/mysql-server:8.0
+    image: mysql:8.0
     volumes:
       - database:/var/lib/mysql
       - ./docker/development/db_setup.sql:/docker-entrypoint-initdb.d/db_setup.sql
