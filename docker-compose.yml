@@ -84,6 +84,7 @@ services:
       - database:/var/lib/mysql
       - ./docker/development/db_setup.sql:/docker-entrypoint-initdb.d/db_setup.sql
       - ./docker/development/db_user.sql:/docker-entrypoint-initdb.d/db_user.sql
+      - ./docker/development/db.cnf:/etc/mysql/conf.d/db.cnf
     environment:
       <<: *x-env
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"

@@ -10,8 +10,7 @@ echo "Importing data..."
 SQL_CONN='mysql -u osuweb --host=db --database=osu'
 
 # Initial import.
-cat /app/sql/*.sql \
-  | $SQL_CONN
+(pv --force -p $(find "/app/sql/" -type f -name "*.sql") | mysql -u osuweb --host=db --database=osu) 2>&1 | stdbuf -o0 tr '\r' '\n'
 
 # Move sample users to phpbb_users (initial import).
 echo "INSERT INTO phpbb_users (user_id,username,user_warnings,user_type,user_permissions,user_sig,user_occ,user_interests,username_clean,country_acronym) SELECT user_id,username,user_warnings,user_type,0,'','','',username,'AU' FROM sample_users;" \
