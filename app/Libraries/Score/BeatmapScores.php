@@ -90,9 +90,8 @@ class BeatmapScores
         }
 
         $params = clone $this->baseParams;
-        $params->limit = 1;
+        $params->size = 1;
         $params->userId = $userId;
-        $params->setSort(null);
         $search = new ScoreSearch($params);
 
         $search->response();
