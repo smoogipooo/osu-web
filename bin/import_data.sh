@@ -53,6 +53,6 @@ echo '(new App\Libraries\UserRegistration(["username" => "username", "user_email
   | php /app/artisan tinker
 
 # Notify of completion.
-mysql "${MYSQL_ARGS[@]}" "INSERT INTO osu_counts (name, count) VALUES ('docker_db_step', '1');"
+mysql "${MYSQL_ARGS[@]}" -e "INSERT INTO osu_counts (name, count) VALUES ('docker_db_step', '1');"
 
 echo "Finshed importing data."
