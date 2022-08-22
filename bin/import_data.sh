@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # .env hax.
 echo "ES_HOST=elasticsearch:9200" >> /app/.env
