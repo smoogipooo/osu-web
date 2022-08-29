@@ -108,6 +108,8 @@ services:
       action.auto_create_index: "false"
       discovery.type: single-node
       ES_JAVA_OPTS: "-Xms512m -Xmx512m" # less OOM on default settings.
+    ports:
+      - "9200:9200"
 
   nginx:
     image: nginx:latest
