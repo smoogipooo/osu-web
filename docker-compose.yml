@@ -61,6 +61,8 @@ services:
       - ./storage/oauth-public.key:/app/oauth-public.key
     environment:
       <<: *x-env
+    ports:
+      - "2345:2345"
 
   notification-server-dusk:
     image: pppy/osu-notification-server
