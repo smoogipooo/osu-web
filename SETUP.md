@@ -120,26 +120,6 @@ git config core.eol lf
 git config core.filemode false
 ```
 
-### ARM-based CPUs
-
-Tests that require the use of Chrome (both Karma and Dusk tests) will not work inside Docker when running on ARM-based CPUs (e.g. Macs running Apple Silicon). In this scenario, these tests should be run outside of a container.
-
-Dusk tests can make use of an external Chrome driver instance by setting the following environment variables:
-- `DUSK_WEBDRIVER_URL` the url of the Chrome driver accessible from the container.
-- `APP_URL` the url that will be used to access the app running in the container from Chrome.
-
-e.g. If Docker Desktop and the default networking are used and `chromedriver` is running on the host:
-
-    docker compose run --rm -e DUSK_WEBDRIVER_URL=host.docker.internal:9515 -e APP_URL=http://127.0.0.1:8080 php test browser
-
-The host `chromedriver` will need to allow connections from the container:
-
-    chromedriver --whitelisted-ips --allowed-origins='host.docker.internal'
-
-Other custom configurations to run the tests within the container are currently not supported.
-
----
-
 ### Docker hints
 
 #### Services
@@ -258,7 +238,7 @@ Note that if you use the bundled docker compose setup, yarn/webpack will be alre
 $ php artisan migrate:fresh --seed
 ```
 
-Run the above command to rebuild the database and seed with sample data. In order for the seeder to seed beatmaps, you must enter a valid osu! API key as the value of the `OSU_API_KEY` property in the `.env` configuration file, as the seeder obtains beatmap data from the osu! API. The key can be obtained at [the "osu! API Access" page](https://old.ppy.sh/p/api), which is currently only available on the old site.
+Run the above command to rebuild the database and seed with sample data. In order for the seeder to seed beatmaps, you must enter a valid osu! API key as the value of the `OSU_API_KEY` property in the `.env` configuration file, as the seeder obtains beatmap data from the osu! API. The key can be obtained from [the "Legacy API" section of your account settings page](https://osu.ppy.sh/home/account/edit#legacy-api).
 
 ## Continuous asset generation while developing
 
@@ -339,6 +319,7 @@ bin/run_dusk.sh
 or if using Docker:
 
 ```
+# `compose exec` doesn't work here due to port conflict with dev instance
 docker compose run --rm php test browser
 ```
 
