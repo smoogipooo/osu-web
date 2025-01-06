@@ -40,5 +40,7 @@ class RoomsController extends Controller
             $channel = Channel::createMultiplayer($room);
             $room->update(['channel_id' => $channel->channel_id]);
         });
+
+        return response($room->getKey());
     }
 }
