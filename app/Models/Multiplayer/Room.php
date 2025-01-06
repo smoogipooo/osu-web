@@ -603,6 +603,10 @@ class Room extends Model
 
         $this->setRelation('host', $host);
 
+        if ($this->queue_mode == 'mm' || $this->category == 'mm' || $this->type == 'mm') {
+            throw new InvariantException("Matchmaking rooms may not be created.");
+        }
+
         // TODO: remove category params support (and forcing default type) once client sends type parameter
         if ($this->isRealtime() || $params['category'] === 'realtime') {
             if (!in_array($this->type, static::REALTIME_TYPES, true)) {

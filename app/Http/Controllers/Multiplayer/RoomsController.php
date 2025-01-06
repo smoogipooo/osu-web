@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Multiplayer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Ranking\DailyChallengeController;
+use App\Models\Chat\Channel;
 use App\Models\Model;
 use App\Models\Multiplayer\Room;
 use App\Transformers\Multiplayer\RoomTransformer;

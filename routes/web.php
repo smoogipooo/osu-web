@@ -617,6 +617,8 @@ Route::group(['prefix' => '_lio', 'middleware' => 'lio', 'as' => 'interop.'], fu
         });
 
         Route::apiResource('users', 'UsersController', ['only' => ['store']]);
+
+        Route::put('rooms/create-mm', 'RoomsController@createMm')->name('create-mm');
     });
 });
 
