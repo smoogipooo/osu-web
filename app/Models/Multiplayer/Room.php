@@ -66,7 +66,7 @@ class Room extends Model
 
     const DEFAULT_SORT = 'created';
 
-    const CATEGORIES = ['normal', 'spotlight', 'featured_artist', 'daily_challenge'];
+    const CATEGORIES = ['normal', 'spotlight', 'featured_artist', 'daily_challenge', 'mm'];
     const TYPE_GROUPS = [
         'playlists' => [self::PLAYLIST_TYPE],
         'realtime' => self::REALTIME_TYPES,
@@ -74,11 +74,11 @@ class Room extends Model
 
     const PLAYLIST_TYPE = 'playlists';
     const REALTIME_DEFAULT_TYPE = 'head_to_head';
-    const REALTIME_TYPES = ['head_to_head', 'team_versus'];
+    const REALTIME_TYPES = ['head_to_head', 'team_versus', 'mm'];
 
     const PLAYLIST_QUEUE_MODE = 'host_only';
     const REALTIME_DEFAULT_QUEUE_MODE = 'host_only';
-    const REALTIME_QUEUE_MODES = [ 'host_only', 'all_players', 'all_players_round_robin' ];
+    const REALTIME_QUEUE_MODES = ['host_only', 'all_players', 'all_players_round_robin', 'mm'];
     const REALTIME_STATUSES = ['idle', 'playing'];
 
     public ?array $preloadedRecentParticipants = null;
