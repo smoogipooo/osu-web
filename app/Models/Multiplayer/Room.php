@@ -603,10 +603,6 @@ class Room extends Model
 
         $this->setRelation('host', $host);
 
-        if ($this->queue_mode == 'mm' || $this->category == 'mm' || $this->type == 'mm') {
-            throw new InvariantException("Matchmaking rooms may not be created.");
-        }
-
         // TODO: remove category params support (and forcing default type) once client sends type parameter
         if ($this->isRealtime() || $params['category'] === 'realtime') {
             if (!in_array($this->type, static::REALTIME_TYPES, true)) {
@@ -634,30 +630,33 @@ class Room extends Model
 
         $this->assertValidStartGame();
 
-        if (!is_array($params['playlist'])) {
-            throw new InvariantException("field 'playlist' must an an array");
-        }
-
         $playlistItems = [];
-        foreach ($params['playlist'] as $item) {
-            $playlistItems[] = PlaylistItem::fromJsonParams($host, $item);
-        }
 
-        $playlistItemsCount = count($playlistItems);
+        if ($this->type !== 'mm') {
+            if (!is_array($params['playlist'])) {
+                throw new InvariantException("field 'playlist' must an an array");
+            }
 
-        if ($this->isRealtime() && $playlistItemsCount !== 1) {
-            throw new InvariantException('realtime room must have exactly one playlist item');
-        }
+            foreach ($params['playlist'] as $item) {
+                $playlistItems[] = PlaylistItem::fromJsonParams($host, $item);
+            }
 
-        if ($playlistItemsCount < 1) {
-            throw new InvariantException('room must have at least one playlist item');
+            $playlistItemsCount = count($playlistItems);
+
+            if ($this->isRealtime() && $playlistItemsCount !== 1) {
+                throw new InvariantException('realtime room must have exactly one playlist item');
+            }
+
+            if ($playlistItemsCount < 1) {
+                throw new InvariantException('room must have at least one playlist item');
+            }
+
+            PlaylistItem::assertBeatmapsExist($playlistItems);
         }
 
         if (mb_strlen($this->name) > 100) {
             throw new InvariantException(osu_trans('multiplayer.room.errors.name_too_long'));
         }
-
-        PlaylistItem::assertBeatmapsExist($playlistItems);
 
         $this->getConnection()->transaction(function () use ($host, $playlistItems) {
             $this->save(); // need to persist to get primary key for channel name.
